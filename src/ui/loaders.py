@@ -491,6 +491,8 @@ def build_fact_field(
         field["label"] = authored.get("label") or field["label"]
         if authored.get("hint"):
             field["hint"] = authored["hint"]
+        if isinstance(authored.get("when"), dict):
+            field["when"] = authored["when"]
         ftype = authored.get("type") or "select"
         if authored.get("option_style") == "age_bands" or (
             fact == "age_years" and not authored.get("options")

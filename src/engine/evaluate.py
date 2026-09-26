@@ -33,6 +33,32 @@ def _as_list(val: Any) -> list[Any]:
     return [val]
 
 
+
+def _when_applies(when: dict[str, Any] | None, patient: dict[str, Any]) -> bool:
+    """Return False when a clause/fact `when` gate does not match the patient.
+
+    Missing gating fact → not applicable yet (do not force other facts / fail).
+    Supported shapes:
+      {"fact": "indication", "in": ["asthma", ...]}
+      {"fact": "indication", "eq": "asthma"}   # or "value": "asthma"
+    """
+    if not when or not isinstance(when, dict):
+        return True
+    fact = when.get("fact")
+    if not fact:
+        return True
+    val = _fact(patient, fact)
+    if val is None:
+        return False
+    if "in" in when:
+        return val in (when.get("in") or [])
+    if "eq" in when:
+        return val == when["eq"]
+    if "value" in when:
+        return val == when["value"]
+    return True
+
+
 def _eval_predicate(predicate: dict[str, Any], patient: dict[str, Any]) -> bool | None:
     """Return True/False, or None if required inputs are missing.
 
@@ -181,6 +207,9 @@ def evaluate(rule_pack: dict[str, Any], patient: dict[str, Any]) -> EvalResult:
         )
 
     for clause in criteria:
+        # Indication-tagged (or other when-gated) clauses: ignore until applicable.
+        if not _when_applies(clause.get("when"), patient):
+            continue
         result = _eval_predicate(clause["predicate"], patient)
         citations.append(clause["citation"])
         if result is None:

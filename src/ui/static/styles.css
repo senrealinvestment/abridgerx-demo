@@ -367,3 +367,16 @@ button.ghost:hover { color: var(--primary); border-color: var(--primary); backgr
 .alt-list li {
   margin-bottom: 0.65rem;
 }
+
+.facts-form .fact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.85rem;
+}
+.facts-form .fact-row.hidden {
+  display: none !important;
+}
+.facts-form .indication-gate-note {
+  margin-bottom: 0.75rem;
+}

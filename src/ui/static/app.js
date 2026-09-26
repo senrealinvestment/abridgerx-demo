@@ -174,6 +174,144 @@
     return humanize(o);
   }
 
+  function whenApplies(when, facts) {
+    if (!when || typeof when !== "object") return true;
+    const fact = when.fact;
+    if (!fact) return true;
+    const val = facts[fact];
+    if (val === undefined || val === null || val === "") return false;
+    if (Array.isArray(when.in)) return when.in.map(String).includes(String(val));
+    if (Object.prototype.hasOwnProperty.call(when, "eq"))
+      return String(val) === String(when.eq);
+    if (Object.prototype.hasOwnProperty.call(when, "value"))
+      return String(val) === String(when.value);
+    return true;
+  }
+
+  function sortFieldsIndicationFirst(fields) {
+    const copy = fields.slice();
+    copy.sort((a, b) => {
+      const ai = a.key === "indication" ? 0 : 1;
+      const bi = b.key === "indication" ? 0 : 1;
+      return ai - bi;
+    });
+    return copy;
+  }
+
+  function renderFieldControl(f) {
+    const hint = f.hint ? `<p class="hint">${esc(f.hint)}</p>` : "";
+    const opts = f.options || [];
+    const whenAttr = f.when
+      ? ` data-when="${esc(JSON.stringify(f.when))}"`
+      : "";
+
+    if (f.type === "multi" || f.type === "checkbox" || f.type === "checkboxes") {
+      const boxes = opts
+        .map((o, i) => {
+          const val = optionValue(o);
+          const id = `fact-${esc(f.key)}-${i}`;
+          return `<label class="check-item" for="${id}">
+                <input type="checkbox" id="${id}" name="${esc(f.key)}" value="${esc(val)}" />
+                <span>${esc(optionLabel(o))}</span>
+              </label>`;
+        })
+        .join("");
+      return `<div class="fact-row" data-fact="${esc(f.key)}"${whenAttr}>
+            <fieldset class="fact-multi">
+            <legend>${esc(f.label)}</legend>
+            <div class="check-group">${boxes || `<p class="hint">No options available.</p>`}</div>
+            ${hint}
+          </fieldset></div>`;
+    }
+
+    const selectOpts = [`<option value="">Select…</option>`]
+      .concat(
+        opts.map(
+          (o) =>
+            `<option value="${esc(optionValue(o))}">${esc(optionLabel(o))}</option>`
+        )
+      )
+      .join("");
+    const isIndication =
+      f.key === "indication" ||
+      f.option_source === "missing_indication_list" ||
+      (f.label || "").toLowerCase().includes("indication");
+    const isBoolean =
+      f.option_source === "boolean_yes_no" ||
+      f.option_source === "fallback_boolean_yes_no";
+    let safeOpts;
+    if (opts.length > 0) {
+      safeOpts = selectOpts;
+    } else if (isIndication) {
+      safeOpts = `<option value="">No diagnosis list available</option>`;
+    } else if (isBoolean) {
+      safeOpts = `<option value="">Select…</option>
+               <option value="yes">Yes</option>
+               <option value="no">No</option>`;
+    } else {
+      safeOpts = `<option value="">No options configured</option>`;
+    }
+    return `<div class="fact-row" data-fact="${esc(f.key)}"${whenAttr}>
+          <label for="fact-${esc(f.key)}">${esc(f.label)}</label>
+          <select id="fact-${esc(f.key)}" name="${esc(f.key)}">${safeOpts}</select>
+          ${hint}
+        </div>`;
+  }
+
+  function applyFactVisibility() {
+    const current = {};
+    const ind = factsForm.querySelector('select[name="indication"]');
+    if (ind && ind.value) current.indication = ind.value;
+    // Also consider other potential gating facts already filled (rare).
+    factsForm.querySelectorAll("select[name]").forEach((el) => {
+      if (el.value) current[el.name] = el.value;
+    });
+
+    let gatedHidden = 0;
+    factsForm.querySelectorAll(".fact-row").forEach((row) => {
+      const raw = row.getAttribute("data-when");
+      let when = null;
+      if (raw) {
+        try {
+          when = JSON.parse(raw);
+        } catch (_) {
+          when = null;
+        }
+      }
+      const show = whenApplies(when, current);
+      row.classList.toggle("hidden", !show);
+      row.querySelectorAll("input, select, textarea").forEach((el) => {
+        el.disabled = !show;
+        if (!show) {
+          if (el.type === "checkbox") el.checked = false;
+          else if (el.tagName === "SELECT") el.selectedIndex = 0;
+        }
+      });
+      if (!show) gatedHidden += 1;
+    });
+
+    let note = factsForm.querySelector(".indication-gate-note");
+    const hasGated = [...factsForm.querySelectorAll(".fact-row[data-when]")].length > 0;
+    if (hasGated) {
+      if (!note) {
+        note = document.createElement("p");
+        note.className = "hint indication-gate-note";
+        factsForm.prepend(note);
+      }
+      if (!current.indication) {
+        note.textContent =
+          "Select an indication first — only questions for that indication (plus always-on facts like age) will appear.";
+        note.classList.remove("hidden");
+      } else {
+        note.textContent =
+          "Showing facts for the selected indication. Other indication-specific questions are hidden and are not required.";
+        note.classList.remove("hidden");
+      }
+    } else if (note) {
+      note.classList.add("hidden");
+    }
+  }
+
   function renderFactsForm(d) {
     const fields = d.fact_fields || [];
     if (!d.rule_pack_slug) {
@@ -186,86 +324,36 @@
         `<p class="muted">No structured required facts on this pack. You can still run check to surface encoding status / archived text.</p>`;
       return;
     }
-    factsForm.innerHTML = fields
-      .map((f) => {
-        const hint = f.hint ? `<p class="hint">${esc(f.hint)}</p>` : "";
-        const opts = f.options || [];
-
-        // Multi-select facts → checkbox group (never free text)
-        if (f.type === "multi" || f.type === "checkbox" || f.type === "checkboxes") {
-          const boxes = opts
-            .map((o, i) => {
-              const val = optionValue(o);
-              const id = `fact-${esc(f.key)}-${i}`;
-              return `<label class="check-item" for="${id}">
-                <input type="checkbox" id="${id}" name="${esc(f.key)}" value="${esc(val)}" />
-                <span>${esc(optionLabel(o))}</span>
-              </label>`;
-            })
-            .join("");
-          return `<fieldset class="fact-multi" data-fact="${esc(f.key)}">
-            <legend>${esc(f.label)}</legend>
-            <div class="check-group">${boxes || `<p class="hint">No options available.</p>`}</div>
-            ${hint}
-          </fieldset>`;
-        }
-
-        // Single select — default for all other fact controls
-        // Age bands, indications, specialty, booleans, fallbacks: always <select>
-        const selectOpts = [`<option value="">Select…</option>`]
-          .concat(
-            opts.map(
-              (o) =>
-                `<option value="${esc(optionValue(o))}">${esc(optionLabel(o))}</option>`
-            )
-          )
-          .join("");
-        // Indication / diagnosis must NEVER fall back to Yes/No/Unknown.
-        // Boolean fallback (Yes/No only) is reserved for true boolean facts.
-        const isIndication =
-          f.key === "indication" ||
-          f.option_source === "missing_indication_list" ||
-          (f.label || "").toLowerCase().includes("indication");
-        const isBoolean =
-          f.option_source === "boolean_yes_no" ||
-          f.option_source === "fallback_boolean_yes_no";
-        let safeOpts;
-        if (opts.length > 0) {
-          safeOpts = selectOpts;
-        } else if (isIndication) {
-          safeOpts = `<option value="">No diagnosis list available</option>`;
-        } else if (isBoolean) {
-          safeOpts = `<option value="">Select…</option>
-               <option value="yes">Yes</option>
-               <option value="no">No</option>`;
-        } else {
-          safeOpts = `<option value="">No options configured</option>`;
-        }
-        return `<label for="fact-${esc(f.key)}">${esc(f.label)}</label>
-          <select id="fact-${esc(f.key)}" name="${esc(f.key)}">${safeOpts}</select>
-          ${hint}`;
-      })
-      .join("");
+    const ordered = sortFieldsIndicationFirst(fields);
+    factsForm.innerHTML = ordered.map(renderFieldControl).join("");
+    const ind = factsForm.querySelector('select[name="indication"]');
+    if (ind) {
+      ind.addEventListener("change", () => applyFactVisibility());
+    }
+    applyFactVisibility();
   }
 
   function collectFacts() {
     const data = {};
+    // Only visible (applicable) controls — hidden/disabled indication-gated
+    // facts must not be submitted or required.
     const multiKeys = new Set(
-      [...factsForm.querySelectorAll("input[type=checkbox][name]")].map((el) => el.name)
+      [...factsForm.querySelectorAll(".fact-row:not(.hidden) input[type=checkbox][name]")]
+        .map((el) => el.name)
     );
     for (const key of multiKeys) {
       const vals = [
         ...factsForm.querySelectorAll(
-          `input[type=checkbox][name="${CSS.escape(key)}"]:checked`
+          `.fact-row:not(.hidden) input[type=checkbox][name="${CSS.escape(key)}"]:checked`
         ),
       ].map((el) => el.value);
       if (vals.length) data[key] = vals;
     }
-    const fd = new FormData(factsForm);
-    for (const [k, v] of fd.entries()) {
-      if (multiKeys.has(k)) continue;
-      if (v !== "") data[k] = v;
-    }
+    factsForm.querySelectorAll(".fact-row:not(.hidden) select[name]").forEach((el) => {
+      if (multiKeys.has(el.name)) return;
+      if (el.disabled) return;
+      if (el.value !== "") data[el.name] = el.value;
+    });
     return data;
   }
 

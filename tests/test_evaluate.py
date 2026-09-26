@@ -160,6 +160,11 @@ def test_xolair_pass():
             "age_years": 30,
             "indication": "asthma",
             "prescriber_specialty": "allergist",
+            "not_acute_bronchospasm": True,
+            "asthma_allergen_sensitization_positive": True,
+            "baseline_ige_ge_30": True,
+            "asthma_controller_inadequately_controlled_3mo": True,
+            "not_using_anti_il4_or_il5": True,
         },
     )
     assert ok.decision == "pass"

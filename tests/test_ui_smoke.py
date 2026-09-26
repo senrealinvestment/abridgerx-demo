@@ -98,6 +98,9 @@ def test_partial_pack_check():
             "age_years": 18,
             "indication": "chronic_spontaneous_urticaria",
             "prescriber_specialty": "allergist",
+            "csu_duration_and_frequency_met": True,
+            "csu_failed_ltra_plus_antihistamine_2mo": True,
+            "not_using_anti_il4_or_il5": True,
         },
         catalog,
     )
@@ -108,10 +111,19 @@ def test_partial_pack_check():
             "age_years": 6,  # CSU needs >=12
             "indication": "chronic_spontaneous_urticaria",
             "prescriber_specialty": "allergist",
+            "csu_duration_and_frequency_met": True,
+            "csu_failed_ltra_plus_antihistamine_2mo": True,
+            "not_using_anti_il4_or_il5": True,
         },
         catalog,
     )
     assert xfail.decision == "fail", xfail
+    # Indication closed list never Yes/No/Unknown
+    xvals = [
+        (o["value"] if isinstance(o, dict) else o) for o in xby["indication"]["options"]
+    ]
+    assert set(xvals).isdisjoint({"yes", "no", "unknown"})
+    assert "asthma" in xvals
 
 
 def test_text_only_pack_surfaces_criteria():

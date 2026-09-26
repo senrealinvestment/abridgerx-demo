@@ -2,7 +2,7 @@
   "drug": {
     "name": "Xolair",
     "generic_name": "omalizumab",
-    "therapeutic_class": "respiratory"
+    "therapeutic_class": "immunomodulators"
   },
   "source": {
     "payer": "alaska_medicaid",
@@ -12,12 +12,228 @@
     "criteria_pdf": "data/alaska/raw/xolair_criteria_update_2024.pdf"
   },
   "requires_pa": true,
-  "pdl_status": "unknown",
+  "pdl_status": "preferred",
   "encoding_status": "partial",
+  "fact_ui": {
+    "indication": {
+      "type": "select",
+      "label": "Indication (FDA-labeled diagnosis)",
+      "options": [
+        {
+          "value": "asthma",
+          "label": "Moderate to Severe Persistent Asthma"
+        },
+        {
+          "value": "chronic_spontaneous_urticaria",
+          "label": "Chronic Spontaneous Urticaria (CSU) / Chronic Idiopathic Urticaria"
+        },
+        {
+          "value": "crswnp",
+          "label": "Chronic Rhinosinusitis with Nasal Polyps (CRSwNP)"
+        },
+        {
+          "value": "ige_mediated_food_allergy",
+          "label": "IgE-mediated Food Allergy"
+        }
+      ],
+      "hint": "Closed list from Alaska Medicaid Xolair Prior Authorization Criteria (effective 6/1/2024)."
+    },
+    "age_years": {
+      "type": "select",
+      "label": "Age",
+      "option_style": "age_bands"
+    },
+    "prescriber_specialty": {
+      "type": "select",
+      "label": "Prescriber specialty",
+      "options": [
+        {
+          "value": "allergist",
+          "label": "Allergist"
+        },
+        {
+          "value": "immunologist",
+          "label": "Immunologist"
+        },
+        {
+          "value": "pulmonologist",
+          "label": "Pulmonologist"
+        },
+        {
+          "value": "primary_care",
+          "label": "Primary care (not specialty)"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ],
+      "hint": "Asthma/CSU/CRSwNP: allergist, immunologist, or pulmonologist. Food allergy: allergist or immunologist only."
+    },
+    "not_acute_bronchospasm": {
+      "type": "select",
+      "label": "Asthma: not for acute bronchospasm / status asthmaticus",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Confirmed — maintenance use only"
+        },
+        {
+          "value": "no",
+          "label": "No — acute use"
+        }
+      ]
+    },
+    "asthma_allergen_sensitization_positive": {
+      "type": "select",
+      "label": "Asthma: positive skin test or in vitro allergen-specific IgE (and/or seasonal aeroallergen)",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "hint": "AK asthma criterion 4."
+    },
+    "baseline_ige_ge_30": {
+      "type": "select",
+      "label": "Baseline serum IgE ≥ 30 IU/mL (required for asthma and CRSwNP)",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "hint": "Attestation only — exact IU/mL not collected as a numeric fact."
+    },
+    "asthma_controller_inadequately_controlled_3mo": {
+      "type": "select",
+      "label": "Asthma: inadequately controlled ≥3 months on ICS+LABA, LTRA, theophylline, or oral corticosteroid",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes — inadequately controlled on qualifying controller ≥3 months"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "hint": "Corticosteroid combination with LABA, leukotriene modifier, theophylline, or oral corticosteroid."
+    },
+    "csu_duration_and_frequency_met": {
+      "type": "select",
+      "label": "CSU: urticaria ≥6 weeks with symptoms ≥3 days/week on max-dose non-sedating antihistamine",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "csu_failed_ltra_plus_antihistamine_2mo": {
+      "type": "select",
+      "label": "CSU: tried/failed or intolerance to leukotriene modifier + non-sedating antihistamine ≥2 months",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "crswnp_failed_two_nasal_steroids_3mo": {
+      "type": "select",
+      "label": "CRSwNP: inadequate response/intolerance/CI to a 3-month trial of TWO nasal corticosteroid sprays",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "crswnp_add_on_maintenance": {
+      "type": "select",
+      "label": "CRSwNP: will be used as add-on maintenance therapy",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "ige_food_allergy_diagnosis_confirmed": {
+      "type": "select",
+      "label": "Food allergy: diagnosis of IgE-mediated food allergy confirmed",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "baseline_ige_and_weight_provided": {
+      "type": "select",
+      "label": "Food allergy: baseline IgE and current weight provided",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "hint": "Attestation that both values are documented — raw numbers not encoded."
+    },
+    "not_using_anti_il4_or_il5": {
+      "type": "select",
+      "label": "Not currently using an anti–IL-4 or anti–IL-5 inhibitor",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes — no concomitant anti–IL-4 / IL-5"
+        },
+        {
+          "value": "no",
+          "label": "No — currently on anti–IL-4 or IL-5 (e.g. Dupixent, Fasenra, Nucala, Cinqair)"
+        }
+      ],
+      "hint": "AK denial criterion: currently using an anti-interleukin 4 or 5 inhibitor."
+    }
+  },
   "criteria": [
     {
       "id": "indication_fda_labeled",
-      "text": "Indication must be moderate-to-severe persistent asthma, CRSwNP, IgE-mediated food allergy, or chronic spontaneous urticaria per AK Xolair criteria.",
+      "text": "Indication must be one of the FDA-labeled uses in Alaska Medicaid Xolair PA Criteria: moderate-to-severe persistent asthma, CRSwNP, IgE-mediated food allergy, or chronic spontaneous urticaria (CSU).",
       "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#fda-indications",
       "required_facts": [
         "indication"
@@ -34,8 +250,8 @@
       }
     },
     {
-      "id": "age_for_indication",
-      "text": "Patient age meets indication minimum: asthma \u22656y; CSU \u226512y; nasal polyps \u226518y; IgE-mediated food allergy \u22651y.",
+      "id": "fda_labeled_age_for_indication",
+      "text": "Patient meets FDA-labeled age for the requested indication (asthma ≥6y; CSU ≥12y; CRSwNP ≥18y; IgE-mediated food allergy ≥1y).",
       "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -108,27 +324,314 @@
       }
     },
     {
-      "id": "prescriber_specialty",
-      "text": "Prescribed by or in consultation with an allergist, immunologist, or pulmonologist.",
+      "id": "prescriber_specialty_for_indication",
+      "text": "Prescribed by or in consultation with an indication-appropriate specialist (asthma/CSU/CRSwNP: allergist, immunologist, or pulmonologist; IgE-mediated food allergy: allergist or immunologist).",
       "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
       "required_facts": [
+        "indication",
         "prescriber_specialty"
       ],
       "predicate": {
-        "op": "in",
-        "fact": "prescriber_specialty",
-        "values": [
-          "allergist",
-          "immunologist",
-          "pulmonologist"
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist",
+                  "pulmonologist"
+                ]
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "chronic_spontaneous_urticaria"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist",
+                  "pulmonologist"
+                ]
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "crswnp"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist",
+                  "pulmonologist"
+                ]
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "ige_mediated_food_allergy"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist"
+                ]
+              }
+            ]
+          }
         ]
+      }
+    },
+    {
+      "id": "asthma_sensitization_ige_controller_not_acute",
+      "text": "Asthma: not for acute bronchospasm/status asthmaticus; positive skin or in vitro allergen sensitization; baseline IgE ≥30 IU/mL; inadequately controlled ≥3 months on ICS+LABA, LTRA, theophylline, or oral corticosteroid.",
+      "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "not_acute_bronchospasm",
+        "asthma_allergen_sensitization_positive",
+        "baseline_ige_ge_30",
+        "asthma_controller_inadequately_controlled_3mo"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "eq",
+                "fact": "not_acute_bronchospasm",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "asthma_allergen_sensitization_positive",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "baseline_ige_ge_30",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "asthma_controller_inadequately_controlled_3mo",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "chronic_spontaneous_urticaria",
+              "crswnp",
+              "ige_mediated_food_allergy"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "csu_duration_and_step_therapy",
+      "text": "CSU (chronic idiopathic urticaria): urticaria ≥6 weeks with symptoms ≥3 days/week on max-dose non-sedating antihistamine; AND tried/failed or intolerance to leukotriene modifier plus non-sedating antihistamine ≥2 months.",
+      "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "csu_duration_and_frequency_met",
+        "csu_failed_ltra_plus_antihistamine_2mo"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "chronic_spontaneous_urticaria"
+              },
+              {
+                "op": "eq",
+                "fact": "csu_duration_and_frequency_met",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "csu_failed_ltra_plus_antihistamine_2mo",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "asthma",
+              "crswnp",
+              "ige_mediated_food_allergy"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "crswnp_ige_step_and_add_on",
+      "text": "CRSwNP (nasal polyps): baseline serum IgE ≥30 IU/mL; inadequate response/intolerance/CI to a 3-month trial of TWO nasal corticosteroid sprays; AND used as add-on maintenance therapy.",
+      "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "baseline_ige_ge_30",
+        "crswnp_failed_two_nasal_steroids_3mo",
+        "crswnp_add_on_maintenance"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "crswnp"
+              },
+              {
+                "op": "eq",
+                "fact": "baseline_ige_ge_30",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "crswnp_failed_two_nasal_steroids_3mo",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "crswnp_add_on_maintenance",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "asthma",
+              "chronic_spontaneous_urticaria",
+              "ige_mediated_food_allergy"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "food_allergy_diagnosis_and_labs",
+      "text": "IgE-mediated food allergy: diagnosis confirmed; AND baseline IgE and current weight provided.",
+      "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "ige_food_allergy_diagnosis_confirmed",
+        "baseline_ige_and_weight_provided"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "ige_mediated_food_allergy"
+              },
+              {
+                "op": "eq",
+                "fact": "ige_food_allergy_diagnosis_confirmed",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "baseline_ige_and_weight_provided",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "asthma",
+              "chronic_spontaneous_urticaria",
+              "crswnp"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "not_concomitant_anti_il4_or_il5",
+      "text": "Denial if patient is currently using an anti-interleukin 4 or 5 inhibitor.",
+      "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#denial-criteria",
+      "required_facts": [
+        "not_using_anti_il4_or_il5"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "not_using_anti_il4_or_il5",
+        "value": true
       }
     }
   ],
   "alternatives": [
     "dupixent"
   ],
+  "max_units": {
+    "quantity": null,
+    "days_supply": 30,
+    "notes": "AK criteria quantity limits: up to 8 × 150 mg vials per 30 days (max dose 600 mg every 2 or 4 weeks); 2 × 75 mg vials per 30 days. Approval up to 3 months; reauthorization up to 12 months."
+  },
   "notes": [
-    "Partial encoding from AK Xolair criteria PDF (effective 6/1/2024). IgE thresholds, skin-test, and prior controller therapy clauses remain text-only."
+    "Partial encoding from AK Xolair criteria PDF (Version 3, original 02/28/2020, approval 9/16/2022, update 04/19/2024, effective 06/1/2024).",
+    "Encoded: FDA indication list; age-by-indication; specialty-by-indication (food allergy excludes pulmonologist); asthma sensitization/IgE/controller/not-acute gates; CSU duration+LTRA/AH step; CRSwNP IgE+two nasal steroids+add-on; food-allergy diagnosis+IgE/weight attestation; anti–IL-4/IL-5 denial.",
+    "Not encoded as numeric predicates (attestation only): exact IgE IU/mL, body weight kg, vial quantity math, anaphylaxis-setting/malignancy/serum-sickness cautions.",
+    "Alternatives: Dupixent is evaluate()-linked (overlapping asthma/CRSwNP/CSU). PDL preferred same-class peers (Fasenra, Nucala in IMMUNOMODULATORS, ASTHMA) attach on fail via market basket."
   ]
 }

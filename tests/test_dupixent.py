@@ -283,28 +283,29 @@ def test_alternatives_on_fail_include_xolair_or_honest_label():
 
 
 def test_xolair_alt_evaluate_pass_when_facts_overlap():
-    """Adult asthma patient who fails Dupixent specialty can still qualify for Xolair."""
+    """Fail Dupixent asthma via phenotype; Xolair asthma can still pass with its own gates."""
     pack = load_dup()
     catalog = load_rule_pack_catalog()
-    # Dermatologist fails Dupixent asthma specialty; Xolair also doesn't accept dermatologist.
-    # Use age that fails Dupixent CRSwNP (>=12) but... simpler: fail Dupixent via concomitant biologic
-    # while Xolair asthma would need its own facts — Xolair pack doesn't check biologic.
-    # Fail Dupixent asthma via not_acute=False; Xolair doesn't encode that → may pass Xolair.
+    # Dupixent fails on asthma_phenotype=neither; Xolair uses allergen/IgE/controller instead.
     fail = check(
         pack,
         {
             "indication": "asthma",
             "age_years": 30,
             "prescriber_specialty": "allergist",
-            "asthma_phenotype": "eosinophilic_ge_150",
+            "asthma_phenotype": "neither",  # fails Dupixent
             "asthma_ics_laba_3mo": True,
-            "not_acute_bronchospasm": False,  # fails Dupixent
+            "not_acute_bronchospasm": True,
             "not_used_with_another_biologic": True,
+            # Xolair asthma facts (still collected on the same patient payload):
+            "asthma_allergen_sensitization_positive": True,
+            "baseline_ige_ge_30": True,
+            "asthma_controller_inadequately_controlled_3mo": True,
+            "not_using_anti_il4_or_il5": True,
         },
         catalog,
     )
     assert fail.decision == "fail"
-    # Xolair only checks indication/age/specialty — should evaluate_pass
     assert any(
         a.get("verification") == "evaluate_pass" and a.get("rule_id") == "xolair"
         for a in fail.alternatives

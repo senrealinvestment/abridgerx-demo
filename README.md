@@ -52,7 +52,7 @@ Open **http://127.0.0.1:8000/**
 
 ## Encoding honesty
 
-Most criteria PDFs are archived as **text_only** rule packs (`encoding_status: text_only`). The engine returns `need_info` / `encoding_incomplete` — it never auto-passes empty criteria. Adbry, Adcirca, Aduhelm, Dupixent, Ebglyss, Egrifta, Xolair, Fasenra, Nucala, Cinqair, and Tezspire have **partial** structured predicates from the published AK PDFs (IL-5 brands share the Interleukin-5 Inhibitors criteria PDF; Tezspire has its own 2023 criteria PDF; Adbry has its own 2024 AD criteria PDF; Adcirca encodes the WHO Group I PAH, nitrate exclusion, and generic sildenafil step criteria; Aduhelm encodes initial Alzheimer's eligibility and denial exclusions, with ARIA monitoring and reauthorization in notes; Ebglyss encodes the 2026 AD criteria with weight ≥40 kg and quantity limits in attestation-only notes; Egrifta encodes the closed HIV lipodystrophy indication and HIV-positive criterion, with reauthorization and FDA limitations in notes only).
+Most criteria PDFs are archived as **text_only** rule packs (`encoding_status: text_only`). The engine returns `need_info` / `encoding_incomplete` — it never auto-passes empty criteria. Adbry, Adcirca, Aduhelm, Dupixent, Ebglyss, Egrifta, Ekterly, Xolair, Fasenra, Nucala, Cinqair, and Tezspire have **partial** structured predicates from the published AK PDFs (IL-5 brands share the Interleukin-5 Inhibitors criteria PDF; Tezspire has its own 2023 criteria PDF; Adbry has its own 2024 AD criteria PDF; Adcirca encodes the WHO Group I PAH, nitrate exclusion, and generic sildenafil step criteria; Aduhelm encodes initial Alzheimer's eligibility and denial exclusions, with ARIA monitoring and reauthorization in notes; Ebglyss encodes the 2026 AD criteria with weight ≥40 kg and quantity limits in attestation-only notes; Egrifta encodes the closed HIV lipodystrophy indication and HIV-positive criterion, with reauthorization and FDA limitations in notes only; Ekterly encodes acute HAE eligibility and denial exclusions, with duration, quantity limits, and cautions in notes only).
 
 ## Vercel demo
 
@@ -63,5 +63,5 @@ Live clinician PA-check demo (advisory; published AK criteria):
 - **Deploy source (public mirror for Vercel Git):** https://github.com/senrealinvestment/abridgerx-demo  
   Private canonical repo remains https://github.com/senrealinvestment/abridgerx — grant the Vercel GitHub App access to link it directly later.
 - Framework: FastAPI (`app.py` entry + `vercel.json`). Rules engine only; no TypeSafe / SYSTEM_ONE keys in the client.
-- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 11 partial / 187 text_only), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
+- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 12 partial / 186 text_only), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
 

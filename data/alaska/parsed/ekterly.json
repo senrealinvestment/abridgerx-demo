@@ -1,0 +1,233 @@
+{
+  "drug": {
+    "name": "Ekterly",
+    "therapeutic_class": "hae-treatments",
+    "generic_name": "sebetralstat"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Ekterly Criteria",
+    "effective_date": "2025-11-01",
+    "citation": "https://health.alaska.gov/media/qrrhd3jy/ekterly_criteria.pdf",
+    "criteria_pdf": "data/alaska/raw/ekterly_criteria.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "non_preferred",
+  "encoding_status": "partial",
+  "criteria": [
+    {
+      "id": "indication_fda_labeled",
+      "text": "Treatment of acute attacks of hereditary angioedema (HAE); approval criterion 5 is covered by this closed indication.",
+      "citation": "https://health.alaska.gov/media/qrrhd3jy/ekterly_criteria.pdf#approval-criteria",
+      "required_facts": [
+        "indication"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "indication",
+        "values": [
+          "hae_acute_attacks"
+        ]
+      }
+    },
+    {
+      "id": "minimum_age",
+      "text": "Patient is 12 years of age or older (FDA labeled age; approval criterion 1).",
+      "citation": "https://health.alaska.gov/media/qrrhd3jy/ekterly_criteria.pdf#approval-criteria",
+      "required_facts": [
+        "age_years"
+      ],
+      "predicate": {
+        "op": "gte",
+        "fact": "age_years",
+        "value": 12
+      }
+    },
+    {
+      "id": "prescriber_specialty",
+      "text": "Prescribed by or in consultation with an immunologist (approval criterion 2).",
+      "citation": "https://health.alaska.gov/media/qrrhd3jy/ekterly_criteria.pdf#approval-criteria",
+      "required_facts": [
+        "prescriber_specialty"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "prescriber_specialty",
+        "values": [
+          "immunologist"
+        ]
+      }
+    },
+    {
+      "id": "hae_diagnosis_confirmed",
+      "text": "Patient has a confirmed diagnosis of hereditary angioedema (approval criterion 3).",
+      "citation": "https://health.alaska.gov/media/qrrhd3jy/ekterly_criteria.pdf#approval-criteria",
+      "required_facts": [
+        "hae_diagnosis_confirmed"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "hae_diagnosis_confirmed",
+        "value": true
+      }
+    },
+    {
+      "id": "angioedema_linked_meds_evaluated",
+      "text": "Medications with an established link to angioedema (e.g. ACE inhibitors, estrogen replacement therapy) have been evaluated and discontinued where appropriate (approval criterion 4).",
+      "citation": "https://health.alaska.gov/media/qrrhd3jy/ekterly_criteria.pdf#approval-criteria",
+      "required_facts": [
+        "angioedema_linked_meds_evaluated"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "angioedema_linked_meds_evaluated",
+        "value": true
+      }
+    },
+    {
+      "id": "not_combined_with_other_acute_hae_treatment",
+      "text": "Not taking in combination with another treatment indicated for acute HAE attacks (denial criterion 2).",
+      "citation": "https://health.alaska.gov/media/qrrhd3jy/ekterly_criteria.pdf#denial-criteria",
+      "required_facts": [
+        "not_combined_with_other_acute_hae_treatment"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "not_combined_with_other_acute_hae_treatment",
+        "value": true
+      }
+    },
+    {
+      "id": "no_severe_hepatic_impairment_child_pugh_c",
+      "text": "No severe hepatic impairment (Child-Pugh Class C; denial criterion 3).",
+      "citation": "https://health.alaska.gov/media/qrrhd3jy/ekterly_criteria.pdf#denial-criteria",
+      "required_facts": [
+        "no_severe_hepatic_impairment_child_pugh_c"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "no_severe_hepatic_impairment_child_pugh_c",
+        "value": true
+      }
+    }
+  ],
+  "alternatives": [],
+  "notes": [
+    "Partial encoding from AK Ekterly (sebetralstat), a plasma kallikrein inhibitor, Criteria Version 1: Original 08/15/2025; Accepted 9/19/2025; Effective 11/1/2025. The effective_date remains 2025-11-01.",
+    "Encoded: FDA labeled age 12 years or older, prescribed by or in consultation with an immunologist only, confirmed HAE diagnosis, and angioedema-linked medications evaluated and discontinued where appropriate. Approval criterion 5 is encoded via the closed acute-attack indication; no separate acute-only attestation is required. Denial criteria 2 and 3 are approval-blocking predicates; denial criterion 1 is failure to meet approval criteria.",
+    "Duration notes only: initial approval up to 3 months; reauthorization approval up to 1 year.",
+    "Cautions (notes only): Ekterly should not be used with moderate or strong CYP3A4 inducers or strong CYP3A4 inhibitors. Dose adjustment may be required with moderate CYP3A4 inhibitors.",
+    "Dose adjustment may be necessary in moderate hepatic impairment (Child-Pugh Class B). Safety in pregnancy or breastfeeding has not been determined.",
+    "Quantity limits, dosing adjustments, cautions, and approval durations require attestation/manual review and are not numeric predicates; this pack remains partial.",
+    "PDL context: Ekterly is non-preferred in HAE TREATMENTS. Berinert and Firazyr remain text_only, so no evaluate-linked alternatives are specified."
+  ],
+  "fact_ui": {
+    "indication": {
+      "type": "select",
+      "label": "Indication (diagnosis)",
+      "options": [
+        {
+          "value": "hae_acute_attacks",
+          "label": "Acute attacks of hereditary angioedema (HAE)"
+        }
+      ]
+    },
+    "age_years": {
+      "type": "select",
+      "label": "Patient age",
+      "options": [
+        {
+          "value": "0",
+          "label": "Under 12 years"
+        },
+        {
+          "value": "12",
+          "label": "12 years or older"
+        }
+      ]
+    },
+    "prescriber_specialty": {
+      "type": "select",
+      "label": "Prescribed by or in consultation with",
+      "options": [
+        {
+          "value": "immunologist",
+          "label": "Immunologist"
+        },
+        {
+          "value": "allergist",
+          "label": "Allergist"
+        },
+        {
+          "value": "primary_care",
+          "label": "Primary care"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    "hae_diagnosis_confirmed": {
+      "type": "select",
+      "label": "Patient has a confirmed diagnosis of hereditary angioedema (approval criterion 3).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "angioedema_linked_meds_evaluated": {
+      "type": "select",
+      "label": "Medications with an established link to angioedema (e.g. ACE inhibitors, estrogen replacement therapy) have been evaluated and discontinued where appropriate (approval criterion 4).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "not_combined_with_other_acute_hae_treatment": {
+      "type": "select",
+      "label": "Not taking in combination with another treatment indicated for acute HAE attacks (denial criterion 2).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "no_severe_hepatic_impairment_child_pugh_c": {
+      "type": "select",
+      "label": "No severe hepatic impairment (Child-Pugh Class C; denial criterion 3).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    }
+  },
+  "max_units": {
+    "quantity": null,
+    "days_supply": 30,
+    "notes": "Quantity limit: 8 tablets per 30 days; not to exceed 4 tablets in any 24-hour period. Attestation/manual review only; not a numeric predicate."
+  }
+}

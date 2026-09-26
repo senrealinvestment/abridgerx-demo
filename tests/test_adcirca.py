@@ -117,25 +117,20 @@ def test_catalog_mirrors_and_status_load():
     assert catalog["adcirca"] == pack
     assert get_rule_pack("adcirca") == ("adcirca", pack)
     assert json.loads((base / "rule_packs/adcirca.json").read_text()) == pack
-    # Private repo has full rule_packs/; demo may ship a slim subset + rule_packs_all.
-    per_pack_dir = {
+    assert catalog == {
         path.stem: json.loads(path.read_text())
         for path in (base / "rule_packs").glob("*.json")
     }
-    if len(per_pack_dir) == len(catalog):
-        assert catalog == per_pack_dir
-    else:
-        assert per_pack_dir["adcirca"] == pack
     with gzip.open(base / "rule_packs_all.json.gz", "rt", encoding="utf-8") as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 11
-    assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 187
+    assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 12
+    assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 186
     assert pack["alternatives"] == []
     assert catalog["revatio"]["encoding_status"] == "text_only"
     status = json.loads((base / "ENCODING_STATUS.json").read_text())
-    assert status["encoding_partial"] == 11
-    assert status["encoding_text_only"] == 187
+    assert status["encoding_partial"] == 12
+    assert status["encoding_text_only"] == 186
     assert status["partial_slugs"] == sorted(
         slug for slug, p in catalog.items() if p["encoding_status"] == "partial"
     )

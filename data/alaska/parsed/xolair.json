@@ -76,11 +76,11 @@
       "options": [
         {
           "value": "yes",
-          "label": "Confirmed — maintenance use only"
+          "label": "Confirmed \u2014 maintenance use only"
         },
         {
           "value": "no",
-          "label": "No — acute use"
+          "label": "No \u2014 acute use"
         }
       ]
     },
@@ -101,7 +101,7 @@
     },
     "baseline_ige_ge_30": {
       "type": "select",
-      "label": "Baseline serum IgE ≥ 30 IU/mL (required for asthma and CRSwNP)",
+      "label": "Baseline serum IgE \u2265 30 IU/mL (required for asthma and CRSwNP)",
       "options": [
         {
           "value": "yes",
@@ -112,15 +112,15 @@
           "label": "No"
         }
       ],
-      "hint": "Attestation only — exact IU/mL not collected as a numeric fact."
+      "hint": "Attestation only \u2014 exact IU/mL not collected as a numeric fact."
     },
     "asthma_controller_inadequately_controlled_3mo": {
       "type": "select",
-      "label": "Asthma: inadequately controlled ≥3 months on ICS+LABA, LTRA, theophylline, or oral corticosteroid",
+      "label": "Asthma: inadequately controlled \u22653 months on ICS+LABA, LTRA, theophylline, or oral corticosteroid",
       "options": [
         {
           "value": "yes",
-          "label": "Yes — inadequately controlled on qualifying controller ≥3 months"
+          "label": "Yes \u2014 inadequately controlled on qualifying controller \u22653 months"
         },
         {
           "value": "no",
@@ -131,7 +131,7 @@
     },
     "csu_duration_and_frequency_met": {
       "type": "select",
-      "label": "CSU: urticaria ≥6 weeks with symptoms ≥3 days/week on max-dose non-sedating antihistamine",
+      "label": "CSU: urticaria \u22656 weeks with symptoms \u22653 days/week on max-dose non-sedating antihistamine",
       "options": [
         {
           "value": "yes",
@@ -145,7 +145,7 @@
     },
     "csu_failed_ltra_plus_antihistamine_2mo": {
       "type": "select",
-      "label": "CSU: tried/failed or intolerance to leukotriene modifier + non-sedating antihistamine ≥2 months",
+      "label": "CSU: tried/failed or intolerance to leukotriene modifier + non-sedating antihistamine \u22652 months",
       "options": [
         {
           "value": "yes",
@@ -212,19 +212,19 @@
           "label": "No"
         }
       ],
-      "hint": "Attestation that both values are documented — raw numbers not encoded."
+      "hint": "Attestation that both values are documented \u2014 raw numbers not encoded."
     },
     "not_using_anti_il4_or_il5": {
       "type": "select",
-      "label": "Not currently using an anti–IL-4 or anti–IL-5 inhibitor",
+      "label": "Not currently using an anti\u2013IL-4 or anti\u2013IL-5 inhibitor",
       "options": [
         {
           "value": "yes",
-          "label": "Yes — no concomitant anti–IL-4 / IL-5"
+          "label": "Yes \u2014 no concomitant anti\u2013IL-4 / IL-5"
         },
         {
           "value": "no",
-          "label": "No — currently on anti–IL-4 or IL-5 (e.g. Dupixent, Fasenra, Nucala, Cinqair)"
+          "label": "No \u2014 currently on anti\u2013IL-4 or IL-5 (e.g. Dupixent, Fasenra, Nucala, Cinqair)"
         }
       ],
       "hint": "AK denial criterion: currently using an anti-interleukin 4 or 5 inhibitor."
@@ -251,7 +251,7 @@
     },
     {
       "id": "fda_labeled_age_for_indication",
-      "text": "Patient meets FDA-labeled age for the requested indication (asthma ≥6y; CSU ≥12y; CRSwNP ≥18y; IgE-mediated food allergy ≥1y).",
+      "text": "Patient meets FDA-labeled age for the requested indication (asthma \u22656y; CSU \u226512y; CRSwNP \u226518y; IgE-mediated food allergy \u22651y).",
       "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -414,7 +414,7 @@
     },
     {
       "id": "asthma_sensitization_ige_controller_not_acute",
-      "text": "Asthma: not for acute bronchospasm/status asthmaticus; positive skin or in vitro allergen sensitization; baseline IgE ≥30 IU/mL; inadequately controlled ≥3 months on ICS+LABA, LTRA, theophylline, or oral corticosteroid.",
+      "text": "Asthma: not for acute bronchospasm/status asthmaticus; positive skin or in vitro allergen sensitization; baseline IgE \u226530 IU/mL; inadequately controlled \u22653 months on ICS+LABA, LTRA, theophylline, or oral corticosteroid.",
       "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -470,7 +470,7 @@
     },
     {
       "id": "csu_duration_and_step_therapy",
-      "text": "CSU (chronic idiopathic urticaria): urticaria ≥6 weeks with symptoms ≥3 days/week on max-dose non-sedating antihistamine; AND tried/failed or intolerance to leukotriene modifier plus non-sedating antihistamine ≥2 months.",
+      "text": "CSU (chronic idiopathic urticaria): urticaria \u22656 weeks with symptoms \u22653 days/week on max-dose non-sedating antihistamine; AND tried/failed or intolerance to leukotriene modifier plus non-sedating antihistamine \u22652 months.",
       "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -514,7 +514,7 @@
     },
     {
       "id": "crswnp_ige_step_and_add_on",
-      "text": "CRSwNP (nasal polyps): baseline serum IgE ≥30 IU/mL; inadequate response/intolerance/CI to a 3-month trial of TWO nasal corticosteroid sprays; AND used as add-on maintenance therapy.",
+      "text": "CRSwNP (nasal polyps): baseline serum IgE \u226530 IU/mL; inadequate response/intolerance/CI to a 3-month trial of TWO nasal corticosteroid sprays; AND used as add-on maintenance therapy.",
       "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -624,17 +624,18 @@
     "dupixent",
     "fasenra",
     "nucala",
-    "cinqair"
+    "cinqair",
+    "tezspire"
   ],
   "max_units": {
     "quantity": null,
     "days_supply": 30,
-    "notes": "AK criteria quantity limits: up to 8 × 150 mg vials per 30 days (max dose 600 mg every 2 or 4 weeks); 2 × 75 mg vials per 30 days. Approval up to 3 months; reauthorization up to 12 months."
+    "notes": "AK criteria quantity limits: up to 8 \u00d7 150 mg vials per 30 days (max dose 600 mg every 2 or 4 weeks); 2 \u00d7 75 mg vials per 30 days. Approval up to 3 months; reauthorization up to 12 months."
   },
   "notes": [
     "Partial encoding from AK Xolair criteria PDF (Version 3, original 02/28/2020, approval 9/16/2022, update 04/19/2024, effective 06/1/2024).",
-    "Encoded: FDA indication list; age-by-indication; specialty-by-indication (food allergy excludes pulmonologist); asthma sensitization/IgE/controller/not-acute gates; CSU duration+LTRA/AH step; CRSwNP IgE+two nasal steroids+add-on; food-allergy diagnosis+IgE/weight attestation; anti–IL-4/IL-5 denial.",
+    "Encoded: FDA indication list; age-by-indication; specialty-by-indication (food allergy excludes pulmonologist); asthma sensitization/IgE/controller/not-acute gates; CSU duration+LTRA/AH step; CRSwNP IgE+two nasal steroids+add-on; food-allergy diagnosis+IgE/weight attestation; anti\u2013IL-4/IL-5 denial.",
     "Not encoded as numeric predicates (attestation only): exact IgE IU/mL, body weight kg, vial quantity math, anaphylaxis-setting/malignancy/serum-sickness cautions.",
-    "Alternatives: Dupixent/Fasenra/Nucala/Cinqair are evaluate()-linked (overlapping asthma/CRSwNP/CSU where labeled). PDL preferred same-class peers (Fasenra/Nucala in IMMUNOMODULATORS, ASTHMA) attach on fail via market basket."
+    "Alternatives: Dupixent/Fasenra/Nucala/Cinqair are evaluate()-linked (overlapping asthma/CRSwNP/CSU where labeled). PDL preferred same-class peers (Fasenra/Nucala in IMMUNOMODULATORS, ASTHMA) attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma."
   ]
 }

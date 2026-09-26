@@ -1,0 +1,344 @@
+{
+  "drug": {
+    "name": "Tezspire",
+    "generic_name": "tezepelumab-ekko",
+    "therapeutic_class": "immunomodulators"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Tezspire Criteria",
+    "effective_date": "2023-11-01",
+    "citation": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf",
+    "criteria_pdf": "data/alaska/raw/tezspire_criteria_2023.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "non_preferred",
+  "encoding_status": "partial",
+  "fact_ui": {
+    "indication": {
+      "type": "select",
+      "label": "Indication (FDA-labeled diagnosis)",
+      "options": [
+        {
+          "value": "asthma",
+          "label": "Severe Asthma \u2014 add-on maintenance (\u226512 years)"
+        }
+      ],
+      "hint": "Closed list from Alaska Medicaid Tezspire Prior Authorization Criteria (effective 11/1/2023). Tezspire: severe asthma only."
+    },
+    "age_years": {
+      "type": "select",
+      "label": "Age",
+      "option_style": "age_bands"
+    },
+    "prescriber_specialty": {
+      "type": "select",
+      "label": "Prescriber specialty",
+      "options": [
+        {
+          "value": "pulmonologist",
+          "label": "Pulmonologist"
+        },
+        {
+          "value": "allergist",
+          "label": "Allergist"
+        },
+        {
+          "value": "immunologist",
+          "label": "Immunologist"
+        },
+        {
+          "value": "primary_care",
+          "label": "Primary care (not specialty)"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ],
+      "hint": "Must be prescribed by or in consultation with a pulmonologist, allergist, or immunologist."
+    },
+    "asthma_exacerbation_prior_year": {
+      "type": "select",
+      "label": "Preceding year: qualifying exacerbation history",
+      "options": [
+        {
+          "value": "ge_2_ocs_or_injectable",
+          "label": "\u22652 exacerbations requiring oral or injectable corticosteroid"
+        },
+        {
+          "value": "ge_1_hospitalization",
+          "label": "\u22651 exacerbation resulting in hospitalization"
+        },
+        {
+          "value": "both",
+          "label": "Both (\u22652 OCS/injectable AND \u22651 hospitalization)"
+        },
+        {
+          "value": "neither",
+          "label": "Neither / not documented"
+        }
+      ],
+      "hint": "AK approval criteria 4\u20135: at least one of the two exacerbation thresholds."
+    },
+    "tezspire_adjunct_ics_plus_controller_3mo": {
+      "type": "select",
+      "label": "Adjunct \u22653 months: medium\u2013high dose ICS AND an additional controller (e.g. LTRA, LABA)",
+      "options": [
+        {
+          "value": "both_ics_and_controller_3mo",
+          "label": "Yes \u2014 both medium\u2013high ICS and additional controller \u22653 months"
+        },
+        {
+          "value": "no",
+          "label": "No \u2014 criterion not met"
+        }
+      ],
+      "hint": "AK approval criterion 6: must receive both for at least three months."
+    },
+    "not_acute_bronchospasm": {
+      "type": "select",
+      "label": "Not for relief of acute asthma exacerbation or status asthmaticus",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Confirmed \u2014 maintenance / add-on use only"
+        },
+        {
+          "value": "no",
+          "label": "No \u2014 acute use"
+        }
+      ],
+      "hint": "AK approval criterion 7 / denial if used for acute symptoms."
+    },
+    "not_used_with_another_biologic": {
+      "type": "select",
+      "label": "Not used concomitantly with any other biologic for asthma",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes \u2014 no concomitant asthma biologic"
+        },
+        {
+          "value": "no",
+          "label": "No \u2014 currently on another asthma biologic (e.g. Dupixent, Xolair, Fasenra, Nucala, Cinqair)"
+        }
+      ],
+      "hint": "AK approval criterion 8."
+    },
+    "controller_adherent": {
+      "type": "select",
+      "label": "Adherent to controller medication therapy",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes \u2014 adherent"
+        },
+        {
+          "value": "no",
+          "label": "No \u2014 non-adherent"
+        }
+      ],
+      "hint": "AK denial criterion 2: non-adherence to controller therapy."
+    }
+  },
+  "criteria": [
+    {
+      "id": "indication_fda_labeled",
+      "text": "Indication must be severe asthma (add-on maintenance) per Alaska Medicaid Tezspire PA Criteria.",
+      "citation": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf#fda-indications",
+      "required_facts": [
+        "indication"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "indication",
+        "values": [
+          "asthma"
+        ]
+      }
+    },
+    {
+      "id": "fda_labeled_age_for_indication",
+      "text": "Patient meets FDA-labeled age for Tezspire (severe asthma \u226512 years).",
+      "citation": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "age_years"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 12
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "prescriber_specialty_for_indication",
+      "text": "Prescribed by or in consultation with a pulmonologist, allergist, or immunologist.",
+      "citation": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "prescriber_specialty"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "pulmonologist",
+                  "allergist",
+                  "immunologist"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "asthma_exacerbation_prior_year",
+      "text": "Preceding year: \u22652 exacerbations requiring oral/injectable corticosteroid OR \u22651 exacerbation resulting in hospitalization.",
+      "citation": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "asthma_exacerbation_prior_year"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "in",
+                "fact": "asthma_exacerbation_prior_year",
+                "values": [
+                  "ge_2_ocs_or_injectable",
+                  "ge_1_hospitalization",
+                  "both"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "asthma_adjunct_ics_plus_controller_3mo",
+      "text": "Used as adjunct therapy with both medium-to-high dose inhaled steroid AND an additional controller medication (e.g. LTRA, LABA) for at least three months.",
+      "citation": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "tezspire_adjunct_ics_plus_controller_3mo"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "eq",
+                "fact": "tezspire_adjunct_ics_plus_controller_3mo",
+                "value": "both_ics_and_controller_3mo"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "not_acute_exacerbation_use",
+      "text": "Will not be used for relief of acute asthma exacerbation or status asthmaticus.",
+      "citation": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "not_acute_bronchospasm"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "not_acute_bronchospasm",
+        "value": true
+      }
+    },
+    {
+      "id": "not_concomitant_biologic",
+      "text": "Will not be used concomitantly with any other biologic product for asthma treatment.",
+      "citation": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "not_used_with_another_biologic"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "not_used_with_another_biologic",
+        "value": true
+      }
+    },
+    {
+      "id": "controller_adherent",
+      "text": "Denial if patient is non-adherent to controller medication therapy.",
+      "citation": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf#denial-criteria",
+      "required_facts": [
+        "controller_adherent"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "controller_adherent",
+        "value": true
+      }
+    }
+  ],
+  "alternatives": [
+    "dupixent",
+    "xolair",
+    "fasenra",
+    "nucala",
+    "cinqair"
+  ],
+  "max_units": {
+    "quantity": null,
+    "days_supply": 28,
+    "notes": "Tezspire: not to exceed 210 mg every 28 days. Initial approval up to 3 months; reauthorization up to 12 months. PDL non-preferred (IMMUNOMODULATORS, ASTHMA \u2014 OFF)."
+  },
+  "notes": [
+    "Partial encoding from AK Tezspire\u2122 (tezepelumab-ekko) Criteria Version 1 (Original 08/22/2023, Accepted 09/15/2023, Effective 11/1/2023).",
+    "Tezspire-encoded indication: severe asthma add-on maintenance only (age \u226512y). No phenotype/eos gate on this PDF (unlike IL-5 peers).",
+    "Encoded: closed indication list; FDA age \u226512y; specialty (pulmonologist/allergist/immunologist); prior-year exacerbation select (\u22652 OCS/injectable or \u22651 hospitalization); adjunct medium\u2013high ICS + additional controller \u22653 months; not-acute; no concomitant asthma biologic; controller adherence denial.",
+    "Not encoded as numeric predicates (attestation only): exact exacerbation counts, ICS dose mcg math, quantity 210 mg / 28-day math, live-vaccine / abrupt-steroid-taper cautions, reauth clinical-response detail (PDF gives duration only).",
+    "Alternatives: Dupixent/Xolair/Fasenra/Nucala/Cinqair evaluate()-linked for overlapping asthma. PDL preferred same-class peers (IMMUNOMODULATORS, ASTHMA) attach on fail via market basket. Tezspire itself is PDL non-preferred (OFF)."
+  ]
+}

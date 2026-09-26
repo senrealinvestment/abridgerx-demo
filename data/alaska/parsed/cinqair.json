@@ -21,7 +21,7 @@
       "options": [
         {
           "value": "asthma",
-          "label": "Severe Asthma (eosinophilic phenotype) — add-on maintenance"
+          "label": "Severe Asthma (eosinophilic phenotype) \u2014 add-on maintenance"
         }
       ],
       "hint": "Closed list from Alaska Medicaid Interleukin-5 Inhibitors PA Criteria (effective 11/1/2025). Cinqair: severe eosinophilic asthma only (adults)."
@@ -37,11 +37,11 @@
       "options": [
         {
           "value": "yes",
-          "label": "Confirmed — maintenance use only"
+          "label": "Confirmed \u2014 maintenance use only"
         },
         {
           "value": "no",
-          "label": "No — acute use"
+          "label": "No \u2014 acute use"
         }
       ]
     },
@@ -62,11 +62,11 @@
     },
     "asthma_controller_trial_3mo": {
       "type": "select",
-      "label": "Asthma: ≥3 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
+      "label": "Asthma: \u22653 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
       "options": [
         {
           "value": "ics_laba_ltra_or_theo_3mo",
-          "label": "Yes — ≥3 month trial with ongoing symptoms"
+          "label": "Yes \u2014 \u22653 month trial with ongoing symptoms"
         },
         {
           "value": "intolerant_to_all",
@@ -74,7 +74,7 @@
         },
         {
           "value": "no",
-          "label": "No — criterion not met"
+          "label": "No \u2014 criterion not met"
         }
       ],
       "hint": "AK asthma criterion 5."
@@ -155,7 +155,7 @@
     },
     {
       "id": "fda_labeled_age_for_indication",
-      "text": "Patient meets FDA-labeled age for Cinqair (severe asthma ≥18y).",
+      "text": "Patient meets FDA-labeled age for Cinqair (severe asthma \u226518y).",
       "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -217,7 +217,7 @@
     },
     {
       "id": "asthma_eos_controller_concurrent_not_acute",
-      "text": "Asthma: eos >400 cells/mcL within 4 weeks; ≥3 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller; not for acute bronchospasm/status asthmaticus.",
+      "text": "Asthma: eos >400 cells/mcL within 4 weeks; \u22653 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller; not for acute bronchospasm/status asthmaticus.",
       "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -278,7 +278,8 @@
     "fasenra",
     "nucala",
     "dupixent",
-    "xolair"
+    "xolair",
+    "tezspire"
   ],
   "max_units": {
     "quantity": null,
@@ -286,10 +287,10 @@
     "notes": "Cinqair (J2786): 3 mg/kg IV once every 28 days. Approval up to 3 months; reauth up to 12 months. PDL non-preferred."
   },
   "notes": [
-    "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala®, Cinqair®, Fasenra®; Version 3, updated 09/19/2025, effective 11/1/2025).",
-    "Cinqair-encoded indication: severe eosinophilic asthma only (adults ≥18y). EGPA/HES/CRSwNP/COPD are not Cinqair-labeled on this PDF.",
-    "Encoded: closed indication list; FDA age (≥18y); specialty; asthma eos >400/4w + controller/concurrent/not-acute attestations; concomitant-biologic denial.",
+    "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala\u00ae, Cinqair\u00ae, Fasenra\u00ae; Version 3, updated 09/19/2025, effective 11/1/2025).",
+    "Cinqair-encoded indication: severe eosinophilic asthma only (adults \u226518y). EGPA/HES/CRSwNP/COPD are not Cinqair-labeled on this PDF.",
+    "Encoded: closed indication list; FDA age (\u226518y); specialty; asthma eos >400/4w + controller/concurrent/not-acute attestations; concomitant-biologic denial.",
     "Not encoded as numeric predicates (attestation only): exact eos cell counts, mg/kg dose math, hypersensitivity cautions.",
-    "Alternatives: Fasenra/Nucala/Dupixent/Xolair evaluate()-linked for overlapping asthma. PDL preferred same-class peers (Fasenra/Nucala/Xolair) attach on fail via market basket."
+    "Alternatives: Fasenra/Nucala/Dupixent/Xolair evaluate()-linked for overlapping asthma. PDL preferred same-class peers (Fasenra/Nucala/Xolair) attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma."
   ]
 }

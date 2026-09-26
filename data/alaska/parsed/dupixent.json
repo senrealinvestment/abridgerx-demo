@@ -96,11 +96,11 @@
     },
     "ad_topical_failures": {
       "type": "multi",
-      "label": "AD: tried/failed or contraindication (≥2 for 30 days)",
+      "label": "AD: tried/failed or contraindication (\u22652 for 30 days)",
       "options": [
         {
           "value": "medium_high_tcs_adult_or_low_tcs_pediatric",
-          "label": "TCS (medium–high if ≥18y / low-potency if <18y)"
+          "label": "TCS (medium\u2013high if \u226518y / low-potency if <18y)"
         },
         {
           "value": "topical_calcineurin_inhibitor",
@@ -137,11 +137,11 @@
       "options": [
         {
           "value": "eosinophilic_ge_150",
-          "label": "Eosinophilic phenotype (eos ≥150 cells/mcL)"
+          "label": "Eosinophilic phenotype (eos \u2265150 cells/mcL)"
         },
         {
           "value": "ocs_dependent",
-          "label": "Oral corticosteroid–dependent asthma"
+          "label": "Oral corticosteroid\u2013dependent asthma"
         },
         {
           "value": "neither",
@@ -151,7 +151,7 @@
     },
     "asthma_ics_laba_3mo": {
       "type": "select",
-      "label": "Asthma: ≥3 month trial of ICS + LABA with ongoing symptoms",
+      "label": "Asthma: \u22653 month trial of ICS + LABA with ongoing symptoms",
       "options": [
         {
           "value": "yes",
@@ -169,17 +169,17 @@
       "options": [
         {
           "value": "yes",
-          "label": "Confirmed — maintenance use only"
+          "label": "Confirmed \u2014 maintenance use only"
         },
         {
           "value": "no",
-          "label": "No — acute use"
+          "label": "No \u2014 acute use"
         }
       ]
     },
     "crswnp_failed_two_nasal_steroids_3mo": {
       "type": "select",
-      "label": "CRSwNP: inadequate response/intolerance/CI to TWO nasal corticosteroid sprays (different APIs) × 3 months",
+      "label": "CRSwNP: inadequate response/intolerance/CI to TWO nasal corticosteroid sprays (different APIs) \u00d7 3 months",
       "options": [
         {
           "value": "yes",
@@ -207,7 +207,7 @@
     },
     "eoe_eos_hpf_ge_15": {
       "type": "select",
-      "label": "EoE: ≥15 intraepithelial eosinophils per HPF",
+      "label": "EoE: \u226515 intraepithelial eosinophils per HPF",
       "options": [
         {
           "value": "yes",
@@ -235,11 +235,11 @@
     },
     "weight_ge_15_kg": {
       "type": "select",
-      "label": "Weight ≥ 15 kg (required for EoE)",
+      "label": "Weight \u2265 15 kg (required for EoE)",
       "options": [
         {
           "value": "yes",
-          "label": "Yes (≥15 kg)"
+          "label": "Yes (\u226515 kg)"
         },
         {
           "value": "no",
@@ -263,7 +263,7 @@
     },
     "pn_failed_high_potency_tcs_30d": {
       "type": "select",
-      "label": "PN: tried/failed or CI to high-potency TCS ≥30 days",
+      "label": "PN: tried/failed or CI to high-potency TCS \u226530 days",
       "options": [
         {
           "value": "yes",
@@ -277,7 +277,7 @@
     },
     "copd_failed_triple_therapy_3mo": {
       "type": "select",
-      "label": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) ≥3 consecutive months",
+      "label": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) \u22653 consecutive months",
       "options": [
         {
           "value": "yes",
@@ -291,7 +291,7 @@
     },
     "copd_exacerbation_history_met": {
       "type": "select",
-      "label": "COPD: ≥2 moderate or ≥1 severe exacerbation in prior year (incl. ≥1 on triple therapy)",
+      "label": "COPD: \u22652 moderate or \u22651 severe exacerbation in prior year (incl. \u22651 on triple therapy)",
       "options": [
         {
           "value": "yes",
@@ -305,7 +305,7 @@
     },
     "copd_spirometry_criteria_met": {
       "type": "select",
-      "label": "COPD: post-BD FEV1/FVC <0.7 and FEV1 30–70% predicted",
+      "label": "COPD: post-BD FEV1/FVC <0.7 and FEV1 30\u201370% predicted",
       "options": [
         {
           "value": "yes",
@@ -319,7 +319,7 @@
     },
     "copd_eos_ge_300_60d": {
       "type": "select",
-      "label": "COPD: eosinophil count ≥300 cells/µL within last 60 days",
+      "label": "COPD: eosinophil count \u2265300 cells/\u00b5L within last 60 days",
       "options": [
         {
           "value": "yes",
@@ -333,7 +333,7 @@
     },
     "csu_duration_and_frequency_met": {
       "type": "select",
-      "label": "CSU: urticaria ≥6 weeks with symptoms ≥3 days/week on non-sedating antihistamine (max dose)",
+      "label": "CSU: urticaria \u22656 weeks with symptoms \u22653 days/week on non-sedating antihistamine (max dose)",
       "options": [
         {
           "value": "yes",
@@ -347,7 +347,7 @@
     },
     "csu_failed_max_antihistamine_60d": {
       "type": "select",
-      "label": "CSU: tried/failed or CI to non-sedating antihistamine at max dose ≥60 days",
+      "label": "CSU: tried/failed or CI to non-sedating antihistamine at max dose \u226560 days",
       "options": [
         {
           "value": "yes",
@@ -375,7 +375,7 @@
     },
     "bp_bpdai_and_nrs_thresholds": {
       "type": "select",
-      "label": "BP: BPDAI activity ≥24 and average weekly Peak Pruritus NRS ≥4 at baseline",
+      "label": "BP: BPDAI activity \u226524 and average weekly Peak Pruritus NRS \u22654 at baseline",
       "options": [
         {
           "value": "yes",
@@ -389,7 +389,7 @@
     },
     "bp_failed_two_standard_therapies": {
       "type": "select",
-      "label": "BP: tried/failed ≥2 standard therapies (different MOA) ≥1 month each",
+      "label": "BP: tried/failed \u22652 standard therapies (different MOA) \u22651 month each",
       "options": [
         {
           "value": "yes",
@@ -421,11 +421,11 @@
       "options": [
         {
           "value": "yes",
-          "label": "Yes — no concomitant biologic"
+          "label": "Yes \u2014 no concomitant biologic"
         },
         {
           "value": "no",
-          "label": "No — concomitant biologic"
+          "label": "No \u2014 concomitant biologic"
         }
       ]
     }
@@ -455,7 +455,7 @@
     },
     {
       "id": "fda_labeled_age_for_indication",
-      "text": "Patient meets FDA-labeled age for the requested indication (AD ≥6 months; asthma ≥6y; CRSwNP/CSU ≥12y; EoE ≥1y; PN/COPD/BP adult ≥18y).",
+      "text": "Patient meets FDA-labeled age for the requested indication (AD \u22656 months; asthma \u22656y; CRSwNP/CSU \u226512y; EoE \u22651y; PN/COPD/BP adult \u226518y).",
       "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -807,7 +807,7 @@
     },
     {
       "id": "asthma_phenotype_controller_and_not_acute",
-      "text": "Asthma: eosinophilic phenotype (eos ≥150) OR OCS-dependent; AND ongoing symptoms after ≥3 month ICS+LABA; AND not for acute bronchospasm/status asthmaticus.",
+      "text": "Asthma: eosinophilic phenotype (eos \u2265150) OR OCS-dependent; AND ongoing symptoms after \u22653 month ICS+LABA; AND not for acute bronchospasm/status asthmaticus.",
       "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -912,7 +912,7 @@
     },
     {
       "id": "eoe_labs_symptoms_weight",
-      "text": "EoE: ≥15 eos/hpf; dysphagia symptoms; and weight ≥15 kg.",
+      "text": "EoE: \u226515 eos/hpf; dysphagia symptoms; and weight \u226515 kg.",
       "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -966,7 +966,7 @@
     },
     {
       "id": "pn_documentation_and_step",
-      "text": "Prurigo Nodularis: baseline BSA/severity documented; AND tried/failed or CI to high-potency corticosteroid ≥30 days.",
+      "text": "Prurigo Nodularis: baseline BSA/severity documented; AND tried/failed or CI to high-potency corticosteroid \u226530 days.",
       "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -1014,7 +1014,7 @@
     },
     {
       "id": "copd_triple_exacerbation_spirometry_eos",
-      "text": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) ≥3 months; AND exacerbation history; AND post-BD FEV1/FVC <0.7 with FEV1 30–70% predicted; AND eos ≥300 cells/µL within 60 days.",
+      "text": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) \u22653 months; AND exacerbation history; AND post-BD FEV1/FVC <0.7 with FEV1 30\u201370% predicted; AND eos \u2265300 cells/\u00b5L within 60 days.",
       "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -1074,7 +1074,7 @@
     },
     {
       "id": "csu_duration_and_antihistamine_step",
-      "text": "CSU: urticaria ≥6 weeks with symptoms ≥3 days/week on max-dose non-sedating antihistamine; AND tried/failed or CI to max-dose non-sedating antihistamine ≥60 days.",
+      "text": "CSU: urticaria \u22656 weeks with symptoms \u22653 days/week on max-dose non-sedating antihistamine; AND tried/failed or CI to max-dose non-sedating antihistamine \u226560 days.",
       "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -1122,7 +1122,7 @@
     },
     {
       "id": "bp_confirm_scores_step_ocs",
-      "text": "Bullous Pemphigoid: confirmed by serology or biopsy; BPDAI ≥24 and Peak Pruritus NRS ≥4; failed ≥2 standard therapies (different MOA) ≥1 month each; initially combined with tapering oral corticosteroids.",
+      "text": "Bullous Pemphigoid: confirmed by serology or biopsy; BPDAI \u226524 and Peak Pruritus NRS \u22654; failed \u22652 standard therapies (different MOA) \u22651 month each; initially combined with tapering oral corticosteroids.",
       "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -1198,7 +1198,8 @@
     "xolair",
     "fasenra",
     "nucala",
-    "cinqair"
+    "cinqair",
+    "tezspire"
   ],
   "max_units": {
     "quantity": null,
@@ -1209,6 +1210,6 @@
     "Partial encoding from AK Dupixent criteria PDF (Version 3, updated 09/19/2025, effective 11/1/2025).",
     "Encoded: FDA indication list; age-by-indication; specialty-by-indication; AD/asthma/CRSwNP/EoE/PN/COPD/CSU/BP step & documentation gates as clinician attestations (booleans / multi-select); concomitant-biologic denial.",
     "Not encoded as numeric predicates (attestation only): exact eos cell counts, FEV1 %, BPDAI/NRS raw scores, BSA %, days-supply quantity math, hypersensitivity/eye-symptom cautions.",
-    "Alternatives: Xolair/Fasenra/Nucala/Cinqair are evaluate()-linked (overlapping asthma/CRSwNP where labeled). PDL preferred same-class peers attach on fail via market basket."
+    "Alternatives: Xolair/Fasenra/Nucala/Cinqair are evaluate()-linked (overlapping asthma/CRSwNP where labeled). PDL preferred same-class peers attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma."
   ]
 }

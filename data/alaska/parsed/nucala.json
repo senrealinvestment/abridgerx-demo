@@ -21,7 +21,7 @@
       "options": [
         {
           "value": "asthma",
-          "label": "Severe Asthma (eosinophilic phenotype) — add-on maintenance"
+          "label": "Severe Asthma (eosinophilic phenotype) \u2014 add-on maintenance"
         },
         {
           "value": "egpa",
@@ -37,7 +37,7 @@
         },
         {
           "value": "copd",
-          "label": "COPD (eosinophilic phenotype) — add-on maintenance"
+          "label": "COPD (eosinophilic phenotype) \u2014 add-on maintenance"
         }
       ],
       "hint": "Closed list from Alaska Medicaid Interleukin-5 Inhibitors PA Criteria (effective 11/1/2025). Nucala covers all five indications on the PDF."
@@ -53,11 +53,11 @@
       "options": [
         {
           "value": "yes",
-          "label": "Confirmed — maintenance use only"
+          "label": "Confirmed \u2014 maintenance use only"
         },
         {
           "value": "no",
-          "label": "No — acute use"
+          "label": "No \u2014 acute use"
         }
       ]
     },
@@ -78,11 +78,11 @@
     },
     "asthma_controller_trial_3mo": {
       "type": "select",
-      "label": "Asthma: ≥3 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
+      "label": "Asthma: \u22653 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
       "options": [
         {
           "value": "ics_laba_ltra_or_theo_3mo",
-          "label": "Yes — ≥3 month trial with ongoing symptoms"
+          "label": "Yes \u2014 \u22653 month trial with ongoing symptoms"
         },
         {
           "value": "intolerant_to_all",
@@ -90,7 +90,7 @@
         },
         {
           "value": "no",
-          "label": "No — criterion not met"
+          "label": "No \u2014 criterion not met"
         }
       ],
       "hint": "AK asthma criterion 5."
@@ -166,7 +166,7 @@
     },
     "egpa_acr_criteria": {
       "type": "multi",
-      "label": "EGPA: diagnostic criteria present (need ≥4)",
+      "label": "EGPA: diagnostic criteria present (need \u22654)",
       "options": [
         {
           "value": "asthma",
@@ -200,7 +200,7 @@
       "options": [
         {
           "value": "stable_4w",
-          "label": "Stable on corticosteroids ≥4 weeks"
+          "label": "Stable on corticosteroids \u22654 weeks"
         },
         {
           "value": "ci_or_inappropriate",
@@ -214,7 +214,7 @@
     },
     "hes_duration_no_secondary_cause": {
       "type": "select",
-      "label": "HES: diagnosis ≥6 months without identifiable non-hematologic secondary cause",
+      "label": "HES: diagnosis \u22656 months without identifiable non-hematologic secondary cause",
       "options": [
         {
           "value": "yes",
@@ -232,7 +232,7 @@
       "options": [
         {
           "value": "stable_4w",
-          "label": "Stable on corticosteroids ≥4 weeks"
+          "label": "Stable on corticosteroids \u22654 weeks"
         },
         {
           "value": "ci_or_inappropriate",
@@ -260,7 +260,7 @@
     },
     "crswnp_symptoms_ge_2_for_6mo": {
       "type": "select",
-      "label": "CRSwNP: ≥2 of (congestion, obstruction, discharge, reduction/loss of smell) for ≥6 months",
+      "label": "CRSwNP: \u22652 of (congestion, obstruction, discharge, reduction/loss of smell) for \u22656 months",
       "options": [
         {
           "value": "yes",
@@ -274,7 +274,7 @@
     },
     "crswnp_incs_3mo_and_continue": {
       "type": "select",
-      "label": "CRSwNP: ≥3 months intranasal corticosteroid AND will continue concomitantly with Nucala",
+      "label": "CRSwNP: \u22653 months intranasal corticosteroid AND will continue concomitantly with Nucala",
       "options": [
         {
           "value": "yes",
@@ -288,7 +288,7 @@
     },
     "copd_failed_triple_therapy_3mo": {
       "type": "select",
-      "label": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) ≥3 consecutive months, or documented clinical contraindication",
+      "label": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) \u22653 consecutive months, or documented clinical contraindication",
       "options": [
         {
           "value": "yes",
@@ -302,7 +302,7 @@
     },
     "copd_exacerbation_history_met": {
       "type": "select",
-      "label": "COPD: ≥2 moderate or ≥1 severe exacerbations in prior year (incl. ≥1 while on triple therapy)",
+      "label": "COPD: \u22652 moderate or \u22651 severe exacerbations in prior year (incl. \u22651 while on triple therapy)",
       "options": [
         {
           "value": "yes",
@@ -316,7 +316,7 @@
     },
     "copd_spirometry_criteria_met": {
       "type": "select",
-      "label": "COPD: post-BD FEV1/FVC <0.7 and post-BD FEV1 20–80% predicted",
+      "label": "COPD: post-BD FEV1/FVC <0.7 and post-BD FEV1 20\u201380% predicted",
       "options": [
         {
           "value": "yes",
@@ -327,7 +327,7 @@
           "label": "No"
         }
       ],
-      "hint": "AK Nucala COPD spirometry range is 20–80% (attestation)."
+      "hint": "AK Nucala COPD spirometry range is 20\u201380% (attestation)."
     },
     "nucala_copd_eos": {
       "type": "select",
@@ -335,11 +335,11 @@
       "options": [
         {
           "value": "ge_150_within_6w",
-          "label": "≥150 cells/mcL within 6 weeks of initiation"
+          "label": "\u2265150 cells/mcL within 6 weeks of initiation"
         },
         {
           "value": "ge_300_past_12mo",
-          "label": "≥300 cells/mcL in the past 12 months"
+          "label": "\u2265300 cells/mcL in the past 12 months"
         },
         {
           "value": "neither",
@@ -370,7 +370,7 @@
     },
     {
       "id": "fda_labeled_age_for_indication",
-      "text": "Patient meets FDA-labeled age for the requested indication (asthma ≥6y; HES ≥12y; EGPA/CRSwNP/COPD ≥18y).",
+      "text": "Patient meets FDA-labeled age for the requested indication (asthma \u22656y; HES \u226512y; EGPA/CRSwNP/COPD \u226518y).",
       "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -570,7 +570,7 @@
     },
     {
       "id": "asthma_eos_controller_concurrent_not_acute",
-      "text": "Asthma: eos >150/mcL within 6 weeks OR >300/mcL in past 12 months; ≥3 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller; not for acute bronchospasm/status asthmaticus.",
+      "text": "Asthma: eos >150/mcL within 6 weeks OR >300/mcL in past 12 months; \u22653 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller; not for acute bronchospasm/status asthmaticus.",
       "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -633,7 +633,7 @@
     },
     {
       "id": "egpa_diagnosis_and_steroids",
-      "text": "EGPA: ≥4 of 6 diagnostic criteria; AND stable on corticosteroids ≥4 weeks or clinical inappropriateness documented.",
+      "text": "EGPA: \u22654 of 6 diagnostic criteria; AND stable on corticosteroids \u22654 weeks or clinical inappropriateness documented.",
       "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -689,7 +689,7 @@
     },
     {
       "id": "hes_diagnosis_and_steroids",
-      "text": "HES: diagnosis ≥6 months without identifiable non-hematologic secondary cause; AND stable on corticosteroids ≥4 weeks or clinical inappropriateness documented.",
+      "text": "HES: diagnosis \u22656 months without identifiable non-hematologic secondary cause; AND stable on corticosteroids \u22654 weeks or clinical inappropriateness documented.",
       "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -737,7 +737,7 @@
     },
     {
       "id": "crswnp_documentation_and_incs",
-      "text": "CRSwNP: diagnosis by exam/endoscopy/sinus CT; ≥2 cardinal symptoms for ≥6 months; ≥3 months intranasal corticosteroid with continued concomitant use.",
+      "text": "CRSwNP: diagnosis by exam/endoscopy/sinus CT; \u22652 cardinal symptoms for \u22656 months; \u22653 months intranasal corticosteroid with continued concomitant use.",
       "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -788,7 +788,7 @@
     },
     {
       "id": "copd_triple_exacerbation_spirometry_eos",
-      "text": "COPD: inadequate response (or CI) to triple therapy ≥3 months; ≥2 moderate or ≥1 severe exacerbation in prior year (incl. ≥1 on triple therapy); post-BD FEV1/FVC <0.7 and FEV1 20–80% predicted; eos ≥150/6w OR ≥300/12mo.",
+      "text": "COPD: inadequate response (or CI) to triple therapy \u22653 months; \u22652 moderate or \u22651 severe exacerbation in prior year (incl. \u22651 on triple therapy); post-BD FEV1/FVC <0.7 and FEV1 20\u201380% predicted; eos \u2265150/6w OR \u2265300/12mo.",
       "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -864,7 +864,8 @@
     "fasenra",
     "cinqair",
     "dupixent",
-    "xolair"
+    "xolair",
+    "tezspire"
   ],
   "max_units": {
     "quantity": null,
@@ -872,10 +873,10 @@
     "notes": "Nucala (J2182): 100 mg SC q28d for severe asthma, nasal polyps, COPD; 300 mg q28d for EGPA and HES. Approval up to 3 months; reauth up to 12 months."
   },
   "notes": [
-    "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala®, Cinqair®, Fasenra®; Version 3, updated 09/19/2025, effective 11/1/2025).",
+    "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala\u00ae, Cinqair\u00ae, Fasenra\u00ae; Version 3, updated 09/19/2025, effective 11/1/2025).",
     "Nucala-encoded indications: severe eosinophilic asthma; EGPA; HES; CRSwNP; eosinophilic COPD.",
-    "Encoded: closed indication list; FDA age-by-indication; specialty-by-indication; asthma eos/controller/concurrent/not-acute; EGPA ≥4/6 + steroids; HES duration + steroids; CRSwNP exam/symptoms/INCS; COPD triple/exacerbation/spirometry/eos; concomitant-biologic denial.",
+    "Encoded: closed indication list; FDA age-by-indication; specialty-by-indication; asthma eos/controller/concurrent/not-acute; EGPA \u22654/6 + steroids; HES duration + steroids; CRSwNP exam/symptoms/INCS; COPD triple/exacerbation/spirometry/eos; concomitant-biologic denial.",
     "Not encoded as numeric predicates (attestation only): exact eos cell counts, FEV1 %, quantity math, hypersensitivity/eye-symptom/vasculitis cautions.",
-    "Alternatives: Fasenra/Cinqair/Dupixent/Xolair evaluate()-linked where indications overlap. PDL preferred same-class peers (IMMUNOMODULATORS, ASTHMA) attach on fail via market basket."
+    "Alternatives: Fasenra/Cinqair/Dupixent/Xolair evaluate()-linked where indications overlap. PDL preferred same-class peers (IMMUNOMODULATORS, ASTHMA) attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma."
   ]
 }

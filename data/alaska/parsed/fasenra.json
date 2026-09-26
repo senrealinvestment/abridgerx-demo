@@ -21,7 +21,7 @@
       "options": [
         {
           "value": "asthma",
-          "label": "Severe Asthma (eosinophilic phenotype) — add-on maintenance"
+          "label": "Severe Asthma (eosinophilic phenotype) \u2014 add-on maintenance"
         },
         {
           "value": "egpa",
@@ -41,11 +41,11 @@
       "options": [
         {
           "value": "yes",
-          "label": "Confirmed — maintenance use only"
+          "label": "Confirmed \u2014 maintenance use only"
         },
         {
           "value": "no",
-          "label": "No — acute use"
+          "label": "No \u2014 acute use"
         }
       ]
     },
@@ -66,11 +66,11 @@
     },
     "asthma_controller_trial_3mo": {
       "type": "select",
-      "label": "Asthma: ≥3 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
+      "label": "Asthma: \u22653 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
       "options": [
         {
           "value": "ics_laba_ltra_or_theo_3mo",
-          "label": "Yes — ≥3 month trial with ongoing symptoms"
+          "label": "Yes \u2014 \u22653 month trial with ongoing symptoms"
         },
         {
           "value": "intolerant_to_all",
@@ -78,7 +78,7 @@
         },
         {
           "value": "no",
-          "label": "No — criterion not met"
+          "label": "No \u2014 criterion not met"
         }
       ],
       "hint": "AK asthma criterion 5."
@@ -131,7 +131,7 @@
     },
     "fasenra_asthma_eos_ge_150_4w": {
       "type": "select",
-      "label": "Asthma: blood eosinophil count ≥150 cells/mcL within 4 weeks of treatment initiation",
+      "label": "Asthma: blood eosinophil count \u2265150 cells/mcL within 4 weeks of treatment initiation",
       "options": [
         {
           "value": "yes",
@@ -146,7 +146,7 @@
     },
     "egpa_acr_criteria": {
       "type": "multi",
-      "label": "EGPA: diagnostic criteria present (need ≥4)",
+      "label": "EGPA: diagnostic criteria present (need \u22654)",
       "options": [
         {
           "value": "asthma",
@@ -173,7 +173,7 @@
           "label": "Biopsy: blood vessel with extravascular eosinophils"
         }
       ],
-      "hint": "AK EGPA criterion 4 — at least four of six ACR-style features."
+      "hint": "AK EGPA criterion 4 \u2014 at least four of six ACR-style features."
     },
     "egpa_steroid_status": {
       "type": "select",
@@ -181,7 +181,7 @@
       "options": [
         {
           "value": "stable_4w",
-          "label": "Stable on corticosteroids ≥4 weeks"
+          "label": "Stable on corticosteroids \u22654 weeks"
         },
         {
           "value": "ci_or_inappropriate",
@@ -213,7 +213,7 @@
     },
     {
       "id": "fda_labeled_age_for_indication",
-      "text": "Patient meets FDA-labeled age for the requested indication (severe asthma ≥6y; EGPA ≥18y).",
+      "text": "Patient meets FDA-labeled age for the requested indication (severe asthma \u22656y; EGPA \u226518y).",
       "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -310,7 +310,7 @@
     },
     {
       "id": "asthma_eos_controller_concurrent_not_acute",
-      "text": "Asthma: eos ≥150 cells/mcL within 4 weeks; ≥3 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller use; not for acute bronchospasm/status asthmaticus.",
+      "text": "Asthma: eos \u2265150 cells/mcL within 4 weeks; \u22653 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller use; not for acute bronchospasm/status asthmaticus.",
       "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -365,7 +365,7 @@
     },
     {
       "id": "egpa_diagnosis_and_steroids",
-      "text": "EGPA: ≥4 of 6 diagnostic criteria (asthma, eosinophilia >10%, neuropathy, migratory infiltrates, sinus abnormalities, biopsy extravascular eosinophils); AND stable on corticosteroids ≥4 weeks or clinical inappropriateness documented.",
+      "text": "EGPA: \u22654 of 6 diagnostic criteria (asthma, eosinophilia >10%, neuropathy, migratory infiltrates, sinus abnormalities, biopsy extravascular eosinophils); AND stable on corticosteroids \u22654 weeks or clinical inappropriateness documented.",
       "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
       "required_facts": [
         "indication",
@@ -432,7 +432,8 @@
     "nucala",
     "cinqair",
     "dupixent",
-    "xolair"
+    "xolair",
+    "tezspire"
   ],
   "max_units": {
     "quantity": null,
@@ -440,10 +441,10 @@
     "notes": "Fasenra (J0517): 30 mg SC every 28 days for first 3 doses, then every 8 weeks. Approval up to 3 months; reauth up to 12 months."
   },
   "notes": [
-    "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala®, Cinqair®, Fasenra®; Version 3, updated 09/19/2025, effective 11/1/2025).",
+    "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala\u00ae, Cinqair\u00ae, Fasenra\u00ae; Version 3, updated 09/19/2025, effective 11/1/2025).",
     "Fasenra-encoded indications: severe eosinophilic asthma; EGPA. (HES/CRSwNP/COPD are Nucala-only on this PDF.)",
-    "Encoded: closed indication list; FDA age-by-indication (asthma ≥6y, EGPA ≥18y from labeled use); specialty-by-indication; asthma eos/controller/concurrent/not-acute attestations; EGPA ≥4/6 ACR criteria multi-select + steroid status; concomitant-biologic denial.",
+    "Encoded: closed indication list; FDA age-by-indication (asthma \u22656y, EGPA \u226518y from labeled use); specialty-by-indication; asthma eos/controller/concurrent/not-acute attestations; EGPA \u22654/6 ACR criteria multi-select + steroid status; concomitant-biologic denial.",
     "Not encoded as numeric predicates (attestation only): exact eos cell counts, quantity/days-supply math, hypersensitivity/eye-symptom/vasculitis cautions.",
-    "Alternatives: Nucala/Cinqair/Dupixent/Xolair evaluate()-linked where indications overlap. PDL preferred same-class peers (IMMUNOMODULATORS, ASTHMA) attach on fail via market basket."
+    "Alternatives: Nucala/Cinqair/Dupixent/Xolair evaluate()-linked where indications overlap. PDL preferred same-class peers (IMMUNOMODULATORS, ASTHMA) attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma."
   ]
 }

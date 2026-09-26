@@ -125,7 +125,7 @@
       resultEmpty.classList.remove("hidden");
       resultPanel.classList.add("hidden");
       resultEmpty.textContent =
-        "Drug loaded. Enter synthetic facts (if shown) and click Run check — or review text-only criteria below after checking.";
+        "Drug loaded. Enter facts (if shown) and click Run check — or review text-only criteria below after checking.";
     } catch (e) {
       formError.textContent = e.message;
       formError.classList.remove("hidden");
@@ -366,7 +366,7 @@
       }
       html += `</ul></div>`;
     } else if (decision === "fail") {
-      html += `<p class="muted">No alternatives in the pack catalog passed for these synthetic facts.</p>`;
+      html += `<p class="muted">No alternatives in the pack catalog passed for these facts.</p>`;
     }
 
     if ((r.citations || []).length) {
@@ -385,7 +385,7 @@
       html += `</ul></div>`;
     }
 
-    html += `<p class="muted" style="margin-top:1rem">Advisory · published AK criteria · not a guarantee of approval · synthetic facts only.</p>`;
+    html += `<p class="muted" style="margin-top:1rem">Advisory · published AK criteria · not a guarantee of payer approval.</p>`;
     resultPanel.innerHTML = html;
   }
 })();

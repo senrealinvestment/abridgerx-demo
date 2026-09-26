@@ -4760,17 +4760,301 @@
       "criteria_pdf": "data/alaska/raw/entyvio_criteria_20231117update.pdf"
     },
     "requires_pa": true,
-    "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "pdl_status": "non_preferred",
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Moderately to severely active UC or CD (FDA indications; UC/CD approval #2).",
+        "citation": "https://health.alaska.gov/media/lk2pxysn/entyvio_criteria_20231117update.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "ulcerative_colitis",
+            "crohns_disease"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 18 years or older (UC/CD approval #1; denial #2; see age wording note).",
+        "citation": "https://health.alaska.gov/media/lk2pxysn/entyvio_criteria_20231117update.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "conventional_therapy_60d",
+        "text": "Trialed and failed \u22651 conventional therapy (e.g. sulfasalazine, prednisone, azathioprine) for \u226560 days (UC/CD approval #3).",
+        "citation": "https://health.alaska.gov/media/lk2pxysn/entyvio_criteria_20231117update.pdf#approval-criteria",
+        "required_facts": [
+          "conventional_therapy_60d"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "conventional_therapy_60d",
+          "values": [
+            "trial_failure_60d"
+          ]
+        }
+      },
+      {
+        "id": "tnf_blocker_60d",
+        "text": "Trialed and failed a TNF blocker (e.g. Humira) for \u226560 days (UC/CD approval #4).",
+        "citation": "https://health.alaska.gov/media/lk2pxysn/entyvio_criteria_20231117update.pdf#approval-criteria",
+        "required_facts": [
+          "tnf_blocker_60d"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "tnf_blocker_60d",
+          "values": [
+            "trial_failure_60d"
+          ]
+        }
+      },
+      {
+        "id": "cdai_status",
+        "text": "CD requires CDAI > 220; UC requires Not applicable (UC indication) (CD approval #5; denial #5).",
+        "citation": "https://health.alaska.gov/media/lk2pxysn/entyvio_criteria_20231117update.pdf#approval-criteria",
+        "required_facts": [
+          "indication",
+          "cdai_status"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "ulcerative_colitis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "cdai_status",
+                  "value": "not_applicable_uc"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "crohns_disease"
+                },
+                {
+                  "op": "eq",
+                  "fact": "cdai_status",
+                  "value": "gt_220"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "no_known_hypersensitivity_vedolizumab",
+        "text": "No known hypersensitivity to vedolizumab or any of its excipients (denial #1).",
+        "citation": "https://health.alaska.gov/media/lk2pxysn/entyvio_criteria_20231117update.pdf#denial-criteria",
+        "required_facts": [
+          "no_known_hypersensitivity_vedolizumab"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_known_hypersensitivity_vedolizumab",
+          "value": true
+        }
+      },
+      {
+        "id": "no_active_severe_infection",
+        "text": "No current active severe infection (denial #3).",
+        "citation": "https://health.alaska.gov/media/lk2pxysn/entyvio_criteria_20231117update.pdf#denial-criteria",
+        "required_facts": [
+          "no_active_severe_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_severe_infection",
+          "value": true
+        }
+      },
+      {
+        "id": "not_concurrent_integrin_or_tnf",
+        "text": "No concurrent integrin receptor antagonist (e.g. natalizumab) or TNF blocker (e.g. adalimumab, infliximab, certolizumab, etanercept) (denial #4).",
+        "citation": "https://health.alaska.gov/media/lk2pxysn/entyvio_criteria_20231117update.pdf#denial-criteria",
+        "required_facts": [
+          "not_concurrent_integrin_or_tnf"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_integrin_or_tnf",
+          "value": true
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "alternatives": [
+      "skyrizi",
+      "stelara",
+      "infliximab",
+      "tremfya",
+      "zymfentra"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Medicaid Entyvio (vedolizumab) Criteria Version 2.1: Original 11/14/2014; Update2 11/17/2023; Effective 01/1/2024.",
+      "Age wording discrepancy: approval says > 18 years, while denial #2 says age < 18 years. Encoded gte 18 in line with the denial threshold and FDA adult \u226518 wording; the exact age-18 boundary requires source interpretation.",
+      "Specialty gap: the Alaska PDF specifies no prescriber specialty requirement; no specialty field or predicate is added.",
+      "Both UC and CD require failure of \u22651 conventional therapy for \u226560 days AND failure of a TNF blocker for \u226560 days. Prior TNF failure is separate from the concurrent-use exclusion: concurrent integrin receptor antagonists or TNF blockers are prohibited.",
+      "CD approval #5 requires CDAI > 220, covering initiating denial #5 (CDAI \u2264 150). CDAI 151\u2013220 also does not meet CD approval. CDAI is not a UC requirement; select Not applicable (UC indication) for UC. No numeric CDAI coercion is used.",
+      "Initial authorization documentation (notes only): monitoring plan for PML and hepatic changes, plus previous therapies trialed and the nature of failure; manual review required.",
+      "Reauthorization beyond 14 weeks (notes only): letter of medical necessity and chart notes demonstrating therapeutic benefit by week 14; documentation of tolerance and absence of adverse events; for baseline corticosteroid use, an initial taper attempt or plan to attempt taper.",
+      "Renewal denial #6 (notes only): AST/ALT > 20 times ULN, bilirubin > 10 times ULN, or life-threatening diarrhea; manual review required.",
+      "Duration and dosing (notes only): initial approval 14 weeks, with IV infusions at weeks 0, 2, 6, and 14. Reauthorization up to 12 months, with IV infusions at week 22 and beyond every eight weeks. Subcutaneous dosing is 108 mg every 2 weeks beginning at week 6 following IV infusions at weeks 0 and 2.",
+      "Quantity limits (manual review): 300 mg (1 vial) per dose; 216 mg (2 syringes or pens) per 28 days. HCPCS J3380 maximum 300 units for IV formulation. Quantity metadata does not numerically enforce route-specific limits or dosing.",
+      "Cautions (notes only): monitor new or worsening neurological issues because PML risk cannot be ruled out. Live vaccines should not be administered during vedolizumab treatment unless benefit outweighs risk.",
+      "PDL context: ENTYVIO injection, IV, and pen are non_preferred in CYTOKINE AND CAM ANTAGONISTS. Preferred class peers include Humira, Hadlima, Rinvoq, and preferred infliximab products; peers without rule packs are mentioned only here. Linked Skyrizi, Stelara, infliximab, Tremfya, and Zymfentra packs remain text_only and require criteria review, not confirmed coverage.",
+      "This pack remains partial: initial documentation, reauthorization, monitoring, cautions, duration, dosing, and quantity enforcement require manual review."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Moderately to severely active UC or CD (FDA indications; UC/CD approval #2).",
+        "options": [
+          {
+            "value": "ulcerative_colitis",
+            "label": "Moderately to severely active ulcerative colitis (UC)"
+          },
+          {
+            "value": "crohns_disease",
+            "label": "Moderately to severely active Crohn\u2019s disease (CD)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years or older (UC/CD approval #1; denial #2; see age wording note).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18+"
+          }
+        ]
+      },
+      "conventional_therapy_60d": {
+        "type": "select",
+        "label": "Trialed and failed \u22651 conventional therapy (e.g. sulfasalazine, prednisone, azathioprine) for \u226560 days (UC/CD approval #3).",
+        "options": [
+          {
+            "value": "trial_failure_60d",
+            "label": "Trialed and failed \u22651 conventional therapy (e.g. sulfasalazine, prednisone, azathioprine) for \u226560 days"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "tnf_blocker_60d": {
+        "type": "select",
+        "label": "Trialed and failed a TNF blocker (e.g. Humira) for \u226560 days (UC/CD approval #4).",
+        "options": [
+          {
+            "value": "trial_failure_60d",
+            "label": "Trialed and failed a TNF blocker (e.g. Humira) for \u226560 days"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "cdai_status": {
+        "type": "select",
+        "label": "CD requires CDAI > 220; UC requires Not applicable (UC indication) (CD approval #5; denial #5).",
+        "options": [
+          {
+            "value": "gt_220",
+            "label": "CDAI > 220 (CD approval)"
+          },
+          {
+            "value": "151_to_220",
+            "label": "CDAI 151\u2013220"
+          },
+          {
+            "value": "lte_150",
+            "label": "CDAI \u2264 150"
+          },
+          {
+            "value": "not_applicable_uc",
+            "label": "Not applicable (UC indication)"
+          }
+        ]
+      },
+      "no_known_hypersensitivity_vedolizumab": {
+        "type": "select",
+        "label": "No known hypersensitivity to vedolizumab or any of its excipients (denial #1).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_active_severe_infection": {
+        "type": "select",
+        "label": "No current active severe infection (denial #3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_integrin_or_tnf": {
+        "type": "select",
+        "label": "No concurrent integrin receptor antagonist (e.g. natalizumab) or TNF blocker (e.g. adalimumab, infliximab, certolizumab, etanercept) (denial #4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": 300,
+      "days_supply": null,
+      "notes": "300 mg (1 vial) per dose IV; 216 mg (2 syringes or pens) per 28 days subcutaneous; HCPCS J3380 max 300 units IV. Route-specific limits require manual review; no numeric quantity predicates."
+    }
   },
   "epidiolex": {
     "drug": {
@@ -5872,7 +6156,9 @@
     "pdl_status": "unknown",
     "encoding_status": "text_only",
     "criteria": [],
-    "alternatives": [],
+    "alternatives": [
+      "entyvio"
+    ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
@@ -8672,7 +8958,9 @@
     "pdl_status": "unknown",
     "encoding_status": "text_only",
     "criteria": [],
-    "alternatives": [],
+    "alternatives": [
+      "entyvio"
+    ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
@@ -8898,7 +9186,9 @@
     "pdl_status": "unknown",
     "encoding_status": "text_only",
     "criteria": [],
-    "alternatives": [],
+    "alternatives": [
+      "entyvio"
+    ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
@@ -9447,7 +9737,9 @@
     "pdl_status": "unknown",
     "encoding_status": "text_only",
     "criteria": [],
-    "alternatives": [],
+    "alternatives": [
+      "entyvio"
+    ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
@@ -10845,7 +11137,9 @@
     "pdl_status": "unknown",
     "encoding_status": "text_only",
     "criteria": [],
-    "alternatives": [],
+    "alternatives": [
+      "entyvio"
+    ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],

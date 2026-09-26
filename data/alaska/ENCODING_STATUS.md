@@ -22,15 +22,15 @@ Source hub: https://health.alaska.gov/en/education/prior-authorization-medicatio
 - Criteria text JSON files: **198**
 - Rule packs: **198**
 - Fully encoded (all clauses as predicates): **0**
-- Partially encoded: **8** (Adbry, Adcirca, Cinqair, Dupixent, Fasenra, Nucala, Tezspire, Xolair)
-- Text-only (requires_pa, encoding pending): **190**
+- Partially encoded: **9** (Adbry, Adcirca, Aduhelm, Cinqair, Dupixent, Fasenra, Nucala, Tezspire, Xolair)
+- Text-only (requires_pa, encoding pending): **189**
 - Scanned image criteria PDFs (OCR needed): **7**
 
 ## Blockers
 
 - **Drug Lookup Tool**: Prime Therapeutics JS portal; no static export on hub (https://ak.primetherapeutics.com/provider/)
 - **CoverMyMeds ePA**: External ePA portal; out of scope for criteria ingest (https://www.covermymeds.health/prior-authorization-forms/prime)
-- **Predicate encoding coverage**: Most criteria PDFs are text_only. Partially encoded: adbry, adcirca, cinqair, dupixent, fasenra, nucala, tezspire, xolair. Step-therapy encoded as attestations; labs/qty attestation-only; other drugs pending.
+- **Predicate encoding coverage**: Most criteria PDFs are text_only. Partially encoded: adbry, adcirca, aduhelm, cinqair, dupixent, fasenra, nucala, tezspire, xolair. Step-therapy encoded as attestations; labs/qty attestation-only; Aduhelm ARIA monitoring and reauthorization remain notes only; other drugs pending.
 - **Scanned 2009 criteria PDFs**: 7 legacy files are image-only; OCR needed before text encoding.
 
 ## Honesty note
@@ -39,4 +39,4 @@ Do **not** treat text-only packs as coverage decisions. The engine returns `need
 
 ## Next encoding candidates
 
-Next candidates: Aduhelm, Ebglyss, CGRP therapies, Entyvio/Stelara/Skyrizi class, Hep C DAA, and growth hormone.
+Next candidates: Ebglyss, CGRP therapies, Entyvio/Stelara/Skyrizi class, Hep C DAA, and growth hormone.

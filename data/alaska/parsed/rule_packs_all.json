@@ -422,7 +422,8 @@
   "aduhelm": {
     "drug": {
       "name": "Aduhelm",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "alzheimers-agents",
+      "generic_name": "aducanumab-avwa"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -432,18 +433,397 @@
       "criteria_pdf": "data/alaska/raw/202109-aduhelm_criteria_2021.pdf"
     },
     "requires_pa": true,
-    "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "pdl_status": "non_preferred",
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Diagnosis of Alzheimer's disease; treatment initiated at mild cognitive impairment or mild dementia stage",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "values": [
+            "alzheimers_disease_mci_or_mild_dementia"
+          ],
+          "fact": "indication"
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 50 years of age or older",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "value": 50,
+          "fact": "age_years"
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "values": [
+            "neurologist"
+          ],
+          "fact": "prescriber_specialty"
+        }
+      },
+      {
+        "id": "amyloid_confirmation",
+        "text": "Beta-amyloid plaques verified by PET scan or CSF testing",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "amyloid_confirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "values": [
+            "pet_scan",
+            "csf_testing"
+          ],
+          "fact": "amyloid_confirmation"
+        }
+      },
+      {
+        "id": "mri_safety_criteria_met",
+        "text": "Documented brain MRI within the last year showing no localized superficial siderosis, fewer than 10 brain microhemorrhages, and no brain hemorrhages greater than 1 cm in the past year",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "mri_safety_criteria_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": true,
+          "fact": "mri_safety_criteria_met"
+        }
+      },
+      {
+        "id": "objective_cognitive_impairment",
+        "text": "Objective evidence of cognitive impairment at screening",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "objective_cognitive_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": true,
+          "fact": "objective_cognitive_impairment"
+        }
+      },
+      {
+        "id": "cdr_global_score",
+        "text": "Clinical Dementia Rating (CDR) global score of 0.5",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "cdr_global_score"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": "0.5",
+          "fact": "cdr_global_score"
+        }
+      },
+      {
+        "id": "mmse_score",
+        "text": "Mini-Mental State Exam (MMSE) score of at least 24",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "mmse_score"
+        ],
+        "predicate": {
+          "op": "in",
+          "values": [
+            "gte_24"
+          ],
+          "fact": "mmse_score"
+        }
+      },
+      {
+        "id": "other_dementia_causes_ruled_out",
+        "text": "Other known causes of dementia ruled out (including vascular dementia and Parkinson's disease dementia)",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "other_dementia_causes_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": true,
+          "fact": "other_dementia_causes_ruled_out"
+        }
+      },
+      {
+        "id": "not_on_disallowed_blood_thinners",
+        "text": "Not taking blood thinners other than aspirin 81 mg or less",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "not_on_disallowed_blood_thinners"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": true,
+          "fact": "not_on_disallowed_blood_thinners"
+        }
+      },
+      {
+        "id": "no_recent_cns_bleed_or_cerebrovascular_abnormality",
+        "text": "No brain hemorrhage, bleeding disorder, or cerebrovascular abnormalities in the last 6 months",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "no_recent_cns_bleed_or_cerebrovascular_abnormality"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": true,
+          "fact": "no_recent_cns_bleed_or_cerebrovascular_abnormality"
+        }
+      },
+      {
+        "id": "no_significant_systemic_illness_or_infection_30d",
+        "text": "No significant systemic illness or infection in the past 30 days",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "no_significant_systemic_illness_or_infection_30d"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": true,
+          "fact": "no_significant_systemic_illness_or_infection_30d"
+        }
+      },
+      {
+        "id": "no_unstable_cardiac_history_1y",
+        "text": "No unstable angina, myocardial infarction, advanced chronic heart failure, or clinically significant conduction abnormalities within 1 year prior to screening",
+        "citation": "https://health.alaska.gov/media/zmhj3izn/202109-aduhelm_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "no_unstable_cardiac_history_1y"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": true,
+          "fact": "no_unstable_cardiac_history_1y"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Aduhelm (aducanumab-avwa), an amyloid beta-directed antibody, Criteria Version 1: Original 7/16/2021; Approval 9/17/21; Effective 11/1/21. The effective_date remains 2021-11-01.",
+      "Encoded: approval criteria 1-9, with the closed Alzheimer's disease indication restricted to initiation at mild cognitive impairment or mild dementia stage per the PDF FDA indications; denial criteria 2-5 are approval-blocking predicates. Denial criterion 1 is failure to meet approval criteria.",
+      "Initial approval: up to 3 months. Reauthorization: up to 6 months if MRI obtained prior to the 7th and 12th doses shows no increase in size or number of ARIA-H, and documented evidence shows positive response, slowed rate of cognitive decline, and no adverse reactions. These reauthorization requirements are notes only, not fully predicated.",
+      "ARIA caution: enhanced clinical vigilance during the first 8 doses, particularly titration. Symptoms suggestive of ARIA require clinical evaluation, including MRI testing if indicated. ARIA imaging schedule and monitoring are not fully predicated; this pack remains partial.",
+      "PDL context only: Aduhelm is non-preferred in ALZHEIMER'S AGENTS. Leqembi and Kisunla remain text_only and are not evaluate-linked alternatives. Preferred oral Alzheimer's agents such as donepezil are PDL context only; no oral step-therapy requirement is encoded."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of Alzheimer's disease; treatment initiated at mild cognitive impairment or mild dementia stage",
+        "options": [
+          {
+            "value": "alzheimers_disease_mci_or_mild_dementia",
+            "label": "Alzheimer's disease (mild cognitive impairment or mild dementia stage)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 50 years of age or older",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 50 years"
+          },
+          {
+            "value": "50",
+            "label": "50 years or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist",
+        "options": [
+          {
+            "value": "neurologist",
+            "label": "Neurologist"
+          },
+          {
+            "value": "primary_care",
+            "label": "Primary care"
+          },
+          {
+            "value": "geriatrician",
+            "label": "Geriatrician"
+          },
+          {
+            "value": "psychiatrist",
+            "label": "Psychiatrist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "amyloid_confirmation": {
+        "type": "select",
+        "label": "Beta-amyloid plaques verified by PET scan or CSF testing",
+        "options": [
+          {
+            "value": "pet_scan",
+            "label": "PET scan"
+          },
+          {
+            "value": "csf_testing",
+            "label": "CSF testing"
+          },
+          {
+            "value": "neither",
+            "label": "Neither"
+          }
+        ]
+      },
+      "mri_safety_criteria_met": {
+        "type": "select",
+        "label": "Documented brain MRI within the last year showing no localized superficial siderosis, fewer than 10 brain microhemorrhages, and no brain hemorrhages greater than 1 cm in the past year",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "objective_cognitive_impairment": {
+        "type": "select",
+        "label": "Objective evidence of cognitive impairment at screening",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "cdr_global_score": {
+        "type": "select",
+        "label": "Clinical Dementia Rating (CDR) global score of 0.5",
+        "options": [
+          {
+            "value": "0.5",
+            "label": "CDR global score 0.5"
+          },
+          {
+            "value": "other",
+            "label": "Other CDR score (not 0.5)"
+          }
+        ]
+      },
+      "mmse_score": {
+        "type": "select",
+        "label": "Mini-Mental State Exam (MMSE) score of at least 24",
+        "options": [
+          {
+            "value": "gte_24",
+            "label": "MMSE score 24 or higher"
+          },
+          {
+            "value": "lt_24",
+            "label": "MMSE score below 24"
+          }
+        ]
+      },
+      "other_dementia_causes_ruled_out": {
+        "type": "select",
+        "label": "Other known causes of dementia ruled out (including vascular dementia and Parkinson's disease dementia)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_on_disallowed_blood_thinners": {
+        "type": "select",
+        "label": "Not taking blood thinners other than aspirin 81 mg or less",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_recent_cns_bleed_or_cerebrovascular_abnormality": {
+        "type": "select",
+        "label": "No brain hemorrhage, bleeding disorder, or cerebrovascular abnormalities in the last 6 months",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_significant_systemic_illness_or_infection_30d": {
+        "type": "select",
+        "label": "No significant systemic illness or infection in the past 30 days",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_unstable_cardiac_history_1y": {
+        "type": "select",
+        "label": "No unstable angina, myocardial infarction, advanced chronic heart failure, or clinically significant conduction abnormalities within 1 year prior to screening",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": 28,
+      "notes": "Infusions 1 and 2: 1 mg/kg every 4 weeks; infusions 3 and 4: 3 mg/kg every 4 weeks; infusions 5 and 6: 6 mg/kg every 4 weeks; infusion 7 and beyond: maximum 10 mg/kg every 4 weeks. Titration and quantity are notes only, not numeric predicates."
+    }
   },
   "amitiza": {
     "drug": {

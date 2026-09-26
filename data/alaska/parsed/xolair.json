@@ -621,7 +621,10 @@
     }
   ],
   "alternatives": [
-    "dupixent"
+    "dupixent",
+    "fasenra",
+    "nucala",
+    "cinqair"
   ],
   "max_units": {
     "quantity": null,
@@ -632,6 +635,6 @@
     "Partial encoding from AK Xolair criteria PDF (Version 3, original 02/28/2020, approval 9/16/2022, update 04/19/2024, effective 06/1/2024).",
     "Encoded: FDA indication list; age-by-indication; specialty-by-indication (food allergy excludes pulmonologist); asthma sensitization/IgE/controller/not-acute gates; CSU duration+LTRA/AH step; CRSwNP IgE+two nasal steroids+add-on; food-allergy diagnosis+IgE/weight attestation; anti–IL-4/IL-5 denial.",
     "Not encoded as numeric predicates (attestation only): exact IgE IU/mL, body weight kg, vial quantity math, anaphylaxis-setting/malignancy/serum-sickness cautions.",
-    "Alternatives: Dupixent is evaluate()-linked (overlapping asthma/CRSwNP/CSU). PDL preferred same-class peers (Fasenra, Nucala in IMMUNOMODULATORS, ASTHMA) attach on fail via market basket."
+    "Alternatives: Dupixent/Fasenra/Nucala/Cinqair are evaluate()-linked (overlapping asthma/CRSwNP/CSU where labeled). PDL preferred same-class peers (Fasenra/Nucala in IMMUNOMODULATORS, ASTHMA) attach on fail via market basket."
   ]
 }

@@ -129,12 +129,22 @@ def test_dupixent_xolair_real_packs():
 def test_text_only_never_autopass():
     packs_dir = ROOT / "data/alaska/parsed/rule_packs"
     text_packs = []
-    for p in packs_dir.glob("*.json"):
-        data = json.loads(p.read_text())
-        if data.get("encoding_status") == "text_only":
-            text_packs.append(data)
-            if len(text_packs) >= 3:
-                break
+    if packs_dir.is_dir():
+        for p in packs_dir.glob("*.json"):
+            data = json.loads(p.read_text())
+            if data.get("encoding_status") == "text_only":
+                text_packs.append(data)
+                if len(text_packs) >= 3:
+                    break
+    if not text_packs:
+        # Demo bundle ships rule_packs_all.json without the per-pack directory.
+        bundled = ROOT / "data/alaska/parsed/rule_packs_all.json"
+        catalog = json.loads(bundled.read_text())
+        for data in catalog.values():
+            if data.get("encoding_status") == "text_only":
+                text_packs.append(data)
+                if len(text_packs) >= 3:
+                    break
     assert text_packs, "expected text_only rule packs from ingest"
     for pack in text_packs:
         # Even with invented facts, must not pass

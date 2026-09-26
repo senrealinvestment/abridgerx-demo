@@ -1,0 +1,295 @@
+{
+  "drug": {
+    "name": "Cinqair",
+    "generic_name": "reslizumab",
+    "therapeutic_class": "immunomodulators"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Interleukin-5 Inhibitors Criteria",
+    "effective_date": "2025-11-01",
+    "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf",
+    "criteria_pdf": "data/alaska/raw/interleukin-5-inhibitors_criteria_update_2025.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "non_preferred",
+  "encoding_status": "partial",
+  "fact_ui": {
+    "indication": {
+      "type": "select",
+      "label": "Indication (FDA-labeled diagnosis)",
+      "options": [
+        {
+          "value": "asthma",
+          "label": "Severe Asthma (eosinophilic phenotype) — add-on maintenance"
+        }
+      ],
+      "hint": "Closed list from Alaska Medicaid Interleukin-5 Inhibitors PA Criteria (effective 11/1/2025). Cinqair: severe eosinophilic asthma only (adults)."
+    },
+    "age_years": {
+      "type": "select",
+      "label": "Age",
+      "option_style": "age_bands"
+    },
+    "not_acute_bronchospasm": {
+      "type": "select",
+      "label": "Not for acute bronchospasm / status asthmaticus",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Confirmed — maintenance use only"
+        },
+        {
+          "value": "no",
+          "label": "No — acute use"
+        }
+      ]
+    },
+    "not_used_with_another_biologic": {
+      "type": "select",
+      "label": "Not used in conjunction with another biologic (e.g. Dupixent, Xolair, Enbrel, Remicade)",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "hint": "AK denial criterion 2."
+    },
+    "asthma_controller_trial_3mo": {
+      "type": "select",
+      "label": "Asthma: ≥3 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
+      "options": [
+        {
+          "value": "ics_laba_ltra_or_theo_3mo",
+          "label": "Yes — ≥3 month trial with ongoing symptoms"
+        },
+        {
+          "value": "intolerant_to_all",
+          "label": "Intolerant to all of these medications"
+        },
+        {
+          "value": "no",
+          "label": "No — criterion not met"
+        }
+      ],
+      "hint": "AK asthma criterion 5."
+    },
+    "asthma_concurrent_controller": {
+      "type": "select",
+      "label": "Asthma: requested medication will be used concurrently with other asthma controller medications",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "hint": "AK asthma criterion 6."
+    },
+    "prescriber_specialty": {
+      "type": "select",
+      "label": "Prescriber specialty",
+      "options": [
+        {
+          "value": "allergist",
+          "label": "Allergist"
+        },
+        {
+          "value": "immunologist",
+          "label": "Immunologist"
+        },
+        {
+          "value": "pulmonologist",
+          "label": "Pulmonologist"
+        },
+        {
+          "value": "primary_care",
+          "label": "Primary care (not specialty)"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ],
+      "hint": "Asthma: allergist, immunologist, or pulmonologist."
+    },
+    "cinqair_asthma_eos_gt_400_4w": {
+      "type": "select",
+      "label": "Asthma: blood eosinophil count >400 cells/mcL within 4 weeks of treatment initiation",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "hint": "AK Cinqair asthma eosinophil threshold (attestation)."
+    }
+  },
+  "criteria": [
+    {
+      "id": "indication_fda_labeled",
+      "text": "Indication must be severe eosinophilic asthma (add-on maintenance) per AK IL-5 Inhibitors Criteria (Cinqair-labeled use).",
+      "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#fda-indications",
+      "required_facts": [
+        "indication"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "indication",
+        "values": [
+          "asthma"
+        ]
+      }
+    },
+    {
+      "id": "fda_labeled_age_for_indication",
+      "text": "Patient meets FDA-labeled age for Cinqair (severe asthma ≥18y).",
+      "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "age_years"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 18
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "prescriber_specialty_for_indication",
+      "text": "Prescribed by or in consultation with an allergist, immunologist, or pulmonologist.",
+      "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "prescriber_specialty"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist",
+                  "pulmonologist"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "asthma_eos_controller_concurrent_not_acute",
+      "text": "Asthma: eos >400 cells/mcL within 4 weeks; ≥3 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller; not for acute bronchospasm/status asthmaticus.",
+      "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "cinqair_asthma_eos_gt_400_4w",
+        "asthma_controller_trial_3mo",
+        "asthma_concurrent_controller",
+        "not_acute_bronchospasm"
+      ],
+      "predicate": {
+        "op": "all",
+        "args": [
+          {
+            "op": "eq",
+            "fact": "indication",
+            "value": "asthma"
+          },
+          {
+            "op": "eq",
+            "fact": "cinqair_asthma_eos_gt_400_4w",
+            "value": true
+          },
+          {
+            "op": "in",
+            "fact": "asthma_controller_trial_3mo",
+            "values": [
+              "ics_laba_ltra_or_theo_3mo",
+              "intolerant_to_all"
+            ]
+          },
+          {
+            "op": "eq",
+            "fact": "asthma_concurrent_controller",
+            "value": true
+          },
+          {
+            "op": "eq",
+            "fact": "not_acute_bronchospasm",
+            "value": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "not_concomitant_biologic",
+      "text": "Denial if used in conjunction with another biologic medication (e.g. Dupixent, Enbrel, Xolair, Remicade) or for acute bronchospasm/status asthmaticus.",
+      "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#denial-criteria",
+      "required_facts": [
+        "not_used_with_another_biologic"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "not_used_with_another_biologic",
+        "value": true
+      }
+    }
+  ],
+  "alternatives": [
+    "fasenra",
+    "nucala",
+    "dupixent",
+    "xolair"
+  ],
+  "max_units": {
+    "quantity": null,
+    "days_supply": 28,
+    "notes": "Cinqair (J2786): 3 mg/kg IV once every 28 days. Approval up to 3 months; reauth up to 12 months. PDL non-preferred."
+  },
+  "notes": [
+    "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala®, Cinqair®, Fasenra®; Version 3, updated 09/19/2025, effective 11/1/2025).",
+    "Cinqair-encoded indication: severe eosinophilic asthma only (adults ≥18y). EGPA/HES/CRSwNP/COPD are not Cinqair-labeled on this PDF.",
+    "Encoded: closed indication list; FDA age (≥18y); specialty; asthma eos >400/4w + controller/concurrent/not-acute attestations; concomitant-biologic denial.",
+    "Not encoded as numeric predicates (attestation only): exact eos cell counts, mg/kg dose math, hypersensitivity cautions.",
+    "Alternatives: Fasenra/Nucala/Dupixent/Xolair evaluate()-linked for overlapping asthma. PDL preferred same-class peers (Fasenra/Nucala/Xolair) attach on fail via market basket."
+  ]
+}

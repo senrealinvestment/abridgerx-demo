@@ -1,0 +1,88 @@
+{
+  "drug": {
+    "name": "Egrifta",
+    "therapeutic_class": "growth-hormone-releasing-factor",
+    "generic_name": "tesamorelin"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Egrifta Criteria",
+    "effective_date": "2025-03-01",
+    "citation": "https://health.alaska.gov/media/4mhdc51p/egrifta.pdf",
+    "criteria_pdf": "data/alaska/raw/egrifta.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "partial",
+  "criteria": [
+    {
+      "id": "indication_fda_labeled",
+      "text": "Reduction of excess abdominal fat in HIV-infected patients with lipodystrophy.",
+      "citation": "https://health.alaska.gov/media/4mhdc51p/egrifta.pdf#indications",
+      "required_facts": [
+        "indication"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "indication",
+        "values": [
+          "hiv_lipodystrophy_excess_abdominal_fat"
+        ]
+      }
+    },
+    {
+      "id": "hiv_positive",
+      "text": "The patient is HIV-positive (approval criterion 1).",
+      "citation": "https://health.alaska.gov/media/4mhdc51p/egrifta.pdf#approval-criteria",
+      "required_facts": [
+        "hiv_positive"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "hiv_positive",
+        "value": true
+      }
+    }
+  ],
+  "alternatives": [],
+  "notes": [
+    "Partial encoding from AK Egrifta (tesamorelin), a growth hormone releasing factor (GRF) analog, Criteria Version 1 (Last updated/Approved 11/18/2011). The existing ingest effective_date 2025-03-01 is retained; the PDF version date is distinct.",
+    "Encoded: closed indication for reduction of excess abdominal fat in HIV-infected patients with lipodystrophy and HIV-positive status (the only numbered approval criterion). The PDF specifies no age, specialty, or other approval gates.",
+    "Coverage may be approved for up to 3 months. Reauthorization may be approved pending documentation of clinical improvement of lipodystrophy; reauthorization remains notes only, not predicated.",
+    "Dispensing limit: 30-day supply of medication; quantity is unspecified and not a numeric predicate.",
+    "FDA limitations of use (notes only): not indicated for weight loss management (weight neutral effect). Long-term cardiovascular benefit and safety have not been studied. There are no data to support compliance with anti-retroviral therapies in HIV-positive patients taking Egrifta.",
+    "No Egrifta or tesamorelin match was found in the ingested PDL; pdl_status remains unknown. No evaluate()-linked peers are specified; alternatives is empty."
+  ],
+  "fact_ui": {
+    "indication": {
+      "type": "select",
+      "label": "Indication (diagnosis)",
+      "options": [
+        {
+          "value": "hiv_lipodystrophy_excess_abdominal_fat",
+          "label": "Reduction of excess abdominal fat in HIV-infected patients with lipodystrophy"
+        }
+      ],
+      "hint": "Closed list from Alaska Medicaid Egrifta criteria."
+    },
+    "hiv_positive": {
+      "type": "select",
+      "label": "Patient is HIV-positive",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    }
+  },
+  "max_units": {
+    "quantity": null,
+    "days_supply": 30,
+    "notes": "Dispensing limit: 30-day supply of medication. Quantity is unspecified; notes only, not a numeric predicate."
+  }
+}

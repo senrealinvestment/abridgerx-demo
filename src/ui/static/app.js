@@ -161,6 +161,19 @@
     drugCard.classList.remove("hidden");
   }
 
+  function humanize(s) {
+    return String(s ?? "").replace(/_/g, " ");
+  }
+
+  function optionValue(o) {
+    return typeof o === "object" && o !== null ? o.value : o;
+  }
+
+  function optionLabel(o) {
+    if (typeof o === "object" && o !== null) return o.label || humanize(o.value);
+    return humanize(o);
+  }
+
   function renderFactsForm(d) {
     const fields = d.fact_fields || [];
     if (!d.rule_pack_slug) {
@@ -175,16 +188,25 @@
     }
     factsForm.innerHTML = fields
       .map((f) => {
+        if (f.type === "select" && f.options && f.options.length) {
+          const opts = [`<option value="">Select…</option>`]
+            .concat(
+              f.options.map(
+                (o) =>
+                  `<option value="${esc(optionValue(o))}">${esc(optionLabel(o))}</option>`
+              )
+            )
+            .join("");
+          const hint = f.hint
+            ? `<p class="hint">${esc(f.hint)}</p>`
+            : "";
+          return `<label for="fact-${esc(f.key)}">${esc(f.label)}</label>
+            <select id="fact-${esc(f.key)}" name="${esc(f.key)}">${opts}</select>
+            ${hint}`;
+        }
         if (f.type === "number") {
           return `<label for="fact-${esc(f.key)}">${esc(f.label)}</label>
             <input id="fact-${esc(f.key)}" name="${esc(f.key)}" type="number" step="any" min="0" />`;
-        }
-        if (f.type === "select" && f.options && f.options.length) {
-          const opts = [`<option value="">— select —</option>`]
-            .concat(f.options.map((o) => `<option value="${esc(o)}">${esc(o)}</option>`))
-            .join("");
-          return `<label for="fact-${esc(f.key)}">${esc(f.label)}</label>
-            <select id="fact-${esc(f.key)}" name="${esc(f.key)}">${opts}</select>`;
         }
         return `<label for="fact-${esc(f.key)}">${esc(f.label)}</label>
           <input id="fact-${esc(f.key)}" name="${esc(f.key)}" type="text" />

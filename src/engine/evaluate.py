@@ -25,36 +25,108 @@ def _fact(patient: dict[str, Any], key: str) -> Any:
     return patient.get(key)
 
 
+def _as_list(val: Any) -> list[Any]:
+    if val is None:
+        return []
+    if isinstance(val, list):
+        return val
+    return [val]
+
+
 def _eval_predicate(predicate: dict[str, Any], patient: dict[str, Any]) -> bool | None:
-    """Return True/False, or None if required inputs are missing."""
+    """Return True/False, or None if required inputs are missing.
+
+    Three-valued logic for all/any:
+    - all: False if any conjunct is False; None if any is None and none False; else True
+    - any: True if any disjunct is True; None if any is None and none True; else False
+    """
     op = predicate.get("op")
     if op == "eq":
         val = _fact(patient, predicate["fact"])
         if val is None:
             return None
         return val == predicate["value"]
+    if op == "neq":
+        val = _fact(patient, predicate["fact"])
+        if val is None:
+            return None
+        return val != predicate["value"]
     if op == "gte":
         val = _fact(patient, predicate["fact"])
         if val is None:
             return None
         return val >= predicate["value"]
+    if op == "lte":
+        val = _fact(patient, predicate["fact"])
+        if val is None:
+            return None
+        return val <= predicate["value"]
     if op == "in":
         val = _fact(patient, predicate["fact"])
         if val is None:
             return None
         return val in predicate["values"]
+    if op == "not_in":
+        val = _fact(patient, predicate["fact"])
+        if val is None:
+            return None
+        return val not in predicate["values"]
+    if op == "count_gte":
+        # Multi-select / list fact: at least N selected values (optionally intersecting values).
+        val = _fact(patient, predicate["fact"])
+        if val is None:
+            return None
+        items = [str(x) for x in _as_list(val)]
+        allowed = predicate.get("values")
+        if allowed is not None:
+            items = [x for x in items if x in {str(a) for a in allowed}]
+        return len(items) >= predicate["value"]
     if op == "all":
         results = [_eval_predicate(p, patient) for p in predicate["args"]]
+        if any(r is False for r in results):
+            return False
         if any(r is None for r in results):
             return None
-        return all(results)
+        return True
     if op == "any":
         results = [_eval_predicate(p, patient) for p in predicate["args"]]
-        if all(r is None for r in results):
+        if any(r is True for r in results):
+            return True
+        if any(r is None for r in results):
             return None
-        known = [r for r in results if r is not None]
-        return any(known)
+        return False
     raise ValueError(f"Unknown predicate op: {op}")
+
+
+def _missing_in_predicate(
+    predicate: dict[str, Any], patient: dict[str, Any]
+) -> list[str]:
+    """Facts whose absence blocks deciding this predicate (respecting all/any)."""
+    op = predicate.get("op")
+    if op in ("eq", "neq", "gte", "lte", "in", "not_in", "count_gte", "choice"):
+        f = predicate.get("fact")
+        if f and _fact(patient, f) is None:
+            return [f]
+        return []
+    if op == "all":
+        miss: list[str] = []
+        for p in predicate.get("args") or []:
+            r = _eval_predicate(p, patient)
+            if r is False:
+                return []  # already decided fail
+            if r is None:
+                miss.extend(_missing_in_predicate(p, patient))
+        return miss
+    if op == "any":
+        miss = []
+        for p in predicate.get("args") or []:
+            r = _eval_predicate(p, patient)
+            if r is True:
+                return []  # already decided pass
+            if r is None:
+                miss.extend(_missing_in_predicate(p, patient))
+        return miss
+    return []
 
 
 def evaluate(rule_pack: dict[str, Any], patient: dict[str, Any]) -> EvalResult:
@@ -109,12 +181,19 @@ def evaluate(rule_pack: dict[str, Any], patient: dict[str, Any]) -> EvalResult:
         )
 
     for clause in criteria:
-        for fact in clause.get("required_facts", []):
-            if _fact(patient, fact) is None and fact not in missing:
-                missing.append(fact)
         result = _eval_predicate(clause["predicate"], patient)
         citations.append(clause["citation"])
         if result is None:
+            for fact in _missing_in_predicate(clause["predicate"], patient):
+                if fact not in missing:
+                    missing.append(fact)
+            # Also surface declared required_facts that are still missing and
+            # relevant (present in the unresolved predicate branches).
+            for fact in clause.get("required_facts") or []:
+                if _fact(patient, fact) is None and fact not in missing:
+                    # Only add if referenced by this predicate tree
+                    if fact in _facts_referenced(clause["predicate"]):
+                        missing.append(fact)
             continue
         if result is False:
             failed.append(
@@ -150,6 +229,17 @@ def evaluate(rule_pack: dict[str, Any], patient: dict[str, Any]) -> EvalResult:
     )
 
 
+def _facts_referenced(predicate: dict[str, Any]) -> set[str]:
+    out: set[str] = set()
+    if not isinstance(predicate, dict):
+        return out
+    if "fact" in predicate:
+        out.add(predicate["fact"])
+    for arg in predicate.get("args") or []:
+        out |= _facts_referenced(arg)
+    return out
+
+
 def find_alternatives(
     requested: dict[str, Any],
     patient: dict[str, Any],
@@ -160,6 +250,19 @@ def find_alternatives(
     for alt_id in requested.get("alternatives", []):
         pack = catalog.get(alt_id)
         if not pack:
+            # Honest label when linked pack is absent
+            alts.append(
+                {
+                    "drug": alt_id,
+                    "rule_id": alt_id,
+                    "citations": [],
+                    "verification": "pack_missing",
+                    "verification_note": (
+                        f"Alternative '{alt_id}' is listed on the rule pack but has no "
+                        "encoded pack in the catalog — not evaluate()-verified."
+                    ),
+                }
+            )
             continue
         result = evaluate(pack, patient)
         if result.decision == "pass":
@@ -174,6 +277,20 @@ def find_alternatives(
                     ),
                 }
             )
+        elif result.decision == "need_info":
+            alts.append(
+                {
+                    "drug": pack["drug"]["name"],
+                    "rule_id": alt_id,
+                    "citations": result.citations,
+                    "verification": "evaluate_need_info",
+                    "verification_note": (
+                        "Linked alternative needs more facts before evaluate() can pass: "
+                        + ", ".join(result.missing_facts[:6])
+                    ),
+                }
+            )
+        # fail → omit from evaluate-verified list (PDL peers may still attach)
     return alts
 
 

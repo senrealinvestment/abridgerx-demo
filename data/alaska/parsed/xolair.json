@@ -1,0 +1,134 @@
+{
+  "drug": {
+    "name": "Xolair",
+    "generic_name": "omalizumab",
+    "therapeutic_class": "respiratory"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Xolair Criteria",
+    "effective_date": "2024-06-01",
+    "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf",
+    "criteria_pdf": "data/alaska/raw/xolair_criteria_update_2024.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "partial",
+  "criteria": [
+    {
+      "id": "indication_fda_labeled",
+      "text": "Indication must be moderate-to-severe persistent asthma, CRSwNP, IgE-mediated food allergy, or chronic spontaneous urticaria per AK Xolair criteria.",
+      "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#fda-indications",
+      "required_facts": [
+        "indication"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "indication",
+        "values": [
+          "asthma",
+          "chronic_spontaneous_urticaria",
+          "crswnp",
+          "ige_mediated_food_allergy"
+        ]
+      }
+    },
+    {
+      "id": "age_for_indication",
+      "text": "Patient age meets indication minimum: asthma \u22656y; CSU \u226512y; nasal polyps \u226518y; IgE-mediated food allergy \u22651y.",
+      "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "age_years"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 6
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "chronic_spontaneous_urticaria"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 12
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "crswnp"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 18
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "ige_mediated_food_allergy"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "prescriber_specialty",
+      "text": "Prescribed by or in consultation with an allergist, immunologist, or pulmonologist.",
+      "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
+      "required_facts": [
+        "prescriber_specialty"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "prescriber_specialty",
+        "values": [
+          "allergist",
+          "immunologist",
+          "pulmonologist"
+        ]
+      }
+    }
+  ],
+  "alternatives": [
+    "dupixent"
+  ],
+  "notes": [
+    "Partial encoding from AK Xolair criteria PDF (effective 6/1/2024). IgE thresholds, skin-test, and prior controller therapy clauses remain text-only."
+  ]
+}

@@ -451,18 +451,78 @@ def _is_boolean_fact(fact: str) -> bool:
     return any(h in f for h in BOOLEAN_FACT_HINTS)
 
 
+def _fact_ui_entry(pack: dict[str, Any], fact: str) -> dict[str, Any] | None:
+    """Optional authored UI metadata on the rule pack (fact_ui[fact])."""
+    ui = pack.get("fact_ui") or {}
+    entry = ui.get(fact)
+    return entry if isinstance(entry, dict) else None
+
+
+def _normalize_options(opts: list[Any] | None) -> list[Any]:
+    out: list[Any] = []
+    for o in opts or []:
+        if isinstance(o, dict) and "value" in o:
+            out.append(o)
+        else:
+            out.append(o)
+    return out
+
+
 def build_fact_field(
     fact: str,
     pack: dict[str, Any],
     pack_slug: str | None,
 ) -> dict[str, Any]:
-    """Build a controlled fact control — select or multi checkbox. Never free text."""
+    """Build a controlled fact control — select or multi checkbox. Never free text.
+
+    Indication must never fall back to Yes/No/Unknown. Boolean Yes/No is reserved
+    for true boolean facts (has_/is_/… or authored boolean option lists).
+    """
     field: dict[str, Any] = {
         "key": fact,
         "label": fact.replace("_", " ").title(),
         "free_text": False,
     }
     text = _criteria_text_blob(pack_slug, pack)
+    authored = _fact_ui_entry(pack, fact)
+
+    # Prefer authored fact_ui from the rule pack when present.
+    if authored:
+        field["label"] = authored.get("label") or field["label"]
+        if authored.get("hint"):
+            field["hint"] = authored["hint"]
+        ftype = authored.get("type") or "select"
+        if authored.get("option_style") == "age_bands" or (
+            fact == "age_years" and not authored.get("options")
+        ):
+            field["type"] = "select"
+            field["label"] = authored.get("label") or "Age"
+            field["options"] = list(AGE_BAND_OPTIONS)
+            field["option_style"] = "age_bands"
+            field["option_source"] = "age_bands"
+            field.setdefault(
+                "hint",
+                "Band value sets age_years to the band minimum for gte checks "
+                "(0 / 0.5 / 1 / 6 / 12 / 18).",
+            )
+            return field
+        opts = _normalize_options(authored.get("options"))
+        if ftype in ("multi", "checkbox", "checkboxes"):
+            field["type"] = "multi"
+            field["options"] = opts
+            field["option_source"] = "fact_ui"
+            return field
+        field["type"] = "select"
+        field["options"] = opts
+        field["option_source"] = "fact_ui"
+        # Authored empty options for indication is still not Yes/No/Unknown
+        if fact == "indication" and not opts:
+            field["options"] = []
+            field["hint"] = (
+                field.get("hint")
+                or "No indication list authored on this pack — cannot collect indication."
+            )
+        return field
 
     if fact == "age_years":
         field["type"] = "select"
@@ -490,12 +550,13 @@ def build_fact_field(
             field["option_source"] = "criteria_text"
             field["hint"] = "Options parsed from archived criteria text."
             return field
+        # NEVER Yes/No/Unknown for indication — leave empty controlled select
         field["type"] = "select"
-        field["options"] = list(YES_NO_UNKNOWN_OPTIONS)
-        field["option_source"] = "fallback_yes_no_unknown"
+        field["options"] = []
+        field["option_source"] = "missing_indication_list"
         field["hint"] = (
-            "No indication list found in predicates or criteria text — "
-            "use Yes/No/Unknown as a controlled placeholder."
+            "No diagnosis/indication list found in predicates, fact_ui, or criteria text. "
+            "Indication cannot be collected as Yes/No/Unknown."
         )
         return field
 
@@ -507,23 +568,32 @@ def build_fact_field(
         field["option_source"] = "predicates" if opts else "default_specialty"
         return field
 
-    if fact in MULTI_FACT_KEYS or "therapy" in fact or "therapies" in fact:
+    if (
+        fact in MULTI_FACT_KEYS
+        or "therapy" in fact
+        or "therapies" in fact
+        or fact.endswith("_failures")
+    ):
         field["type"] = "multi"
         field["label"] = fact.replace("_", " ").title()
+        choice = _collect_choice_values(pack, fact)
+        if choice:
+            field["options"] = choice
+            field["option_source"] = "predicates"
+            field["hint"] = "Select all that apply."
+            return field
         parsed = parse_therapies_from_criteria_text(text)
         if parsed:
             field["options"] = parsed
             field["option_source"] = "criteria_text"
             field["hint"] = "Select all that apply (from criteria text)."
         else:
-            # Curated placeholders so the control stays closed-ended
             field["options"] = [
                 {"value": "preferred_agent_failed", "label": "Preferred / step agent failed"},
                 {"value": "intolerance", "label": "Intolerance / hypersensitivity"},
                 {"value": "contraindication", "label": "Contraindication"},
                 {"value": "insufficient_response", "label": "Insufficient response"},
                 {"value": "none_documented", "label": "None documented"},
-                {"value": "unknown", "label": "Unknown"},
             ]
             field["option_source"] = "fallback_therapy_placeholders"
             field["hint"] = (
@@ -531,14 +601,7 @@ def build_fact_field(
             )
         return field
 
-    # Boolean-ish facts → Yes/No select
-    if _is_boolean_fact(fact):
-        field["type"] = "select"
-        field["options"] = list(YES_NO_OPTIONS)
-        field["option_source"] = "boolean_yes_no"
-        return field
-
-    # Predicate choice values for any other fact
+    # Predicate choice values for any other fact (closed list from rule pack)
     choice = _collect_choice_values(pack, fact)
     if choice:
         field["type"] = "select"
@@ -546,11 +609,22 @@ def build_fact_field(
         field["option_source"] = "predicates"
         return field
 
-    # Last resort: Yes/No/Unknown — never free text
+    # Boolean-ish facts → Yes/No select (NOT Yes/No/Unknown; not for indication)
+    if _is_boolean_fact(fact):
+        field["type"] = "select"
+        field["options"] = list(YES_NO_OPTIONS)
+        field["option_source"] = "boolean_yes_no"
+        return field
+
+    # Last resort for unknown non-boolean, non-indication facts: still controlled,
+    # but do NOT use Yes/No/Unknown unless the key is clearly boolean.
     field["type"] = "select"
-    field["options"] = list(YES_NO_UNKNOWN_OPTIONS)
-    field["option_source"] = "fallback_yes_no_unknown"
-    field["hint"] = "Controlled Yes/No/Unknown — free-text fact entry is disabled."
+    field["options"] = list(YES_NO_OPTIONS)
+    field["option_source"] = "fallback_boolean_yes_no"
+    field["hint"] = (
+        "No closed option list found — Yes/No attestation only (not Yes/No/Unknown). "
+        "Free-text entry is disabled."
+    )
     return field
 
 

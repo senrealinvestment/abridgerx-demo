@@ -1,0 +1,1211 @@
+{
+  "drug": {
+    "name": "Dupixent",
+    "generic_name": "dupilumab",
+    "therapeutic_class": "immunomodulators"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Dupixent Criteria",
+    "effective_date": "2025-11-01",
+    "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf",
+    "criteria_pdf": "data/alaska/raw/dupixent_criteria_update_2025.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "preferred",
+  "encoding_status": "partial",
+  "fact_ui": {
+    "indication": {
+      "type": "select",
+      "label": "Indication (FDA-labeled diagnosis)",
+      "options": [
+        {
+          "value": "atopic_dermatitis",
+          "label": "Atopic Dermatitis (AD)"
+        },
+        {
+          "value": "asthma",
+          "label": "Moderate to Severe Asthma"
+        },
+        {
+          "value": "crswnp",
+          "label": "Chronic Rhinosinusitis with Nasal Polyps (CRSwNP)"
+        },
+        {
+          "value": "eosinophilic_esophagitis",
+          "label": "Eosinophilic Esophagitis (EoE)"
+        },
+        {
+          "value": "prurigo_nodularis",
+          "label": "Prurigo Nodularis (PN)"
+        },
+        {
+          "value": "copd",
+          "label": "Chronic Obstructive Pulmonary Disease (COPD)"
+        },
+        {
+          "value": "chronic_spontaneous_urticaria",
+          "label": "Chronic Spontaneous Urticaria (CSU)"
+        },
+        {
+          "value": "bullous_pemphigoid",
+          "label": "Bullous Pemphigoid (BP)"
+        }
+      ],
+      "hint": "Closed list from Alaska Medicaid Dupixent Prior Authorization Criteria (effective 11/1/2025)."
+    },
+    "age_years": {
+      "type": "select",
+      "label": "Age",
+      "option_style": "age_bands"
+    },
+    "prescriber_specialty": {
+      "type": "select",
+      "label": "Prescriber specialty",
+      "options": [
+        {
+          "value": "allergist",
+          "label": "Allergist"
+        },
+        {
+          "value": "immunologist",
+          "label": "Immunologist"
+        },
+        {
+          "value": "dermatologist",
+          "label": "Dermatologist"
+        },
+        {
+          "value": "pulmonologist",
+          "label": "Pulmonologist"
+        },
+        {
+          "value": "ent",
+          "label": "ENT specialist"
+        },
+        {
+          "value": "primary_care",
+          "label": "Primary care (not specialty)"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ],
+      "hint": "Must be prescribed by or in consultation with the indication-appropriate specialist."
+    },
+    "ad_topical_failures": {
+      "type": "multi",
+      "label": "AD: tried/failed or contraindication (\u22652 for 30 days)",
+      "options": [
+        {
+          "value": "medium_high_tcs_adult_or_low_tcs_pediatric",
+          "label": "TCS (medium\u2013high if \u226518y / low-potency if <18y)"
+        },
+        {
+          "value": "topical_calcineurin_inhibitor",
+          "label": "Topical calcineurin inhibitor"
+        },
+        {
+          "value": "pde4_inhibitor",
+          "label": "Phosphodiesterase 4 inhibitor"
+        },
+        {
+          "value": "contraindication_to_remaining",
+          "label": "Contraindication covering remaining agents"
+        }
+      ],
+      "hint": "AK AD criteria: at least two of TCS / TCI / PDE4 for 30 days (or contraindication)."
+    },
+    "ad_bsa_severity_documented": {
+      "type": "select",
+      "label": "AD: baseline BSA affected and symptom severity documented",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "asthma_phenotype": {
+      "type": "select",
+      "label": "Asthma phenotype",
+      "options": [
+        {
+          "value": "eosinophilic_ge_150",
+          "label": "Eosinophilic phenotype (eos \u2265150 cells/mcL)"
+        },
+        {
+          "value": "ocs_dependent",
+          "label": "Oral corticosteroid\u2013dependent asthma"
+        },
+        {
+          "value": "neither",
+          "label": "Neither / not documented"
+        }
+      ]
+    },
+    "asthma_ics_laba_3mo": {
+      "type": "select",
+      "label": "Asthma: \u22653 month trial of ICS + LABA with ongoing symptoms",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "not_acute_bronchospasm": {
+      "type": "select",
+      "label": "Not for acute bronchospasm / status asthmaticus",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Confirmed \u2014 maintenance use only"
+        },
+        {
+          "value": "no",
+          "label": "No \u2014 acute use"
+        }
+      ]
+    },
+    "crswnp_failed_two_nasal_steroids_3mo": {
+      "type": "select",
+      "label": "CRSwNP: inadequate response/intolerance/CI to TWO nasal corticosteroid sprays (different APIs) \u00d7 3 months",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "crswnp_add_on_maintenance": {
+      "type": "select",
+      "label": "CRSwNP: will be used as add-on maintenance therapy",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "eoe_eos_hpf_ge_15": {
+      "type": "select",
+      "label": "EoE: \u226515 intraepithelial eosinophils per HPF",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "eoe_dysphagia_symptoms": {
+      "type": "select",
+      "label": "EoE: symptoms of dysphagia present",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "weight_ge_15_kg": {
+      "type": "select",
+      "label": "Weight \u2265 15 kg (required for EoE)",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes (\u226515 kg)"
+        },
+        {
+          "value": "no",
+          "label": "No (<15 kg)"
+        }
+      ]
+    },
+    "pn_bsa_severity_documented": {
+      "type": "select",
+      "label": "PN: baseline BSA affected and symptom severity documented",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "pn_failed_high_potency_tcs_30d": {
+      "type": "select",
+      "label": "PN: tried/failed or CI to high-potency TCS \u226530 days",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "copd_failed_triple_therapy_3mo": {
+      "type": "select",
+      "label": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) \u22653 consecutive months",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "copd_exacerbation_history_met": {
+      "type": "select",
+      "label": "COPD: \u22652 moderate or \u22651 severe exacerbation in prior year (incl. \u22651 on triple therapy)",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "copd_spirometry_criteria_met": {
+      "type": "select",
+      "label": "COPD: post-BD FEV1/FVC <0.7 and FEV1 30\u201370% predicted",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "copd_eos_ge_300_60d": {
+      "type": "select",
+      "label": "COPD: eosinophil count \u2265300 cells/\u00b5L within last 60 days",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "csu_duration_and_frequency_met": {
+      "type": "select",
+      "label": "CSU: urticaria \u22656 weeks with symptoms \u22653 days/week on non-sedating antihistamine (max dose)",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "csu_failed_max_antihistamine_60d": {
+      "type": "select",
+      "label": "CSU: tried/failed or CI to non-sedating antihistamine at max dose \u226560 days",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "bp_confirmed_serology_or_biopsy": {
+      "type": "select",
+      "label": "BP: diagnosis confirmed by serology or biopsy",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "bp_bpdai_and_nrs_thresholds": {
+      "type": "select",
+      "label": "BP: BPDAI activity \u226524 and average weekly Peak Pruritus NRS \u22654 at baseline",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "bp_failed_two_standard_therapies": {
+      "type": "select",
+      "label": "BP: tried/failed \u22652 standard therapies (different MOA) \u22651 month each",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "bp_initial_ocs_combination": {
+      "type": "select",
+      "label": "BP: dupilumab initially combined with tapering oral corticosteroids until control",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "not_used_with_another_biologic": {
+      "type": "select",
+      "label": "Not used with another biologic (e.g. Enbrel, Xolair, Remicade)",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes \u2014 no concomitant biologic"
+        },
+        {
+          "value": "no",
+          "label": "No \u2014 concomitant biologic"
+        }
+      ]
+    }
+  },
+  "criteria": [
+    {
+      "id": "indication_fda_labeled",
+      "text": "Indication must be one of the FDA-labeled uses in Alaska Medicaid Dupixent PA Criteria: AD, asthma, CRSwNP, EoE, PN, COPD, CSU, or BP.",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#fda-indications",
+      "required_facts": [
+        "indication"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "indication",
+        "values": [
+          "atopic_dermatitis",
+          "asthma",
+          "crswnp",
+          "eosinophilic_esophagitis",
+          "prurigo_nodularis",
+          "copd",
+          "chronic_spontaneous_urticaria",
+          "bullous_pemphigoid"
+        ]
+      }
+    },
+    {
+      "id": "fda_labeled_age_for_indication",
+      "text": "Patient meets FDA-labeled age for the requested indication (AD \u22656 months; asthma \u22656y; CRSwNP/CSU \u226512y; EoE \u22651y; PN/COPD/BP adult \u226518y).",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "age_years"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "atopic_dermatitis"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 0.5
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 6
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "crswnp"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 12
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "eosinophilic_esophagitis"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "prurigo_nodularis"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 18
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "copd"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 18
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "chronic_spontaneous_urticaria"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 12
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "bullous_pemphigoid"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 18
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "prescriber_specialty_for_indication",
+      "text": "Prescribed by or in consultation with an indication-appropriate specialist (AD/PN/CSU/BP: allergist/immunologist/dermatologist; asthma: allergist/immunologist/pulmonologist; CRSwNP/EoE: allergist/immunologist/ENT; COPD: pulmonologist).",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "prescriber_specialty"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "atopic_dermatitis"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist",
+                  "dermatologist"
+                ]
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist",
+                  "pulmonologist"
+                ]
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "crswnp"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist",
+                  "ent"
+                ]
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "eosinophilic_esophagitis"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist",
+                  "ent"
+                ]
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "prurigo_nodularis"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist",
+                  "dermatologist"
+                ]
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "copd"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "pulmonologist"
+                ]
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "chronic_spontaneous_urticaria"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist",
+                  "dermatologist"
+                ]
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "bullous_pemphigoid"
+              },
+              {
+                "op": "in",
+                "fact": "prescriber_specialty",
+                "values": [
+                  "allergist",
+                  "immunologist",
+                  "dermatologist"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ad_documentation_and_step_therapy",
+      "text": "Atopic Dermatitis: documentation of baseline BSA/severity AND tried/failed or contraindication to at least two of (age-appropriate TCS, topical calcineurin inhibitor, PDE4 inhibitor) for 30 days.",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "ad_bsa_severity_documented",
+        "ad_topical_failures"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "atopic_dermatitis"
+              },
+              {
+                "op": "eq",
+                "fact": "ad_bsa_severity_documented",
+                "value": true
+              },
+              {
+                "op": "count_gte",
+                "fact": "ad_topical_failures",
+                "value": 2,
+                "values": [
+                  "medium_high_tcs_adult_or_low_tcs_pediatric",
+                  "topical_calcineurin_inhibitor",
+                  "pde4_inhibitor",
+                  "contraindication_to_remaining"
+                ]
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "asthma",
+              "crswnp",
+              "eosinophilic_esophagitis",
+              "prurigo_nodularis",
+              "copd",
+              "chronic_spontaneous_urticaria",
+              "bullous_pemphigoid"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "asthma_phenotype_controller_and_not_acute",
+      "text": "Asthma: eosinophilic phenotype (eos \u2265150) OR OCS-dependent; AND ongoing symptoms after \u22653 month ICS+LABA; AND not for acute bronchospasm/status asthmaticus.",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "asthma_phenotype",
+        "asthma_ics_laba_3mo",
+        "not_acute_bronchospasm"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "asthma"
+              },
+              {
+                "op": "in",
+                "fact": "asthma_phenotype",
+                "values": [
+                  "eosinophilic_ge_150",
+                  "ocs_dependent"
+                ]
+              },
+              {
+                "op": "eq",
+                "fact": "asthma_ics_laba_3mo",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "not_acute_bronchospasm",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "atopic_dermatitis",
+              "crswnp",
+              "eosinophilic_esophagitis",
+              "prurigo_nodularis",
+              "copd",
+              "chronic_spontaneous_urticaria",
+              "bullous_pemphigoid"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "crswnp_step_and_add_on",
+      "text": "CRSwNP: inadequate response/intolerance/CI to a 3-month trial of TWO nasal corticosteroid sprays with different active ingredients; AND used as add-on maintenance.",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "crswnp_failed_two_nasal_steroids_3mo",
+        "crswnp_add_on_maintenance"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "crswnp"
+              },
+              {
+                "op": "eq",
+                "fact": "crswnp_failed_two_nasal_steroids_3mo",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "crswnp_add_on_maintenance",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "atopic_dermatitis",
+              "asthma",
+              "eosinophilic_esophagitis",
+              "prurigo_nodularis",
+              "copd",
+              "chronic_spontaneous_urticaria",
+              "bullous_pemphigoid"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "eoe_labs_symptoms_weight",
+      "text": "EoE: \u226515 eos/hpf; dysphagia symptoms; and weight \u226515 kg.",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "eoe_eos_hpf_ge_15",
+        "eoe_dysphagia_symptoms",
+        "weight_ge_15_kg"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "eosinophilic_esophagitis"
+              },
+              {
+                "op": "eq",
+                "fact": "eoe_eos_hpf_ge_15",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "eoe_dysphagia_symptoms",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "weight_ge_15_kg",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "atopic_dermatitis",
+              "asthma",
+              "crswnp",
+              "prurigo_nodularis",
+              "copd",
+              "chronic_spontaneous_urticaria",
+              "bullous_pemphigoid"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pn_documentation_and_step",
+      "text": "Prurigo Nodularis: baseline BSA/severity documented; AND tried/failed or CI to high-potency corticosteroid \u226530 days.",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "pn_bsa_severity_documented",
+        "pn_failed_high_potency_tcs_30d"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "prurigo_nodularis"
+              },
+              {
+                "op": "eq",
+                "fact": "pn_bsa_severity_documented",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "pn_failed_high_potency_tcs_30d",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "atopic_dermatitis",
+              "asthma",
+              "crswnp",
+              "eosinophilic_esophagitis",
+              "copd",
+              "chronic_spontaneous_urticaria",
+              "bullous_pemphigoid"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "copd_triple_exacerbation_spirometry_eos",
+      "text": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) \u22653 months; AND exacerbation history; AND post-BD FEV1/FVC <0.7 with FEV1 30\u201370% predicted; AND eos \u2265300 cells/\u00b5L within 60 days.",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "copd_failed_triple_therapy_3mo",
+        "copd_exacerbation_history_met",
+        "copd_spirometry_criteria_met",
+        "copd_eos_ge_300_60d"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "copd"
+              },
+              {
+                "op": "eq",
+                "fact": "copd_failed_triple_therapy_3mo",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "copd_exacerbation_history_met",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "copd_spirometry_criteria_met",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "copd_eos_ge_300_60d",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "atopic_dermatitis",
+              "asthma",
+              "crswnp",
+              "eosinophilic_esophagitis",
+              "prurigo_nodularis",
+              "chronic_spontaneous_urticaria",
+              "bullous_pemphigoid"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "csu_duration_and_antihistamine_step",
+      "text": "CSU: urticaria \u22656 weeks with symptoms \u22653 days/week on max-dose non-sedating antihistamine; AND tried/failed or CI to max-dose non-sedating antihistamine \u226560 days.",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "csu_duration_and_frequency_met",
+        "csu_failed_max_antihistamine_60d"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "chronic_spontaneous_urticaria"
+              },
+              {
+                "op": "eq",
+                "fact": "csu_duration_and_frequency_met",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "csu_failed_max_antihistamine_60d",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "atopic_dermatitis",
+              "asthma",
+              "crswnp",
+              "eosinophilic_esophagitis",
+              "prurigo_nodularis",
+              "copd",
+              "bullous_pemphigoid"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "bp_confirm_scores_step_ocs",
+      "text": "Bullous Pemphigoid: confirmed by serology or biopsy; BPDAI \u226524 and Peak Pruritus NRS \u22654; failed \u22652 standard therapies (different MOA) \u22651 month each; initially combined with tapering oral corticosteroids.",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "bp_confirmed_serology_or_biopsy",
+        "bp_bpdai_and_nrs_thresholds",
+        "bp_failed_two_standard_therapies",
+        "bp_initial_ocs_combination"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "bullous_pemphigoid"
+              },
+              {
+                "op": "eq",
+                "fact": "bp_confirmed_serology_or_biopsy",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "bp_bpdai_and_nrs_thresholds",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "bp_failed_two_standard_therapies",
+                "value": true
+              },
+              {
+                "op": "eq",
+                "fact": "bp_initial_ocs_combination",
+                "value": true
+              }
+            ]
+          },
+          {
+            "op": "in",
+            "fact": "indication",
+            "values": [
+              "atopic_dermatitis",
+              "asthma",
+              "crswnp",
+              "eosinophilic_esophagitis",
+              "prurigo_nodularis",
+              "copd",
+              "chronic_spontaneous_urticaria"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "not_concomitant_biologic",
+      "text": "Denial if used in conjunction with another biologic medication (e.g. Enbrel, Xolair, Remicade).",
+      "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#denial-criteria",
+      "required_facts": [
+        "not_used_with_another_biologic"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "not_used_with_another_biologic",
+        "value": true
+      }
+    }
+  ],
+  "alternatives": [
+    "xolair"
+  ],
+  "max_units": {
+    "quantity": null,
+    "days_supply": 28,
+    "notes": "AK criteria quantity limits: initial dose up to 600 mg; subsequent doses up to 300 mg per week. Approval up to 3 months; reauth up to 12 months."
+  },
+  "notes": [
+    "Partial encoding from AK Dupixent criteria PDF (Version 3, updated 09/19/2025, effective 11/1/2025).",
+    "Encoded: FDA indication list; age-by-indication; specialty-by-indication; AD/asthma/CRSwNP/EoE/PN/COPD/CSU/BP step & documentation gates as clinician attestations (booleans / multi-select); concomitant-biologic denial.",
+    "Not encoded as numeric predicates (attestation only): exact eos cell counts, FEV1 %, BPDAI/NRS raw scores, BSA %, days-supply quantity math, hypersensitivity/eye-symptom cautions.",
+    "Alternatives: Xolair is evaluate()-linked (overlapping asthma/CRSwNP/CSU). PDL preferred same-class peers (Adbry for AD; Fasenra/Nucala/Xolair for asthma) attach on fail via market basket."
+  ]
+}

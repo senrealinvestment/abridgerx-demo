@@ -220,14 +220,27 @@
             )
           )
           .join("");
-        // Guaranteed controlled options even if API omitted them
-        const safeOpts =
-          opts.length > 0
-            ? selectOpts
-            : `<option value="">Select…</option>
+        // Indication / diagnosis must NEVER fall back to Yes/No/Unknown.
+        // Boolean fallback (Yes/No only) is reserved for true boolean facts.
+        const isIndication =
+          f.key === "indication" ||
+          f.option_source === "missing_indication_list" ||
+          (f.label || "").toLowerCase().includes("indication");
+        const isBoolean =
+          f.option_source === "boolean_yes_no" ||
+          f.option_source === "fallback_boolean_yes_no";
+        let safeOpts;
+        if (opts.length > 0) {
+          safeOpts = selectOpts;
+        } else if (isIndication) {
+          safeOpts = `<option value="">No diagnosis list available</option>`;
+        } else if (isBoolean) {
+          safeOpts = `<option value="">Select…</option>
                <option value="yes">Yes</option>
-               <option value="no">No</option>
-               <option value="unknown">Unknown</option>`;
+               <option value="no">No</option>`;
+        } else {
+          safeOpts = `<option value="">No options configured</option>`;
+        }
         return `<label for="fact-${esc(f.key)}">${esc(f.label)}</label>
           <select id="fact-${esc(f.key)}" name="${esc(f.key)}">${safeOpts}</select>
           ${hint}`;

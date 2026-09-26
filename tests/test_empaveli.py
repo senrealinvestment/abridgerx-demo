@@ -1,4 +1,4 @@
-"""Emflaza AK Medicaid Version 1 criteria and catalog integration."""
+"""Empaveli AK Medicaid Version 1 criteria and catalog integration."""
 
 from __future__ import annotations
 
@@ -16,17 +16,20 @@ from ui.app import _coerce_patient
 
 
 def load_pack():
-    return json.loads((ROOT / "data/alaska/parsed/emflaza.json").read_text())
+    return json.loads((ROOT / "data/alaska/parsed/empaveli.json").read_text())
 
 
 def _base(**extra):
     facts = {
-        "indication": "dmd",
-        "age_years": 2.0,
-        "prescriber_specialty": "neurologist",
-        "dmd_documented_by_dystrophin_gene": True,
-        "prednisone_step": "trial_failure_6mo",
-        "not_concurrent_live_vaccinations": True,
+        "indication": "pnh", "age_years": 18.0,
+        "prescriber_specialty": "hematologist",
+        "pnh_flow_cytometry_confirmed": True,
+        "pnh_therapy_indication": "thrombotic_event_history",
+        "baseline_ldh_and_hb_lt_10_5": True,
+        "encapsulated_bacteria_vaccines_14d": True,
+        "complement_inhibitor_combo_status": "not_combined",
+        "no_unresolved_encapsulated_infection": True,
+        "prescriber_rems_enrolled": True,
     }
     facts.update(extra)
     return facts
@@ -36,33 +39,36 @@ def _assert_fail(clause, **extra):
     result = evaluate(load_pack(), _base(**extra))
     assert result.decision == "fail", result
     assert {c["id"] for c in result.failed_clauses} == {clause}, result
+    assert result.citations
 
 
 def test_metadata_and_source_criteria():
     pack = load_pack()
     assert pack["encoding_status"] == "partial"
     assert pack["pdl_status"] == "unknown"
-    assert pack["drug"] == {"name": "Emflaza", "generic_name": "deflazacort",
-                            "therapeutic_class": "corticosteroids"}
-    assert pack["source"]["effective_date"] == "2019-11-20"
-    assert pack["source"]["citation"] == "https://health.alaska.gov/media/fqpa0ykl/20199emflaza_criteria_approved_2019.pdf"
-    assert pack["source"]["criteria_pdf"] == "data/alaska/raw/20199emflaza_criteria_approved_2019.pdf"
+    assert pack["drug"] == {"name": "Empaveli", "generic_name": "pegcetacoplan",
+                            "therapeutic_class": "complement-inhibitor"}
+    assert pack["source"]["effective_date"] == "2023-01-02"
+    assert pack["source"]["citation"] == "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf"
+    assert pack["source"]["criteria_pdf"] == "data/alaska/raw/202211-empaveli_criteria_2022.pdf"
     assert "inferred_required_facts" not in pack
-    assert len(pack["criteria"]) == 6
+    assert len(pack["criteria"]) == 10
     assert {f for c in pack["criteria"] for f in c["required_facts"]} == set(_base())
-    assert pack["max_units"] == {
-        "quantity": None, "days_supply": None,
-        "notes": "Up to 0.9 mg/kg/day rounded to nearest tablet strength (6, 18, 30, 36 mg). Attestation only.",
-    }
+    assert pack["max_units"]["quantity"] == 10
+    assert pack["max_units"]["days_supply"] == 30
     notes = " ".join(pack["notes"])
-    for text in ["8/13/2019", "9/20/2019", "11/20/2019", "up to 30 days",
-                 "up to 12 months", "endocrine", "cardiovascular", "renal",
-                 "infection", "mood", "bone mineral density", "manual review"]:
+    for text in ["10/10/2022", "11/18/2022", "1/2/2023", "6 months", "12 months",
+                 "chart notes", "transfusion", "10 vials", "1080 mg", "every 3 days",
+                 "J3490", "fatal infections", "REMS", "silica", "aPTT", "manual review"]:
         assert text in notes, text
+    for clause in pack["criteria"]:
+        pred = clause["predicate"]
+        if pred["fact"] in {"baseline_ldh_and_hb_lt_10_5", "encapsulated_bacteria_vaccines_14d"}:
+            assert pred == {"op": "eq", "fact": pred["fact"], "value": True}
 
 
 def test_closed_indication_and_selects_only():
-    detail = drug_detail("emflaza")
+    detail = drug_detail("empaveli")
     assert detail and detail["can_evaluate"]
     fields = {f["key"]: f for f in detail["fact_fields"]}
     assert set(fields) == set(_base()) == set(load_pack()["fact_ui"])
@@ -72,47 +78,52 @@ def test_closed_indication_and_selects_only():
         assert field.get("free_text") is not True
         assert field["options"]
     assert fields["indication"]["options"] == [{
-        "value": "dmd", "label": "Duchenne muscular dystrophy (DMD)",
+        "value": "pnh", "label": "Paroxysmal nocturnal hemoglobinuria (PNH)",
     }]
     assert fields["age_years"]["options"] == [
-        {"value": "0", "label": "Under 2"},
-        {"value": "2", "label": "2 years or older"},
+        {"value": "0", "label": "Under 18"}, {"value": "18", "label": "18+"},
     ]
     for invalid in ["yes", "no", "unknown", True, False, "other"]:
         _assert_fail("indication_fda_labeled", indication=invalid)
 
 
-def test_pass_and_age_boundary():
-    for age in [2.0, 3.0, 18.0]:
+def test_age_boundary_and_all_therapy_routes():
+    for specialty in ["hematologist", "oncologist"]:
+        for therapy in ["thrombotic_event_history", "organ_damage_chronic_hemolysis",
+                        "transfusion_in_12mo", "high_ldh_with_symptoms"]:
+            for combo in ["not_combined", "cross_titration_soliris_4wk"]:
+                assert evaluate(load_pack(), _base(prescriber_specialty=specialty,
+                    pnh_therapy_indication=therapy,
+                    complement_inhibitor_combo_status=combo)).decision == "pass"
+    for age in [18, 19, 80]:
         assert evaluate(load_pack(), _base(age_years=age)).decision == "pass"
-    for age in [0.0, 1.0, 1.99]:
+    for age in [0, 17, 17.99]:
         _assert_fail("minimum_age", age_years=age)
-
-
-def test_specialty_and_prednisone_routes():
-    for specialty in ["neurologist", "dmd_specialist"]:
-        for step in ["trial_failure_6mo", "contraindication", "significant_adverse_effects"]:
-            assert evaluate(load_pack(), _base(prescriber_specialty=specialty,
-                                              prednisone_step=step)).decision == "pass"
     for specialty in ["primary_care", "other"]:
         _assert_fail("prescriber_specialty", prescriber_specialty=specialty)
-    _assert_fail("prednisone_step", prednisone_step="none")
+    for therapy in ["none", "unknown"]:
+        _assert_fail("pnh_therapy_indication", pnh_therapy_indication=therapy)
+    for combo in ["combined_other", "cross_titration_ultomiris_4wk", "unknown"]:
+        _assert_fail("complement_inhibitor_combo_status", complement_inhibitor_combo_status=combo)
 
 
-def test_fail_diagnosis_and_live_vaccinations():
-    _assert_fail("dmd_documented_by_dystrophin_gene", dmd_documented_by_dystrophin_gene=False)
-    _assert_fail("not_concurrent_live_vaccinations", not_concurrent_live_vaccinations=False)
+def test_every_attestation_blocks_when_false():
+    for fact, value in _base().items():
+        if value is True:
+            _assert_fail(fact, **{fact: False})
 
 
 def test_every_ui_option_and_coercion():
     pack = load_pack()
     facts = {key: field["options"][0]["value"] for key, field in pack["fact_ui"].items()}
-    facts["age_years"] = "2"
+    facts["age_years"] = "18"
     assert _coerce_patient(facts) == _base()
     passing = {
-        "age_years": {"2"}, "prescriber_specialty": {"neurologist", "dmd_specialist"},
-        "prednisone_step": {"trial_failure_6mo", "contraindication", "significant_adverse_effects"},
-        "indication": {"dmd"},
+        "age_years": {"18"}, "prescriber_specialty": {"hematologist", "oncologist"},
+        "pnh_therapy_indication": {"thrombotic_event_history", "organ_damage_chronic_hemolysis",
+                                   "transfusion_in_12mo", "high_ldh_with_symptoms"},
+        "complement_inhibitor_combo_status": {"not_combined", "cross_titration_soliris_4wk"},
+        "indication": {"pnh"},
     }
     for fact, field in pack["fact_ui"].items():
         for option in field["options"]:
@@ -120,6 +131,9 @@ def test_every_ui_option_and_coercion():
             result = evaluate(pack, _coerce_patient(dict(facts, **{fact: value})))
             expected = "pass" if value in passing.get(fact, {"yes"}) else "fail"
             assert result.decision == expected, (fact, value, result)
+            if expected == "fail":
+                clause = "minimum_age" if fact == "age_years" else fact
+                assert {c["id"] for c in result.failed_clauses} == {clause}
 
 
 def test_missing_facts_need_info():
@@ -138,9 +152,9 @@ def test_catalog_mirrors_and_status_load():
     base = ROOT / "data/alaska/parsed"
     pack = load_pack()
     catalog = load_rule_pack_catalog()
-    assert catalog["emflaza"] == pack
-    assert get_rule_pack("emflaza") == ("emflaza", pack)
-    assert (base / "rule_packs/emflaza.json").read_bytes() == (base / "emflaza.json").read_bytes()
+    assert catalog["empaveli"] == pack
+    assert get_rule_pack("empaveli") == ("empaveli", pack)
+    assert (base / "rule_packs/empaveli.json").read_bytes() == (base / "empaveli.json").read_bytes()
     assert catalog == {
         path.stem: json.loads(path.read_text())
         for path in (base / "rule_packs").glob("*.json")
@@ -166,4 +180,4 @@ if __name__ == "__main__":
         if name.startswith("test_") and callable(fn):
             fn()
             print("ok", name)
-    print("emflaza tests ok")
+    print("empaveli tests ok")

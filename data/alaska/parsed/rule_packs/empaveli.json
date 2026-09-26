@@ -1,0 +1,340 @@
+{
+  "drug": {
+    "name": "Empaveli",
+    "therapeutic_class": "complement-inhibitor",
+    "generic_name": "pegcetacoplan"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Empaveli Criteria",
+    "effective_date": "2023-01-02",
+    "citation": "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf",
+    "criteria_pdf": "data/alaska/raw/202211-empaveli_criteria_2022.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "partial",
+  "criteria": [
+    {
+      "id": "indication_fda_labeled",
+      "text": "Treatment of paroxysmal nocturnal hemoglobinuria (PNH), the closed indication in this Alaska Medicaid criteria PDF.",
+      "citation": "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf#indications",
+      "required_facts": [
+        "indication"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "indication",
+        "values": [
+          "pnh"
+        ]
+      }
+    },
+    {
+      "id": "minimum_age",
+      "text": "Patient is an adult, 18 years or older (FDA labeled age; approval criterion 1).",
+      "citation": "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf#approval-criteria",
+      "required_facts": [
+        "age_years"
+      ],
+      "predicate": {
+        "op": "gte",
+        "fact": "age_years",
+        "value": 18
+      }
+    },
+    {
+      "id": "prescriber_specialty",
+      "text": "Prescribed by or in consultation with a hematologist or oncologist (approval criterion 2).",
+      "citation": "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf#approval-criteria",
+      "required_facts": [
+        "prescriber_specialty"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "prescriber_specialty",
+        "values": [
+          "hematologist",
+          "oncologist"
+        ]
+      }
+    },
+    {
+      "id": "pnh_flow_cytometry_confirmed",
+      "text": "PNH diagnosis confirmed by flow cytometry diagnostic testing (approval criterion 3).",
+      "citation": "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf#approval-criteria",
+      "required_facts": [
+        "pnh_flow_cytometry_confirmed"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "pnh_flow_cytometry_confirmed",
+        "value": true
+      }
+    },
+    {
+      "id": "pnh_therapy_indication",
+      "text": "Patient has at least one qualifying indication for PNH therapy (approval criterion 4).",
+      "citation": "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf#approval-criteria",
+      "required_facts": [
+        "pnh_therapy_indication"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "pnh_therapy_indication",
+        "values": [
+          "thrombotic_event_history",
+          "organ_damage_chronic_hemolysis",
+          "transfusion_in_12mo",
+          "high_ldh_with_symptoms"
+        ]
+      }
+    },
+    {
+      "id": "baseline_ldh_and_hb_lt_10_5",
+      "text": "Documented baseline serum lactate dehydrogenase (LDH) AND hemoglobin <10.5 g/dL (approval criterion 5).",
+      "citation": "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf#approval-criteria",
+      "required_facts": [
+        "baseline_ldh_and_hb_lt_10_5"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "baseline_ldh_and_hb_lt_10_5",
+        "value": true
+      }
+    },
+    {
+      "id": "encapsulated_bacteria_vaccines_14d",
+      "text": "Appropriate vaccinations against encapsulated bacteria (e.g. meningococcal) at least 14 days prior to the first dose (approval criterion 6).",
+      "citation": "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf#approval-criteria",
+      "required_facts": [
+        "encapsulated_bacteria_vaccines_14d"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "encapsulated_bacteria_vaccines_14d",
+        "value": true
+      }
+    },
+    {
+      "id": "complement_inhibitor_combo_status",
+      "text": "Not combined with another PNH complement inhibitor (e.g. Soliris or Ultomiris), unless in a 4-week Soliris to Empaveli cross-titration period (denial criterion 2).",
+      "citation": "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf#denial-criteria",
+      "required_facts": [
+        "complement_inhibitor_combo_status"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "complement_inhibitor_combo_status",
+        "values": [
+          "not_combined",
+          "cross_titration_soliris_4wk"
+        ]
+      }
+    },
+    {
+      "id": "no_unresolved_encapsulated_infection",
+      "text": "No unresolved serious infection caused by encapsulated bacteria (denial criterion 3).",
+      "citation": "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf#denial-criteria",
+      "required_facts": [
+        "no_unresolved_encapsulated_infection"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "no_unresolved_encapsulated_infection",
+        "value": true
+      }
+    },
+    {
+      "id": "prescriber_rems_enrolled",
+      "text": "Prescriber is enrolled in the REMS program (denial criterion 4).",
+      "citation": "https://health.alaska.gov/media/ybpntcwi/202211-empaveli_criteria_2022.pdf#denial-criteria",
+      "required_facts": [
+        "prescriber_rems_enrolled"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "prescriber_rems_enrolled",
+        "value": true
+      }
+    }
+  ],
+  "alternatives": [],
+  "notes": [
+    "Partial encoding from Alaska Medicaid Empaveli (pegcetacoplan) Criteria Version 1: Original 10/10/2022; Approval 11/18/2022; Effective 1/2/2023. The effective_date remains 2023-01-02.",
+    "Encoded: the closed PNH indication, adult age, approval criteria 1-6, and denial criteria 2-4 as approval-blocking predicates. Denial criterion 1 is failure to meet approval criteria. Baseline LDH and hemoglobin <10.5 g/dL are a combined attestation, without numeric lab predicates.",
+    "Duration (notes only): initial approval 6 months; reauthorization 12 months with chart notes showing improvement or stabilization on the requested medication, such as decreased RBC transfusion requirement, stabilization/improvement of hemoglobin, reduction of LDH, or stabilization/improvement of symptoms.",
+    "Quantity limit: 10 vials per 30 days (1080 mg administered every 3 days); HCPCS J3490. Quantity metadata is recorded, but quantity and dosing are not evaluated as predicates.",
+    "Cautions: Empaveli may predispose individuals to serious, life-threatening, or fatal infections caused by encapsulated bacteria. Prescriber REMS enrollment and absence of unresolved serious encapsulated-bacteria infection are required attestations.",
+    "Caution (notes only): silica reagents in coagulation panels may cause artificially prolonged activated partial thromboplastin time (aPTT).",
+    "Approval durations, reauthorization response documentation, quantity, dosing, and cautions require manual review; this pack remains partial.",
+    "No PDL hit; pdl_status remains unknown. Soliris and Ultomiris remain text_only, so no evaluate-linked alternatives are specified."
+  ],
+  "fact_ui": {
+    "indication": {
+      "type": "select",
+      "label": "Treatment of paroxysmal nocturnal hemoglobinuria (PNH), the closed indication in this Alaska Medicaid criteria PDF.",
+      "options": [
+        {
+          "value": "pnh",
+          "label": "Paroxysmal nocturnal hemoglobinuria (PNH)"
+        }
+      ]
+    },
+    "age_years": {
+      "type": "select",
+      "label": "Patient is an adult, 18 years or older (FDA labeled age; approval criterion 1).",
+      "options": [
+        {
+          "value": "0",
+          "label": "Under 18"
+        },
+        {
+          "value": "18",
+          "label": "18+"
+        }
+      ]
+    },
+    "prescriber_specialty": {
+      "type": "select",
+      "label": "Prescribed by or in consultation with a hematologist or oncologist (approval criterion 2).",
+      "options": [
+        {
+          "value": "hematologist",
+          "label": "Hematologist"
+        },
+        {
+          "value": "oncologist",
+          "label": "Oncologist"
+        },
+        {
+          "value": "primary_care",
+          "label": "Primary care"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    "pnh_flow_cytometry_confirmed": {
+      "type": "select",
+      "label": "PNH diagnosis confirmed by flow cytometry diagnostic testing (approval criterion 3).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "pnh_therapy_indication": {
+      "type": "select",
+      "label": "Patient has at least one qualifying indication for PNH therapy (approval criterion 4).",
+      "options": [
+        {
+          "value": "thrombotic_event_history",
+          "label": "Presence or history of a thrombotic event"
+        },
+        {
+          "value": "organ_damage_chronic_hemolysis",
+          "label": "Organ damage secondary to chronic hemolysis"
+        },
+        {
+          "value": "transfusion_in_12mo",
+          "label": "At least 1 transfusion in 12 months"
+        },
+        {
+          "value": "high_ldh_with_symptoms",
+          "label": "LDH activity \u22651.5 x ULN with clinical symptoms"
+        },
+        {
+          "value": "none",
+          "label": "None of these"
+        }
+      ]
+    },
+    "baseline_ldh_and_hb_lt_10_5": {
+      "type": "select",
+      "label": "Documented baseline serum lactate dehydrogenase (LDH) AND hemoglobin <10.5 g/dL (approval criterion 5).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "encapsulated_bacteria_vaccines_14d": {
+      "type": "select",
+      "label": "Appropriate vaccinations against encapsulated bacteria (e.g. meningococcal) at least 14 days prior to the first dose (approval criterion 6).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "complement_inhibitor_combo_status": {
+      "type": "select",
+      "label": "Not combined with another PNH complement inhibitor (e.g. Soliris or Ultomiris), unless in a 4-week Soliris to Empaveli cross-titration period (denial criterion 2).",
+      "options": [
+        {
+          "value": "not_combined",
+          "label": "Not combined with another PNH complement inhibitor"
+        },
+        {
+          "value": "cross_titration_soliris_4wk",
+          "label": "Within the 4-week Soliris to Empaveli cross-titration period"
+        },
+        {
+          "value": "combined_other",
+          "label": "Other combination with a PNH complement inhibitor"
+        }
+      ]
+    },
+    "no_unresolved_encapsulated_infection": {
+      "type": "select",
+      "label": "No unresolved serious infection caused by encapsulated bacteria (denial criterion 3).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "prescriber_rems_enrolled": {
+      "type": "select",
+      "label": "Prescriber is enrolled in the REMS program (denial criterion 4).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    }
+  },
+  "max_units": {
+    "quantity": 10,
+    "days_supply": 30,
+    "notes": "10 vials per 30 days (1080 mg administered every 3 days). HCPCS J3490. Quantity and dosing require manual review; not numeric predicates."
+  }
+}

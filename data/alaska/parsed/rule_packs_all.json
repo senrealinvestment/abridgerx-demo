@@ -312,16 +312,112 @@
       "criteria_pdf": "data/alaska/raw/adcirca.pdf"
     },
     "requires_pa": true,
-    "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "pdl_status": "non_preferred",
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Diagnosis of pulmonary arterial hypertension (PAH, WHO Group I). Approval criteria 1 and 2 describe the same diagnosis.",
+        "citation": "https://health.alaska.gov/media/aqvmnzsx/adcirca.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "pah_who_group_i"
+          ]
+        }
+      },
+      {
+        "id": "not_taking_nitrates",
+        "text": "Not currently treated with or taking any nitrate products. Denial if the patient is on any nitrate product.",
+        "citation": "https://health.alaska.gov/media/aqvmnzsx/adcirca.pdf#approval-criteria",
+        "required_facts": [
+          "not_taking_nitrates"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_taking_nitrates",
+          "value": true
+        }
+      },
+      {
+        "id": "sildenafil_step",
+        "text": "Tried generic sildenafil OR documented allergy or hypersensitivity to a component of all available generic sildenafil.",
+        "citation": "https://health.alaska.gov/media/aqvmnzsx/adcirca.pdf#approval-criteria",
+        "required_facts": [
+          "sildenafil_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "sildenafil_step",
+          "values": [
+            "tried_generic_sildenafil",
+            "allergy_hypersensitivity_all_generic_sildenafil"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from AK Adcirca (tadalafil), a phosphodiesterase 5 (PDE5) inhibitor for PAH, Criteria Version 2 (Updated/Approved 09/19/2014). The existing ingest effective_date 2023-06-01 is retained; the PDF version date is distinct.",
+      "Encoded: closed PAH (WHO Group I) indication covering approval criteria 1\u20132; no current nitrate products (approval criterion 3 and denial criterion); generic sildenafil trial OR documented allergy/hypersensitivity to a component of all available generic sildenafil (criteria 4\u20135). The exception does not bypass the diagnosis or nitrate requirements.",
+      "The PDF states no numeric age gate; no age criterion is encoded. Sildenafil trial and documented allergy/hypersensitivity are selected attestations; no trial duration or failure requirement is specified.",
+      "Duration notes only: approval may be granted up to 1 year. Quantity limit: 2 tablets/day, attestation/manual review only, not a numeric predicate.",
+      "PDL: Adcirca (tadalafil) is non-preferred in PAH AGENTS, ORAL AND INHALED; generic sildenafil is a preferred peer. Revatio remains text_only. No evaluate()-linked PAH peer pack is available, so alternatives is empty; class/PDL alternatives remain available through the UI."
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Indication (diagnosis)",
+        "options": [
+          {
+            "value": "pah_who_group_i",
+            "label": "Pulmonary Arterial Hypertension (PAH, WHO Group I)"
+          }
+        ],
+        "hint": "Closed list from Alaska Medicaid Adcirca criteria; approval criteria 1 and 2 describe the same diagnosis."
+      },
+      "not_taking_nitrates": {
+        "type": "select",
+        "label": "Not currently treated with or taking any nitrate products",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 no nitrate products"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 taking a nitrate product"
+          }
+        ]
+      },
+      "sildenafil_step": {
+        "type": "select",
+        "label": "Generic sildenafil step therapy",
+        "options": [
+          {
+            "value": "tried_generic_sildenafil",
+            "label": "Tried generic sildenafil"
+          },
+          {
+            "value": "allergy_hypersensitivity_all_generic_sildenafil",
+            "label": "Documented allergy or hypersensitivity to a component of all available generic sildenafil"
+          },
+          {
+            "value": "neither",
+            "label": "Neither"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": 1,
+      "notes": "Quantity limit: 2 tablets per day. Attestation/manual review only; daily quantity is not a numeric predicate."
+    }
   },
   "aduhelm": {
     "drug": {

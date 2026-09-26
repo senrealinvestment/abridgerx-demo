@@ -1199,7 +1199,8 @@
     "fasenra",
     "nucala",
     "cinqair",
-    "tezspire"
+    "tezspire",
+    "adbry"
   ],
   "max_units": {
     "quantity": null,
@@ -1210,6 +1211,6 @@
     "Partial encoding from AK Dupixent criteria PDF (Version 3, updated 09/19/2025, effective 11/1/2025).",
     "Encoded: FDA indication list; age-by-indication; specialty-by-indication; AD/asthma/CRSwNP/EoE/PN/COPD/CSU/BP step & documentation gates as clinician attestations (booleans / multi-select); concomitant-biologic denial.",
     "Not encoded as numeric predicates (attestation only): exact eos cell counts, FEV1 %, BPDAI/NRS raw scores, BSA %, days-supply quantity math, hypersensitivity/eye-symptom cautions.",
-    "Alternatives: Xolair/Fasenra/Nucala/Cinqair are evaluate()-linked (overlapping asthma/CRSwNP where labeled). PDL preferred same-class peers attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma."
+    "Alternatives: Xolair/Fasenra/Nucala/Cinqair are evaluate()-linked (overlapping asthma/CRSwNP where labeled). PDL preferred same-class peers attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma. Adbry is evaluate()-linked for overlapping atopic dermatitis."
   ]
 }

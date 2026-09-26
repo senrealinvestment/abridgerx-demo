@@ -77,7 +77,8 @@
   "adbry": {
     "drug": {
       "name": "Adbry",
-      "therapeutic_class": "biologics"
+      "generic_name": "tralokinumab-ldrm",
+      "therapeutic_class": "immunomodulators"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -87,18 +88,214 @@
       "criteria_pdf": "data/alaska/raw/adbry_criteria_2024.pdf"
     },
     "requires_pa": true,
-    "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "pdl_status": "preferred",
+    "encoding_status": "partial",
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Indication (FDA-labeled diagnosis)",
+        "options": [
+          {
+            "value": "atopic_dermatitis",
+            "label": "Moderate-to-severe atopic dermatitis (\u226512 years)"
+          }
+        ],
+        "hint": "Closed list from Alaska Medicaid Adbry criteria, effective 2024-06-01; topical prescription therapies inadequately control disease or are not advisable."
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Age",
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescriber or consulting specialist",
+        "options": [
+          {
+            "value": "allergist",
+            "label": "Allergist"
+          },
+          {
+            "value": "immunologist",
+            "label": "Immunologist"
+          },
+          {
+            "value": "dermatologist",
+            "label": "Dermatologist"
+          },
+          {
+            "value": "primary_care",
+            "label": "Primary care (not specialty)"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ],
+        "hint": "Must be prescribed by or in consultation with an allergist, immunologist, or dermatologist."
+      },
+      "ad_bsa_severity_documented": {
+        "type": "select",
+        "label": "AD: baseline BSA affected and symptom severity documented",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "ad_topical_failures": {
+        "type": "multi",
+        "label": "AD: tried/failed or contraindication (\u22652 for 30 days)",
+        "options": [
+          {
+            "value": "medium_high_tcs_adult_or_low_tcs_pediatric",
+            "label": "TCS (medium\u2013high if >18y / low-potency if <18y)"
+          },
+          {
+            "value": "topical_calcineurin_inhibitor",
+            "label": "Topical calcineurin inhibitor"
+          },
+          {
+            "value": "pde4_inhibitor",
+            "label": "Phosphodiesterase 4 inhibitor"
+          },
+          {
+            "value": "contraindication_to_remaining",
+            "label": "Contraindication covering remaining agents"
+          }
+        ],
+        "hint": "Select therapies tried and failed for at least 30 days or contraindicated. At least two of TCS / TCI / PDE4 are required. The remaining-agents contraindication option attests to a distinct remaining class; do not double-count a selected class. The PDF does not specify TCS potency at exactly age 18."
+      },
+      "not_used_with_another_biologic": {
+        "type": "select",
+        "label": "Not used with another biologic (e.g. Enbrel, Dupixent, Xolair)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 no concomitant biologic"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 concomitant biologic"
+          }
+        ]
+      }
+    },
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Diagnosis is moderate-to-severe atopic dermatitis, inadequately controlled with topical prescription therapies or when those therapies are not advisable.",
+        "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf#fda-indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "atopic_dermatitis"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age_for_indication",
+        "text": "Patient meets FDA-labeled age for Adbry: at least 12 years.",
+        "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 12
+        }
+      },
+      {
+        "id": "prescriber_specialty_for_indication",
+        "text": "Prescribed by or in consultation with an allergist, immunologist, or dermatologist.",
+        "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "allergist",
+            "immunologist",
+            "dermatologist"
+          ]
+        }
+      },
+      {
+        "id": "ad_documentation_and_step_therapy",
+        "text": "Baseline affected BSA AND symptom severity documented; tried and failed for 30 days or contraindication to at least two of: TCS (medium\u2013high potency if >18 years / low potency if <18 years), topical calcineurin inhibitor, PDE4 inhibitor.",
+        "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "indication",
+          "ad_bsa_severity_documented",
+          "ad_topical_failures"
+        ],
+        "predicate": {
+          "op": "all",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "indication",
+              "value": "atopic_dermatitis"
+            },
+            {
+              "op": "eq",
+              "fact": "ad_bsa_severity_documented",
+              "value": true
+            },
+            {
+              "op": "count_gte",
+              "fact": "ad_topical_failures",
+              "value": 2,
+              "values": [
+                "medium_high_tcs_adult_or_low_tcs_pediatric",
+                "topical_calcineurin_inhibitor",
+                "pde4_inhibitor",
+                "contraindication_to_remaining"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "not_concomitant_biologic",
+        "text": "Denial if used in conjunction with another biologic medication (e.g. Enbrel, Dupixent, Xolair).",
+        "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf#denial-criteria",
+        "required_facts": [
+          "not_used_with_another_biologic"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_used_with_another_biologic",
+          "value": true
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
+    "alternatives": [
+      "dupixent"
+    ],
+    "max_units": {
+      "quantity": null,
+      "days_supply": 28,
+      "notes": "First month: up to 1200 mg (eight 150 mg injections); thereafter up to 600 mg (four 150 mg injections) monthly. Initial approval up to 3 months; reauthorization up to 12 months. Quantity limits are not numeric predicates."
+    },
+    "notes": [
+      "Partial encoding from AK Adbry (tralokinumab-ldrm), an IL-13 antagonist, Criteria Version 1 (Original 02/27/2024, Accepted 04/19/2024, Effective 06/1/2024).",
+      "Encoded: closed moderate-to-severe atopic dermatitis indication; FDA age \u226512 years; specialty or consultation; baseline affected BSA and symptom severity documentation; at least two topical classes tried/failed for 30 days or contraindicated; no concomitant biologic. Failure to meet approval criteria results in denial.",
+      "Attestation only, not numeric predicates: BSA percentage, symptom severity, topical potency and 30-day trial duration, contraindications, and monthly quantity math. TCS wording follows the PDF (>18 years medium\u2013high potency; <18 years low potency); exactly age 18 is unspecified. Shared Dupixent AD option values are retained.",
+      "Duration notes only: initial approval up to 3 months; reauthorization up to 12 months. The PDF specifies no additional reauthorization response predicate. Cautions (hypersensitivity, eye symptoms, live vaccines, helminth infection) are not encoded as approval gates.",
+      "Alternatives: Dupixent is evaluate()-linked for overlapping atopic dermatitis. Adbry is PDL preferred in IMMUNOMODULATORS, ATOPIC DERMATITIS."
     ]
   },
   "adcirca": {
@@ -2471,7 +2668,8 @@
       "fasenra",
       "nucala",
       "cinqair",
-      "tezspire"
+      "tezspire",
+      "adbry"
     ],
     "max_units": {
       "quantity": null,
@@ -2482,7 +2680,7 @@
       "Partial encoding from AK Dupixent criteria PDF (Version 3, updated 09/19/2025, effective 11/1/2025).",
       "Encoded: FDA indication list; age-by-indication; specialty-by-indication; AD/asthma/CRSwNP/EoE/PN/COPD/CSU/BP step & documentation gates as clinician attestations (booleans / multi-select); concomitant-biologic denial.",
       "Not encoded as numeric predicates (attestation only): exact eos cell counts, FEV1 %, BPDAI/NRS raw scores, BSA %, days-supply quantity math, hypersensitivity/eye-symptom cautions.",
-      "Alternatives: Xolair/Fasenra/Nucala/Cinqair are evaluate()-linked (overlapping asthma/CRSwNP where labeled). PDL preferred same-class peers attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma."
+      "Alternatives: Xolair/Fasenra/Nucala/Cinqair are evaluate()-linked (overlapping asthma/CRSwNP where labeled). PDL preferred same-class peers attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma. Adbry is evaluate()-linked for overlapping atopic dermatitis."
     ]
   },
   "ebglyss": {

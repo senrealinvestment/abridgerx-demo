@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AbridgeRx — Alaska Medicaid PA check</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <h1>AbridgeRx</h1>
+      <span class="tag">Alaska Medicaid · clinician check</span>
+    </div>
+    <p class="subtitle">Search a drug → see PA / PDL / max units → run deterministic criteria when encoded.</p>
+    <p class="disclaimer">
+      <strong>Advisory only.</strong> Based on published Alaska Medicaid criteria documents.
+      Not a guarantee of approval. Synthetic patient facts only — no PHI until a clinic BAA is in place.
+    </p>
+  </header>
+
+  <main class="layout">
+    <section class="panel" aria-label="Drug search and facts">
+      <h2>1. Drug</h2>
+      <div class="search-wrap">
+        <input
+          id="drug-search"
+          type="search"
+          placeholder="Type brand or generic (e.g. Dupixent, Skyrizi)…"
+          autocomplete="off"
+          aria-autocomplete="list"
+          aria-controls="typeahead"
+        />
+        <ul id="typeahead" class="typeahead hidden" role="listbox"></ul>
+      </div>
+
+      <div id="drug-card" class="drug-card hidden"></div>
+
+      <div id="facts-section" class="hidden">
+        <h2 style="margin-top:1.25rem">2. Synthetic patient facts</h2>
+        <p class="muted">Fields come from the rule pack’s required / inferred facts. Do not enter real PHI.</p>
+        <form id="facts-form" class="facts-form"></form>
+        <div class="btn-row">
+          <button type="button" class="primary" id="btn-check">Run check</button>
+          <button type="button" class="ghost" id="btn-clear">Clear facts</button>
+        </div>
+        <div id="form-error" class="error hidden"></div>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="Results">
+      <h2>3. Result</h2>
+      <div id="result-empty" class="empty-state">
+        Select a drug to see PA status, citations, and (when encoded) a pass / fail / need_info decision.
+      </div>
+      <div id="result-panel" class="hidden"></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,4 +1,5 @@
-"""Minimal loaders for Vercel demo (bundled JSON only)."""
+"""Load Alaska Medicaid drug index, rule packs, and criteria text for the UI."""
+
 from __future__ import annotations
 
 import json
@@ -8,9 +9,155 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
 PARSED = ROOT / "data" / "alaska" / "parsed"
+RULE_PACKS_DIR = PARSED / "rule_packs"
+CRITERIA_TEXT_DIR = PARSED / "criteria_text"
+DRUG_INDEX_PATH = PARSED / "drug_index.json"
+
+
+def _read_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _read_json_maybe_gz(path: Path) -> Any:
+    """Read JSON, or gzip-compressed JSON when path ends with .gz / sibling .gz exists."""
+    import gzip
+
+    if path.suffix == ".gz" or str(path).endswith(".json.gz"):
+        with gzip.open(path, "rt", encoding="utf-8") as f:
+            return json.load(f)
+    gz = Path(str(path) + ".gz")
+    if not path.exists() and gz.exists():
+        with gzip.open(gz, "rt", encoding="utf-8") as f:
+            return json.load(f)
+    return _read_json(path)
+
+
+@lru_cache(maxsize=1)
+def load_drug_index() -> dict[str, Any]:
+    return _read_json_maybe_gz(DRUG_INDEX_PATH)
+
+
+@lru_cache(maxsize=1)
+def load_rule_pack_catalog() -> dict[str, dict[str, Any]]:
+    """slug -> rule pack. Prefer bundled rule_packs_all(.json|.json.gz), else directory."""
+    bundled = PARSED / "rule_packs_all.json"
+    bundled_gz = PARSED / "rule_packs_all.json.gz"
+    if bundled.exists() or bundled_gz.exists():
+        data = _read_json_maybe_gz(bundled if bundled.exists() else bundled_gz)
+        if isinstance(data, dict):
+            return data  # type: ignore[return-value]
+
+    catalog: dict[str, dict[str, Any]] = {}
+    if RULE_PACKS_DIR.is_dir():
+        for path in RULE_PACKS_DIR.glob("*.json"):
+            pack = _read_json(path)
+            catalog[path.stem] = pack
+    # Top-level authored packs (dupixent.json, xolair.json) — same content as rule_packs
+    for path in PARSED.glob("*.json"):
+        if path.name in (
+            "drug_index.json",
+            "pdl_index.json",
+            "max_units_index.json",
+            "ENCODING_STATUS.json",
+            "rule_packs_all.json",
+            "criteria_text_all.json",
+        ):
+            continue
+        if path.stem not in catalog:
+            data = _read_json(path)
+            if isinstance(data, dict) and "drug" in data and "criteria" in data:
+                catalog[path.stem] = data
+    return catalog
+
+
+@lru_cache(maxsize=1)
+def load_criteria_text_index() -> dict[str, dict[str, Any]]:
+    bundled = PARSED / "criteria_text_all.json"
+    bundled_gz = PARSED / "criteria_text_all.json.gz"
+    if bundled.exists() or bundled_gz.exists():
+        data = _read_json_maybe_gz(bundled if bundled.exists() else bundled_gz)
+        if isinstance(data, dict):
+            return data  # type: ignore[return-value]
+
+    out: dict[str, dict[str, Any]] = {}
+    if not CRITERIA_TEXT_DIR.is_dir():
+        return out
+    for path in CRITERIA_TEXT_DIR.glob("*.json"):
+        out[path.stem] = _read_json(path)
+    return out
+
+
+def _normalize(s: str) -> str:
+    return "".join(ch for ch in s.lower() if ch.isalnum())
+
+
+def resolve_rule_pack_slug(drug_slug: str) -> str | None:
+    """Map a drug_index slug to a rule_pack slug when possible."""
+    catalog = load_rule_pack_catalog()
+    if drug_slug in catalog:
+        return drug_slug
+
+    # Longest pack slug that is a prefix of the drug slug (e.g. dupixent-pen → dupixent)
+    best: str | None = None
+    for pack_slug in catalog:
+        if drug_slug == pack_slug or drug_slug.startswith(pack_slug + "-"):
+            if best is None or len(pack_slug) > len(best):
+                best = pack_slug
+    if best:
+        return best
+
+    # First hyphen segment (xolair-vial-sub-q → xolair)
+    base = drug_slug.split("-")[0]
+    if base in catalog:
+        return base
+
+    # Name-normalized match against pack drug names
+    drugs = load_drug_index()["drugs"]
+    drug = next((d for d in drugs if d["slug"] == drug_slug), None)
+    if drug:
+        candidates = [_normalize(n) for n in drug.get("names") or []]
+        candidates.append(_normalize(drug.get("primary_name") or ""))
+        for pack_slug, pack in catalog.items():
+            pname = _normalize(pack.get("drug", {}).get("name") or pack_slug)
+            if pname and pname in candidates:
+                return pack_slug
+            if any(pname and (pname == c or c.startswith(pname)) for c in candidates if c):
+                return pack_slug
+    return None
+
+
+def get_rule_pack(slug_or_drug_slug: str) -> tuple[str, dict[str, Any]] | None:
+    catalog = load_rule_pack_catalog()
+    if slug_or_drug_slug in catalog:
+        return slug_or_drug_slug, catalog[slug_or_drug_slug]
+    resolved = resolve_rule_pack_slug(slug_or_drug_slug)
+    if resolved and resolved in catalog:
+        return resolved, catalog[resolved]
+    return None
+
+
+def get_criteria_text(pack_slug: str) -> dict[str, Any] | None:
+    return load_criteria_text_index().get(pack_slug)
+
+
+def required_facts_for_pack(pack: dict[str, Any]) -> list[str]:
+    facts: list[str] = []
+    seen: set[str] = set()
+    for clause in pack.get("criteria") or []:
+        for f in clause.get("required_facts") or []:
+            if f not in seen:
+                seen.add(f)
+                facts.append(f)
+    for f in pack.get("inferred_required_facts") or []:
+        if f not in seen:
+            seen.add(f)
+            facts.append(f)
+    return facts
+
 
 # Age bands aligned to Dupixent/Xolair gte thresholds (0.5, 1, 6, 12, 18).
-# Each option value is the band minimum so evaluate() gte checks behave correctly.
+# Each option value is the band minimum so evaluate() gte checks behave correctly
+# for every age in that band relative to those thresholds.
 AGE_BAND_OPTIONS: list[dict[str, str]] = [
     {"value": "0", "label": "Under 6 months"},
     {"value": "0.5", "label": "6 months – under 1 year"},
@@ -31,86 +178,8 @@ DEFAULT_SPECIALTY_OPTIONS: list[str] = [
 ]
 
 
-@lru_cache(maxsize=1)
-def _drug_index() -> dict[str, Any]:
-    return json.loads((PARSED / "drug_index.json").read_text(encoding="utf-8"))
-
-
-@lru_cache(maxsize=1)
-def load_rule_pack_catalog() -> dict[str, Any]:
-    path = PARSED / "rule_packs_all.json"
-    data = json.loads(path.read_text(encoding="utf-8"))
-    if (
-        isinstance(data, dict)
-        and "packs" not in data
-        and any(isinstance(v, dict) and "criteria" in v for v in data.values())
-    ):
-        return data
-    if isinstance(data, dict) and "packs" in data:
-        return {
-            p.get("slug") or p.get("drug", {}).get("name", "").lower(): p
-            for p in data["packs"]
-        }
-    return data if isinstance(data, dict) else {}
-
-
-def search_drugs(q: str, limit: int = 25) -> list[dict[str, Any]]:
-    qn = (q or "").strip().lower()
-    out: list[dict[str, Any]] = []
-    catalog = load_rule_pack_catalog()
-    for d in _drug_index().get("drugs") or []:
-        names = [d.get("primary_name") or ""] + list(d.get("names") or [])
-        hay = " ".join(names).lower() + " " + (d.get("slug") or "")
-        if qn not in hay:
-            continue
-        slug = d.get("slug") or ""
-        pack_slug = None
-        if slug in catalog:
-            pack_slug = slug
-        else:
-            base = slug.split("-")[0]
-            if base in catalog:
-                pack_slug = base
-        out.append(
-            {
-                "slug": slug,
-                "primary_name": d.get("primary_name")
-                or (d.get("names") or [""])[0],
-                "name": d.get("primary_name") or (d.get("names") or [""])[0],
-                "requires_pa": d.get("requires_pa"),
-                "pdl_status": d.get("pdl_status"),
-                "max_units_30_days": d.get("max_units_30_days"),
-                "rule_pack_slug": pack_slug,
-                "encoding_status": (
-                    catalog[pack_slug].get("encoding_status") if pack_slug else None
-                ),
-            }
-        )
-        if len(out) >= limit:
-            break
-    return out
-
-
-def get_rule_pack(slug: str):
-    catalog = load_rule_pack_catalog()
-    if slug in catalog:
-        return slug, catalog[slug]
-    base = slug.split("-")[0] if slug else slug
-    for key, pack in catalog.items():
-        if key == base or key.startswith(base + "-") or slug.startswith(key + "-"):
-            return key, pack
-        names = pack.get("drug", {}) if isinstance(pack.get("drug"), dict) else {}
-        if (names.get("name") or "").lower().replace(" ", "-") == base:
-            return key, pack
-    for d in _drug_index().get("drugs") or []:
-        if d.get("slug") == slug:
-            for key in catalog:
-                if key in slug or slug.startswith(key):
-                    return key, catalog[key]
-    return None
-
-
 def _walk_predicates(pred: dict[str, Any] | None):
+    """Yield predicate nodes depth-first (including nested any/all args)."""
     if not isinstance(pred, dict) or not pred:
         return
     yield pred
@@ -119,6 +188,7 @@ def _walk_predicates(pred: dict[str, Any] | None):
 
 
 def _collect_choice_values(pack: dict[str, Any], fact: str) -> list[str]:
+    """Union of values from in/choice predicates (and eq) for a fact across the pack."""
     seen: set[str] = set()
     ordered: list[str] = []
     for clause in pack.get("criteria") or []:
@@ -140,66 +210,122 @@ def _collect_choice_values(pack: dict[str, Any], fact: str) -> list[str]:
     return ordered
 
 
-def required_facts_for_pack(pack: dict[str, Any]) -> list[str]:
-    facts: list[str] = []
-    seen: set[str] = set()
-    for clause in pack.get("criteria") or []:
-        for f in clause.get("required_facts") or []:
-            if f not in seen:
-                seen.add(f)
-                facts.append(f)
-    for f in pack.get("inferred_required_facts") or []:
-        if f not in seen:
-            seen.add(f)
-            facts.append(f)
-    return facts
+def indication_options_for_pack(pack: dict[str, Any]) -> list[str] | None:
+    """If any clause constrains indication with in/choice/eq, return those values."""
+    opts = _collect_choice_values(pack, "indication")
+    return opts or None
 
 
-def build_fact_fields(pack: dict[str, Any]) -> list[dict[str, Any]]:
-    fields: list[dict[str, Any]] = []
-    for fact in required_facts_for_pack(pack):
-        field: dict[str, Any] = {"key": fact, "label": fact.replace("_", " ").title()}
-        if fact == "age_years":
-            field["type"] = "select"
-            field["label"] = "Age"
-            field["options"] = list(AGE_BAND_OPTIONS)
-            field["option_style"] = "age_bands"
-            field["hint"] = (
-                "Band value sets age_years to the band minimum for gte checks "
-                "(0 / 0.5 / 1 / 6 / 12 / 18)."
+def specialty_options_for_pack(pack: dict[str, Any]) -> list[str] | None:
+    opts = _collect_choice_values(pack, "prescriber_specialty")
+    return opts or None
+
+
+def search_drugs(query: str, limit: int = 25) -> list[dict[str, Any]]:
+    q = (query or "").strip().lower()
+    if not q:
+        return []
+    drugs = load_drug_index()["drugs"]
+    catalog = load_rule_pack_catalog()
+    hits: list[tuple[int, dict[str, Any]]] = []
+
+    for d in drugs:
+        slug = d["slug"]
+        names = " ".join(d.get("names") or [])
+        primary = d.get("primary_name") or ""
+        generic = d.get("generic_name") or ""
+        hay = f"{slug} {primary} {names} {generic}".lower()
+        if q not in hay:
+            continue
+        # Rank: prefix on primary/slug first
+        rank = 50
+        if primary.lower().startswith(q) or slug.startswith(q):
+            rank = 0
+        elif any(n.lower().startswith(q) for n in (d.get("names") or [])):
+            rank = 5
+        elif q in primary.lower() or q in slug:
+            rank = 10
+        pack_slug = resolve_rule_pack_slug(slug)
+        hits.append(
+            (
+                rank,
+                {
+                    "slug": slug,
+                    "primary_name": primary,
+                    "names": d.get("names") or [],
+                    "generic_name": d.get("generic_name"),
+                    "requires_pa": bool(d.get("requires_pa")),
+                    "pdl_status": d.get("pdl_status"),
+                    "max_units_30_days": d.get("max_units_30_days"),
+                    "market_basket": d.get("market_basket"),
+                    "rule_pack_slug": pack_slug,
+                    "encoding_status": (
+                        catalog[pack_slug].get("encoding_status") if pack_slug else None
+                    ),
+                    "has_criteria_pdf": pack_slug is not None,
+                },
             )
-        elif fact == "indication":
-            opts = _collect_choice_values(pack, "indication")
-            if opts:
-                field["type"] = "select"
-                field["options"] = opts
-                field["free_text"] = False
-            else:
-                field["type"] = "text"
-                field["free_text"] = True
-        elif fact in ("prescriber_specialty", "provider_type", "specialty"):
-            field["type"] = "select"
-            field["label"] = "Provider / specialty"
-            opts = _collect_choice_values(pack, "prescriber_specialty")
-            field["options"] = opts or list(DEFAULT_SPECIALTY_OPTIONS)
-            field["free_text"] = False
-        else:
-            field["type"] = "text"
-        fields.append(field)
-    return fields
+        )
+
+    # Also surface rule-pack drugs that may not appear as exact PA-list rows
+    for pack_slug, pack in catalog.items():
+        name = pack.get("drug", {}).get("name") or pack_slug
+        hay = f"{pack_slug} {name}".lower()
+        if q not in hay:
+            continue
+        # Skip if already represented as exact slug hit
+        if any(h[1]["slug"] == pack_slug for h in hits):
+            continue
+        rank = 2 if name.lower().startswith(q) or pack_slug.startswith(q) else 15
+        hits.append(
+            (
+                rank,
+                {
+                    "slug": pack_slug,
+                    "primary_name": name,
+                    "names": [name],
+                    "generic_name": pack.get("drug", {}).get("generic_name"),
+                    "requires_pa": bool(pack.get("requires_pa", True)),
+                    "pdl_status": pack.get("pdl_status"),
+                    "max_units_30_days": None,
+                    "market_basket": pack.get("drug", {}).get("therapeutic_class"),
+                    "rule_pack_slug": pack_slug,
+                    "encoding_status": pack.get("encoding_status"),
+                    "has_criteria_pdf": True,
+                    "from_rule_pack": True,
+                },
+            )
+        )
+
+    hits.sort(key=lambda t: (t[0], t[1]["primary_name"].lower()))
+    return [h[1] for h in hits[:limit]]
 
 
 def drug_detail(slug: str) -> dict[str, Any] | None:
-    drug = next((d for d in (_drug_index().get("drugs") or []) if d.get("slug") == slug), None)
-    resolved = get_rule_pack(slug)
-    pack = resolved[1] if resolved else None
-    pack_slug = resolved[0] if resolved else None
+    drugs = load_drug_index()["drugs"]
+    drug = next((d for d in drugs if d["slug"] == slug), None)
+    pack_info = get_rule_pack(slug)
+    pack_slug = pack_info[0] if pack_info else None
+    pack = pack_info[1] if pack_info else None
 
     if drug is None and pack is None:
         return None
 
-    encoding = (pack or {}).get("encoding_status")
-    can_evaluate = encoding in ("full", "partial") and bool((pack or {}).get("criteria"))
+    primary = (
+        (drug or {}).get("primary_name")
+        or (pack or {}).get("drug", {}).get("name")
+        or slug
+    )
+    requires_pa = bool(
+        (drug or {}).get("requires_pa")
+        if drug and "requires_pa" in drug
+        else (pack or {}).get("requires_pa", False)
+    )
+    pdl = (drug or {}).get("pdl_status") or (pack or {}).get("pdl_status")
+    max_units = (drug or {}).get("max_units_30_days")
+    if max_units is None and pack and pack.get("max_units"):
+        max_units = pack["max_units"]
+
     citations: list[str] = []
     if pack and pack.get("source", {}).get("citation"):
         citations.append(pack["source"]["citation"])
@@ -208,12 +334,41 @@ def drug_detail(slug: str) -> dict[str, Any] | None:
         if c and c not in citations:
             citations.append(c)
 
-    primary = (
-        (drug or {}).get("primary_name")
-        or (pack or {}).get("drug", {}).get("name")
-        or slug
-    )
-    fact_fields = build_fact_fields(pack) if pack else []
+    criteria_text = get_criteria_text(pack_slug) if pack_slug else None
+    encoding = (pack or {}).get("encoding_status")
+    can_evaluate = encoding in ("full", "partial") and bool((pack or {}).get("criteria"))
+
+    fact_fields: list[dict[str, Any]] = []
+    if pack:
+        for fact in required_facts_for_pack(pack):
+            field: dict[str, Any] = {"key": fact, "label": fact.replace("_", " ").title()}
+            if fact == "age_years":
+                field["type"] = "select"
+                field["label"] = "Age"
+                field["options"] = list(AGE_BAND_OPTIONS)
+                field["option_style"] = "age_bands"
+                field["hint"] = (
+                    "Band value sets age_years to the band minimum for gte checks "
+                    "(0 / 0.5 / 1 / 6 / 12 / 18)."
+                )
+            elif fact == "indication":
+                opts = indication_options_for_pack(pack)
+                if opts:
+                    field["type"] = "select"
+                    field["options"] = opts
+                    field["free_text"] = False
+                else:
+                    field["type"] = "text"
+                    field["free_text"] = True
+            elif fact in ("prescriber_specialty", "provider_type", "specialty"):
+                field["type"] = "select"
+                field["label"] = "Provider / specialty"
+                opts = specialty_options_for_pack(pack)
+                field["options"] = opts or list(DEFAULT_SPECIALTY_OPTIONS)
+                field["free_text"] = False
+            else:
+                field["type"] = "text"
+            fact_fields.append(field)
 
     return {
         "slug": slug,
@@ -221,20 +376,18 @@ def drug_detail(slug: str) -> dict[str, Any] | None:
         "generic_name": (drug or {}).get("generic_name")
         or (pack or {}).get("drug", {}).get("generic_name"),
         "names": (drug or {}).get("names") or [primary],
-        "requires_pa": bool(
-            (drug or {}).get("requires_pa")
-            if drug and "requires_pa" in drug
-            else (pack or {}).get("requires_pa", False)
-        ),
-        "pdl_status": (drug or {}).get("pdl_status") or (pack or {}).get("pdl_status"),
-        "max_units_30_days": (drug or {}).get("max_units_30_days"),
+        "requires_pa": requires_pa,
+        "pdl_status": pdl,
+        "max_units_30_days": max_units,
         "market_basket": (drug or {}).get("market_basket")
         or (pack or {}).get("drug", {}).get("therapeutic_class"),
+        "sources": (drug or {}).get("sources") or [],
+        "pa_list_file": (drug or {}).get("pa_list_file"),
         "rule_pack_slug": pack_slug,
         "encoding_status": encoding,
         "can_evaluate": can_evaluate,
         "citations": citations,
-        "source": (pack or {}).get("source") or {},
+        "source": (pack or {}).get("source"),
         "notes": (pack or {}).get("notes") or [],
         "criteria_clauses": [
             {
@@ -246,6 +399,20 @@ def drug_detail(slug: str) -> dict[str, Any] | None:
             for c in (pack or {}).get("criteria") or []
         ],
         "fact_fields": fact_fields,
-        "inferred_required_facts": required_facts_for_pack(pack) if pack else [],
+        "inferred_required_facts": (pack or {}).get("inferred_required_facts") or [],
+        "criteria_text": (
+            {
+                "extracted_text": (criteria_text or {}).get("extracted_text"),
+                "source_url": (criteria_text or {}).get("source_url"),
+                "source_file": (criteria_text or {}).get("source_file"),
+                "effective_date": (criteria_text or {}).get("effective_date"),
+                "inferred_required_facts": (criteria_text or {}).get(
+                    "inferred_required_facts"
+                )
+                or [],
+            }
+            if criteria_text
+            else None
+        ),
         "alternatives": (pack or {}).get("alternatives") or [],
     }

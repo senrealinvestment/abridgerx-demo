@@ -4,7 +4,8 @@
   "installCommand": "pip install -r requirements.txt",
   "functions": {
     "app.py": {
-      "maxDuration": 30
+      "maxDuration": 30,
+      "excludeFiles": "{**/*.pyc,__pycache__/**,.git/**}"
     }
   }
 }

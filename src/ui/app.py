@@ -22,7 +22,9 @@ from ui.loaders import (  # noqa: E402
     drug_detail,
     get_rule_pack,
     load_rule_pack_catalog,
+    merge_alternatives,
     search_drugs,
+    suggest_pdl_class_alternatives,
 )
 
 STATIC_DIR = UI_DIR / "static"
@@ -40,21 +42,51 @@ class CheckRequest(BaseModel):
 
 
 def _coerce_patient(raw: dict[str, Any]) -> dict[str, Any]:
-    """Normalize form values; drop empty strings; coerce age_years to float."""
+    """Normalize form values; drop empty strings; coerce age_years to float.
+
+    Multi-select facts may arrive as a list (checkbox group) or a single string.
+    """
     out: dict[str, Any] = {}
     for k, v in (raw or {}).items():
         if v is None or v == "":
+            continue
+        if isinstance(v, list):
+            cleaned = [x for x in v if x is not None and x != ""]
+            if cleaned:
+                out[k] = cleaned
             continue
         if k == "age_years":
             try:
                 out[k] = float(v)
             except (TypeError, ValueError):
                 continue
-        elif isinstance(v, str) and v.lower() in ("true", "false"):
-            out[k] = v.lower() == "true"
+        elif isinstance(v, str) and v.lower() in ("true", "false", "yes", "no"):
+            out[k] = v.lower() in ("true", "yes")
         else:
             out[k] = v
     return out
+
+
+def _with_class_alternatives(
+    *,
+    slug: str,
+    pack: dict[str, Any],
+    result_alternatives: list[dict[str, Any]] | None,
+    decision: str,
+    mode: str,
+) -> list[dict[str, Any]]:
+    """Merge evaluate()-verified alts with PDL preferred same-class suggestions.
+
+    Always attach best-effort PDL peers on fail, and on text_only flows regardless
+    of decision (labeled as not evaluate()-verified).
+    """
+    want_pdl = decision == "fail" or mode == "text_only"
+    pdl = (
+        suggest_pdl_class_alternatives(slug, pack)
+        if want_pdl
+        else []
+    )
+    return merge_alternatives(result_alternatives or [], pdl)
 
 
 @app.get("/api/health")
@@ -103,6 +135,13 @@ def api_check(body: CheckRequest) -> dict[str, Any]:
         encoding is None and not (pack.get("criteria") or [])
     ):
         result = check(pack, patient, catalog)
+        alts = _with_class_alternatives(
+            slug=body.slug,
+            pack=pack,
+            result_alternatives=result.alternatives,
+            decision=result.decision,
+            mode="text_only",
+        )
         return {
             "mode": "text_only",
             "decision": result.decision,
@@ -112,12 +151,29 @@ def api_check(body: CheckRequest) -> dict[str, Any]:
             "failed_clauses": result.failed_clauses,
             "missing_facts": result.missing_facts,
             "citations": result.citations,
-            "alternatives": result.alternatives,
-            "notes": result.notes,
+            "alternatives": alts,
+            "notes": result.notes
+            + (
+                [
+                    "Alternatives include PDL preferred peers in the same market basket "
+                    "(best-effort; not evaluate()-verified for text_only packs)."
+                ]
+                if alts
+                else []
+            ),
             "criteria_text": (detail or {}).get("criteria_text"),
             "checklist": (detail or {}).get("fact_fields")
             or [
-                {"key": f, "label": f.replace("_", " ").title(), "type": "text"}
+                {
+                    "key": f,
+                    "label": f.replace("_", " ").title(),
+                    "type": "select",
+                    "options": [
+                        {"value": "yes", "label": "Yes"},
+                        {"value": "no", "label": "No"},
+                        {"value": "unknown", "label": "Unknown"},
+                    ],
+                }
                 for f in ((detail or {}).get("inferred_required_facts") or [])
             ],
             "patient_facts_used": patient,
@@ -125,6 +181,13 @@ def api_check(body: CheckRequest) -> dict[str, Any]:
         }
 
     result = check(pack, patient, catalog)
+    alts = _with_class_alternatives(
+        slug=body.slug,
+        pack=pack,
+        result_alternatives=result.alternatives,
+        decision=result.decision,
+        mode="evaluate",
+    )
     return {
         "mode": "evaluate",
         "decision": result.decision,
@@ -134,7 +197,7 @@ def api_check(body: CheckRequest) -> dict[str, Any]:
         "failed_clauses": result.failed_clauses,
         "missing_facts": result.missing_facts,
         "citations": result.citations,
-        "alternatives": result.alternatives,
+        "alternatives": alts,
         "notes": result.notes,
         "criteria_clauses": (detail or {}).get("criteria_clauses") or [],
         "patient_facts_used": patient,

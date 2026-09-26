@@ -327,3 +327,43 @@ button.ghost:hover { color: var(--primary); border-color: var(--primary); backgr
   margin-top: 0.5rem;
 }
 .hidden { display: none !important; }
+
+.facts-form fieldset.fact-multi {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem 0.75rem;
+  margin: 0.65rem 0 0;
+}
+.facts-form fieldset.fact-multi legend {
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 0 0.25rem;
+}
+.check-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+.check-item {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  color: var(--text) !important;
+  margin: 0 !important;
+  cursor: pointer;
+}
+.check-item input[type="checkbox"] {
+  width: auto !important;
+  margin-top: 0.2rem;
+  accent-color: var(--primary);
+}
+.alt-list .hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+.alt-list li {
+  margin-bottom: 0.65rem;
+}

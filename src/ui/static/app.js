@@ -188,37 +188,69 @@
     }
     factsForm.innerHTML = fields
       .map((f) => {
-        if (f.type === "select" && f.options && f.options.length) {
-          const opts = [`<option value="">Select…</option>`]
-            .concat(
-              f.options.map(
-                (o) =>
-                  `<option value="${esc(optionValue(o))}">${esc(optionLabel(o))}</option>`
-              )
-            )
+        const hint = f.hint ? `<p class="hint">${esc(f.hint)}</p>` : "";
+        const opts = f.options || [];
+
+        // Multi-select facts → checkbox group (never free text)
+        if (f.type === "multi" || f.type === "checkbox" || f.type === "checkboxes") {
+          const boxes = opts
+            .map((o, i) => {
+              const val = optionValue(o);
+              const id = `fact-${esc(f.key)}-${i}`;
+              return `<label class="check-item" for="${id}">
+                <input type="checkbox" id="${id}" name="${esc(f.key)}" value="${esc(val)}" />
+                <span>${esc(optionLabel(o))}</span>
+              </label>`;
+            })
             .join("");
-          const hint = f.hint
-            ? `<p class="hint">${esc(f.hint)}</p>`
-            : "";
-          return `<label for="fact-${esc(f.key)}">${esc(f.label)}</label>
-            <select id="fact-${esc(f.key)}" name="${esc(f.key)}">${opts}</select>
-            ${hint}`;
+          return `<fieldset class="fact-multi" data-fact="${esc(f.key)}">
+            <legend>${esc(f.label)}</legend>
+            <div class="check-group">${boxes || `<p class="hint">No options available.</p>`}</div>
+            ${hint}
+          </fieldset>`;
         }
-        if (f.type === "number") {
-          return `<label for="fact-${esc(f.key)}">${esc(f.label)}</label>
-            <input id="fact-${esc(f.key)}" name="${esc(f.key)}" type="number" step="any" min="0" />`;
-        }
+
+        // Single select — default for all other fact controls
+        // Age bands, indications, specialty, booleans, fallbacks: always <select>
+        const selectOpts = [`<option value="">Select…</option>`]
+          .concat(
+            opts.map(
+              (o) =>
+                `<option value="${esc(optionValue(o))}">${esc(optionLabel(o))}</option>`
+            )
+          )
+          .join("");
+        // Guaranteed controlled options even if API omitted them
+        const safeOpts =
+          opts.length > 0
+            ? selectOpts
+            : `<option value="">Select…</option>
+               <option value="yes">Yes</option>
+               <option value="no">No</option>
+               <option value="unknown">Unknown</option>`;
         return `<label for="fact-${esc(f.key)}">${esc(f.label)}</label>
-          <input id="fact-${esc(f.key)}" name="${esc(f.key)}" type="text" />
-          ${f.free_text ? `<p class="hint">Free text — no encoded option list on this pack.</p>` : ""}`;
+          <select id="fact-${esc(f.key)}" name="${esc(f.key)}">${safeOpts}</select>
+          ${hint}`;
       })
       .join("");
   }
 
   function collectFacts() {
     const data = {};
+    const multiKeys = new Set(
+      [...factsForm.querySelectorAll("input[type=checkbox][name]")].map((el) => el.name)
+    );
+    for (const key of multiKeys) {
+      const vals = [
+        ...factsForm.querySelectorAll(
+          `input[type=checkbox][name="${CSS.escape(key)}"]:checked`
+        ),
+      ].map((el) => el.value);
+      if (vals.length) data[key] = vals;
+    }
     const fd = new FormData(factsForm);
     for (const [k, v] of fd.entries()) {
+      if (multiKeys.has(k)) continue;
       if (v !== "") data[k] = v;
     }
     return data;
@@ -358,15 +390,51 @@
     }
 
     if ((r.alternatives || []).length) {
-      html += `<div class="section"><h3>Alternatives that pass</h3><ul class="alt-list">`;
+      const title =
+        r.mode === "text_only"
+          ? "Suggested alternatives (class / PDL)"
+          : decision === "fail"
+            ? "Alternatives"
+            : "Suggested alternatives";
+      html += `<div class="section"><h3>${title}</h3><ul class="alt-list">`;
       for (const a of r.alternatives) {
-        html += `<li><strong>${esc(a.drug)}</strong> <span class="muted">(${esc(
-          a.rule_id
-        )})</span></li>`;
+        const ver = a.verification || "";
+        const badge =
+          ver === "evaluate_pass"
+            ? `<span class="badge badge-ok">evaluate pass</span>`
+            : ver === "pdl_preferred_same_class"
+              ? `<span class="badge badge-pdl">PDL preferred · same class</span>`
+              : ver
+                ? `<span class="badge badge-text">${esc(ver)}</span>`
+                : "";
+        const note = a.verification_note
+          ? `<div class="hint">${esc(a.verification_note)}</div>`
+          : "";
+        const meta = [
+          a.rule_id ? `pack ${a.rule_id}` : null,
+          a.market_basket ? a.market_basket : null,
+          a.pdl_status ? `PDL ${a.pdl_status}` : null,
+        ]
+          .filter(Boolean)
+          .map(esc)
+          .join(" · ");
+        const cites = (a.citations || [])
+          .slice(0, 2)
+          .map(
+            (c) =>
+              `<a href="${esc(c)}" target="_blank" rel="noopener">${esc(c)}</a>`
+          )
+          .join(" · ");
+        html += `<li>
+          <div><strong>${esc(a.drug)}</strong> ${badge}</div>
+          ${meta ? `<div class="muted">${meta}</div>` : ""}
+          ${note}
+          ${cites ? `<div class="muted">${cites}</div>` : ""}
+        </li>`;
       }
       html += `</ul></div>`;
     } else if (decision === "fail") {
-      html += `<p class="muted">No alternatives in the pack catalog passed for these facts.</p>`;
+      html += `<p class="muted">No evaluate()-verified or PDL preferred same-class alternatives found for these facts.</p>`;
     }
 
     if ((r.citations || []).length) {

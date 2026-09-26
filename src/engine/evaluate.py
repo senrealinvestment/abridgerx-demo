@@ -168,6 +168,10 @@ def find_alternatives(
                     "drug": pack["drug"]["name"],
                     "rule_id": alt_id,
                     "citations": result.citations,
+                    "verification": "evaluate_pass",
+                    "verification_note": (
+                        "Passes evaluate() on the linked rule pack for the submitted facts."
+                    ),
                 }
             )
     return alts
@@ -179,6 +183,7 @@ def check(
     catalog: dict[str, dict[str, Any]] | None = None,
 ) -> EvalResult:
     result = evaluate(rule_pack, patient)
+    # Populate evaluate()-verified alts on fail; callers may merge PDL suggestions.
     if result.decision == "fail" and catalog:
         result.alternatives = find_alternatives(rule_pack, patient, catalog)
     return result

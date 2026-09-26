@@ -173,9 +173,42 @@ DEFAULT_SPECIALTY_OPTIONS: list[str] = [
     "immunologist",
     "pulmonologist",
     "ent",
+    "rheumatologist",
+    "neurologist",
     "primary_care",
     "other",
 ]
+
+YES_NO_OPTIONS: list[dict[str, str]] = [
+    {"value": "yes", "label": "Yes"},
+    {"value": "no", "label": "No"},
+]
+
+YES_NO_UNKNOWN_OPTIONS: list[dict[str, str]] = [
+    {"value": "yes", "label": "Yes"},
+    {"value": "no", "label": "No"},
+    {"value": "unknown", "label": "Unknown"},
+]
+
+# Fact keys that are multi-select (therapy / agent lists).
+MULTI_FACT_KEYS = {
+    "prior_therapy_failures",
+    "failed_therapies",
+    "prior_therapies",
+    "previous_therapies",
+    "concomitant_medications",
+}
+
+BOOLEAN_FACT_HINTS = (
+    "has_",
+    "is_",
+    "was_",
+    "_documented",
+    "_present",
+    "_confirmed",
+    "continuation_of_care",
+    "positive_clinical_response",
+)
 
 
 def _walk_predicates(pred: dict[str, Any] | None):
@@ -219,6 +252,453 @@ def indication_options_for_pack(pack: dict[str, Any]) -> list[str] | None:
 def specialty_options_for_pack(pack: dict[str, Any]) -> list[str] | None:
     opts = _collect_choice_values(pack, "prescriber_specialty")
     return opts or None
+
+
+def _slugify_option(label: str, max_len: int = 56) -> str:
+    import re
+
+    s = re.sub(r"\([^)]*\)", "", label.lower())
+    s = re.sub(r"[^a-z0-9]+", "_", s).strip("_")
+    return (s or "option")[:max_len]
+
+
+def _clean_label(s: str) -> str:
+    import re
+
+    s = re.sub(r"\s+", " ", s).strip(" .;,:")
+    s = s.strip("“”\"'")
+    s = re.sub(r"\s+AND,?$", "", s, flags=re.I).strip()
+    s = re.sub(r"\s+OR,?$", "", s, flags=re.I).strip()
+    return s
+
+
+def parse_indications_from_criteria_text(text: str) -> list[dict[str, str]]:
+    """Derive indication select options from archived criteria PDF text."""
+    import re
+
+    if not text:
+        return []
+    stop = re.compile(
+        r"^(Any diagnosis|Concomitant|The patient meets|Page |Version |ALASKA|"
+        r"Criteria for|Table \d|Dosage|Unless|Patient has been|Complete |"
+        r"Monitoring |Previous |Requested )",
+        re.I,
+    )
+    opts: list[dict[str, str]] = []
+    seen: set[str] = set()
+
+    def add(label: str, value: str | None = None) -> None:
+        label = _clean_label(label)
+        if len(label) < 4 or len(label) > 140:
+            return
+        if stop.search(label):
+            return
+        if re.search(r"\b(AND;|OR;|must include|Monitoring plan)\b", label):
+            return
+        if label.lower().endswith((" or", " and", " of", " for", " with", " aged", " who")):
+            return
+        # Prefer short diagnosis titles; drop truncated mid-sentence FDA blurbs
+        if " for the treatment of" in label.lower() or " as an add-on" in label.lower():
+            # Keep the leading disease name before the dash/emdash
+            head = re.split(r"\s*[–—\-]\s*", label, maxsplit=1)[0].strip()
+            if len(head) >= 4:
+                label = head
+        val = value or _slugify_option(label)
+        key = val.lower()
+        if key in seen or label.lower() in seen:
+            return
+        seen.add(key)
+        seen.add(label.lower())
+        opts.append({"value": val, "label": label})
+
+    for m in re.finditer(r'indicated for[:\s]+[“"]([^”"]+)[”"]', text, re.I | re.S):
+        chunk = re.sub(r"\s+", " ", m.group(1))
+        parts = re.split(r",\s*(?:and\s+)?|(?<=\w)\s+and\s+", chunk)
+        for p in parts:
+            p = re.sub(
+                r"^(?:management of|treatment of|adjunctive therapy for)\s+",
+                "",
+                p,
+                flags=re.I,
+            )
+            add(p)
+
+    m = re.search(
+        r"(?:FDA\s+INDICATIONS(?:\s+AND\s+USAGE)?|Indications)\s*:?\s*(.*?)"
+        r"(?=\n\s*(?:APPROVAL CRITERIA|Criteria for Approval|Dosage Form|Table \d|Page \d))",
+        text,
+        re.I | re.S,
+    )
+    block = m.group(1) if m else ""
+    m2 = re.search(
+        r"one of the following diagnoses\s*:?\s*(.*?)"
+        r"(?=\n\s*(?:The patient meets|Table \d|Criteria for|Page \d))",
+        text,
+        re.I | re.S,
+    )
+    if m2:
+        block += "\n" + m2.group(1)
+
+    for line in block.splitlines():
+        mm = re.match(r"^\s*[•▪◦\-–]\s*(.+)$", line)
+        if not mm:
+            continue
+        item = mm.group(1)
+        if re.search(r"\bin adults\b", item, re.I):
+            item = re.split(r"\s+in adults\b", item, maxsplit=1, flags=re.I)[0]
+        add(item)
+
+    for mm in re.finditer(
+        r"(?m)^\s{0,8}([A-Z][A-Za-z][A-Za-z0-9 \-/]*\([A-Za-z]{2,8}\))\s*$",
+        text,
+    ):
+        add(mm.group(1))
+
+    if re.search(r"continuation of care", text, re.I):
+        add("Continuation of care", "continuation_of_care")
+
+    return opts[:18]
+
+
+def parse_therapies_from_criteria_text(text: str) -> list[dict[str, str]]:
+    """Derive prior-therapy checkbox options from criteria text."""
+    import re
+
+    if not text:
+        return []
+    junk = re.compile(
+        r"^(ALL of|at least|a \d|month|the following|OR|AND|Has |an?|Complete |"
+        r"Monitor |Labeled for|sedating anti|non-sedating anti)\b",
+        re.I,
+    )
+    opts: list[dict[str, str]] = []
+    seen: set[str] = set()
+
+    def add(label: str) -> None:
+        label = _clean_label(label)
+        label = re.sub(r"^(an|a|the)\s+", "", label, flags=re.I)
+        if len(label) < 3 or len(label) > 60:
+            return
+        if junk.search(label):
+            return
+        if re.search(r"\d-month|for a$|following|vasculitic|neuropath", label, re.I):
+            return
+        key = label.lower()
+        if key in seen:
+            return
+        seen.add(key)
+        opts.append({"value": _slugify_option(label, 48), "label": label})
+
+    for m in re.finditer(
+        r"(?:tried and failed|failure|intolerance|hypersensitivity|contraindication)"
+        r"[^\n]{0,80}(?:following)?\s*:?\s*(.*?)"
+        r"(?=\n\s*\n|\n\s*[A-Z][a-z].{20,}|Criteria for|Page \d)",
+        text,
+        re.I | re.S,
+    ):
+        chunk = m.group(0)
+        for mm in re.finditer(r"[•▪\-]\s*([^•▪\n]+)", chunk):
+            for part in re.split(r",\s*(?:or\s+|and\s+)?", mm.group(1)):
+                part = re.sub(r"\([^)]*\)", "", part).strip()
+                add(part)
+
+    for m in re.finditer(
+        r"(?:failed|intolerance|hypersensitivity|contraindication)\s+to\s+"
+        r"([A-Za-z][A-Za-z0-9 \-]{2,40})",
+        text,
+        re.I,
+    ):
+        add(m.group(1))
+
+    for name in (
+        "gabapentin",
+        "tricyclic antidepressants",
+        "capsaicin cream",
+        "lidocaine patch",
+        "SNRI antidepressants",
+        "opioid",
+        "carbamazepine",
+        "phenytoin",
+        "valproate",
+        "TNF blocker",
+        "topical agent",
+        "methotrexate",
+        "phototherapy",
+        "systemic therapy",
+        "corticosteroid",
+        "cyclosporine",
+        "acitretin",
+    ):
+        if re.search(rf"\b{re.escape(name)}\b", text, re.I):
+            add(name)
+
+    add("None documented")
+    add("Contraindication to all required agents")
+    return opts[:20]
+
+
+def _criteria_text_blob(pack_slug: str | None, pack: dict[str, Any] | None) -> str:
+    if not pack_slug:
+        return ""
+    ct = get_criteria_text(pack_slug) or {}
+    return (ct.get("extracted_text") or "") if isinstance(ct, dict) else ""
+
+
+def _is_boolean_fact(fact: str) -> bool:
+    f = fact.lower()
+    if f in ("yes_no", "boolean"):
+        return True
+    return any(h in f for h in BOOLEAN_FACT_HINTS)
+
+
+def build_fact_field(
+    fact: str,
+    pack: dict[str, Any],
+    pack_slug: str | None,
+) -> dict[str, Any]:
+    """Build a controlled fact control — select or multi checkbox. Never free text."""
+    field: dict[str, Any] = {
+        "key": fact,
+        "label": fact.replace("_", " ").title(),
+        "free_text": False,
+    }
+    text = _criteria_text_blob(pack_slug, pack)
+
+    if fact == "age_years":
+        field["type"] = "select"
+        field["label"] = "Age"
+        field["options"] = list(AGE_BAND_OPTIONS)
+        field["option_style"] = "age_bands"
+        field["option_source"] = "age_bands"
+        field["hint"] = (
+            "Band value sets age_years to the band minimum for gte checks "
+            "(0 / 0.5 / 1 / 6 / 12 / 18)."
+        )
+        return field
+
+    if fact == "indication":
+        pred_opts = indication_options_for_pack(pack)
+        if pred_opts:
+            field["type"] = "select"
+            field["options"] = pred_opts
+            field["option_source"] = "predicates"
+            return field
+        parsed = parse_indications_from_criteria_text(text)
+        if parsed:
+            field["type"] = "select"
+            field["options"] = parsed
+            field["option_source"] = "criteria_text"
+            field["hint"] = "Options parsed from archived criteria text."
+            return field
+        field["type"] = "select"
+        field["options"] = list(YES_NO_UNKNOWN_OPTIONS)
+        field["option_source"] = "fallback_yes_no_unknown"
+        field["hint"] = (
+            "No indication list found in predicates or criteria text — "
+            "use Yes/No/Unknown as a controlled placeholder."
+        )
+        return field
+
+    if fact in ("prescriber_specialty", "provider_type", "specialty"):
+        field["type"] = "select"
+        field["label"] = "Provider / specialty"
+        opts = specialty_options_for_pack(pack)
+        field["options"] = opts or list(DEFAULT_SPECIALTY_OPTIONS)
+        field["option_source"] = "predicates" if opts else "default_specialty"
+        return field
+
+    if fact in MULTI_FACT_KEYS or "therapy" in fact or "therapies" in fact:
+        field["type"] = "multi"
+        field["label"] = fact.replace("_", " ").title()
+        parsed = parse_therapies_from_criteria_text(text)
+        if parsed:
+            field["options"] = parsed
+            field["option_source"] = "criteria_text"
+            field["hint"] = "Select all that apply (from criteria text)."
+        else:
+            # Curated placeholders so the control stays closed-ended
+            field["options"] = [
+                {"value": "preferred_agent_failed", "label": "Preferred / step agent failed"},
+                {"value": "intolerance", "label": "Intolerance / hypersensitivity"},
+                {"value": "contraindication", "label": "Contraindication"},
+                {"value": "insufficient_response", "label": "Insufficient response"},
+                {"value": "none_documented", "label": "None documented"},
+                {"value": "unknown", "label": "Unknown"},
+            ]
+            field["option_source"] = "fallback_therapy_placeholders"
+            field["hint"] = (
+                "No therapy list parsed from criteria text — curated placeholders only."
+            )
+        return field
+
+    # Boolean-ish facts → Yes/No select
+    if _is_boolean_fact(fact):
+        field["type"] = "select"
+        field["options"] = list(YES_NO_OPTIONS)
+        field["option_source"] = "boolean_yes_no"
+        return field
+
+    # Predicate choice values for any other fact
+    choice = _collect_choice_values(pack, fact)
+    if choice:
+        field["type"] = "select"
+        field["options"] = choice
+        field["option_source"] = "predicates"
+        return field
+
+    # Last resort: Yes/No/Unknown — never free text
+    field["type"] = "select"
+    field["options"] = list(YES_NO_UNKNOWN_OPTIONS)
+    field["option_source"] = "fallback_yes_no_unknown"
+    field["hint"] = "Controlled Yes/No/Unknown — free-text fact entry is disabled."
+    return field
+
+
+def _generic_stem(name: str | None) -> str:
+    import re
+
+    if not name:
+        return ""
+    # Drop strength / route noise: "PREGABALIN 100" → pregabalin
+    s = name.lower()
+    s = re.sub(r"\([^)]*\)", " ", s)
+    s = re.sub(r"[^a-z0-9\s\-]", " ", s)
+    tokens = [t for t in s.split() if t and not t.isdigit() and t not in {
+        "oral", "tablet", "capsule", "solution", "syringe", "vial", "patch",
+        "topical", "injection", "subcutaneous", "er", "cr", "ag", "hcl", "mg",
+        "ml", "pen", "autoinj", "dose", "pack",
+    }]
+    return tokens[0] if tokens else ""
+
+
+def resolve_market_baskets(drug_slug: str, pack: dict[str, Any] | None) -> list[str]:
+    """Market baskets from the drug index for this slug / brand family."""
+    drugs = load_drug_index()["drugs"]
+    baskets: list[str] = []
+    seen: set[str] = set()
+    pack_name = ((pack or {}).get("drug") or {}).get("name") or ""
+    base = drug_slug.split("-")[0].lower()
+
+    for d in drugs:
+        slug = d.get("slug") or ""
+        primary = (d.get("primary_name") or "").lower()
+        mb = d.get("market_basket")
+        if not mb:
+            continue
+        hit = (
+            slug == drug_slug
+            or slug.startswith(base + "-")
+            or slug == base
+            or (pack_name and pack_name.lower() in primary)
+        )
+        if hit and mb not in seen:
+            seen.add(mb)
+            baskets.append(mb)
+    return baskets
+
+
+def suggest_pdl_class_alternatives(
+    drug_slug: str,
+    pack: dict[str, Any] | None,
+    *,
+    limit: int = 8,
+) -> list[dict[str, Any]]:
+    """Best-effort PDL preferred peers in the same market basket (not evaluate-verified)."""
+    baskets = resolve_market_baskets(drug_slug, pack)
+    if not baskets:
+        return []
+    drugs = load_drug_index()["drugs"]
+    exclude_stems: set[str] = set()
+    pack_generic = ((pack or {}).get("drug") or {}).get("generic_name")
+    exclude_stems.add(_generic_stem(pack_generic))
+    exclude_stems.add(_generic_stem(drug_slug.replace("-", " ")))
+    exclude_stems.discard("")
+
+    citation = ((pack or {}).get("source") or {}).get("citation")
+    # Prefer a DOH PDL citation when available
+    pdl_cite = "https://health.alaska.gov/en/education/prior-authorization-medication/"
+    citations = [c for c in [citation, pdl_cite] if c]
+
+    out: list[dict[str, Any]] = []
+    seen_stem: set[str] = set()
+    # Preferred first, then other non-preferred peers as secondary
+    candidates = [
+        d
+        for d in drugs
+        if d.get("market_basket") in baskets and d.get("pdl_status") == "preferred"
+    ]
+    # Stable sort by primary name
+    candidates.sort(key=lambda d: (d.get("primary_name") or "").lower())
+
+    for d in candidates:
+        stem = _generic_stem(d.get("generic_name") or d.get("primary_name"))
+        if not stem or stem in exclude_stems or stem in seen_stem:
+            continue
+        # Skip same brand family as requested
+        if (d.get("slug") or "").startswith(drug_slug.split("-")[0] + "-"):
+            # allow preferred generic of same molecule? usually not an "alternative"
+            if stem in exclude_stems:
+                continue
+        seen_stem.add(stem)
+        out.append(
+            {
+                "drug": d.get("primary_name") or d.get("slug"),
+                "slug": d.get("slug"),
+                "rule_id": resolve_rule_pack_slug(d["slug"]),
+                "pdl_status": d.get("pdl_status"),
+                "market_basket": d.get("market_basket"),
+                "generic_name": (d.get("generic_name") or "").strip() or None,
+                "citations": list(citations),
+                "verification": "pdl_preferred_same_class",
+                "verification_note": (
+                    "PDL preferred agent in the same Alaska market basket — "
+                    "not evaluate()-verified against this patient's facts."
+                ),
+            }
+        )
+        if len(out) >= limit:
+            break
+    return out
+
+
+def merge_alternatives(
+    evaluate_alts: list[dict[str, Any]] | None,
+    pdl_alts: list[dict[str, Any]] | None,
+) -> list[dict[str, Any]]:
+    """Deduplicate evaluate-pass alts ahead of PDL suggestions."""
+    merged: list[dict[str, Any]] = []
+    seen: set[str] = set()
+
+    def key_of(a: dict[str, Any]) -> str:
+        return (
+            (a.get("rule_id") or "")
+            + "|"
+            + _generic_stem(a.get("drug"))
+            + "|"
+            + (a.get("slug") or "")
+        ).lower()
+
+    for a in evaluate_alts or []:
+        enriched = dict(a)
+        enriched.setdefault("verification", "evaluate_pass")
+        enriched.setdefault(
+            "verification_note",
+            "Passes evaluate() on the linked rule pack for the submitted facts.",
+        )
+        k = key_of(enriched)
+        if k in seen:
+            continue
+        seen.add(k)
+        merged.append(enriched)
+    for a in pdl_alts or []:
+        k = key_of(a)
+        # Also skip if same display name already present
+        name = (a.get("drug") or "").lower()
+        if k in seen or any((m.get("drug") or "").lower() == name for m in merged):
+            continue
+        seen.add(k)
+        merged.append(a)
+    return merged
 
 
 def search_drugs(query: str, limit: int = 25) -> list[dict[str, Any]]:
@@ -341,34 +821,7 @@ def drug_detail(slug: str) -> dict[str, Any] | None:
     fact_fields: list[dict[str, Any]] = []
     if pack:
         for fact in required_facts_for_pack(pack):
-            field: dict[str, Any] = {"key": fact, "label": fact.replace("_", " ").title()}
-            if fact == "age_years":
-                field["type"] = "select"
-                field["label"] = "Age"
-                field["options"] = list(AGE_BAND_OPTIONS)
-                field["option_style"] = "age_bands"
-                field["hint"] = (
-                    "Band value sets age_years to the band minimum for gte checks "
-                    "(0 / 0.5 / 1 / 6 / 12 / 18)."
-                )
-            elif fact == "indication":
-                opts = indication_options_for_pack(pack)
-                if opts:
-                    field["type"] = "select"
-                    field["options"] = opts
-                    field["free_text"] = False
-                else:
-                    field["type"] = "text"
-                    field["free_text"] = True
-            elif fact in ("prescriber_specialty", "provider_type", "specialty"):
-                field["type"] = "select"
-                field["label"] = "Provider / specialty"
-                opts = specialty_options_for_pack(pack)
-                field["options"] = opts or list(DEFAULT_SPECIALTY_OPTIONS)
-                field["free_text"] = False
-            else:
-                field["type"] = "text"
-            fact_fields.append(field)
+            fact_fields.append(build_fact_field(fact, pack, pack_slug))
 
     return {
         "slug": slug,
@@ -415,4 +868,5 @@ def drug_detail(slug: str) -> dict[str, Any] | None:
             else None
         ),
         "alternatives": (pack or {}).get("alternatives") or [],
+        "market_baskets": resolve_market_baskets(slug, pack),
     }

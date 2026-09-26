@@ -1,0 +1,21 @@
+{
+  "drug": {
+    "name": "Fexmid"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Fexmid Criteria",
+    "effective_date": "2024-06-01",
+    "citation": "https://health.alaska.gov/media/1lnptojd/200908_fexmid.pdf",
+    "criteria_pdf": "data/alaska/raw/200908_fexmid.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Source PDF is scanned/image-only; OCR pending. evaluate() must not auto-pass."
+  ],
+  "inferred_required_facts": []
+}

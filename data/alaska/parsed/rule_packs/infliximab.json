@@ -1,0 +1,29 @@
+{
+  "drug": {
+    "name": "Infliximab",
+    "therapeutic_class": "biologics"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Infliximab Criteria",
+    "effective_date": "2022-05-01",
+    "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+    "criteria_pdf": "data/alaska/raw/202203-infliximab_criteria_2022.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [
+    "entyvio",
+    "stelara"
+  ],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ]
+}

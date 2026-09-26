@@ -1,0 +1,24 @@
+{
+  "drug": {
+    "name": "Human Chorionic Gonadotropin",
+    "therapeutic_class": "hormones"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Human Chorionic Gonadotropin Criteria",
+    "effective_date": "2019-01-15",
+    "citation": "https://health.alaska.gov/media/m4fpgy0w/hcg-criteria.pdf",
+    "criteria_pdf": "data/alaska/raw/hcg-criteria.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "indication"
+  ]
+}

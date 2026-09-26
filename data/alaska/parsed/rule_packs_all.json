@@ -17,7 +17,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -41,7 +41,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -67,7 +67,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -97,7 +97,7 @@
         "options": [
           {
             "value": "atopic_dermatitis",
-            "label": "Moderate-to-severe atopic dermatitis (≥12 years)"
+            "label": "Moderate-to-severe atopic dermatitis (\u226512 years)"
           }
         ],
         "hint": "Closed list from Alaska Medicaid Adbry criteria, effective 2024-06-01; topical prescription therapies inadequately control disease or are not advisable."
@@ -150,11 +150,11 @@
       },
       "ad_topical_failures": {
         "type": "multi",
-        "label": "AD: tried/failed or contraindication (≥2 for 30 days)",
+        "label": "AD: tried/failed or contraindication (\u22652 for 30 days)",
         "options": [
           {
             "value": "medium_high_tcs_adult_or_low_tcs_pediatric",
-            "label": "TCS (medium–high if >18y / low-potency if <18y)"
+            "label": "TCS (medium\u2013high if >18y / low-potency if <18y)"
           },
           {
             "value": "topical_calcineurin_inhibitor",
@@ -177,11 +177,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Yes — no concomitant biologic"
+            "label": "Yes \u2014 no concomitant biologic"
           },
           {
             "value": "no",
-            "label": "No — concomitant biologic"
+            "label": "No \u2014 concomitant biologic"
           }
         ]
       }
@@ -234,7 +234,7 @@
       },
       {
         "id": "ad_documentation_and_step_therapy",
-        "text": "Baseline affected BSA AND symptom severity documented; tried and failed for 30 days or contraindication to at least two of: TCS (medium–high potency if >18 years / low potency if <18 years), topical calcineurin inhibitor, PDE4 inhibitor.",
+        "text": "Baseline affected BSA AND symptom severity documented; tried and failed for 30 days or contraindication to at least two of: TCS (medium\u2013high potency if >18 years / low potency if <18 years), topical calcineurin inhibitor, PDE4 inhibitor.",
         "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -293,8 +293,8 @@
     },
     "notes": [
       "Partial encoding from AK Adbry (tralokinumab-ldrm), an IL-13 antagonist, Criteria Version 1 (Original 02/27/2024, Accepted 04/19/2024, Effective 06/1/2024).",
-      "Encoded: closed moderate-to-severe atopic dermatitis indication; FDA age ≥12 years; specialty or consultation; baseline affected BSA and symptom severity documentation; at least two topical classes tried/failed for 30 days or contraindicated; no concomitant biologic. Failure to meet approval criteria results in denial.",
-      "Attestation only, not numeric predicates: BSA percentage, symptom severity, topical potency and 30-day trial duration, contraindications, and monthly quantity math. TCS wording follows the PDF (>18 years medium–high potency; <18 years low potency); exactly age 18 is unspecified. Shared Dupixent AD option values are retained.",
+      "Encoded: closed moderate-to-severe atopic dermatitis indication; FDA age \u226512 years; specialty or consultation; baseline affected BSA and symptom severity documentation; at least two topical classes tried/failed for 30 days or contraindicated; no concomitant biologic. Failure to meet approval criteria results in denial.",
+      "Attestation only, not numeric predicates: BSA percentage, symptom severity, topical potency and 30-day trial duration, contraindications, and monthly quantity math. TCS wording follows the PDF (>18 years medium\u2013high potency; <18 years low potency); exactly age 18 is unspecified. Shared Dupixent AD option values are retained.",
       "Duration notes only: initial approval up to 3 months; reauthorization up to 12 months. The PDF specifies no additional reauthorization response predicate. Cautions (hypersensitivity, eye symptoms, live vaccines, helminth infection) are not encoded as approval gates.",
       "Alternatives: Dupixent is evaluate()-linked for overlapping atopic dermatitis. Adbry is PDL preferred in IMMUNOMODULATORS, ATOPIC DERMATITIS."
     ]
@@ -364,7 +364,7 @@
     "alternatives": [],
     "notes": [
       "Partial encoding from AK Adcirca (tadalafil), a phosphodiesterase 5 (PDE5) inhibitor for PAH, Criteria Version 2 (Updated/Approved 09/19/2014). The existing ingest effective_date 2023-06-01 is retained; the PDF version date is distinct.",
-      "Encoded: closed PAH (WHO Group I) indication covering approval criteria 1–2; no current nitrate products (approval criterion 3 and denial criterion); generic sildenafil trial OR documented allergy/hypersensitivity to a component of all available generic sildenafil (criteria 4–5). The exception does not bypass the diagnosis or nitrate requirements.",
+      "Encoded: closed PAH (WHO Group I) indication covering approval criteria 1\u20132; no current nitrate products (approval criterion 3 and denial criterion); generic sildenafil trial OR documented allergy/hypersensitivity to a component of all available generic sildenafil (criteria 4\u20135). The exception does not bypass the diagnosis or nitrate requirements.",
       "The PDF states no numeric age gate; no age criterion is encoded. Sildenafil trial and documented allergy/hypersensitivity are selected attestations; no trial duration or failure requirement is specified.",
       "Duration notes only: approval may be granted up to 1 year. Quantity limit: 2 tablets/day, attestation/manual review only, not a numeric predicate.",
       "PDL: Adcirca (tadalafil) is non-preferred in PAH AGENTS, ORAL AND INHALED; generic sildenafil is a preferred peer. Revatio remains text_only. No evaluate()-linked PAH peer pack is available, so alternatives is empty; class/PDL alternatives remain available through the UI."
@@ -387,11 +387,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Yes — no nitrate products"
+            "label": "Yes \u2014 no nitrate products"
           },
           {
             "value": "no",
-            "label": "No — taking a nitrate product"
+            "label": "No \u2014 taking a nitrate product"
           }
         ]
       },
@@ -845,7 +845,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -872,7 +872,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -897,7 +897,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -922,7 +922,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -949,7 +949,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -976,7 +976,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1002,7 +1002,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years"
@@ -1026,7 +1026,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1053,7 +1053,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -1078,7 +1078,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1104,7 +1104,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1131,7 +1131,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1157,7 +1157,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -1182,7 +1182,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1209,7 +1209,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": []
   },
@@ -1231,7 +1231,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1257,7 +1257,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": []
   },
@@ -1279,7 +1279,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1306,7 +1306,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1333,7 +1333,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1359,7 +1359,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -1384,7 +1384,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -1413,7 +1413,7 @@
         "options": [
           {
             "value": "asthma",
-            "label": "Severe Asthma (eosinophilic phenotype) — add-on maintenance"
+            "label": "Severe Asthma (eosinophilic phenotype) \u2014 add-on maintenance"
           }
         ],
         "hint": "Closed list from Alaska Medicaid Interleukin-5 Inhibitors PA Criteria (effective 11/1/2025). Cinqair: severe eosinophilic asthma only (adults)."
@@ -1429,11 +1429,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Confirmed — maintenance use only"
+            "label": "Confirmed \u2014 maintenance use only"
           },
           {
             "value": "no",
-            "label": "No — acute use"
+            "label": "No \u2014 acute use"
           }
         ]
       },
@@ -1454,11 +1454,11 @@
       },
       "asthma_controller_trial_3mo": {
         "type": "select",
-        "label": "Asthma: ≥3 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
+        "label": "Asthma: \u22653 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
         "options": [
           {
             "value": "ics_laba_ltra_or_theo_3mo",
-            "label": "Yes — ≥3 month trial with ongoing symptoms"
+            "label": "Yes \u2014 \u22653 month trial with ongoing symptoms"
           },
           {
             "value": "intolerant_to_all",
@@ -1466,7 +1466,7 @@
           },
           {
             "value": "no",
-            "label": "No — criterion not met"
+            "label": "No \u2014 criterion not met"
           }
         ],
         "hint": "AK asthma criterion 5."
@@ -1547,7 +1547,7 @@
       },
       {
         "id": "fda_labeled_age_for_indication",
-        "text": "Patient meets FDA-labeled age for Cinqair (severe asthma ≥18y).",
+        "text": "Patient meets FDA-labeled age for Cinqair (severe asthma \u226518y).",
         "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -1609,7 +1609,7 @@
       },
       {
         "id": "asthma_eos_controller_concurrent_not_acute",
-        "text": "Asthma: eos >400 cells/mcL within 4 weeks; ≥3 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller; not for acute bronchospasm/status asthmaticus.",
+        "text": "Asthma: eos >400 cells/mcL within 4 weeks; \u22653 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller; not for acute bronchospasm/status asthmaticus.",
         "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -1679,9 +1679,9 @@
       "notes": "Cinqair (J2786): 3 mg/kg IV once every 28 days. Approval up to 3 months; reauth up to 12 months. PDL non-preferred."
     },
     "notes": [
-      "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala®, Cinqair®, Fasenra®; Version 3, updated 09/19/2025, effective 11/1/2025).",
-      "Cinqair-encoded indication: severe eosinophilic asthma only (adults ≥18y). EGPA/HES/CRSwNP/COPD are not Cinqair-labeled on this PDF.",
-      "Encoded: closed indication list; FDA age (≥18y); specialty; asthma eos >400/4w + controller/concurrent/not-acute attestations; concomitant-biologic denial.",
+      "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala\u00ae, Cinqair\u00ae, Fasenra\u00ae; Version 3, updated 09/19/2025, effective 11/1/2025).",
+      "Cinqair-encoded indication: severe eosinophilic asthma only (adults \u226518y). EGPA/HES/CRSwNP/COPD are not Cinqair-labeled on this PDF.",
+      "Encoded: closed indication list; FDA age (\u226518y); specialty; asthma eos >400/4w + controller/concurrent/not-acute attestations; concomitant-biologic denial.",
       "Not encoded as numeric predicates (attestation only): exact eos cell counts, mg/kg dose math, hypersensitivity cautions.",
       "Alternatives: Fasenra/Nucala/Dupixent/Xolair evaluate()-linked for overlapping asthma. PDL preferred same-class peers (Fasenra/Nucala/Xolair) attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma."
     ]
@@ -1704,7 +1704,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -1729,7 +1729,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -1754,7 +1754,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1781,7 +1781,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1807,7 +1807,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1834,7 +1834,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -1861,7 +1861,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -1886,7 +1886,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -1910,7 +1910,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -1936,7 +1936,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -2042,11 +2042,11 @@
       },
       "ad_topical_failures": {
         "type": "multi",
-        "label": "AD: tried/failed or contraindication (≥2 for 30 days)",
+        "label": "AD: tried/failed or contraindication (\u22652 for 30 days)",
         "options": [
           {
             "value": "medium_high_tcs_adult_or_low_tcs_pediatric",
-            "label": "TCS (medium–high if ≥18y / low-potency if <18y)"
+            "label": "TCS (medium\u2013high if \u226518y / low-potency if <18y)"
           },
           {
             "value": "topical_calcineurin_inhibitor",
@@ -2095,11 +2095,11 @@
         "options": [
           {
             "value": "eosinophilic_ge_150",
-            "label": "Eosinophilic phenotype (eos ≥150 cells/mcL)"
+            "label": "Eosinophilic phenotype (eos \u2265150 cells/mcL)"
           },
           {
             "value": "ocs_dependent",
-            "label": "Oral corticosteroid–dependent asthma"
+            "label": "Oral corticosteroid\u2013dependent asthma"
           },
           {
             "value": "neither",
@@ -2115,7 +2115,7 @@
       },
       "asthma_ics_laba_3mo": {
         "type": "select",
-        "label": "Asthma: ≥3 month trial of ICS + LABA with ongoing symptoms",
+        "label": "Asthma: \u22653 month trial of ICS + LABA with ongoing symptoms",
         "options": [
           {
             "value": "yes",
@@ -2139,11 +2139,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Confirmed — maintenance use only"
+            "label": "Confirmed \u2014 maintenance use only"
           },
           {
             "value": "no",
-            "label": "No — acute use"
+            "label": "No \u2014 acute use"
           }
         ],
         "when": {
@@ -2155,7 +2155,7 @@
       },
       "crswnp_failed_two_nasal_steroids_3mo": {
         "type": "select",
-        "label": "CRSwNP: inadequate response/intolerance/CI to TWO nasal corticosteroid sprays (different APIs) × 3 months",
+        "label": "CRSwNP: inadequate response/intolerance/CI to TWO nasal corticosteroid sprays (different APIs) \u00d7 3 months",
         "options": [
           {
             "value": "yes",
@@ -2195,7 +2195,7 @@
       },
       "eoe_eos_hpf_ge_15": {
         "type": "select",
-        "label": "EoE: ≥15 intraepithelial eosinophils per HPF",
+        "label": "EoE: \u226515 intraepithelial eosinophils per HPF",
         "options": [
           {
             "value": "yes",
@@ -2235,11 +2235,11 @@
       },
       "weight_ge_15_kg": {
         "type": "select",
-        "label": "Weight ≥ 15 kg (required for EoE)",
+        "label": "Weight \u2265 15 kg (required for EoE)",
         "options": [
           {
             "value": "yes",
-            "label": "Yes (≥15 kg)"
+            "label": "Yes (\u226515 kg)"
           },
           {
             "value": "no",
@@ -2275,7 +2275,7 @@
       },
       "pn_failed_high_potency_tcs_30d": {
         "type": "select",
-        "label": "PN: tried/failed or CI to high-potency TCS ≥30 days",
+        "label": "PN: tried/failed or CI to high-potency TCS \u226530 days",
         "options": [
           {
             "value": "yes",
@@ -2295,7 +2295,7 @@
       },
       "copd_failed_triple_therapy_3mo": {
         "type": "select",
-        "label": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) ≥3 consecutive months",
+        "label": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) \u22653 consecutive months",
         "options": [
           {
             "value": "yes",
@@ -2315,7 +2315,7 @@
       },
       "copd_exacerbation_history_met": {
         "type": "select",
-        "label": "COPD: ≥2 moderate or ≥1 severe exacerbation in prior year (incl. ≥1 on triple therapy)",
+        "label": "COPD: \u22652 moderate or \u22651 severe exacerbation in prior year (incl. \u22651 on triple therapy)",
         "options": [
           {
             "value": "yes",
@@ -2335,7 +2335,7 @@
       },
       "copd_spirometry_criteria_met": {
         "type": "select",
-        "label": "COPD: post-BD FEV1/FVC <0.7 and FEV1 30–70% predicted",
+        "label": "COPD: post-BD FEV1/FVC <0.7 and FEV1 30\u201370% predicted",
         "options": [
           {
             "value": "yes",
@@ -2355,7 +2355,7 @@
       },
       "copd_eos_ge_300_60d": {
         "type": "select",
-        "label": "COPD: eosinophil count ≥300 cells/µL within last 60 days",
+        "label": "COPD: eosinophil count \u2265300 cells/\u00b5L within last 60 days",
         "options": [
           {
             "value": "yes",
@@ -2375,7 +2375,7 @@
       },
       "csu_duration_and_frequency_met": {
         "type": "select",
-        "label": "CSU: urticaria ≥6 weeks with symptoms ≥3 days/week on non-sedating antihistamine (max dose)",
+        "label": "CSU: urticaria \u22656 weeks with symptoms \u22653 days/week on non-sedating antihistamine (max dose)",
         "options": [
           {
             "value": "yes",
@@ -2395,7 +2395,7 @@
       },
       "csu_failed_max_antihistamine_60d": {
         "type": "select",
-        "label": "CSU: tried/failed or CI to non-sedating antihistamine at max dose ≥60 days",
+        "label": "CSU: tried/failed or CI to non-sedating antihistamine at max dose \u226560 days",
         "options": [
           {
             "value": "yes",
@@ -2435,7 +2435,7 @@
       },
       "bp_bpdai_and_nrs_thresholds": {
         "type": "select",
-        "label": "BP: BPDAI activity ≥24 and average weekly Peak Pruritus NRS ≥4 at baseline",
+        "label": "BP: BPDAI activity \u226524 and average weekly Peak Pruritus NRS \u22654 at baseline",
         "options": [
           {
             "value": "yes",
@@ -2455,7 +2455,7 @@
       },
       "bp_failed_two_standard_therapies": {
         "type": "select",
-        "label": "BP: tried/failed ≥2 standard therapies (different MOA) ≥1 month each",
+        "label": "BP: tried/failed \u22652 standard therapies (different MOA) \u22651 month each",
         "options": [
           {
             "value": "yes",
@@ -2499,11 +2499,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Yes — no concomitant biologic"
+            "label": "Yes \u2014 no concomitant biologic"
           },
           {
             "value": "no",
-            "label": "No — concomitant biologic"
+            "label": "No \u2014 concomitant biologic"
           }
         ]
       }
@@ -2533,7 +2533,7 @@
       },
       {
         "id": "fda_labeled_age_for_indication",
-        "text": "Patient meets FDA-labeled age for the requested indication (AD ≥6 months; asthma ≥6y; CRSwNP/CSU ≥12y; EoE ≥1y; PN/COPD/BP adult ≥18y).",
+        "text": "Patient meets FDA-labeled age for the requested indication (AD \u22656 months; asthma \u22656y; CRSwNP/CSU \u226512y; EoE \u22651y; PN/COPD/BP adult \u226518y).",
         "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -2891,7 +2891,7 @@
       },
       {
         "id": "asthma_phenotype_controller_and_not_acute",
-        "text": "Asthma: eosinophilic phenotype (eos ≥150) OR OCS-dependent; AND ongoing symptoms after ≥3 month ICS+LABA; AND not for acute bronchospasm/status asthmaticus.",
+        "text": "Asthma: eosinophilic phenotype (eos \u2265150) OR OCS-dependent; AND ongoing symptoms after \u22653 month ICS+LABA; AND not for acute bronchospasm/status asthmaticus.",
         "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -3008,7 +3008,7 @@
       },
       {
         "id": "eoe_labs_symptoms_weight",
-        "text": "EoE: ≥15 eos/hpf; dysphagia symptoms; and weight ≥15 kg.",
+        "text": "EoE: \u226515 eos/hpf; dysphagia symptoms; and weight \u226515 kg.",
         "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -3068,7 +3068,7 @@
       },
       {
         "id": "pn_documentation_and_step",
-        "text": "Prurigo Nodularis: baseline BSA/severity documented; AND tried/failed or CI to high-potency corticosteroid ≥30 days.",
+        "text": "Prurigo Nodularis: baseline BSA/severity documented; AND tried/failed or CI to high-potency corticosteroid \u226530 days.",
         "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -3122,7 +3122,7 @@
       },
       {
         "id": "copd_triple_exacerbation_spirometry_eos",
-        "text": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) ≥3 months; AND exacerbation history; AND post-BD FEV1/FVC <0.7 with FEV1 30–70% predicted; AND eos ≥300 cells/µL within 60 days.",
+        "text": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) \u22653 months; AND exacerbation history; AND post-BD FEV1/FVC <0.7 with FEV1 30\u201370% predicted; AND eos \u2265300 cells/\u00b5L within 60 days.",
         "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -3188,7 +3188,7 @@
       },
       {
         "id": "csu_duration_and_antihistamine_step",
-        "text": "CSU: urticaria ≥6 weeks with symptoms ≥3 days/week on max-dose non-sedating antihistamine; AND tried/failed or CI to max-dose non-sedating antihistamine ≥60 days.",
+        "text": "CSU: urticaria \u22656 weeks with symptoms \u22653 days/week on max-dose non-sedating antihistamine; AND tried/failed or CI to max-dose non-sedating antihistamine \u226560 days.",
         "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -3242,7 +3242,7 @@
       },
       {
         "id": "bp_confirm_scores_step_ocs",
-        "text": "Bullous Pemphigoid: confirmed by serology or biopsy; BPDAI ≥24 and Peak Pruritus NRS ≥4; failed ≥2 standard therapies (different MOA) ≥1 month each; initially combined with tapering oral corticosteroids.",
+        "text": "Bullous Pemphigoid: confirmed by serology or biopsy; BPDAI \u226524 and Peak Pruritus NRS \u22654; failed \u22652 standard therapies (different MOA) \u22651 month each; initially combined with tapering oral corticosteroids.",
         "citation": "https://health.alaska.gov/media/4tzfpbrh/dupixent_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -3364,10 +3364,10 @@
         "options": [
           {
             "value": "atopic_dermatitis",
-            "label": "Moderate-to-severe atopic dermatitis (≥12 years, ≥40 kg)"
+            "label": "Moderate-to-severe atopic dermatitis (\u226512 years, \u226540 kg)"
           }
         ],
-        "hint": "Closed list from Alaska Medicaid Ebglyss criteria, effective 2026-03-01; topical prescription therapies inadequately control disease or are not advisable. Weight ≥40 kg is attestation-only in notes, not a predicate."
+        "hint": "Closed list from Alaska Medicaid Ebglyss criteria, effective 2026-03-01; topical prescription therapies inadequately control disease or are not advisable. Weight \u226540 kg is attestation-only in notes, not a predicate."
       },
       "age_years": {
         "type": "select",
@@ -3417,11 +3417,11 @@
       },
       "ad_topical_failures": {
         "type": "multi",
-        "label": "AD: tried/failed or contraindication (≥2 for 30 days)",
+        "label": "AD: tried/failed or contraindication (\u22652 for 30 days)",
         "options": [
           {
             "value": "medium_high_tcs_adult_or_low_tcs_pediatric",
-            "label": "TCS (medium–high if >18y / low-potency if <18y)"
+            "label": "TCS (medium\u2013high if >18y / low-potency if <18y)"
           },
           {
             "value": "topical_calcineurin_inhibitor",
@@ -3444,11 +3444,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Yes — no concomitant biologic"
+            "label": "Yes \u2014 no concomitant biologic"
           },
           {
             "value": "no",
-            "label": "No — concomitant biologic"
+            "label": "No \u2014 concomitant biologic"
           }
         ]
       }
@@ -3501,7 +3501,7 @@
       },
       {
         "id": "ad_documentation_and_step_therapy",
-        "text": "Baseline affected BSA AND symptom severity documented; tried and failed for 30 days or contraindication to at least two of: TCS (medium–high potency if >18 years / low potency if <18 years), topical calcineurin inhibitor, PDE4 inhibitor.",
+        "text": "Baseline affected BSA AND symptom severity documented; tried and failed for 30 days or contraindication to at least two of: TCS (medium\u2013high potency if >18 years / low potency if <18 years), topical calcineurin inhibitor, PDE4 inhibitor.",
         "citation": "https://health.alaska.gov/media/gdcjebpg/ebglyss_criteria.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -3556,13 +3556,13 @@
     "max_units": {
       "quantity": null,
       "days_supply": null,
-      "notes": "Month 1: up to six 250 mg injections; Months 2–4: up to two 250 mg injections each month; Month 5 and later: one 250 mg injection monthly. Initial approval up to 3 months; reauthorization up to 12 months. Quantity limits are attestation-only, not numeric predicates."
+      "notes": "Month 1: up to six 250 mg injections; Months 2\u20134: up to two 250 mg injections each month; Month 5 and later: one 250 mg injection monthly. Initial approval up to 3 months; reauthorization up to 12 months. Quantity limits are attestation-only, not numeric predicates."
     },
     "notes": [
       "Partial encoding from AK Ebglyss (lebrikizumab-lbkz), an IL-13 antagonist, Criteria Version 1 (Original 12/22/2025, Accepted 01/16/2026, Effective 03/01/2026).",
-      "Encoded: closed moderate-to-severe atopic dermatitis indication; FDA age ≥12 years; specialty or consultation; baseline affected BSA and symptom severity documentation; at least two topical classes tried/failed for 30 days or contraindicated; no concomitant biologic. Failure to meet approval criteria results in denial.",
-      "Weight ≥40 kg appears in the FDA indication text, not as a separate numbered approval criterion; criterion 1 specifies FDA labeling approved age. Weight is attestation-only in notes, not predicated or collected as a fact. A predicate pass does not verify weight eligibility.",
-      "Attestation only, not numeric predicates: BSA percentage, symptom severity, topical potency and 30-day trial duration, contraindications, and monthly quantity math. TCS wording follows the PDF (>18 years medium–high potency; <18 years low potency); exactly age 18 is unspecified. Shared Adbry and Dupixent AD option values are retained.",
+      "Encoded: closed moderate-to-severe atopic dermatitis indication; FDA age \u226512 years; specialty or consultation; baseline affected BSA and symptom severity documentation; at least two topical classes tried/failed for 30 days or contraindicated; no concomitant biologic. Failure to meet approval criteria results in denial.",
+      "Weight \u226540 kg appears in the FDA indication text, not as a separate numbered approval criterion; criterion 1 specifies FDA labeling approved age. Weight is attestation-only in notes, not predicated or collected as a fact. A predicate pass does not verify weight eligibility.",
+      "Attestation only, not numeric predicates: BSA percentage, symptom severity, topical potency and 30-day trial duration, contraindications, and monthly quantity math. TCS wording follows the PDF (>18 years medium\u2013high potency; <18 years low potency); exactly age 18 is unspecified. Shared Adbry and Dupixent AD option values are retained.",
       "Duration notes only: initial approval up to 3 months; reauthorization up to 12 months. The PDF specifies no additional reauthorization response predicate.",
       "Cautions, not approval gates: monitor for hypersensitivity and new or worsening eye symptoms; avoid live vaccines; treat pre-existing helminth infections before initiation, and discontinue Ebglyss until infection resolves if an infection during treatment fails to respond to anti-helminth treatment.",
       "Alternatives: Adbry and Dupixent are evaluate()-linked preferred peers for overlapping atopic dermatitis. Ebglyss is PDL non-preferred in IMMUNOMODULATORS, ATOPIC DERMATITIS."
@@ -4140,7 +4140,7 @@
         "options": [
           {
             "value": "dmd_ambulatory_age_4_to_5",
-            "label": "Duchenne muscular dystrophy (DMD) — ambulatory pediatric patients aged 4 through 5 years with confirmed DMD gene mutation"
+            "label": "Duchenne muscular dystrophy (DMD) \u2014 ambulatory pediatric patients aged 4 through 5 years with confirmed DMD gene mutation"
           }
         ]
       },
@@ -4272,7 +4272,7 @@
           },
           {
             "value": "gte_1_400",
-            "label": "≥1:400"
+            "label": "\u22651:400"
           }
         ]
       },
@@ -4837,7 +4837,7 @@
           },
           {
             "value": "high_ldh_with_symptoms",
-            "label": "LDH activity ≥1.5 x ULN with clinical symptoms"
+            "label": "LDH activity \u22651.5 x ULN with clinical symptoms"
           },
           {
             "value": "none",
@@ -4974,7 +4974,7 @@
       },
       {
         "id": "conventional_therapy_60d",
-        "text": "Trialed and failed ≥1 conventional therapy (e.g. sulfasalazine, prednisone, azathioprine) for ≥60 days (UC/CD approval #3).",
+        "text": "Trialed and failed \u22651 conventional therapy (e.g. sulfasalazine, prednisone, azathioprine) for \u226560 days (UC/CD approval #3).",
         "citation": "https://health.alaska.gov/media/lk2pxysn/entyvio_criteria_20231117update.pdf#approval-criteria",
         "required_facts": [
           "conventional_therapy_60d"
@@ -4989,7 +4989,7 @@
       },
       {
         "id": "tnf_blocker_60d",
-        "text": "Trialed and failed a TNF blocker (e.g. Humira) for ≥60 days (UC/CD approval #4).",
+        "text": "Trialed and failed a TNF blocker (e.g. Humira) for \u226560 days (UC/CD approval #4).",
         "citation": "https://health.alaska.gov/media/lk2pxysn/entyvio_criteria_20231117update.pdf#approval-criteria",
         "required_facts": [
           "tnf_blocker_60d"
@@ -5095,17 +5095,17 @@
     ],
     "notes": [
       "Partial encoding from Alaska Medicaid Entyvio (vedolizumab) Criteria Version 2.1: Original 11/14/2014; Update2 11/17/2023; Effective 01/1/2024.",
-      "Age wording discrepancy: approval says > 18 years, while denial #2 says age < 18 years. Encoded gte 18 in line with the denial threshold and FDA adult ≥18 wording; the exact age-18 boundary requires source interpretation.",
+      "Age wording discrepancy: approval says > 18 years, while denial #2 says age < 18 years. Encoded gte 18 in line with the denial threshold and FDA adult \u226518 wording; the exact age-18 boundary requires source interpretation.",
       "Specialty gap: the Alaska PDF specifies no prescriber specialty requirement; no specialty field or predicate is added.",
-      "Both UC and CD require failure of ≥1 conventional therapy for ≥60 days AND failure of a TNF blocker for ≥60 days. Prior TNF failure is separate from the concurrent-use exclusion: concurrent integrin receptor antagonists or TNF blockers are prohibited.",
-      "CD approval #5 requires CDAI > 220, covering initiating denial #5 (CDAI ≤ 150). CDAI 151–220 also does not meet CD approval. CDAI is not a UC requirement; select Not applicable (UC indication) for UC. No numeric CDAI coercion is used.",
+      "Both UC and CD require failure of \u22651 conventional therapy for \u226560 days AND failure of a TNF blocker for \u226560 days. Prior TNF failure is separate from the concurrent-use exclusion: concurrent integrin receptor antagonists or TNF blockers are prohibited.",
+      "CD approval #5 requires CDAI > 220, covering initiating denial #5 (CDAI \u2264 150). CDAI 151\u2013220 also does not meet CD approval. CDAI is not a UC requirement; select Not applicable (UC indication) for UC. No numeric CDAI coercion is used.",
       "Initial authorization documentation (notes only): monitoring plan for PML and hepatic changes, plus previous therapies trialed and the nature of failure; manual review required.",
       "Reauthorization beyond 14 weeks (notes only): letter of medical necessity and chart notes demonstrating therapeutic benefit by week 14; documentation of tolerance and absence of adverse events; for baseline corticosteroid use, an initial taper attempt or plan to attempt taper.",
       "Renewal denial #6 (notes only): AST/ALT > 20 times ULN, bilirubin > 10 times ULN, or life-threatening diarrhea; manual review required.",
       "Duration and dosing (notes only): initial approval 14 weeks, with IV infusions at weeks 0, 2, 6, and 14. Reauthorization up to 12 months, with IV infusions at week 22 and beyond every eight weeks. Subcutaneous dosing is 108 mg every 2 weeks beginning at week 6 following IV infusions at weeks 0 and 2.",
       "Quantity limits (manual review): 300 mg (1 vial) per dose; 216 mg (2 syringes or pens) per 28 days. HCPCS J3380 maximum 300 units for IV formulation. Quantity metadata does not numerically enforce route-specific limits or dosing.",
       "Cautions (notes only): monitor new or worsening neurological issues because PML risk cannot be ruled out. Live vaccines should not be administered during vedolizumab treatment unless benefit outweighs risk.",
-      "PDL context: ENTYVIO injection, IV, and pen are non_preferred in CYTOKINE AND CAM ANTAGONISTS. Preferred class peers include Humira, Hadlima, Rinvoq, and preferred infliximab products; peers without rule packs are mentioned only here. Linked Skyrizi, Stelara, infliximab, Tremfya, and Zymfentra packs remain text_only and require criteria review, not confirmed coverage.",
+      "PDL context: ENTYVIO injection, IV, and pen are non_preferred in CYTOKINE AND CAM ANTAGONISTS. Preferred class peers include Humira, Hadlima, Rinvoq, and preferred infliximab products; peers without rule packs are mentioned only here. Linked Stelara is partial; Skyrizi, infliximab, Tremfya, and Zymfentra packs remain text_only and require criteria review, not confirmed coverage.",
       "This pack remains partial: initial documentation, reauthorization, monitoring, cautions, duration, dosing, and quantity enforcement require manual review."
     ],
     "fact_ui": {
@@ -5119,7 +5119,7 @@
           },
           {
             "value": "crohns_disease",
-            "label": "Moderately to severely active Crohn’s disease (CD)"
+            "label": "Moderately to severely active Crohn\u2019s disease (CD)"
           }
         ]
       },
@@ -5139,11 +5139,11 @@
       },
       "conventional_therapy_60d": {
         "type": "select",
-        "label": "Trialed and failed ≥1 conventional therapy (e.g. sulfasalazine, prednisone, azathioprine) for ≥60 days (UC/CD approval #3).",
+        "label": "Trialed and failed \u22651 conventional therapy (e.g. sulfasalazine, prednisone, azathioprine) for \u226560 days (UC/CD approval #3).",
         "options": [
           {
             "value": "trial_failure_60d",
-            "label": "Trialed and failed ≥1 conventional therapy (e.g. sulfasalazine, prednisone, azathioprine) for ≥60 days"
+            "label": "Trialed and failed \u22651 conventional therapy (e.g. sulfasalazine, prednisone, azathioprine) for \u226560 days"
           },
           {
             "value": "none",
@@ -5153,11 +5153,11 @@
       },
       "tnf_blocker_60d": {
         "type": "select",
-        "label": "Trialed and failed a TNF blocker (e.g. Humira) for ≥60 days (UC/CD approval #4).",
+        "label": "Trialed and failed a TNF blocker (e.g. Humira) for \u226560 days (UC/CD approval #4).",
         "options": [
           {
             "value": "trial_failure_60d",
-            "label": "Trialed and failed a TNF blocker (e.g. Humira) for ≥60 days"
+            "label": "Trialed and failed a TNF blocker (e.g. Humira) for \u226560 days"
           },
           {
             "value": "none",
@@ -5175,11 +5175,11 @@
           },
           {
             "value": "151_to_220",
-            "label": "CDAI 151–220"
+            "label": "CDAI 151\u2013220"
           },
           {
             "value": "lte_150",
-            "label": "CDAI ≤ 150"
+            "label": "CDAI \u2264 150"
           },
           {
             "value": "not_applicable_uc",
@@ -5255,7 +5255,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -5302,7 +5302,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -5328,7 +5328,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -5353,7 +5353,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -5380,7 +5380,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "prescriber_specialty"
@@ -5404,7 +5404,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -5436,7 +5436,7 @@
         "options": [
           {
             "value": "asthma",
-            "label": "Severe Asthma (eosinophilic phenotype) — add-on maintenance"
+            "label": "Severe Asthma (eosinophilic phenotype) \u2014 add-on maintenance"
           },
           {
             "value": "egpa",
@@ -5456,11 +5456,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Confirmed — maintenance use only"
+            "label": "Confirmed \u2014 maintenance use only"
           },
           {
             "value": "no",
-            "label": "No — acute use"
+            "label": "No \u2014 acute use"
           }
         ]
       },
@@ -5481,11 +5481,11 @@
       },
       "asthma_controller_trial_3mo": {
         "type": "select",
-        "label": "Asthma: ≥3 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
+        "label": "Asthma: \u22653 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
         "options": [
           {
             "value": "ics_laba_ltra_or_theo_3mo",
-            "label": "Yes — ≥3 month trial with ongoing symptoms"
+            "label": "Yes \u2014 \u22653 month trial with ongoing symptoms"
           },
           {
             "value": "intolerant_to_all",
@@ -5493,7 +5493,7 @@
           },
           {
             "value": "no",
-            "label": "No — criterion not met"
+            "label": "No \u2014 criterion not met"
           }
         ],
         "hint": "AK asthma criterion 5."
@@ -5546,7 +5546,7 @@
       },
       "fasenra_asthma_eos_ge_150_4w": {
         "type": "select",
-        "label": "Asthma: blood eosinophil count ≥150 cells/mcL within 4 weeks of treatment initiation",
+        "label": "Asthma: blood eosinophil count \u2265150 cells/mcL within 4 weeks of treatment initiation",
         "options": [
           {
             "value": "yes",
@@ -5561,7 +5561,7 @@
       },
       "egpa_acr_criteria": {
         "type": "multi",
-        "label": "EGPA: diagnostic criteria present (need ≥4)",
+        "label": "EGPA: diagnostic criteria present (need \u22654)",
         "options": [
           {
             "value": "asthma",
@@ -5588,7 +5588,7 @@
             "label": "Biopsy: blood vessel with extravascular eosinophils"
           }
         ],
-        "hint": "AK EGPA criterion 4 — at least four of six ACR-style features."
+        "hint": "AK EGPA criterion 4 \u2014 at least four of six ACR-style features."
       },
       "egpa_steroid_status": {
         "type": "select",
@@ -5596,7 +5596,7 @@
         "options": [
           {
             "value": "stable_4w",
-            "label": "Stable on corticosteroids ≥4 weeks"
+            "label": "Stable on corticosteroids \u22654 weeks"
           },
           {
             "value": "ci_or_inappropriate",
@@ -5628,7 +5628,7 @@
       },
       {
         "id": "fda_labeled_age_for_indication",
-        "text": "Patient meets FDA-labeled age for the requested indication (severe asthma ≥6y; EGPA ≥18y).",
+        "text": "Patient meets FDA-labeled age for the requested indication (severe asthma \u22656y; EGPA \u226518y).",
         "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -5725,7 +5725,7 @@
       },
       {
         "id": "asthma_eos_controller_concurrent_not_acute",
-        "text": "Asthma: eos ≥150 cells/mcL within 4 weeks; ≥3 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller use; not for acute bronchospasm/status asthmaticus.",
+        "text": "Asthma: eos \u2265150 cells/mcL within 4 weeks; \u22653 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller use; not for acute bronchospasm/status asthmaticus.",
         "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -5780,7 +5780,7 @@
       },
       {
         "id": "egpa_diagnosis_and_steroids",
-        "text": "EGPA: ≥4 of 6 diagnostic criteria (asthma, eosinophilia >10%, neuropathy, migratory infiltrates, sinus abnormalities, biopsy extravascular eosinophils); AND stable on corticosteroids ≥4 weeks or clinical inappropriateness documented.",
+        "text": "EGPA: \u22654 of 6 diagnostic criteria (asthma, eosinophilia >10%, neuropathy, migratory infiltrates, sinus abnormalities, biopsy extravascular eosinophils); AND stable on corticosteroids \u22654 weeks or clinical inappropriateness documented.",
         "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -5856,9 +5856,9 @@
       "notes": "Fasenra (J0517): 30 mg SC every 28 days for first 3 doses, then every 8 weeks. Approval up to 3 months; reauth up to 12 months."
     },
     "notes": [
-      "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala®, Cinqair®, Fasenra®; Version 3, updated 09/19/2025, effective 11/1/2025).",
+      "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala\u00ae, Cinqair\u00ae, Fasenra\u00ae; Version 3, updated 09/19/2025, effective 11/1/2025).",
       "Fasenra-encoded indications: severe eosinophilic asthma; EGPA. (HES/CRSwNP/COPD are Nucala-only on this PDF.)",
-      "Encoded: closed indication list; FDA age-by-indication (asthma ≥6y, EGPA ≥18y from labeled use); specialty-by-indication; asthma eos/controller/concurrent/not-acute attestations; EGPA ≥4/6 ACR criteria multi-select + steroid status; concomitant-biologic denial.",
+      "Encoded: closed indication list; FDA age-by-indication (asthma \u22656y, EGPA \u226518y from labeled use); specialty-by-indication; asthma eos/controller/concurrent/not-acute attestations; EGPA \u22654/6 ACR criteria multi-select + steroid status; concomitant-biologic denial.",
       "Not encoded as numeric predicates (attestation only): exact eos cell counts, quantity/days-supply math, hypersensitivity/eye-symptom/vasculitis cautions.",
       "Alternatives: Nucala/Cinqair/Dupixent/Xolair evaluate()-linked where indications overlap. PDL preferred same-class peers (IMMUNOMODULATORS, ASTHMA) attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma."
     ]
@@ -5881,7 +5881,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -5926,7 +5926,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -5953,7 +5953,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -5978,7 +5978,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6004,7 +6004,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6031,7 +6031,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -6057,7 +6057,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6084,7 +6084,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -6108,7 +6108,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6134,7 +6134,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -6159,7 +6159,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -6184,7 +6184,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6211,7 +6211,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6237,7 +6237,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -6261,7 +6261,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6288,7 +6288,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -6312,7 +6312,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6337,10 +6337,11 @@
     "encoding_status": "text_only",
     "criteria": [],
     "alternatives": [
-      "entyvio"
+      "entyvio",
+      "stelara"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6366,7 +6367,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6393,7 +6394,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -6418,7 +6419,7 @@
     "alternatives": [],
     "notes": [
       "Shared Alaska Medicaid Interleukin-5 Inhibitors Criteria PDF covers Nucala, Cinqair, and Fasenra.",
-      "Brand-specific partial encodings live at rule packs: fasenra, nucala, cinqair. This class slug remains text_only — evaluate() returns need_info / encoding_incomplete; use a brand pack for coverage decisions."
+      "Brand-specific partial encodings live at rule packs: fasenra, nucala, cinqair. This class slug remains text_only \u2014 evaluate() returns need_info / encoding_incomplete; use a brand pack for coverage decisions."
     ],
     "inferred_required_facts": [
       "indication",
@@ -6444,7 +6445,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6470,7 +6471,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6497,7 +6498,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6523,7 +6524,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6548,7 +6549,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6575,7 +6576,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6600,7 +6601,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6627,7 +6628,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6653,7 +6654,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -6679,7 +6680,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6705,7 +6706,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -6729,7 +6730,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6756,7 +6757,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6782,7 +6783,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -6807,7 +6808,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6833,7 +6834,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6860,7 +6861,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -6884,7 +6885,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "prescriber_specialty"
@@ -6909,7 +6910,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6935,7 +6936,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6962,7 +6963,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -6989,7 +6990,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -7018,7 +7019,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -7043,7 +7044,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -7068,7 +7069,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -7096,7 +7097,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -7107,7 +7108,7 @@
   "metformin-er": {
     "drug": {
       "name": "Metformin ER",
-      "generic_name": "generics for Fortamet® & Glumetza®",
+      "generic_name": "generics for Fortamet\u00ae & Glumetza\u00ae",
       "therapeutic_class": "metabolic"
     },
     "source": {
@@ -7123,7 +7124,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -7148,7 +7149,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -7174,7 +7175,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -7200,7 +7201,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -7227,7 +7228,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -7254,7 +7255,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -7278,7 +7279,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -7302,7 +7303,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "prior_therapy_failures"
@@ -7326,7 +7327,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -7353,7 +7354,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -7377,7 +7378,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -7407,7 +7408,7 @@
         "options": [
           {
             "value": "asthma",
-            "label": "Severe Asthma (eosinophilic phenotype) — add-on maintenance"
+            "label": "Severe Asthma (eosinophilic phenotype) \u2014 add-on maintenance"
           },
           {
             "value": "egpa",
@@ -7423,7 +7424,7 @@
           },
           {
             "value": "copd",
-            "label": "COPD (eosinophilic phenotype) — add-on maintenance"
+            "label": "COPD (eosinophilic phenotype) \u2014 add-on maintenance"
           }
         ],
         "hint": "Closed list from Alaska Medicaid Interleukin-5 Inhibitors PA Criteria (effective 11/1/2025). Nucala covers all five indications on the PDF."
@@ -7439,11 +7440,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Confirmed — maintenance use only"
+            "label": "Confirmed \u2014 maintenance use only"
           },
           {
             "value": "no",
-            "label": "No — acute use"
+            "label": "No \u2014 acute use"
           }
         ]
       },
@@ -7464,11 +7465,11 @@
       },
       "asthma_controller_trial_3mo": {
         "type": "select",
-        "label": "Asthma: ≥3 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
+        "label": "Asthma: \u22653 month trial of ICS+LABA, LTRA, or theophylline with ongoing symptoms (or intolerant to all)",
         "options": [
           {
             "value": "ics_laba_ltra_or_theo_3mo",
-            "label": "Yes — ≥3 month trial with ongoing symptoms"
+            "label": "Yes \u2014 \u22653 month trial with ongoing symptoms"
           },
           {
             "value": "intolerant_to_all",
@@ -7476,7 +7477,7 @@
           },
           {
             "value": "no",
-            "label": "No — criterion not met"
+            "label": "No \u2014 criterion not met"
           }
         ],
         "hint": "AK asthma criterion 5."
@@ -7552,7 +7553,7 @@
       },
       "egpa_acr_criteria": {
         "type": "multi",
-        "label": "EGPA: diagnostic criteria present (need ≥4)",
+        "label": "EGPA: diagnostic criteria present (need \u22654)",
         "options": [
           {
             "value": "asthma",
@@ -7586,7 +7587,7 @@
         "options": [
           {
             "value": "stable_4w",
-            "label": "Stable on corticosteroids ≥4 weeks"
+            "label": "Stable on corticosteroids \u22654 weeks"
           },
           {
             "value": "ci_or_inappropriate",
@@ -7600,7 +7601,7 @@
       },
       "hes_duration_no_secondary_cause": {
         "type": "select",
-        "label": "HES: diagnosis ≥6 months without identifiable non-hematologic secondary cause",
+        "label": "HES: diagnosis \u22656 months without identifiable non-hematologic secondary cause",
         "options": [
           {
             "value": "yes",
@@ -7618,7 +7619,7 @@
         "options": [
           {
             "value": "stable_4w",
-            "label": "Stable on corticosteroids ≥4 weeks"
+            "label": "Stable on corticosteroids \u22654 weeks"
           },
           {
             "value": "ci_or_inappropriate",
@@ -7646,7 +7647,7 @@
       },
       "crswnp_symptoms_ge_2_for_6mo": {
         "type": "select",
-        "label": "CRSwNP: ≥2 of (congestion, obstruction, discharge, reduction/loss of smell) for ≥6 months",
+        "label": "CRSwNP: \u22652 of (congestion, obstruction, discharge, reduction/loss of smell) for \u22656 months",
         "options": [
           {
             "value": "yes",
@@ -7660,7 +7661,7 @@
       },
       "crswnp_incs_3mo_and_continue": {
         "type": "select",
-        "label": "CRSwNP: ≥3 months intranasal corticosteroid AND will continue concomitantly with Nucala",
+        "label": "CRSwNP: \u22653 months intranasal corticosteroid AND will continue concomitantly with Nucala",
         "options": [
           {
             "value": "yes",
@@ -7674,7 +7675,7 @@
       },
       "copd_failed_triple_therapy_3mo": {
         "type": "select",
-        "label": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) ≥3 consecutive months, or documented clinical contraindication",
+        "label": "COPD: inadequate response to triple therapy (LABA+ICS+LAMA) \u22653 consecutive months, or documented clinical contraindication",
         "options": [
           {
             "value": "yes",
@@ -7688,7 +7689,7 @@
       },
       "copd_exacerbation_history_met": {
         "type": "select",
-        "label": "COPD: ≥2 moderate or ≥1 severe exacerbations in prior year (incl. ≥1 while on triple therapy)",
+        "label": "COPD: \u22652 moderate or \u22651 severe exacerbations in prior year (incl. \u22651 while on triple therapy)",
         "options": [
           {
             "value": "yes",
@@ -7702,7 +7703,7 @@
       },
       "copd_spirometry_criteria_met": {
         "type": "select",
-        "label": "COPD: post-BD FEV1/FVC <0.7 and post-BD FEV1 20–80% predicted",
+        "label": "COPD: post-BD FEV1/FVC <0.7 and post-BD FEV1 20\u201380% predicted",
         "options": [
           {
             "value": "yes",
@@ -7713,7 +7714,7 @@
             "label": "No"
           }
         ],
-        "hint": "AK Nucala COPD spirometry range is 20–80% (attestation)."
+        "hint": "AK Nucala COPD spirometry range is 20\u201380% (attestation)."
       },
       "nucala_copd_eos": {
         "type": "select",
@@ -7721,11 +7722,11 @@
         "options": [
           {
             "value": "ge_150_within_6w",
-            "label": "≥150 cells/mcL within 6 weeks of initiation"
+            "label": "\u2265150 cells/mcL within 6 weeks of initiation"
           },
           {
             "value": "ge_300_past_12mo",
-            "label": "≥300 cells/mcL in the past 12 months"
+            "label": "\u2265300 cells/mcL in the past 12 months"
           },
           {
             "value": "neither",
@@ -7756,7 +7757,7 @@
       },
       {
         "id": "fda_labeled_age_for_indication",
-        "text": "Patient meets FDA-labeled age for the requested indication (asthma ≥6y; HES ≥12y; EGPA/CRSwNP/COPD ≥18y).",
+        "text": "Patient meets FDA-labeled age for the requested indication (asthma \u22656y; HES \u226512y; EGPA/CRSwNP/COPD \u226518y).",
         "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -7956,7 +7957,7 @@
       },
       {
         "id": "asthma_eos_controller_concurrent_not_acute",
-        "text": "Asthma: eos >150/mcL within 6 weeks OR >300/mcL in past 12 months; ≥3 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller; not for acute bronchospasm/status asthmaticus.",
+        "text": "Asthma: eos >150/mcL within 6 weeks OR >300/mcL in past 12 months; \u22653 month ICS+LABA/LTRA/theophylline trial (or intolerant to all) with ongoing symptoms; concurrent controller; not for acute bronchospasm/status asthmaticus.",
         "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -8019,7 +8020,7 @@
       },
       {
         "id": "egpa_diagnosis_and_steroids",
-        "text": "EGPA: ≥4 of 6 diagnostic criteria; AND stable on corticosteroids ≥4 weeks or clinical inappropriateness documented.",
+        "text": "EGPA: \u22654 of 6 diagnostic criteria; AND stable on corticosteroids \u22654 weeks or clinical inappropriateness documented.",
         "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -8075,7 +8076,7 @@
       },
       {
         "id": "hes_diagnosis_and_steroids",
-        "text": "HES: diagnosis ≥6 months without identifiable non-hematologic secondary cause; AND stable on corticosteroids ≥4 weeks or clinical inappropriateness documented.",
+        "text": "HES: diagnosis \u22656 months without identifiable non-hematologic secondary cause; AND stable on corticosteroids \u22654 weeks or clinical inappropriateness documented.",
         "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -8123,7 +8124,7 @@
       },
       {
         "id": "crswnp_documentation_and_incs",
-        "text": "CRSwNP: diagnosis by exam/endoscopy/sinus CT; ≥2 cardinal symptoms for ≥6 months; ≥3 months intranasal corticosteroid with continued concomitant use.",
+        "text": "CRSwNP: diagnosis by exam/endoscopy/sinus CT; \u22652 cardinal symptoms for \u22656 months; \u22653 months intranasal corticosteroid with continued concomitant use.",
         "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -8174,7 +8175,7 @@
       },
       {
         "id": "copd_triple_exacerbation_spirometry_eos",
-        "text": "COPD: inadequate response (or CI) to triple therapy ≥3 months; ≥2 moderate or ≥1 severe exacerbation in prior year (incl. ≥1 on triple therapy); post-BD FEV1/FVC <0.7 and FEV1 20–80% predicted; eos ≥150/6w OR ≥300/12mo.",
+        "text": "COPD: inadequate response (or CI) to triple therapy \u22653 months; \u22652 moderate or \u22651 severe exacerbation in prior year (incl. \u22651 on triple therapy); post-BD FEV1/FVC <0.7 and FEV1 20\u201380% predicted; eos \u2265150/6w OR \u2265300/12mo.",
         "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -8259,9 +8260,9 @@
       "notes": "Nucala (J2182): 100 mg SC q28d for severe asthma, nasal polyps, COPD; 300 mg q28d for EGPA and HES. Approval up to 3 months; reauth up to 12 months."
     },
     "notes": [
-      "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala®, Cinqair®, Fasenra®; Version 3, updated 09/19/2025, effective 11/1/2025).",
+      "Partial encoding from AK Interleukin-5 Inhibitors Criteria (Nucala\u00ae, Cinqair\u00ae, Fasenra\u00ae; Version 3, updated 09/19/2025, effective 11/1/2025).",
       "Nucala-encoded indications: severe eosinophilic asthma; EGPA; HES; CRSwNP; eosinophilic COPD.",
-      "Encoded: closed indication list; FDA age-by-indication; specialty-by-indication; asthma eos/controller/concurrent/not-acute; EGPA ≥4/6 + steroids; HES duration + steroids; CRSwNP exam/symptoms/INCS; COPD triple/exacerbation/spirometry/eos; concomitant-biologic denial.",
+      "Encoded: closed indication list; FDA age-by-indication; specialty-by-indication; asthma eos/controller/concurrent/not-acute; EGPA \u22654/6 + steroids; HES duration + steroids; CRSwNP exam/symptoms/INCS; COPD triple/exacerbation/spirometry/eos; concomitant-biologic denial.",
       "Not encoded as numeric predicates (attestation only): exact eos cell counts, FEV1 %, quantity math, hypersensitivity/eye-symptom/vasculitis cautions.",
       "Alternatives: Fasenra/Cinqair/Dupixent/Xolair evaluate()-linked where indications overlap. PDL preferred same-class peers (IMMUNOMODULATORS, ASTHMA) attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma."
     ]
@@ -8284,7 +8285,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8311,7 +8312,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8338,7 +8339,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8364,7 +8365,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -8390,7 +8391,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8417,7 +8418,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -8441,7 +8442,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -8466,7 +8467,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8493,7 +8494,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8519,7 +8520,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8545,7 +8546,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8572,7 +8573,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8599,7 +8600,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8624,7 +8625,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8651,7 +8652,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8699,7 +8700,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8725,7 +8726,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8772,7 +8773,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8798,7 +8799,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8825,7 +8826,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8851,7 +8852,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8879,7 +8880,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8905,7 +8906,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8930,7 +8931,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8957,7 +8958,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -8983,7 +8984,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9010,7 +9011,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9036,7 +9037,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9061,7 +9062,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9089,7 +9090,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -9114,7 +9115,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9139,10 +9140,11 @@
     "encoding_status": "text_only",
     "criteria": [],
     "alternatives": [
-      "entyvio"
+      "entyvio",
+      "stelara"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9167,7 +9169,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9216,7 +9218,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9242,7 +9244,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9269,7 +9271,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9295,7 +9297,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9343,7 +9345,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -9363,19 +9365,528 @@
       "criteria_pdf": "data/alaska/raw/stelara_criteria.pdf"
     },
     "requires_pa": true,
-    "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "pdl_status": "non_preferred",
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "FDA-labeled indication and disease severity (FDA indications; approval #2 in each arm).",
+        "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "plaque_psoriasis",
+            "psoriatic_arthritis",
+            "crohns_disease",
+            "ulcerative_colitis"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age_for_indication",
+        "text": "PsO/PsA: age \u22656 years; CD/UC: age \u226518 years (FDA indications; each arm approval #1).",
+        "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "indication",
+          "age_years"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "plaque_psoriasis"
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 6
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "psoriatic_arthritis"
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 6
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "crohns_disease"
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 18
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "ulcerative_colitis"
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 18
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "tnf_blocker_failure",
+        "text": "Trialed and failed a TNF blocker (each indication approval #4).",
+        "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "tnf_blocker_failure"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "tnf_blocker_failure",
+          "values": [
+            "trial_failure"
+          ]
+        }
+      },
+      {
+        "id": "additional_prior_therapy",
+        "text": "Trialed and failed \u22651 other therapy; PsO must include \u22651 topical agent (each indication approval #4).",
+        "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "indication",
+          "additional_prior_therapy"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "plaque_psoriasis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "additional_prior_therapy",
+                  "value": "trial_failure_including_topical"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "psoriatic_arthritis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "additional_prior_therapy",
+                  "value": "trial_failure"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "crohns_disease"
+                },
+                {
+                  "op": "eq",
+                  "fact": "additional_prior_therapy",
+                  "value": "trial_failure"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "ulcerative_colitis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "additional_prior_therapy",
+                  "value": "trial_failure"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "disease_activity_status",
+        "text": "PsO: PASI \u226512 (or equivalent); PsA: HAQ-DI \u22652 (or equivalent); CD: baseline CDAI submitted; UC: baseline Mayo (or equivalent) submitted (approval #3; PsO denial #5).",
+        "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "indication",
+          "disease_activity_status"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "plaque_psoriasis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "disease_activity_status",
+                  "value": "pasi_gte_12"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "psoriatic_arthritis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "disease_activity_status",
+                  "value": "haq_di_gte_2"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "crohns_disease"
+                },
+                {
+                  "op": "eq",
+                  "fact": "disease_activity_status",
+                  "value": "cdai_baseline_submitted"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "ulcerative_colitis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "disease_activity_status",
+                  "value": "mayo_baseline_submitted"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "no_known_hypersensitivity_ustekinumab",
+        "text": "No known hypersensitivity to ustekinumab or any excipient (denial #1).",
+        "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "no_known_hypersensitivity_ustekinumab"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_known_hypersensitivity_ustekinumab",
+          "value": true
+        }
+      },
+      {
+        "id": "no_active_severe_infection",
+        "text": "No current active severe infection (denial #2).",
+        "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "no_active_severe_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_severe_infection",
+          "value": true
+        }
+      },
+      {
+        "id": "not_concurrent_integrin_or_tnf",
+        "text": "No concurrent integrin antagonist or TNF blocker (denial #3).",
+        "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "not_concurrent_integrin_or_tnf"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_integrin_or_tnf",
+          "value": true
+        }
+      },
+      {
+        "id": "not_concurrent_phototherapy",
+        "text": "Not receiving concurrent phototherapy (denial #4; initial authorization confirmation).",
+        "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "not_concurrent_phototherapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_phototherapy",
+          "value": true
+        }
+      },
+      {
+        "id": "latex_safe_for_device",
+        "text": "No latex allergy with use of the latex needle-cover prefilled syringe (denial #6).",
+        "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "latex_safe_for_device"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "latex_safe_for_device",
+          "values": [
+            "no_latex_allergy",
+            "using_vial_not_pfs"
+          ]
+        }
+      }
+    ],
     "alternatives": [
-      "entyvio"
+      "entyvio",
+      "skyrizi",
+      "tremfya",
+      "infliximab",
+      "zymfentra"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Stelara (ustekinumab) for subcutaneous administration, Version 4. Original 11/14/2014; Revision Approval 9/20/2024; Effective 11/1/2024.",
+      "Approval #2 severity context: moderate to severe PsO, active PsA, moderate to severe active CD, and moderate to severely active UC are represented by the closed indication labels.",
+      "Specialty gap: the Alaska PDF specifies no prescriber specialty requirement; no specialty field or predicate is added.",
+      "All four indications require TNF blocker failure plus at least one other therapy; PsO includes at least one topical agent. Prior TNF failure is separate from prohibited concurrent integrin antagonist or TNF blocker use. No minimum trial duration is specified.",
+      "Disease activity uses categorical attestations, not numeric score coercion. PsO PASI \u226512 also covers denial #5 for initiators; PsA HAQ-DI \u22652; CD baseline CDAI and UC baseline Mayo (or equivalent) must be submitted.",
+      "Initial authorization (notes only): monitoring plan; previous therapies and nature of failure; current weight; complete medication regimen; confirmation not receiving concurrent phototherapy; dosing conforms to an FDA-approved regimen by indication. Documentation and dosing require manual review.",
+      "Reauthorization beyond 4 weeks (notes only): letter of medical necessity plus chart notes demonstrating therapeutic benefit: baseline/current PASI for Ps; tender/swollen joints, HAQ-DI (or equivalent), CRP for PsA; CDAI at baseline and at 6 months for CD (source reauthorization text spells CADI). Document tolerance and absence of adverse events.",
+      "Duration (notes only): initial 4 weeks (injections at 0 and 4 weeks); reauthorization up to 12 months (week 16 and beyond every 12 weeks). FDA regimen by indication requires manual review.",
+      "Manual review: 45 mg/dose for weight \u2264100 kg; 90 mg/dose for weight >100 kg for plaque psoriasis; 90 mg/dose for CD and UC after initial IV infusion. Weight, route, and quantity limits are not numerically enforced.",
+      "Cautions (notes only): initial dose under physician supervision; subsequent self-administration only with physician determination, training and demonstrated competency, close monitoring and follow-up. Monitor new/worsening neurological issues for RPLS; no live vaccines unless benefit outweighs risk; avoid excessive UV exposure and monitor new skin growths; monitor therapeutic effect of CYP450 therapies, especially narrow therapeutic index agents. IL-12/IL-23 p40 binding may increase malignancy risk. Refer to prescribing information and medication guide.",
+      "PDL context: all STELARA vial, syringe and IV rows are non_preferred in CYTOKINE AND CAM ANTAGONISTS. Preferred peers without packs include Humira, Hadlima, Rinvoq and preferred infliximab products (notes only). Linked alternatives require indication-specific review and do not imply confirmed coverage. Dupixent, Adbry and Ebglyss belong to IMMUNOMODULATORS, ATOPIC DERMATITIS and are not linked alternatives.",
+      "This pack remains partial: initial documentation, reauthorization, monitoring, cautions, duration, dosing and quantity enforcement require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "FDA-labeled indication",
+        "options": [
+          {
+            "value": "plaque_psoriasis",
+            "label": "Moderate to severe plaque psoriasis (PsO) (candidate for phototherapy or systemic therapy)"
+          },
+          {
+            "value": "psoriatic_arthritis",
+            "label": "Active psoriatic arthritis (PsA)"
+          },
+          {
+            "value": "crohns_disease",
+            "label": "Moderately to severely active Crohn\u2019s disease (CD)"
+          },
+          {
+            "value": "ulcerative_colitis",
+            "label": "Moderately to severely active ulcerative colitis (UC)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age",
+        "option_style": "age_bands"
+      },
+      "tnf_blocker_failure": {
+        "type": "select",
+        "label": "Prior TNF blocker failure",
+        "options": [
+          {
+            "value": "trial_failure",
+            "label": "Trialed and failed a TNF blocker"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "additional_prior_therapy": {
+        "type": "select",
+        "label": "Additional prior therapy",
+        "options": [
+          {
+            "value": "trial_failure_including_topical",
+            "label": "Trialed and failed \u22651 other therapy including \u22651 topical agent (PsO)"
+          },
+          {
+            "value": "trial_failure",
+            "label": "Trialed and failed \u22651 other therapy (PsA / CD e.g. mesalamine, sulfasalazine, corticosteroid / UC e.g. azathioprine, cyclosporine, mesalamine)"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "disease_activity_status": {
+        "type": "select",
+        "label": "Disease activity / baseline score",
+        "options": [
+          {
+            "value": "pasi_gte_12",
+            "label": "PASI \u2265 12 (or equivalent) (PsO; also covers denial PASI < 12 for initiators)"
+          },
+          {
+            "value": "haq_di_gte_2",
+            "label": "HAQ-DI \u2265 2 (or equivalent) (PsA)"
+          },
+          {
+            "value": "cdai_baseline_submitted",
+            "label": "Baseline CDAI submitted (CD)"
+          },
+          {
+            "value": "mayo_baseline_submitted",
+            "label": "Baseline Mayo score (or equivalent) submitted (UC)"
+          },
+          {
+            "value": "pasi_lt_12",
+            "label": "PASI < 12 (or equivalent)"
+          },
+          {
+            "value": "haq_di_lt_2",
+            "label": "HAQ-DI < 2 (or equivalent)"
+          },
+          {
+            "value": "score_not_submitted",
+            "label": "Required baseline score not submitted"
+          }
+        ]
+      },
+      "no_known_hypersensitivity_ustekinumab": {
+        "type": "select",
+        "label": "No known hypersensitivity to ustekinumab or any excipient (denial #1).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_active_severe_infection": {
+        "type": "select",
+        "label": "No current active severe infection (denial #2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_integrin_or_tnf": {
+        "type": "select",
+        "label": "No concurrent integrin antagonist or TNF blocker (denial #3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_phototherapy": {
+        "type": "select",
+        "label": "Not receiving concurrent phototherapy (denial #4; initial authorization confirmation).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "latex_safe_for_device": {
+        "type": "select",
+        "label": "Latex allergy / device",
+        "options": [
+          {
+            "value": "no_latex_allergy",
+            "label": "No latex allergy"
+          },
+          {
+            "value": "using_vial_not_pfs",
+            "label": "Using vial (not latex needle-cover PFS)"
+          },
+          {
+            "value": "latex_allergy_pfs",
+            "label": "Latex allergy and using prefilled syringe"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": null,
+      "notes": "Manual review: 45 mg/dose for weight \u2264100 kg; 90 mg/dose for weight >100 kg for plaque psoriasis; 90 mg/dose for CD and UC after initial IV infusion. Weight, route, and quantity limits are not numerically enforced."
+    }
   },
   "strensiq": {
     "drug": {
@@ -9395,7 +9906,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9421,7 +9932,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -9446,7 +9957,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9474,7 +9985,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9501,7 +10012,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9527,7 +10038,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9559,7 +10070,7 @@
         "options": [
           {
             "value": "asthma",
-            "label": "Severe Asthma — add-on maintenance (≥12 years)"
+            "label": "Severe Asthma \u2014 add-on maintenance (\u226512 years)"
           }
         ],
         "hint": "Closed list from Alaska Medicaid Tezspire Prior Authorization Criteria (effective 11/1/2023). Tezspire: severe asthma only."
@@ -9602,34 +10113,34 @@
         "options": [
           {
             "value": "ge_2_ocs_or_injectable",
-            "label": "≥2 exacerbations requiring oral or injectable corticosteroid"
+            "label": "\u22652 exacerbations requiring oral or injectable corticosteroid"
           },
           {
             "value": "ge_1_hospitalization",
-            "label": "≥1 exacerbation resulting in hospitalization"
+            "label": "\u22651 exacerbation resulting in hospitalization"
           },
           {
             "value": "both",
-            "label": "Both (≥2 OCS/injectable AND ≥1 hospitalization)"
+            "label": "Both (\u22652 OCS/injectable AND \u22651 hospitalization)"
           },
           {
             "value": "neither",
             "label": "Neither / not documented"
           }
         ],
-        "hint": "AK approval criteria 4–5: at least one of the two exacerbation thresholds."
+        "hint": "AK approval criteria 4\u20135: at least one of the two exacerbation thresholds."
       },
       "tezspire_adjunct_ics_plus_controller_3mo": {
         "type": "select",
-        "label": "Adjunct ≥3 months: medium–high dose ICS AND an additional controller (e.g. LTRA, LABA)",
+        "label": "Adjunct \u22653 months: medium\u2013high dose ICS AND an additional controller (e.g. LTRA, LABA)",
         "options": [
           {
             "value": "both_ics_and_controller_3mo",
-            "label": "Yes — both medium–high ICS and additional controller ≥3 months"
+            "label": "Yes \u2014 both medium\u2013high ICS and additional controller \u22653 months"
           },
           {
             "value": "no",
-            "label": "No — criterion not met"
+            "label": "No \u2014 criterion not met"
           }
         ],
         "hint": "AK approval criterion 6: must receive both for at least three months."
@@ -9640,11 +10151,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Confirmed — maintenance / add-on use only"
+            "label": "Confirmed \u2014 maintenance / add-on use only"
           },
           {
             "value": "no",
-            "label": "No — acute use"
+            "label": "No \u2014 acute use"
           }
         ],
         "hint": "AK approval criterion 7 / denial if used for acute symptoms."
@@ -9655,11 +10166,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Yes — no concomitant asthma biologic"
+            "label": "Yes \u2014 no concomitant asthma biologic"
           },
           {
             "value": "no",
-            "label": "No — currently on another asthma biologic (e.g. Dupixent, Xolair, Fasenra, Nucala, Cinqair)"
+            "label": "No \u2014 currently on another asthma biologic (e.g. Dupixent, Xolair, Fasenra, Nucala, Cinqair)"
           }
         ],
         "hint": "AK approval criterion 8."
@@ -9670,11 +10181,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Yes — adherent"
+            "label": "Yes \u2014 adherent"
           },
           {
             "value": "no",
-            "label": "No — non-adherent"
+            "label": "No \u2014 non-adherent"
           }
         ],
         "hint": "AK denial criterion 2: non-adherence to controller therapy."
@@ -9698,7 +10209,7 @@
       },
       {
         "id": "fda_labeled_age_for_indication",
-        "text": "Patient meets FDA-labeled age for Tezspire (severe asthma ≥12 years).",
+        "text": "Patient meets FDA-labeled age for Tezspire (severe asthma \u226512 years).",
         "citation": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -9760,7 +10271,7 @@
       },
       {
         "id": "asthma_exacerbation_prior_year",
-        "text": "Preceding year: ≥2 exacerbations requiring oral/injectable corticosteroid OR ≥1 exacerbation resulting in hospitalization.",
+        "text": "Preceding year: \u22652 exacerbations requiring oral/injectable corticosteroid OR \u22651 exacerbation resulting in hospitalization.",
         "citation": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -9870,12 +10381,12 @@
     "max_units": {
       "quantity": null,
       "days_supply": 28,
-      "notes": "Tezspire: not to exceed 210 mg every 28 days. Initial approval up to 3 months; reauthorization up to 12 months. PDL non-preferred (IMMUNOMODULATORS, ASTHMA — OFF)."
+      "notes": "Tezspire: not to exceed 210 mg every 28 days. Initial approval up to 3 months; reauthorization up to 12 months. PDL non-preferred (IMMUNOMODULATORS, ASTHMA \u2014 OFF)."
     },
     "notes": [
-      "Partial encoding from AK Tezspire™ (tezepelumab-ekko) Criteria Version 1 (Original 08/22/2023, Accepted 09/15/2023, Effective 11/1/2023).",
-      "Tezspire-encoded indication: severe asthma add-on maintenance only (age ≥12y). No phenotype/eos gate on this PDF (unlike IL-5 peers).",
-      "Encoded: closed indication list; FDA age ≥12y; specialty (pulmonologist/allergist/immunologist); prior-year exacerbation select (≥2 OCS/injectable or ≥1 hospitalization); adjunct medium–high ICS + additional controller ≥3 months; not-acute; no concomitant asthma biologic; controller adherence denial.",
+      "Partial encoding from AK Tezspire\u2122 (tezepelumab-ekko) Criteria Version 1 (Original 08/22/2023, Accepted 09/15/2023, Effective 11/1/2023).",
+      "Tezspire-encoded indication: severe asthma add-on maintenance only (age \u226512y). No phenotype/eos gate on this PDF (unlike IL-5 peers).",
+      "Encoded: closed indication list; FDA age \u226512y; specialty (pulmonologist/allergist/immunologist); prior-year exacerbation select (\u22652 OCS/injectable or \u22651 hospitalization); adjunct medium\u2013high ICS + additional controller \u22653 months; not-acute; no concomitant asthma biologic; controller adherence denial.",
       "Not encoded as numeric predicates (attestation only): exact exacerbation counts, ICS dose mcg math, quantity 210 mg / 28-day math, live-vaccine / abrupt-steroid-taper cautions, reauth clinical-response detail (PDF gives duration only).",
       "Alternatives: Dupixent/Xolair/Fasenra/Nucala/Cinqair evaluate()-linked for overlapping asthma. PDL preferred same-class peers (IMMUNOMODULATORS, ASTHMA) attach on fail via market basket. Tezspire itself is PDL non-preferred (OFF)."
     ]
@@ -9918,10 +10429,11 @@
     "encoding_status": "text_only",
     "criteria": [],
     "alternatives": [
-      "entyvio"
+      "entyvio",
+      "stelara"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9947,7 +10459,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9972,7 +10484,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -9999,7 +10511,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication",
@@ -10024,7 +10536,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10050,7 +10562,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10076,7 +10588,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10103,7 +10615,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10130,7 +10642,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -10154,7 +10666,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -10178,7 +10690,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10204,7 +10716,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10231,7 +10743,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10257,7 +10769,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10283,7 +10795,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10309,7 +10821,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10335,7 +10847,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10362,7 +10874,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10388,7 +10900,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10415,7 +10927,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10442,7 +10954,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -10527,11 +11039,11 @@
         "options": [
           {
             "value": "yes",
-            "label": "Confirmed — maintenance use only"
+            "label": "Confirmed \u2014 maintenance use only"
           },
           {
             "value": "no",
-            "label": "No — acute use"
+            "label": "No \u2014 acute use"
           }
         ],
         "when": {
@@ -10564,7 +11076,7 @@
       },
       "baseline_ige_ge_30": {
         "type": "select",
-        "label": "Baseline serum IgE ≥ 30 IU/mL (required for asthma and CRSwNP)",
+        "label": "Baseline serum IgE \u2265 30 IU/mL (required for asthma and CRSwNP)",
         "options": [
           {
             "value": "yes",
@@ -10575,7 +11087,7 @@
             "label": "No"
           }
         ],
-        "hint": "Attestation only — exact IU/mL not collected as a numeric fact.",
+        "hint": "Attestation only \u2014 exact IU/mL not collected as a numeric fact.",
         "when": {
           "fact": "indication",
           "in": [
@@ -10586,11 +11098,11 @@
       },
       "asthma_controller_inadequately_controlled_3mo": {
         "type": "select",
-        "label": "Asthma: inadequately controlled ≥3 months on ICS+LABA, LTRA, theophylline, or oral corticosteroid",
+        "label": "Asthma: inadequately controlled \u22653 months on ICS+LABA, LTRA, theophylline, or oral corticosteroid",
         "options": [
           {
             "value": "yes",
-            "label": "Yes — inadequately controlled on qualifying controller ≥3 months"
+            "label": "Yes \u2014 inadequately controlled on qualifying controller \u22653 months"
           },
           {
             "value": "no",
@@ -10607,7 +11119,7 @@
       },
       "csu_duration_and_frequency_met": {
         "type": "select",
-        "label": "CSU: urticaria ≥6 weeks with symptoms ≥3 days/week on max-dose non-sedating antihistamine",
+        "label": "CSU: urticaria \u22656 weeks with symptoms \u22653 days/week on max-dose non-sedating antihistamine",
         "options": [
           {
             "value": "yes",
@@ -10627,7 +11139,7 @@
       },
       "csu_failed_ltra_plus_antihistamine_2mo": {
         "type": "select",
-        "label": "CSU: tried/failed or intolerance to leukotriene modifier + non-sedating antihistamine ≥2 months",
+        "label": "CSU: tried/failed or intolerance to leukotriene modifier + non-sedating antihistamine \u22652 months",
         "options": [
           {
             "value": "yes",
@@ -10718,7 +11230,7 @@
             "label": "No"
           }
         ],
-        "hint": "Attestation that both values are documented — raw numbers not encoded.",
+        "hint": "Attestation that both values are documented \u2014 raw numbers not encoded.",
         "when": {
           "fact": "indication",
           "in": [
@@ -10728,15 +11240,15 @@
       },
       "not_using_anti_il4_or_il5": {
         "type": "select",
-        "label": "Not currently using an anti–IL-4 or anti–IL-5 inhibitor",
+        "label": "Not currently using an anti\u2013IL-4 or anti\u2013IL-5 inhibitor",
         "options": [
           {
             "value": "yes",
-            "label": "Yes — no concomitant anti–IL-4 / IL-5"
+            "label": "Yes \u2014 no concomitant anti\u2013IL-4 / IL-5"
           },
           {
             "value": "no",
-            "label": "No — currently on anti–IL-4 or IL-5 (e.g. Dupixent, Fasenra, Nucala, Cinqair)"
+            "label": "No \u2014 currently on anti\u2013IL-4 or IL-5 (e.g. Dupixent, Fasenra, Nucala, Cinqair)"
           }
         ],
         "hint": "AK denial criterion: currently using an anti-interleukin 4 or 5 inhibitor."
@@ -10763,7 +11275,7 @@
       },
       {
         "id": "fda_labeled_age_for_indication",
-        "text": "Patient meets FDA-labeled age for the requested indication (asthma ≥6y; CSU ≥12y; CRSwNP ≥18y; IgE-mediated food allergy ≥1y).",
+        "text": "Patient meets FDA-labeled age for the requested indication (asthma \u22656y; CSU \u226512y; CRSwNP \u226518y; IgE-mediated food allergy \u22651y).",
         "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -10926,7 +11438,7 @@
       },
       {
         "id": "asthma_sensitization_ige_controller_not_acute",
-        "text": "Asthma: not for acute bronchospasm/status asthmaticus; positive skin or in vitro allergen sensitization; baseline IgE ≥30 IU/mL; inadequately controlled ≥3 months on ICS+LABA, LTRA, theophylline, or oral corticosteroid.",
+        "text": "Asthma: not for acute bronchospasm/status asthmaticus; positive skin or in vitro allergen sensitization; baseline IgE \u226530 IU/mL; inadequately controlled \u22653 months on ICS+LABA, LTRA, theophylline, or oral corticosteroid.",
         "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -10988,7 +11500,7 @@
       },
       {
         "id": "csu_duration_and_step_therapy",
-        "text": "CSU (chronic idiopathic urticaria): urticaria ≥6 weeks with symptoms ≥3 days/week on max-dose non-sedating antihistamine; AND tried/failed or intolerance to leukotriene modifier plus non-sedating antihistamine ≥2 months.",
+        "text": "CSU (chronic idiopathic urticaria): urticaria \u22656 weeks with symptoms \u22653 days/week on max-dose non-sedating antihistamine; AND tried/failed or intolerance to leukotriene modifier plus non-sedating antihistamine \u22652 months.",
         "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -11038,7 +11550,7 @@
       },
       {
         "id": "crswnp_ige_step_and_add_on",
-        "text": "CRSwNP (nasal polyps): baseline serum IgE ≥30 IU/mL; inadequate response/intolerance/CI to a 3-month trial of TWO nasal corticosteroid sprays; AND used as add-on maintenance therapy.",
+        "text": "CRSwNP (nasal polyps): baseline serum IgE \u226530 IU/mL; inadequate response/intolerance/CI to a 3-month trial of TWO nasal corticosteroid sprays; AND used as add-on maintenance therapy.",
         "citation": "https://health.alaska.gov/media/nv0jyeg3/xolair_criteria_update_2024.pdf#approval-criteria",
         "required_facts": [
           "indication",
@@ -11166,11 +11678,11 @@
     "max_units": {
       "quantity": null,
       "days_supply": 30,
-      "notes": "AK criteria quantity limits: up to 8 × 150 mg vials per 30 days (max dose 600 mg every 2 or 4 weeks); 2 × 75 mg vials per 30 days. Approval up to 3 months; reauthorization up to 12 months."
+      "notes": "AK criteria quantity limits: up to 8 \u00d7 150 mg vials per 30 days (max dose 600 mg every 2 or 4 weeks); 2 \u00d7 75 mg vials per 30 days. Approval up to 3 months; reauthorization up to 12 months."
     },
     "notes": [
       "Partial encoding from AK Xolair criteria PDF (Version 3, original 02/28/2020, approval 9/16/2022, update 04/19/2024, effective 06/1/2024).",
-      "Encoded: FDA indication list; age-by-indication; specialty-by-indication (food allergy excludes pulmonologist); asthma sensitization/IgE/controller/not-acute gates; CSU duration+LTRA/AH step; CRSwNP IgE+two nasal steroids+add-on; food-allergy diagnosis+IgE/weight attestation; anti–IL-4/IL-5 denial.",
+      "Encoded: FDA indication list; age-by-indication; specialty-by-indication (food allergy excludes pulmonologist); asthma sensitization/IgE/controller/not-acute gates; CSU duration+LTRA/AH step; CRSwNP IgE+two nasal steroids+add-on; food-allergy diagnosis+IgE/weight attestation; anti\u2013IL-4/IL-5 denial.",
       "Not encoded as numeric predicates (attestation only): exact IgE IU/mL, body weight kg, vial quantity math, anaphylaxis-setting/malignancy/serum-sickness cautions.",
       "Alternatives: Dupixent/Fasenra/Nucala/Cinqair are evaluate()-linked (overlapping asthma/CRSwNP/CSU where labeled). PDL preferred same-class peers (Fasenra/Nucala in IMMUNOMODULATORS, ASTHMA) attach on fail via market basket; Tezspire evaluate()-linked for overlapping severe asthma."
     ]
@@ -11194,7 +11706,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -11221,7 +11733,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -11248,7 +11760,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -11272,7 +11784,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -11299,7 +11811,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -11325,7 +11837,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -11352,7 +11864,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -11380,7 +11892,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "indication"
@@ -11403,10 +11915,11 @@
     "encoding_status": "text_only",
     "criteria": [],
     "alternatives": [
-      "entyvio"
+      "entyvio",
+      "stelara"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",
@@ -11432,7 +11945,7 @@
     "criteria": [],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],
     "inferred_required_facts": [
       "age_years",

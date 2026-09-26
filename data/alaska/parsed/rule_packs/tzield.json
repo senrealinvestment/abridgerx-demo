@@ -1,0 +1,25 @@
+{
+  "drug": {
+    "name": "Tzield",
+    "therapeutic_class": "biologics"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Tzield Criteria",
+    "effective_date": "2023-03-01",
+    "citation": "https://health.alaska.gov/media/fx4jn0rx/202301tzield_criteria_2023.pdf",
+    "criteria_pdf": "data/alaska/raw/202301tzield_criteria_2023.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication"
+  ]
+}

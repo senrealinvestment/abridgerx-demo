@@ -1,0 +1,29 @@
+{
+  "drug": {
+    "name": "Tremfya",
+    "therapeutic_class": "biologics"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Tremfya Criteria",
+    "effective_date": "2025-01-01",
+    "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf",
+    "criteria_pdf": "data/alaska/raw/tremfya_criteria_2024.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [
+    "entyvio",
+    "stelara"
+  ],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ]
+}

@@ -1,0 +1,537 @@
+{
+  "drug": {
+    "name": "Stelara",
+    "generic_name": "ustekinumab",
+    "therapeutic_class": "biologics"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Stelara Criteria",
+    "effective_date": "2024-11-01",
+    "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf",
+    "criteria_pdf": "data/alaska/raw/stelara_criteria.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "non_preferred",
+  "encoding_status": "partial",
+  "criteria": [
+    {
+      "id": "indication_fda_labeled",
+      "text": "FDA-labeled indication and disease severity (FDA indications; approval #2 in each arm).",
+      "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#indications",
+      "required_facts": [
+        "indication"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "indication",
+        "values": [
+          "plaque_psoriasis",
+          "psoriatic_arthritis",
+          "crohns_disease",
+          "ulcerative_colitis"
+        ]
+      }
+    },
+    {
+      "id": "fda_labeled_age_for_indication",
+      "text": "PsO/PsA: age \u22656 years; CD/UC: age \u226518 years (FDA indications; each arm approval #1).",
+      "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "age_years"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "plaque_psoriasis"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 6
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "psoriatic_arthritis"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 6
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "crohns_disease"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 18
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "ulcerative_colitis"
+              },
+              {
+                "op": "gte",
+                "fact": "age_years",
+                "value": 18
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tnf_blocker_failure",
+      "text": "Trialed and failed a TNF blocker (each indication approval #4).",
+      "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#approval-criteria",
+      "required_facts": [
+        "tnf_blocker_failure"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "tnf_blocker_failure",
+        "values": [
+          "trial_failure"
+        ]
+      }
+    },
+    {
+      "id": "additional_prior_therapy",
+      "text": "Trialed and failed \u22651 other therapy; PsO must include \u22651 topical agent (each indication approval #4).",
+      "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "additional_prior_therapy"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "plaque_psoriasis"
+              },
+              {
+                "op": "eq",
+                "fact": "additional_prior_therapy",
+                "value": "trial_failure_including_topical"
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "psoriatic_arthritis"
+              },
+              {
+                "op": "eq",
+                "fact": "additional_prior_therapy",
+                "value": "trial_failure"
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "crohns_disease"
+              },
+              {
+                "op": "eq",
+                "fact": "additional_prior_therapy",
+                "value": "trial_failure"
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "ulcerative_colitis"
+              },
+              {
+                "op": "eq",
+                "fact": "additional_prior_therapy",
+                "value": "trial_failure"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "disease_activity_status",
+      "text": "PsO: PASI \u226512 (or equivalent); PsA: HAQ-DI \u22652 (or equivalent); CD: baseline CDAI submitted; UC: baseline Mayo (or equivalent) submitted (approval #3; PsO denial #5).",
+      "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#approval-criteria",
+      "required_facts": [
+        "indication",
+        "disease_activity_status"
+      ],
+      "predicate": {
+        "op": "any",
+        "args": [
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "plaque_psoriasis"
+              },
+              {
+                "op": "eq",
+                "fact": "disease_activity_status",
+                "value": "pasi_gte_12"
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "psoriatic_arthritis"
+              },
+              {
+                "op": "eq",
+                "fact": "disease_activity_status",
+                "value": "haq_di_gte_2"
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "crohns_disease"
+              },
+              {
+                "op": "eq",
+                "fact": "disease_activity_status",
+                "value": "cdai_baseline_submitted"
+              }
+            ]
+          },
+          {
+            "op": "all",
+            "args": [
+              {
+                "op": "eq",
+                "fact": "indication",
+                "value": "ulcerative_colitis"
+              },
+              {
+                "op": "eq",
+                "fact": "disease_activity_status",
+                "value": "mayo_baseline_submitted"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "no_known_hypersensitivity_ustekinumab",
+      "text": "No known hypersensitivity to ustekinumab or any excipient (denial #1).",
+      "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#denial-criteria",
+      "required_facts": [
+        "no_known_hypersensitivity_ustekinumab"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "no_known_hypersensitivity_ustekinumab",
+        "value": true
+      }
+    },
+    {
+      "id": "no_active_severe_infection",
+      "text": "No current active severe infection (denial #2).",
+      "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#denial-criteria",
+      "required_facts": [
+        "no_active_severe_infection"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "no_active_severe_infection",
+        "value": true
+      }
+    },
+    {
+      "id": "not_concurrent_integrin_or_tnf",
+      "text": "No concurrent integrin antagonist or TNF blocker (denial #3).",
+      "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#denial-criteria",
+      "required_facts": [
+        "not_concurrent_integrin_or_tnf"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "not_concurrent_integrin_or_tnf",
+        "value": true
+      }
+    },
+    {
+      "id": "not_concurrent_phototherapy",
+      "text": "Not receiving concurrent phototherapy (denial #4; initial authorization confirmation).",
+      "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#denial-criteria",
+      "required_facts": [
+        "not_concurrent_phototherapy"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "not_concurrent_phototherapy",
+        "value": true
+      }
+    },
+    {
+      "id": "latex_safe_for_device",
+      "text": "No latex allergy with use of the latex needle-cover prefilled syringe (denial #6).",
+      "citation": "https://health.alaska.gov/media/cjkk4iyu/stelara_criteria.pdf#denial-criteria",
+      "required_facts": [
+        "latex_safe_for_device"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "latex_safe_for_device",
+        "values": [
+          "no_latex_allergy",
+          "using_vial_not_pfs"
+        ]
+      }
+    }
+  ],
+  "alternatives": [
+    "entyvio",
+    "skyrizi",
+    "tremfya",
+    "infliximab",
+    "zymfentra"
+  ],
+  "notes": [
+    "Partial encoding from Alaska Medicaid Stelara (ustekinumab) for subcutaneous administration, Version 4. Original 11/14/2014; Revision Approval 9/20/2024; Effective 11/1/2024.",
+    "Approval #2 severity context: moderate to severe PsO, active PsA, moderate to severe active CD, and moderate to severely active UC are represented by the closed indication labels.",
+    "Specialty gap: the Alaska PDF specifies no prescriber specialty requirement; no specialty field or predicate is added.",
+    "All four indications require TNF blocker failure plus at least one other therapy; PsO includes at least one topical agent. Prior TNF failure is separate from prohibited concurrent integrin antagonist or TNF blocker use. No minimum trial duration is specified.",
+    "Disease activity uses categorical attestations, not numeric score coercion. PsO PASI \u226512 also covers denial #5 for initiators; PsA HAQ-DI \u22652; CD baseline CDAI and UC baseline Mayo (or equivalent) must be submitted.",
+    "Initial authorization (notes only): monitoring plan; previous therapies and nature of failure; current weight; complete medication regimen; confirmation not receiving concurrent phototherapy; dosing conforms to an FDA-approved regimen by indication. Documentation and dosing require manual review.",
+    "Reauthorization beyond 4 weeks (notes only): letter of medical necessity plus chart notes demonstrating therapeutic benefit: baseline/current PASI for Ps; tender/swollen joints, HAQ-DI (or equivalent), CRP for PsA; CDAI at baseline and at 6 months for CD (source reauthorization text spells CADI). Document tolerance and absence of adverse events.",
+    "Duration (notes only): initial 4 weeks (injections at 0 and 4 weeks); reauthorization up to 12 months (week 16 and beyond every 12 weeks). FDA regimen by indication requires manual review.",
+    "Manual review: 45 mg/dose for weight \u2264100 kg; 90 mg/dose for weight >100 kg for plaque psoriasis; 90 mg/dose for CD and UC after initial IV infusion. Weight, route, and quantity limits are not numerically enforced.",
+    "Cautions (notes only): initial dose under physician supervision; subsequent self-administration only with physician determination, training and demonstrated competency, close monitoring and follow-up. Monitor new/worsening neurological issues for RPLS; no live vaccines unless benefit outweighs risk; avoid excessive UV exposure and monitor new skin growths; monitor therapeutic effect of CYP450 therapies, especially narrow therapeutic index agents. IL-12/IL-23 p40 binding may increase malignancy risk. Refer to prescribing information and medication guide.",
+    "PDL context: all STELARA vial, syringe and IV rows are non_preferred in CYTOKINE AND CAM ANTAGONISTS. Preferred peers without packs include Humira, Hadlima, Rinvoq and preferred infliximab products (notes only). Linked alternatives require indication-specific review and do not imply confirmed coverage. Dupixent, Adbry and Ebglyss belong to IMMUNOMODULATORS, ATOPIC DERMATITIS and are not linked alternatives.",
+    "This pack remains partial: initial documentation, reauthorization, monitoring, cautions, duration, dosing and quantity enforcement require manual review."
+  ],
+  "fact_ui": {
+    "indication": {
+      "type": "select",
+      "label": "FDA-labeled indication",
+      "options": [
+        {
+          "value": "plaque_psoriasis",
+          "label": "Moderate to severe plaque psoriasis (PsO) (candidate for phototherapy or systemic therapy)"
+        },
+        {
+          "value": "psoriatic_arthritis",
+          "label": "Active psoriatic arthritis (PsA)"
+        },
+        {
+          "value": "crohns_disease",
+          "label": "Moderately to severely active Crohn\u2019s disease (CD)"
+        },
+        {
+          "value": "ulcerative_colitis",
+          "label": "Moderately to severely active ulcerative colitis (UC)"
+        }
+      ]
+    },
+    "age_years": {
+      "type": "select",
+      "label": "Patient age",
+      "option_style": "age_bands"
+    },
+    "tnf_blocker_failure": {
+      "type": "select",
+      "label": "Prior TNF blocker failure",
+      "options": [
+        {
+          "value": "trial_failure",
+          "label": "Trialed and failed a TNF blocker"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    "additional_prior_therapy": {
+      "type": "select",
+      "label": "Additional prior therapy",
+      "options": [
+        {
+          "value": "trial_failure_including_topical",
+          "label": "Trialed and failed \u22651 other therapy including \u22651 topical agent (PsO)"
+        },
+        {
+          "value": "trial_failure",
+          "label": "Trialed and failed \u22651 other therapy (PsA / CD e.g. mesalamine, sulfasalazine, corticosteroid / UC e.g. azathioprine, cyclosporine, mesalamine)"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    "disease_activity_status": {
+      "type": "select",
+      "label": "Disease activity / baseline score",
+      "options": [
+        {
+          "value": "pasi_gte_12",
+          "label": "PASI \u2265 12 (or equivalent) (PsO; also covers denial PASI < 12 for initiators)"
+        },
+        {
+          "value": "haq_di_gte_2",
+          "label": "HAQ-DI \u2265 2 (or equivalent) (PsA)"
+        },
+        {
+          "value": "cdai_baseline_submitted",
+          "label": "Baseline CDAI submitted (CD)"
+        },
+        {
+          "value": "mayo_baseline_submitted",
+          "label": "Baseline Mayo score (or equivalent) submitted (UC)"
+        },
+        {
+          "value": "pasi_lt_12",
+          "label": "PASI < 12 (or equivalent)"
+        },
+        {
+          "value": "haq_di_lt_2",
+          "label": "HAQ-DI < 2 (or equivalent)"
+        },
+        {
+          "value": "score_not_submitted",
+          "label": "Required baseline score not submitted"
+        }
+      ]
+    },
+    "no_known_hypersensitivity_ustekinumab": {
+      "type": "select",
+      "label": "No known hypersensitivity to ustekinumab or any excipient (denial #1).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "no_active_severe_infection": {
+      "type": "select",
+      "label": "No current active severe infection (denial #2).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "not_concurrent_integrin_or_tnf": {
+      "type": "select",
+      "label": "No concurrent integrin antagonist or TNF blocker (denial #3).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "not_concurrent_phototherapy": {
+      "type": "select",
+      "label": "Not receiving concurrent phototherapy (denial #4; initial authorization confirmation).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "latex_safe_for_device": {
+      "type": "select",
+      "label": "Latex allergy / device",
+      "options": [
+        {
+          "value": "no_latex_allergy",
+          "label": "No latex allergy"
+        },
+        {
+          "value": "using_vial_not_pfs",
+          "label": "Using vial (not latex needle-cover PFS)"
+        },
+        {
+          "value": "latex_allergy_pfs",
+          "label": "Latex allergy and using prefilled syringe"
+        }
+      ]
+    }
+  },
+  "max_units": {
+    "quantity": null,
+    "days_supply": null,
+    "notes": "Manual review: 45 mg/dose for weight \u2264100 kg; 90 mg/dose for weight >100 kg for plaque psoriasis; 90 mg/dose for CD and UC after initial IV infusion. Weight, route, and quantity limits are not numerically enforced."
+  }
+}

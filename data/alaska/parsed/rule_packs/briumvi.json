@@ -1,0 +1,27 @@
+{
+  "drug": {
+    "name": "Briumvi",
+    "therapeutic_class": "other"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Briumvi Criteria",
+    "effective_date": "2023-06-01",
+    "citation": "https://health.alaska.gov/media/lznp2jzr/5bi-briumvi_criteria_2023.pdf",
+    "criteria_pdf": "data/alaska/raw/5bi-briumvi_criteria_2023.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "drug": {
+    "name": "Soma"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Soma Criteria",
+    "effective_date": "2009-01-01",
+    "citation": "https://health.alaska.gov/media/eirjq4yp/200908_soma.pdf",
+    "criteria_pdf": "data/alaska/raw/200908_soma.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Source PDF is scanned/image-only; OCR pending. evaluate() must not auto-pass."
+  ],
+  "inferred_required_facts": []
+}

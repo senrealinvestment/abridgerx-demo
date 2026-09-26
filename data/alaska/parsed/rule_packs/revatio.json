@@ -1,0 +1,25 @@
+{
+  "drug": {
+    "name": "Revatio",
+    "therapeutic_class": "pulmonary-arterial-hypertension"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Revatio Criteria",
+    "effective_date": "2012-01-01",
+    "citation": "https://health.alaska.gov/media/uq0javh3/revatio-criteria-9-6-2012-v2.pdf",
+    "criteria_pdf": "data/alaska/raw/revatio-criteria-9-6-2012-v2.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "drug": {
+    "name": "New Prescription Medications",
+    "therapeutic_class": "other"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "New Prescription Medications Criteria",
+    "effective_date": "2022-11-01",
+    "citation": "https://health.alaska.gov/media/xo5jtfu5/new_products_criteria.pdf",
+    "criteria_pdf": "data/alaska/raw/new_products_criteria.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "prior_therapy_failures"
+  ]
+}

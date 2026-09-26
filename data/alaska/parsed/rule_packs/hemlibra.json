@@ -1,0 +1,25 @@
+{
+  "drug": {
+    "name": "Hemlibra",
+    "therapeutic_class": "hemophilia"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Hemlibra Criteria",
+    "effective_date": "2019-06-10",
+    "citation": "https://health.alaska.gov/media/rbhparp4/ac_20194hemlibra_criteria_approved_20190419.pdf",
+    "criteria_pdf": "data/alaska/raw/ac_20194hemlibra_criteria_approved_20190419.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "indication",
+    "prescriber_specialty"
+  ]
+}

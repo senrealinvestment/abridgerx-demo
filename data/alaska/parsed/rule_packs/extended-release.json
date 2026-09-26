@@ -1,0 +1,24 @@
+{
+  "drug": {
+    "name": "Extended-Release",
+    "therapeutic_class": "analgesics-opioid-reversal-agents"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Extended-Release Criteria",
+    "effective_date": "2016-10-03",
+    "citation": "https://health.alaska.gov/media/sbefnd3g/ccfu_opioidanalgesic_erlaopioid_20161003v2.pdf",
+    "criteria_pdf": "data/alaska/raw/ccfu_opioidanalgesic_erlaopioid_20161003v2.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "prescriber_specialty"
+  ]
+}

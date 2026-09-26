@@ -1,0 +1,26 @@
+{
+  "drug": {
+    "name": "Orkambi",
+    "generic_name": "lumacaftor/ivacaftor",
+    "therapeutic_class": "cystic-fibrosis"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Orkambi Criteria",
+    "effective_date": "2019-06-10",
+    "citation": "https://health.alaska.gov/media/okjkpt1d/20194ccfu_cf_orkambi_revised_20190419.pdf",
+    "criteria_pdf": "data/alaska/raw/20194ccfu_cf_orkambi_revised_20190419.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication"
+  ]
+}

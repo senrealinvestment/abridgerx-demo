@@ -1,0 +1,26 @@
+{
+  "drug": {
+    "name": "Vyndaqel",
+    "therapeutic_class": "other"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Vyndaqel Criteria",
+    "effective_date": "2020-01-06",
+    "citation": "https://health.alaska.gov/media/bzii2oda/201911vyndaqel_vyndamax_criteria_approved_2019.pdf",
+    "criteria_pdf": "data/alaska/raw/201911vyndaqel_vyndamax_criteria_approved_2019.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ]
+}

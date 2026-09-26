@@ -1,0 +1,21 @@
+{
+  "drug": {
+    "name": "Stadol"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Stadol Criteria",
+    "effective_date": "2009-01-01",
+    "citation": "https://health.alaska.gov/media/tiuewcuz/200908_stadol.pdf",
+    "criteria_pdf": "data/alaska/raw/200908_stadol.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Source PDF is scanned/image-only; OCR pending. evaluate() must not auto-pass."
+  ],
+  "inferred_required_facts": []
+}

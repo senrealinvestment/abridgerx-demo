@@ -1,0 +1,25 @@
+{
+  "drug": {
+    "name": "Gralise",
+    "therapeutic_class": "analgesics-non-opioid"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Gralise Criteria",
+    "effective_date": "2018-01-01",
+    "citation": "https://health.alaska.gov/media/n2hh5vdn/5-b-iv-gralise_horizant_approved_2018.pdf",
+    "criteria_pdf": "data/alaska/raw/5-b-iv-gralise_horizant_approved_2018.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "indication",
+    "prior_therapy_failures"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "drug": {
+    "name": "Beqvez   TM",
+    "therapeutic_class": "cell-and-gene-therapy"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Beqvez   TM Criteria",
+    "effective_date": "2024-11-01",
+    "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+    "criteria_pdf": "data/alaska/raw/beqvez_criteria.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ]
+}

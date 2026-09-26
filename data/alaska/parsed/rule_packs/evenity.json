@@ -1,0 +1,25 @@
+{
+  "drug": {
+    "name": "Evenity",
+    "therapeutic_class": "metabolic"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Evenity Criteria",
+    "effective_date": "2020-03-16",
+    "citation": "https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf",
+    "criteria_pdf": "data/alaska/raw/202001_evenity_criteria_2019.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "indication",
+    "prior_therapy_failures"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drug": {
+    "name": "2024-2025 Season",
+    "therapeutic_class": "biologics"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "2024-2025 Season Criteria",
+    "effective_date": "2024-11-01",
+    "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+    "criteria_pdf": "data/alaska/raw/ccfu_synagis_2024-2025.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication"
+  ]
+}

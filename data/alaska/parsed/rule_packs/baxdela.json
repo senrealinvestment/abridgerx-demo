@@ -1,0 +1,27 @@
+{
+  "drug": {
+    "name": "Baxdela",
+    "generic_name": "delafloxacin",
+    "therapeutic_class": "infectious-disease"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Baxdela Criteria",
+    "effective_date": "2019-03-11",
+    "citation": "https://health.alaska.gov/media/nvxnhhao/20195-b-i-baxdela_criteria_approved_2018.pdf",
+    "criteria_pdf": "data/alaska/raw/20195-b-i-baxdela_criteria_approved_2018.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "drug": {
+    "name": "Firazyr",
+    "therapeutic_class": "other"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Firazyr Criteria",
+    "effective_date": "2023-01-02",
+    "citation": "https://health.alaska.gov/media/dxeln3fy/firazyr.pdf",
+    "criteria_pdf": "data/alaska/raw/firazyr.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "drug": {
+    "name": "Hepatitis C Direct Acting Antivirals for Chronic Hepatitis C Criteria - All Products",
+    "therapeutic_class": "infectious-disease"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Hepatitis C Direct Acting Antivirals for Chronic Hepatitis C Criteria - All Products Criteria",
+    "effective_date": "2022-05-05",
+    "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+    "criteria_pdf": "data/alaska/raw/20220505ccfu_id_hepc_gt-all_may2022.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ]
+}

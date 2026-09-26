@@ -1,0 +1,25 @@
+{
+  "drug": {
+    "name": "Oral Buprenorphine-based Medication Assisted Therapy Office-Based Opioid Treatment",
+    "therapeutic_class": "opioid-dependence"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Oral Buprenorphine-based Medication Assisted Therapy Office-Based Opioid Treatment Criteria",
+    "effective_date": "2018-11-12",
+    "citation": "https://health.alaska.gov/media/2vymvpl4/5c-oral-buprenorphine-pa-20230420.pdf",
+    "criteria_pdf": "data/alaska/raw/5c-oral-buprenorphine-pa-20230420.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "indication",
+    "prior_therapy_failures"
+  ]
+}

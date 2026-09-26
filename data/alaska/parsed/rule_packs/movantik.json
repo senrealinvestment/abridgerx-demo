@@ -1,0 +1,27 @@
+{
+  "drug": {
+    "name": "Movantik",
+    "generic_name": "naloxegol",
+    "therapeutic_class": "gastrointestinal"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Movantik Criteria",
+    "effective_date": "2016-11-30",
+    "citation": "https://health.alaska.gov/media/hkjpbtpa/ccfu_gi_movantik_20161130.pdf",
+    "criteria_pdf": "data/alaska/raw/ccfu_gi_movantik_20161130.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ]
+}

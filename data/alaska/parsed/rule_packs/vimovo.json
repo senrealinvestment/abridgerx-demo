@@ -1,0 +1,25 @@
+{
+  "drug": {
+    "name": "Vimovo",
+    "generic_name": "naproxen/ esomeprazole magnesium",
+    "therapeutic_class": "analgesics-non-opioid"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Vimovo Criteria",
+    "effective_date": "2014-01-17",
+    "citation": "https://health.alaska.gov/media/mbxfp0ed/ccfu_analgesicsnonopioid_vimovo_20140117.pdf",
+    "criteria_pdf": "data/alaska/raw/ccfu_analgesicsnonopioid_vimovo_20140117.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "indication"
+  ]
+}

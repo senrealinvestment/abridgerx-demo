@@ -1,0 +1,26 @@
+{
+  "drug": {
+    "name": "Kisunla",
+    "therapeutic_class": "biologics"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Kisunla Criteria",
+    "effective_date": "2025-01-01",
+    "citation": "https://health.alaska.gov/media/h0bbdmsn/kisunla_criteria_2024.pdf",
+    "criteria_pdf": "data/alaska/raw/kisunla_criteria_2024.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ]
+}

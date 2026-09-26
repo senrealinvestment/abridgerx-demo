@@ -1,0 +1,21 @@
+{
+  "drug": {
+    "name": "Ergocalciferol"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Ergocalciferol Criteria",
+    "effective_date": "2009-01-01",
+    "citation": "https://health.alaska.gov/media/4nrf5x0h/200908_ergocalciferol.pdf",
+    "criteria_pdf": "data/alaska/raw/200908_ergocalciferol.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Source PDF is scanned/image-only; OCR pending. evaluate() must not auto-pass."
+  ],
+  "inferred_required_facts": []
+}

@@ -1,0 +1,22 @@
+{
+  "drug": {
+    "name": "Bone Resorption Inhibitors",
+    "therapeutic_class": "metabolic"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Bone Resorption Inhibitors Criteria",
+    "effective_date": "2021-03-15",
+    "citation": "https://health.alaska.gov/media/5h1ptwcp/bisphosphonates-oral-formulation-step-edit.pdf",
+    "criteria_pdf": "data/alaska/raw/bisphosphonates-oral-formulation-step-edit.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": []
+}

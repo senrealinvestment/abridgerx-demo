@@ -1,0 +1,24 @@
+{
+  "drug": {
+    "name": "000 unit",
+    "therapeutic_class": "metabolic"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "000 unit Criteria",
+    "effective_date": "1970-01-01",
+    "citation": "https://health.alaska.gov/media/2z2mce5u/drisdol-criteria.pdf",
+    "criteria_pdf": "data/alaska/raw/drisdol-criteria.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "indication"
+  ]
+}

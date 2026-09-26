@@ -1,0 +1,27 @@
+{
+  "drug": {
+    "name": "Praluent",
+    "generic_name": "alirocumab",
+    "therapeutic_class": "lipotropics"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Praluent Criteria",
+    "effective_date": "2026-06-01",
+    "citation": "https://health.alaska.gov/media/0qzn3tx2/pcsk9-inhibitor-update_2026.pdf",
+    "criteria_pdf": "data/alaska/raw/pcsk9-inhibitor-update_2026.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ]
+}

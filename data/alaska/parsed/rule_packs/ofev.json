@@ -1,0 +1,26 @@
+{
+  "drug": {
+    "name": "Ofev",
+    "therapeutic_class": "respiratory"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Ofev Criteria",
+    "effective_date": "2021-03-15",
+    "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf",
+    "criteria_pdf": "data/alaska/raw/202101-ofev_criteria_2021.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ]
+}

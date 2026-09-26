@@ -1,0 +1,27 @@
+{
+  "drug": {
+    "name": "Epidiolex",
+    "generic_name": "Cannabidiol",
+    "therapeutic_class": "other"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Epidiolex Criteria",
+    "effective_date": "2020-11-16",
+    "citation": "https://health.alaska.gov/media/5jqeogo0/202009epidiolex_criteria_update_2020.pdf",
+    "criteria_pdf": "data/alaska/raw/202009epidiolex_criteria_update_2020.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ]
+}

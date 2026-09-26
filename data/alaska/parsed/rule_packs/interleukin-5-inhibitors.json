@@ -1,0 +1,27 @@
+{
+  "drug": {
+    "name": "Interleukin-5 Inhibitors",
+    "therapeutic_class": "respiratory"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Interleukin-5 Inhibitors Criteria",
+    "effective_date": "2025-11-01",
+    "citation": "https://health.alaska.gov/media/ql0d4on0/interleukin-5-inhibitors_criteria_update_2025.pdf",
+    "criteria_pdf": "data/alaska/raw/interleukin-5-inhibitors_criteria_update_2025.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Shared Alaska Medicaid Interleukin-5 Inhibitors Criteria PDF covers Nucala, Cinqair, and Fasenra.",
+    "Brand-specific partial encodings live at rule packs: fasenra, nucala, cinqair. This class slug remains text_only — evaluate() returns need_info / encoding_incomplete; use a brand pack for coverage decisions."
+  ],
+  "inferred_required_facts": [
+    "indication",
+    "age_years",
+    "prescriber_specialty"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "drug": {
+    "name": "Transderm Scop"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Transderm Scop Criteria",
+    "effective_date": "2019-11-20",
+    "citation": "https://health.alaska.gov/media/3x3gockl/200908_transdermscop.pdf",
+    "criteria_pdf": "data/alaska/raw/200908_transdermscop.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Source PDF is scanned/image-only; OCR pending. evaluate() must not auto-pass."
+  ],
+  "inferred_required_facts": []
+}

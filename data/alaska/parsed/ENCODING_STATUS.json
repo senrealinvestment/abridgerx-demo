@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 16,
-  "encoding_text_only": 182,
+  "encoding_partial": 17,
+  "encoding_text_only": 181,
   "partial_slugs": [
     "adbry",
     "adcirca",
@@ -21,6 +21,7 @@
     "entyvio",
     "fasenra",
     "nucala",
+    "stelara",
     "tezspire",
     "xolair"
   ]

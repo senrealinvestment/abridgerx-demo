@@ -1,0 +1,21 @@
+{
+  "drug": {
+    "name": "Quinine"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Quinine Criteria",
+    "effective_date": "2009-01-01",
+    "citation": "https://health.alaska.gov/media/slkktvch/200908_quinine.pdf",
+    "criteria_pdf": "data/alaska/raw/200908_quinine.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Source PDF is scanned/image-only; OCR pending. evaluate() must not auto-pass."
+  ],
+  "inferred_required_facts": []
+}

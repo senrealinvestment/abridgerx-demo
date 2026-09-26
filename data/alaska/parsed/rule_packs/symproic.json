@@ -1,0 +1,27 @@
+{
+  "drug": {
+    "name": "Symproic",
+    "generic_name": "naldemedine",
+    "therapeutic_class": "gastrointestinal"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Symproic Criteria",
+    "effective_date": "2025-06-01",
+    "citation": "https://health.alaska.gov/media/vyxhy3wc/symproic_criteria_2025.pdf",
+    "criteria_pdf": "data/alaska/raw/symproic_criteria_2025.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ]
+}

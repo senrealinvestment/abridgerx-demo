@@ -1,0 +1,25 @@
+{
+  "drug": {
+    "name": "Clotting Factor",
+    "therapeutic_class": "hemophilia"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Clotting Factor Criteria",
+    "effective_date": "2017-01-01",
+    "citation": "https://health.alaska.gov/media/fwjbepl3/hemophilia-soc-ccfu_hemophiliafactorprogram_201711_pendimp.pdf",
+    "criteria_pdf": "data/alaska/raw/hemophilia-soc-ccfu_hemophiliafactorprogram_201711_pendimp.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "text_only",
+  "criteria": [],
+  "alternatives": [],
+  "notes": [
+    "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+  ],
+  "inferred_required_facts": [
+    "indication",
+    "prescriber_specialty"
+  ]
+}

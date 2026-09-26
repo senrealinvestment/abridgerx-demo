@@ -1,0 +1,19 @@
+{
+  "generated": "2026-09-26",
+  "payer": "alaska_medicaid",
+  "rule_packs": 198,
+  "criteria_text": 198,
+  "encoding_full": 0,
+  "encoding_partial": 8,
+  "encoding_text_only": 190,
+  "partial_slugs": [
+    "adbry",
+    "adcirca",
+    "cinqair",
+    "dupixent",
+    "fasenra",
+    "nucala",
+    "tezspire",
+    "xolair"
+  ]
+}

@@ -117,10 +117,15 @@ def test_catalog_mirrors_and_status_load():
     assert catalog["adcirca"] == pack
     assert get_rule_pack("adcirca") == ("adcirca", pack)
     assert json.loads((base / "rule_packs/adcirca.json").read_text()) == pack
-    assert catalog == {
+    # Private repo has full rule_packs/; demo may ship a slim subset + rule_packs_all.
+    per_pack_dir = {
         path.stem: json.loads(path.read_text())
         for path in (base / "rule_packs").glob("*.json")
     }
+    if len(per_pack_dir) == len(catalog):
+        assert catalog == per_pack_dir
+    else:
+        assert per_pack_dir["adcirca"] == pack
     with gzip.open(base / "rule_packs_all.json.gz", "rt", encoding="utf-8") as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198

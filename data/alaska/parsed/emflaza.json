@@ -1,0 +1,219 @@
+{
+  "drug": {
+    "name": "Emflaza",
+    "generic_name": "deflazacort",
+    "therapeutic_class": "corticosteroids"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Emflaza Criteria",
+    "effective_date": "2019-11-20",
+    "citation": "https://health.alaska.gov/media/fqpa0ykl/20199emflaza_criteria_approved_2019.pdf",
+    "criteria_pdf": "data/alaska/raw/20199emflaza_criteria_approved_2019.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "partial",
+  "criteria": [
+    {
+      "id": "indication_fda_labeled",
+      "text": "Treatment of Duchenne muscular dystrophy (DMD).",
+      "citation": "https://health.alaska.gov/media/fqpa0ykl/20199emflaza_criteria_approved_2019.pdf#indications",
+      "required_facts": [
+        "indication"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "indication",
+        "values": [
+          "dmd"
+        ]
+      }
+    },
+    {
+      "id": "minimum_age",
+      "text": "Patient is 2 years of age or older (approval criterion 1; denial criterion 1).",
+      "citation": "https://health.alaska.gov/media/fqpa0ykl/20199emflaza_criteria_approved_2019.pdf#approval-criteria",
+      "required_facts": [
+        "age_years"
+      ],
+      "predicate": {
+        "op": "gte",
+        "fact": "age_years",
+        "value": 2
+      }
+    },
+    {
+      "id": "prescriber_specialty",
+      "text": "Prescribed by or in consultation with a neurologist or a provider who specializes in DMD (approval criterion 3; denial criterion 3).",
+      "citation": "https://health.alaska.gov/media/fqpa0ykl/20199emflaza_criteria_approved_2019.pdf#approval-criteria",
+      "required_facts": [
+        "prescriber_specialty"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "prescriber_specialty",
+        "values": [
+          "neurologist",
+          "dmd_specialist"
+        ]
+      }
+    },
+    {
+      "id": "dmd_documented_by_dystrophin_gene",
+      "text": "DMD diagnosis documented by mutation or absence of the dystrophin gene (approval criterion 2; denial criterion 2).",
+      "citation": "https://health.alaska.gov/media/fqpa0ykl/20199emflaza_criteria_approved_2019.pdf#approval-criteria",
+      "required_facts": [
+        "dmd_documented_by_dystrophin_gene"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "dmd_documented_by_dystrophin_gene",
+        "value": true
+      }
+    },
+    {
+      "id": "prednisone_step",
+      "text": "Adequate trial and failure of oral prednisone for at least 6 months, or contraindication to prednisone, or significant adverse effects from prednisone use (approval criterion 4; denial criterion 4).",
+      "citation": "https://health.alaska.gov/media/fqpa0ykl/20199emflaza_criteria_approved_2019.pdf#approval-criteria",
+      "required_facts": [
+        "prednisone_step"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "prednisone_step",
+        "values": [
+          "trial_failure_6mo",
+          "contraindication",
+          "significant_adverse_effects"
+        ]
+      }
+    },
+    {
+      "id": "not_concurrent_live_vaccinations",
+      "text": "Not being given concurrently with live vaccinations (denial criterion 5).",
+      "citation": "https://health.alaska.gov/media/fqpa0ykl/20199emflaza_criteria_approved_2019.pdf#denial-criteria",
+      "required_facts": [
+        "not_concurrent_live_vaccinations"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "not_concurrent_live_vaccinations",
+        "value": true
+      }
+    }
+  ],
+  "alternatives": [],
+  "notes": [
+    "Partial encoding from Alaska Medicaid Emflaza (deflazacort), a corticosteroid, Criteria Version 1: Original 8/13/2019; Approval 9/20/2019; Effective 11/20/2019. The effective_date remains 2019-11-20.",
+    "Encoded: closed DMD indication, age at least 2 years, documented diagnosis by mutation or absence of the dystrophin gene, neurologist or DMD specialist prescribing or consultation, oral prednisone step, and no concurrent live vaccinations. Denial criteria 1-4 mirror the approval criteria.",
+    "Duration (notes only): initial approval up to 30 days; reauthorization approval up to 12 months.",
+    "Cautions (notes only): monitor for changes in endocrine, cardiovascular, and renal function. Immunosuppression increases infection risk and may mask signs and symptoms of infection. Behavioral and mood disturbances may occur. Chronic use may decrease bone mineral density.",
+    "The quantity-limit section also lists 22.75 mg/ml oral suspension alongside tablet strengths.",
+    "Quantity limits, dosing, approval durations, and cautions require attestation/manual review and are not fully predicated; this pack remains partial.",
+    "No PDL hit; pdl_status remains unknown. Elevidys is a gene therapy with a different mechanism, so no evaluate-linked alternatives are specified."
+  ],
+  "fact_ui": {
+    "indication": {
+      "type": "select",
+      "label": "Indication (diagnosis)",
+      "options": [
+        {
+          "value": "dmd",
+          "label": "Duchenne muscular dystrophy (DMD)"
+        }
+      ]
+    },
+    "age_years": {
+      "type": "select",
+      "label": "Patient age",
+      "options": [
+        {
+          "value": "0",
+          "label": "Under 2"
+        },
+        {
+          "value": "2",
+          "label": "2 years or older"
+        }
+      ]
+    },
+    "prescriber_specialty": {
+      "type": "select",
+      "label": "Prescribed by or in consultation with",
+      "options": [
+        {
+          "value": "neurologist",
+          "label": "Neurologist"
+        },
+        {
+          "value": "dmd_specialist",
+          "label": "DMD specialist"
+        },
+        {
+          "value": "primary_care",
+          "label": "Primary care"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    "dmd_documented_by_dystrophin_gene": {
+      "type": "select",
+      "label": "DMD diagnosis documented by mutation or absence of the dystrophin gene (approval criterion 2; denial criterion 2).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "prednisone_step": {
+      "type": "select",
+      "label": "Oral prednisone step",
+      "options": [
+        {
+          "value": "trial_failure_6mo",
+          "label": "Adequate trial and failure for at least 6 months"
+        },
+        {
+          "value": "contraindication",
+          "label": "Contraindication to prednisone"
+        },
+        {
+          "value": "significant_adverse_effects",
+          "label": "Significant adverse effects from prednisone"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    "not_concurrent_live_vaccinations": {
+      "type": "select",
+      "label": "Not being given concurrently with live vaccinations (denial criterion 5).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    }
+  },
+  "max_units": {
+    "quantity": null,
+    "days_supply": null,
+    "notes": "Up to 0.9 mg/kg/day rounded to nearest tablet strength (6, 18, 30, 36 mg). Attestation only."
+  }
+}

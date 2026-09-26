@@ -1,0 +1,478 @@
+{
+  "drug": {
+    "name": "Elevidys",
+    "therapeutic_class": "cell-and-gene-therapy",
+    "generic_name": "delandistrogene moxeparvovec-rokl"
+  },
+  "source": {
+    "payer": "alaska_medicaid",
+    "list": "Elevidys Criteria",
+    "effective_date": "2024-01-01",
+    "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf",
+    "criteria_pdf": "data/alaska/raw/elevidys_criteria_2023.pdf"
+  },
+  "requires_pa": true,
+  "pdl_status": "unknown",
+  "encoding_status": "partial",
+  "criteria": [
+    {
+      "id": "indication_fda_labeled",
+      "text": "FDA-labeled use in the Alaska Medicaid Elevidys criteria.",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#indications",
+      "required_facts": [
+        "indication"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "indication",
+        "values": [
+          "dmd_ambulatory_age_4_to_5"
+        ]
+      }
+    },
+    {
+      "id": "age_fda_labeled",
+      "text": "Patient meets FDA labeled age: 4 through 5 years (approval criterion 1).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "age_years"
+      ],
+      "predicate": {
+        "op": "all",
+        "args": [
+          {
+            "op": "gte",
+            "fact": "age_years",
+            "value": 4
+          },
+          {
+            "op": "lte",
+            "fact": "age_years",
+            "value": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "prescriber_specialty",
+      "text": "Prescribed by or in consultation with a neuromuscular specialist (approval criterion 2).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "prescriber_specialty"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "prescriber_specialty",
+        "values": [
+          "neuromuscular_specialist"
+        ]
+      }
+    },
+    {
+      "id": "dmd_diagnosis",
+      "text": "Patient has a diagnosis of Duchenne Muscular Dystrophy (approval criterion 3).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "dmd_diagnosis"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "dmd_diagnosis",
+        "value": true
+      }
+    },
+    {
+      "id": "dmd_gene_mutation_confirmed",
+      "text": "Patient has a confirmed mutation of the DMD gene (approval criterion 4).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "dmd_gene_mutation_confirmed"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "dmd_gene_mutation_confirmed",
+        "value": true
+      }
+    },
+    {
+      "id": "exon_high_risk_myositis_monitoring",
+      "text": "For a mutation in exons 1-17 and/or 59-71, prescriber will monitor for immune-mediated myositis and has a mitigation strategy in place (approval criterion 5).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "exon_high_risk_myositis_monitoring"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "exon_high_risk_myositis_monitoring",
+        "values": [
+          "not_applicable_no_exons_1_17_or_59_71",
+          "applicable_monitoring_mitigation_in_place"
+        ]
+      }
+    },
+    {
+      "id": "no_exon_8_or_9_deletion",
+      "text": "Patient does not have a deletion in exon 8 and/or exon 9 of the DMD gene (approval criterion 6; denial criterion 4).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "no_exon_8_or_9_deletion"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "no_exon_8_or_9_deletion",
+        "value": true
+      }
+    },
+    {
+      "id": "currently_ambulatory",
+      "text": "Patient is currently ambulatory (approval criterion 7).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "currently_ambulatory"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "currently_ambulatory",
+        "value": true
+      }
+    },
+    {
+      "id": "anti_aavrh74_titer",
+      "text": "Patient anti-AAVrh74 total binding antibody titer is <1:400 (approval criterion 8).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "anti_aavrh74_titer"
+      ],
+      "predicate": {
+        "op": "in",
+        "fact": "anti_aavrh74_titer",
+        "values": [
+          "lt_1_400"
+        ]
+      }
+    },
+    {
+      "id": "no_recent_dmd_antisense_oligo",
+      "text": "Patient is not on concomitant DMD-directed antisense oligonucleotides and has not received one in the past 30 days (approval criterion 9).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "no_recent_dmd_antisense_oligo"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "no_recent_dmd_antisense_oligo",
+        "value": true
+      }
+    },
+    {
+      "id": "stable_corticosteroid_regimen",
+      "text": "Patient is currently on a stable corticosteroid regimen per FDA labeling guidance (approval criterion 10).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "stable_corticosteroid_regimen"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "stable_corticosteroid_regimen",
+        "value": true
+      }
+    },
+    {
+      "id": "baseline_lft_and_troponin_i_done",
+      "text": "Prior to administration, patient has had liver function tests (ALT, AST, GGT, ALP, total bilirubin, INR) AND Troponin-I (approval criterion 11).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#approval-criteria",
+      "required_facts": [
+        "baseline_lft_and_troponin_i_done"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "baseline_lft_and_troponin_i_done",
+        "value": true
+      }
+    },
+    {
+      "id": "no_clinically_significant_active_infection",
+      "text": "Patient has no clinically significant active infection (denial criterion 2).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#denial-criteria",
+      "required_facts": [
+        "no_clinically_significant_active_infection"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "no_clinically_significant_active_infection",
+        "value": true
+      }
+    },
+    {
+      "id": "no_acute_liver_disease",
+      "text": "Patient has no acute liver disease (denial criterion 3).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#denial-criteria",
+      "required_facts": [
+        "no_acute_liver_disease"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "no_acute_liver_disease",
+        "value": true
+      }
+    },
+    {
+      "id": "no_prior_dmd_gene_therapy",
+      "text": "Patient has not previously been treated with gene therapy for DMD (denial criterion 5).",
+      "citation": "https://health.alaska.gov/media/5abmvzjk/elevidys_criteria_2023.pdf#denial-criteria",
+      "required_facts": [
+        "no_prior_dmd_gene_therapy"
+      ],
+      "predicate": {
+        "op": "eq",
+        "fact": "no_prior_dmd_gene_therapy",
+        "value": true
+      }
+    }
+  ],
+  "alternatives": [],
+  "notes": [
+    "Partial encoding from Alaska Medicaid Elevidys (delandistrogene moxeparvovec-rokl), an AAV vector gene therapy for DMD, Criteria Version 1: Original 09/21/2023; Approved 11/17/2023; Effective 01/1/2024. The effective_date remains 2024-01-01.",
+    "Encoded: the closed FDA-labeled indication in this PDF, approval criteria 1-11, and approval-blocking denial exclusions. DMD diagnosis, confirmed DMD gene mutation, and current ambulatory status are separate attestations despite overlap with the indication. Denial criterion 1 is failure to meet approval criteria; exon 8/9 deletion is covered once by approval criterion 6.",
+    "Duration (notes only): initial approval 3 months; no reauthorization will be approved.",
+    "LFT monitoring (notes only): at baseline prior to therapy, weekly for the first three months following administration, and thereafter as clinically indicated. Acute liver injury has been observed, frequently within 8 weeks of administration.",
+    "Cases of immune-mediated myositis have been observed. Monitoring and mitigation for mutations in exons 1-17 and/or 59-71 are encoded as a conditional attestation.",
+    "Myocarditis has been observed following administration. Monitor Troponin-I prior to administration, weekly for one month following, and thereafter as clinically indicated (ongoing schedule notes only).",
+    "The PDF describes accelerated approval based on expression of ELEVIDYS micro-dystrophin in skeletal muscle. Continued approval may be contingent upon verification and description of clinical benefit in confirmatory trial(s).",
+    "Quantity limits, approval duration, no reauthorization, and ongoing monitoring schedules require attestation/manual review and are not fully predicated; this pack remains partial. Baseline labs are attested as completed, without numeric lab predicates.",
+    "No Elevidys or delandistrogene match was found in the ingested PDL; pdl_status remains unknown. No evaluate-linked alternatives are specified."
+  ],
+  "fact_ui": {
+    "indication": {
+      "type": "select",
+      "label": "FDA-labeled use in the Alaska Medicaid Elevidys criteria.",
+      "options": [
+        {
+          "value": "dmd_ambulatory_age_4_to_5",
+          "label": "Duchenne muscular dystrophy (DMD) \u2014 ambulatory pediatric patients aged 4 through 5 years with confirmed DMD gene mutation"
+        }
+      ]
+    },
+    "age_years": {
+      "type": "select",
+      "label": "Patient meets FDA labeled age: 4 through 5 years (approval criterion 1).",
+      "options": [
+        {
+          "value": "0",
+          "label": "Under 4 years"
+        },
+        {
+          "value": "4",
+          "label": "4 years"
+        },
+        {
+          "value": "5",
+          "label": "5 years"
+        },
+        {
+          "value": "6",
+          "label": "6 years or older"
+        }
+      ]
+    },
+    "prescriber_specialty": {
+      "type": "select",
+      "label": "Prescribed by or in consultation with a neuromuscular specialist (approval criterion 2).",
+      "options": [
+        {
+          "value": "neuromuscular_specialist",
+          "label": "Neuromuscular specialist"
+        },
+        {
+          "value": "neurologist",
+          "label": "Neurologist"
+        },
+        {
+          "value": "primary_care",
+          "label": "Primary care"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    },
+    "dmd_diagnosis": {
+      "type": "select",
+      "label": "Patient has a diagnosis of Duchenne Muscular Dystrophy (approval criterion 3).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "dmd_gene_mutation_confirmed": {
+      "type": "select",
+      "label": "Patient has a confirmed mutation of the DMD gene (approval criterion 4).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "exon_high_risk_myositis_monitoring": {
+      "type": "select",
+      "label": "For a mutation in exons 1-17 and/or 59-71, prescriber will monitor for immune-mediated myositis and has a mitigation strategy in place (approval criterion 5).",
+      "options": [
+        {
+          "value": "not_applicable_no_exons_1_17_or_59_71",
+          "label": "Mutation is not in exons 1-17 or 59-71"
+        },
+        {
+          "value": "applicable_monitoring_mitigation_in_place",
+          "label": "Mutation in exons 1-17 and/or 59-71; monitoring and mitigation strategy in place"
+        },
+        {
+          "value": "applicable_no_monitoring",
+          "label": "Mutation in exons 1-17 and/or 59-71; no monitoring/mitigation strategy"
+        }
+      ]
+    },
+    "no_exon_8_or_9_deletion": {
+      "type": "select",
+      "label": "Patient does not have a deletion in exon 8 and/or exon 9 of the DMD gene (approval criterion 6; denial criterion 4).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "currently_ambulatory": {
+      "type": "select",
+      "label": "Patient is currently ambulatory (approval criterion 7).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "anti_aavrh74_titer": {
+      "type": "select",
+      "label": "Patient anti-AAVrh74 total binding antibody titer is <1:400 (approval criterion 8).",
+      "options": [
+        {
+          "value": "lt_1_400",
+          "label": "anti-AAVrh74 total binding antibody titer <1:400"
+        },
+        {
+          "value": "gte_1_400",
+          "label": "\u22651:400"
+        }
+      ]
+    },
+    "no_recent_dmd_antisense_oligo": {
+      "type": "select",
+      "label": "Patient is not on concomitant DMD-directed antisense oligonucleotides and has not received one in the past 30 days (approval criterion 9).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "stable_corticosteroid_regimen": {
+      "type": "select",
+      "label": "Patient is currently on a stable corticosteroid regimen per FDA labeling guidance (approval criterion 10).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "baseline_lft_and_troponin_i_done": {
+      "type": "select",
+      "label": "Prior to administration, patient has had liver function tests (ALT, AST, GGT, ALP, total bilirubin, INR) AND Troponin-I (approval criterion 11).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "no_clinically_significant_active_infection": {
+      "type": "select",
+      "label": "Patient has no clinically significant active infection (denial criterion 2).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "no_acute_liver_disease": {
+      "type": "select",
+      "label": "Patient has no acute liver disease (denial criterion 3).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "no_prior_dmd_gene_therapy": {
+      "type": "select",
+      "label": "Patient has not previously been treated with gene therapy for DMD (denial criterion 5).",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    }
+  },
+  "max_units": {
+    "quantity": null,
+    "days_supply": null,
+    "notes": "One infusion per lifetime. HCPCS J3590. Attestation/manual review only; not a numeric predicate."
+  }
+}

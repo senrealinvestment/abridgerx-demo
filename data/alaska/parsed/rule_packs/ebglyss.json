@@ -1,18 +1,18 @@
 {
   "drug": {
-    "name": "Adbry",
-    "generic_name": "tralokinumab-ldrm",
+    "name": "Ebglyss",
+    "generic_name": "lebrikizumab-lbkz",
     "therapeutic_class": "immunomodulators"
   },
   "source": {
     "payer": "alaska_medicaid",
-    "list": "Adbry Criteria",
-    "effective_date": "2024-06-01",
-    "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf",
-    "criteria_pdf": "data/alaska/raw/adbry_criteria_2024.pdf"
+    "list": "Ebglyss Criteria",
+    "effective_date": "2026-03-01",
+    "citation": "https://health.alaska.gov/media/gdcjebpg/ebglyss_criteria.pdf",
+    "criteria_pdf": "data/alaska/raw/ebglyss_criteria.pdf"
   },
   "requires_pa": true,
-  "pdl_status": "preferred",
+  "pdl_status": "non_preferred",
   "encoding_status": "partial",
   "fact_ui": {
     "indication": {
@@ -21,10 +21,10 @@
       "options": [
         {
           "value": "atopic_dermatitis",
-          "label": "Moderate-to-severe atopic dermatitis (\u226512 years)"
+          "label": "Moderate-to-severe atopic dermatitis (\u226512 years, \u226540 kg)"
         }
       ],
-      "hint": "Closed list from Alaska Medicaid Adbry criteria, effective 2024-06-01; topical prescription therapies inadequately control disease or are not advisable."
+      "hint": "Closed list from Alaska Medicaid Ebglyss criteria, effective 2026-03-01; topical prescription therapies inadequately control disease or are not advisable. Weight \u226540 kg is attestation-only in notes, not a predicate."
     },
     "age_years": {
       "type": "select",
@@ -97,7 +97,7 @@
     },
     "not_used_with_another_biologic": {
       "type": "select",
-      "label": "Not used with another biologic (e.g. Enbrel, Dupixent, Xolair)",
+      "label": "Not used with another biologic (e.g. Adbry, Dupixent, Xolair)",
       "options": [
         {
           "value": "yes",
@@ -114,7 +114,7 @@
     {
       "id": "indication_fda_labeled",
       "text": "Diagnosis is moderate-to-severe atopic dermatitis, inadequately controlled with topical prescription therapies or when those therapies are not advisable.",
-      "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf#fda-indications",
+      "citation": "https://health.alaska.gov/media/gdcjebpg/ebglyss_criteria.pdf#fda-indications",
       "required_facts": [
         "indication"
       ],
@@ -128,8 +128,8 @@
     },
     {
       "id": "fda_labeled_age_for_indication",
-      "text": "Patient meets FDA-labeled age for Adbry: at least 12 years.",
-      "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf#approval-criteria",
+      "text": "Patient meets FDA-labeled age for Ebglyss: at least 12 years.",
+      "citation": "https://health.alaska.gov/media/gdcjebpg/ebglyss_criteria.pdf#approval-criteria",
       "required_facts": [
         "age_years"
       ],
@@ -142,7 +142,7 @@
     {
       "id": "prescriber_specialty_for_indication",
       "text": "Prescribed by or in consultation with an allergist, immunologist, or dermatologist.",
-      "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf#approval-criteria",
+      "citation": "https://health.alaska.gov/media/gdcjebpg/ebglyss_criteria.pdf#approval-criteria",
       "required_facts": [
         "prescriber_specialty"
       ],
@@ -159,7 +159,7 @@
     {
       "id": "ad_documentation_and_step_therapy",
       "text": "Baseline affected BSA AND symptom severity documented; tried and failed for 30 days or contraindication to at least two of: TCS (medium\u2013high potency if >18 years / low potency if <18 years), topical calcineurin inhibitor, PDE4 inhibitor.",
-      "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf#approval-criteria",
+      "citation": "https://health.alaska.gov/media/gdcjebpg/ebglyss_criteria.pdf#approval-criteria",
       "required_facts": [
         "indication",
         "ad_bsa_severity_documented",
@@ -194,8 +194,8 @@
     },
     {
       "id": "not_concomitant_biologic",
-      "text": "Denial if used in conjunction with another biologic medication (e.g. Enbrel, Dupixent, Xolair).",
-      "citation": "https://health.alaska.gov/media/uttcrocu/adbry_criteria_2024.pdf#denial-criteria",
+      "text": "Denial if used in conjunction with another biologic medication (e.g. Adbry, Dupixent, Xolair).",
+      "citation": "https://health.alaska.gov/media/gdcjebpg/ebglyss_criteria.pdf#denial-criteria",
       "required_facts": [
         "not_used_with_another_biologic"
       ],
@@ -207,19 +207,21 @@
     }
   ],
   "alternatives": [
-    "dupixent",
-    "ebglyss"
+    "adbry",
+    "dupixent"
   ],
   "max_units": {
     "quantity": null,
-    "days_supply": 28,
-    "notes": "First month: up to 1200 mg (eight 150 mg injections); thereafter up to 600 mg (four 150 mg injections) monthly. Initial approval up to 3 months; reauthorization up to 12 months. Quantity limits are not numeric predicates."
+    "days_supply": null,
+    "notes": "Month 1: up to six 250 mg injections; Months 2\u20134: up to two 250 mg injections each month; Month 5 and later: one 250 mg injection monthly. Initial approval up to 3 months; reauthorization up to 12 months. Quantity limits are attestation-only, not numeric predicates."
   },
   "notes": [
-    "Partial encoding from AK Adbry (tralokinumab-ldrm), an IL-13 antagonist, Criteria Version 1 (Original 02/27/2024, Accepted 04/19/2024, Effective 06/1/2024).",
+    "Partial encoding from AK Ebglyss (lebrikizumab-lbkz), an IL-13 antagonist, Criteria Version 1 (Original 12/22/2025, Accepted 01/16/2026, Effective 03/01/2026).",
     "Encoded: closed moderate-to-severe atopic dermatitis indication; FDA age \u226512 years; specialty or consultation; baseline affected BSA and symptom severity documentation; at least two topical classes tried/failed for 30 days or contraindicated; no concomitant biologic. Failure to meet approval criteria results in denial.",
-    "Attestation only, not numeric predicates: BSA percentage, symptom severity, topical potency and 30-day trial duration, contraindications, and monthly quantity math. TCS wording follows the PDF (>18 years medium\u2013high potency; <18 years low potency); exactly age 18 is unspecified. Shared Dupixent AD option values are retained.",
-    "Duration notes only: initial approval up to 3 months; reauthorization up to 12 months. The PDF specifies no additional reauthorization response predicate. Cautions (hypersensitivity, eye symptoms, live vaccines, helminth infection) are not encoded as approval gates.",
-    "Alternatives: Dupixent is evaluate()-linked for overlapping atopic dermatitis. Adbry is PDL preferred in IMMUNOMODULATORS, ATOPIC DERMATITIS."
+    "Weight \u226540 kg appears in the FDA indication text, not as a separate numbered approval criterion; criterion 1 specifies FDA labeling approved age. Weight is attestation-only in notes, not predicated or collected as a fact. A predicate pass does not verify weight eligibility.",
+    "Attestation only, not numeric predicates: BSA percentage, symptom severity, topical potency and 30-day trial duration, contraindications, and monthly quantity math. TCS wording follows the PDF (>18 years medium\u2013high potency; <18 years low potency); exactly age 18 is unspecified. Shared Adbry and Dupixent AD option values are retained.",
+    "Duration notes only: initial approval up to 3 months; reauthorization up to 12 months. The PDF specifies no additional reauthorization response predicate.",
+    "Cautions, not approval gates: monitor for hypersensitivity and new or worsening eye symptoms; avoid live vaccines; treat pre-existing helminth infections before initiation, and discontinue Ebglyss until infection resolves if an infection during treatment fails to respond to anti-helminth treatment.",
+    "Alternatives: Adbry and Dupixent are evaluate()-linked preferred peers for overlapping atopic dermatitis. Ebglyss is PDL non-preferred in IMMUNOMODULATORS, ATOPIC DERMATITIS."
   ]
 }

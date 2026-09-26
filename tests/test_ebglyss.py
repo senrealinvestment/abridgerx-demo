@@ -1,4 +1,4 @@
-"""Adbry AK Medicaid criteria and catalog integration from the 2024 PDF."""
+"""Ebglyss AK Medicaid criteria and catalog integration from the 2026 PDF."""
 
 from __future__ import annotations
 
@@ -11,12 +11,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from engine.evaluate import check, evaluate  # noqa: E402
+from engine.evaluate import check, evaluate, find_alternatives  # noqa: E402
 from ui.loaders import drug_detail, get_rule_pack, load_rule_pack_catalog  # noqa: E402
 
 
 def load_pack():
-    return json.loads((ROOT / "data/alaska/parsed/adbry.json").read_text())
+    return json.loads((ROOT / "data/alaska/parsed/ebglyss.json").read_text())
 
 
 def _base(**extra):
@@ -41,12 +41,12 @@ def _assert_fail(clause, **extra):
     assert clause in {c["id"] for c in result.failed_clauses}, result
 
 
-def test_encoding_status_partial_and_pdl_preferred():
+def test_encoding_status_partial_and_pdl_non_preferred():
     pack = load_pack()
     assert pack["encoding_status"] == "partial"
-    assert pack["pdl_status"] == "preferred"
+    assert pack["pdl_status"] == "non_preferred"
     assert pack["drug"] == {
-        "name": "Adbry", "generic_name": "tralokinumab-ldrm",
+        "name": "Ebglyss", "generic_name": "lebrikizumab-lbkz",
         "therapeutic_class": "immunomodulators",
     }
     assert len(pack["criteria"]) == 5
@@ -54,7 +54,7 @@ def test_encoding_status_partial_and_pdl_preferred():
 
 
 def test_indication_closed_list_never_yes_no_unknown():
-    detail = drug_detail("adbry")
+    detail = drug_detail("ebglyss")
     assert detail
     field = next(f for f in detail["fact_fields"] if f["key"] == "indication")
     assert field["type"] == "select"
@@ -66,7 +66,7 @@ def test_indication_closed_list_never_yes_no_unknown():
 
 def test_fact_ui_selects_and_multis_only():
     pack = load_pack()
-    detail = drug_detail("adbry")
+    detail = drug_detail("ebglyss")
     assert detail
     assert {f["key"] for f in detail["fact_fields"]} == set(_base())
     for field in detail["fact_fields"]:
@@ -126,33 +126,85 @@ def test_ad_fail_concomitant_biologic():
     _assert_fail("not_concomitant_biologic", not_used_with_another_biologic=False)
 
 
-def test_catalog_and_mirrors_load_adbry_as_partial():
+def test_catalog_and_mirrors_load_ebglyss_as_partial():
     base = ROOT / "data/alaska/parsed"
     pack = load_pack()
     catalog = load_rule_pack_catalog()
-    assert catalog["adbry"] == pack
-    assert catalog["adbry"]["encoding_status"] == "partial"
-    assert get_rule_pack("adbry") == ("adbry", pack)
-    assert drug_detail("adbry")
-    assert json.loads((base / "rule_packs/adbry.json").read_text()) == pack
+    assert catalog["ebglyss"] == pack
+    assert catalog["ebglyss"]["encoding_status"] == "partial"
+    assert get_rule_pack("ebglyss") == ("ebglyss", pack)
+    assert drug_detail("ebglyss")
+    assert json.loads((base / "rule_packs/ebglyss.json").read_text()) == pack
     with gzip.open(base / "rule_packs_all.json.gz", "rt", encoding="utf-8") as stream:
         assert json.load(stream) == catalog
     assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 10
     assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 188
 
 
-def test_bidirectional_alternatives_and_dupixent_evaluate_pass():
+def test_bidirectional_alternatives_evaluate():
     catalog = load_rule_pack_catalog()
-    assert load_pack()["alternatives"] == ["dupixent", "ebglyss"]
-    for path in ["dupixent.json", "rule_packs/dupixent.json"]:
-        dup = json.loads((ROOT / "data/alaska/parsed" / path).read_text())
-        assert set(dup["alternatives"]) == {
-            "adbry", "ebglyss", "xolair", "fasenra", "nucala", "cinqair", "tezspire",
-        }
+    assert load_pack()["alternatives"] == ["adbry", "dupixent"]
+    base = ROOT / "data/alaska/parsed"
+    for slug, expected in [
+        ("adbry", {"dupixent", "ebglyss"}),
+        ("dupixent", {"adbry", "ebglyss", "xolair", "fasenra", "nucala", "cinqair", "tezspire"}),
+    ]:
+        for path in [f"{slug}.json", f"rule_packs/{slug}.json"]:
+            peer = json.loads((base / path).read_text())
+            assert set(peer["alternatives"]) == expected
+            assert evaluate(peer, _base()).decision == "pass"
+            alts = find_alternatives(peer, _base(), catalog)
+            assert any(a["rule_id"] == "ebglyss" and a["verification"] == "evaluate_pass"
+                       for a in alts), alts
+    alts = find_alternatives(load_pack(), _base(), catalog)
+    assert {a["rule_id"] for a in alts if a["verification"] == "evaluate_pass"} == {"adbry", "dupixent"}
     result = check(load_pack(), _base(age_years=11), catalog)
     assert result.decision == "fail"
-    assert any(a.get("rule_id") == "dupixent" and a.get("verification") == "evaluate_pass"
-               for a in result.alternatives), result.alternatives
+    assert {a["rule_id"] for a in result.alternatives if a["verification"] == "evaluate_pass"} == {"dupixent"}
+    assert find_alternatives(load_pack(), _base(not_used_with_another_biologic=False), catalog) == []
+
+
+def test_source_and_attestation_only_limits():
+    pack = load_pack()
+    assert pack["source"]["effective_date"] == "2026-03-01"
+    assert pack["source"]["citation"] == "https://health.alaska.gov/media/gdcjebpg/ebglyss_criteria.pdf"
+    assert "inferred_required_facts" not in pack
+    assert pack["fact_ui"]["indication"]["options"][0]["label"] == (
+        "Moderate-to-severe atopic dermatitis (≥12 years, ≥40 kg)"
+    )
+    # No weight or quantity fact is silently promoted into a predicate.
+    assert {fact for clause in pack["criteria"] for fact in clause["required_facts"]} == set(_base())
+    assert not any("weight" in json.dumps(c["predicate"]) or "quantity" in json.dumps(c["predicate"])
+                   for c in pack["criteria"])
+    notes = " ".join(pack["notes"])
+    for text in ["12/22/2025", "01/16/2026", "Weight ≥40 kg", "attestation-only", "not predicated",
+                 "live vaccines", "helminth", "eye symptoms", "exactly age 18"]:
+        assert text in notes
+    for text in ["six 250 mg", "two 250 mg", "one 250 mg", "up to 3 months", "up to 12 months"]:
+        assert text in pack["max_units"]["notes"]
+
+
+def test_full_catalog_and_status_mirrors():
+    base = ROOT / "data/alaska/parsed"
+    catalog = load_rule_pack_catalog()
+    assert len(catalog) == 198
+    # Private repo has full rule_packs/; demo may ship a slim subset + rule_packs_all.
+    per_pack_dir = {
+        path.stem: json.loads(path.read_text())
+        for path in (base / "rule_packs").glob("*.json")
+    }
+    if len(per_pack_dir) == len(catalog):
+        assert catalog == per_pack_dir
+    else:
+        assert per_pack_dir["ebglyss"] == catalog["ebglyss"]
+    assert (base / "ebglyss.json").read_bytes() == (base / "rule_packs/ebglyss.json").read_bytes()
+    status = json.loads((base / "ENCODING_STATUS.json").read_text())
+    assert status["encoding_partial"] == 10
+    assert status["encoding_text_only"] == 188
+    assert status["partial_slugs"] == sorted(s for s, p in catalog.items() if p["encoding_status"] == "partial")
+    assert "ebglyss" in status["partial_slugs"]
+    for suffix in ["json", "md"]:
+        assert (base / f"ENCODING_STATUS.{suffix}").read_bytes() == (base.parent / f"ENCODING_STATUS.{suffix}").read_bytes()
 
 
 if __name__ == "__main__":
@@ -160,4 +212,4 @@ if __name__ == "__main__":
         if name.startswith("test_") and callable(fn):
             fn()
             print("ok", name)
-    print("adbry tests ok")
+    print("ebglyss tests ok")

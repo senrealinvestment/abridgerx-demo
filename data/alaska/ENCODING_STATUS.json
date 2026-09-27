@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 36,
-  "encoding_text_only": 162,
+  "encoding_partial": 37,
+  "encoding_text_only": 161,
   "partial_slugs": [
     "adbry",
     "adcirca",
@@ -42,6 +42,7 @@
     "tezspire",
     "tremfya",
     "xolair",
+    "zolgensma",
     "zymfentra"
   ],
   "next_candidate": "actiq"

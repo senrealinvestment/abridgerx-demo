@@ -82,6 +82,11 @@ def _eval_predicate(predicate: dict[str, Any], patient: dict[str, Any]) -> bool 
         if val is None:
             return None
         return val >= predicate["value"]
+    if op == "lt":
+        val = _fact(patient, predicate["fact"])
+        if val is None:
+            return None
+        return val < predicate["value"]
     if op == "lte":
         val = _fact(patient, predicate["fact"])
         if val is None:
@@ -129,7 +134,7 @@ def _missing_in_predicate(
 ) -> list[str]:
     """Facts whose absence blocks deciding this predicate (respecting all/any)."""
     op = predicate.get("op")
-    if op in ("eq", "neq", "gte", "lte", "in", "not_in", "count_gte", "choice"):
+    if op in ("eq", "neq", "gte", "lt", "lte", "in", "not_in", "count_gte", "choice"):
         f = predicate.get("fact")
         if f and _fact(patient, f) is None:
             return [f]

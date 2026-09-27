@@ -96,8 +96,8 @@ def test_ui_closed_selects_and_coercion():
 def test_catalog_mirrors_alternatives_and_scope():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 36
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 162
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 37
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 161
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
@@ -106,10 +106,10 @@ def test_catalog_mirrors_alternatives_and_scope():
     for slug in ['lemtrada'] + PEERS:
         assert (BASE / f'{slug}.json').read_bytes() == (BASE / f'rule_packs/{slug}.json').read_bytes()
         assert catalog[slug]['alternatives'] == sorted(set(['lemtrada'] + PEERS) - {slug})
-    for slug in ['zolgensma', 'actiq']:
+    for slug in ['actiq']:
         assert catalog[slug]['encoding_status'] == 'text_only'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 36 and status['encoding_text_only'] == 162
+    assert status['encoding_partial'] == 37 and status['encoding_text_only'] == 161
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     assert status['next_candidate'] == 'actiq'
     for suffix in ['json', 'md']:

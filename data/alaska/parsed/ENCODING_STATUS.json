@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 93,
-  "encoding_text_only": 105,
+  "encoding_partial": 94,
+  "encoding_text_only": 104,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -98,8 +98,9 @@
     "yorvipath",
     "zilbrysq",
     "zolgensma",
+    "ztalmy",
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "ztalmy"
+  "next_candidate": "zurzuvae"
 }

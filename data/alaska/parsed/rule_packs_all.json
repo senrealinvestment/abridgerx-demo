@@ -36833,7 +36833,8 @@
   "ztalmy": {
     "drug": {
       "name": "Ztalmy",
-      "therapeutic_class": "other"
+      "therapeutic_class": "antiepileptic",
+      "generic_name": "ganaxolone"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -36844,18 +36845,156 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of seizures associated with CDKL5 deficiency disorder (CDD) (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/4vlf31zn/5biv-ztalmy_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "cdkl5_deficiency_disorder_seizures"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 2 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/4vlf31zn/5biv-ztalmy_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 2
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/4vlf31zn/5biv-ztalmy_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_consult"
+        }
+      },
+      {
+        "id": "pathogenic_cdkl5_mutation_confirmed",
+        "text": "Patient has a genetically confirmed mutation in the CDKL5 gene which is pathogenic or likely pathogenic (approval criterion 4).",
+        "required_facts": [
+          "pathogenic_cdkl5_mutation_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pathogenic_cdkl5_mutation_confirmed",
+          "value": true
+        },
+        "citation": "https://health.alaska.gov/media/4vlf31zn/5biv-ztalmy_criteria_2023.pdf#approval-criteria"
+      },
+      {
+        "id": "two_aed_requirement_met",
+        "text": "Patient has tried and failed or is currently taking at least two previous antiepileptic drugs (approval criterion 5).",
+        "required_facts": [
+          "two_aed_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "two_aed_requirement_met",
+          "value": true
+        },
+        "citation": "https://health.alaska.gov/media/4vlf31zn/5biv-ztalmy_criteria_2023.pdf#approval-criteria"
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Ztalmy (ganaxolone) Criteria. Version 1; Original 2/28/2023; Accepted 4/21/2023; Effective 6/1/2023.",
+      "Encoded: approval criteria 1\u20135 for the single closed CDD seizures indication. Failure to meet approval criteria is a denial. Neurologist consultation, genetic confirmation and prior/current antiepileptic therapy are attestations requiring documentation verification.",
+      "Genetic confirmation requires a pathogenic or likely pathogenic CDKL5 mutation; a variant of uncertain significance does not qualify. Prior therapy requires tried and failed OR currently taking at least two previous antiepileptic drugs. No specific drugs or minimum trial duration are specified; contraindication alone does not satisfy this criterion.",
+      "Cautions (notes only): ganaxolone is a schedule V (C-V) controlled substance. Monitor for suicidal behavior and ideation. Withdraw gradually to minimize increased seizure frequency or status epilepticus. Ztalmy may cause fetal harm.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 6 months with confirmation of a sustained reduction in monthly seizure frequency from pre-treatment baseline.",
+      "Quantity (notes only): 1800 mg (36 ml) daily. max_units is null; dosing and quantity are not evaluated.",
+      "Documentation verification, cautions, duration, reauthorization, dosing and quantity enforcement require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of seizures associated with CDKL5 deficiency disorder (CDD) (approval criterion 3).",
+        "options": [
+          {
+            "value": "cdkl5_deficiency_disorder_seizures",
+            "label": "Seizures associated with CDKL5 deficiency disorder (CDD)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 2 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 2 years"
+          },
+          {
+            "value": "2",
+            "label": "2+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "neurologist_or_consult",
+            "label": "Neurologist or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "pathogenic_cdkl5_mutation_confirmed": {
+        "type": "select",
+        "label": "Patient has a genetically confirmed mutation in the CDKL5 gene which is pathogenic or likely pathogenic (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "two_aed_requirement_met": {
+        "type": "select",
+        "label": "Patient has tried and failed or is currently taking at least two previous antiepileptic drugs (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      }
+    }
   },
   "zurzuvae": {
     "drug": {

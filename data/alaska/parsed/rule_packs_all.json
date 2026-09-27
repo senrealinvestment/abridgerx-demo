@@ -8470,7 +8470,8 @@
   "evkeeza": {
     "drug": {
       "name": "Evkeeza",
-      "therapeutic_class": "lipotropics"
+      "therapeutic_class": "lipotropics",
+      "generic_name": "evinacumab-dgnb"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -8481,18 +8482,346 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Homozygous familial hypercholesterolemia (HoFH)",
+        "citation": "https://health.alaska.gov/media/virpnhvu/202104-evkeeza_criteria_2021.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "homozygous_familial_hypercholesterolemia"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 12 years old",
+        "citation": "https://health.alaska.gov/media/virpnhvu/202104-evkeeza_criteria_2021.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 12
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a specialist in cardiology, lipidology, or endocrinology",
+        "citation": "https://health.alaska.gov/media/virpnhvu/202104-evkeeza_criteria_2021.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "cardiology",
+            "lipidology",
+            "endocrinology",
+            "cardiology_consult",
+            "lipidology_consult",
+            "endocrinology_consult"
+          ]
+        }
+      },
+      {
+        "id": "hofh_confirmation",
+        "text": "Documented HoFH confirmation",
+        "citation": "https://health.alaska.gov/media/virpnhvu/202104-evkeeza_criteria_2021.pdf",
+        "required_facts": [
+          "hofh_confirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "hofh_confirmation",
+          "values": [
+            "genetic_two_mutant_alleles_ldlr_apob_pcsk9_or_ldlrap1",
+            "clinical_untreated_ldl_gt_500_or_treated_ge_300_with_early_manifest_or_both_parents_hefh"
+          ]
+        }
+      },
+      {
+        "id": "ezetimibe_with_max_atorvastatin_or_rosuvastatin_step_3mo",
+        "text": "Ezetimibe plus atorvastatin or rosuvastatin step",
+        "citation": "https://health.alaska.gov/media/virpnhvu/202104-evkeeza_criteria_2021.pdf",
+        "required_facts": [
+          "ezetimibe_with_max_atorvastatin_or_rosuvastatin_step_3mo"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ezetimibe_with_max_atorvastatin_or_rosuvastatin_step_3mo",
+          "values": [
+            "failed_3mo_adherent_ezetimibe_plus_max_atorva_or_rosuva",
+            "statin_contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "pcsk9_statin_ezetimibe_combo_step_3mo",
+        "text": "Triple therapy step including a PCSK9 inhibitor indicated for HoFH",
+        "citation": "https://health.alaska.gov/media/virpnhvu/202104-evkeeza_criteria_2021.pdf",
+        "required_facts": [
+          "pcsk9_statin_ezetimibe_combo_step_3mo"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pcsk9_statin_ezetimibe_combo_step_3mo",
+          "values": [
+            "failed_3mo_max_atorva_or_rosuva_plus_ezetimibe_plus_pcsk9_hofh",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "ldl_c_above_target_despite_pcsk9_statin_ezetimibe",
+        "text": "LDL-C remains elevated despite PCSK9 inhibitor, statin, and ezetimibe",
+        "citation": "https://health.alaska.gov/media/virpnhvu/202104-evkeeza_criteria_2021.pdf",
+        "required_facts": [
+          "ldl_c_above_target_despite_pcsk9_statin_ezetimibe"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ldl_c_above_target_despite_pcsk9_statin_ezetimibe",
+          "values": [
+            "ge_100_mg_dl",
+            "ge_70_mg_dl_with_clinical_ascvd"
+          ]
+        }
+      },
+      {
+        "id": "female_negative_pregnancy_test_and_contraception_counseled",
+        "text": "Female patients: negative pregnancy test and effective contraception counseling during treatment",
+        "citation": "https://health.alaska.gov/media/virpnhvu/202104-evkeeza_criteria_2021.pdf",
+        "required_facts": [
+          "female_negative_pregnancy_test_and_contraception_counseled"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "female_negative_pregnancy_test_and_contraception_counseled",
+          "value": "done_or_not_applicable_male"
+        }
+      },
+      {
+        "id": "baseline_ldl_tc_apob_non_hdl_documented",
+        "text": "Baseline LDL-C, total cholesterol, apo B, and non-HDL-C labs documented before treatment",
+        "citation": "https://health.alaska.gov/media/virpnhvu/202104-evkeeza_criteria_2021.pdf",
+        "required_facts": [
+          "baseline_ldl_tc_apob_non_hdl_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_ldl_tc_apob_non_hdl_documented",
+          "value": true
+        }
+      },
+      {
+        "id": "using_with_low_fat_or_heart_healthy_diet",
+        "text": "Used in conjunction with a low fat or heart healthy diet",
+        "citation": "https://health.alaska.gov/media/virpnhvu/202104-evkeeza_criteria_2021.pdf",
+        "required_facts": [
+          "using_with_low_fat_or_heart_healthy_diet"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "using_with_low_fat_or_heart_healthy_diet",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Evkeeza (evinacumab-dgnb) Criteria Version 1; Original 3/26/2021; Approval 4/16/2021; Effective 5/24/2021.",
+      "ANGPTL3 inhibitor indicated as an adjunct to other LDL-C lowering therapies for HoFH in patients aged \u226512 under this source. HeFH and other forms of hypercholesterolemia are excluded by the closed HoFH indication.",
+      "HoFH confirmation accepts genetic OR clinical confirmation. Clinical confirmation requires untreated LDL-C >500 mg/dL or treated LDL-C \u2265300 mg/dL, together with HoFH manifestations before age 10 or both parents having untreated LDL-C or total cholesterol consistent with HeFH.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 6 months with documented current LDL-C reduction from baseline and continued lipid lowering diet and therapy.",
+      "Quantity (notes only): 345 mg/2.3 mL vial: 2 vials per 28 days; 1,200 mg/8 mL vial: 1 vial per 28 days; maximum dose 1,890 mg per 28 days. max_units is null; quantity enforcement requires manual review.",
+      "Cautions (notes only): monitor for serious hypersensitivity reactions and treat according to standard of care until symptoms resolve. May cause fetal harm based on animal studies; advise contraception during treatment and for at least 5 months following the last dose.",
+      "Remains partial: diagnosis, genetic/clinical confirmation, adherent therapy trials, contraindications, LDL thresholds, reproductive counseling, baseline labs and diet are attestations. Evidence verification, duration, reauthorization, quantity and cautions require manual review. PDL status unknown; no alternative packs specified."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Homozygous familial hypercholesterolemia (HoFH)",
+        "options": [
+          {
+            "value": "homozygous_familial_hypercholesterolemia",
+            "label": "Homozygous familial hypercholesterolemia (HoFH)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 12 years old",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 12 years"
+          },
+          {
+            "value": "12",
+            "label": "12+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a specialist in cardiology, lipidology, or endocrinology",
+        "options": [
+          {
+            "value": "cardiology",
+            "label": "Cardiology"
+          },
+          {
+            "value": "lipidology",
+            "label": "Lipidology"
+          },
+          {
+            "value": "endocrinology",
+            "label": "Endocrinology"
+          },
+          {
+            "value": "cardiology_consult",
+            "label": "Consultation with cardiology"
+          },
+          {
+            "value": "lipidology_consult",
+            "label": "Consultation with lipidology"
+          },
+          {
+            "value": "endocrinology_consult",
+            "label": "Consultation with endocrinology"
+          },
+          {
+            "value": "other",
+            "label": "None of these"
+          }
+        ]
+      },
+      "hofh_confirmation": {
+        "type": "select",
+        "label": "Documented HoFH confirmation",
+        "options": [
+          {
+            "value": "genetic_two_mutant_alleles_ldlr_apob_pcsk9_or_ldlrap1",
+            "label": "Genetic confirmation of two mutant alleles at LDLR, apo B, PCSK9, or LDLRAP1 gene locus"
+          },
+          {
+            "value": "clinical_untreated_ldl_gt_500_or_treated_ge_300_with_early_manifest_or_both_parents_hefh",
+            "label": "Untreated LDL-C >500 mg/dL or treated LDL-C \u2265300 mg/dL, plus HoFH manifestations before age 10 or both parents with untreated LDL-C or total cholesterol consistent with HeFH"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ]
+      },
+      "ezetimibe_with_max_atorvastatin_or_rosuvastatin_step_3mo": {
+        "type": "select",
+        "label": "Ezetimibe plus atorvastatin or rosuvastatin step",
+        "options": [
+          {
+            "value": "failed_3mo_adherent_ezetimibe_plus_max_atorva_or_rosuva",
+            "label": "Failed at least 3 months of adherent ezetimibe plus highest available or maximally tolerated atorvastatin or rosuvastatin"
+          },
+          {
+            "value": "statin_contraindicated",
+            "label": "Statin use contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "pcsk9_statin_ezetimibe_combo_step_3mo": {
+        "type": "select",
+        "label": "Triple therapy step including a PCSK9 inhibitor indicated for HoFH",
+        "options": [
+          {
+            "value": "failed_3mo_max_atorva_or_rosuva_plus_ezetimibe_plus_pcsk9_hofh",
+            "label": "Failed at least 3 months of adherent highest available or maximally tolerated atorvastatin or rosuvastatin plus ezetimibe plus a PCSK9 inhibitor indicated for HoFH (e.g., evolocumab)"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "ldl_c_above_target_despite_pcsk9_statin_ezetimibe": {
+        "type": "select",
+        "label": "LDL-C remains elevated despite PCSK9 inhibitor, statin, and ezetimibe",
+        "options": [
+          {
+            "value": "ge_100_mg_dl",
+            "label": "LDL-C \u2265100 mg/dL"
+          },
+          {
+            "value": "ge_70_mg_dl_with_clinical_ascvd",
+            "label": "LDL-C \u226570 mg/dL with clinical atherosclerotic cardiovascular disease"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "female_negative_pregnancy_test_and_contraception_counseled": {
+        "type": "select",
+        "label": "Female patients: negative pregnancy test and effective contraception counseling during treatment",
+        "options": [
+          {
+            "value": "done_or_not_applicable_male",
+            "label": "Negative pregnancy test and counseling completed, or not applicable (male)"
+          },
+          {
+            "value": "not_done",
+            "label": "Not completed"
+          }
+        ]
+      },
+      "baseline_ldl_tc_apob_non_hdl_documented": {
+        "type": "select",
+        "label": "Baseline LDL-C, total cholesterol, apo B, and non-HDL-C labs documented before treatment",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      },
+      "using_with_low_fat_or_heart_healthy_diet": {
+        "type": "select",
+        "label": "Used in conjunction with a low fat or heart healthy diet",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "extended-release": {
     "drug": {

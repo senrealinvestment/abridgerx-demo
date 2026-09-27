@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 135,
-  "encoding_text_only": 63,
+  "encoding_partial": 136,
+  "encoding_text_only": 62,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -101,6 +101,7 @@
     "raft",
     "redemplo",
     "revatio",
+    "reyvow",
     "rezdiffratm",
     "rhapsido",
     "roctavian",
@@ -143,5 +144,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "reyvow"
+  "next_candidate": "zydelig"
 }

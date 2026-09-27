@@ -135,7 +135,9 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "raft"
+  ],
   "notes": [
     "Partial encoding from Alaska Medicaid Zurzuvae Criteria Version 1; Original: 12/18/2023; Accepted: 01/19/2024; Effective: 03/01/2024. Archived source and effective date retained.",
     "Encoded: closed postpartum_depression indication, adult age ≥18, psychiatrist prescribing or consultation, major depressive episode onset from the third trimester through 4 weeks after delivery inclusive, ≤12 months since delivery, ≥6 weeks at therapeutic dose of one listed antidepressant or contraindication to all listed classes/agents, and current renal and liver labs within 60 days. Clinical requirements are attestations; verify supporting documentation. Failure to meet approval criteria is represented by approval predicates.",

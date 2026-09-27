@@ -29316,30 +29316,358 @@
   },
   "raft": {
     "drug": {
-      "name": "raft",
-      "therapeutic_class": "other"
+      "name": "Zulresso",
+      "generic_name": "brexanolone",
+      "therapeutic_class": "gaba-a-modulator"
     },
     "source": {
       "payer": "alaska_medicaid",
-      "list": "raft Criteria",
+      "list": "Zulresso Criteria",
       "effective_date": "2022-06-01",
       "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf",
       "criteria_pdf": "data/alaska/raw/20220415-zulresso_criteria_2022.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of postpartum depression (PPD).",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "postpartum_depression"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 18 years of age.",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "major_depressive_episode_dsm5",
+        "text": "Diagnosis of a major depressive episode defined by DSM-5 criteria.",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "major_depressive_episode_dsm5"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "major_depressive_episode_dsm5",
+          "value": true
+        }
+      },
+      {
+        "id": "ham_d_at_least_20",
+        "text": "Hamilton Rating Scale for Depression (HAM-D) \u226520 (20 included).",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "ham_d_at_least_20"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ham_d_at_least_20",
+          "value": true
+        }
+      },
+      {
+        "id": "psychiatrist_or_consultation",
+        "text": "Prescribed by or in consultation with a psychiatrist.",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "psychiatrist_or_consultation"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "psychiatrist_or_consultation",
+          "value": true
+        }
+      },
+      {
+        "id": "within_6_months_since_delivery",
+        "text": "Patient is \u22646 months postpartum (6 months included).",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "within_6_months_since_delivery"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "within_6_months_since_delivery",
+          "value": true
+        }
+      },
+      {
+        "id": "major_depressive_episode_onset_window",
+        "text": "Symptom onset was in the third trimester or within 4 weeks of delivery (4 weeks included).",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "major_depressive_episode_onset_window"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "major_depressive_episode_onset_window",
+          "value": true
+        }
+      },
+      {
+        "id": "antidepressant_trial_or_contraindication_intolerance",
+        "text": "Tried and failed at least one oral antidepressant (SSRI, SNRI, TCA, etc.) at maximally indicated dose for at least 6\u20138 weeks OR contraindication or intolerance to at least two antidepressants from two different classes.",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "antidepressant_trial_or_contraindication_intolerance"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "antidepressant_trial_or_contraindication_intolerance",
+          "value": true
+        }
+      },
+      {
+        "id": "rems_certified_healthcare_setting",
+        "text": "Medication is administered in a REMS-certified healthcare setting.",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "rems_certified_healthcare_setting"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "rems_certified_healthcare_setting",
+          "value": true
+        }
+      },
+      {
+        "id": "patient_weight_submitted",
+        "text": "Patient weight is submitted.",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "patient_weight_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "patient_weight_submitted",
+          "value": true
+        }
+      },
+      {
+        "id": "active_psychosis",
+        "text": "Patient has active psychosis.",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#denial-criteria",
+        "required_facts": [
+          "active_psychosis"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "active_psychosis",
+          "value": false
+        }
+      },
+      {
+        "id": "breastfeeding_requirement_met",
+        "text": "Patient is not lactating or actively breastfeeding at initiation and during treatment OR agrees to temporarily stop giving breastmilk to the infant.",
+        "citation": "https://health.alaska.gov/media/zarerbxq/20220415-zulresso_criteria_2022.pdf#denial-criteria",
+        "required_facts": [
+          "breastfeeding_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "breastfeeding_requirement_met",
+          "value": true
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "zurzuvae"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Medicaid Zulresso Criteria Version 1; Original: 2/8/2022; Approval: 4/15/2022; Effective: 6/1/2022. The archived extraction artifact raft is retained only as the pack slug; the drug is Zulresso (brexanolone).",
+      "Encoded: closed postpartum_depression indication, age \u226518, all nine approval requirements and active psychosis/breastfeeding denials. Clinical requirements use attestations; verify supporting documentation. The oral antidepressant trial must be at maximally indicated dose for at least 6\u20138 weeks; the alternative requires contraindication or intolerance to at least two antidepressants from two different classes. Failure to meet approval criteria is represented by approval predicates.",
+      "Cautions (notes only): monitor for excessive sedation and sudden loss of consciousness; monitor for hypoxia using pulse oximetry; use with caution in end stage renal disease (ESRD); monitor for suicidal thoughts and behaviors. These cautions require manual review and are not additional denial predicates.",
+      "Duration (notes only): initial approval is one 60-hour infusion.",
+      "Quantity (notes only): weight-based dosing not to exceed a 60-hour infusion; HCPCS J1632. Duration and quantity enforcement require manual review.",
+      "Zurzuvae is a PPD peer alternative; eligibility is evaluated separately under its own criteria."
+    ],
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of postpartum depression (PPD).",
+        "options": [
+          {
+            "value": "postpartum_depression",
+            "label": "Postpartum depression (PPD)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years of age.",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "major_depressive_episode_dsm5": {
+        "type": "select",
+        "label": "Diagnosis of a major depressive episode defined by DSM-5 criteria.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "ham_d_at_least_20": {
+        "type": "select",
+        "label": "Hamilton Rating Scale for Depression (HAM-D) \u226520 (20 included).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "psychiatrist_or_consultation": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a psychiatrist.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "within_6_months_since_delivery": {
+        "type": "select",
+        "label": "Patient is \u22646 months postpartum (6 months included).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "major_depressive_episode_onset_window": {
+        "type": "select",
+        "label": "Symptom onset was in the third trimester or within 4 weeks of delivery (4 weeks included).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "antidepressant_trial_or_contraindication_intolerance": {
+        "type": "select",
+        "label": "Tried and failed at least one oral antidepressant (SSRI, SNRI, TCA, etc.) at maximally indicated dose for at least 6\u20138 weeks OR contraindication or intolerance to at least two antidepressants from two different classes.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "rems_certified_healthcare_setting": {
+        "type": "select",
+        "label": "Medication is administered in a REMS-certified healthcare setting.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "patient_weight_submitted": {
+        "type": "select",
+        "label": "Patient weight is submitted.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "active_psychosis": {
+        "type": "select",
+        "label": "Patient has active psychosis.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "breastfeeding_requirement_met": {
+        "type": "select",
+        "label": "Patient is not lactating or actively breastfeeding at initiation and during treatment OR agrees to temporarily stop giving breastmilk to the infant.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "reclast": {
     "drug": {
@@ -40692,7 +41020,9 @@
         }
       }
     ],
-    "alternatives": [],
+    "alternatives": [
+      "raft"
+    ],
     "notes": [
       "Partial encoding from Alaska Medicaid Zurzuvae Criteria Version 1; Original: 12/18/2023; Accepted: 01/19/2024; Effective: 03/01/2024. Archived source and effective date retained.",
       "Encoded: closed postpartum_depression indication, adult age \u226518, psychiatrist prescribing or consultation, major depressive episode onset from the third trimester through 4 weeks after delivery inclusive, \u226412 months since delivery, \u22656 weeks at therapeutic dose of one listed antidepressant or contraindication to all listed classes/agents, and current renal and liver labs within 60 days. Clinical requirements are attestations; verify supporting documentation. Failure to meet approval criteria is represented by approval predicates.",

@@ -130,16 +130,16 @@ def test_metadata_notes_catalog_and_mirrors():
         assert text in notes
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 105
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 93
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 106
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 92
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert (BASE / f'{SLUG}.json').read_bytes() == (BASE / 'rule_packs' / f'{SLUG}.json').read_bytes()
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (105, 93)
+    assert (status['encoding_partial'], status['encoding_text_only']) == (106, 92)
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'raft'
+    assert status['next_candidate'] == 'myqorzotm'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()

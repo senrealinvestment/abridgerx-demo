@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 105,
-  "encoding_text_only": 93,
+  "encoding_partial": 106,
+  "encoding_text_only": 92,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -84,6 +84,7 @@
     "palynziq",
     "praluent",
     "prolia",
+    "raft",
     "redemplo",
     "roctavian",
     "rystiggo",
@@ -113,5 +114,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "raft"
+  "next_candidate": "myqorzotm"
 }

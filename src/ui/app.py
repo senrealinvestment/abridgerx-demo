@@ -42,7 +42,7 @@ class CheckRequest(BaseModel):
 
 
 def _coerce_patient(raw: dict[str, Any]) -> dict[str, Any]:
-    """Normalize form values; drop empty strings; coerce age_years and weight_kg to float.
+    """Normalize form values; drop empty strings; coerce numeric clinical fields to float.
 
     Multi-select facts may arrive as a list (checkbox group) or a single string.
     """
@@ -55,7 +55,8 @@ def _coerce_patient(raw: dict[str, Any]) -> dict[str, Any]:
             if cleaned:
                 out[k] = cleaned
             continue
-        if k in ("age_years", "weight_kg"):
+        if k in ("age_years", "weight_kg", "serum_sodium_meq_l", "requested_duration_days",
+                 "peanut_ige_kua_l", "peanut_ige_months_ago", "peanut_spt_mm_vs_control"):
             try:
                 out[k] = float(v)
             except (TypeError, ValueError):

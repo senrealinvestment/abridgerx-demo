@@ -77,17 +77,17 @@ def test_ui_metadata_and_notes():
 def test_catalog():
     catalog=load_rule_pack_catalog()
     assert catalog['spravato']==PACK
-    assert catalog['uptravi']['encoding_status']=='text_only'
+    assert catalog['uptravi']['encoding_status']=='partial'
     assert (BASE/'spravato.json').read_bytes()==(BASE/'rule_packs/spravato.json').read_bytes()
     assert json.loads((BASE/'rule_packs_all.json').read_text())==catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f: assert json.load(f)==catalog
     assert len(catalog)==198
-    assert sum(v['encoding_status']=='partial' for v in catalog.values())==112
-    assert sum(v['encoding_status']=='text_only' for v in catalog.values())==86
+    assert sum(v['encoding_status']=='partial' for v in catalog.values())==113
+    assert sum(v['encoding_status']=='text_only' for v in catalog.values())==85
     for d in [BASE,BASE.parent]:
         status=json.loads((d/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'],status['encoding_text_only'])==(112,86)
-        assert status['next_candidate']=='uptravi'
+        assert (status['encoding_partial'],status['encoding_text_only'])==(113,85)
+        assert status['next_candidate']=='wakix'
         assert status['partial_slugs']==sorted(k for k,v in catalog.items() if v['encoding_status']=='partial')
     for name in ['ENCODING_STATUS.json','ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes()==(BASE.parent/name).read_bytes()

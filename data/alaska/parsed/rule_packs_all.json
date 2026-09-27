@@ -39290,7 +39290,8 @@
   "uptravi": {
     "drug": {
       "name": "Uptravi",
-      "therapeutic_class": "pulmonary-arterial-hypertension"
+      "therapeutic_class": "prostacyclin-receptor-agonist",
+      "generic_name": "selexipag"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -39301,20 +39302,239 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of pulmonary arterial hypertension (PAH, WHO Group 1).",
+        "citation": "https://health.alaska.gov/media/xqamysus/202301uptravi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "pulmonary_arterial_hypertension_who_group_1"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is an adult, age 18 years or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/xqamysus/202301uptravi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a cardiologist or pulmonologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/xqamysus/202301uptravi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "cardiologist_or_pulmonologist_or_consult"
+        }
+      },
+      {
+        "id": "pah_confirmed_by_right_heart_catheterization",
+        "text": "WHO Group 1 PAH confirmed by right heart catheterization (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/xqamysus/202301uptravi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "pah_confirmed_by_right_heart_catheterization"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pah_confirmed_by_right_heart_catheterization",
+          "value": "rhc_confirmed"
+        }
+      },
+      {
+        "id": "oral_pah_therapy_two_categories_ge_60d",
+        "text": "Trial and failure, contraindication, or intolerance to oral PAH therapies from at least two different categories, each for at least 60 days: PDE5 inhibitor, endothelin receptor antagonist (if not pregnant), guanylate cyclase stimulator (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/xqamysus/202301uptravi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "oral_pah_therapy_two_categories_ge_60d"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "oral_pah_therapy_two_categories_ge_60d",
+          "values": [
+            "two_or_more_categories_each_ge_60d"
+          ]
+        }
+      },
+      {
+        "id": "prostanoid_prostacyclin_analogue_exclusion",
+        "text": "Patient is not currently taking and will not take Uptravi together with a prostanoid/prostacyclin analogue (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/xqamysus/202301uptravi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "prostanoid_prostacyclin_analogue_exclusion"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prostanoid_prostacyclin_analogue_exclusion",
+          "values": [
+            "no_current_or_planned_use"
+          ]
+        }
+      },
+      {
+        "id": "strong_cyp2c8_inhibitor",
+        "text": "No concomitant strong CYP2C8 inhibitor (e.g. gemfibrozil), or provider attests benefits of treatment outweigh risks (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/xqamysus/202301uptravi_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "strong_cyp2c8_inhibitor"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "strong_cyp2c8_inhibitor",
+          "values": [
+            "no_concomitant_use",
+            "benefits_outweigh_risks_attested"
+          ]
+        }
+      }
+    ],
     "alternatives": [
       "opsumit"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Uptravi Criteria Version 1; Original 12/19/2022; Approval 01/20/2023; Effective 03/01/2023. Source typo \"sekexipag\" corrected to selexipag.",
+      "Encoded: closed WHO Group 1 PAH indication, approval criteria 1-5 and denial criterion 2. Denial criterion 1 is failure to meet approval criteria.",
+      "Oral step therapy is a single attestation: trial and failure, contraindication, or intolerance in at least two distinct eligible categories, each for at least 60 days. Categories: PDE5 inhibitor, endothelin receptor antagonist (only if not pregnant), guanylate cyclase stimulator. Two drugs from one category do not satisfy this requirement. Pregnancy is not a separate blanket exclusion.",
+      "Cautions (notes only): monitor for pulmonary edema in patients with PVOD (pulmonary veno-occlusive disease).",
+      "Duration (notes only): initial approval 6 months; reauthorization 12 months with chart notes indicating positive clinical response to Uptravi treatment.",
+      "Quantity (notes only): #60 tablets per 30 days up to 3200 mcg/day oral OR #60 vials per 30 days up to 3600 mcg/day IV; HCPCS J3490. max_units is null; quantity is not evaluated.",
+      "Documentation verification, cautions, duration, reauthorization and quantity require manual review; this pack remains partial. Linked alternatives require their own criteria review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of pulmonary arterial hypertension (PAH, WHO Group 1).",
+        "options": [
+          {
+            "value": "pulmonary_arterial_hypertension_who_group_1",
+            "label": "WHO Group 1 PAH"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is an adult, age 18 years or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a cardiologist or pulmonologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "cardiologist_or_pulmonologist_or_consult",
+            "label": "Cardiologist or pulmonologist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "pah_confirmed_by_right_heart_catheterization": {
+        "type": "select",
+        "label": "WHO Group 1 PAH confirmed by right heart catheterization (approval criterion 3).",
+        "options": [
+          {
+            "value": "rhc_confirmed",
+            "label": "Confirmed by right heart catheterization"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ]
+      },
+      "oral_pah_therapy_two_categories_ge_60d": {
+        "type": "select",
+        "label": "Trial and failure, contraindication, or intolerance to oral PAH therapies from at least two different categories, each for at least 60 days: PDE5 inhibitor, endothelin receptor antagonist (if not pregnant), guanylate cyclase stimulator (approval criterion 4).",
+        "options": [
+          {
+            "value": "two_or_more_categories_each_ge_60d",
+            "label": "At least two eligible categories with failure, contraindication or intolerance, each at least 60 days; ERA counted only if not pregnant"
+          },
+          {
+            "value": "fewer_than_two_categories",
+            "label": "Fewer than two different eligible categories"
+          },
+          {
+            "value": "duration_under_60_days",
+            "label": "At least one counted category under 60 days"
+          },
+          {
+            "value": "era_counted_while_pregnant",
+            "label": "ERA counted while pregnant"
+          },
+          {
+            "value": "not_met",
+            "label": "No qualifying failure, contraindication or intolerance"
+          }
+        ]
+      },
+      "prostanoid_prostacyclin_analogue_exclusion": {
+        "type": "select",
+        "label": "Patient is not currently taking and will not take Uptravi together with a prostanoid/prostacyclin analogue (approval criterion 5).",
+        "options": [
+          {
+            "value": "no_current_or_planned_use",
+            "label": "No current or planned concomitant use"
+          },
+          {
+            "value": "current_use",
+            "label": "Currently taking a prostanoid/prostacyclin analogue"
+          },
+          {
+            "value": "planned_use",
+            "label": "Planned concomitant prostanoid/prostacyclin analogue use"
+          }
+        ]
+      },
+      "strong_cyp2c8_inhibitor": {
+        "type": "select",
+        "label": "No concomitant strong CYP2C8 inhibitor (e.g. gemfibrozil), or provider attests benefits of treatment outweigh risks (denial criterion 2).",
+        "options": [
+          {
+            "value": "no_concomitant_use",
+            "label": "No concomitant strong CYP2C8 inhibitor"
+          },
+          {
+            "value": "benefits_outweigh_risks_attested",
+            "label": "Concomitant use with provider attestation that benefits outweigh risks"
+          },
+          {
+            "value": "concomitant_without_attestation",
+            "label": "Concomitant use without provider attestation"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "vecamyl": {
     "drug": {

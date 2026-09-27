@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 185,
-  "encoding_text_only": 13,
+  "encoding_partial": 186,
+  "encoding_text_only": 12,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -107,6 +107,7 @@
     "mytesi",
     "naloxone-opioid-overdose-treatment-evzio",
     "narcan-nasal-spray-naloxone-opioid-overdose-treatment",
+    "new-prescription-medications",
     "nexletol",
     "nizoral",
     "noxafil",
@@ -193,5 +194,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "new-prescription-medications"
+  "next_candidate": "insulin-pens"
 }

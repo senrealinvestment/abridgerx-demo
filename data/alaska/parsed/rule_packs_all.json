@@ -34600,15 +34600,234 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Select one qualifying approval path.",
+        "citation": "https://health.alaska.gov/media/xo5jtfu5/new_products_criteria.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "no_other_approved_therapy",
+            "failed_one_other_therapy",
+            "failed_two_other_therapies_reformulation"
+          ]
+        }
+      },
+      {
+        "id": "no_other_approved_therapy",
+        "text": "The medication is approved to treat a condition or disease for which no other therapy is approved.",
+        "citation": "https://health.alaska.gov/media/xo5jtfu5/new_products_criteria.pdf",
+        "required_facts": [
+          "no_other_approved_therapy"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "no_other_approved_therapy"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "no_other_approved_therapy",
+          "value": true
+        }
+      },
+      {
+        "id": "failed_one_other_therapy",
+        "text": "The patient tried and failed at least one other therapy for a condition or disease the new product is approved to treat.",
+        "citation": "https://health.alaska.gov/media/xo5jtfu5/new_products_criteria.pdf",
+        "required_facts": [
+          "failed_one_other_therapy"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "failed_one_other_therapy"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_one_other_therapy",
+          "value": true
+        }
+      },
+      {
+        "id": "non_reformulation_product",
+        "text": "The product qualifies as a reformulation variant under criteria 2(a\u2013f); see notes for the six qualifying categories.",
+        "citation": "https://health.alaska.gov/media/xo5jtfu5/new_products_criteria.pdf",
+        "required_facts": [
+          "is_reformulation_variant"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "failed_one_other_therapy"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "is_reformulation_variant",
+          "value": false
+        }
+      },
+      {
+        "id": "reformulation_product",
+        "text": "The product qualifies as a reformulation variant under criteria 2(a\u2013f).",
+        "citation": "https://health.alaska.gov/media/xo5jtfu5/new_products_criteria.pdf",
+        "required_facts": [
+          "is_reformulation_variant"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "failed_two_other_therapies_reformulation"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "is_reformulation_variant",
+          "value": true
+        }
+      },
+      {
+        "id": "failed_two_other_therapies",
+        "text": "The patient tried and failed at least two other therapies for a condition or disease the new product is approved to treat.",
+        "citation": "https://health.alaska.gov/media/xo5jtfu5/new_products_criteria.pdf",
+        "required_facts": [
+          "failed_two_other_therapies"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "failed_two_other_therapies_reformulation"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_two_other_therapies",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid New Prescription Medications: three alternative approval paths with supporting attestations. The one-therapy path is for non-reformulation products; reformulation variants require at least two failed therapies. Documentation and policy applicability require manual review.",
+      "Applicability (notes only): new prescription medications, excluding A-rated generic pharmaceutical equivalents, are subject to this PA for at least six (6) months after market launch. After six months the DUR Committee may review whether to remove PA; removal is not automatic.",
+      "Preferred-class exception (notes only): if P&T designates the product preferred in a reviewed drug class, this PA is removed and the preferred-class requirements apply instead.",
+      "Reformulation variants, criterion 2(a\u2013f): (a) active ingredient available in a different dosage form (capsule, tablet, solution, suspension, emulsion, cream, ointment, gel, etc.); (b) active ingredient available with a different release mechanism (immediate release, extended release, delayed release, depot injection, oral disintegrating tablet, etc.); (c) active ingredient available by a different route (oral, sublingual, buccal, parenteral, rectal, transdermal, etc.); (d) racemic mixture, single enantiomer, diastereomer, or isomer of an available medication; (e) prodrug metabolized to the active ingredient in an available medication; (f) active metabolite of an available medication. is_reformulation_variant attests that at least one of these categories applies.",
+      "Criterion 3 (notes only): a new branded product using the same pharmacologic mechanism follows the current prior authorization guidelines for the like drug. No separate machine approval path is encoded.",
+      "Length of approval (notes only): up to 12 months. Dispensing limit (notes only): no more than a 30-day supply.",
+      "References: Approved Drug Products with Therapeutic Equivalence Evaluations (Orange Book), http://www.accessdata.fda.gov/scripts/cder/ob/default.cfm.",
+      "Source: New Product Criteria Version 1; Original 04/16/2010; Last updated 10/8/2020; Approved 11/20/2020. The existing effective_date stub 2022-11-01 is retained; it does not replace the PDF dates."
     ],
-    "inferred_required_facts": [
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Approval path",
+        "options": [
+          {
+            "value": "no_other_approved_therapy",
+            "label": "Approved for a condition with no other approved therapy"
+          },
+          {
+            "value": "failed_one_other_therapy",
+            "label": "At least one other therapy failed (non-reformulation product)"
+          },
+          {
+            "value": "failed_two_other_therapies_reformulation",
+            "label": "At least two other therapies failed (reformulation variant)"
+          }
+        ]
+      },
+      "no_other_approved_therapy": {
+        "type": "select",
+        "label": "The medication is approved to treat a condition or disease for which no other therapy is approved.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "no_other_approved_therapy"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "failed_one_other_therapy": {
+        "type": "select",
+        "label": "The patient tried and failed at least one other therapy for a condition or disease the new product is approved to treat.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "failed_one_other_therapy"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "is_reformulation_variant": {
+        "type": "select",
+        "label": "The product qualifies as a reformulation variant under criteria 2(a\u2013f); see notes for the six qualifying categories.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "failed_one_other_therapy",
+            "failed_two_other_therapies_reformulation"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "failed_two_other_therapies": {
+        "type": "select",
+        "label": "The patient tried and failed at least two other therapies for a condition or disease the new product is approved to treat.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "failed_two_other_therapies_reformulation"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "nexletol": {
     "drug": {

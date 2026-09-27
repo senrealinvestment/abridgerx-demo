@@ -100,13 +100,13 @@ def test_metadata_notes_mirrors_and_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 185
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 13
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 186
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 12
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (185, 13)
-    assert status['next_candidate'] == 'new-prescription-medications'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (186, 12)
+    assert status['next_candidate'] == 'insulin-pens'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
-    for slug in ['new-prescription-medications']:
+    for slug in ['insulin-pens']:
         assert catalog[slug]['encoding_status'] == 'text_only'
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

@@ -1,0 +1,12 @@
+{
+  "slug": "transderm-scop",
+  "drug_name": "Transderm Scop",
+  "source_url": "https://health.alaska.gov/media/3x3gockl/200908_transdermscop.pdf",
+  "source_file": "200908_transdermscop.pdf",
+  "sha256": "ed4fef70bf69c77892bcebc2a227c557354ece050f143e5bd34a927e92edfc1a",
+  "effective_date": "2019-11-20",
+  "extracted_text": "ALASKA MEDICAID\n\nTransderm Scop\u00ae (Scopolamine Patch)\n\nTransdermal patch: 1.5mg scopolamine\n\nPreferred Medication:\nNA\nNon-Preferred Medication:\nNA\n\nINDICATION:\n\n\"Transderm Scop\u00ae is indicated in adults for prevention of nausea and vomiting associated with\nmotion sickness and recovery from anesthesia and surgery.\"\n\nCRITERIA FOR APPROVAL:\n\nPatient is 18 years of age or older, AND is being treated for:\n\n1. Nausea and vomiting associated with recovery from anesthesia and\nsurgery; OR\n\n2. Excess secretions, when therapy with a different drug has been less than\noptimal or inappropriate; OR\n\n3. Nausea and vomiting associated with motion sickness; AND\n\n4. Treatment with meclizine has been less than optimal, or is inappropriate.\n\nLENGTH OF AUTHORIZATION:\n\n1. Coverage may be approved for up to 1 year.\n\nDISPENSING LIMIT:\n\nThe dispensing limit is a 30 day supply of medication.\n\nREFERENCES / FOOTNOTES:\n\nTransderm Scop package insert. Accessed 05/28/09.\n\nScopolamine Patch criteria\nVersion 1\nLast updated 05/28/09\n",
+  "ocr_status": "tesseract_recovered",
+  "notes": "Scanned image PDF; text recovered via tesseract OCR 2026-09-27 overnight encode.",
+  "download_date": "2026-09-26"
+}

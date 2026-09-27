@@ -50398,7 +50398,8 @@
   },
   "transderm-scop": {
     "drug": {
-      "name": "Transderm Scop"
+      "name": "Transderm Scop",
+      "generic_name": "scopolamine"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -50409,13 +50410,154 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Patient is being treated for one of the listed indications.",
+        "citation": "https://health.alaska.gov/media/3x3gockl/200908_transdermscop.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "post_anesthesia_surgery_nausea_vomiting",
+            "excess_secretions",
+            "motion_sickness_nausea_vomiting"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is 18 years of age or older.",
+        "citation": "https://health.alaska.gov/media/3x3gockl/200908_transdermscop.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prior_different_drug_suboptimal_or_inappropriate",
+        "text": "Therapy with a different drug has been less than optimal or inappropriate.",
+        "citation": "https://health.alaska.gov/media/3x3gockl/200908_transdermscop.pdf",
+        "required_facts": [
+          "prior_different_drug_suboptimal_or_inappropriate"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prior_different_drug_suboptimal_or_inappropriate",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "excess_secretions"
+        }
+      },
+      {
+        "id": "failed_meclizine",
+        "text": "Treatment with meclizine has been less than optimal or is inappropriate.",
+        "citation": "https://health.alaska.gov/media/3x3gockl/200908_transdermscop.pdf",
+        "required_facts": [
+          "failed_meclizine"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_meclizine",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "motion_sickness_nausea_vomiting"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Source PDF is scanned/image-only; OCR pending. evaluate() must not auto-pass."
+      "Partial encoding of Alaska Medicaid Transderm Scop (scopolamine): 1.5 mg transdermal patch. Treatment history is encoded as patient-specific attestations.",
+      "FDA indication quote: \"Transderm Scop® is indicated in adults for prevention of nausea and vomiting associated with motion sickness and recovery from anesthesia and surgery.\" Approval criteria also allow excess secretions with therapy with a different drug less than optimal or inappropriate.",
+      "Authorization (notes only): coverage may be approved for up to 1 year.",
+      "Dispensing (notes only): 30-day supply.",
+      "Preferred/Non-preferred (notes only): NA.",
+      "Source: scanned image PDF; text recovered via tesseract OCR. Version 1; Last updated 05/28/09. The effective_date 2019-11-20 is retained as a metadata stub, not the PDF update date."
     ],
-    "inferred_required_facts": []
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Indication",
+        "options": [
+          {
+            "value": "post_anesthesia_surgery_nausea_vomiting",
+            "label": "Nausea and vomiting associated with recovery from anesthesia and surgery"
+          },
+          {
+            "value": "excess_secretions",
+            "label": "Excess secretions"
+          },
+          {
+            "value": "motion_sickness_nausea_vomiting",
+            "label": "Nausea and vomiting associated with motion sickness"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older.",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prior_different_drug_suboptimal_or_inappropriate": {
+        "type": "select",
+        "label": "Therapy with a different drug has been less than optimal or inappropriate.",
+        "when": {
+          "fact": "indication",
+          "eq": "excess_secretions"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "failed_meclizine": {
+        "type": "select",
+        "label": "Treatment with meclizine has been less than optimal or is inappropriate.",
+        "when": {
+          "fact": "indication",
+          "eq": "motion_sickness_nausea_vomiting"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "tremfya": {
     "drug": {

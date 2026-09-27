@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 165,
-  "encoding_text_only": 33,
+  "encoding_partial": 166,
+  "encoding_text_only": 32,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -142,6 +142,7 @@
     "symproic",
     "tepezza",
     "tezspire",
+    "transderm-scop",
     "tremfya",
     "tzield",
     "uptravi",
@@ -173,5 +174,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "transderm-scop"
+  "next_candidate": "zanaflex"
 }

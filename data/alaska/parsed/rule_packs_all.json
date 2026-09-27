@@ -29045,7 +29045,7 @@
       },
       {
         "id": "ad_low_mid_potency_corticosteroid_step",
-        "text": "Age ≤17: low-mid potency topical corticosteroid trial/failure or contraindication",
+        "text": "Age \u226417: low-mid potency topical corticosteroid trial/failure or contraindication",
         "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
         "required_facts": [
           "age_years",
@@ -29088,7 +29088,7 @@
       },
       {
         "id": "ad_high_potency_corticosteroid_step",
-        "text": "Age ≥17: high potency topical corticosteroid trial/failure or contraindication",
+        "text": "Age \u226517: high potency topical corticosteroid trial/failure or contraindication",
         "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
         "required_facts": [
           "age_years",
@@ -29186,7 +29186,7 @@
       },
       {
         "id": "vitiligo_low_mid_potency_corticosteroid_step",
-        "text": "Age ≤17: low-mid potency topical corticosteroid trial/failure or contraindication",
+        "text": "Age \u226417: low-mid potency topical corticosteroid trial/failure or contraindication",
         "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
         "required_facts": [
           "age_years",
@@ -29229,7 +29229,7 @@
       },
       {
         "id": "vitiligo_high_potency_corticosteroid_step",
-        "text": "Age ≥17: high potency topical corticosteroid trial/failure or contraindication",
+        "text": "Age \u226517: high potency topical corticosteroid trial/failure or contraindication",
         "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
         "required_facts": [
           "age_years",
@@ -29332,10 +29332,10 @@
     "notes": [
       "Partial encoding of Alaska Medicaid Opzelura (ruxolitinib), effective 2022-11-01. Closed indications attest to mild to moderate AD or nonsegmental vitiligo.",
       "Source wording preserved: AD up to 20% BSA; vitiligo states 10% BSA without an inequality. The vitiligo attestation is literal; interpretation as a maximum requires manual review.",
-      "The source overlaps corticosteroid age bands: age ≤17 low-mid potency and age ≥17 high potency. Both classes are required at exactly age 17; trial/failure or contraindication qualifies independently for each. Outside that overlap only the age-applicable class is required.",
+      "The source overlaps corticosteroid age bands: age \u226417 low-mid potency and age \u226517 high potency. Both classes are required at exactly age 17; trial/failure or contraindication qualifies independently for each. Outside that overlap only the age-applicable class is required.",
       "Cautions (notes only): serious bacterial, mycobacterial, fungal and viral infections; monitor and manage promptly. Basal cell and squamous cell skin cancers: periodic skin examinations. Cytopenias (thrombocytopenia, anemia, neutropenia): CBC monitoring as indicated. Thrombosis (DVT, pulmonary embolism, arterial thrombosis) and major adverse cardiac events (MACE).",
       "Duration (notes only): initial approval up to 2 months; reauthorization up to 1 year with disease improvement and/or stabilization and no serious adverse effects.",
-      "Quantity (notes only): 4 × 60gm tubes per 28 days (60gm per 7 days); source also lists 2 × 100gm tubes per 28 days (100gm per 14 days).",
+      "Quantity (notes only): 4 \u00d7 60gm tubes per 28 days (60gm per 7 days); source also lists 2 \u00d7 100gm tubes per 28 days (100gm per 14 days).",
       "Remaining gaps: cautions, monitoring, duration, reauthorization, quantity enforcement and BSA wording interpretation require manual review. PDL status unknown; source is silent."
     ],
     "fact_ui": {
@@ -29398,7 +29398,7 @@
       },
       "ad_low_mid_potency_corticosteroid_step": {
         "type": "select",
-        "label": "Age ≤17: low-mid potency topical corticosteroid trial/failure or contraindication",
+        "label": "Age \u226417: low-mid potency topical corticosteroid trial/failure or contraindication",
         "options": [
           {
             "value": "trial_failure",
@@ -29422,7 +29422,7 @@
       },
       "ad_high_potency_corticosteroid_step": {
         "type": "select",
-        "label": "Age ≥17: high potency topical corticosteroid trial/failure or contraindication",
+        "label": "Age \u226517: high potency topical corticosteroid trial/failure or contraindication",
         "options": [
           {
             "value": "trial_failure",
@@ -29514,7 +29514,7 @@
       },
       "vitiligo_low_mid_potency_corticosteroid_step": {
         "type": "select",
-        "label": "Age ≤17: low-mid potency topical corticosteroid trial/failure or contraindication",
+        "label": "Age \u226417: low-mid potency topical corticosteroid trial/failure or contraindication",
         "options": [
           {
             "value": "trial_failure",
@@ -29538,7 +29538,7 @@
       },
       "vitiligo_high_potency_corticosteroid_step": {
         "type": "select",
-        "label": "Age ≥17: high potency topical corticosteroid trial/failure or contraindication",
+        "label": "Age \u226517: high potency topical corticosteroid trial/failure or contraindication",
         "options": [
           {
             "value": "trial_failure",
@@ -29707,8 +29707,8 @@
   "orilissa": {
     "drug": {
       "name": "Orilissa",
-      "generic_name": "elagolix",
-      "therapeutic_class": "other"
+      "generic_name": "elagolix; elagolix/estradiol/norethindrone; relugolix/estradiol/norethindrone",
+      "therapeutic_class": "gnrh-receptor-antagonist"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -29719,16 +29719,601 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "product",
+        "text": "Requested product",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "product"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "product",
+          "values": [
+            "orilissa",
+            "oriahnn",
+            "myfembree"
+          ]
+        }
+      },
+      {
+        "id": "orilissa_age",
+        "text": "Orilissa: age 18\u201349",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "all",
+          "args": [
+            {
+              "op": "gte",
+              "fact": "age_years",
+              "value": 18
+            },
+            {
+              "op": "lte",
+              "fact": "age_years",
+              "value": 49
+            }
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "orilissa"
+          ]
+        }
+      },
+      {
+        "id": "combination_age",
+        "text": "Oriahnn / Myfembree: age at least 18",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "oriahnn",
+            "myfembree"
+          ]
+        }
+      },
+      {
+        "id": "orilissa_indication",
+        "text": "Orilissa: endometriosis with severe pain",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "endometriosis_severe_pain"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "orilissa"
+          ]
+        }
+      },
+      {
+        "id": "oriahnn_indication",
+        "text": "Oriahnn: uterine leiomyomas (fibroids) with heavy menstrual bleeding",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "fibroids_heavy_menstrual_bleeding"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "oriahnn"
+          ]
+        }
+      },
+      {
+        "id": "myfembree_indication",
+        "text": "Myfembree: fibroids with heavy menstrual bleeding or moderate\u2013severe endometriosis pain",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "fibroids_heavy_menstrual_bleeding",
+            "endometriosis_moderate_to_severe_pain"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "myfembree"
+          ]
+        }
+      },
+      {
+        "id": "strong_oatp1b1_inhibitor",
+        "text": "Not taking a strong OATP1B1 inhibitor (e.g. cyclosporine)",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "strong_oatp1b1_inhibitor"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "strong_oatp1b1_inhibitor",
+          "values": [
+            "absent"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "orilissa",
+            "oriahnn"
+          ]
+        }
+      },
+      {
+        "id": "oral_pgp_inhibitor",
+        "text": "Not taking oral P-gp inhibitors (e.g. amiodarone, verapamil)",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "oral_pgp_inhibitor"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "oral_pgp_inhibitor",
+          "values": [
+            "absent"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "myfembree"
+          ]
+        }
+      },
+      {
+        "id": "thrombotic_history",
+        "text": "No history of thrombotic or thromboembolic disorders",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "thrombotic_history"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "thrombotic_history",
+          "values": [
+            "absent"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "oriahnn",
+            "myfembree"
+          ]
+        }
+      },
+      {
+        "id": "combination_oc_trial",
+        "text": "Adequate oral combination contraceptive trial for at least 3 months",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "combination_oc_trial"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "combination_oc_trial",
+          "values": [
+            "adequate_trial_at_least_3_months"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "orilissa"
+          ]
+        }
+      },
+      {
+        "id": "oc_or_progesterone_trial",
+        "text": "Adequate oral contraceptive OR oral progesterone trial for at least 3 months",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "oc_or_progesterone_trial"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "oc_or_progesterone_trial",
+          "values": [
+            "oral_contraceptive_at_least_3_months",
+            "oral_progesterone_at_least_3_months"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "oriahnn",
+            "myfembree"
+          ]
+        }
+      },
+      {
+        "id": "nsaid_trial",
+        "text": "NSAID trial for at least 1 month",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "nsaid_trial"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "nsaid_trial",
+          "values": [
+            "trial_at_least_1_month"
+          ]
+        }
+      },
+      {
+        "id": "pregnancy",
+        "text": "Patient is not pregnant",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "pregnancy"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pregnancy",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "osteoporosis",
+        "text": "No known osteoporosis",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "osteoporosis"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "osteoporosis",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "hepatic_impairment_or_liver_disease",
+        "text": "No known hepatic impairment or liver disease",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "hepatic_impairment_or_liver_disease"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "hepatic_impairment_or_liver_disease",
+          "values": [
+            "absent"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "oriahnn",
+            "myfembree"
+          ]
+        }
+      },
+      {
+        "id": "child_pugh_c",
+        "text": "No Child-Pugh C hepatic impairment",
+        "citation": "https://health.alaska.gov/media/rdwgfhh3/202209-orilissa_oriahnn_myfembree_criteria_2022.pdf",
+        "required_facts": [
+          "child_pugh_c"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "child_pugh_c",
+          "values": [
+            "absent"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "in": [
+            "orilissa"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Orilissa (elagolix), Oriahnn (elagolix/estradiol/norethindrone acetate), and Myfembree (relugolix/estradiol/norethindrone acetate) in the single orilissa pack. Version 3; approval 09/16/2022; effective 2022-11-01.",
+      "Encoded: product-specific approval criteria and shared/product-specific denials. Indication choices include diagnosis and treatment purpose. FDA usage describes premenopausal women for fibroid-associated heavy menstrual bleeding. Prior trials are attestations; the source does not provide intolerance or contraindication exceptions.",
+      "Cautions (notes only): potentially irreversible bone loss; reduced ability to recognize pregnancy; increased suicidal ideation and mood disorders; increased liver transaminases (monitor LFTs); potential decreased efficacy of estrogen-containing oral contraceptives.",
+      "Duration (notes only): initial approval up to 6 months. Orilissa reauthorization up to 12 months for the 150mg dose only. Oriahnn and Myfembree reauthorization each up to 12 months, not to exceed 24 months total treatment.",
+      "Quantity limits (notes only): Orilissa 30 \u00d7 150mg tablets/month or 60 \u00d7 200mg tablets/month; Oriahnn 56 capsules in 4 blister packs; Myfembree 30 capsules per 30 days (source wording). No numeric quantity enforcement.",
+      "PDL status unknown. Remaining gaps: documentation verification, cautions, dosing, duration, reauthorization and quantity limits require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "fact_ui": {
+      "product": {
+        "type": "select",
+        "label": "Requested product",
+        "options": [
+          {
+            "value": "orilissa",
+            "label": "Orilissa"
+          },
+          {
+            "value": "oriahnn",
+            "label": "Oriahnn"
+          },
+          {
+            "value": "myfembree",
+            "label": "Myfembree"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age",
+        "option_style": "age_bands",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18\u201349"
+          },
+          {
+            "value": "50",
+            "label": "50 or older"
+          }
+        ]
+      },
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis and treatment purpose",
+        "options": [
+          {
+            "value": "endometriosis_severe_pain",
+            "label": "Endometriosis: severe pain (Orilissa)"
+          },
+          {
+            "value": "fibroids_heavy_menstrual_bleeding",
+            "label": "Fibroids: heavy menstrual bleeding"
+          },
+          {
+            "value": "endometriosis_moderate_to_severe_pain",
+            "label": "Endometriosis: moderate to severe pain (Myfembree)"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "strong_oatp1b1_inhibitor": {
+        "type": "select",
+        "label": "Not taking a strong OATP1B1 inhibitor (e.g. cyclosporine)",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "in": [
+            "orilissa",
+            "oriahnn"
+          ]
+        }
+      },
+      "oral_pgp_inhibitor": {
+        "type": "select",
+        "label": "Not taking oral P-gp inhibitors (e.g. amiodarone, verapamil)",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "in": [
+            "myfembree"
+          ]
+        }
+      },
+      "thrombotic_history": {
+        "type": "select",
+        "label": "No history of thrombotic or thromboembolic disorders",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "in": [
+            "oriahnn",
+            "myfembree"
+          ]
+        }
+      },
+      "combination_oc_trial": {
+        "type": "select",
+        "label": "Adequate oral combination contraceptive trial for at least 3 months",
+        "options": [
+          {
+            "value": "adequate_trial_at_least_3_months",
+            "label": "Adequate trial at least 3 months"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "in": [
+            "orilissa"
+          ]
+        }
+      },
+      "oc_or_progesterone_trial": {
+        "type": "select",
+        "label": "Adequate oral contraceptive OR oral progesterone trial for at least 3 months",
+        "options": [
+          {
+            "value": "oral_contraceptive_at_least_3_months",
+            "label": "Oral contraceptive at least 3 months"
+          },
+          {
+            "value": "oral_progesterone_at_least_3_months",
+            "label": "Oral progesterone at least 3 months"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "in": [
+            "oriahnn",
+            "myfembree"
+          ]
+        }
+      },
+      "nsaid_trial": {
+        "type": "select",
+        "label": "NSAID trial for at least 1 month",
+        "options": [
+          {
+            "value": "trial_at_least_1_month",
+            "label": "Trial at least 1 month"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "pregnancy": {
+        "type": "select",
+        "label": "Patient is not pregnant",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "osteoporosis": {
+        "type": "select",
+        "label": "No known osteoporosis",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "hepatic_impairment_or_liver_disease": {
+        "type": "select",
+        "label": "No known hepatic impairment or liver disease",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "in": [
+            "oriahnn",
+            "myfembree"
+          ]
+        }
+      },
+      "child_pugh_c": {
+        "type": "select",
+        "label": "No Child-Pugh C hepatic impairment",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "in": [
+            "orilissa"
+          ]
+        }
+      }
+    },
+    "max_units": null
   },
   "orkambi": {
     "drug": {

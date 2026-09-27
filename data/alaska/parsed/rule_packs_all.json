@@ -20606,7 +20606,8 @@
   "kerendia": {
     "drug": {
       "name": "Kerendia",
-      "therapeutic_class": "other"
+      "therapeutic_class": "nonsteroidal-mra",
+      "generic_name": "finerenone"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -20617,18 +20618,283 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Qualifying diagnosis.",
+        "citation": "https://health.alaska.gov/media/cyin50i3/kerendia_criteria_update_2025.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "ckd_associated_with_t2dm",
+            "heart_failure_lvef_ge_40"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is 18 years of age or older.",
+        "citation": "https://health.alaska.gov/media/cyin50i3/kerendia_criteria_update_2025.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "cardiologist_or_nephrologist_or_consultation",
+        "text": "Prescribed by or in consultation with a cardiologist or nephrologist.",
+        "citation": "https://health.alaska.gov/media/cyin50i3/kerendia_criteria_update_2025.pdf#approval-criteria",
+        "required_facts": [
+          "cardiologist_or_nephrologist_or_consultation"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "cardiologist_or_nephrologist_or_consultation",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_labs_submitted",
+        "text": "Chart notes submitted with baseline labs showing ALL: eGFR \u226525 mL/min/1.73 m\u00b2, UACR \u226530 mg/g, and serum potassium \u22645.0 mEq/L (all boundaries included).",
+        "citation": "https://health.alaska.gov/media/cyin50i3/kerendia_criteria_update_2025.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_labs_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_labs_submitted",
+          "value": true
+        }
+      },
+      {
+        "id": "ckd_therapy_requirement_met",
+        "text": "Currently taking a maximally tolerated ACE inhibitor or ARB AND a preferred SGLT2 inhibitor OR documented contraindication or intolerance to the above drug classes.",
+        "citation": "https://health.alaska.gov/media/cyin50i3/kerendia_criteria_update_2025.pdf#approval-criteria",
+        "required_facts": [
+          "ckd_therapy_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ckd_therapy_requirement_met",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "ckd_associated_with_t2dm"
+        }
+      },
+      {
+        "id": "hf_therapy_requirement_met",
+        "text": "Currently receiving an SGLT2 inhibitor OR documented clinical contraindication to these agents.",
+        "citation": "https://health.alaska.gov/media/cyin50i3/kerendia_criteria_update_2025.pdf#approval-criteria",
+        "required_facts": [
+          "hf_therapy_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hf_therapy_requirement_met",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "heart_failure_lvef_ge_40"
+        }
+      },
+      {
+        "id": "concomitant_strong_cyp3a4_inhibitors",
+        "text": "Concomitant strong CYP3A4 inhibitors (must be No).",
+        "citation": "https://health.alaska.gov/media/cyin50i3/kerendia_criteria_update_2025.pdf#denial-criteria",
+        "required_facts": [
+          "concomitant_strong_cyp3a4_inhibitors"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "concomitant_strong_cyp3a4_inhibitors",
+          "value": false
+        }
+      },
+      {
+        "id": "adrenal_insufficiency",
+        "text": "Adrenal insufficiency (must be No).",
+        "citation": "https://health.alaska.gov/media/cyin50i3/kerendia_criteria_update_2025.pdf#denial-criteria",
+        "required_facts": [
+          "adrenal_insufficiency"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "adrenal_insufficiency",
+          "value": false
+        }
+      },
+      {
+        "id": "severe_hepatic_impairment",
+        "text": "Severe hepatic impairment (Child-Pugh C) (must be No).",
+        "citation": "https://health.alaska.gov/media/cyin50i3/kerendia_criteria_update_2025.pdf#denial-criteria",
+        "required_facts": [
+          "severe_hepatic_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "severe_hepatic_impairment",
+          "value": false
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Kerendia Criteria Version 2; Original: 9/23/2021; Effective: 01/1/2024; Updated: 11/21/2025.",
+      "Closed CKD associated with T2DM and heart failure with LVEF \u226540% pathways use indication when gates. Baseline lab submission and thresholds, specialty/consultation, and therapy alternatives use attestations; supporting documentation requires manual review.",
+      "Cautions (notes only): decreased kidney function and higher baseline potassium increase risk; monitor serum potassium and adjust dose as needed. Avoid grapefruit or grapefruit juice. May cause hyperkalemia, hypotension, and hyponatremia.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 6 months with disease improvement and/or stabilization OR improvement in slope of decline (based on UACR or eGFR), and no developed hyperkalemia. Manual review required.",
+      "Quantity (notes only): 30 tablets per 30 days (10mg and 20mg strengths). Quantity enforcement requires manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Qualifying diagnosis.",
+        "options": [
+          {
+            "value": "ckd_associated_with_t2dm",
+            "label": "Chronic kidney disease associated with type 2 diabetes"
+          },
+          {
+            "value": "heart_failure_lvef_ge_40",
+            "label": "Heart failure with LVEF \u226540% (HFpEF/HFmrEF; 40 included)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "cardiologist_or_nephrologist_or_consultation": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a cardiologist or nephrologist.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "baseline_labs_submitted": {
+        "type": "select",
+        "label": "Chart notes submitted with baseline labs showing ALL: eGFR \u226525 mL/min/1.73 m\u00b2, UACR \u226530 mg/g, and serum potassium \u22645.0 mEq/L (all boundaries included).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "ckd_therapy_requirement_met": {
+        "type": "select",
+        "label": "Currently taking a maximally tolerated ACE inhibitor or ARB AND a preferred SGLT2 inhibitor OR documented contraindication or intolerance to the above drug classes.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "ckd_associated_with_t2dm"
+        }
+      },
+      "hf_therapy_requirement_met": {
+        "type": "select",
+        "label": "Currently receiving an SGLT2 inhibitor OR documented clinical contraindication to these agents.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "heart_failure_lvef_ge_40"
+        }
+      },
+      "concomitant_strong_cyp3a4_inhibitors": {
+        "type": "select",
+        "label": "Concomitant strong CYP3A4 inhibitors (must be No).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "adrenal_insufficiency": {
+        "type": "select",
+        "label": "Adrenal insufficiency (must be No).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "severe_hepatic_impairment": {
+        "type": "select",
+        "label": "Severe hepatic impairment (Child-Pugh C) (must be No).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "kesimpta": {
     "drug": {

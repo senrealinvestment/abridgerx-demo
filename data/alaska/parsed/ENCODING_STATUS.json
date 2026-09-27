@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 108,
-  "encoding_text_only": 90,
+  "encoding_partial": 109,
+  "encoding_text_only": 89,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -63,6 +63,7 @@
     "juxtapid",
     "jynarque",
     "kalydeco",
+    "kerendia",
     "kesimpta",
     "kevzara",
     "kisunla",
@@ -116,5 +117,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "kerendia"
+  "next_candidate": "opsumit"
 }

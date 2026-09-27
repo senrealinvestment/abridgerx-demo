@@ -58,7 +58,8 @@ def _coerce_patient(raw: dict[str, Any]) -> dict[str, Any]:
         if k in ("age_years", "weight_kg", "serum_sodium_meq_l", "requested_duration_days",
                  "peanut_ige_kua_l", "peanut_ige_months_ago", "peanut_spt_mm_vs_control",
                  "baseline_cns_ls_score", "qualifying_anticonvulsants_count", "daily_dose_mg",
-                 "prior_therapy_count", "toxicity_therapy_interruptions"):
+                 "prior_therapy_count", "toxicity_therapy_interruptions",
+                 "prior_systemic_therapy_count", "ast_uln", "alt_uln", "bilirubin_uln"):
             try:
                 out[k] = float(v)
             except (TypeError, ValueError):

@@ -95,10 +95,10 @@ def test_ui_catalog_and_metadata():
     assert json.loads((BASE/'rule_packs_all.json').read_text())==catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f:assert json.load(f)==catalog
     assert len(catalog)==198
-    assert sum(p['encoding_status']=='partial' for p in catalog.values())==136
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==62
-    assert catalog['zydelig']['encoding_status']=='text_only'
+    assert sum(p['encoding_status']=='partial' for p in catalog.values())==137
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==61
+    assert catalog['lucemyra']['encoding_status']=='text_only'
     for root in [BASE,BASE.parent]:
         s=json.loads((root/'ENCODING_STATUS.json').read_text())
-        assert (s['encoding_partial'],s['encoding_text_only'])==(136,62)
-        assert s['next_candidate']=='zydelig'
+        assert (s['encoding_partial'],s['encoding_text_only'])==(137,61)
+        assert s['next_candidate']=='lucemyra'

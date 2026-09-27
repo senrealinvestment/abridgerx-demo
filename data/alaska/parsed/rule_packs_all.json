@@ -2804,6 +2804,7 @@
     "alternatives": [
       "kesimpta",
       "lemtrada",
+      "mavenclad",
       "ocrevus"
     ],
     "notes": [
@@ -9596,6 +9597,7 @@
     "alternatives": [
       "briumvi",
       "lemtrada",
+      "mavenclad",
       "ocrevus"
     ],
     "notes": [
@@ -10479,6 +10481,7 @@
     "alternatives": [
       "briumvi",
       "kesimpta",
+      "mavenclad",
       "ocrevus"
     ],
     "notes": [
@@ -10898,7 +10901,7 @@
     "drug": {
       "name": "Mavenclad",
       "generic_name": "cladribine",
-      "therapeutic_class": "other"
+      "therapeutic_class": "ms-disease-modifying"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -10909,18 +10912,378 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Diagnosis of relapsing-remitting MS or active secondary progressive MS; clinically isolated syndrome is denied (approval 2; denial 1)",
+        "citation": "https://health.alaska.gov/media/jj4jpm5c/20199mavenclad_criteria_approved_2019.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient is 18 years of age or older (approval 1)",
+        "citation": "https://health.alaska.gov/media/jj4jpm5c/20199mavenclad_criteria_approved_2019.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist or physician that specializes in MS",
+        "citation": "https://health.alaska.gov/media/jj4jpm5c/20199mavenclad_criteria_approved_2019.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_ms_specialist_or_consult"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "cbc_and_lft_appropriate",
+        "text": "Complete blood cell count and liver function testing show results appropriate for treatment (approval 4)",
+        "citation": "https://health.alaska.gov/media/jj4jpm5c/20199mavenclad_criteria_approved_2019.pdf",
+        "required_facts": [
+          "cbc_and_lft_appropriate"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "cbc_and_lft_appropriate",
+          "value": "cbc_and_lft_appropriate_for_treatment"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "reproductive_contraception_counseling",
+        "text": "Patients of reproductive potential counseled to use effective contraception during and for 6 months after the last dose in each treatment course (approval 5)",
+        "citation": "https://health.alaska.gov/media/jj4jpm5c/20199mavenclad_criteria_approved_2019.pdf",
+        "required_facts": [
+          "reproductive_contraception_counseling"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "reproductive_contraception_counseling",
+          "values": [
+            "counseled_effective_contraception_during_and_6mo_after_each_course",
+            "not_applicable_or_counseled_n_a"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "ms_dmt_step_one",
+        "text": "Adequate trial and failure of at least one drug indicated for MS (approval 6)",
+        "citation": "https://health.alaska.gov/media/jj4jpm5c/20199mavenclad_criteria_approved_2019.pdf",
+        "required_facts": [
+          "ms_dmt_step_one"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ms_dmt_step_one",
+          "value": "trial_failure_one_ms_drug"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "no_current_malignancy",
+        "text": "No current malignancy (denial 2)",
+        "citation": "https://health.alaska.gov/media/jj4jpm5c/20199mavenclad_criteria_approved_2019.pdf",
+        "required_facts": [
+          "no_current_malignancy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_current_malignancy",
+          "value": true
+        }
+      },
+      {
+        "id": "no_hiv_or_active_chronic_infection",
+        "text": "No HIV and no active chronic infection (denial 3)",
+        "citation": "https://health.alaska.gov/media/jj4jpm5c/20199mavenclad_criteria_approved_2019.pdf",
+        "required_facts": [
+          "no_hiv_or_active_chronic_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_hiv_or_active_chronic_infection",
+          "value": "no_hiv_and_no_active_chronic_infection"
+        }
+      },
+      {
+        "id": "not_concurrent_ms_dmt",
+        "text": "Not administered with other MS disease-modifying agents (denial 4)",
+        "citation": "https://health.alaska.gov/media/jj4jpm5c/20199mavenclad_criteria_approved_2019.pdf",
+        "required_facts": [
+          "not_concurrent_ms_dmt"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_ms_dmt",
+          "value": true
+        }
+      },
+      {
+        "id": "not_pregnant",
+        "text": "Patient is not pregnant (denial 5)",
+        "citation": "https://health.alaska.gov/media/jj4jpm5c/20199mavenclad_criteria_approved_2019.pdf",
+        "required_facts": [
+          "not_pregnant"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_pregnant",
+          "value": "not_pregnant"
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "briumvi",
+      "kesimpta",
+      "lemtrada",
+      "ocrevus"
+    ],
+    "notes": [
+      "Partial encoding of Alaska Medicaid Mavenclad (cladribine), a purine antimetabolite. Version: 1; Original: 7/05/2019; Approval: 9/20/2019; Effective: 11/20/2019.",
+      "Encoded: approval criteria 1-6 and denial criteria 1-5. Closed RRMS and active SPMS indications exclude clinically isolated syndrome. Baseline labs, counseling and prior therapy are attestations. Counseling is not applicable only for patients not of reproductive potential.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months.",
+      "Quantity (notes only): up to 10 tablets per cycle. No numeric quantity enforcement.",
+      "Cautions (notes only): increased malignancy risk; fetal harm if administered during pregnancy; reduced immune defense increases infection risk. Immunizations should be administered at least 4-6 weeks before initiating treatment.",
+      "PDL status unknown: PDF is silent. MS peer alternatives require separate eligibility evaluation.",
+      "Remaining gaps: documentation verification, authorization duration, reauthorization, dosing, quantity enforcement and cautions require manual review."
+    ],
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of relapsing-remitting MS or active secondary progressive MS; clinically isolated syndrome is denied (approval 2; denial 1)",
+        "options": [
+          {
+            "value": "relapsing_remitting_ms",
+            "label": "Relapsing-remitting multiple sclerosis (RRMS)"
+          },
+          {
+            "value": "active_secondary_progressive_ms",
+            "label": "Active secondary progressive MS (SPMS)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older (approval 1)",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18+"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        },
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist or physician that specializes in MS",
+        "options": [
+          {
+            "value": "neurologist_or_ms_specialist_or_consult",
+            "label": "Neurologist or MS specialist, or consultation with one"
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "cbc_and_lft_appropriate": {
+        "type": "select",
+        "label": "Complete blood cell count and liver function testing show results appropriate for treatment (approval 4)",
+        "options": [
+          {
+            "value": "cbc_and_lft_appropriate_for_treatment",
+            "label": "CBC and LFT completed with results appropriate for treatment"
+          },
+          {
+            "value": "not_done_or_not_appropriate",
+            "label": "Not done or results not appropriate"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "reproductive_contraception_counseling": {
+        "type": "select",
+        "label": "Patients of reproductive potential counseled to use effective contraception during and for 6 months after the last dose in each treatment course (approval 5)",
+        "options": [
+          {
+            "value": "counseled_effective_contraception_during_and_6mo_after_each_course",
+            "label": "Counseled on effective contraception during and for 6 months after each course"
+          },
+          {
+            "value": "not_applicable_or_counseled_n_a",
+            "label": "Not applicable: patient is not of reproductive potential"
+          },
+          {
+            "value": "not_counseled",
+            "label": "Not counseled"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "ms_dmt_step_one": {
+        "type": "select",
+        "label": "Adequate trial and failure of at least one drug indicated for MS (approval 6)",
+        "options": [
+          {
+            "value": "trial_failure_one_ms_drug",
+            "label": "Adequate trial and failure of at least one MS drug"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "no_current_malignancy": {
+        "type": "select",
+        "label": "No current malignancy (denial 2)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_hiv_or_active_chronic_infection": {
+        "type": "select",
+        "label": "No HIV and no active chronic infection (denial 3)",
+        "options": [
+          {
+            "value": "no_hiv_and_no_active_chronic_infection",
+            "label": "No HIV and no active chronic infection"
+          },
+          {
+            "value": "hiv_or_active_chronic_infection",
+            "label": "HIV or active chronic infection"
+          }
+        ]
+      },
+      "not_concurrent_ms_dmt": {
+        "type": "select",
+        "label": "Not administered with other MS disease-modifying agents (denial 4)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_pregnant": {
+        "type": "select",
+        "label": "Patient is not pregnant (denial 5)",
+        "options": [
+          {
+            "value": "not_pregnant",
+            "label": "Not pregnant"
+          },
+          {
+            "value": "pregnant",
+            "label": "Pregnant"
+          }
+        ]
+      }
+    }
   },
   "mayzent": {
     "drug": {
@@ -12269,7 +12632,8 @@
     "alternatives": [
       "briumvi",
       "kesimpta",
-      "lemtrada"
+      "lemtrada",
+      "mavenclad"
     ],
     "notes": [
       "Partial encoding of Alaska Medicaid Ocrevus (ocrelizumab), also covering Ocrevus Zunovo (ocrelizumab & hyaluronidase-ocsq), a CD20-directed cytolytic antibody, in one shared pack. Version: 2; Original: 1/31/22; Approval: 3/18/22; Effective: 5/1/22; Updated: 01/17/2025.",

@@ -137,8 +137,8 @@ def test_sre_has_no_invented_step():
 def test_catalog_mirrors_and_bidirectional_alternatives():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 34
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 164
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 35
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 163
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
@@ -149,7 +149,7 @@ def test_catalog_mirrors_and_bidirectional_alternatives():
     assert catalog['actiq']['encoding_status'] == 'text_only'
     assert 'xgeva' not in catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 34 and status['encoding_text_only'] == 164
+    assert status['encoding_partial'] == 35 and status['encoding_text_only'] == 163
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     assert status['next_candidate'] == 'actiq'
     for suffix in ['json', 'md']:

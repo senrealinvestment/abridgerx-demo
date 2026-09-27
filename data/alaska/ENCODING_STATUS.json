@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 101,
-  "encoding_text_only": 97,
+  "encoding_partial": 102,
+  "encoding_text_only": 96,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -53,6 +53,7 @@
     "firdapse",
     "hemgenix",
     "hemlibra",
+    "hetlioz",
     "hympavzi",
     "imcivree",
     "infliximab",
@@ -109,5 +110,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "hetlioz"
+  "next_candidate": "leqvio"
 }

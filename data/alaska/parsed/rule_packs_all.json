@@ -15902,7 +15902,8 @@
   "hetlioz": {
     "drug": {
       "name": "Hetlioz",
-      "therapeutic_class": "other"
+      "therapeutic_class": "melatonin-receptor-agonist",
+      "generic_name": "tasimelteon"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -15913,17 +15914,600 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Only Non-24-hour Sleep-Wake disorder (G47.24) or nighttime sleep disturbances in Smith-Magenis syndrome (Q93.88).",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "non_24_hour_sleep_wake_disorder",
+            "smith_magenis_syndrome_nighttime_sleep_disturbances"
+          ]
+        }
+      },
+      {
+        "id": "non24_age_formulation",
+        "text": "Non-24: age \u226516 and request is for capsules.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#approval-criteria",
+        "required_facts": [
+          "age_years",
+          "formulation"
+        ],
+        "predicate": {
+          "op": "all",
+          "args": [
+            {
+              "op": "gte",
+              "fact": "age_years",
+              "value": 16
+            },
+            {
+              "op": "eq",
+              "fact": "formulation",
+              "value": "capsules"
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "non_24_hour_sleep_wake_disorder"
+          ]
+        }
+      },
+      {
+        "id": "sms_age_formulation",
+        "text": "SMS: ages 3\u201315 require Hetlioz LQ; ages \u226516 require capsules.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#approval-criteria",
+        "required_facts": [
+          "age_years",
+          "formulation"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 3
+                },
+                {
+                  "op": "lt",
+                  "fact": "age_years",
+                  "value": 16
+                },
+                {
+                  "op": "eq",
+                  "fact": "formulation",
+                  "value": "hetlioz_lq"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 16
+                },
+                {
+                  "op": "eq",
+                  "fact": "formulation",
+                  "value": "capsules"
+                }
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "smith_magenis_syndrome_nighttime_sleep_disturbances"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a board-certified sleep specialist.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "board_certified_sleep_specialist",
+            "board_certified_sleep_specialist_consult"
+          ]
+        }
+      },
+      {
+        "id": "no_strong_cyp1a2_inhibitors",
+        "text": "No concomitant strong CYP1A2 inhibitors.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#denial-criteria",
+        "required_facts": [
+          "no_strong_cyp1a2_inhibitors"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_strong_cyp1a2_inhibitors",
+          "value": true
+        }
+      },
+      {
+        "id": "no_strong_cyp3a4_inducers",
+        "text": "No concomitant strong CYP3A4 inducers.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#denial-criteria",
+        "required_facts": [
+          "no_strong_cyp3a4_inducers"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_strong_cyp3a4_inducers",
+          "value": true
+        }
+      },
+      {
+        "id": "no_severe_hepatic_impairment",
+        "text": "No severe hepatic impairment (Child-Pugh Class C).",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#denial-criteria",
+        "required_facts": [
+          "no_severe_hepatic_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_severe_hepatic_impairment",
+          "value": true
+        }
+      },
+      {
+        "id": "non24_diagnosis_confirmed",
+        "text": "Non-24 diagnosis confirmed by actigraphy for 14 consecutive days plus evaluation of \u226530 days of sleep logs, both submitted.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#approval-criteria",
+        "required_facts": [
+          "non24_diagnosis_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "non24_diagnosis_confirmed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "non_24_hour_sleep_wake_disorder"
+          ]
+        }
+      },
+      {
+        "id": "alternate_sleep_disorders_addressed",
+        "text": "Prescriber attests and provides documentation of screening and treatment, if indicated, for alternate sleep disorders.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#approval-criteria",
+        "required_facts": [
+          "alternate_sleep_disorders_addressed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "alternate_sleep_disorders_addressed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "non_24_hour_sleep_wake_disorder"
+          ]
+        }
+      },
+      {
+        "id": "non24_sleep_wake_schedule_failed",
+        "text": "Chart notes submitted showing trial and failure of a prescribed sleep-wake schedule.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#approval-criteria",
+        "required_facts": [
+          "non24_sleep_wake_schedule_failed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "non24_sleep_wake_schedule_failed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "non_24_hour_sleep_wake_disorder"
+          ]
+        }
+      },
+      {
+        "id": "sighted_light_therapy",
+        "text": "Sighted Non-24 requires a light therapy trial for 3 months.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#approval-criteria",
+        "required_facts": [
+          "sighted_non24",
+          "light_therapy_trial_3_months"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "sighted_non24",
+              "value": false
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "sighted_non24",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "light_therapy_trial_3_months",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "non_24_hour_sleep_wake_disorder"
+          ]
+        }
+      },
+      {
+        "id": "sms_diagnosis_confirmed",
+        "text": "Confirmed diagnosis of Smith-Magenis syndrome.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#approval-criteria",
+        "required_facts": [
+          "sms_diagnosis_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "sms_diagnosis_confirmed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "smith_magenis_syndrome_nighttime_sleep_disturbances"
+          ]
+        }
+      },
+      {
+        "id": "nighttime_sleep_disturbances",
+        "text": "Patient is experiencing nighttime sleep disturbances.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#approval-criteria",
+        "required_facts": [
+          "nighttime_sleep_disturbances"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "nighttime_sleep_disturbances",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "smith_magenis_syndrome_nighttime_sleep_disturbances"
+          ]
+        }
+      },
+      {
+        "id": "sms_sleep_wake_schedule_failed_with_logs",
+        "text": "Chart notes submitted showing trial and failure of a prescribed sleep-wake schedule and a minimum 30 days of sleep logs.",
+        "citation": "https://health.alaska.gov/media/0hjn3dvk/202203-hetlioz_criteria_2022-002.pdf#approval-criteria",
+        "required_facts": [
+          "sms_sleep_wake_schedule_failed_with_logs"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "sms_sleep_wake_schedule_failed_with_logs",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "smith_magenis_syndrome_nighttime_sleep_disturbances"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Hetlioz (tasimelteon) Criteria Version 2; Original 12/17/2018; Approval 3/18/2022; Effective 2022-05-01.",
+      "Encoded: two closed indications, indication-specific age/formulation and clinical requirements, board-certified sleep specialty and shared denials. Failure to meet approval criteria is represented by approval clauses. Documentation attestations require manual review.",
+      "Cautions (notes only): take without food; smoking can reduce effectiveness.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 6 months with clinically meaningful chart notes showing positive response to combination Hetlioz and light therapy, based on minimum 14 day actigraphy after a minimum of 60 days of therapy and the last 30 days of sleep logs prior to reauthorization. Manual review required.",
+      "Quantity limits (notes only): 30 \u00d7 20mg capsules per 30 days (1 capsule per day); one 158ml bottle per 30 days; two 48ml bottles per 30 days. Quantity enforcement requires manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Indication",
+        "options": [
+          {
+            "value": "non_24_hour_sleep_wake_disorder",
+            "label": "Non-24-hour Sleep-Wake disorder (G47.24)"
+          },
+          {
+            "value": "smith_magenis_syndrome_nighttime_sleep_disturbances",
+            "label": "SMS nighttime sleep disturbances (Q93.88)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age (years)",
+        "options": [
+          {
+            "value": "2",
+            "label": "Under 3"
+          },
+          {
+            "value": "3",
+            "label": "3\u201315"
+          },
+          {
+            "value": "16",
+            "label": "16 or older"
+          }
+        ]
+      },
+      "formulation": {
+        "type": "select",
+        "label": "Requested formulation",
+        "options": [
+          {
+            "value": "hetlioz_lq",
+            "label": "Hetlioz LQ"
+          },
+          {
+            "value": "capsules",
+            "label": "Capsules"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a board-certified sleep specialist.",
+        "options": [
+          {
+            "value": "board_certified_sleep_specialist",
+            "label": "Board-certified sleep specialist"
+          },
+          {
+            "value": "board_certified_sleep_specialist_consult",
+            "label": "Consultation with board-certified sleep specialist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "no_strong_cyp1a2_inhibitors": {
+        "type": "select",
+        "label": "No concomitant strong CYP1A2 inhibitors.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_strong_cyp3a4_inducers": {
+        "type": "select",
+        "label": "No concomitant strong CYP3A4 inducers.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_severe_hepatic_impairment": {
+        "type": "select",
+        "label": "No severe hepatic impairment (Child-Pugh Class C).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "non24_diagnosis_confirmed": {
+        "type": "select",
+        "label": "Non-24 diagnosis confirmed by actigraphy for 14 consecutive days plus evaluation of \u226530 days of sleep logs, both submitted.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "non_24_hour_sleep_wake_disorder"
+          ]
+        }
+      },
+      "alternate_sleep_disorders_addressed": {
+        "type": "select",
+        "label": "Prescriber attests and provides documentation of screening and treatment, if indicated, for alternate sleep disorders.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "non_24_hour_sleep_wake_disorder"
+          ]
+        }
+      },
+      "non24_sleep_wake_schedule_failed": {
+        "type": "select",
+        "label": "Chart notes submitted showing trial and failure of a prescribed sleep-wake schedule.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "non_24_hour_sleep_wake_disorder"
+          ]
+        }
+      },
+      "sighted_non24": {
+        "type": "select",
+        "label": "Does the patient have sighted Non-24?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "non_24_hour_sleep_wake_disorder"
+          ]
+        }
+      },
+      "light_therapy_trial_3_months": {
+        "type": "select",
+        "label": "Has light therapy been trialed for at least 3 months?",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "non_24_hour_sleep_wake_disorder"
+          ]
+        }
+      },
+      "sms_diagnosis_confirmed": {
+        "type": "select",
+        "label": "Confirmed diagnosis of Smith-Magenis syndrome.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "smith_magenis_syndrome_nighttime_sleep_disturbances"
+          ]
+        }
+      },
+      "nighttime_sleep_disturbances": {
+        "type": "select",
+        "label": "Patient is experiencing nighttime sleep disturbances.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "smith_magenis_syndrome_nighttime_sleep_disturbances"
+          ]
+        }
+      },
+      "sms_sleep_wake_schedule_failed_with_logs": {
+        "type": "select",
+        "label": "Chart notes submitted showing trial and failure of a prescribed sleep-wake schedule and a minimum 30 days of sleep logs.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "smith_magenis_syndrome_nighttime_sleep_disturbances"
+          ]
+        }
+      }
+    },
+    "max_units": null
   },
   "human-chorionic-gonadotropin": {
     "drug": {

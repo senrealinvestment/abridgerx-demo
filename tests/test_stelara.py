@@ -114,8 +114,8 @@ def test_catalog_mirrors_status_and_alternatives():
         assert json.load(stream) == catalog
     assert (b / 'stelara.json').read_bytes() == (b / 'rule_packs/stelara.json').read_bytes()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 137
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 61
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 138
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 60
     assert catalog['stelara']['alternatives'] == PEERS
     for peer in PEERS:
         assert 'stelara' in catalog[peer]['alternatives']
@@ -125,7 +125,7 @@ def test_catalog_mirrors_status_and_alternatives():
         if mirror.exists():
             assert json.loads(mirror.read_text()) == catalog[peer]
     status = json.loads((b / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 137 and status['encoding_text_only'] == 61
+    assert status['encoding_partial'] == 138 and status['encoding_text_only'] == 60
     assert 'stelara' in status['partial_slugs']
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for suffix in ['json', 'md']:

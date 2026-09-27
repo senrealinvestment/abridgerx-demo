@@ -151,7 +151,9 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "spinal-muscular-atrophy"
+  ],
   "notes": [
     "Partial encoding of Alaska Medicaid Zolgensma (onasemnogene abeparvovec-xioi), an AAV vector gene therapy. Version: 1; Original: 08/2/2023; Accepted: 09/15/2023; Effective: 11/1/2023.",
     "Encoded: closed SMA indication, approval criteria 1\u20137 and denial criteria 2\u20134. Denial 1 is failure to meet approval criteria. Genetic confirmation is a separate attestation.",
@@ -161,7 +163,7 @@
     "Limitations of use: safety and effectiveness of repeat administration have not been evaluated. Use in advanced SMA (e.g. complete paralysis of limbs, permanent ventilator dependence) has not been evaluated.",
     "Cautions (notes only): if liver function abnormalities persist \u2265 2 times ULN after the 30-day period of systemic corticosteroids, promptly consult a pediatric gastroenterologist or hepatologist. Acute liver failure has been reported; preexisting hepatic impairment may increase risk.",
     "Documentation and numeric laboratory results require manual review; baseline testing, timing and thresholds are encoded as a combined attestation. Duration, no reauthorization, lifetime quantity, dose and cautions remain notes only, so this pack remains partial.",
-    "PDL status remains unknown. No evaluate-linked alternatives are specified."
+    "PDL status remains unknown. Evrysdi / Spinraza is a separately evaluated SMA alternative; that pack excludes prior SMA gene replacement therapy."
   ],
   "fact_ui": {
     "indication": {

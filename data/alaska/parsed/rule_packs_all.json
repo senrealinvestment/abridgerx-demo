@@ -26986,8 +26986,8 @@
   "spinal-muscular-atrophy": {
     "drug": {
       "name": "Spinal Muscular Atrophy",
-      "generic_name": "SMA",
-      "therapeutic_class": "other"
+      "generic_name": "risdiplam / nusinersen",
+      "therapeutic_class": "sma-disease-modifying"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -26998,17 +26998,381 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "product",
+        "text": "Requested SMA product",
+        "citation": "https://health.alaska.gov/media/o4qjxqv0/202209-spinal_muscular_atrophy_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "product"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "product",
+          "values": [
+            "evrysdi",
+            "spinraza"
+          ]
+        }
+      },
+      {
+        "id": "indication_fda_labeled",
+        "text": "Spinal muscular atrophy (FDA indication)",
+        "citation": "https://health.alaska.gov/media/o4qjxqv0/202209-spinal_muscular_atrophy_criteria_2022.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "spinal_muscular_atrophy"
+          ]
+        }
+      },
+      {
+        "id": "age_fda_labeled",
+        "text": "Evrysdi: age at least 2 months (approval 1).",
+        "citation": "https://health.alaska.gov/media/o4qjxqv0/202209-spinal_muscular_atrophy_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "product",
+          "age_years"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "product",
+                  "value": "evrysdi"
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 0.16666666666666666
+                }
+              ]
+            },
+            {
+              "op": "eq",
+              "fact": "product",
+              "value": "spinraza"
+            }
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "eq": "evrysdi"
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist specializing in SMA (approval 2).",
+        "citation": "https://health.alaska.gov/media/o4qjxqv0/202209-spinal_muscular_atrophy_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_specializing_in_sma_or_consult"
+        }
+      },
+      {
+        "id": "smn1_mutation",
+        "text": "SMA confirmed by genetic testing (approval 3).",
+        "citation": "https://health.alaska.gov/media/o4qjxqv0/202209-spinal_muscular_atrophy_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "smn1_mutation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "smn1_mutation",
+          "values": [
+            "homozygous_deletion_or_mutation_smn1",
+            "compound_heterozygous_mutation_smn1"
+          ]
+        }
+      },
+      {
+        "id": "baseline_motor_assessment",
+        "text": "Documented baseline motor ability suggesting SMA, or qualifying infant deferral (approval 4).",
+        "citation": "https://health.alaska.gov/media/o4qjxqv0/202209-spinal_muscular_atrophy_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_motor_assessment"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_motor_assessment",
+          "values": [
+            "infant_lt_1mo_prescriber_agrees_assess_at_1mo",
+            "hine_2",
+            "hfmse",
+            "bsid_iii_item_22",
+            "chop_intend",
+            "rulm",
+            "mfm_32"
+          ]
+        }
+      },
+      {
+        "id": "spinraza_platelet_coag_urine_protein_monitoring",
+        "text": "Thrombocytopenia/coagulation abnormalities testing and quantitative spot urine protein at baseline and prior to each dose (approval 5).",
+        "citation": "https://health.alaska.gov/media/o4qjxqv0/202209-spinal_muscular_atrophy_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "spinraza_platelet_coag_urine_protein_monitoring"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "spinraza_platelet_coag_urine_protein_monitoring",
+          "value": "will_perform_baseline_and_prior_each_dose"
+        },
+        "when": {
+          "fact": "product",
+          "eq": "spinraza"
+        }
+      },
+      {
+        "id": "contraception_counseling",
+        "text": "Female patients of reproductive potential advised effective contraception during treatment and at least 1 month after last dose (approval 6).",
+        "citation": "https://health.alaska.gov/media/o4qjxqv0/202209-spinal_muscular_atrophy_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "contraception_counseling"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "contraception_counseling",
+          "values": [
+            "female_reproductive_potential_advised_contraception_during_and_1mo_after",
+            "not_applicable_male_or_not_of_reproductive_potential"
+          ]
+        }
+      },
+      {
+        "id": "not_concomitant_evrysdi_and_spinraza",
+        "text": "No concomitant Evrysdi and Spinraza (denial 2).",
+        "citation": "https://health.alaska.gov/media/o4qjxqv0/202209-spinal_muscular_atrophy_criteria_2022.pdf#denial-criteria",
+        "required_facts": [
+          "not_concomitant_evrysdi_and_spinraza"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concomitant_evrysdi_and_spinraza",
+          "value": "not_combined"
+        }
+      },
+      {
+        "id": "no_prior_sma_gene_replacement_therapy",
+        "text": "No prior gene replacement therapy for SMA (denial 3).",
+        "citation": "https://health.alaska.gov/media/o4qjxqv0/202209-spinal_muscular_atrophy_criteria_2022.pdf#denial-criteria",
+        "required_facts": [
+          "no_prior_sma_gene_replacement_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_prior_sma_gene_replacement_therapy",
+          "value": "no_prior_gene_therapy"
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "alternatives": [
+      "zolgensma"
+    ],
+    "notes": [
+      "Partial encoding of Alaska Medicaid Evrysdi (risdiplam) / Spinraza (nusinersen). Version: 1; Original: 2/15/2022; Approval: 9/16/2022; Effective: 11/1/2022.",
+      "Encoded: closed product and SMA indication lists, approval criteria 1\u20136 and denial criteria 2\u20133. Denial 1 is failure to meet approval criteria. Spinraza is labeled for pediatric and adult patients without a minimum age in this PDF; Evrysdi requires age \u22652 months, represented as 2/12 years.",
+      "Baseline motor assessment and the infant under 1 month deferral are combined attestations; documentation requires manual review. Contraception counseling applies to both products for females of reproductive potential.",
+      "Cautions (notes only): see the Evrysdi and Spinraza package inserts.",
+      "Duration (notes only): initial approval up to 6 months; reauthorization up to 12 months if the prescriber documents improvement or stability from baseline.",
+      "Quantity (notes only): Evrysdi 0.2 mg/kg once daily if age <2 years; 0.25 mg/kg once daily if age \u22652 years and weight <20 kg; 5 mg once daily if age \u22652 years and weight \u226520 kg.",
+      "Quantity (notes only): Spinraza 12 mg (5 mL) per administration; four loading doses, first three at 14-day intervals and fourth 30 days after third; maintenance every 4 months thereafter. HCPCS J2326.",
+      "Zolgensma is a separately encoded SMA gene replacement therapy alternative, not a product in this pack. Prior SMA gene replacement therapy excludes eligibility here. Alternative eligibility requires separate evaluation.",
+      "Duration, renewal response, quantity and cautions remain notes only, so this pack remains partial. PDL status remains unknown."
+    ],
+    "fact_ui": {
+      "product": {
+        "type": "select",
+        "label": "Requested SMA product",
+        "options": [
+          {
+            "value": "evrysdi",
+            "label": "Evrysdi (risdiplam)"
+          },
+          {
+            "value": "spinraza",
+            "label": "Spinraza (nusinersen)"
+          }
+        ]
+      },
+      "indication": {
+        "type": "select",
+        "label": "Spinal muscular atrophy (FDA indication)",
+        "options": [
+          {
+            "value": "spinal_muscular_atrophy",
+            "label": "Spinal muscular atrophy"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Evrysdi: age at least 2 months (approval 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 2 months"
+          },
+          {
+            "value": "0.16666666666666666",
+            "label": "2 months or older"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "eq": "evrysdi"
+        },
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist specializing in SMA (approval 2).",
+        "options": [
+          {
+            "value": "neurologist_specializing_in_sma_or_consult",
+            "label": "SMA neurologist or consultation with one"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "smn1_mutation": {
+        "type": "select",
+        "label": "SMA confirmed by genetic testing (approval 3).",
+        "options": [
+          {
+            "value": "homozygous_deletion_or_mutation_smn1",
+            "label": "Homozygous deletion or mutation of SMN1"
+          },
+          {
+            "value": "compound_heterozygous_mutation_smn1",
+            "label": "Compound heterozygous mutation of SMN1"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ]
+      },
+      "baseline_motor_assessment": {
+        "type": "select",
+        "label": "Documented baseline motor ability suggesting SMA, or qualifying infant deferral (approval 4).",
+        "options": [
+          {
+            "value": "infant_lt_1mo_prescriber_agrees_assess_at_1mo",
+            "label": "Infant under 1 month; prescriber agrees to assess at 1 month"
+          },
+          {
+            "value": "hine_2",
+            "label": "HINE-2"
+          },
+          {
+            "value": "hfmse",
+            "label": "HFMSE"
+          },
+          {
+            "value": "bsid_iii_item_22",
+            "label": "BSID-III Item 22"
+          },
+          {
+            "value": "chop_intend",
+            "label": "CHOP-INTEND"
+          },
+          {
+            "value": "rulm",
+            "label": "RULM"
+          },
+          {
+            "value": "mfm_32",
+            "label": "MFM-32"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "spinraza_platelet_coag_urine_protein_monitoring": {
+        "type": "select",
+        "label": "Thrombocytopenia/coagulation abnormalities testing and quantitative spot urine protein at baseline and prior to each dose (approval 5).",
+        "options": [
+          {
+            "value": "will_perform_baseline_and_prior_each_dose",
+            "label": "Will perform at baseline and prior to each dose"
+          },
+          {
+            "value": "will_not",
+            "label": "Will not"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "eq": "spinraza"
+        }
+      },
+      "contraception_counseling": {
+        "type": "select",
+        "label": "Female patients of reproductive potential advised effective contraception during treatment and at least 1 month after last dose (approval 6).",
+        "options": [
+          {
+            "value": "female_reproductive_potential_advised_contraception_during_and_1mo_after",
+            "label": "Advised effective contraception during treatment and at least 1 month after"
+          },
+          {
+            "value": "not_applicable_male_or_not_of_reproductive_potential",
+            "label": "Not applicable: male or not of reproductive potential"
+          },
+          {
+            "value": "not_advised",
+            "label": "Not advised"
+          }
+        ]
+      },
+      "not_concomitant_evrysdi_and_spinraza": {
+        "type": "select",
+        "label": "No concomitant Evrysdi and Spinraza (denial 2).",
+        "options": [
+          {
+            "value": "not_combined",
+            "label": "Not combined"
+          },
+          {
+            "value": "concomitant",
+            "label": "Concomitant use"
+          }
+        ]
+      },
+      "no_prior_sma_gene_replacement_therapy": {
+        "type": "select",
+        "label": "No prior gene replacement therapy for SMA (denial 3).",
+        "options": [
+          {
+            "value": "no_prior_gene_therapy",
+            "label": "No prior gene replacement therapy for SMA"
+          },
+          {
+            "value": "prior_zolgensma_or_other_gene_therapy",
+            "label": "Prior Zolgensma or other SMA gene replacement therapy"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "spravato": {
     "drug": {
@@ -31157,7 +31521,9 @@
         }
       }
     ],
-    "alternatives": [],
+    "alternatives": [
+      "spinal-muscular-atrophy"
+    ],
     "notes": [
       "Partial encoding of Alaska Medicaid Zolgensma (onasemnogene abeparvovec-xioi), an AAV vector gene therapy. Version: 1; Original: 08/2/2023; Accepted: 09/15/2023; Effective: 11/1/2023.",
       "Encoded: closed SMA indication, approval criteria 1\u20137 and denial criteria 2\u20134. Denial 1 is failure to meet approval criteria. Genetic confirmation is a separate attestation.",
@@ -31167,7 +31533,7 @@
       "Limitations of use: safety and effectiveness of repeat administration have not been evaluated. Use in advanced SMA (e.g. complete paralysis of limbs, permanent ventilator dependence) has not been evaluated.",
       "Cautions (notes only): if liver function abnormalities persist \u2265 2 times ULN after the 30-day period of systemic corticosteroids, promptly consult a pediatric gastroenterologist or hepatologist. Acute liver failure has been reported; preexisting hepatic impairment may increase risk.",
       "Documentation and numeric laboratory results require manual review; baseline testing, timing and thresholds are encoded as a combined attestation. Duration, no reauthorization, lifetime quantity, dose and cautions remain notes only, so this pack remains partial.",
-      "PDL status remains unknown. No evaluate-linked alternatives are specified."
+      "PDL status remains unknown. Evrysdi / Spinraza is a separately evaluated SMA alternative; that pack excludes prior SMA gene replacement therapy."
     ],
     "fact_ui": {
       "indication": {

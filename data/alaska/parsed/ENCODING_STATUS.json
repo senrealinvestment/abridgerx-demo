@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 74,
-  "encoding_text_only": 124,
+  "encoding_partial": 75,
+  "encoding_text_only": 123,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -70,6 +70,7 @@
     "skyrizi",
     "soliris",
     "somatropin",
+    "spinal-muscular-atrophy",
     "stelara",
     "strensiq",
     "tepezza",
@@ -82,5 +83,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "spinal-muscular-atrophy"
+  "next_candidate": "leqembi"
 }

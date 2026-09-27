@@ -86,7 +86,7 @@ def test_metadata_notes_and_catalog():
     assert p['source']['effective_date'] == '2023-11-01'
     assert p['source']['citation'] == 'https://health.alaska.gov/media/tngioada/zolgensma_criteria_2023.pdf'
     assert p['source']['criteria_pdf'] == 'data/alaska/raw/zolgensma_criteria_2023.pdf'
-    assert p['alternatives'] == [] and p['max_units'] is None
+    assert p['alternatives'] == ['spinal-muscular-atrophy'] and p['max_units'] is None
     assert 'inferred_required_facts' not in p
     assert len(p['criteria']) == 10
     assert {f for c in p['criteria'] for f in c['required_facts']} == set(facts())
@@ -96,8 +96,8 @@ def test_metadata_notes_and_catalog():
         assert text in ' '.join(p['notes'])
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 74
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 124
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 75
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 123
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
@@ -105,9 +105,9 @@ def test_metadata_notes_and_catalog():
     assert (BASE / 'zolgensma.json').read_bytes() == (BASE / 'rule_packs/zolgensma.json').read_bytes()
     assert catalog['actiq']['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 74 and status['encoding_text_only'] == 124
+    assert status['encoding_partial'] == 75 and status['encoding_text_only'] == 123
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'spinal-muscular-atrophy'
+    assert status['next_candidate'] == 'leqembi'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
 

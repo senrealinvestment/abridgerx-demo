@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 115,
-  "encoding_text_only": 83,
+  "encoding_partial": 116,
+  "encoding_text_only": 82,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -108,6 +108,7 @@
     "tzield",
     "uptravi",
     "veozah",
+    "verquvo",
     "voxzogo",
     "vyjuvek",
     "vyndaqel",
@@ -123,5 +124,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "verquvo"
+  "next_candidate": "rezdiffratm"
 }

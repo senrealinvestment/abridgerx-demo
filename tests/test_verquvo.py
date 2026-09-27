@@ -1,4 +1,4 @@
-"""Veozah approval gates, denial thresholds, source notes and catalog mirrors."""
+"""Alaska Verquvo closed approval routes, denials, and synchronized catalog."""
 import gzip
 import json
 import sys
@@ -13,12 +13,12 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail, load_rule_pack_catalog
 
 BASE = ROOT / 'data/alaska/parsed'
-PACK = json.loads((BASE / 'rule_packs/veozah.json').read_text())
-FACTS = dict(indication='moderate_to_severe_vasomotor_symptoms_due_to_menopause',
-             fda_labeled_age='attested', baseline_lfts='performed', follow_up_lfts='attested',
-             prior_therapy='failed_hormone_agent', cirrhosis='absent',
-             severe_renal_impairment_or_esrd='absent', baseline_total_bilirubin='below_2x_uln',
-             baseline_alt='below_2x_uln', baseline_ast='below_2x_uln')
+PACK = json.loads((BASE / 'rule_packs/verquvo.json').read_text())
+FACTS = dict(indication='symptomatic_chronic_hf_ef_lt_45', age='at_least_18',
+             prescriber_specialty='cardiologist', nyha_class='II', ejection_fraction='below_45',
+             recent_hf_event='hospitalization_within_6_months', background_raas_therapy='entresto',
+             background_beta_blocker='bisoprolol', pregnant='absent', another_sgc_stimulator='absent',
+             pde5_inhibitor='absent', daily_dose='at_10_mg')
 
 
 @pytest.mark.parametrize('key', FACTS)
@@ -43,39 +43,44 @@ def test_missing(key, omit):
     assert result.missing_facts == [key]
 
 
-@pytest.mark.parametrize('therapy', ['failed_hormone_agent', 'failed_non_hormone_agent', 'contraindicated_to_both'])
-@pytest.mark.parametrize('denial', ['cirrhosis', 'severe_renal_impairment_or_esrd', 'baseline_total_bilirubin', 'baseline_alt', 'baseline_ast'])
-def test_denials_override_each_therapy_route(therapy, denial):
-    facts = dict(FACTS, prior_therapy=therapy)
+@pytest.mark.parametrize('raas', ['entresto', 'ace_inhibitor', 'arb', 'contraindicated', 'not_tolerated'])
+@pytest.mark.parametrize('beta', ['bisoprolol', 'carvedilol', 'metoprolol_succinate', 'contraindicated', 'not_tolerated'])
+@pytest.mark.parametrize('event', ['hospitalization_within_6_months', 'outpatient_iv_diuretics_within_3_months', 'both'])
+def test_therapy_and_event_routes_and_denials(raas, beta, event):
+    facts = dict(FACTS, background_raas_therapy=raas, background_beta_blocker=beta, recent_hf_event=event)
     assert evaluate(PACK, facts).decision == 'pass'
-    facts[denial] = 'at_2x_uln' if denial.startswith('baseline_') else 'present'
-    assert evaluate(PACK, facts).decision == 'fail'
+    for key, value in [('pregnant', 'present'), ('another_sgc_stimulator', 'present'),
+                       ('pde5_inhibitor', 'present'), ('daily_dose', 'above_10_mg'),
+                       ('background_raas_therapy', 'none'), ('background_beta_blocker', 'none')]:
+        result = evaluate(PACK, dict(facts, **{key: value}))
+        assert result.decision == 'fail'
+        assert [c['id'] for c in result.failed_clauses] == [key]
 
 
 def test_ui_and_source_metadata():
-    detail = drug_detail('veozah')
+    detail = drug_detail('verquvo')
     assert detail['can_evaluate']
     fields = {f['key']: f for f in detail['fact_fields']}
     assert set(fields) == set(FACTS)
     assert len(fields['indication']['options']) == 1
     assert all(f['type'] == 'select' and not f.get('free_text') for f in fields.values())
     assert evaluate(PACK, _coerce_patient(FACTS)).decision == 'pass'
-    assert PACK['drug']['generic_name'] == 'fezolinetant'
-    assert PACK['drug']['therapeutic_class'] == 'nk3-receptor-antagonist'
-    assert PACK['source']['effective_date'] == '2024-11-01'
+    assert PACK['drug']['generic_name'] == 'vericiguat'
+    assert PACK['drug']['therapeutic_class'] == 'sgc-stimulator'
+    assert PACK['source']['effective_date'] == '2022-01-04'
     assert PACK['encoding_status'] == 'partial'
     assert PACK['max_units'] is None and PACK['alternatives'] == []
     assert 'inferred_required_facts' not in PACK
-    assert 'age_years' not in fields
-    for text in ['>3× ULN', 'CYP1A2', '3 months', '12 months', '34 tablets for 34 days', 'manual review']:
+    for text in ['ESRD', 'hepatic insufficiency', 'breastfeeding', '3 months', '12 months',
+                 'positive clinical response', '30 tablets per 30 days', '2.5 mg, 5 mg, and 10 mg', 'manual review']:
         assert text in ' '.join(PACK['notes'])
 
 
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
-    assert catalog['veozah'] == PACK
+    assert catalog['verquvo'] == PACK
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
-    assert (BASE / 'veozah.json').read_bytes() == (BASE / 'rule_packs/veozah.json').read_bytes()
+    assert (BASE / 'verquvo.json').read_bytes() == (BASE / 'rule_packs/verquvo.json').read_bytes()
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog

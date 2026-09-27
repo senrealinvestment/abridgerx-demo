@@ -39910,7 +39910,8 @@
   "verquvo": {
     "drug": {
       "name": "Verquvo",
-      "therapeutic_class": "other"
+      "therapeutic_class": "sgc-stimulator",
+      "generic_name": "vericiguat"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -39921,17 +39922,459 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Symptomatic chronic heart failure with ejection fraction less than 45%.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "symptomatic_chronic_hf_ef_lt_45"
+          ]
+        }
+      },
+      {
+        "id": "age",
+        "text": "Patient is at least 18 years old.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "age"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "age",
+          "values": [
+            "at_least_18"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a cardiologist or nephrologist.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "cardiologist",
+            "nephrologist",
+            "cardiologist_consult",
+            "nephrologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "nyha_class",
+        "text": "Heart failure is NYHA Class II, III, or IV.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "nyha_class"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "nyha_class",
+          "values": [
+            "II",
+            "III",
+            "IV"
+          ]
+        }
+      },
+      {
+        "id": "ejection_fraction",
+        "text": "Ejection fraction is strictly less than 45%.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "ejection_fraction"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ejection_fraction",
+          "values": [
+            "below_45"
+          ]
+        }
+      },
+      {
+        "id": "recent_hf_event",
+        "text": "HF hospitalization within the last 6 months OR outpatient IV diuretics within the last 3 months.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "recent_hf_event"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "recent_hf_event",
+          "values": [
+            "hospitalization_within_6_months",
+            "outpatient_iv_diuretics_within_3_months",
+            "both"
+          ]
+        }
+      },
+      {
+        "id": "background_raas_therapy",
+        "text": "Will take Entresto (sacubitril/valsartan), an ACE inhibitor, or an ARB unless contraindicated or not tolerated.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "background_raas_therapy"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "background_raas_therapy",
+          "values": [
+            "entresto",
+            "ace_inhibitor",
+            "arb",
+            "contraindicated",
+            "not_tolerated"
+          ]
+        }
+      },
+      {
+        "id": "background_beta_blocker",
+        "text": "Will take bisoprolol, carvedilol, or metoprolol succinate unless contraindicated or not tolerated.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "background_beta_blocker"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "background_beta_blocker",
+          "values": [
+            "bisoprolol",
+            "carvedilol",
+            "metoprolol_succinate",
+            "contraindicated",
+            "not_tolerated"
+          ]
+        }
+      },
+      {
+        "id": "pregnant",
+        "text": "Patient must not be pregnant.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "pregnant"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pregnant",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "another_sgc_stimulator",
+        "text": "No concomitant use of another sGC stimulator.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "another_sgc_stimulator"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "another_sgc_stimulator",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "pde5_inhibitor",
+        "text": "Patient must not be taking a PDE-5 inhibitor.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "pde5_inhibitor"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pde5_inhibitor",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "daily_dose",
+        "text": "Dose must not exceed 10 mg/day.",
+        "citation": "https://health.alaska.gov/media/0oqntr3e/202111-verquvo_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "daily_dose"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "daily_dose",
+          "values": [
+            "below_10_mg",
+            "at_10_mg"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Verquvo (vericiguat), effective 2022-01-04. Approval criteria and all explicit denial criteria encoded. Supporting evidence and attestations require manual review.",
+      "Cautions (notes only): not studied in end-stage renal disease (ESRD) or hepatic insufficiency; breastfeeding is not recommended.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months if the prescriber documents positive clinical response to therapy. Manual review required.",
+      "Quantity (notes only): 30 tablets per 30 days, for 2.5 mg, 5 mg, and 10 mg strengths. Manual review required."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Symptomatic chronic heart failure with ejection fraction less than 45%.",
+        "options": [
+          {
+            "value": "symptomatic_chronic_hf_ef_lt_45",
+            "label": "Symptomatic chronic HF with EF <45%"
+          }
+        ]
+      },
+      "age": {
+        "type": "select",
+        "label": "Patient is at least 18 years old.",
+        "options": [
+          {
+            "value": "at_least_18",
+            "label": "18 years or older"
+          },
+          {
+            "value": "under_18",
+            "label": "Under 18 years"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a cardiologist or nephrologist.",
+        "options": [
+          {
+            "value": "cardiologist",
+            "label": "Cardiologist"
+          },
+          {
+            "value": "nephrologist",
+            "label": "Nephrologist"
+          },
+          {
+            "value": "cardiologist_consult",
+            "label": "In consultation with cardiologist"
+          },
+          {
+            "value": "nephrologist_consult",
+            "label": "In consultation with nephrologist"
+          },
+          {
+            "value": "other",
+            "label": "Neither specialty nor qualifying consultation"
+          }
+        ]
+      },
+      "nyha_class": {
+        "type": "select",
+        "label": "Heart failure is NYHA Class II, III, or IV.",
+        "options": [
+          {
+            "value": "II",
+            "label": "Class II"
+          },
+          {
+            "value": "III",
+            "label": "Class III"
+          },
+          {
+            "value": "IV",
+            "label": "Class IV"
+          },
+          {
+            "value": "I",
+            "label": "Class I"
+          }
+        ]
+      },
+      "ejection_fraction": {
+        "type": "select",
+        "label": "Ejection fraction is strictly less than 45%.",
+        "options": [
+          {
+            "value": "below_45",
+            "label": "Less than 45%"
+          },
+          {
+            "value": "at_45",
+            "label": "Exactly 45%"
+          },
+          {
+            "value": "above_45",
+            "label": "Greater than 45%"
+          }
+        ]
+      },
+      "recent_hf_event": {
+        "type": "select",
+        "label": "HF hospitalization within the last 6 months OR outpatient IV diuretics within the last 3 months.",
+        "options": [
+          {
+            "value": "hospitalization_within_6_months",
+            "label": "HF hospitalization within 6 months"
+          },
+          {
+            "value": "outpatient_iv_diuretics_within_3_months",
+            "label": "Outpatient IV diuretics within 3 months"
+          },
+          {
+            "value": "both",
+            "label": "Both qualifying events"
+          },
+          {
+            "value": "hospitalization_over_6_months",
+            "label": "Only HF hospitalization more than 6 months ago"
+          },
+          {
+            "value": "outpatient_iv_diuretics_over_3_months",
+            "label": "Only outpatient IV diuretics more than 3 months ago"
+          },
+          {
+            "value": "none",
+            "label": "Neither qualifying event"
+          }
+        ]
+      },
+      "background_raas_therapy": {
+        "type": "select",
+        "label": "Will take Entresto (sacubitril/valsartan), an ACE inhibitor, or an ARB unless contraindicated or not tolerated.",
+        "options": [
+          {
+            "value": "entresto",
+            "label": "Entresto (sacubitril/valsartan)"
+          },
+          {
+            "value": "ace_inhibitor",
+            "label": "ACE inhibitor"
+          },
+          {
+            "value": "arb",
+            "label": "ARB"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_tolerated",
+            "label": "Not tolerated"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying therapy or exception"
+          }
+        ]
+      },
+      "background_beta_blocker": {
+        "type": "select",
+        "label": "Will take bisoprolol, carvedilol, or metoprolol succinate unless contraindicated or not tolerated.",
+        "options": [
+          {
+            "value": "bisoprolol",
+            "label": "Bisoprolol"
+          },
+          {
+            "value": "carvedilol",
+            "label": "Carvedilol"
+          },
+          {
+            "value": "metoprolol_succinate",
+            "label": "Metoprolol succinate"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_tolerated",
+            "label": "Not tolerated"
+          },
+          {
+            "value": "other_beta_blocker",
+            "label": "Other beta-blocker"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying therapy or exception"
+          }
+        ]
+      },
+      "pregnant": {
+        "type": "select",
+        "label": "Patient must not be pregnant.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "another_sgc_stimulator": {
+        "type": "select",
+        "label": "No concomitant use of another sGC stimulator.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "pde5_inhibitor": {
+        "type": "select",
+        "label": "Patient must not be taking a PDE-5 inhibitor.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "daily_dose": {
+        "type": "select",
+        "label": "Dose must not exceed 10 mg/day.",
+        "options": [
+          {
+            "value": "below_10_mg",
+            "label": "Less than 10 mg/day"
+          },
+          {
+            "value": "at_10_mg",
+            "label": "Exactly 10 mg/day"
+          },
+          {
+            "value": "above_10_mg",
+            "label": "More than 10 mg/day"
+          }
+        ]
+      }
+    }
   },
   "vesicular-monoamine": {
     "drug": {

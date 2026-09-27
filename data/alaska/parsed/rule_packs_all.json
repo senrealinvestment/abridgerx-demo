@@ -27428,7 +27428,8 @@
   "nuedexta": {
     "drug": {
       "name": "Nuedexta",
-      "therapeutic_class": "other"
+      "therapeutic_class": "nmda-sigma",
+      "generic_name": "dextromethorphan_quinidine"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -27439,18 +27440,424 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "age_years",
+        "text": "Patient is at least 18 years old.",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "indication",
+        "text": "Treatment of pseudobulbar affect (PBA).",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "pseudobulbar_affect"
+          ]
+        }
+      },
+      {
+        "id": "confirmed_pba_association",
+        "text": "Confirmed PBA associated with one of the listed neurologic conditions.",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "confirmed_pba_association"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "confirmed_pba_association",
+          "values": [
+            "multiple_sclerosis",
+            "amyotrophic_lateral_sclerosis",
+            "stroke",
+            "parkinsons_disease",
+            "alzheimers_disease",
+            "traumatic_brain_injury"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist or psychiatrist.",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "neurologist",
+            "neurologist_consult",
+            "psychiatrist",
+            "psychiatrist_consult"
+          ]
+        }
+      },
+      {
+        "id": "ssri_step",
+        "text": "Tried and failed a therapeutic dose of one SSRI (e.g. fluoxetine), or contraindication to use.",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "ssri_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ssri_step",
+          "values": [
+            "failed_therapeutic_dose",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "tca_step",
+        "text": "Tried and failed a therapeutic dose of one TCA (e.g. amitriptyline), or contraindication to use.",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "tca_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "tca_step",
+          "values": [
+            "failed_therapeutic_dose",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "baseline_cns_ls_score",
+        "text": "Baseline Center for Neurologic Studies-lability scale (CNS-LS) score is at least 13.",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_cns_ls_score"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "baseline_cns_ls_score",
+          "value": 13
+        }
+      },
+      {
+        "id": "prohibited_concomitant_drugs",
+        "text": "No quinidine, quinine, mefloquine, or other drugs that both prolong QT and are metabolized by CYP2D6.",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#denial-criteria",
+        "required_facts": [
+          "prohibited_concomitant_drugs"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prohibited_concomitant_drugs",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "maoi_within_14_days",
+        "text": "No concomitant MAOI use within the last 14 days.",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#denial-criteria",
+        "required_facts": [
+          "maoi_within_14_days"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "maoi_within_14_days",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "prolonged_qt",
+        "text": "No prolonged QT interval.",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#denial-criteria",
+        "required_facts": [
+          "prolonged_qt"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prolonged_qt",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "heart_failure",
+        "text": "No heart failure.",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#denial-criteria",
+        "required_facts": [
+          "heart_failure"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "heart_failure",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "complete_av_block",
+        "text": "No complete AV block without an implanted pacemaker.",
+        "citation": "https://health.alaska.gov/media/2sro34bj/20195-b-iv-neudexta_criteria_approved_2018.pdf#denial-criteria",
+        "required_facts": [
+          "complete_av_block"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "complete_av_block",
+          "values": [
+            "absent",
+            "with_implanted_pacemaker"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Nuedexta (dextromethorphan/quinidine), an NMDA-sigma / pba-agent; effective 2019-03-11. Approval and explicit denial gates encoded; documentation and therapeutic-dose failure or contraindication attestations require manual review.",
+      "Source discrepancy: approval criterion 2 includes Parkinson\u2019s disease and Alzheimer\u2019s disease, but denial criterion 2 omits them. Both remain eligible per the approval criteria. SSRI and TCA requirements are separate; each requires therapeutic-dose failure or contraindication to use.",
+      "Cautions (notes only): certain prescription and OTC medications have significant drug interactions when taken concomitantly. Thrombocytopenia, hepatitis, and other hypersensitivity reactions have occurred.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 1 year with documentation of decreased laughing or crying episodes from baseline. Manual review required.",
+      "Quantity and dosing (notes only): 60 capsules/month; start 1 capsule daily for 7 days, then 1 capsule every 12 hours thereafter. No numeric quantity enforcement; manual review required."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old.",
+        "options": [
+          {
+            "value": "17",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18 or older"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "indication": {
+        "type": "select",
+        "label": "Treatment of pseudobulbar affect (PBA).",
+        "options": [
+          {
+            "value": "pseudobulbar_affect",
+            "label": "Pseudobulbar affect"
+          }
+        ]
+      },
+      "confirmed_pba_association": {
+        "type": "select",
+        "label": "Confirmed PBA associated with one of the listed neurologic conditions.",
+        "options": [
+          {
+            "value": "multiple_sclerosis",
+            "label": "Multiple sclerosis"
+          },
+          {
+            "value": "amyotrophic_lateral_sclerosis",
+            "label": "Amyotrophic lateral sclerosis"
+          },
+          {
+            "value": "stroke",
+            "label": "Stroke"
+          },
+          {
+            "value": "parkinsons_disease",
+            "label": "Parkinsons disease"
+          },
+          {
+            "value": "alzheimers_disease",
+            "label": "Alzheimers disease"
+          },
+          {
+            "value": "traumatic_brain_injury",
+            "label": "Traumatic brain injury"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist or psychiatrist.",
+        "options": [
+          {
+            "value": "neurologist",
+            "label": "Neurologist"
+          },
+          {
+            "value": "neurologist_consult",
+            "label": "Neurologist consult"
+          },
+          {
+            "value": "psychiatrist",
+            "label": "Psychiatrist"
+          },
+          {
+            "value": "psychiatrist_consult",
+            "label": "Psychiatrist consult"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "ssri_step": {
+        "type": "select",
+        "label": "Tried and failed a therapeutic dose of one SSRI (e.g. fluoxetine), or contraindication to use.",
+        "options": [
+          {
+            "value": "failed_therapeutic_dose",
+            "label": "Tried and failed at a therapeutic dose"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindication to use"
+          },
+          {
+            "value": "subtherapeutic_trial",
+            "label": "Only subtherapeutic dose tried"
+          },
+          {
+            "value": "not_met",
+            "label": "No qualifying failure or contraindication"
+          }
+        ]
+      },
+      "tca_step": {
+        "type": "select",
+        "label": "Tried and failed a therapeutic dose of one TCA (e.g. amitriptyline), or contraindication to use.",
+        "options": [
+          {
+            "value": "failed_therapeutic_dose",
+            "label": "Tried and failed at a therapeutic dose"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindication to use"
+          },
+          {
+            "value": "subtherapeutic_trial",
+            "label": "Only subtherapeutic dose tried"
+          },
+          {
+            "value": "not_met",
+            "label": "No qualifying failure or contraindication"
+          }
+        ]
+      },
+      "baseline_cns_ls_score": {
+        "type": "select",
+        "label": "Baseline Center for Neurologic Studies-lability scale (CNS-LS) score is at least 13.",
+        "options": [
+          {
+            "value": "12",
+            "label": "Below 13"
+          },
+          {
+            "value": "13",
+            "label": "13 or above"
+          }
+        ]
+      },
+      "prohibited_concomitant_drugs": {
+        "type": "select",
+        "label": "No quinidine, quinine, mefloquine, or other drugs that both prolong QT and are metabolized by CYP2D6.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "maoi_within_14_days": {
+        "type": "select",
+        "label": "No concomitant MAOI use within the last 14 days.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "prolonged_qt": {
+        "type": "select",
+        "label": "No prolonged QT interval.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "heart_failure": {
+        "type": "select",
+        "label": "No heart failure.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "complete_av_block": {
+        "type": "select",
+        "label": "No complete AV block without an implanted pacemaker.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "No complete AV block"
+          },
+          {
+            "value": "with_implanted_pacemaker",
+            "label": "Complete AV block with implanted pacemaker"
+          },
+          {
+            "value": "without_implanted_pacemaker",
+            "label": "Complete AV block without implanted pacemaker"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "ocrevus": {
     "drug": {

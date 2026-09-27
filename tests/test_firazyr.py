@@ -94,17 +94,17 @@ def test_source_and_catalog():
     assert catalog['firazyr'] == p
     assert p['alternatives'] == ['berinert']
     assert 'firazyr' in catalog['berinert']['alternatives']
-    assert catalog['crenessity']['encoding_status'] == 'text_only'
+    assert catalog['crenessity']['encoding_status'] == 'partial'
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 96
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 102
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 97
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 101
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (96, 102)
-    assert status['next_candidate'] == 'crenessity'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (97, 101)
+    assert status['next_candidate'] == 'jascayd'
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['firazyr', 'berinert']:
         assert (BASE / f'{name}.json').read_bytes() == (BASE / f'rule_packs/{name}.json').read_bytes()

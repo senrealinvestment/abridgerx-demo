@@ -7694,7 +7694,8 @@
   "crenessity": {
     "drug": {
       "name": "Crenessity",
-      "therapeutic_class": "other"
+      "therapeutic_class": "crf1-antagonist",
+      "generic_name": "crinecerfont"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -7705,17 +7706,233 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Classic congenital adrenal hyperplasia (CAH).",
+        "citation": "https://health.alaska.gov/media/qyggj1kd/crenessity_criteria_2025.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "classic_congenital_adrenal_hyperplasia"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 4 years old (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/qyggj1kd/crenessity_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 4
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with an endocrinologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/qyggj1kd/crenessity_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "endocrinologist",
+            "endocrinologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "classic_cah_confirmation",
+        "text": "Classic 21-hydroxylase deficiency CAH medically confirmed by one of the listed methods (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/qyggj1kd/crenessity_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "classic_cah_confirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "classic_cah_confirmation",
+          "values": [
+            "elevated_17_ohp",
+            "cyp21a2_mutation_consistent_with_cah",
+            "positive_newborn_screen_confirmatory_second_tier",
+            "cosyntropin_stimulation_test"
+          ]
+        }
+      },
+      {
+        "id": "currently_receiving_glucocorticoids_for_cah",
+        "text": "Patient is currently receiving glucocorticoid treatment for CAH (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/qyggj1kd/crenessity_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "currently_receiving_glucocorticoids_for_cah"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "currently_receiving_glucocorticoids_for_cah",
+          "value": true
+        }
+      },
+      {
+        "id": "prescribed_with_glucocorticoids",
+        "text": "Crenessity will be prescribed in combination with glucocorticoid treatment (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/qyggj1kd/crenessity_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "prescribed_with_glucocorticoids"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescribed_with_glucocorticoids",
+          "value": true
+        }
+      },
+      {
+        "id": "glucocorticoids_at_or_above_physiological_replacement",
+        "text": "Patient will receive glucocorticoids at or above the physiological replacement dose (denial criterion 2; attestation).",
+        "citation": "https://health.alaska.gov/media/qyggj1kd/crenessity_criteria_2025.pdf#denial-criteria",
+        "required_facts": [
+          "glucocorticoids_at_or_above_physiological_replacement"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "glucocorticoids_at_or_above_physiological_replacement",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Crenessity (crinecerfont) Criteria Version 1: Original 03/10/2025; Accepted 04/18/2025; Effective 06/01/2025.",
+      "Encoded: closed classic CAH indication, age at least 4 years, endocrinologist prescribing or consultation, classic 21-hydroxylase deficiency CAH confirmation, current glucocorticoid treatment, planned combination treatment, and glucocorticoids at or above physiological replacement dose as an attestation. Failure to meet approval criteria is represented by these clauses.",
+      "Cautions (notes only): glucocorticoid dose should be maintained at or above the dose necessary for endogenous cortisol replacement; patients below this level are at increased risk of acute adrenal insufficiency or adrenal crisis. Dose adjustment may be required with a moderate or strong CYP3A4 inducer.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to one year if the provider submits evidence demonstrating a positive response to therapy indicated by reduction in glucocorticoid daily dose or reduction in serum androstenedione (one or more).",
+      "Quantity (notes only): 34 day supply at FDA approved dose.",
+      "Documentation verification, cautions, dose adjustment, duration, renewal response and quantity enforcement require manual review; this pack remains partial. No alternatives are specified."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Classic congenital adrenal hyperplasia (CAH).",
+        "options": [
+          {
+            "value": "classic_congenital_adrenal_hyperplasia",
+            "label": "Classic congenital adrenal hyperplasia (CAH)"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with an endocrinologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "endocrinologist",
+            "label": "Endocrinologist"
+          },
+          {
+            "value": "endocrinologist_consult",
+            "label": "Endocrinologist consultation"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "classic_cah_confirmation": {
+        "type": "select",
+        "label": "Classic 21-hydroxylase deficiency CAH medically confirmed by one of the listed methods (approval criterion 3).",
+        "options": [
+          {
+            "value": "elevated_17_ohp",
+            "label": "Elevated 17-hydroxyprogesterone (17-OHP)"
+          },
+          {
+            "value": "cyp21a2_mutation_consistent_with_cah",
+            "label": "Confirmed CYP21A2 mutation consistent with CAH"
+          },
+          {
+            "value": "positive_newborn_screen_confirmatory_second_tier",
+            "label": "Positive newborn screening with confirmatory second-tier testing"
+          },
+          {
+            "value": "cosyntropin_stimulation_test",
+            "label": "Cosyntropin stimulation test"
+          },
+          {
+            "value": "not_met",
+            "label": "None of the confirmation methods met"
+          }
+        ]
+      },
+      "currently_receiving_glucocorticoids_for_cah": {
+        "type": "select",
+        "label": "Patient is currently receiving glucocorticoid treatment for CAH (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "prescribed_with_glucocorticoids": {
+        "type": "select",
+        "label": "Crenessity will be prescribed in combination with glucocorticoid treatment (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "glucocorticoids_at_or_above_physiological_replacement": {
+        "type": "select",
+        "label": "Patient will receive glucocorticoids at or above the physiological replacement dose (denial criterion 2; attestation).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 4 years old (approval criterion 1).",
+        "option_style": "age_bands",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 4 years"
+          },
+          {
+            "value": "4",
+            "label": "4+ years"
+          }
+        ]
+      }
+    }
   },
   "crysvita": {
     "drug": {

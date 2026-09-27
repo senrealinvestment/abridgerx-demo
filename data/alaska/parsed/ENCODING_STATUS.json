@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 96,
-  "encoding_text_only": 102,
+  "encoding_partial": 97,
+  "encoding_text_only": 101,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -29,6 +29,7 @@
     "cinqair",
     "cinryze",
     "clotting-factor",
+    "crenessity",
     "crysvita",
     "dawnzeratm",
     "dojolvi",
@@ -104,5 +105,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "crenessity"
+  "next_candidate": "jascayd"
 }

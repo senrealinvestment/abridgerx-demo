@@ -22,8 +22,8 @@ Source hub: https://health.alaska.gov/en/education/prior-authorization-medicatio
 - Criteria text JSON files: **198**
 - Rule packs: **198**
 - Fully encoded (all clauses as predicates): **0**
-- Partially encoded: **96** (Firazyr, Zurzuvae, Ztalmy, Xiaflex, Korlym, Isturisa, Epidiolex, Fintepla, Imcivree, Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
-- Text-only (requires_pa, encoding pending): **102**
+- Partially encoded: **97** (Crenessity, Firazyr, Zurzuvae, Ztalmy, Xiaflex, Korlym, Isturisa, Epidiolex, Fintepla, Imcivree, Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
+- Text-only (requires_pa, encoding pending): **101**
 - Scanned image criteria PDFs (OCR needed): **7**
 
 ## Blockers
@@ -55,7 +55,7 @@ Hemlibra encodes one closed hemophilia A prophylaxis indication (with or without
 
 ## Next encoding candidates
 
-Next candidate: `crenessity`, `jascayd`, `redemplo`, `lupkynis`. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
+Next candidate: `jascayd`, `redemplo`, `lupkynis`. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
 
 Soliris/Ultomiris encodes aHUS, PNH, gMG and Soliris-only NMOSD, indication-specific ages and clinical gates, and shared vaccination, specialty and REMS requirements. Duration, renewal, quantity and cautions remain manual review.
 
@@ -186,3 +186,5 @@ Ztalmy (`ztalmy`, ganaxolone), effective 2023-06-01, encodes the closed CDD seiz
 Zurzuvae (`zurzuvae`, zuranolone), effective 2024-03-01, encodes adult PPD, psychiatrist/consultation, episode onset and delivery windows, antidepressant therapy or contraindications to all listed options, current renal/LFT labs, eGFR ≥15 and no prior Zulresso/Zurzuvae for the current pregnancy. Cautions, initial 1 month, treatment limited to 14 days without extension, and #28 for 14 days (one course per pregnancy) remain manual review. Catalog: **95 partial / 103 text_only**. Next specialty candidate: `firazyr` (HAE acute), then `crenessity`, `jascayd`, `redemplo`, `lupkynis`.
 
 Firazyr (`firazyr`, icatibant) encodes the closed acute HAE indication, age ≥18, documented immunologist diagnosis, and prophylactic therapy or contraindication/response failure. Letter of medical necessity, documentation, date-of-service authorization, dispensing limit 3 units and ER/hospital intervention documentation for refills remain manual review. Reciprocal alternative: Berinert. Catalog: **96 partial / 102 text_only**. Next encoding candidate: `crenessity`.
+
+Crenessity (`crenessity`, crinecerfont), effective 2025-06-01, encodes classic CAH, age ≥4, endocrinologist specialty/consultation, four confirmation methods for classic 21-hydroxylase deficiency, current and planned combination glucocorticoids, and physiological replacement dose attestation. Cautions, initial approval up to 3 months, renewal up to one year with documented response, and 34 day supply at FDA approved dose remain manual review. Catalog: **97 partial / 101 text_only**. Next encoding candidate: `jascayd`.

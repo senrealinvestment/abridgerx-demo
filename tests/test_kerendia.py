@@ -90,15 +90,15 @@ def test_metadata_and_artifacts():
     catalog = load_rule_pack_catalog()
     assert catalog['kerendia'] == p
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 142
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 56
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 143
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 55
     assert catalog['opsumit']['encoding_status'] == 'partial'
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (142, 56)
-    assert status['next_candidate'] == 'noxafil'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (143, 55)
+    assert status['next_candidate'] == 'baxdela'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

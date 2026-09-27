@@ -95,11 +95,11 @@ def test_ui_metadata_and_catalog():
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status']=='partial' for v in catalog.values()) == 142
-    assert sum(v['encoding_status']=='text_only' for v in catalog.values()) == 56
+    assert sum(v['encoding_status']=='partial' for v in catalog.values()) == 143
+    assert sum(v['encoding_status']=='text_only' for v in catalog.values()) == 55
     s = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (s['encoding_partial'],s['encoding_text_only']) == (142,56)
-    assert s['next_candidate'] == 'noxafil'
-    assert catalog['noxafil']['encoding_status'] == 'text_only'
+    assert (s['encoding_partial'],s['encoding_text_only']) == (143,55)
+    assert s['next_candidate'] == 'baxdela'
+    assert catalog['baxdela']['encoding_status'] == 'text_only'
     for ext in ('json','md'):
         assert (BASE/f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent/f'ENCODING_STATUS.{ext}').read_bytes()

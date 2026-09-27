@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 142,
-  "encoding_text_only": 56,
+  "encoding_partial": 143,
+  "encoding_text_only": 55,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -85,6 +85,7 @@
     "myalept",
     "myqorzotm",
     "nexletol",
+    "noxafil",
     "nucala",
     "nuedexta",
     "ocrevus",
@@ -150,5 +151,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "noxafil"
+  "next_candidate": "baxdela"
 }

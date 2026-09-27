@@ -113,16 +113,16 @@ def test_catalog_and_alternatives():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 142
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 56
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 143
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 55
     assert p['alternatives'] == ['leqembi', 'aduhelm']
     assert catalog['aduhelm']['alternatives'] == ['leqembi', 'kisunla']
     assert catalog['kisunla']['encoding_status'] == 'partial'
     # A class link alone cannot satisfy the peer's distinct required facts.
     assert evaluate(catalog['aduhelm'], FACTS).decision != 'pass'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 142 and status['encoding_text_only'] == 56
-    assert status['next_candidate'] == 'noxafil'
+    assert status['encoding_partial'] == 143 and status['encoding_text_only'] == 55
+    assert status['next_candidate'] == 'baxdela'
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     assert json.loads((BASE.parent / 'ENCODING_STATUS.json').read_text()) == status
     assert (BASE.parent / 'ENCODING_STATUS.md').read_bytes() == (BASE / 'ENCODING_STATUS.md').read_bytes()

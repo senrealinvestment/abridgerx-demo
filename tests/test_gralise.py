@@ -114,11 +114,11 @@ def test_artifacts():
     assert catalog == {p.stem: json.loads(p.read_text()) for p in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 173
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 25
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 174
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 24
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (173, 25, 'oxycodone-hydrochloride-immediate-release')
+    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (174, 24, 'rybix-odt')
     assert 'gralise' in status['partial_slugs']
-    assert catalog['oxycodone-hydrochloride-immediate-release']['encoding_status'] == 'text_only'
+    assert catalog['rybix-odt']['encoding_status'] == 'text_only'

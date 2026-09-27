@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 173,
-  "encoding_text_only": 25,
+  "encoding_partial": 174,
+  "encoding_text_only": 24,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -115,6 +115,7 @@
     "orkambi",
     "oxbryta",
     "oxervate",
+    "oxycodone-hydrochloride-immediate-release",
     "palforzia",
     "palynziq",
     "panretin",
@@ -181,5 +182,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "oxycodone-hydrochloride-immediate-release"
+  "next_candidate": "rybix-odt"
 }

@@ -39216,16 +39216,561 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Pain severe enough to require an opioid analgesic, with inadequate alternatives (moderate to severe pain).",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "moderate_to_severe_pain"
+          ]
+        },
+        "citation": "https://health.alaska.gov/media/pyhdwhia/201911oxy-ir_criteria_approved_2019.pdf"
+      },
+      {
+        "id": "approval_path",
+        "text": "Pharmacy hospice/cancer/LTC override, pediatric post-procedure solution exception, or standard outpatient criteria 3\u201311 with formulation requirements.",
+        "required_facts": [
+          "active_oxycontin_pa",
+          "age_years",
+          "breakthrough_dosing_prn",
+          "combo_opioid_analgesic_inappropriate",
+          "dosage_form",
+          "failed_two_non_opioid_therapies",
+          "ir_for_breakthrough_pain",
+          "needs_concentrated_oral_solution",
+          "no_addictive_behaviors_or_sud_treatment",
+          "opioid_regimen",
+          "pa_override_population",
+          "post_procedure",
+          "prescribed_within_guidelines",
+          "quantity_le_90ml",
+          "single_agent_daily_oxycodone_le_90mg",
+          "total_daily_oxycodone_all_forms_le_160mg",
+          "unable_to_use_solid_dosage_form"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "pa_override_population",
+              "value": "hospice_or_cancer_or_ltc"
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "pa_override_population",
+                  "value": "pediatric_postop_solution_le_90ml"
+                },
+                {
+                  "op": "lt",
+                  "fact": "age_years",
+                  "value": 14
+                },
+                {
+                  "op": "eq",
+                  "fact": "dosage_form",
+                  "value": "solution_10mg_10ml"
+                },
+                {
+                  "op": "eq",
+                  "fact": "post_procedure",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "quantity_le_90ml",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "pa_override_population",
+                  "value": "standard_outpatient_path"
+                },
+                {
+                  "op": "eq",
+                  "fact": "failed_two_non_opioid_therapies",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "combo_opioid_analgesic_inappropriate",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "breakthrough_dosing_prn",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "no_addictive_behaviors_or_sud_treatment",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "prescribed_within_guidelines",
+                  "value": true
+                },
+                {
+                  "op": "any",
+                  "args": [
+                    {
+                      "op": "all",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "fact": "opioid_regimen",
+                          "value": "single_agent"
+                        },
+                        {
+                          "op": "eq",
+                          "fact": "single_agent_daily_oxycodone_le_90mg",
+                          "value": true
+                        }
+                      ]
+                    },
+                    {
+                      "op": "all",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "fact": "opioid_regimen",
+                          "value": "concomitant_oxycontin_er"
+                        },
+                        {
+                          "op": "eq",
+                          "fact": "active_oxycontin_pa",
+                          "value": true
+                        },
+                        {
+                          "op": "eq",
+                          "fact": "ir_for_breakthrough_pain",
+                          "value": true
+                        },
+                        {
+                          "op": "eq",
+                          "fact": "total_daily_oxycodone_all_forms_le_160mg",
+                          "value": true
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "op": "any",
+                  "args": [
+                    {
+                      "op": "eq",
+                      "fact": "dosage_form",
+                      "value": "solid"
+                    },
+                    {
+                      "op": "all",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "fact": "dosage_form",
+                          "value": "solution_10mg_10ml"
+                        },
+                        {
+                          "op": "eq",
+                          "fact": "unable_to_use_solid_dosage_form",
+                          "value": true
+                        }
+                      ]
+                    },
+                    {
+                      "op": "all",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "fact": "dosage_form",
+                          "value": "concentrated_solution_20mg_ml"
+                        },
+                        {
+                          "op": "eq",
+                          "fact": "unable_to_use_solid_dosage_form",
+                          "value": true
+                        },
+                        {
+                          "op": "eq",
+                          "fact": "needs_concentrated_oral_solution",
+                          "value": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "citation": "https://health.alaska.gov/media/pyhdwhia/201911oxy-ir_criteria_approved_2019.pdf"
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Oxycodone IR Criteria Version 2. Original 06/23/2007; Approval 11/15/2019; Effective 1/6/2020.",
+      "Formulations: tablets 5/7.5/10/15/20/30 mg; capsules 5 mg; oral solution 5 mg/5 mL; concentrated solution 20 mg/mL. The source solution criteria call the same 1 mg/mL concentration 10 mg/10 mL.",
+      "Criterion 1: every request hard-rejects at the pharmacy unless a PA is on file or patient age <14 fills oxycodone solution 10 mg/10 mL post-procedure, quantity \u226490 mL. Existing PA claim adjudication remains notes only; the pediatric exception is encoded as an alternate path.",
+      "Hospice, cancer or LTC pharmacy override and the pediatric exception bypass standard outpatient criteria and additional solution requirements. The closed pain indication applies on all paths.",
+      "Standard outpatient: failed/intolerant to \u22652 non-opioid therapies and combination opioid inappropriate; single-agent oxycodone \u226490 mg/day OR active OxyContin ER PA with IR for breakthrough pain and all oxycodone forms \u2264160 mg/day. Criterion 9 follows the regimen OR with AND: PRN breakthrough dosing, no addictive behaviors or substance-use treatment, and state/national guidelines are shared by both standard arms.",
+      "Standard solution approval additionally requires inability to use solid dosage forms. Concentrated 20 mg/mL additionally requires a documented medical condition necessitating a solution more concentrated than 10 mg/10 mL.",
+      "Cautions (notes only): monitor addiction, abuse and misuse; serious, life-threatening or fatal respiratory depression may occur. Benzodiazepines or other CNS depressants, including alcohol, may cause profound sedation, respiratory depression, coma and death.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months with clinically meaningful chart notes showing positive response to therapy.",
+      "Quantity limits (notes only): Maximum Units Med List http://dhss.alaska.gov/dhcs/Pages/pharmacy/medpriorauthoriz.aspx . Duration, reauthorization and general quantity enforcement remain manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "fact_ui": {
+      "pa_override_population": {
+        "type": "select",
+        "label": "Approval path",
+        "options": [
+          {
+            "value": "hospice_or_cancer_or_ltc",
+            "label": "Hospice, cancer or long-term care"
+          },
+          {
+            "value": "standard_outpatient_path",
+            "label": "Standard outpatient"
+          },
+          {
+            "value": "pediatric_postop_solution_le_90ml",
+            "label": "Pediatric post-procedure solution, \u226490 mL"
+          }
+        ]
+      },
+      "indication": {
+        "type": "select",
+        "label": "Indication (diagnosis)",
+        "options": [
+          {
+            "value": "moderate_to_severe_pain",
+            "label": "Moderate to severe pain requiring an opioid analgesic"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "in": [
+            "hospice_or_cancer_or_ltc",
+            "standard_outpatient_path",
+            "pediatric_postop_solution_le_90ml"
+          ]
+        }
+      },
+      "dosage_form": {
+        "type": "select",
+        "label": "Requested dosage form",
+        "options": [
+          {
+            "value": "solid",
+            "label": "Tablet or capsule"
+          },
+          {
+            "value": "solution_10mg_10ml",
+            "label": "Oral solution 10 mg/10 mL (5 mg/5 mL)"
+          },
+          {
+            "value": "concentrated_solution_20mg_ml",
+            "label": "Concentrated oral solution 20 mg/mL"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "in": [
+            "standard_outpatient_path",
+            "pediatric_postop_solution_le_90ml"
+          ]
+        }
+      },
+      "opioid_regimen": {
+        "type": "select",
+        "label": "Oxycodone regimen",
+        "options": [
+          {
+            "value": "single_agent",
+            "label": "Single agent"
+          },
+          {
+            "value": "concomitant_oxycontin_er",
+            "label": "With OxyContin ER for breakthrough pain"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "standard_outpatient_path"
+        }
+      },
+      "failed_two_non_opioid_therapies": {
+        "type": "select",
+        "label": "Failed or intolerant to at least two non-opioid therapies (APAP/NSAID/Cox-2, anticonvulsants, muscle relaxants, antidepressants, corticosteroids or topical analgesics)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "standard_outpatient_path"
+        }
+      },
+      "combo_opioid_analgesic_inappropriate": {
+        "type": "select",
+        "label": "Cannot safely or effectively use a combination opioid containing acetaminophen, aspirin or ibuprofen",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "standard_outpatient_path"
+        }
+      },
+      "breakthrough_dosing_prn": {
+        "type": "select",
+        "label": "Breakthrough dosing is as needed (PRN), not scheduled",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "standard_outpatient_path"
+        }
+      },
+      "no_addictive_behaviors_or_sud_treatment": {
+        "type": "select",
+        "label": "Not exhibiting addictive behaviors and not being treated for substance use",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "standard_outpatient_path"
+        }
+      },
+      "prescribed_within_guidelines": {
+        "type": "select",
+        "label": "Prescribed within state and national guidelines",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "standard_outpatient_path"
+        }
+      },
+      "single_agent_daily_oxycodone_le_90mg": {
+        "type": "select",
+        "label": "Single-agent total daily oxycodone \u226490 mg",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "opioid_regimen",
+          "eq": "single_agent"
+        }
+      },
+      "active_oxycontin_pa": {
+        "type": "select",
+        "label": "Active prior authorization for OxyContin ER",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "opioid_regimen",
+          "eq": "concomitant_oxycontin_er"
+        }
+      },
+      "ir_for_breakthrough_pain": {
+        "type": "select",
+        "label": "IR oxycodone used for breakthrough pain",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "opioid_regimen",
+          "eq": "concomitant_oxycontin_er"
+        }
+      },
+      "total_daily_oxycodone_all_forms_le_160mg": {
+        "type": "select",
+        "label": "Total daily dose of all oxycodone forms \u2264160 mg",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "opioid_regimen",
+          "eq": "concomitant_oxycontin_er"
+        }
+      },
+      "unable_to_use_solid_dosage_form": {
+        "type": "select",
+        "label": "Unable to use a solid dosage form",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "dosage_form",
+          "in": [
+            "solution_10mg_10ml",
+            "concentrated_solution_20mg_ml"
+          ]
+        }
+      },
+      "needs_concentrated_oral_solution": {
+        "type": "select",
+        "label": "Documented medical condition requires more concentrated oral solution",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "dosage_form",
+          "eq": "concentrated_solution_20mg_ml"
+        }
+      },
+      "post_procedure": {
+        "type": "select",
+        "label": "Solution prescribed post-procedure",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "pediatric_postop_solution_le_90ml"
+        }
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Age",
+        "options": [
+          {
+            "value": "0",
+            "label": "Younger than 14 years"
+          },
+          {
+            "value": "14",
+            "label": "14 years or older"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "pediatric_postop_solution_le_90ml"
+        }
+      },
+      "quantity_le_90ml": {
+        "type": "select",
+        "label": "Requested post-procedure solution quantity \u226490 mL",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "pediatric_postop_solution_le_90ml"
+        }
+      }
+    }
   },
   "palforzia": {
     "drug": {

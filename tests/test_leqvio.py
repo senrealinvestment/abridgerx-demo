@@ -92,8 +92,8 @@ def test_ui_confirmation_lists_and_metadata():
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 173
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 25
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 174
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 24
     assert catalog['opsumit']['encoding_status'] == 'partial'
     assert catalog['praluent']['alternatives'] == ['leqvio']
     for slug in ('leqvio', 'praluent'):
@@ -102,8 +102,8 @@ def test_catalog_and_mirrors():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (173, 25)
-    assert status['next_candidate'] == 'oxycodone-hydrochloride-immediate-release'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (174, 24)
+    assert status['next_candidate'] == 'rybix-odt'
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for ext in ('json', 'md'):
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()

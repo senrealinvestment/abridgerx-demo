@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 168,
-  "encoding_text_only": 30,
+  "encoding_partial": 169,
+  "encoding_text_only": 29,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -29,6 +29,7 @@
     "calcitonin-gene-related-peptide",
     "cambia",
     "cholbam",
+    "cialis",
     "cinqair",
     "cinryze",
     "clotting-factor",
@@ -176,5 +177,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "cialis"
+  "next_candidate": "subsys"
 }

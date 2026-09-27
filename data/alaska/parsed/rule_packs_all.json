@@ -7658,7 +7658,8 @@
   "cialis": {
     "drug": {
       "name": "Cialis",
-      "therapeutic_class": "genitourinary"
+      "therapeutic_class": "genitourinary",
+      "generic_name": "tadalafil"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -7669,15 +7670,242 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Patient is being treated for benign prostatic hyperplasia (BPH).",
+        "citation": "https://health.alaska.gov/media/d0gby2pu/cialis.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "benign_prostatic_hyperplasia"
+        }
+      },
+      {
+        "id": "male_status_documented",
+        "text": "Patient male status is documented using sex or patient_male; supplied values must satisfy the male criteria below.",
+        "citation": "https://health.alaska.gov/media/d0gby2pu/cialis.pdf",
+        "required_facts": [
+          "sex",
+          "patient_male"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "sex",
+              "value": "male"
+            },
+            {
+              "op": "eq",
+              "fact": "patient_male",
+              "value": true
+            },
+            {
+              "op": "neq",
+              "fact": "sex",
+              "value": "male"
+            },
+            {
+              "op": "eq",
+              "fact": "patient_male",
+              "value": false
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "benign_prostatic_hyperplasia"
+          ]
+        }
+      },
+      {
+        "id": "sex_not_male",
+        "text": "Deny when supplied sex is not male.",
+        "citation": "https://health.alaska.gov/media/d0gby2pu/cialis.pdf",
+        "required_facts": [
+          "sex"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "sex",
+          "value": "male"
+        },
+        "when": {
+          "fact": "sex"
+        }
+      },
+      {
+        "id": "patient_not_male",
+        "text": "Deny when patient_male is explicitly false.",
+        "citation": "https://health.alaska.gov/media/d0gby2pu/cialis.pdf",
+        "required_facts": [
+          "patient_male"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "patient_male",
+          "value": true
+        },
+        "when": {
+          "fact": "patient_male"
+        }
+      },
+      {
+        "id": "no_current_alpha_blocker_or_nitrate",
+        "text": "Patient is not currently taking an alpha-blocker or nitrate.",
+        "citation": "https://health.alaska.gov/media/d0gby2pu/cialis.pdf",
+        "required_facts": [
+          "no_current_alpha_blocker_or_nitrate"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_current_alpha_blocker_or_nitrate",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "benign_prostatic_hyperplasia"
+          ]
+        }
+      },
+      {
+        "id": "failed_alpha_blocker_30d_or_5ari_6mo",
+        "text": "One treatment failure of an alpha-blocker (30 days) OR a 5-alpha reductase inhibitor (six months).",
+        "citation": "https://health.alaska.gov/media/d0gby2pu/cialis.pdf",
+        "required_facts": [
+          "failed_alpha_blocker_30d_or_5ari_6mo"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_alpha_blocker_30d_or_5ari_6mo",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "benign_prostatic_hyperplasia"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Cialis (tadalafil), a PDE5 inhibitor for signs and symptoms of benign prostatic hyperplasia (BPH). Clinical attestations require manual verification.",
+      "Strength coverage (notes only): available 5 mg only. Not covered: 2.5 mg, 10 mg, 20 mg.",
+      "Authorization (notes only): up to 6 months; after six months a new prior authorization must be obtained.",
+      "Dispensing (notes only): 30-day supply, not to exceed 5 mg/day.",
+      "Source: Version 1; Last updated 11/18/2011; Approved 11/18/2011. Extracted effective_date is null; existing 1970-01-01 metadata stub retained, not a source effective date.",
+      "Male status may be supplied as patient_male=true or sex=male; explicitly contradictory supplied values fail."
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Treatment indication",
+        "options": [
+          {
+            "value": "benign_prostatic_hyperplasia",
+            "label": "Benign prostatic hyperplasia (BPH)"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "patient_male": {
+        "type": "select",
+        "label": "Patient is male (alternative to sex)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "benign_prostatic_hyperplasia"
+          ]
+        }
+      },
+      "sex": {
+        "type": "select",
+        "label": "Patient sex",
+        "options": [
+          {
+            "value": "male",
+            "label": "Male"
+          },
+          {
+            "value": "female",
+            "label": "Female"
+          },
+          {
+            "value": "other",
+            "label": "Other / not male"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "benign_prostatic_hyperplasia"
+          ]
+        }
+      },
+      "no_current_alpha_blocker_or_nitrate": {
+        "type": "select",
+        "label": "Patient is not currently taking an alpha-blocker or nitrate.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "benign_prostatic_hyperplasia"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "failed_alpha_blocker_30d_or_5ari_6mo": {
+        "type": "select",
+        "label": "One treatment failure of an alpha-blocker (30 days) OR a 5-alpha reductase inhibitor (six months).",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "benign_prostatic_hyperplasia"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "cinqair": {
     "drug": {

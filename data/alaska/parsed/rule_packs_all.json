@@ -19706,7 +19706,8 @@
   "myalept": {
     "drug": {
       "name": "Myalept",
-      "therapeutic_class": "lipotropics"
+      "therapeutic_class": "lipotropics",
+      "generic_name": "metreleptin"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -19717,17 +19718,337 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of congenital or acquired generalized lipodystrophy (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/vrtm0qt4/202111-myalept_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "congenital_generalized_lipodystrophy",
+            "acquired_generalized_lipodystrophy"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 18 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/vrtm0qt4/202111-myalept_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with an endocrinologist or cardiologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/vrtm0qt4/202111-myalept_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "endocrinologist_or_cardiologist_or_consult"
+        }
+      },
+      {
+        "id": "additional_diagnosis",
+        "text": "At least one additional diagnosis: diabetes mellitus, triglycerides \u2265200 mg/dL, or fasting insulin \u226530 \u03bcU/mL (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/vrtm0qt4/202111-myalept_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "additional_diagnosis"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "additional_diagnosis",
+          "values": [
+            "diabetes_mellitus",
+            "hypertriglyceridemia_ge_200",
+            "high_fasting_insulin_ge_30"
+          ]
+        }
+      },
+      {
+        "id": "baseline_labs_obtained",
+        "text": "Baseline HbA1C, triglycerides, and fasting insulin have all been obtained prior to beginning therapy (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/vrtm0qt4/202111-myalept_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_labs_obtained"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_labs_obtained",
+          "value": true
+        }
+      },
+      {
+        "id": "adjunct_to_diet_modification",
+        "text": "Myalept is used as an adjunct to diet modification (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/vrtm0qt4/202111-myalept_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "adjunct_to_diet_modification"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "adjunct_to_diet_modification",
+          "value": true
+        }
+      },
+      {
+        "id": "physician_rems_enrolled",
+        "text": "Physician is enrolled in the Myalept REMS Program (approval criterion 7).",
+        "citation": "https://health.alaska.gov/media/vrtm0qt4/202111-myalept_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "physician_rems_enrolled"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "physician_rems_enrolled",
+          "value": true
+        }
+      },
+      {
+        "id": "no_hiv_related_lipodystrophy",
+        "text": "Patient does not have HIV-related lipodystrophy (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/vrtm0qt4/202111-myalept_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "no_hiv_related_lipodystrophy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_hiv_related_lipodystrophy",
+          "value": true
+        }
+      },
+      {
+        "id": "no_partial_lipodystrophy",
+        "text": "Patient does not have partial lipodystrophy (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/vrtm0qt4/202111-myalept_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "no_partial_lipodystrophy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_partial_lipodystrophy",
+          "value": true
+        }
+      },
+      {
+        "id": "no_liver_disease",
+        "text": "Patient does not have liver disease, including non-alcoholic steatohepatitis (NASH) (denial criterion 4).",
+        "citation": "https://health.alaska.gov/media/vrtm0qt4/202111-myalept_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "no_liver_disease"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_liver_disease",
+          "value": true
+        }
+      },
+      {
+        "id": "no_general_obesity_without_congenital_leptin_deficiency",
+        "text": "Patient does not have general obesity unassociated with congenital leptin deficiency (denial criterion 5).",
+        "citation": "https://health.alaska.gov/media/vrtm0qt4/202111-myalept_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "no_general_obesity_without_congenital_leptin_deficiency"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_general_obesity_without_congenital_leptin_deficiency",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Myalept (metreleptin), a leptin analog used as an adjunct to diet as replacement therapy for complications of leptin deficiency in congenital or acquired generalized lipodystrophy. Version 1; Original 10/11/2021; Approval 11/19/2021; Effective 1/4/2022.",
+      "Encoded: approval criteria 1\u20137 and denial exclusions for HIV-related lipodystrophy, partial lipodystrophy, liver disease including NASH, and general obesity not associated with congenital leptin deficiency. Failure to meet approval criteria is also a denial. REMS enrollment applies to the physician.",
+      "Cautions (notes only): monitor for anti-metreleptin antibodies with neutralizing activity.",
+      "Cautions (notes only): insulin or insulin secretagogue dose adjustment, including possible large reductions, may be necessary. Closely monitor blood glucose during concomitant therapy.",
+      "Cautions (notes only): autoimmune disorder progression has been observed; carefully consider treatment benefits and risks in patients with autoimmune disease.",
+      "Cautions (notes only): carefully consider treatment benefits and risks in patients with significant hematologic abnormalities and/or acquired generalized lipodystrophy. Acquired generalized lipodystrophy remains an allowed indication.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 6 months if the prescriber documents a positive clinical response and continued use as an adjunct to dietary modifications.",
+      "Quantity (notes only): maximum dose 10 mg/day (up to 1 vial per day). max_units is null; dosing and quantity are not evaluated.",
+      "Documentation verification, cautions, ongoing monitoring, duration, reauthorization response, dosing, and quantity limits require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of congenital or acquired generalized lipodystrophy (approval criterion 3).",
+        "options": [
+          {
+            "value": "congenital_generalized_lipodystrophy",
+            "label": "Congenital generalized lipodystrophy (CGL)"
+          },
+          {
+            "value": "acquired_generalized_lipodystrophy",
+            "label": "Acquired generalized lipodystrophy (AGL)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with an endocrinologist or cardiologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "endocrinologist_or_cardiologist_or_consult",
+            "label": "Endocrinologist or cardiologist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "additional_diagnosis": {
+        "type": "select",
+        "label": "At least one additional diagnosis: diabetes mellitus, triglycerides \u2265200 mg/dL, or fasting insulin \u226530 \u03bcU/mL (approval criterion 4).",
+        "options": [
+          {
+            "value": "diabetes_mellitus",
+            "label": "Diabetes mellitus"
+          },
+          {
+            "value": "hypertriglyceridemia_ge_200",
+            "label": "Hypertriglyceridemia \u2265200 mg/dL"
+          },
+          {
+            "value": "high_fasting_insulin_ge_30",
+            "label": "High fasting insulin \u226530 \u03bcU/mL"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "baseline_labs_obtained": {
+        "type": "select",
+        "label": "Baseline HbA1C, triglycerides, and fasting insulin have all been obtained prior to beginning therapy (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "adjunct_to_diet_modification": {
+        "type": "select",
+        "label": "Myalept is used as an adjunct to diet modification (approval criterion 6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "physician_rems_enrolled": {
+        "type": "select",
+        "label": "Physician is enrolled in the Myalept REMS Program (approval criterion 7).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_hiv_related_lipodystrophy": {
+        "type": "select",
+        "label": "Patient does not have HIV-related lipodystrophy (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_partial_lipodystrophy": {
+        "type": "select",
+        "label": "Patient does not have partial lipodystrophy (denial criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_liver_disease": {
+        "type": "select",
+        "label": "Patient does not have liver disease, including non-alcoholic steatohepatitis (NASH) (denial criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_general_obesity_without_congenital_leptin_deficiency": {
+        "type": "select",
+        "label": "Patient does not have general obesity unassociated with congenital leptin deficiency (denial criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      }
+    }
   },
   "myqorzotm": {
     "drug": {

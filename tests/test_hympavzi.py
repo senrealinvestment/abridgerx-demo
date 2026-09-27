@@ -122,12 +122,12 @@ def test_catalog_mirrors_and_scope():
         assert json.load(stream) == catalog
     assert (BASE / 'hympavzi.json').read_bytes() == (BASE / 'rule_packs/hympavzi.json').read_bytes()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 81
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 117
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 82
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 116
     assert catalog['calcitonin-gene-related-peptide']['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 81 and status['encoding_text_only'] == 117
-    assert status['next_candidate'] == 'myalept'
+    assert status['encoding_partial'] == 82 and status['encoding_text_only'] == 116
+    assert status['next_candidate'] == 'yorvipath'
     assert status['partial_slugs'] == sorted(s for s, p in catalog.items() if p['encoding_status'] == 'partial')
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()

@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 162,
-  "encoding_text_only": 36,
+  "encoding_partial": 163,
+  "encoding_text_only": 35,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -139,6 +139,7 @@
     "strensiq",
     "sunosi",
     "sympazan",
+    "symproic",
     "tepezza",
     "tezspire",
     "tremfya",
@@ -170,5 +171,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "symproic"
+  "next_candidate": "vecamyl"
 }

@@ -1,4 +1,4 @@
-"""Relistor approval/denial mirrors, missing facts, UI and catalog integrity."""
+"""Symproic approval/denial mirrors, missing facts, UI and catalog integrity."""
 import gzip
 import json
 import sys
@@ -13,9 +13,8 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail
 
 BASE = ROOT / 'data/alaska/parsed'
-PACK = json.loads((BASE / 'rule_packs/relistor.json').read_text())
-INDICATIONS = ['opioid_induced_constipation_chronic_noncancer_pain',
-               'opioid_induced_constipation_advanced_illness_palliative']
+PACK = json.loads((BASE / 'rule_packs/symproic.json').read_text())
+INDICATIONS = ['opioid_induced_constipation_chronic_noncancer_pain']
 GOOD = dict(indication=INDICATIONS[0], age_years=18, opioids_longer_than_4_weeks=True,
             no_mechanical_gi_obstruction=True, failed_two_laxative_therapies=True)
 
@@ -52,7 +51,7 @@ def test_missing(indication, fact, null):
     assert result.missing_facts == [fact]
 
 
-@pytest.mark.parametrize('value', ['other', 'opioid_induced_constipation', 'chronic_constipation', 'yes', True, False])
+@pytest.mark.parametrize('value', ['opioid_induced_constipation_advanced_illness_palliative', 'other', 'opioid_induced_constipation', 'chronic_constipation', 'yes', True, False])
 def test_closed_indication(value):
     assert evaluate(PACK, dict(GOOD, indication=value)).decision == 'fail'
 
@@ -60,7 +59,7 @@ def test_closed_indication(value):
 def test_gates_and_ui():
     assert evaluate(PACK, {}).missing_facts == ['indication']
     assert evaluate(PACK, {'indication': 'other'}).decision == 'fail'
-    fields = {f['key']: f for f in drug_detail('relistor')['fact_fields']}
+    fields = {f['key']: f for f in drug_detail('symproic')['fact_fields']}
     assert set(fields) == set(GOOD)
     assert [o['value'] for o in fields['indication']['options']] == INDICATIONS
     for fact, field in fields.items():
@@ -74,20 +73,19 @@ def test_gates_and_ui():
 
 
 def test_metadata_and_catalog():
-    assert PACK['source']['effective_date'] == '2019-11-20'
-    assert PACK['drug']['generic_name'] == 'methylnaltrexone bromide'
+    assert PACK['source']['effective_date'] == '2025-06-01'
+    assert PACK['drug']['generic_name'] == 'naldemedine'
     assert PACK['encoding_status'] == 'partial'
     assert len(PACK['criteria']) == 5
     assert {f for c in PACK['criteria'] for f in c['required_facts']} == set(GOOD)
     assert 'inferred_required_facts' not in PACK
     assert PACK['max_units'] is None
     notes = ' '.join(PACK['notes'])
-    for phrase in ['8mg/0.4ml syringe', '12mg/0.6ml kit', '12mg/0.6ml syringe',
-                   '12mg/0.6ml vial', '150mg tablet', 'tablet for OIC', 'injection for OIC',
-                   'gastrointestinal perforation', 'severe or persistent diarrhea',
-                   'opioid withdrawal', '4 months', '30-day supply at FDA approved dosage']:
+    for phrase in ['prior cancer', 'weekly', 'gastrointestinal perforation',
+                   'severe or persistent diarrhea', 'opioid withdrawal', '4 months',
+                   '34-day supply at FDA approved dosage', '02/25/2025', '04/18/2025', '06/01/2025']:
         assert phrase in notes
-    assert (BASE/'relistor.json').read_bytes() == (BASE/'rule_packs/relistor.json').read_bytes()
+    assert (BASE/'symproic.json').read_bytes() == (BASE/'rule_packs/symproic.json').read_bytes()
     catalog = json.loads((BASE/'rule_packs_all.json').read_text())
     assert catalog == {p.stem: json.loads(p.read_text()) for p in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
@@ -98,6 +96,6 @@ def test_metadata_and_catalog():
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
     assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (163, 35, 'vecamyl')
-    assert 'relistor' in status['partial_slugs']
+    assert 'symproic' in status['partial_slugs']
     assert catalog['vecamyl']['encoding_status'] == 'text_only'
     assert catalog['vecamyl']['criteria'] == []

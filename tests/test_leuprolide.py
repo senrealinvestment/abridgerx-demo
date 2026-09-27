@@ -64,13 +64,13 @@ def test_metadata_catalog():
     assert catalog['leuprolide'] == PACK
     assert catalog['lovaza']['encoding_status'] == 'partial'
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 162
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 36
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 163
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 35
     assert json.loads((BASE/'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (162, 36, 'symproic')
+    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (163, 35, 'vecamyl')
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status']=='partial')

@@ -127,13 +127,13 @@ def test_partial_pack_check():
 
 
 def test_text_only_pack_surfaces_criteria():
-    detail = drug_detail("apokyn")
+    detail = drug_detail("berinert")
     assert detail is not None
     assert detail["encoding_status"] == "text_only"
     assert detail["can_evaluate"] is False
     assert detail["criteria_text"] and detail["criteria_text"].get("extracted_text")
 
-    resolved = get_rule_pack("apokyn")
+    resolved = get_rule_pack("berinert")
     assert resolved
     _, pack = resolved
     result = check(pack, {"age_years": 40, "indication": "psoriasis"}, None)

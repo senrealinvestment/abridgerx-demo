@@ -1836,29 +1836,212 @@
   },
   "apokyn": {
     "drug": {
-      "name": "Apokyn",
-      "therapeutic_class": "other"
+      "name": "Apokyn/Kynmobi",
+      "generic_name": "apomorphine",
+      "therapeutic_class": "parkinsons"
     },
     "source": {
       "payer": "alaska_medicaid",
-      "list": "Apokyn Criteria",
-      "effective_date": "2026-03-01",
+      "list": "Apokyn/Kynmobi Criteria",
+      "effective_date": "2020-11-20",
       "citation": "https://health.alaska.gov/media/id2jillz/202011apokyn_kynobi_criteria_2020.pdf",
       "criteria_pdf": "data/alaska/raw/202011apokyn_kynobi_criteria_2020.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Acute intermittent treatment of hypomobility/off episodes in Parkinson\u2019s disease (approval criterion 2 and FDA indications).",
+        "citation": "https://health.alaska.gov/media/id2jillz/202011apokyn_kynobi_criteria_2020.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "parkinsons_off_episodes"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 18 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/id2jillz/202011apokyn_kynobi_criteria_2020.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/id2jillz/202011apokyn_kynobi_criteria_2020.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "neurologist",
+            "neurologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "concurrent_anti_parkinson_agent",
+        "text": "Prescribed concurrently with an anti-Parkinson agent, e.g. levodopa/carbidopa, dopamine agonists (ropinirole), COMT inhibitors (tolcapone), or MAO-B inhibitors (rasagiline) (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/id2jillz/202011apokyn_kynobi_criteria_2020.pdf",
+        "required_facts": [
+          "concurrent_anti_parkinson_agent"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "concurrent_anti_parkinson_agent",
+          "value": true
+        }
+      },
+      {
+        "id": "hypomobility_episode_type",
+        "text": "Hypomobility at the end of the dosing interval or unpredictable on/off episodes (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/id2jillz/202011apokyn_kynobi_criteria_2020.pdf",
+        "required_facts": [
+          "hypomobility_episode_type"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "hypomobility_episode_type",
+          "values": [
+            "end_of_dose_wearing_off",
+            "unpredictable_on_off",
+            "both_or_either_documented"
+          ]
+        }
+      },
+      {
+        "id": "not_concurrent_5ht3_antagonist",
+        "text": "Patient is NOT concurrently taking a 5-HT3 antagonist (e.g. ondansetron, granisetron, dolasetron) (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/id2jillz/202011apokyn_kynobi_criteria_2020.pdf",
+        "required_facts": [
+          "not_concurrent_5ht3_antagonist"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_5ht3_antagonist",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from AK Apokyn/Kynmobi (apomorphine) Criteria Version 1. Original: 10/07/20; Approval: 11/20/20. PDF Effective is printed as 1/11//20 (malformed; commonly rendered 1/11/20). effective_date uses the unambiguous approval date 2020-11-20 rather than the archived stub date 2026-03-01; the source extraction is retained unchanged.",
+      "Apokyn injectable is indicated for acute intermittent hypomobility/off episodes associated with advanced Parkinson\u2019s disease; Kynmobi sublingual films are indicated for acute intermittent off episodes in Parkinson\u2019s disease. Approval criteria 1\u20135 and the concurrent 5-HT3 antagonist denial are encoded. Failure to meet approval criteria is also a denial.",
+      "Duration (notes only): Initial Approval up to 3 months; Reauthorization Approval up to 12 months.",
+      "Quantity limits (notes only): Apokyn \u2014 5 injections per day / 150 injections per month; Kynmobi \u2014 5 films per day / 150 films per month. Duration and quantity enforcement require manual review; this pack remains partial.",
+      "Cautions (notes only): Concomitant antihypertensive medications and vasodilators may increase risk of hypotension, myocardial infarction, falls and injuries. Syncope and hypotension/orthostatic hypotension may occur; monitor blood pressure.",
+      "Cautions (notes only): Withdrawal-emergent hyperpyrexia and confusion may occur with rapid dose reduction or withdrawal. May prolong QTc and cause torsades de pointes or sudden death; consider risk factors prior to initiation. Dopamine antagonists may diminish apomorphine effectiveness. Patients 65 years and older were more likely to experience certain adverse events in clinical trials."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Acute intermittent treatment of hypomobility/off episodes in Parkinson\u2019s disease (approval criterion 2 and FDA indications).",
+        "options": [
+          {
+            "value": "parkinsons_off_episodes",
+            "label": "Acute intermittent treatment of hypomobility/\u201coff\u201d episodes in Parkinson\u2019s disease"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist (approval criterion 3).",
+        "options": [
+          {
+            "value": "neurologist",
+            "label": "Neurologist"
+          },
+          {
+            "value": "neurologist_consult",
+            "label": "In consultation with a neurologist"
+          },
+          {
+            "value": "other",
+            "label": "Other, without neurology consultation"
+          }
+        ]
+      },
+      "concurrent_anti_parkinson_agent": {
+        "type": "select",
+        "label": "Prescribed concurrently with an anti-Parkinson agent, e.g. levodopa/carbidopa, dopamine agonists (ropinirole), COMT inhibitors (tolcapone), or MAO-B inhibitors (rasagiline) (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hypomobility_episode_type": {
+        "type": "select",
+        "label": "Hypomobility at the end of the dosing interval or unpredictable on/off episodes (approval criterion 5).",
+        "options": [
+          {
+            "value": "end_of_dose_wearing_off",
+            "label": "End-of-dose wearing off"
+          },
+          {
+            "value": "unpredictable_on_off",
+            "label": "Unpredictable on/off episodes"
+          },
+          {
+            "value": "both_or_either_documented",
+            "label": "Both or either qualifying episode type documented"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "not_concurrent_5ht3_antagonist": {
+        "type": "select",
+        "label": "Patient is NOT concurrently taking a 5-HT3 antagonist (e.g. ondansetron, granisetron, dolasetron) (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 no concurrent 5-HT3 antagonist"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 concurrent 5-HT3 antagonist"
+          }
+        ]
+      }
+    }
   },
   "atypical-antipsychotic-therapeutic-duplication": {
     "drug": {

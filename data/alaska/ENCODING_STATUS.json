@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 51,
-  "encoding_text_only": 147,
+  "encoding_partial": 52,
+  "encoding_text_only": 146,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -16,6 +16,7 @@
     "amrix",
     "andembry",
     "anzupgo",
+    "apokyn",
     "benlysta",
     "beqvez-tm",
     "bimzelx",
@@ -59,5 +60,5 @@
     "zolgensma",
     "zymfentra"
   ],
-  "next_candidate": "apokyn"
+  "next_candidate": "berinert"
 }

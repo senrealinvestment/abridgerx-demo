@@ -22784,15 +22784,153 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diabetes insulin therapy via an insulin pen device.",
+        "citation": "https://health.alaska.gov/media/k0udxiri/insulin-pen_criteria_guidance_2023.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "diabetes_insulin_pen_use"
+        }
+      },
+      {
+        "id": "original_sealed_carton_or_documented_professional_judgment",
+        "text": "Dispensed in the original sealed carton per manufacturer / FDA guidance, or pharmacist professional judgment to open the carton (for example, long term care) is documented and the submitted claim is accurate.",
+        "citation": "https://health.alaska.gov/media/k0udxiri/insulin-pen_criteria_guidance_2023.pdf",
+        "when": {
+          "fact": "indication",
+          "eq": "diabetes_insulin_pen_use"
+        },
+        "required_facts": [
+          "original_sealed_carton_or_documented_professional_judgment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "original_sealed_carton_or_documented_professional_judgment",
+          "value": true
+        }
+      },
+      {
+        "id": "directions_mathematically_useful_or_prescriber_contact_documented",
+        "text": "Directions are mathematically useful, or the pharmacist contacted the prescriber for usable directions and documented them on the original prescription.",
+        "citation": "https://health.alaska.gov/media/k0udxiri/insulin-pen_criteria_guidance_2023.pdf",
+        "when": {
+          "fact": "indication",
+          "eq": "diabetes_insulin_pen_use"
+        },
+        "required_facts": [
+          "directions_mathematically_useful_or_prescriber_contact_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "directions_mathematically_useful_or_prescriber_contact_documented",
+          "value": true
+        }
+      },
+      {
+        "id": "day_supply_le_34_or_correct_days_then_capped",
+        "text": "True day supply calculated and billed accurately within plan limits (maximum 34-day supply); if one box exceeds 34 days, the claim was first submitted for the correct day supply and the rejection captured before submitting as 34 days.",
+        "citation": "https://health.alaska.gov/media/k0udxiri/insulin-pen_criteria_guidance_2023.pdf",
+        "when": {
+          "fact": "indication",
+          "eq": "diabetes_insulin_pen_use"
+        },
+        "required_facts": [
+          "day_supply_le_34_or_correct_days_then_capped"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "day_supply_le_34_or_correct_days_then_capped",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Insulin Pen Clinical Criteria Version 1; Original 10/26/2020; Approval: pending; Effective: pending on the PDF. Catalog effective_date stub 2022-05-01 is preserved and is not a confirmed PDF effective date.",
+      "This is point-of-sale (POS) pharmacy utilization guidance, not classic clinical prior authorization. Encoded requirements are process attestations; a pass means the submitted attestations satisfy encoded guidance. No classic clinical step-edit or diagnosis gates beyond diabetes insulin pen use are imposed.",
+      "FDA does not recommend breaking multi-pen boxes because of medication and dosing error risk; manufacturer packaging directs dispensing in original sealed cartons.",
+      "Pharmacist professional judgment to open a carton, such as in long term care (LTC), is not subject to recovery if the submitted claim is accurate.",
+      "For directions such as \"as directed\" or \"prn\", contact the prescriber for mathematically useful directions. Document verbal direction changes on the original prescription, including authorizing agent, date, time and pharmacist initials, in accordance with applicable legislation.",
+      "Calculate and bill true day supply, with a maximum 34-day supply on insulin pen products. If one box exceeds 34 days, first run the claim for the correct day supply and obtain the rejection before submitting for 34 days; the initial correct day supply is captured and retained in the Alaska Medicaid pharmacy system.",
+      "Reference: FDA press release, October 13, 2020, FDA advises health care professionals and patients about insulin pen packaging and dispensing; accessed 10/26/2020."
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Indication",
+        "options": [
+          {
+            "value": "diabetes_insulin_pen_use",
+            "label": "Diabetes insulin therapy via insulin pen device"
+          },
+          {
+            "value": "other",
+            "label": "Other indication"
+          }
+        ]
+      },
+      "original_sealed_carton_or_documented_professional_judgment": {
+        "type": "select",
+        "label": "Dispensed in the original sealed carton per manufacturer / FDA guidance, or pharmacist professional judgment to open the carton (for example, long term care) is documented and the submitted claim is accurate.",
+        "when": {
+          "fact": "indication",
+          "eq": "diabetes_insulin_pen_use"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "directions_mathematically_useful_or_prescriber_contact_documented": {
+        "type": "select",
+        "label": "Directions are mathematically useful, or the pharmacist contacted the prescriber for usable directions and documented them on the original prescription.",
+        "when": {
+          "fact": "indication",
+          "eq": "diabetes_insulin_pen_use"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "day_supply_le_34_or_correct_days_then_capped": {
+        "type": "select",
+        "label": "True day supply calculated and billed accurately within plan limits (maximum 34-day supply); if one box exceeds 34 days, the claim was first submitted for the correct day supply and the rejection captured before submitting as 34 days.",
+        "when": {
+          "fact": "indication",
+          "eq": "diabetes_insulin_pen_use"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "interleukin-5-inhibitors": {
     "drug": {

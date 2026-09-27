@@ -90,12 +90,12 @@ def test_metadata_and_catalog():
     assert catalog == {p.stem: json.loads(p.read_text()) for p in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 186
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 12
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 187
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 11
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (186, 12, 'insulin-pens')
+    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (187, 11, 'genotypes')
     assert 'symproic' in status['partial_slugs']
-    assert catalog['insulin-pens']['encoding_status'] == 'text_only'
-    assert catalog['insulin-pens']['criteria'] == []
+    assert catalog['genotypes']['encoding_status'] == 'text_only'
+    assert catalog['genotypes']['criteria'] == []

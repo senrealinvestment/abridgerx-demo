@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 186,
-  "encoding_text_only": 12,
+  "encoding_partial": 187,
+  "encoding_text_only": 11,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -73,6 +73,7 @@
     "imcivree",
     "infliximab",
     "inhaled-prostacycline-mimetic",
+    "insulin-pens",
     "interleukin-5-inhibitors",
     "invokana",
     "isturisa",
@@ -194,5 +195,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "insulin-pens"
+  "next_candidate": "genotypes"
 }

@@ -25214,7 +25214,8 @@
   "myqorzotm": {
     "drug": {
       "name": "MyqorzoTM",
-      "therapeutic_class": "other"
+      "therapeutic_class": "cardiac-myosin-inhibitor",
+      "generic_name": "aficamten"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -25225,18 +25226,261 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of symptomatic obstructive hypertrophic cardiomyopathy (oHCM).",
+        "citation": "https://health.alaska.gov/media/au0drg1x/myqorzo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "obstructive_hypertrophic_cardiomyopathy"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient meets FDA labeled adult age \u226518 years.",
+        "citation": "https://health.alaska.gov/media/au0drg1x/myqorzo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "cardiologist_or_consultation",
+        "text": "Prescribed by or in consultation with a cardiologist.",
+        "citation": "https://health.alaska.gov/media/au0drg1x/myqorzo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "cardiologist_or_consultation"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "cardiologist_or_consultation",
+          "value": true
+        }
+      },
+      {
+        "id": "lv_wall_thickness_requirement_met",
+        "text": "Maximal left ventricular wall thickness \u226515 mm (15 included) OR \u226513 mm (13 included) with documented familial hypertrophic cardiomyopathy.",
+        "citation": "https://health.alaska.gov/media/au0drg1x/myqorzo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "lv_wall_thickness_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "lv_wall_thickness_requirement_met",
+          "value": true
+        }
+      },
+      {
+        "id": "lvef_below_55",
+        "text": "Left ventricular ejection fraction (LVEF) <55% (55 excluded), as written in the Alaska source.",
+        "citation": "https://health.alaska.gov/media/au0drg1x/myqorzo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "lvef_below_55"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "lvef_below_55",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_lvot_gradient_requirement_met",
+        "text": "Baseline resting LVOT gradient \u226530 mmHg (30 included) OR baseline LVOT gradient \u226550 mmHg (50 included) following provocation (e.g. Valsalva maneuver).",
+        "citation": "https://health.alaska.gov/media/au0drg1x/myqorzo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_lvot_gradient_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_lvot_gradient_requirement_met",
+          "value": true
+        }
+      },
+      {
+        "id": "nyha_class_ii_or_iii",
+        "text": "Patient exhibits NYHA functional class II or class III symptoms of heart failure.",
+        "citation": "https://health.alaska.gov/media/au0drg1x/myqorzo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "nyha_class_ii_or_iii"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "nyha_class_ii_or_iii",
+          "value": true
+        }
+      },
+      {
+        "id": "beta_blocker_or_non_dhp_ccb_trial_or_contraindication",
+        "text": "Tried and failed OR has a documented clinical contraindication to a beta blocker OR non-dihydropyridine calcium channel blocker at maximally tolerated dose.",
+        "citation": "https://health.alaska.gov/media/au0drg1x/myqorzo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "beta_blocker_or_non_dhp_ccb_trial_or_contraindication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "beta_blocker_or_non_dhp_ccb_trial_or_contraindication",
+          "value": true
+        }
+      },
+      {
+        "id": "concomitant_rifampin",
+        "text": "Patient is on concomitant therapy with rifampin (must be No).",
+        "citation": "https://health.alaska.gov/media/au0drg1x/myqorzo_criteria_2026.pdf#denial-criteria",
+        "required_facts": [
+          "concomitant_rifampin"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "concomitant_rifampin",
+          "value": false
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid MyqorzoTM Criteria Version 1; Original: 3/5/2026; Accepted: 4/17/2026; Effective: 6/1/2026.",
+      "Encoded: closed symptomatic oHCM indication, adult age, approval criteria 1\u20136 and concomitant rifampin denial. Clinical requirements use attestations; verify supporting documentation. Failure to meet approval criteria is represented by approval predicates. The source LVEF <55% requirement is preserved faithfully, including exclusion of 55%.",
+      "Cautions (notes only): heart failure due to systolic dysfunction; echocardiogram assessments required prior to and during treatment to monitor for worsening clinical status. Drugs inhibiting multiple pathways of aficamten elimination, strong CYP2C9 inhibitors, or moderate to strong CYP3A inducers may increase heart failure risk; dose adjustment and additional monitoring may be necessary. These cautions require manual review.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months. Manual review required.",
+      "Quantity (notes only): 30 tablets per 30 days; not to exceed 20 mg/day. Quantity and dose enforcement require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of symptomatic obstructive hypertrophic cardiomyopathy (oHCM).",
+        "options": [
+          {
+            "value": "obstructive_hypertrophic_cardiomyopathy",
+            "label": "Symptomatic obstructive hypertrophic cardiomyopathy (oHCM)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient meets FDA labeled adult age \u226518 years.",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "cardiologist_or_consultation": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a cardiologist.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "lv_wall_thickness_requirement_met": {
+        "type": "select",
+        "label": "Maximal left ventricular wall thickness \u226515 mm (15 included) OR \u226513 mm (13 included) with documented familial hypertrophic cardiomyopathy.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "lvef_below_55": {
+        "type": "select",
+        "label": "Left ventricular ejection fraction (LVEF) <55% (55 excluded), as written in the Alaska source.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "baseline_lvot_gradient_requirement_met": {
+        "type": "select",
+        "label": "Baseline resting LVOT gradient \u226530 mmHg (30 included) OR baseline LVOT gradient \u226550 mmHg (50 included) following provocation (e.g. Valsalva maneuver).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "nyha_class_ii_or_iii": {
+        "type": "select",
+        "label": "Patient exhibits NYHA functional class II or class III symptoms of heart failure.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "beta_blocker_or_non_dhp_ccb_trial_or_contraindication": {
+        "type": "select",
+        "label": "Tried and failed OR has a documented clinical contraindication to a beta blocker OR non-dihydropyridine calcium channel blocker at maximally tolerated dose.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "concomitant_rifampin": {
+        "type": "select",
+        "label": "Patient is on concomitant therapy with rifampin (must be No).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "mytesi": {
     "drug": {

@@ -26681,7 +26681,8 @@
   "redemplo": {
     "drug": {
       "name": "Redemplo",
-      "therapeutic_class": "lipotropics"
+      "generic_name": "plozasiran",
+      "therapeutic_class": "apoc3-sirna"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -26692,18 +26693,265 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of familial chylomicronemia syndrome (FCS) (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/kganlzmp/redemplo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "familial_chylomicronemia_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 18 years old (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/kganlzmp/redemplo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a cardiologist or endocrinologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/kganlzmp/redemplo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "cardiologist",
+            "endocrinologist",
+            "cardiologist_consult",
+            "endocrinologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "fcs_confirmed_by",
+        "text": "At least one: genetic confirmation of biallelic pathogenic FCS variants (LPL, APOA5, APOC2, LMF1, etc.), Moulin score \u226510, or North American FCS (NAFCS) score \u226545 (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/kganlzmp/redemplo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "fcs_confirmed_by"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "fcs_confirmed_by",
+          "values": [
+            "biallelic_pathogenic_variants",
+            "moulin_score_ge_10",
+            "nafcs_score_ge_45"
+          ]
+        }
+      },
+      {
+        "id": "conventional_tg_lowering_therapy_failed",
+        "text": "Tried conventional TG-lowering therapy (statin, fibrates, etc.) and failed to achieve a TG reduction >20% from baseline (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/kganlzmp/redemplo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "conventional_tg_lowering_therapy_failed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "conventional_tg_lowering_therapy_failed",
+          "value": true
+        }
+      },
+      {
+        "id": "secondary_hypertriglyceridemia_ruled_out",
+        "text": "Secondary hypertriglyceridemia from other known sources (chronic kidney disease, uncontrolled diabetes, medication side-effects, etc.) ruled out (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/kganlzmp/redemplo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "secondary_hypertriglyceridemia_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "secondary_hypertriglyceridemia_ruled_out",
+          "value": true
+        }
+      },
+      {
+        "id": "low_fat_diet_attested",
+        "text": "Provider attests patient will follow a low-fat diet concomitantly with Redemplo (approval criterion 7).",
+        "citation": "https://health.alaska.gov/media/kganlzmp/redemplo_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "low_fat_diet_attested"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "low_fat_diet_attested",
+          "value": true
+        }
+      },
+      {
+        "id": "no_concomitant_olezarsen",
+        "text": "Patient is not currently and will not be taking olezarsen while taking Redemplo (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/kganlzmp/redemplo_criteria_2026.pdf#denial-criteria",
+        "required_facts": [
+          "no_concomitant_olezarsen"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_concomitant_olezarsen",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Redemplo (plozasiran) Criteria Version 1: Original 2/27/2026; Accepted 4/17/2026; Effective 6/1/2026.",
+      "Encoded: closed FCS indication, approval criteria 1\u20137, and denial criterion 2. Denial criterion 1 (failure to meet approval criteria) is represented by approval clauses. Clinical documentation attestations require manual review.",
+      "Conventional TG-lowering therapy failure means not achieving >20% TG reduction from baseline; exactly 20% reduction meets the failure definition.",
+      "Cautions (notes only): diet should contain \u226520g of fat per day, with no more than 15%\u201320% of daily calories from fat. Common adverse reactions include hyperglycemia, headache, nausea, and injection site reactions.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months.",
+      "Quantity limit (notes only): one 25mg/0.5ml prefilled syringe every 84 days. Numeric quantity enforcement is not encoded.",
+      "Documentation verification, cautions, duration, reauthorization and quantity limits require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of familial chylomicronemia syndrome (FCS) (approval criterion 3).",
+        "options": [
+          {
+            "value": "familial_chylomicronemia_syndrome",
+            "label": "Familial chylomicronemia syndrome"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old (approval criterion 1).",
+        "options": [
+          {
+            "value": "17",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a cardiologist or endocrinologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "cardiologist",
+            "label": "Cardiologist"
+          },
+          {
+            "value": "endocrinologist",
+            "label": "Endocrinologist"
+          },
+          {
+            "value": "cardiologist_consult",
+            "label": "In consultation with a cardiologist"
+          },
+          {
+            "value": "endocrinologist_consult",
+            "label": "In consultation with an endocrinologist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "fcs_confirmed_by": {
+        "type": "select",
+        "label": "At least one: genetic confirmation of biallelic pathogenic FCS variants (LPL, APOA5, APOC2, LMF1, etc.), Moulin score \u226510, or North American FCS (NAFCS) score \u226545 (approval criterion 4).",
+        "options": [
+          {
+            "value": "biallelic_pathogenic_variants",
+            "label": "Genetic testing confirms biallelic pathogenic variants in FCS-causing genes (e.g. LPL, APOA5, APOC2, LMF1)"
+          },
+          {
+            "value": "moulin_score_ge_10",
+            "label": "Moulin score \u226510"
+          },
+          {
+            "value": "nafcs_score_ge_45",
+            "label": "North American FCS (NAFCS) score \u226545"
+          },
+          {
+            "value": "not_met",
+            "label": "None of these criteria met"
+          }
+        ]
+      },
+      "conventional_tg_lowering_therapy_failed": {
+        "type": "select",
+        "label": "Tried conventional TG-lowering therapy (statin, fibrates, etc.) and failed to achieve a TG reduction >20% from baseline (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "secondary_hypertriglyceridemia_ruled_out": {
+        "type": "select",
+        "label": "Secondary hypertriglyceridemia from other known sources (chronic kidney disease, uncontrolled diabetes, medication side-effects, etc.) ruled out (approval criterion 6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "low_fat_diet_attested": {
+        "type": "select",
+        "label": "Provider attests patient will follow a low-fat diet concomitantly with Redemplo (approval criterion 7).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_concomitant_olezarsen": {
+        "type": "select",
+        "label": "Patient is not currently and will not be taking olezarsen while taking Redemplo (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "relistor": {
     "drug": {

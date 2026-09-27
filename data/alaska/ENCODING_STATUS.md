@@ -22,8 +22,8 @@ Source hub: https://health.alaska.gov/en/education/prior-authorization-medicatio
 - Criteria text JSON files: **198**
 - Rule packs: **198**
 - Fully encoded (all clauses as predicates): **0**
-- Partially encoded: **98** (Jascayd, Crenessity, Firazyr, Zurzuvae, Ztalmy, Xiaflex, Korlym, Isturisa, Epidiolex, Fintepla, Imcivree, Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
-- Text-only (requires_pa, encoding pending): **100**
+- Partially encoded: **99** (Redemplo, Jascayd, Crenessity, Firazyr, Zurzuvae, Ztalmy, Xiaflex, Korlym, Isturisa, Epidiolex, Fintepla, Imcivree, Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
+- Text-only (requires_pa, encoding pending): **99**
 - Scanned image criteria PDFs (OCR needed): **7**
 
 ## Blockers
@@ -55,7 +55,7 @@ Hemlibra encodes one closed hemophilia A prophylaxis indication (with or without
 
 ## Next encoding candidates
 
-Next candidate: `jascayd`, `redemplo`, `lupkynis`. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
+Next candidate: `lupkynis`. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
 
 Soliris/Ultomiris encodes aHUS, PNH, gMG and Soliris-only NMOSD, indication-specific ages and clinical gates, and shared vaccination, specialty and REMS requirements. Duration, renewal, quantity and cautions remain manual review.
 
@@ -190,3 +190,5 @@ Firazyr (`firazyr`, icatibant) encodes the closed acute HAE indication, age ≥1
 Crenessity (`crenessity`, crinecerfont), effective 2025-06-01, encodes classic CAH, age ≥4, endocrinologist specialty/consultation, four confirmation methods for classic 21-hydroxylase deficiency, current and planned combination glucocorticoids, and physiological replacement dose attestation. Cautions, initial approval up to 3 months, renewal up to one year with documented response, and 34 day supply at FDA approved dose remain manual review. Catalog: **97 partial / 101 text_only**. Next encoding candidate: `jascayd`.
 
 Jascayd (`jascayd`, nerandomilast), effective 2026-03-01, encodes adult IPF/PPF, pulmonology specialty/consultation, exclusion of other ILD causes, PFT within 60 days with FVC ≥45%, hemoglobin-corrected DLCO ≥25%, indication-specific confirmation, and no moderate or strong CYP3A inducer. Cautions, initial approval up to 3 months, reauthorization up to one year, and 60 tablets per 30 days remain manual review. Alternatives: Ofev/Esbriet subject to their own criteria. Catalog: **98 partial / 100 text_only**. Next encoding candidate: `redemplo`.
+
+Redemplo (`redemplo`, plozasiran), effective 2026-06-01, encodes adult FCS, cardiologist/endocrinologist specialty or consultation, three qualifying diagnostic routes, conventional TG-lowering therapy failure (not achieving >20% reduction), secondary cause exclusion, low-fat diet attestation, and no current/planned concomitant olezarsen. Diet caution, initial approval up to 3 months, reauthorization up to 12 months, and one 25mg/0.5ml prefilled syringe every 84 days remain manual review. Catalog: **99 partial / 99 text_only**. Next encoding candidate: `lupkynis`.

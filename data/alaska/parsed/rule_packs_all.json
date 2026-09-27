@@ -944,8 +944,8 @@
   },
   "amitiza": {
     "drug": {
-      "name": "Amitiza",
-      "generic_name": "lubiprostone",
+      "name": "Amitiza/Linzess",
+      "generic_name": "lubiprostone / linaclotide",
       "therapeutic_class": "gastrointestinal"
     },
     "source": {
@@ -957,17 +957,110 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Diagnosis from the FDA Indications and Usage section (approval criterion 1); product-specific eligibility and medical-record documentation require manual review.",
+        "citation": "https://health.alaska.gov/media/lwcnvd3j/amitiza_and_linzess_pa.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "chronic_idiopathic_constipation",
+            "opioid_induced_constipation_chronic_noncancer_pain",
+            "ibs_c"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 18 years of age or older (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/lwcnvd3j/amitiza_and_linzess_pa.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "failed_two_laxative_groups",
+        "text": "Submit dates of trial or inadequate response from two of: fiber supplements, stimulant laxatives, osmotic laxatives (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/lwcnvd3j/amitiza_and_linzess_pa.pdf#approval-criteria",
+        "required_facts": [
+          "failed_two_laxative_groups"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_two_laxative_groups",
+          "value": "two_of_fiber_stimulant_osmotic_inadequate"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from AK Amitiza (lubiprostone) or Linzess (linaclotide) Criteria Version 2; Approved 11/15/2013; Reviewed 09/19/2014 (format and reference update). effective_date retains 2019-06-10 from the archived stub.",
+      "Encoded: closed indication list, age \u226518, and trial/inadequate response from two of the fiber, stimulant, and osmotic laxative groups.",
+      "Product-specific FDA eligibility (notes only/manual review): CIC in adults for Amitiza and Linzess; OIC in adults with chronic non-cancer pain for Amitiza only; IBS-C in women \u226518 for Amitiza and in adults for Linzess. Product and sex are not predicate facts.",
+      "Documentation (notes only): diagnosis must be supported by the patient\u2019s medical record (approval criterion 1). Submit dates of trial or inadequate response from two laxative groups (approval criterion 3).",
+      "Limitation of use (notes only): effectiveness of Amitiza for OIC in patients taking diphenylheptane opioids (e.g., methadone) has not been established.",
+      "Authorization (notes only): coverage may be approved for 12 months.",
+      "Quantity limits (notes only): Amitiza maximum 2 capsules/day, either strength (8mcg or 24mcg); Linzess IBS-C maximum one 290mcg capsule/day; Linzess CIC maximum one 145mcg capsule/day. Quantity enforcement requires manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Indication (diagnosis)",
+        "options": [
+          {
+            "value": "chronic_idiopathic_constipation",
+            "label": "Chronic idiopathic constipation (CIC) \u2014 adults, Amitiza or Linzess"
+          },
+          {
+            "value": "opioid_induced_constipation_chronic_noncancer_pain",
+            "label": "Opioid-induced constipation with chronic non-cancer pain \u2014 adults, Amitiza only"
+          },
+          {
+            "value": "ibs_c",
+            "label": "Irritable bowel syndrome with constipation (IBS-C) \u2014 Amitiza women \u226518; Linzess adults"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "failed_two_laxative_groups": {
+        "type": "select",
+        "label": "Trial/inadequate response from two laxative groups (submit dates)",
+        "options": [
+          {
+            "value": "two_of_fiber_stimulant_osmotic_inadequate",
+            "label": "Two of fiber supplements, stimulant laxatives, osmotic laxatives"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      }
+    }
   },
   "ampyra": {
     "drug": {

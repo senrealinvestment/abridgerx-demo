@@ -21411,7 +21411,7 @@
   "somatropin": {
     "drug": {
       "name": "Somatropin",
-      "generic_name": "Growth Hormone",
+      "generic_name": "somatropin",
       "therapeutic_class": "growth-hormones"
     },
     "source": {
@@ -21423,17 +21423,1256 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_covered",
+        "text": "Alaska-covered diagnosis only",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=9",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "pediatric_ghd",
+            "transition_ghd",
+            "adult_ghd",
+            "shox_deficiency",
+            "noonan_syndrome",
+            "turner_syndrome",
+            "prader_willi_syndrome",
+            "pediatric_ckd_growth_failure",
+            "sga_growth_failure"
+          ]
+        }
+      },
+      {
+        "id": "no_gh_contraindications_malignancy_retinopathy_critical_illness",
+        "text": "No active malignancy or malignancy in past 12 months, active proliferative or severe non-proliferative diabetic retinopathy, or acute critical illness",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=9",
+        "required_facts": [
+          "no_gh_contraindications_malignancy_retinopathy_critical_illness"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_gh_contraindications_malignancy_retinopathy_critical_illness",
+          "value": true
+        }
+      },
+      {
+        "id": "not_for_iss_or_short_bowel",
+        "text": "Not for idiopathic short stature or short bowel syndrome",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=9",
+        "required_facts": [
+          "not_for_iss_or_short_bowel"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_for_iss_or_short_bowel",
+          "value": true
+        }
+      },
+      {
+        "id": "not_for_noncovered_diagnosis",
+        "text": "Not for cystic fibrosis, constitutional delay of growth/development, central precocious puberty, or another non-listed diagnosis",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=9",
+        "required_facts": [
+          "not_for_noncovered_diagnosis"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_for_noncovered_diagnosis",
+          "value": true
+        }
+      },
+      {
+        "id": "not_for_athletic_recreational_social_body_mass",
+        "text": "Not to increase body mass or strength for professional, recreational or social reasons (athletes/bodybuilders)",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=9",
+        "required_facts": [
+          "not_for_athletic_recreational_social_body_mass"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_for_athletic_recreational_social_body_mass",
+          "value": true
+        }
+      },
+      {
+        "id": "not_for_anti_aging",
+        "text": "Not to reverse effects of aging",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=9",
+        "required_facts": [
+          "not_for_anti_aging"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_for_anti_aging",
+          "value": true
+        }
+      },
+      {
+        "id": "not_for_catabolic_illness_excluding_hiv",
+        "text": "Not to counteract protein wasting from acute/chronic catabolic illness excluding HIV/AIDS (e.g. burns, sepsis, surgery, trauma, cancer, chronic hemodialysis)",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=9",
+        "required_facts": [
+          "not_for_catabolic_illness_excluding_hiv"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_for_catabolic_illness_excluding_hiv",
+          "value": true
+        }
+      },
+      {
+        "id": "not_concurrent_increlex",
+        "text": "No concurrent Increlex (mecasermin)",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=9",
+        "required_facts": [
+          "not_concurrent_increlex"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_increlex",
+          "value": true
+        }
+      },
+      {
+        "id": "gh_step_therapy_met",
+        "text": "Table 1 step therapy for the requested product and diagnosis",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=2",
+        "required_facts": [
+          "gh_step_therapy_met"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "gh_step_therapy_met",
+          "values": [
+            "requesting_first_line_for_indication",
+            "failed_one_first_line_for_indication"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ghd",
+            "transition_ghd",
+            "adult_ghd",
+            "noonan_syndrome",
+            "turner_syndrome",
+            "prader_willi_syndrome",
+            "pediatric_ckd_growth_failure",
+            "sga_growth_failure"
+          ]
+        }
+      },
+      {
+        "id": "shox_molecular_or_genetic_testing_confirmed",
+        "text": "Short stature associated with SHOX deficiency: diagnosis confirmed by molecular or genetic testing",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=3",
+        "required_facts": [
+          "shox_molecular_or_genetic_testing_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "shox_molecular_or_genetic_testing_confirmed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "shox_deficiency"
+          ]
+        }
+      },
+      {
+        "id": "noonan_molecular_or_genetic_testing_confirmed",
+        "text": "Short stature associated with Noonan syndrome: diagnosis confirmed by molecular or genetic testing",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=3",
+        "required_facts": [
+          "noonan_molecular_or_genetic_testing_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "noonan_molecular_or_genetic_testing_confirmed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "noonan_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "turner_genetic_testing_confirmed",
+        "text": "Short stature associated with Turner\u2019s syndrome: diagnosis confirmed by genetic testing",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=3",
+        "required_facts": [
+          "turner_genetic_testing_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "turner_genetic_testing_confirmed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "turner_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "prader_willi_genetic_testing_confirmed",
+        "text": "Short stature associated with Prader-Willi syndrome: diagnosis confirmed by genetic testing",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=3",
+        "required_facts": [
+          "prader_willi_genetic_testing_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prader_willi_genetic_testing_confirmed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prader_willi_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "bmi_lt_35",
+        "text": "BMI <35 kg/m\u00b2",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=3",
+        "required_facts": [
+          "bmi_lt_35"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "bmi_lt_35",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prader_willi_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "no_severe_respiratory_impairment_or_untreated_severe_osa",
+        "text": "No severe respiratory impairment or untreated severe obstructive sleep apnea",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=3",
+        "required_facts": [
+          "no_severe_respiratory_impairment_or_untreated_severe_osa"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_severe_respiratory_impairment_or_untreated_severe_osa",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prader_willi_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "ckd_kidney_failure_gfr_lte_25_awaiting_transplant",
+        "text": "Kidney failure with GFR \u226425 mL/min/1.73 m\u00b2 and awaiting kidney transplant",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=4",
+        "required_facts": [
+          "ckd_kidney_failure_gfr_lte_25_awaiting_transplant"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ckd_kidney_failure_gfr_lte_25_awaiting_transplant",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      {
+        "id": "ckd_optimal_nutrition",
+        "text": "Optimal dietary nutrition (caloric intake)",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=4",
+        "required_facts": [
+          "ckd_optimal_nutrition"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ckd_optimal_nutrition",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      {
+        "id": "ckd_height_ge_2_sd_below_mean",
+        "text": "Height \u22652 SD below mean for age and gender",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=4",
+        "required_facts": [
+          "ckd_height_ge_2_sd_below_mean"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ckd_height_ge_2_sd_below_mean",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      {
+        "id": "ckd_growth_velocity_lt_10th_percentile",
+        "text": "Growth velocity <10th percentile for age and gender over past year",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=4",
+        "required_facts": [
+          "ckd_growth_velocity_lt_10th_percentile"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ckd_growth_velocity_lt_10th_percentile",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      {
+        "id": "ckd_open_epiphyses",
+        "text": "Epiphyses are open",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=4",
+        "required_facts": [
+          "ckd_open_epiphyses"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ckd_open_epiphyses",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      {
+        "id": "ckd_below_mid_parental_and_adult_height",
+        "text": "Has not attained mid-parental target height AND height is not within the 3rd percentile of normal adult height (65 inches boys / 60 inches girls)",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=4",
+        "required_facts": [
+          "ckd_below_mid_parental_and_adult_height"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ckd_below_mid_parental_and_adult_height",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      {
+        "id": "sga_birth_size_ge_2_sd_below_mean",
+        "text": "Born SGA: birth weight or length \u22652 SD below mean for gestational age",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=5",
+        "required_facts": [
+          "sga_birth_size_ge_2_sd_below_mean"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "sga_birth_size_ge_2_sd_below_mean",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "sga_growth_failure"
+          ]
+        }
+      },
+      {
+        "id": "sga_no_catch_up_before_age_4",
+        "text": "Growth has not caught up before age 4, defined in approval column as height <2 SD below mean for age and gender",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=5",
+        "required_facts": [
+          "sga_no_catch_up_before_age_4"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "sga_no_catch_up_before_age_4",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "sga_growth_failure"
+          ]
+        }
+      },
+      {
+        "id": "sga_other_causes_ruled_out",
+        "text": "Other causes of short stature ruled out",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=5",
+        "required_facts": [
+          "sga_other_causes_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "sga_other_causes_ruled_out",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "sga_growth_failure"
+          ]
+        }
+      },
+      {
+        "id": "pediatric_ghd_open_epiphyses",
+        "text": "Epiphyses are open",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=6",
+        "required_facts": [
+          "pediatric_ghd_open_epiphyses"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pediatric_ghd_open_epiphyses",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ghd"
+          ]
+        }
+      },
+      {
+        "id": "pediatric_ghd_other_causes_ruled_out",
+        "text": "Evaluated and ruled out other growth-failure causes: hypothyroidism, chronic illness, malignancy, celiac disease, malnutrition",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=6",
+        "required_facts": [
+          "pediatric_ghd_other_causes_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pediatric_ghd_other_causes_ruled_out",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ghd"
+          ]
+        }
+      },
+      {
+        "id": "pediatric_ghd_eligibility",
+        "text": "Select the first fully met eligibility path below; if multiple paths apply, select the first (all conditions within that path required)",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=6",
+        "required_facts": [
+          "pediatric_ghd_eligibility"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pediatric_ghd_eligibility",
+          "values": [
+            "growth_failure_additional_pituitary_deficiencies",
+            "growth_failure_hypothalamic_pituitary_surgery_irradiation",
+            "velocity_ge_2_sd_two_stim_tests",
+            "velocity_ge_2_sd_one_stim_test_low_igf1",
+            "height_ge_2_sd_velocity_gt_1_sd_two_stim_tests",
+            "height_ge_2_sd_velocity_gt_1_sd_one_stim_test_low_igf1"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ghd"
+          ]
+        }
+      },
+      {
+        "id": "transition_ghd_stopped_ge_1_month_after_final_height",
+        "text": "GH stopped for at least one month after final height achieved",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=7",
+        "required_facts": [
+          "transition_ghd_stopped_ge_1_month_after_final_height"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "transition_ghd_stopped_ge_1_month_after_final_height",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "transition_ghd"
+          ]
+        }
+      },
+      {
+        "id": "transition_ghd_reconfirmation",
+        "text": "Select first fully met reconfirmation path",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=7",
+        "required_facts": [
+          "transition_ghd_reconfirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "transition_ghd_reconfirmation",
+          "values": [
+            "ge_3_pituitary_igf1_lt_2_5_percentile",
+            "le_2_pituitary_igf1_lt_50_percentile_stim",
+            "childhood_onset_multiple_pituitary_low_igf1_stim"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "transition_ghd"
+          ]
+        }
+      },
+      {
+        "id": "adult_ghd_stopped_ge_1_month",
+        "text": "GH treatment stopped for at least one month",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=8",
+        "required_facts": [
+          "adult_ghd_stopped_ge_1_month"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "adult_ghd_stopped_ge_1_month",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "adult_ghd"
+          ]
+        }
+      },
+      {
+        "id": "adult_ghd_eligibility",
+        "text": "Select first fully met adult eligibility path",
+        "citation": "https://health.alaska.gov/media/o53pyou0/growthhormone_update_2026-004.pdf#page=8",
+        "required_facts": [
+          "adult_ghd_eligibility"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "adult_ghd_eligibility",
+          "values": [
+            "ge_3_pituitary_igf1_lt_2_5_percentile",
+            "le_2_pituitary_igf1_lt_50_percentile_stim",
+            "hypothalamic_history_multiple_pituitary_low_igf1_stim",
+            "childhood_ghd_two_stim_tests"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "adult_ghd"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding: Alaska Growth Hormone criteria Version 3; approved 4/29/2016; PDF effective 10/3/2016; last updated 4/17/2026. Stub effective_date 2026-01-01 retained for updated PDF.",
+      "Initial approval only. Nine closed diagnoses; all-request denials apply to all. SHOX does not cite Table 1. No invented numeric age or specialty gates. Path selects attest all constituent conditions; first-met ordering makes overlapping clinical branches mutually exclusive selections without changing eligibility.",
+      "Pediatric GHD approval nesting: growth failure + additional pituitary deficiencies OR growth failure + hypothalamic/pituitary surgery/irradiation OR ((velocity \u22652 SD below mean OR (height \u22652 SD below mean AND velocity >1 SD below mean)) AND (two subnormal stimulation tests OR one subnormal test + low IGF-1)). Open epiphyses and exclusion of other causes apply to every path.",
+      "SGA initial approval height wording (<2 SD below mean) is retained verbatim, not silently corrected. Reauthorization height wording and pediatric GHD/CKD height approval-versus-denial inconsistencies require manual source review.",
+      "Reauthorization SHOX, Noonan and Turner (notes only): approve pediatric patients not at final adult height or completed linear growth; deny at final adult height or completed linear growth.",
+      "Reauthorization Prader-Willi (notes only): BMI <35 kg/m\u00b2, no severe respiratory impairment or untreated severe OSA, and not at final adult height/completed linear growth. Deny final height/completed growth, BMI \u226535, or severe respiratory impairment/untreated severe OSA.",
+      "Reauthorization CKD (notes only): no kidney transplant, previous GH \u22643 years, not attained mid-parental target height OR height not within 3rd percentile of normal adult height (65 inches boys/60 inches girls), and open epiphyses. Deny transplant, previous GH >3 years, attained mid-parental height OR height within that adult-height percentile, closed epiphyses, or final adult height/completed linear growth.",
+      "Reauthorization SGA (notes only): born SGA (birth weight or length \u22652 SD below gestational-age mean), height has not caught up to being <2 SD below age/gender mean, and pediatric patient not at final adult height/completed linear growth. Deny not born SGA, height caught up to <2 SD below mean, or final adult height/completed growth.",
+      "Reauthorization pediatric GHD (notes only): open epiphyses; pre-treatment growth rate doubled OR increased \u22653 cm/year in first treatment year OR growth rate \u22652.5 cm/year beyond first year; has not yet achieved mid-parental height OR height is within 3rd percentile normal adult height (65 inches boys/60 inches girls), as printed. Deny bone age =16 years males or =14 females, closed epiphyses, growth rate <2.5 cm/year past year, or whichever occurs sooner: reached mid-parental height OR height within 3rd percentile adult height. Mid-parental height = (father\u2019s height + mother\u2019s height)/2, plus 2.5 inches males or minus 2.5 inches females. Conflicting approval/denial height wording is not resolved into predicates.",
+      "Reauthorization transition and adult GHD (notes only): yearly clinical assessment evaluating adverse effects, IGF-1 and other GH-response parameters; assessment indicates response and continued need. Deny absent yearly assessment/evaluation, lack of response, or no continued need.",
+      "Initial coverage up to 6 months; reauthorization up to 12 months. Quantity limit: None. Duration and all reauthorization criteria require manual review.",
+      "FDA matrix and Table 1 are reference notes only, not hard product predicates. Zorbtive is FDA-labeled for short bowel syndrome but Alaska explicitly denies SBS; ISS is likewise denied despite some FDA labels. Skytrofa is lonapegsomatropin-tcgd within this class PDF. Alternatives empty: Serostim HIV wasting is outside this closed diagnosis list and is not an interchangeable covered indication.",
+      "FDA product \u00d7 indication matrix and dosage forms/strengths (notes only; source page 1):\nALASKA MEDICAID\n                                                               Prior Authorization Criteria\n\n                                                      Somatropin (Growth Hormone)\n                     Genotropin\u00ae, Humatrope\u00ae, Norditropin\u00ae, Nutropin\u00ae, Nutropin AQ\u00ae, Nutropin AQ NuSpin\u00ae,\n                                     Omnitrope\u00ae, Saizen\u00ae, Skytrofa\u2122,Zomacton\u00ae, Zorbtive\u00ae\n\n                                                                FDA-Labeled Indications:\n\nEmpty Cell for   GHD*:        GHD*:       Growth failure       Growth Failure   Prader-       Turner\u2019s   Noonan     ISS^   \u00a8SHOX           Short\n Formatting      Children     Adult       due to Chronic       in Children      Willi         Syndrome   Syndrome          Deficiency      Bowel\n                                          Renal                Born SGA\u25aa        Syndrome                                                   Syndrome\n                                          Insufficiency                         in Children\nGenotropin1          Yes        Yes             No                  Yes            Yes          Yes        No       Yes       No              No\nHumatrope2           Yes        Yes             No                  Yes            No           Yes        No       Yes       Yes             No\nNorditropin3         Yes        Yes             No                  Yes            Yes          Yes        Yes      Yes       No              No\nNutropin4            Yes        Yes             Yes                 No             No           Yes        No       Yes       No              No\nNutropin AQ4\n                     Yes        Yes             Yes                 No              No          Yes        No       Yes       No              No\nNutropin AQ\n                 Yes        Yes            Yes                No                 No             Yes           No        Yes     No            No\nNuSpin4\nSaizen 5\n                 Yes        Yes            No                 No                 No             No            No        No      No            No\nSkytrofa40       Yes        Yes            No                 No                 No             No            No        No      No            No\nOmnitrope  6\n                 Yes        Yes            No                 Yes                Yes            Yes           No        Yes     No            No\nZomacton7        Yes        Yes            No                 Yes                No             Yes           No        Yes     Yes           No\nZorbtive8         No        No             No                 No                 No             No            No        No      No           Yes\n  *GHD (growth hormone deficiency). \u25aaSGA (small for gestational age). ^ISS (Idiopathic short stature). \u00a8 Short Stature Homeobox-Containing gene\n\n            Dosage Form/Strength: 1, 2, 3, 4, 5, 6, 7, 8, 40\n\n                 \u2022  Genotropin: 12mg and 5.8mg powder for Injection\n                 \u2022  Genotropin Miniquick: 0.2mg, 0.4mg, 0.6mg, 0.8mg, 1mg, 1.2mg, 1.4mg, 1.6mg, 1.8mg, 2mg\n                    powder for injection\n                \u2022 Humatrope: 5mg powder for injection\n                \u2022 Humatrope Cartridge Kit: 6mg, 12mg, 24mg powder for injection\n                \u2022 Norditropin FlexPro Prefilled Pen: 5mg/1.5mL, 10mg/1.5mL, 15mg/1.5mL, 30mg/3mL solution\n                    for injection\n                \u2022 Nutropin AQ NuSpin: 10mg, 20mg solution for injection\n                \u2022 Nutropin AQ NuSpin Cartridge: 5mg/2mL solution for injection\n                \u2022 Nutropin AQ Pen Cartridge: 10mg/2mL, 20mg/2mL\n                \u2022 Omnitrope: 5.8mg powder for injection\n                \u2022 Omnitrope: 5mg/1.5mL, 10mg/1.5mL solution for injection\n                \u2022 Saizen: 5mg, 8.8mg powder for injection\n                \u2022 Saizen Click.Easy Cartridge: 8.8mg powder for injection\n                \u2022 Skytrofa: : 3 mg, 3.6 mg, 4.3 mg, 5.2 mg, 6.3 mg, 7.6 mg, 9.1 mg, 11 mg and 13.3 mg\n                \u2022 Zomacton: 5mg, 10mg powder for injection\n                \u2022 Zorbtive: 8.8mg powder for injection\n            Growth Chart References:\n            Refer to the following location for links to the WHO and CDC growth charts: 9\n            http://www.cdc.gov/growthcharts/index.htm\n\n            Growth Hormone criteria\n            Version 3\n            Approved: 4/29/2016\n            Effective for Dates of Service: 10/3/2016 and thereafter\n            Last updated: 4/17/2026                                                                                         Page 1 of 12",
+      "Table 1 first/second-line brand lists (notes only; source page 2; includes printed Nordtropin spelling and Norditropin in both PWS rows, requiring manual product review):\nALASKA MEDICAID\n                                                                     Prior Authorization Criteria\n\nStep Therapy Criteria:\n\n   First-Line medications which must be tried for a period of at least 6 months and failed for an indication before a second-line medication will be approved*:\n\n              Empty Cell for    GHD              GHD            GHD Adult      Growth          Growth        Prader-Willi   Turner\u2019s       Noonan\n               Formatting       Children         Transition                    Failure due     failure in    Syndrome       Syndrome       Syndrome\n                                                 Adolescent                    to Chronic      Children\n                                                                               Renal           Born SGA\n                                                                               Insufficiency\n              First-Line        Genotropin,      Genotropin,    Genotropin,    Nutropin        Genotropin,   Genotropin,    Genotropin,    Norditropin\n              Medication(s)     Norditropin,     Norditropin,   Norditropin,                   Norditropin   Nordtropin     Norditropin,\n                                Nutropin         Nutropin       Nutropin                                                    Nutropin\n              Second-Line       Humatrope,       Humatrope,     Humatrope,     Genotropin,     Humatrope,    Humatrope,     Humatrope,     Genotropin,\n              Medication(s)     Omnitrope,       Omnitrope,     Omnitrope,     Humatrope,      Nutropin,     Norditropin,   Omnitrope,     Humatrope,\n                                Saizen,          Saizen,        Saizen,        Norditropin,    Omnitrope,    Nutropin,      Saizen,        Nutropin,\n                                Skytrofa,        Skytrofa,      Zomacton,      Omnitrope,      Saizen,       Omnitrope,     Zomacton,      Omnitrope,\n                                Zomacton,        Zomacton,      Zorbtive       Saizen,         Zomacton,     Saizen,        Zorbtive       Saizen,\n                                Zorbtive         Zorbtive                      Zomacton,       Zorbtive      Zomacton,                     Zomacton,\n                                                                               Zorbtive                      Zorbtive                      Zorbtive\n                 * If the requested medication is listed in the \u201cSecond-Line Medication(s)\u201d row for the patient\u2019s diagnosis, the patient\n                 must have tried and failed at least one of the \u201cFirst-Line Medications\u201d for the diagnosis, before a Second-Line\n                 medication may be approved. If the requested medication is one of the \u201cFirst-Line Medications\u201d for the patient\u2019s\n                 diagnosis, clinical criteria will apply, but no step therapy will be required.\n\n\n\n\nGrowth Hormone criteria\nVersion 3\nApproved: 4/29/2016\nEffective for Dates of Service: 10/3/2016 and thereafter\nLast updated: 4/17/2026                                                                                                                          Page 2 of 12"
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Alaska-covered diagnosis only",
+        "options": [
+          {
+            "value": "pediatric_ghd",
+            "label": "Growth hormone deficiency in children"
+          },
+          {
+            "value": "transition_ghd",
+            "label": "Childhood-onset GHD in an adolescent/young adult after completed linear growth, growth rate <2 cm/year"
+          },
+          {
+            "value": "adult_ghd",
+            "label": "Adult growth hormone deficiency"
+          },
+          {
+            "value": "shox_deficiency",
+            "label": "Short stature associated with SHOX deficiency"
+          },
+          {
+            "value": "noonan_syndrome",
+            "label": "Short stature associated with Noonan syndrome"
+          },
+          {
+            "value": "turner_syndrome",
+            "label": "Short stature associated with Turner\u2019s syndrome"
+          },
+          {
+            "value": "prader_willi_syndrome",
+            "label": "Short stature associated with Prader-Willi syndrome"
+          },
+          {
+            "value": "pediatric_ckd_growth_failure",
+            "label": "Pediatric growth failure due to chronic kidney disease"
+          },
+          {
+            "value": "sga_growth_failure",
+            "label": "Growth failure in children born SGA (including IUGR / Russell-Silver)"
+          }
+        ]
+      },
+      "no_gh_contraindications_malignancy_retinopathy_critical_illness": {
+        "type": "select",
+        "label": "No active malignancy or malignancy in past 12 months, active proliferative or severe non-proliferative diabetic retinopathy, or acute critical illness",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_for_iss_or_short_bowel": {
+        "type": "select",
+        "label": "Not for idiopathic short stature or short bowel syndrome",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_for_noncovered_diagnosis": {
+        "type": "select",
+        "label": "Not for cystic fibrosis, constitutional delay of growth/development, central precocious puberty, or another non-listed diagnosis",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_for_athletic_recreational_social_body_mass": {
+        "type": "select",
+        "label": "Not to increase body mass or strength for professional, recreational or social reasons (athletes/bodybuilders)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_for_anti_aging": {
+        "type": "select",
+        "label": "Not to reverse effects of aging",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_for_catabolic_illness_excluding_hiv": {
+        "type": "select",
+        "label": "Not to counteract protein wasting from acute/chronic catabolic illness excluding HIV/AIDS (e.g. burns, sepsis, surgery, trauma, cancer, chronic hemodialysis)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_increlex": {
+        "type": "select",
+        "label": "No concurrent Increlex (mecasermin)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "gh_step_therapy_met": {
+        "type": "select",
+        "label": "Table 1 step therapy for the requested product and diagnosis",
+        "options": [
+          {
+            "value": "requesting_first_line_for_indication",
+            "label": "Requesting a first-line medication for this diagnosis; no step required"
+          },
+          {
+            "value": "failed_one_first_line_for_indication",
+            "label": "Tried for at least 6 months and failed at least one first-line medication for this diagnosis"
+          },
+          {
+            "value": "not_met",
+            "label": "None of these paths met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ghd",
+            "transition_ghd",
+            "adult_ghd",
+            "noonan_syndrome",
+            "turner_syndrome",
+            "prader_willi_syndrome",
+            "pediatric_ckd_growth_failure",
+            "sga_growth_failure"
+          ]
+        }
+      },
+      "shox_molecular_or_genetic_testing_confirmed": {
+        "type": "select",
+        "label": "Short stature associated with SHOX deficiency: diagnosis confirmed by molecular or genetic testing",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "shox_deficiency"
+          ]
+        }
+      },
+      "noonan_molecular_or_genetic_testing_confirmed": {
+        "type": "select",
+        "label": "Short stature associated with Noonan syndrome: diagnosis confirmed by molecular or genetic testing",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "noonan_syndrome"
+          ]
+        }
+      },
+      "turner_genetic_testing_confirmed": {
+        "type": "select",
+        "label": "Short stature associated with Turner\u2019s syndrome: diagnosis confirmed by genetic testing",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "turner_syndrome"
+          ]
+        }
+      },
+      "prader_willi_genetic_testing_confirmed": {
+        "type": "select",
+        "label": "Short stature associated with Prader-Willi syndrome: diagnosis confirmed by genetic testing",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prader_willi_syndrome"
+          ]
+        }
+      },
+      "bmi_lt_35": {
+        "type": "select",
+        "label": "BMI <35 kg/m\u00b2",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prader_willi_syndrome"
+          ]
+        }
+      },
+      "no_severe_respiratory_impairment_or_untreated_severe_osa": {
+        "type": "select",
+        "label": "No severe respiratory impairment or untreated severe obstructive sleep apnea",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prader_willi_syndrome"
+          ]
+        }
+      },
+      "ckd_kidney_failure_gfr_lte_25_awaiting_transplant": {
+        "type": "select",
+        "label": "Kidney failure with GFR \u226425 mL/min/1.73 m\u00b2 and awaiting kidney transplant",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      "ckd_optimal_nutrition": {
+        "type": "select",
+        "label": "Optimal dietary nutrition (caloric intake)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      "ckd_height_ge_2_sd_below_mean": {
+        "type": "select",
+        "label": "Height \u22652 SD below mean for age and gender",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      "ckd_growth_velocity_lt_10th_percentile": {
+        "type": "select",
+        "label": "Growth velocity <10th percentile for age and gender over past year",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      "ckd_open_epiphyses": {
+        "type": "select",
+        "label": "Epiphyses are open",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      "ckd_below_mid_parental_and_adult_height": {
+        "type": "select",
+        "label": "Has not attained mid-parental target height AND height is not within the 3rd percentile of normal adult height (65 inches boys / 60 inches girls)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ckd_growth_failure"
+          ]
+        }
+      },
+      "sga_birth_size_ge_2_sd_below_mean": {
+        "type": "select",
+        "label": "Born SGA: birth weight or length \u22652 SD below mean for gestational age",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "sga_growth_failure"
+          ]
+        }
+      },
+      "sga_no_catch_up_before_age_4": {
+        "type": "select",
+        "label": "Growth has not caught up before age 4, defined in approval column as height <2 SD below mean for age and gender",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "sga_growth_failure"
+          ]
+        }
+      },
+      "sga_other_causes_ruled_out": {
+        "type": "select",
+        "label": "Other causes of short stature ruled out",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "sga_growth_failure"
+          ]
+        }
+      },
+      "pediatric_ghd_open_epiphyses": {
+        "type": "select",
+        "label": "Epiphyses are open",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ghd"
+          ]
+        }
+      },
+      "pediatric_ghd_other_causes_ruled_out": {
+        "type": "select",
+        "label": "Evaluated and ruled out other growth-failure causes: hypothyroidism, chronic illness, malignancy, celiac disease, malnutrition",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ghd"
+          ]
+        }
+      },
+      "pediatric_ghd_eligibility": {
+        "type": "select",
+        "label": "Select the first fully met eligibility path below; if multiple paths apply, select the first (all conditions within that path required)",
+        "options": [
+          {
+            "value": "growth_failure_additional_pituitary_deficiencies",
+            "label": "Growth failure AND additional pituitary hormone deficiencies"
+          },
+          {
+            "value": "growth_failure_hypothalamic_pituitary_surgery_irradiation",
+            "label": "Growth failure AND surgery or irradiation in hypothalamus/pituitary region"
+          },
+          {
+            "value": "velocity_ge_2_sd_two_stim_tests",
+            "label": "Growth velocity \u22652 SD below mean for age and gender for past year AND documented subnormal responses to 2 standard GH stimulation tests (serum GH <10 ng/mL; insulin-induced hypoglycemia, arginine, glucagon, clonidine, propranolol or L-dopa)"
+          },
+          {
+            "value": "velocity_ge_2_sd_one_stim_test_low_igf1",
+            "label": "Growth velocity \u22652 SD below mean for age and gender for past year AND subnormal response to one GH stimulation test AND documented low IGF-1 for age/gender normal values"
+          },
+          {
+            "value": "height_ge_2_sd_velocity_gt_1_sd_two_stim_tests",
+            "label": "Height \u22652 SD below mean for age and gender AND growth velocity >1 SD below mean for age for past year AND documented subnormal responses to 2 standard GH stimulation tests (serum GH <10 ng/mL; insulin-induced hypoglycemia, arginine, glucagon, clonidine, propranolol or L-dopa)"
+          },
+          {
+            "value": "height_ge_2_sd_velocity_gt_1_sd_one_stim_test_low_igf1",
+            "label": "Height \u22652 SD below mean for age and gender AND growth velocity >1 SD below mean for age for past year AND subnormal response to one GH stimulation test AND documented low IGF-1 for age/gender normal values"
+          },
+          {
+            "value": "not_met",
+            "label": "None of these paths met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pediatric_ghd"
+          ]
+        }
+      },
+      "transition_ghd_stopped_ge_1_month_after_final_height": {
+        "type": "select",
+        "label": "GH stopped for at least one month after final height achieved",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "transition_ghd"
+          ]
+        }
+      },
+      "transition_ghd_reconfirmation": {
+        "type": "select",
+        "label": "Select first fully met reconfirmation path",
+        "options": [
+          {
+            "value": "ge_3_pituitary_igf1_lt_2_5_percentile",
+            "label": "\u22653 pituitary hormone deficiencies AND IGF-1 <2.5th percentile off GH therapy"
+          },
+          {
+            "value": "le_2_pituitary_igf1_lt_50_percentile_stim",
+            "label": "\u22642 pituitary hormone deficiencies AND IGF-1 <50th percentile for age/gender AND suboptimal GH stimulation response"
+          },
+          {
+            "value": "childhood_onset_multiple_pituitary_low_igf1_stim",
+            "label": "Childhood-onset GHD AND multiple pituitary hormone deficiencies AND low IGF-1 AND suboptimal response following at least one GH stimulation test"
+          },
+          {
+            "value": "not_met",
+            "label": "None of these paths met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "transition_ghd"
+          ]
+        }
+      },
+      "adult_ghd_stopped_ge_1_month": {
+        "type": "select",
+        "label": "GH treatment stopped for at least one month",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "adult_ghd"
+          ]
+        }
+      },
+      "adult_ghd_eligibility": {
+        "type": "select",
+        "label": "Select first fully met adult eligibility path",
+        "options": [
+          {
+            "value": "ge_3_pituitary_igf1_lt_2_5_percentile",
+            "label": "\u22653 pituitary hormone deficiencies AND IGF-1 <2.5th percentile off GH therapy"
+          },
+          {
+            "value": "le_2_pituitary_igf1_lt_50_percentile_stim",
+            "label": "\u22642 pituitary hormone deficiencies AND IGF-1 <50th percentile for age/gender AND suboptimal GH stimulation response; IGF-1 measured off GH therapy"
+          },
+          {
+            "value": "hypothalamic_history_multiple_pituitary_low_igf1_stim",
+            "label": "History of hypothalamic disease, cranial irradiation, surgery near pituitary/hypothalamus, head trauma or aneurysmal subarachnoid hemorrhage AND multiple pituitary hormone deficiencies AND IGF-1 below age/gender reference range off GH AND subnormal response for age to at least one standard GH stimulation test"
+          },
+          {
+            "value": "childhood_ghd_two_stim_tests",
+            "label": "Documented childhood GHD AND subnormal responses to 2 standard GH stimulation tests after being off GH"
+          },
+          {
+            "value": "not_met",
+            "label": "None of these paths met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "adult_ghd"
+          ]
+        }
+      }
+    }
   },
   "sphingosine-1-phosphate-receptor": {
     "drug": {

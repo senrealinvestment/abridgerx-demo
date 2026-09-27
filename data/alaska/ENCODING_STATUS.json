@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 61,
-  "encoding_text_only": 137,
+  "encoding_partial": 62,
+  "encoding_text_only": 136,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -58,6 +58,7 @@
     "serostim",
     "skyrizi",
     "soliris",
+    "somatropin",
     "stelara",
     "tepezza",
     "tezspire",
@@ -69,5 +70,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "somatropin"
+  "next_candidate": "clotting-factor"
 }

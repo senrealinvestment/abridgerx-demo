@@ -100,15 +100,15 @@ def test_metadata_and_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 61
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 137
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 62
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 136
     for slug in ['actiq', 'andembry']:
         assert catalog[slug]['encoding_status'] == 'partial'
     assert catalog['lemtrada']['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 61 and status['encoding_text_only'] == 137
+    assert status['encoding_partial'] == 62 and status['encoding_text_only'] == 136
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'somatropin'
+    assert status['next_candidate'] == 'clotting-factor'
     for ext in ('json', 'md'):
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()
 

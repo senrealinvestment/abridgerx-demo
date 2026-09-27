@@ -57,6 +57,6 @@ def test_ui_and_metadata():
     assert (BASE / 'quinine.json').read_bytes() == (BASE / 'rule_packs/quinine.json').read_bytes()
     catalog = load_rule_pack_catalog()
     assert catalog['quinine'] == PACK
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 181
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 17
-    assert catalog['oral-benzodiazepines']['encoding_status'] == 'text_only'
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 182
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 16
+    assert catalog['statins']['encoding_status'] == 'text_only'

@@ -38458,15 +38458,222 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Oral benzodiazepine PA request type.",
+        "citation": "https://health.alaska.gov/media/1mwl1x4u/7-a-b-benzo_criteria_draftv2_2018.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "quantity_limit_exception",
+            "three_or_more_benzodiazepines_30d",
+            "seizure_diagnosis"
+          ]
+        }
+      },
+      {
+        "id": "treatment_plan_and_medical_necessity",
+        "text": "Treatment plan, clinical evidence-based rationale and demonstration of medical necessity submitted.",
+        "citation": "https://health.alaska.gov/media/1mwl1x4u/7-a-b-benzo_criteria_draftv2_2018.pdf",
+        "required_facts": [
+          "treatment_plan_and_medical_necessity"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "treatment_plan_and_medical_necessity",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "quantity_limit_exception",
+            "three_or_more_benzodiazepines_30d"
+          ]
+        }
+      },
+      {
+        "id": "pdmp_checked",
+        "text": "Prescriber attests to checking the PDMP.",
+        "citation": "https://health.alaska.gov/media/1mwl1x4u/7-a-b-benzo_criteria_draftv2_2018.pdf",
+        "required_facts": [
+          "pdmp_checked"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pdmp_checked",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "quantity_limit_exception",
+            "three_or_more_benzodiazepines_30d"
+          ]
+        }
+      },
+      {
+        "id": "seizure_diagnosis",
+        "text": "Patient has a seizure diagnosis and needs dosing above Table 1 limits and/or more than one benzodiazepine per month.",
+        "citation": "https://health.alaska.gov/media/1mwl1x4u/7-a-b-benzo_criteria_draftv2_2018.pdf",
+        "required_facts": [
+          "seizure_diagnosis"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "seizure_diagnosis",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "seizure_diagnosis"
+          ]
+        }
+      },
+      {
+        "id": "not_concurrent_opioids_when_exceeding_ql",
+        "text": "The request does not combine Table 1 quantity-limit exceedance with concurrent opioids. Answer Yes if within Table 1 limits OR no concurrent opioids; No if both exceeding limits and taking opioids.",
+        "citation": "https://health.alaska.gov/media/1mwl1x4u/7-a-b-benzo_criteria_draftv2_2018.pdf",
+        "required_facts": [
+          "not_concurrent_opioids_when_exceeding_ql"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_opioids_when_exceeding_ql",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "quantity_limit_exception",
+            "three_or_more_benzodiazepines_30d",
+            "seizure_diagnosis"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of class quantity-limit / therapeutic-duplication PA criteria for listed oral agents only: alprazolam (including XR/ER, ODT and Intensol), chlordiazepoxide, clonazepam (including ODT), clorazepate, diazepam (including Intensol), estazolam, flurazepam, lorazepam (including Intensol), oxazepam, quazepam, temazepam and triazolam. Rules engine is the sole eligibility evaluator.",
+      "The seizure diagnosis alternate path bypasses treatment-plan and PDMP gates. Source criterion 3 uses \"and\" between exceeding Table 1 limits and needing more than one benzodiazepine per month; the requested interpretation encodes and/or. The opioid-plus-quantity-exceedance denial still applies to every path, including seizure and therapeutic duplication. Concurrent opioids alone do not trigger this denial. Prescriber is encouraged to consider reducing benzodiazepine and/or opioid dosages.",
+      "Duration (notes only): initial approval up to 3 months; re-authorization up to 12 months with clinically meaningful chart notes showing positive response to therapy.",
+      "Table 1 full oral dosing limits are retained below as reference notes, not per-row predicates; requested drug/formulation, strength, daily and 30-day quantities require manual verification. Units and mL are distinct; the duplicate diazepam row is preserved.",
+      "GENERIC NAME                 STRENGTH         ROUTE OF ADMIN     MAX UNITS PER 30 DAYS        MAXIMUM UNITS\nALPRAZOLAM                   0.25 MG              ORAL                 120                       4 PER DAY\nALPRAZOLAM                   0.5 MG               ORAL                 120                       4 PER DAY\nALPRAZOLAM                   1 MG                 ORAL                 120                       4 PER DAY\nALPRAZOLAM                   2 MG                 ORAL                 90                        3 PER DAY\nALPRAZOLAM                   1 MG/ML              ORAL                 90ML                      3ML PER DAY\nALPRAZOLAM ER                0.5 MG               ORAL                 60                        2 PER DAY\nALPRAZOLAM ER                1 MG                 ORAL                 60                        2 PER DAY\nALPRAZOLAM ER                2 MG                 ORAL                 60                        2 PER DAY\nALPRAZOLAM ER                3 MG                 ORAL                 60                        2 PER DAY\nALPRAZOLAM ODT               0.25 MG              ORAL                 120                       4 PER DAY\nALPRAZOLAM ODT               0.5 MG               ORAL                 120                       4 PER DAY\nALPRAZOLAM ODT               1 MG                 ORAL                 90                        3 PER DAY\nALPRAZOLAM ODT               2 MG                 ORAL                 60                        2 PER DAY\nCHLORDIAZEPOXIDE HCL         10 MG                ORAL                 120                       4 PER DAY\nCHLORDIAZEPOXIDE HCL         25 MG                ORAL                 180                       6 PER DAY\nCHLORDIAZEPOXIDE HCL         5 MG                 ORAL                 120                       4 PER DAY\nCLONAZEPAM                   0.5 MG               ORAL                 120                       4 PER DAY\nCLONAZEPAM                   1 MG                 ORAL                 120                       4 PER DAY\nCLONAZEPAM                   2 MG                 ORAL                 90                        3 PER DAY\nCLONAZEPAM ODT               0.125 MG             ORAL                 90                        3 PER DAY\nCLONAZEPAM ODT               0.25 MG              ORAL                 90                        3 PER DAY\nCLONAZEPAM ODT               0.5 MG               ORAL                 90                        3 PER DAY\nCLONAZEPAM ODT               1 MG                 ORAL                 90                        3 PER DAY\nCLONAZEPAM ODT               2 MG                 ORAL                 60                        2 PER DAY\nCLORAZEPATE                  3.75MG               ORAL                 90                        3 PER DAY\nCLORAZEPATE                  7.5MG                ORAL                 90                        3 PER DAY\nCLORAZEPATE                  15MG                 ORAL                 120                       4 PER DAY\nDIAZEPAM                     5 MG/5 ML            ORAL                 900ML                     30ML PER DAY\nDIAZEPAM                     5 MG/ML              ORAL                 180ML                     6ML PER DAY\nDIAZEPAM                     10 MG                ORAL                 90                        3 PER DAY\nDIAZEPAM                     2 MG                 ORAL                 120                       4 PER DAY\nDIAZEPAM                     5 MG                 ORAL                 120                       4 PER DAY\nDIAZEPAM                     5 MG/5 ML            ORAL                 900ML                     30ML PER DAY\nESTAZOLAM                    1 MG                 ORAL                 30                        1 PER DAY\nESTAZOLAM                    2 MG                 ORAL                 30                        1 PER DAY\nFLURAZEPAM HCL               15 MG                ORAL                 30                        1 PER DAY\nFLURAZEPAM HCL               30 MG                ORAL                 30                        1 PER DAY\nLORAZEPAM                    0.5 MG               ORAL                 120                       4 PER DAY\nLORAZEPAM                    1 MG                 ORAL                 120                       4 PER DAY\nLORAZEPAM                    2 MG                 ORAL                 90                        3 PER DAY\nLORAZEPAM                    2 MG/ML              ORAL                 90ML                      3 ML PER DAY\nOXAZEPAM                     10 MG                ORAL                 90                        3 PER DAY\nOXAZEPAM                     15 MG                ORAL                 90                        3 PER DAY\nOXAZEPAM                     30 MG                ORAL                 120                       4 PER DAY\nQUAZEPAM                     15 MG                ORAL                 30                        1 PER DAY\nTEMAZEPAM                    15 MG                ORAL                 30                        1 PER DAY\nTEMAZEPAM                    30 MG                ORAL                 30                        1 PER DAY\nTEMAZEPAM                    7.5 MG               ORAL                 30                        1 PER DAY\nTEMAZEPAM                    22.5 MG              ORAL                 30                        1 PER DAY\nTRIAZOLAM                    0.125 MG             ORAL                 30                        1 PER DAY\nTRIAZOLAM                    0.25 MG              ORAL                 30                        1 PER DAY",
+      "Mechanism (notes only): benzodiazepines enhance GABA at the GABAA receptor, producing sedative, hypnotic, anxiolytic, anticonvulsant and muscle-relaxant properties.",
+      "1. Kroll, D; Nieva, H; et al. Benzodiazepines are Prescribed More Frequently to Patients\n             Already at Risk for Benzodiazepine-Related Adverse Events in Primary Care. J Gen Intern\n             Med. 2016 Sep; 31(9): 1027\u20131034. Published online 2016 May 13. Accessed\n             3/14/2019.\n          2. Agarwal, S; Landon, B. Patterns in Outpatient Benzodiazepine Prescribing in the\n             United States. JAMA Netw Open:)1(2;2019 .e187399.\n             doi:10.1001/jamanetworkopen.2018.7399. Accessed 3/14/2019.\n          3. Simon, J; Gehret, J; et al. Concomitant use of opioids and benzodiazepines in the\n             outpatient setting: A retrospective study. PM R. 2018 Sep 19. pii: S1934-\n             1482(18)30926-2. doi: 10.1016/j.pmrj.2018.09.026. Accessed 3/14/2019.\n          4. CDC Guideline for Prescribing Opioids for Chronic Pain \u2014 United States, 2016.\n             Recommendations and Reports / March 18, 2016 / 65(1);1\u201349.\n             https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm?CDC_AA_refVal=https%3\n             A%2F%2Fwww.cdc.gov%2Fmmwr%2Fvolumes%2F65%2Frr%2Frr6501e1er.htm\n             Acessed 3/14/2019.",
+      "Version 1; Original 3/13/2019; Approval 4/19/2019; Effective 6/24/2019."
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Oral benzodiazepine PA request type",
+        "options": [
+          {
+            "value": "quantity_limit_exception",
+            "label": "Exceeds Table 1 quantity limits / maximum daily dose"
+          },
+          {
+            "value": "three_or_more_benzodiazepines_30d",
+            "label": "Three or more different benzodiazepines within the last 30 days"
+          },
+          {
+            "value": "seizure_diagnosis",
+            "label": "Seizure diagnosis exception: exceeds dosing limits and/or needs more than one benzodiazepine per month"
+          }
+        ]
+      },
+      "treatment_plan_and_medical_necessity": {
+        "type": "select",
+        "label": "Treatment plan, clinical evidence-based rationale and demonstration of medical necessity submitted.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "quantity_limit_exception",
+            "three_or_more_benzodiazepines_30d"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "pdmp_checked": {
+        "type": "select",
+        "label": "Prescriber attests to checking the PDMP.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "quantity_limit_exception",
+            "three_or_more_benzodiazepines_30d"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "seizure_diagnosis": {
+        "type": "select",
+        "label": "Patient has a seizure diagnosis and needs dosing above Table 1 limits and/or more than one benzodiazepine per month.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "seizure_diagnosis"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_opioids_when_exceeding_ql": {
+        "type": "select",
+        "label": "The request does not combine Table 1 quantity-limit exceedance with concurrent opioids. Answer Yes if within Table 1 limits OR no concurrent opioids; No if both exceeding limits and taking opioids.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "quantity_limit_exception",
+            "three_or_more_benzodiazepines_30d",
+            "seizure_diagnosis"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme": {
     "drug": {

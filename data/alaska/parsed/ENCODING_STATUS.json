@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 181,
-  "encoding_text_only": 17,
+  "encoding_partial": 182,
+  "encoding_text_only": 16,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -115,6 +115,7 @@
     "ofev",
     "opsumit",
     "opzelura",
+    "oral-benzodiazepines",
     "oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme",
     "orexin-receptor-antagonists",
     "orilissa",
@@ -189,5 +190,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "oral-benzodiazepines"
+  "next_candidate": "statins"
 }

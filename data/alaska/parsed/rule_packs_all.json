@@ -32926,15 +32926,193 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus.",
+        "citation": "https://health.alaska.gov/media/fwjcbwey/ccfu_diabeticagents_metforminer_20161003.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "type_2_diabetes_mellitus"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is an adult (at least 18 years old).",
+        "citation": "https://health.alaska.gov/media/fwjcbwey/ccfu_diabeticagents_metforminer_20161003.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "type_2_diabetes_mellitus"
+          ]
+        }
+      },
+      {
+        "id": "tried_glucophage_xr_generic",
+        "text": "Patient has tried metformin ER (generic Glucophage XR).",
+        "citation": "https://health.alaska.gov/media/fwjcbwey/ccfu_diabeticagents_metforminer_20161003.pdf",
+        "required_facts": [
+          "tried_glucophage_xr_generic"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "tried_glucophage_xr_generic",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "type_2_diabetes_mellitus"
+          ]
+        }
+      },
+      {
+        "id": "inert_ingredient_allergy_glucophage_xr_not_in_requested",
+        "text": "Documented allergy to an inert ingredient in generic Glucophage XR that is not present in the requested Fortamet or Glumetza (or respective generic).",
+        "citation": "https://health.alaska.gov/media/fwjcbwey/ccfu_diabeticagents_metforminer_20161003.pdf",
+        "required_facts": [
+          "inert_ingredient_allergy_glucophage_xr_not_in_requested"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "inert_ingredient_allergy_glucophage_xr_not_in_requested",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "type_2_diabetes_mellitus"
+          ]
+        }
+      },
+      {
+        "id": "fda_medwatch_submitted",
+        "text": "An FDA MedWatch report has been completed and submitted for the adverse event with generic Glucophage XR.",
+        "citation": "https://health.alaska.gov/media/fwjcbwey/ccfu_diabeticagents_metforminer_20161003.pdf",
+        "required_facts": [
+          "fda_medwatch_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "fda_medwatch_submitted",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "type_2_diabetes_mellitus"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Metformin ER: PA scope is generics for Fortamet and Glumetza. Generic Glucophage XR is the preferred step. Extended-release tablet strengths: Fortamet 500 mg/1000 mg; Glucophage XR 500 mg/750 mg; Glumetza 500 mg/1000 mg.",
+      "Grandfathering for current users of brand or generic Fortamet or Glumetza is not permitted. All initial criteria apply. Denial criteria are the inverse of the three required approval conditions.",
+      "Reauthorization (notes only): must meet all initial criteria, have documented positive clinical response, and documented better tolerance of the requested generic Fortamet or Glumetza than generic Glucophage XR. Documentation requires manual review.",
+      "Authorization (notes only): initial up to 6 months; reauthorization up to 1 year.",
+      "Quantity limits (notes only): Fortamet 2 tablets/day; Glumetza 2 tablets/day.",
+      "Pharmacokinetics (notes only): source describes product-specific peak concentrations, exposure, food effects and dose proportionality. Mechanism (notes only): metformin reduces hepatic glucose production and intestinal glucose absorption and improves peripheral insulin sensitivity. Pharmacokinetics, mechanism and package-insert references remain in the full archived source text; they are not approval predicates.",
+      "Source: Version 1; Last updated 4/7/2016; Approved 4/29/2016; Effective for Dates of Service 10/3/2016 and thereafter. Rules engine is the sole eligibility evaluator."
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Adjunct to diet and exercise to improve glycemic control in adults with type 2 diabetes mellitus.",
+        "options": [
+          {
+            "value": "type_2_diabetes_mellitus",
+            "label": "Type 2 diabetes mellitus"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "number",
+        "label": "Patient is an adult (at least 18 years old).",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "type_2_diabetes_mellitus"
+          ]
+        }
+      },
+      "tried_glucophage_xr_generic": {
+        "type": "select",
+        "label": "Patient has tried metformin ER (generic Glucophage XR).",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "type_2_diabetes_mellitus"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "inert_ingredient_allergy_glucophage_xr_not_in_requested": {
+        "type": "select",
+        "label": "Documented allergy to an inert ingredient in generic Glucophage XR that is not present in the requested Fortamet or Glumetza (or respective generic).",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "type_2_diabetes_mellitus"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "fda_medwatch_submitted": {
+        "type": "select",
+        "label": "An FDA MedWatch report has been completed and submitted for the adverse event with generic Glucophage XR.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "type_2_diabetes_mellitus"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "movantik": {
     "drug": {

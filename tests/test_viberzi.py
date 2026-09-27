@@ -100,13 +100,13 @@ def test_catalog():
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 179
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 19
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 180
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 18
     for root in (BASE, BASE.parent):
         status = json.loads((root/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (179, 19, 'metformin-er')
+        assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (180, 18, 'brand-name-multisource-medications')
         assert status['partial_slugs'] == sorted(k for k,p in catalog.items() if p['encoding_status'] == 'partial')
     for ext in ('json', 'md'):
         assert (BASE/f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent/f'ENCODING_STATUS.{ext}').read_bytes()
-    assert catalog['metformin-er']['encoding_status'] == 'text_only'
-    assert catalog['metformin-er']['criteria'] == []
+    assert catalog['brand-name-multisource-medications']['encoding_status'] == 'text_only'
+    assert catalog['brand-name-multisource-medications']['criteria'] == []

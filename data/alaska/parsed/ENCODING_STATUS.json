@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 179,
-  "encoding_text_only": 19,
+  "encoding_partial": 180,
+  "encoding_text_only": 18,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -98,6 +98,7 @@
     "marinol",
     "mavenclad",
     "mayzent",
+    "metformin-er",
     "movantik",
     "myalept",
     "myqorzotm",
@@ -187,5 +188,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "metformin-er"
+  "next_candidate": "brand-name-multisource-medications"
 }

@@ -39564,7 +39564,8 @@
   "veozah": {
     "drug": {
       "name": "Veozah",
-      "therapeutic_class": "other"
+      "therapeutic_class": "nk3-receptor-antagonist",
+      "generic_name": "fezolinetant"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -39575,17 +39576,336 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of menopause with moderate to severe vasomotor symptoms.",
+        "citation": "https://health.alaska.gov/media/11oaeo1z/veozah_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "moderate_to_severe_vasomotor_symptoms_due_to_menopause"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient meets FDA labeled age.",
+        "citation": "https://health.alaska.gov/media/11oaeo1z/veozah_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "fda_labeled_age"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "fda_labeled_age",
+          "values": [
+            "attested"
+          ]
+        }
+      },
+      {
+        "id": "baseline_lfts",
+        "text": "Baseline liver function tests have been performed.",
+        "citation": "https://health.alaska.gov/media/11oaeo1z/veozah_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_lfts"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_lfts",
+          "values": [
+            "performed"
+          ]
+        }
+      },
+      {
+        "id": "follow_up_lfts",
+        "text": "Prescriber attests follow-up LFTs will be performed per FDA approved prescribing information.",
+        "citation": "https://health.alaska.gov/media/11oaeo1z/veozah_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "follow_up_lfts"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "follow_up_lfts",
+          "values": [
+            "attested"
+          ]
+        }
+      },
+      {
+        "id": "prior_therapy",
+        "text": "Tried and failed at least one hormone or non-hormone therapy agent OR contraindication to BOTH categories.",
+        "citation": "https://health.alaska.gov/media/11oaeo1z/veozah_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "prior_therapy"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prior_therapy",
+          "values": [
+            "failed_hormone_agent",
+            "failed_non_hormone_agent",
+            "contraindicated_to_both"
+          ]
+        }
+      },
+      {
+        "id": "cirrhosis",
+        "text": "Cirrhosis must be absent.",
+        "citation": "https://health.alaska.gov/media/11oaeo1z/veozah_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "cirrhosis"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "cirrhosis",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "severe_renal_impairment_or_esrd",
+        "text": "Severe renal impairment or end-stage renal disease must be absent.",
+        "citation": "https://health.alaska.gov/media/11oaeo1z/veozah_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "severe_renal_impairment_or_esrd"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "severe_renal_impairment_or_esrd",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "baseline_total_bilirubin",
+        "text": "Baseline total bilirubin must be <2\u00d7 ULN; \u22652\u00d7 ULN is denied.",
+        "citation": "https://health.alaska.gov/media/11oaeo1z/veozah_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "baseline_total_bilirubin"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_total_bilirubin",
+          "values": [
+            "below_2x_uln"
+          ]
+        }
+      },
+      {
+        "id": "baseline_alt",
+        "text": "Baseline ALT must be <2\u00d7 ULN; \u22652\u00d7 ULN is denied.",
+        "citation": "https://health.alaska.gov/media/11oaeo1z/veozah_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "baseline_alt"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_alt",
+          "values": [
+            "below_2x_uln"
+          ]
+        }
+      },
+      {
+        "id": "baseline_ast",
+        "text": "Baseline AST must be <2\u00d7 ULN; \u22652\u00d7 ULN is denied.",
+        "citation": "https://health.alaska.gov/media/11oaeo1z/veozah_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "baseline_ast"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_ast",
+          "values": [
+            "below_2x_uln"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Veozah (fezolinetant), effective 2024-11-01. Approval criteria and explicit denials encoded; attestations and supporting documentation require manual review. Source says FDA labeled age; no numeric age cutoff is supplied.",
+      "Therapy step: at least one failed agent from the listed hormone or non-hormone categories, or contraindications to both categories. No trial duration is specified.",
+      "Cautions (notes only): serum transaminase elevations >3\u00d7 ULN have occurred; use with CYP1A2 inhibitors is not advised.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months. Manual review required.",
+      "Quantity (notes only): 34 tablets for 34 days. Manual review required."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of menopause with moderate to severe vasomotor symptoms.",
+        "options": [
+          {
+            "value": "moderate_to_severe_vasomotor_symptoms_due_to_menopause",
+            "label": "Moderate to severe vasomotor symptoms due to menopause"
+          }
+        ]
+      },
+      "fda_labeled_age": {
+        "type": "select",
+        "label": "Patient meets FDA labeled age.",
+        "options": [
+          {
+            "value": "attested",
+            "label": "Attested"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "baseline_lfts": {
+        "type": "select",
+        "label": "Baseline liver function tests have been performed.",
+        "options": [
+          {
+            "value": "performed",
+            "label": "Performed"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "follow_up_lfts": {
+        "type": "select",
+        "label": "Prescriber attests follow-up LFTs will be performed per FDA approved prescribing information.",
+        "options": [
+          {
+            "value": "attested",
+            "label": "Attested"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "prior_therapy": {
+        "type": "select",
+        "label": "Tried and failed at least one hormone or non-hormone therapy agent OR contraindication to BOTH categories.",
+        "options": [
+          {
+            "value": "failed_hormone_agent",
+            "label": "Failed \u22651 hormone therapy agent (oral, transdermal, etc.)"
+          },
+          {
+            "value": "failed_non_hormone_agent",
+            "label": "Failed \u22651 non-hormone agent (e.g. venlafaxine, paroxetine)"
+          },
+          {
+            "value": "contraindicated_to_both",
+            "label": "Contraindications to both hormone and non-hormone therapy"
+          },
+          {
+            "value": "hormone_contraindication_only",
+            "label": "Hormone contraindication only; no qualifying failure"
+          },
+          {
+            "value": "non_hormone_contraindication_only",
+            "label": "Non-hormone contraindication only; no qualifying failure"
+          },
+          {
+            "value": "not_met",
+            "label": "No qualifying failure or contraindications"
+          }
+        ]
+      },
+      "cirrhosis": {
+        "type": "select",
+        "label": "Cirrhosis must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "severe_renal_impairment_or_esrd": {
+        "type": "select",
+        "label": "Severe renal impairment or end-stage renal disease must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "baseline_total_bilirubin": {
+        "type": "select",
+        "label": "Baseline total bilirubin must be <2\u00d7 ULN; \u22652\u00d7 ULN is denied.",
+        "options": [
+          {
+            "value": "below_2x_uln",
+            "label": "<2\u00d7 ULN"
+          },
+          {
+            "value": "at_2x_uln",
+            "label": "Exactly 2\u00d7 ULN"
+          },
+          {
+            "value": "above_2x_uln",
+            "label": ">2\u00d7 ULN"
+          }
+        ]
+      },
+      "baseline_alt": {
+        "type": "select",
+        "label": "Baseline ALT must be <2\u00d7 ULN; \u22652\u00d7 ULN is denied.",
+        "options": [
+          {
+            "value": "below_2x_uln",
+            "label": "<2\u00d7 ULN"
+          },
+          {
+            "value": "at_2x_uln",
+            "label": "Exactly 2\u00d7 ULN"
+          },
+          {
+            "value": "above_2x_uln",
+            "label": ">2\u00d7 ULN"
+          }
+        ]
+      },
+      "baseline_ast": {
+        "type": "select",
+        "label": "Baseline AST must be <2\u00d7 ULN; \u22652\u00d7 ULN is denied.",
+        "options": [
+          {
+            "value": "below_2x_uln",
+            "label": "<2\u00d7 ULN"
+          },
+          {
+            "value": "at_2x_uln",
+            "label": "Exactly 2\u00d7 ULN"
+          },
+          {
+            "value": "above_2x_uln",
+            "label": ">2\u00d7 ULN"
+          }
+        ]
+      }
+    }
   },
   "verquvo": {
     "drug": {

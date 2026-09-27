@@ -141,6 +141,12 @@ def get_criteria_text(pack_slug: str) -> dict[str, Any] | None:
 
 
 def required_facts_for_pack(pack: dict[str, Any]) -> list[str]:
+    """Ordered facts the clinician UI must collect.
+
+    Prefer clause required_facts, then authored fact_ui keys (so packs that
+    declare UI metadata but omit required_facts still evaluate), then
+    inferred_required_facts for text_only stubs.
+    """
     facts: list[str] = []
     seen: set[str] = set()
     for clause in pack.get("criteria") or []:
@@ -148,6 +154,10 @@ def required_facts_for_pack(pack: dict[str, Any]) -> list[str]:
             if f not in seen:
                 seen.add(f)
                 facts.append(f)
+    for f in (pack.get("fact_ui") or {}):
+        if f not in seen:
+            seen.add(f)
+            facts.append(f)
     for f in pack.get("inferred_required_facts") or []:
         if f not in seen:
             seen.add(f)
@@ -505,6 +515,26 @@ def build_fact_field(
             field.setdefault(
                 "hint",
                 "Band value sets age_years to the band minimum for gte checks.",
+            )
+            return field
+        if ftype in ("number", "numeric", "float", "integer", "int"):
+            # Controlled numeric entry (not free-text prose). Empty selects used to
+            # make complete clinical paths always need_info on live evaluate UI.
+            field["type"] = "number"
+            field["options"] = []
+            field["option_source"] = "fact_ui_number"
+            if authored.get("min") is not None:
+                field["min"] = authored["min"]
+            if authored.get("max") is not None:
+                field["max"] = authored["max"]
+            if authored.get("step") is not None:
+                field["step"] = authored["step"]
+            else:
+                field["step"] = "any"
+            field.setdefault(
+                "hint",
+                authored.get("hint")
+                or "Enter the numeric clinical value from chart / lab report.",
             )
             return field
         opts = _normalize_options(authored.get("options"))

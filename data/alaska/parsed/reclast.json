@@ -26,7 +26,10 @@
           "reclast",
           "zometa"
         ]
-      }
+      },
+      "required_facts": [
+        "product"
+      ]
     },
     {
       "id": "age",
@@ -36,11 +39,14 @@
         "op": "gte",
         "fact": "age_years",
         "value": 18
-      }
+      },
+      "required_facts": [
+        "age_years"
+      ]
     },
     {
       "id": "reclast_indication",
-      "text": "Reclast: qualifying postmenopausal osteoporosis treatment or prevention, male osteoporosis (with testosterone requirements if hypogonadal), glucocorticoid-induced osteoporosis, or Paget’s disease.",
+      "text": "Reclast: qualifying postmenopausal osteoporosis treatment or prevention, male osteoporosis (with testosterone requirements if hypogonadal), glucocorticoid-induced osteoporosis, or Paget\u2019s disease.",
       "citation": "https://health.alaska.gov/media/cofnfve3/202201-reclast_zometa_criteria_2021.pdf",
       "predicate": {
         "op": "any",
@@ -220,7 +226,26 @@
       "when": {
         "fact": "product",
         "eq": "reclast"
-      }
+      },
+      "required_facts": [
+        "indication",
+        "alkaline_phosphatase_age_specific_uln_multiple",
+        "expected_glucocorticoid_months",
+        "femoral_neck_spine_or_total_hip_t_score",
+        "frax_10_year_hip_percent",
+        "frax_10_year_major_osteoporotic_percent",
+        "high_fracture_risk_despite_testosterone",
+        "hypogonadal_osteoporosis",
+        "imaging_confirmed_osteoporotic_vertebral_fracture",
+        "initiating_or_continuing_systemic_glucocorticoids",
+        "pagets_complication_risk",
+        "pagets_symptomatic",
+        "prednisone_equivalent_mg_per_day",
+        "pretreatment_femoral_neck_or_spine_t_score",
+        "receiving_testosterone",
+        "recent_low_trauma_hip_fracture",
+        "testosterone_contraindicated"
+      ]
     },
     {
       "id": "reclast_oral_bisphosphonate",
@@ -244,7 +269,11 @@
       "when": {
         "fact": "product",
         "eq": "reclast"
-      }
+      },
+      "required_facts": [
+        "oral_bisphosphonate_contraindicated",
+        "oral_bisphosphonate_inadequate_response"
+      ]
     },
     {
       "id": "no_concurrent_zometa",
@@ -258,11 +287,14 @@
       "when": {
         "fact": "product",
         "eq": "reclast"
-      }
+      },
+      "required_facts": [
+        "currently_receiving_zometa"
+      ]
     },
     {
       "id": "zometa_indication",
-      "text": "Zometa: malignancy hypercalcemia with albumin-corrected calcium ≥12 mg/dL, or multiple myeloma / solid-tumor bone metastases with antineoplastic therapy and calcium plus vitamin D.",
+      "text": "Zometa: malignancy hypercalcemia with albumin-corrected calcium \u226512 mg/dL, or multiple myeloma / solid-tumor bone metastases with antineoplastic therapy and calcium plus vitamin D.",
       "citation": "https://health.alaska.gov/media/cofnfve3/202201-reclast_zometa_criteria_2021.pdf",
       "predicate": {
         "op": "any",
@@ -337,7 +369,13 @@
       "when": {
         "fact": "product",
         "eq": "zometa"
-      }
+      },
+      "required_facts": [
+        "indication",
+        "albumin_corrected_calcium_mg_dl",
+        "calcium_and_vitamin_d_supplementation",
+        "concurrent_antineoplastic_therapy"
+      ]
     },
     {
       "id": "no_concurrent_reclast",
@@ -351,7 +389,10 @@
       "when": {
         "fact": "product",
         "eq": "zometa"
-      }
+      },
+      "required_facts": [
+        "currently_receiving_reclast"
+      ]
     },
     {
       "id": "hypocalcemia",
@@ -361,7 +402,10 @@
         "op": "eq",
         "fact": "uncorrected_preexisting_hypocalcemia",
         "value": false
-      }
+      },
+      "required_facts": [
+        "uncorrected_preexisting_hypocalcemia"
+      ]
     }
   ],
   "alternatives": [],

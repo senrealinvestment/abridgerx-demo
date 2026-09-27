@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from engine.evaluate import evaluate
 from ui.app import _coerce_patient
+from ui.loaders import drug_detail
 B = ROOT / 'data/alaska/parsed'
 PACK = json.loads((B / 'reclast.json').read_text())
 R = dict(product='reclast', age_years=18, uncorrected_preexisting_hypocalcemia=False,
@@ -87,3 +88,26 @@ def test_metadata_mirrors_and_scope():
         if c['id'].startswith(('zometa_', 'no_concurrent_reclast')): assert c['when']=={'fact':'product','eq':'zometa'}
     for name in ['ENCODING_STATUS.json','ENCODING_STATUS.md']:
         assert (B/name).read_bytes()==(B.parent/name).read_bytes()
+
+
+def test_ui_coerce_approve_and_deny_paths():
+    """Live evaluate UI must collect facts and reach pass/fail (not need_info)."""
+    detail = drug_detail('reclast')
+    assert detail['encoding_status'] == 'partial'
+    assert detail['can_evaluate'] is True
+    fields = {f['key']: f for f in detail['fact_fields']}
+    assert 'product' in fields and 'indication' in fields and 'age_years' in fields
+    assert 'prior_therapy_failures' not in fields
+    assert fields['pretreatment_femoral_neck_or_spine_t_score']['type'] == 'number'
+    approve = _coerce_patient({
+        'product': 'reclast', 'age_years': '45', 'indication': 'pagets_disease',
+        'pagets_symptomatic': 'yes', 'oral_bisphosphonate_contraindicated': 'yes',
+        'currently_receiving_zometa': 'no', 'uncorrected_preexisting_hypocalcemia': 'no',
+    })
+    assert evaluate(PACK, approve).decision == 'pass'
+    deny = _coerce_patient({
+        'product': 'reclast', 'age_years': '45', 'indication': 'pagets_disease',
+        'pagets_symptomatic': 'yes', 'oral_bisphosphonate_contraindicated': 'yes',
+        'currently_receiving_zometa': 'no', 'uncorrected_preexisting_hypocalcemia': 'yes',
+    })
+    assert evaluate(PACK, deny).decision == 'fail'

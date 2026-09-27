@@ -113,3 +113,18 @@ def test_catalog():
         assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status']=='partial')
     for name in ['ENCODING_STATUS.json','ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()
+
+
+def test_ui_coerce_approve_and_deny_paths():
+    """Number fact_ui fields must be collectible; complete paths Approve/Deny."""
+    detail = drug_detail('palforzia')
+    assert detail['can_evaluate'] is True
+    fields = {f['key']: f for f in detail['fact_fields']}
+    for key in ('peanut_ige_kua_l', 'peanut_ige_months_ago', 'peanut_spt_mm_vs_control'):
+        assert fields[key]['type'] == 'number'
+        assert fields[key].get('options') in (None, [])
+    assert 'prior_therapy_failures' not in fields
+    approve = _coerce_patient({k: str(v) for k, v in FACTS.items()})
+    assert evaluate(PACK, approve).decision == 'pass'
+    deny = _coerce_patient({k: str(v) for k, v in dict(FACTS, uncontrolled_asthma='present').items()})
+    assert evaluate(PACK, deny).decision == 'fail'

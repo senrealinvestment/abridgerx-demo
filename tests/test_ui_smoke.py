@@ -162,6 +162,23 @@ def test_lyrica_encoded_options():
     assert "prior_therapy_failures" not in fields
 
 
+def test_number_fact_ui_not_empty_select():
+    """Packs authored with fact_ui type=number must not render empty selects."""
+    for slug, keys in {
+        "palforzia": ["peanut_ige_kua_l", "peanut_ige_months_ago", "peanut_spt_mm_vs_control"],
+        "lovaza": ["baseline_tg_before_treatment_mg_dl", "triglycerides_mg_dl"],
+        "reclast": ["pretreatment_femoral_neck_or_spine_t_score", "albumin_corrected_calcium_mg_dl"],
+    }.items():
+        detail = drug_detail(slug)
+        assert detail and detail["can_evaluate"] is True
+        assert detail["fact_fields"], slug
+        fields = {f["key"]: f for f in detail["fact_fields"]}
+        assert "prior_therapy_failures" not in fields
+        for key in keys:
+            assert fields[key]["type"] == "number", (slug, key, fields[key])
+            assert not fields[key].get("options")
+
+
 def test_fail_and_text_only_alternatives():
     from ui.loaders import merge_alternatives, suggest_pdl_class_alternatives
 
@@ -245,6 +262,7 @@ if __name__ == "__main__":
     test_text_only_pack_surfaces_criteria()
     test_no_free_text_fact_fields()
     test_lyrica_encoded_options()
+    test_number_fact_ui_not_empty_select()
     test_fail_and_text_only_alternatives()
     test_indication_never_yes_no_unknown()
     print("ui smoke ok")

@@ -190,11 +190,9 @@
 
   function sortFieldsIndicationFirst(fields) {
     const copy = fields.slice();
-    copy.sort((a, b) => {
-      const ai = a.key === "indication" ? 0 : 1;
-      const bi = b.key === "indication" ? 0 : 1;
-      return ai - bi;
-    });
+    const rank = (key) =>
+      key === "product" ? 0 : key === "indication" ? 1 : 2;
+    copy.sort((a, b) => rank(a.key) - rank(b.key));
     return copy;
   }
 
@@ -204,6 +202,17 @@
     const whenAttr = f.when
       ? ` data-when="${esc(JSON.stringify(f.when))}"`
       : "";
+
+    if (f.type === "number" || f.type === "numeric") {
+      const minAttr = f.min != null ? ` min="${esc(String(f.min))}"` : "";
+      const maxAttr = f.max != null ? ` max="${esc(String(f.max))}"` : "";
+      const stepAttr = ` step="${esc(String(f.step != null ? f.step : "any"))}"`;
+      return `<div class="fact-row" data-fact="${esc(f.key)}"${whenAttr}>
+          <label for="fact-${esc(f.key)}">${esc(f.label)}</label>
+          <input type="number" id="fact-${esc(f.key)}" name="${esc(f.key)}"${minAttr}${maxAttr}${stepAttr} inputmode="decimal" />
+          ${hint}
+        </div>`;
+    }
 
     if (f.type === "multi" || f.type === "checkbox" || f.type === "checkboxes") {
       const boxes = opts
@@ -262,9 +271,12 @@
     const current = {};
     const ind = factsForm.querySelector('select[name="indication"]');
     if (ind && ind.value) current.indication = ind.value;
-    // Also consider other potential gating facts already filled (rare).
+    // Product / other select gates (e.g. Reclast product) plus numeric gates.
     factsForm.querySelectorAll("select[name]").forEach((el) => {
       if (el.value) current[el.name] = el.value;
+    });
+    factsForm.querySelectorAll('input[type="number"][name]').forEach((el) => {
+      if (el.value !== "") current[el.name] = el.value;
     });
 
     let gatedHidden = 0;
@@ -285,6 +297,7 @@
         if (!show) {
           if (el.type === "checkbox") el.checked = false;
           else if (el.tagName === "SELECT") el.selectedIndex = 0;
+          else if (el.type === "number") el.value = "";
         }
       });
       if (!show) gatedHidden += 1;
@@ -326,10 +339,10 @@
     }
     const ordered = sortFieldsIndicationFirst(fields);
     factsForm.innerHTML = ordered.map(renderFieldControl).join("");
-    const ind = factsForm.querySelector('select[name="indication"]');
-    if (ind) {
-      ind.addEventListener("change", () => applyFactVisibility());
-    }
+    // Indication and product (and any other select) gates hide/show when-tagged facts.
+    factsForm.querySelectorAll("select[name]").forEach((el) => {
+      el.addEventListener("change", () => applyFactVisibility());
+    });
     applyFactVisibility();
   }
 
@@ -354,6 +367,12 @@
       if (el.disabled) return;
       if (el.value !== "") data[el.name] = el.value;
     });
+    factsForm
+      .querySelectorAll('.fact-row:not(.hidden) input[type="number"][name]')
+      .forEach((el) => {
+        if (el.disabled) return;
+        if (el.value !== "") data[el.name] = el.value;
+      });
     return data;
   }
 

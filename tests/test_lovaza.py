@@ -83,3 +83,18 @@ def test_ui_and_metadata():
     assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 8
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
+
+
+def test_ui_coerce_approve_and_deny_paths():
+    """Number TG/trial fields must be collectible; complete paths Approve/Deny."""
+    detail = drug_detail('lovaza')
+    assert detail['can_evaluate'] is True
+    fields = {f['key']: f for f in detail['fact_fields']}
+    for key in ('baseline_tg_before_treatment_mg_dl', 'triglycerides_mg_dl',
+                'fibrate_trial_days', 'niacin_trial_days', 'additional_cv_risk_factor_count'):
+        assert fields[key]['type'] == 'number'
+    assert 'prior_therapy_failures' not in fields
+    approve = _coerce_patient({k: ('yes' if v is True else str(v)) for k, v in HTG.items()})
+    assert evaluate(PACK, approve).decision == 'pass'
+    deny = _coerce_patient({k: ('yes' if v is True else str(v)) for k, v in dict(HTG, age_years=17).items()})
+    assert evaluate(PACK, deny).decision == 'fail'

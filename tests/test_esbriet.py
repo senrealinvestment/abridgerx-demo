@@ -115,11 +115,11 @@ def test_metadata_notes_and_bundles():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 151
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 47
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 152
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 46
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (151, 47)
-    assert status['next_candidate'] == 'lovaza'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (152, 46)
+    assert status['next_candidate'] == 'marinol'
     assert catalog['ofev']['encoding_status'] == 'partial'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:

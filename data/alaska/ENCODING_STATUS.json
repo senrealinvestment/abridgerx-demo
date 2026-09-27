@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-26",
+  "generated": "2026-09-27",
   "payer": "alaska_medicaid",
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 52,
-  "encoding_text_only": 146,
+  "encoding_partial": 53,
+  "encoding_text_only": 145,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -19,6 +19,7 @@
     "apokyn",
     "benlysta",
     "beqvez-tm",
+    "berinert",
     "bimzelx",
     "briumvi",
     "calcitonin-gene-related-peptide",
@@ -60,5 +61,5 @@
     "zolgensma",
     "zymfentra"
   ],
-  "next_candidate": "berinert"
+  "next_candidate": "cinryze"
 }

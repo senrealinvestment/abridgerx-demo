@@ -121,7 +121,7 @@
     "Approval criteria 1–6 encoded as closed HoFH indication, clinical or laboratory confirmation submitted, Box Warnings discussion and relevant lab monitoring, current treatments submitted, negative pregnancy test for females of reproductive potential, documented pre-initiation diet with <20% energy from fat, and age ≥18. No additional denial criteria invented.",
     "Duration (notes only): initial authorization up to 6 months; continuation up to 12 months with medical records documenting tolerance, progress notes, and effectiveness of therapy.",
     "Quantity (notes only): 30 day supply; 5mg or 10mg one (1) capsule per day; 20mg up to three (3) capsules per day. max_units is null; quantity enforcement requires manual review.",
-    "Remains partial: submitted confirmation, counseling, laboratory monitoring, current treatments, pregnancy testing and diet documentation are attestations; evidence verification, duration, continuation and quantities require manual review. Kynamro is a linked alternative from the shared PDF and remains text_only; next candidate kynamro."
+    "Remains partial: submitted confirmation, counseling, laboratory monitoring, current treatments, pregnancy testing and diet documentation are attestations; evidence verification, duration, continuation and quantities require manual review. Kynamro is a reciprocal linked alternative from the shared PDF and is partially encoded; next candidate raft."
   ],
   "max_units": null,
   "fact_ui": {

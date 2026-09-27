@@ -18972,7 +18972,7 @@
       "Approval criteria 1\u20136 encoded as closed HoFH indication, clinical or laboratory confirmation submitted, Box Warnings discussion and relevant lab monitoring, current treatments submitted, negative pregnancy test for females of reproductive potential, documented pre-initiation diet with <20% energy from fat, and age \u226518. No additional denial criteria invented.",
       "Duration (notes only): initial authorization up to 6 months; continuation up to 12 months with medical records documenting tolerance, progress notes, and effectiveness of therapy.",
       "Quantity (notes only): 30 day supply; 5mg or 10mg one (1) capsule per day; 20mg up to three (3) capsules per day. max_units is null; quantity enforcement requires manual review.",
-      "Remains partial: submitted confirmation, counseling, laboratory monitoring, current treatments, pregnancy testing and diet documentation are attestations; evidence verification, duration, continuation and quantities require manual review. Kynamro is a linked alternative from the shared PDF and remains text_only; next candidate kynamro."
+      "Remains partial: submitted confirmation, counseling, laboratory monitoring, current treatments, pregnancy testing and diet documentation are attestations; evidence verification, duration, continuation and quantities require manual review. Kynamro is a reciprocal linked alternative from the shared PDF and is partially encoded; next candidate raft."
     ],
     "max_units": null,
     "fact_ui": {
@@ -21775,7 +21775,8 @@
   "kynamro": {
     "drug": {
       "name": "Kynamro",
-      "therapeutic_class": "lipotropics"
+      "therapeutic_class": "lipotropics",
+      "generic_name": "mipomersen"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -21786,18 +21787,218 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Qualifying diagnosis",
+        "citation": "https://health.alaska.gov/media/lrhfug3d/juxtapid_and_kynamro_combined_pa.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "homozygous_familial_hypercholesterolemia"
+          ]
+        }
+      },
+      {
+        "id": "hofh_confirmation_submitted",
+        "text": "Clinical or laboratory confirmation of HoFH diagnosis submitted",
+        "citation": "https://health.alaska.gov/media/lrhfug3d/juxtapid_and_kynamro_combined_pa.pdf",
+        "required_facts": [
+          "hofh_confirmation_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hofh_confirmation_submitted",
+          "value": true
+        }
+      },
+      {
+        "id": "boxed_warnings_discussed_and_labs_monitored",
+        "text": "Box Warnings discussed with recipient and all relevant lab work monitored",
+        "citation": "https://health.alaska.gov/media/lrhfug3d/juxtapid_and_kynamro_combined_pa.pdf",
+        "required_facts": [
+          "boxed_warnings_discussed_and_labs_monitored"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "boxed_warnings_discussed_and_labs_monitored",
+          "value": true
+        }
+      },
+      {
+        "id": "current_lipid_lowering_treatments_submitted",
+        "text": "Current lipid-lowering treatments submitted",
+        "citation": "https://health.alaska.gov/media/lrhfug3d/juxtapid_and_kynamro_combined_pa.pdf",
+        "required_facts": [
+          "current_lipid_lowering_treatments_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "current_lipid_lowering_treatments_submitted",
+          "value": true
+        }
+      },
+      {
+        "id": "pregnancy_test_status",
+        "text": "For females of reproductive potential, a negative pregnancy test obtained",
+        "citation": "https://health.alaska.gov/media/lrhfug3d/juxtapid_and_kynamro_combined_pa.pdf",
+        "required_facts": [
+          "pregnancy_test_status"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pregnancy_test_status",
+          "values": [
+            "negative_test_obtained",
+            "not_applicable"
+          ]
+        }
+      },
+      {
+        "id": "low_fat_diet_documented",
+        "text": "Medical records document low-fat diet supplying <20% of energy from fat prior to initiation",
+        "citation": "https://health.alaska.gov/media/lrhfug3d/juxtapid_and_kynamro_combined_pa.pdf",
+        "required_facts": [
+          "low_fat_diet_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "low_fat_diet_documented",
+          "value": true
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Recipient is 18 years of age or older",
+        "citation": "https://health.alaska.gov/media/lrhfug3d/juxtapid_and_kynamro_combined_pa.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      }
+    ],
     "alternatives": [
       "juxtapid"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Kynamro (mipomersen), shared Juxtapid OR Kynamro criteria Version 1; last updated 10/14/2013; Approved 11/15/2013. Stub effective_date 1970-01-01 preserved as a placeholder; the PDF documents approval, not an effective date.",
+      "Indicated as an adjunct to lipid-lowering medications and diet for HoFH. Safety and effectiveness in patients without HoFH have not been established; effect on cardiovascular morbidity and mortality has not been determined. Safety and effectiveness as an adjunct to LDL apheresis have not been established; use as an adjunct to LDL apheresis is not recommended (notes only).",
+      "Approval criteria 1\u20136 encoded as closed HoFH indication, clinical or laboratory confirmation submitted, Box Warnings discussion and relevant lab monitoring, current treatments submitted, negative pregnancy test for females of reproductive potential, documented pre-initiation diet with <20% energy from fat, and age \u226518. No additional denial criteria invented.",
+      "Duration (notes only): initial authorization up to 6 months; continuation up to 12 months with medical records documenting tolerance, progress notes, and effectiveness of therapy.",
+      "Quantity (notes only): 30 day supply; four (4) vials or prefilled syringes per month. max_units is null; quantity enforcement requires manual review.",
+      "Remains partial: submitted confirmation, counseling, laboratory monitoring, current treatments, pregnancy testing and diet documentation are attestations; evidence verification, duration, continuation and quantities require manual review. Juxtapid is a reciprocal linked alternative from the shared PDF. Next candidate raft (Zulresso / brexanolone), which remains text_only."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Qualifying diagnosis",
+        "options": [
+          {
+            "value": "homozygous_familial_hypercholesterolemia",
+            "label": "Homozygous familial hypercholesterolemia (HoFH)"
+          }
+        ]
+      },
+      "hofh_confirmation_submitted": {
+        "type": "select",
+        "label": "Clinical or laboratory confirmation of HoFH diagnosis submitted",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      },
+      "boxed_warnings_discussed_and_labs_monitored": {
+        "type": "select",
+        "label": "Box Warnings discussed with recipient and all relevant lab work monitored",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      },
+      "current_lipid_lowering_treatments_submitted": {
+        "type": "select",
+        "label": "Current lipid-lowering treatments submitted",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      },
+      "pregnancy_test_status": {
+        "type": "select",
+        "label": "For females of reproductive potential, a negative pregnancy test obtained",
+        "options": [
+          {
+            "value": "negative_test_obtained",
+            "label": "Female of reproductive potential: negative pregnancy test obtained"
+          },
+          {
+            "value": "not_applicable",
+            "label": "Not a female of reproductive potential"
+          },
+          {
+            "value": "not_met",
+            "label": "Required negative pregnancy test not obtained"
+          }
+        ]
+      },
+      "low_fat_diet_documented": {
+        "type": "select",
+        "label": "Medical records document low-fat diet supplying <20% of energy from fat prior to initiation",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Recipient is 18 years of age or older",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      }
+    }
   },
   "lemtrada": {
     "drug": {

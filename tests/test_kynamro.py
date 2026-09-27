@@ -1,4 +1,4 @@
-"""Juxtapid approval attestations and catalog integrity; Kynamro is a reciprocal partial alternative."""
+"""Kynamro approval attestations and catalog integrity; Kynamro is a reciprocal partial alternative."""
 import gzip
 import json
 import sys
@@ -14,7 +14,7 @@ BASE = ROOT / 'data/alaska/parsed'
 
 
 def pack():
-    return json.loads((BASE / 'rule_packs/juxtapid.json').read_text())
+    return json.loads((BASE / 'rule_packs/kynamro.json').read_text())
 
 
 def facts():
@@ -53,18 +53,18 @@ def test_approval_missing_false_and_ui_options():
 
 def test_metadata_and_closed_fields():
     p = pack()
-    fields = {f['key']: f for f in drug_detail('juxtapid')['fact_fields']}
+    fields = {f['key']: f for f in drug_detail('kynamro')['fact_fields']}
     assert set(fields) == set(facts()) == set(p['fact_ui'])
     assert [o['value'] for o in fields['indication']['options']] == [facts()['indication']]
     assert len(p['criteria']) == 7
     assert all(f['type'] == 'select' and not f.get('free_text') for f in fields.values())
     assert all(c['citation'] == p['source']['citation'] for c in p['criteria'])
-    assert p['drug'] == dict(name='Juxtapid', generic_name='lomitapide', therapeutic_class='lipotropics')
+    assert p['drug'] == dict(name='Kynamro', generic_name='mipomersen', therapeutic_class='lipotropics')
     assert p['source']['effective_date'] == '1970-01-01'
     assert p['encoding_status'] == 'partial' and p['max_units'] is None
     assert 'inferred_required_facts' not in p
     for phrase in ('11/15/2013', '<20%', '6 months', '12 months', 'tolerance', 'progress notes',
-                   'effectiveness', '5mg', '10mg', '20mg', 'three (3)', 'cardiovascular', 'manual review'):
+                   'effectiveness', 'four (4)', 'prefilled syringes', 'LDL apheresis', 'cardiovascular', 'manual review'):
         assert phrase in ' '.join(p['notes'])
 
 
@@ -73,12 +73,12 @@ def test_catalog_and_mirrors():
     assert len(catalog) == 198
     assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 105
     assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 93
-    assert catalog['juxtapid']['alternatives'] == ['kynamro']
     assert catalog['kynamro']['alternatives'] == ['juxtapid']
-    assert catalog['kynamro']['encoding_status'] == 'partial'
-    assert len(catalog['kynamro']['criteria']) == 7
-    assert evaluate(catalog['kynamro'], facts()).decision == 'pass'
-    assert (BASE / 'juxtapid.json').read_bytes() == (BASE / 'rule_packs/juxtapid.json').read_bytes()
+    assert catalog['juxtapid']['alternatives'] == ['kynamro']
+    assert catalog['juxtapid']['encoding_status'] == 'partial'
+    assert len(catalog['juxtapid']['criteria']) == 7
+    assert evaluate(catalog['juxtapid'], facts()).decision == 'pass'
+    assert (BASE / 'kynamro.json').read_bytes() == (BASE / 'rule_packs/kynamro.json').read_bytes()
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
@@ -88,3 +88,10 @@ def test_catalog_and_mirrors():
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for ext in ('json', 'md'):
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()
+
+
+def test_next_pack_remains_unencoded():
+    p = load_rule_pack_catalog()['raft']
+    assert p['encoding_status'] == 'text_only'
+    assert p['criteria'] == []
+    assert evaluate(p, facts()).decision == 'need_info'

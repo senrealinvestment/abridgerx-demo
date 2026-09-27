@@ -1,4 +1,4 @@
-"""Vecamyl closed indications, all approval gates, UI, source and mirrors."""
+"""Vimovo approval criteria, indication gating, source notes and catalog mirrors."""
 import gzip
 import json
 import sys
@@ -13,14 +13,12 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail, load_rule_pack_catalog
 
 BASE = ROOT / 'data/alaska/parsed'
-PACK = json.loads((BASE / 'rule_packs/vecamyl.json').read_text())
-INDICATIONS = ['essential_hypertension_moderate_severe', 'malignant_hypertension_uncomplicated']
-EXCLUSIONS = ['coronary_insufficiency', 'recent_myocardial_infarction',
-              'rising_or_elevated_bun_or_known_renal_insufficiency', 'uremia',
-              'receiving_antibiotics_and_sulfonamides', 'glaucoma',
-              'organic_pyloric_stenosis', 'hypersensitivity_to_mecamylamine']
-STEP = 'failed_six_antihypertensive_classes_12_months'
-FACTS = dict(indication=INDICATIONS[0], **{STEP: True}, **dict.fromkeys(EXCLUSIONS, False))
+PACK = json.loads((BASE / 'rule_packs/vimovo.json').read_text())
+INDICATIONS = ['osteoarthritis', 'rheumatoid_arthritis', 'ankylosing_spondylitis']
+STEP = 'failed_generic_nsaid_plus_ppi_one_month'
+LETTER = 'letter_of_medical_necessity_submitted'
+GATES = [STEP, LETTER]
+FACTS = dict(indication=INDICATIONS[0], **dict.fromkeys(GATES, True))
 
 
 @pytest.mark.parametrize('indication', INDICATIONS)
@@ -30,7 +28,7 @@ def test_approval(indication):
     assert result.citations
 
 
-@pytest.mark.parametrize('key', [STEP] + EXCLUSIONS)
+@pytest.mark.parametrize('key', GATES)
 @pytest.mark.parametrize('indication', INDICATIONS)
 def test_each_required_gate(key, indication):
     result = evaluate(PACK, dict(FACTS, indication=indication, **{key: not FACTS[key]}))
@@ -50,7 +48,7 @@ def test_unknown_is_not_absent(key, omit):
     assert result.missing_facts == [key]
 
 
-@pytest.mark.parametrize('indication', ['hypertension', 'essential_hypertension', 'other', '', True, False])
+@pytest.mark.parametrize('indication', ['gastric_ulcer', 'gastric_ulcer_risk_reduction', 'acute_pain', 'other', '', True, False])
 def test_closed_indication(indication):
     result = evaluate(PACK, {'indication': indication})
     assert result.decision == 'fail'
@@ -59,38 +57,45 @@ def test_closed_indication(indication):
 
 def test_indication_first():
     assert evaluate(PACK, {}).missing_facts == ['indication']
-    assert evaluate(PACK, {'indication': INDICATIONS[0]}).missing_facts == [STEP] + EXCLUSIONS
+    assert evaluate(PACK, {'indication': INDICATIONS[0]}).missing_facts == GATES
 
 
 def test_ui_and_source():
-    detail = drug_detail('vecamyl')
+    detail = drug_detail('vimovo')
     assert detail['can_evaluate']
     fields = {f['key']: f for f in detail['fact_fields']}
     assert set(fields) == set(FACTS)
     assert [o['value'] for o in fields['indication']['options']] == INDICATIONS
-    for key in [STEP] + EXCLUSIONS:
+    for key in GATES:
         assert PACK['fact_ui'][key]['when'] == {'fact': 'indication', 'in': INDICATIONS}
     ui_facts = {k: ('yes' if v else 'no') if isinstance(v, bool) else v for k, v in FACTS.items()}
     assert evaluate(PACK, _coerce_patient(ui_facts)).decision == 'pass'
-    assert PACK['drug']['generic_name'] == 'mecamylamine hcl'
-    assert PACK['source']['effective_date'] == '1970-01-01'
+    assert PACK['drug']['generic_name'] == 'naproxen/esomeprazole magnesium'
+    assert PACK['source']['effective_date'] == '2014-01-17'
     assert PACK['encoding_status'] == 'partial'
     assert PACK['max_units'] is None and PACK['alternatives'] == []
     assert 'inferred_required_facts' not in PACK
     notes = ' '.join(PACK['notes'])
-    for value in ['2.5 mg', '6 months', '30-day supply', '10 doses/day', 'Version 1', '1/02/2014', '1/17/2014']:
+    for value in ['375mg-20mg', '500mg-20mg', '6 months', '30-day supply',
+                  '2 doses/day', 'Version 1', '8/16/2013', '1/17/2014',
+                  'acute pain', 'absorption is delayed', 'NSAID-associated gastric ulcers']:
         assert value in notes
-    assert len(PACK['criteria']) == 10
-    step_text = next(c['text'] for c in PACK['criteria'] if c['id'] == STEP)
-    for value in ['at least 6', '12 months', 'documented', 'blood pressure goals', 'maximum tolerated doses']:
-        assert value in step_text
+    assert len(PACK['criteria']) == 3
+    for clause in PACK['criteria'][1:]:
+        assert clause['when'] == PACK['fact_ui'][clause['id']]['when']
+    assert 'one month' in PACK['criteria'][1]['text']
+    assert 'two separate medications' in PACK['criteria'][2]['text']
+    assert 'treatment failure' in PACK['criteria'][2]['text']
+    source = json.loads((BASE / 'criteria_text/vimovo.json').read_text())
+    assert PACK['source']['effective_date'] == source['effective_date']
+    assert PACK['source']['citation'] == source['source_url']
 
 
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
-    assert catalog['vecamyl'] == PACK
+    assert catalog['vimovo'] == PACK
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
-    assert (BASE / 'vecamyl.json').read_bytes() == (BASE / 'rule_packs/vecamyl.json').read_bytes()
+    assert (BASE / 'vimovo.json').read_bytes() == (BASE / 'rule_packs/vimovo.json').read_bytes()
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog

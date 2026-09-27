@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 164,
-  "encoding_text_only": 34,
+  "encoding_partial": 165,
+  "encoding_text_only": 33,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -150,6 +150,7 @@
     "verquvo",
     "vesicular-monoamine",
     "viberzi",
+    "vimovo",
     "voxzogo",
     "voyxact",
     "vumerity",
@@ -172,5 +173,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "vimovo"
+  "next_candidate": "transderm-scop"
 }

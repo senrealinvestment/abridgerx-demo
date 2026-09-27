@@ -45,7 +45,7 @@ def test_metadata_and_scope():
     assert evaluate(PACK, {}).decision == 'need_info'
     assert (B/'panretin.json').read_bytes() == (B/'rule_packs/panretin.json').read_bytes()
     assert load_rule_pack_catalog()['panretin'] == PACK
-    assert load_rule_pack_catalog()['vimovo']['encoding_status'] == 'text_only'
+    assert load_rule_pack_catalog()['transderm-scop']['encoding_status'] == 'text_only'
     notes = ' '.join(PACK['notes'])
     for phrase in ['60 gram', 'AIDS-related', '06/04/2009', 'more than 10 new KS lesions', 'prior month', 'symptomatic lymphedema', 'symptomatic pulmonary KS', 'symptomatic visceral', 'no experience', '2 months', 'manual review']:
         assert phrase in notes

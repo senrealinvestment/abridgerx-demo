@@ -53645,7 +53645,7 @@
   "vimovo": {
     "drug": {
       "name": "Vimovo",
-      "generic_name": "naproxen/ esomeprazole magnesium",
+      "generic_name": "naproxen/esomeprazole magnesium",
       "therapeutic_class": "analgesics-non-opioid"
     },
     "source": {
@@ -53657,15 +53657,142 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of osteoarthritis, rheumatoid arthritis, or ankylosing spondylitis.",
+        "citation": "https://health.alaska.gov/media/mbxfp0ed/ccfu_analgesicsnonopioid_vimovo_20140117.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "osteoarthritis",
+            "rheumatoid_arthritis",
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      {
+        "id": "failed_generic_nsaid_plus_ppi_one_month",
+        "text": "Trial of a combination of a generic NSAID and a generic PPI for one month, with treatment failure of the two separate medications.",
+        "citation": "https://health.alaska.gov/media/mbxfp0ed/ccfu_analgesicsnonopioid_vimovo_20140117.pdf",
+        "required_facts": [
+          "failed_generic_nsaid_plus_ppi_one_month"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "osteoarthritis",
+            "rheumatoid_arthritis",
+            "ankylosing_spondylitis"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_generic_nsaid_plus_ppi_one_month",
+          "value": true
+        }
+      },
+      {
+        "id": "letter_of_medical_necessity_submitted",
+        "text": "Letter of medical necessity submitted detailing treatment failure of the two separate medications.",
+        "citation": "https://health.alaska.gov/media/mbxfp0ed/ccfu_analgesicsnonopioid_vimovo_20140117.pdf",
+        "required_facts": [
+          "letter_of_medical_necessity_submitted"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "osteoarthritis",
+            "rheumatoid_arthritis",
+            "ankylosing_spondylitis"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "letter_of_medical_necessity_submitted",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Vimovo (naproxen/esomeprazole magnesium). Delayed-release tablets: 375mg-20mg and 500mg-20mg. Supporting trial documentation and letter contents require manual review.",
+      "FDA indication context: relief of signs and symptoms of osteoarthritis, rheumatoid arthritis, and ankylosing spondylitis and to decrease the risk of developing gastric ulcers in patients at risk of NSAID-associated gastric ulcers. Gastric-ulcer risk reduction accompanies the arthritis indication; it is not a standalone approval indication.",
+      "FDA limitations (notes only): not recommended for initial treatment of acute pain because naproxen absorption is delayed compared with other naproxen-containing products. Controlled studies do not extend beyond 6 months.",
+      "Authorization (notes only): coverage may be approved for up to 6 months.",
+      "Dispensing (notes only): 30-day supply; quantity limit 2 doses/day.",
+      "Source: Version 1; Last updated 8/16/2013; Approved 1/17/2014."
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of osteoarthritis, rheumatoid arthritis, or ankylosing spondylitis.",
+        "options": [
+          {
+            "value": "osteoarthritis",
+            "label": "Osteoarthritis"
+          },
+          {
+            "value": "rheumatoid_arthritis",
+            "label": "Rheumatoid arthritis"
+          },
+          {
+            "value": "ankylosing_spondylitis",
+            "label": "Ankylosing spondylitis"
+          }
+        ]
+      },
+      "failed_generic_nsaid_plus_ppi_one_month": {
+        "type": "select",
+        "label": "Trial of a combination of a generic NSAID and a generic PPI for one month, with treatment failure of the two separate medications.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "osteoarthritis",
+            "rheumatoid_arthritis",
+            "ankylosing_spondylitis"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "letter_of_medical_necessity_submitted": {
+        "type": "select",
+        "label": "Letter of medical necessity submitted detailing treatment failure of the two separate medications.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "osteoarthritis",
+            "rheumatoid_arthritis",
+            "ankylosing_spondylitis"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "vitamin-d-50": {
     "drug": {

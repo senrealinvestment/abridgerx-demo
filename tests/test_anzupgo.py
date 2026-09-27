@@ -107,12 +107,12 @@ def test_mirrors_bundles_counts_and_next_candidate():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 164
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 34
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 165
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 33
     assert catalog['cinryze']['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 164 and status['encoding_text_only'] == 34
-    assert status['next_candidate'] == 'vimovo'
+    assert status['encoding_partial'] == 165 and status['encoding_text_only'] == 33
+    assert status['next_candidate'] == 'transderm-scop'
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

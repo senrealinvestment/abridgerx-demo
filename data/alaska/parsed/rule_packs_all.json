@@ -33146,7 +33146,8 @@
   "yorvipath": {
     "drug": {
       "name": "Yorvipath",
-      "therapeutic_class": "other"
+      "therapeutic_class": "endocrinology",
+      "generic_name": "palopegteriparatide"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -33157,18 +33158,291 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of hypoparathyroidism (approval criterion 3; closed FDA indication).",
+        "citation": "https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "hypoparathyroidism"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 18 years of age or older (approval criterion 1; FDA adult indication).",
+        "citation": "https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with an endocrinologist or nephrologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "endocrinologist_or_nephrologist_or_consult"
+        }
+      },
+      {
+        "id": "baseline_albumin_corrected_ca_ge_7_8_on_ca_and_active_vitd",
+        "text": "Baseline albumin-corrected serum calcium \u22657.8 mg/dL utilizing calcium and active vitamin D supplementation (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_albumin_corrected_ca_ge_7_8_on_ca_and_active_vitd"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_albumin_corrected_ca_ge_7_8_on_ca_and_active_vitd",
+          "value": "ge_7_8"
+        }
+      },
+      {
+        "id": "baseline_vitamin_d_above_lln",
+        "text": "Baseline vitamin D above the lower limit of the normal range (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_vitamin_d_above_lln"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_vitamin_d_above_lln",
+          "value": "above_lln"
+        }
+      },
+      {
+        "id": "calcium_active_vitd_step_ge_12wk",
+        "text": "Documented trial and inadequate response to appropriately dosed calcium and active vitamin D for at least 12 weeks after vitamin D restored to normal limits (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "calcium_active_vitd_step_ge_12wk"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "calcium_active_vitd_step_ge_12wk",
+          "value": "inadequate_response_ge_12wk_after_vitd_restored"
+        }
+      },
+      {
+        "id": "will_continue_ca_and_vitd_during_titration",
+        "text": "Will continue calcium and vitamin D supplementation while Yorvipath is titrated to a clinically appropriate dose (approval criterion 7).",
+        "citation": "https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "will_continue_ca_and_vitd_during_titration"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "will_continue_ca_and_vitd_during_titration",
+          "value": "will_continue"
+        }
+      },
+      {
+        "id": "not_acute_postsurgical_hypoparathyroidism",
+        "text": "Patient does not have acute post-surgical hypoparathyroidism (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf#denial-criteria",
+        "required_facts": [
+          "not_acute_postsurgical_hypoparathyroidism"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_acute_postsurgical_hypoparathyroidism",
+          "value": true
+        }
+      },
+      {
+        "id": "albumin_adjusted_ca_not_ge_8_3_on_ca_vitd_prior",
+        "text": "Patient has not achieved albumin-adjusted serum calcium \u22658.3 mg/dL on calcium and vitamin D supplementation prior to Yorvipath initiation (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf#denial-criteria",
+        "required_facts": [
+          "albumin_adjusted_ca_not_ge_8_3_on_ca_vitd_prior"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "albumin_adjusted_ca_not_ge_8_3_on_ca_vitd_prior",
+          "value": "lt_8_3_eligible"
+        }
+      },
+      {
+        "id": "not_pseudohypoparathyroidism",
+        "text": "Patient does not have pseudohypoparathyroidism (denial criterion 4).",
+        "citation": "https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf#denial-criteria",
+        "required_facts": [
+          "not_pseudohypoparathyroidism"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_pseudohypoparathyroidism",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Yorvipath (palopegteriparatide), a PTH(1-34) analog, Criteria Version 1. Original: 2/27/2026; Accepted: 4/17/2026; Effective: 6/1/2026.",
+      "Encoded: closed adult hypoparathyroidism indication, approval criteria 1-7 and denial criteria 2-4. Denial criterion 1 mirrors failure to meet approval criteria. Laboratory and therapy documentation require verification.",
+      "Limitations of use: not studied for acute post-surgical hypoparathyroidism. Titration scheme evaluated only in adults first achieving albumin-corrected serum calcium of at least 7.8 mg/dL using calcium and active vitamin D.",
+      "Cautions (notes only): use only one daily Yorvipath injection. Serious hyper- and hypocalcemia have occurred; monitor serum calcium within 7 to 10 days of initiation and after any dose change, and periodically at maintenance.",
+      "Cautions (notes only): not recommended in patients with increased risk of osteosarcoma. Monitor for signs and symptoms of orthostatic hypotension.",
+      "Duration (notes only): initial approval up to 6 months; reauthorization up to 12 months.",
+      "Quantity limits (notes only): two pens per month; 30 mcg per day. Numeric quantity enforcement is not encoded.",
+      "Documentation verification, cautions, monitoring, duration, reauthorization and quantity limits require manual review; this pack remains partial. No alternatives are specified."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of hypoparathyroidism (approval criterion 3; closed FDA indication).",
+        "options": [
+          {
+            "value": "hypoparathyroidism",
+            "label": "Hypoparathyroidism"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older (approval criterion 1; FDA adult indication).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with an endocrinologist or nephrologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "endocrinologist_or_nephrologist_or_consult",
+            "label": "Endocrinologist or nephrologist, or consultation with either"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "baseline_albumin_corrected_ca_ge_7_8_on_ca_and_active_vitd": {
+        "type": "select",
+        "label": "Baseline albumin-corrected serum calcium \u22657.8 mg/dL utilizing calcium and active vitamin D supplementation (approval criterion 4).",
+        "options": [
+          {
+            "value": "ge_7_8",
+            "label": "At least 7.8 mg/dL on calcium and active vitamin D"
+          },
+          {
+            "value": "lt_7_8_or_not_documented",
+            "label": "Below 7.8 mg/dL or not documented"
+          }
+        ]
+      },
+      "baseline_vitamin_d_above_lln": {
+        "type": "select",
+        "label": "Baseline vitamin D above the lower limit of the normal range (approval criterion 5).",
+        "options": [
+          {
+            "value": "above_lln",
+            "label": "Above lower limit of normal"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "calcium_active_vitd_step_ge_12wk": {
+        "type": "select",
+        "label": "Documented trial and inadequate response to appropriately dosed calcium and active vitamin D for at least 12 weeks after vitamin D restored to normal limits (approval criterion 6).",
+        "options": [
+          {
+            "value": "inadequate_response_ge_12wk_after_vitd_restored",
+            "label": "Inadequate response after at least 12 weeks following vitamin D normalization"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "will_continue_ca_and_vitd_during_titration": {
+        "type": "select",
+        "label": "Will continue calcium and vitamin D supplementation while Yorvipath is titrated to a clinically appropriate dose (approval criterion 7).",
+        "options": [
+          {
+            "value": "will_continue",
+            "label": "Will continue"
+          },
+          {
+            "value": "will_not",
+            "label": "Will not continue"
+          }
+        ]
+      },
+      "not_acute_postsurgical_hypoparathyroidism": {
+        "type": "select",
+        "label": "Patient does not have acute post-surgical hypoparathyroidism (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "No acute post-surgical hypoparathyroidism"
+          },
+          {
+            "value": "no",
+            "label": "Has acute post-surgical hypoparathyroidism"
+          }
+        ]
+      },
+      "albumin_adjusted_ca_not_ge_8_3_on_ca_vitd_prior": {
+        "type": "select",
+        "label": "Patient has not achieved albumin-adjusted serum calcium \u22658.3 mg/dL on calcium and vitamin D supplementation prior to Yorvipath initiation (denial criterion 3).",
+        "options": [
+          {
+            "value": "lt_8_3_eligible",
+            "label": "Below 8.3 mg/dL; eligible"
+          },
+          {
+            "value": "ge_8_3_or_not_documented",
+            "label": "At least 8.3 mg/dL or not documented"
+          }
+        ]
+      },
+      "not_pseudohypoparathyroidism": {
+        "type": "select",
+        "label": "Patient does not have pseudohypoparathyroidism (denial criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "No pseudohypoparathyroidism"
+          },
+          {
+            "value": "no",
+            "label": "Has pseudohypoparathyroidism"
+          }
+        ]
+      }
+    }
   },
   "zanaflex": {
     "drug": {

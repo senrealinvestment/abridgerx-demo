@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 138,
-  "encoding_text_only": 60,
+  "encoding_partial": 139,
+  "encoding_text_only": 59,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -79,6 +79,7 @@
     "leqvio",
     "lucemyra",
     "lupkynis",
+    "lybalvi",
     "mavenclad",
     "mayzent",
     "myalept",
@@ -146,5 +147,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "lybalvi"
+  "next_candidate": "orexin-receptor-antagonists"
 }

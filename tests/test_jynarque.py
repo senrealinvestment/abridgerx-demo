@@ -116,14 +116,14 @@ def test_catalog_and_metadata():
     catalog = load_rule_pack_catalog()
     assert catalog['jynarque'] == p
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 138
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 60
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 139
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 59
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (138, 60)
-    assert status['next_candidate'] == 'lybalvi'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (139, 59)
+    assert status['next_candidate'] == 'orexin-receptor-antagonists'
     assert catalog['opsumit']['encoding_status'] == 'partial'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:

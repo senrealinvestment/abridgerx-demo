@@ -39339,7 +39339,8 @@
   },
   "quinine": {
     "drug": {
-      "name": "Quinine"
+      "name": "Quinine",
+      "generic_name": "quinine sulfate"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -39350,13 +39351,67 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Patient is being treated for uncomplicated P. falciparum malaria (approval criterion 1). Any unapproved condition is denied (denial criterion 1).",
+        "citation": "https://health.alaska.gov/media/slkktvch/200908_quinine.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "uncomplicated_p_falciparum_malaria"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Source PDF is scanned/image-only; OCR pending. evaluate() must not auto-pass."
+      "Partial encoding of Alaska Medicaid Quinine sulfate / powder; Qualaquin 324 mg capsule.",
+      "Source is OCR-recovered from scanned 200908_quinine.pdf, Version 1, last updated 06/05/2009. The effective_date stub 2009-01-01 is retained; it is not a verified policy effective date.",
+      "Any unapproved condition is denied, including treatment of severe or complicated malaria, prevention of malaria, and treatment or prevention of nocturnal leg cramps. The closed indication predicate enforces this exclusion.",
+      "Authorization (notes only): approved criteria may be authorized for up to 60 days.",
+      "Remains partial: clinical evidence and authorization duration require manual review. No quantity limit is stated; max_units is null. PDL status unknown."
     ],
-    "inferred_required_facts": []
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Condition being treated",
+        "options": [
+          {
+            "value": "uncomplicated_p_falciparum_malaria",
+            "label": "Uncomplicated P. falciparum malaria"
+          },
+          {
+            "value": "severe_malaria",
+            "label": "Severe malaria"
+          },
+          {
+            "value": "complicated_malaria",
+            "label": "Complicated malaria"
+          },
+          {
+            "value": "malaria_prevention",
+            "label": "Prevention of malaria"
+          },
+          {
+            "value": "nocturnal_leg_cramps_treatment",
+            "label": "Treatment of nocturnal leg cramps"
+          },
+          {
+            "value": "nocturnal_leg_cramps_prevention",
+            "label": "Prevention of nocturnal leg cramps"
+          },
+          {
+            "value": "other",
+            "label": "Other unapproved condition"
+          }
+        ]
+      }
+    }
   },
   "qutenza": {
     "drug": {

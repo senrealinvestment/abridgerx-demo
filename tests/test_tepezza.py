@@ -97,13 +97,13 @@ def test_metadata_and_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 158
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 40
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 159
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 39
     for slug in ['actiq', 'andembry']:
         assert catalog[slug]['encoding_status'] == 'partial'
     assert catalog['lemtrada']['encoding_status'] == 'partial'
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory / 'ENCODING_STATUS.json').read_text())
-        assert status['encoding_partial'] == 158 and status['encoding_text_only'] == 40
+        assert status['encoding_partial'] == 159 and status['encoding_text_only'] == 39
         assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-        assert status['next_candidate'] == 'quinine'
+        assert status['next_candidate'] == 'sympazan'

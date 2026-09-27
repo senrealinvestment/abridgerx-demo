@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 158,
-  "encoding_text_only": 40,
+  "encoding_partial": 159,
+  "encoding_text_only": 39,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -115,6 +115,7 @@
     "panretin",
     "praluent",
     "prolia",
+    "quinine",
     "qutenza",
     "raft",
     "reclast",
@@ -166,5 +167,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "quinine"
+  "next_candidate": "sympazan"
 }

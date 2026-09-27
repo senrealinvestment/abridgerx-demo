@@ -85,11 +85,11 @@ def test_catalog():
     assert json.loads((BASE/'rule_packs_all.json').read_text())==catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f:assert json.load(f)==catalog
     assert len(catalog)==198
-    assert sum(p['encoding_status']=='partial' for p in catalog.values())==158
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==40
+    assert sum(p['encoding_status']=='partial' for p in catalog.values())==159
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==39
     assert catalog['interleukin-5-inhibitors']['encoding_status']=='partial'
     for slug in ['fasenra','nucala','cinqair']: assert catalog[slug]['encoding_status']=='partial'
     for root in [BASE,BASE.parent]:
         status=json.loads((root/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'],status['encoding_text_only'])==(158,40)
-        assert status['next_candidate']=='quinine'
+        assert (status['encoding_partial'],status['encoding_text_only'])==(159,39)
+        assert status['next_candidate']=='sympazan'

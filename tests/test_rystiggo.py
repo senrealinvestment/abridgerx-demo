@@ -96,10 +96,10 @@ def test_catalog_mirror_and_notes():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 158
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 40
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 159
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 39
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['next_candidate'] == 'quinine'
+    assert status['next_candidate'] == 'sympazan'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for ext in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()

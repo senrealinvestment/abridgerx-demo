@@ -1,4 +1,4 @@
-"""Yorvipath source gates, independent calcium requirements and catalog integrity."""
+"""Isturisa eligibility attestations, safety exclusions and catalog integrity."""
 import gzip
 import json
 import sys
@@ -13,19 +13,18 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail, load_rule_pack_catalog
 
 BASE = ROOT / 'data/alaska/parsed'
-PACK = json.loads((BASE / 'rule_packs/yorvipath.json').read_text())
+PACK = json.loads((BASE / 'rule_packs/isturisa.json').read_text())
 FACTS = dict(
-    indication='hypoparathyroidism', age_years=18,
-    prescriber_specialty='endocrinologist_or_nephrologist_or_consult',
-    baseline_albumin_corrected_ca_ge_7_8_on_ca_and_active_vitd='ge_7_8',
-    baseline_vitamin_d_above_lln='above_lln',
-    calcium_active_vitd_step_ge_12wk='inadequate_response_ge_12wk_after_vitd_restored',
-    will_continue_ca_and_vitd_during_titration='will_continue',
-    not_acute_postsurgical_hypoparathyroidism=True,
-    albumin_adjusted_ca_not_ge_8_3_on_ca_vitd_prior='lt_8_3_eligible',
-    not_pseudohypoparathyroidism=True,
+    indication='cushings_disease', age_years=18,
+    prescriber_specialty='diagnosis_specialist_or_consult',
+    surgery_not_option_or_not_curative=True,
+    two_prior_therapies_ge_30_days=True,
+    urine_free_cortisol_obtained=True,
+    baseline_ecg_and_periodic_monitoring=True,
+    baseline_potassium_magnesium_corrected_and_monitoring=True,
+    not_currently_lactating=True,
+    no_adrenal_insufficiency_symptoms=True,
 )
-
 
 def test_eligible():
     assert evaluate(PACK, FACTS).decision == 'pass'
@@ -40,7 +39,7 @@ def test_missing_fact(fact):
     assert result.missing_facts == [fact]
 
 
-@pytest.mark.parametrize('value', ['yes', 'no', 'unknown', 'other', True, False, 'pseudohypoparathyroidism', 'acute_postsurgical_hypoparathyroidism'])
+@pytest.mark.parametrize('value', ['yes', 'no', 'unknown', 'other', True, False, 'cushings_syndrome', 'ectopic_acth_syndrome'])
 def test_closed_indication(value):
     result = evaluate(PACK, dict(FACTS, indication=value))
     assert result.decision == 'fail'
@@ -53,11 +52,11 @@ def test_age_boundary(age, decision):
 
 
 def test_ui_options_and_all_denials():
-    fields = {f['key']: f for f in drug_detail('yorvipath')['fact_fields']}
+    fields = {f['key']: f for f in drug_detail('isturisa')['fact_fields']}
     assert set(fields) == set(FACTS)
-    assert fields['indication']['options'] == [{'value': 'hypoparathyroidism', 'label': 'Hypoparathyroidism'}]
+    assert fields['indication']['options'] == [{'value': 'cushings_disease', 'label': "Persistent or recurring Cushing's disease"}]
     assert all('when' not in c for c in PACK['criteria'])
-    denied = {'no', '0', 'other', 'lt_7_8_or_not_documented', 'not_met', 'will_not', 'ge_8_3_or_not_documented'}
+    denied = {'no', '0', 'none'}
     for fact, field in fields.items():
         assert field['type'] == 'select' and not field.get('free_text')
         for option in field['options']:
@@ -68,34 +67,19 @@ def test_ui_options_and_all_denials():
             assert result.citations
 
 
-@pytest.mark.parametrize('baseline', ['ge_7_8', 'lt_7_8_or_not_documented'])
-@pytest.mark.parametrize('prior', ['lt_8_3_eligible', 'ge_8_3_or_not_documented'])
-def test_calcium_gates_are_independent(baseline, prior):
-    result = evaluate(PACK, dict(FACTS,
-        baseline_albumin_corrected_ca_ge_7_8_on_ca_and_active_vitd=baseline,
-        albumin_adjusted_ca_not_ge_8_3_on_ca_vitd_prior=prior))
-    failed = set()
-    if baseline != 'ge_7_8':
-        failed.add('baseline_albumin_corrected_ca_ge_7_8_on_ca_and_active_vitd')
-    if prior != 'lt_8_3_eligible':
-        failed.add('albumin_adjusted_ca_not_ge_8_3_on_ca_vitd_prior')
-    assert {c['id'] for c in result.failed_clauses} == failed
-    assert result.decision == ('fail' if failed else 'pass')
-
-
 def test_metadata_notes_and_catalog():
-    assert PACK['drug'] == dict(name='Yorvipath', generic_name='palopegteriparatide', therapeutic_class='endocrinology')
+    assert PACK['drug'] == dict(name='Isturisa', generic_name='osilodrostat', therapeutic_class='cortisol-synthesis-inhibitor')
     assert PACK['encoding_status'] == 'partial'
-    assert PACK['source']['effective_date'] == '2026-06-01'
-    assert PACK['source']['citation'] == 'https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf'
+    assert PACK['source']['effective_date'] == '2021-11-01'
+    assert PACK['source']['citation'] == 'https://health.alaska.gov/media/xlgbkhpw/202109-isturisa_criteria_2021.pdf'
     assert (ROOT / PACK['source']['criteria_pdf']).exists()
     assert PACK['max_units'] is None and PACK['alternatives'] == []
     assert len(PACK['criteria']) == 10
     assert 'inferred_required_facts' not in PACK
     assert {f for c in PACK['criteria'] for f in c['required_facts']} == set(FACTS)
-    for phrase in ['6 months', '12 months', 'two pens per month', '30 mcg per day', '7 to 10 days', 'osteosarcoma', 'orthostatic hypotension', 'Version 1', '2/27/2026', '4/17/2026', '6/1/2026', 'manual review']:
+    for phrase in ['3 months', '6 months', 'THREE of five', 'upper limit of normal', 'cortisol levels within normal limits', 'no symptoms consistent', 'no evidence or symptoms of hypocortisolism', 'no evidence of disease progression', '30-day supply', '60 mg/day', 'QTc', 'hepatic', 'hypokalemia', 'hypertension', 'edema', 'hirsutism', 'Version 1', '7/6/2021', '9/17/21', '11/1/21', 'manual review']:
         assert phrase in ' '.join(PACK['notes'])
-    assert (BASE / 'yorvipath.json').read_bytes() == (BASE / 'rule_packs/yorvipath.json').read_bytes()
+    assert (BASE / 'isturisa.json').read_bytes() == (BASE / 'rule_packs/isturisa.json').read_bytes()
     catalog = load_rule_pack_catalog()
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
@@ -111,3 +95,29 @@ def test_metadata_notes_and_catalog():
         assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
         assert status['next_candidate'] == 'korlym'
     assert (BASE / 'ENCODING_STATUS.md').read_bytes() == (BASE.parent / 'ENCODING_STATUS.md').read_bytes()
+
+
+def test_attestation_scope():
+    texts = {c['id']: c['text'] for c in PACK['criteria']}
+    for phrase in ['TWO', 'ketoconazole', 'cabergoline', 'metyrapone', 'mitotane', '30 days each', 'failure, contraindication, or intolerance']:
+        assert phrase in texts['two_prior_therapies_ge_30_days']
+    for phrase in ['not an option', 'repeat surgeries', 'radiation', 'not been curative', 'still requires']:
+        assert phrase in texts['surgery_not_option_or_not_curative']
+    assert '<150 nmol/24 hours OR 3.5–45 mcg/24 hours' in texts['urine_free_cortisol_obtained']
+    assert 'corrected if abnormal before starting' in texts['baseline_potassium_magnesium_corrected_and_monitoring']
+    assert 'periodically' in texts['baseline_ecg_and_periodic_monitoring']
+    assert 'periodically' in texts['baseline_potassium_magnesium_corrected_and_monitoring']
+
+
+@pytest.mark.parametrize('specialty', ['none', 'cardiologist', 'yes', True])
+def test_unqualified_specialty(specialty):
+    result = evaluate(PACK, dict(FACTS, prescriber_specialty=specialty))
+    assert result.decision == 'fail'
+    assert [c['id'] for c in result.failed_clauses] == ['prescriber_specialty']
+
+
+def test_korlym_remains_unencoded():
+    korlym = load_rule_pack_catalog()['korlym']
+    assert korlym['encoding_status'] == 'text_only'
+    assert korlym['criteria'] == []
+    assert evaluate(korlym, {}).decision == 'need_info'

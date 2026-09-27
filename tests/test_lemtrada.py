@@ -96,8 +96,8 @@ def test_ui_closed_selects_and_coercion():
 def test_catalog_mirrors_alternatives_and_scope():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 111
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 87
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 112
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 86
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
@@ -109,9 +109,9 @@ def test_catalog_mirrors_alternatives_and_scope():
     for slug in ['actiq', 'andembry']:
         assert catalog[slug]['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 111 and status['encoding_text_only'] == 87
+    assert status['encoding_partial'] == 112 and status['encoding_text_only'] == 86
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'spravato'
+    assert status['next_candidate'] == 'uptravi'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
 

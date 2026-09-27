@@ -36492,7 +36492,8 @@
   "spravato": {
     "drug": {
       "name": "SPRAVATO",
-      "therapeutic_class": "other"
+      "therapeutic_class": "nmda-antagonist",
+      "generic_name": "esketamine"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -36503,18 +36504,409 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of treatment-resistant depression or MDD with acute suicidal ideation or behavior.",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "treatment_resistant_depression",
+            "mdd_with_acute_suicidal_ideation_or_behavior"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Adult age \u226518 years (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a psychiatrist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "psychiatrist_or_consult"
+          ]
+        }
+      },
+      {
+        "id": "baseline_depression_score",
+        "text": "Documentation of at least one baseline depression score: HAMD17, QIDS-C16, MADRS, BDI or PHQ-9 (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_depression_score"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_depression_score",
+          "values": [
+            "hamd17",
+            "qids_c16",
+            "madrs",
+            "bdi",
+            "phq9"
+          ]
+        }
+      },
+      {
+        "id": "direct_supervision",
+        "text": "Administered under direct supervision of a healthcare provider (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#approval-criteria",
+        "required_facts": [
+          "direct_supervision"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "direct_supervision",
+          "values": [
+            "confirmed"
+          ]
+        }
+      },
+      {
+        "id": "blood_pressure_monitoring",
+        "text": "Blood pressure assessed before and after each administration (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#approval-criteria",
+        "required_facts": [
+          "blood_pressure_monitoring"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "blood_pressure_monitoring",
+          "values": [
+            "confirmed"
+          ]
+        }
+      },
+      {
+        "id": "antidepressant_class_trials",
+        "text": "Trial, failure or contraindication to two distinct listed antidepressant classes taken for \u22658 weeks each: SSRI, SNRI, serotonin modulators, aminoketone, NaSSA, TCA or MAOI (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#approval-criteria",
+        "required_facts": [
+          "antidepressant_class_trials"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "antidepressant_class_trials",
+          "values": [
+            "met"
+          ]
+        }
+      },
+      {
+        "id": "augmentation_trial",
+        "text": "Tried and failed \u22651 antidepressant augmentation therapy for \u22658 weeks (e.g. antidepressant plus second-generation antipsychotic or lithium, or two concurrent antidepressants with different mechanisms of action) (approval criterion 7).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#approval-criteria",
+        "required_facts": [
+          "augmentation_trial"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "augmentation_trial",
+          "values": [
+            "met"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_rems",
+        "text": "Prescriber enrolled in Spravato REMS (approval criterion 8).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_rems"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_rems",
+          "values": [
+            "enrolled"
+          ]
+        }
+      },
+      {
+        "id": "aneurysmal_vascular_disease_or_avm",
+        "text": "Aneurysmal vascular disease (thoracic/abdominal aorta, intracranial or peripheral arterial vessels) or arteriovenous malformation (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#denial-criteria",
+        "required_facts": [
+          "aneurysmal_vascular_disease_or_avm"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "aneurysmal_vascular_disease_or_avm",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "intracerebral_hemorrhage",
+        "text": "Intracerebral hemorrhage (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#denial-criteria",
+        "required_facts": [
+          "intracerebral_hemorrhage"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "intracerebral_hemorrhage",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "psychosis_history",
+        "text": "History of psychosis (denial criterion 4).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#denial-criteria",
+        "required_facts": [
+          "psychosis_history"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "psychosis_history",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "benefits_outweigh_risks_attestation",
+        "text": "Prescriber attests benefits of Spravato outweigh risks; required independently of psychosis history (denial criterion 4).",
+        "citation": "https://health.alaska.gov/media/t0ofvizh/spravato_update_2026.pdf#denial-criteria",
+        "required_facts": [
+          "benefits_outweigh_risks_attestation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "benefits_outweigh_risks_attestation",
+          "values": [
+            "attested"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Spravato Criteria Version 2; effective 2023-01-02; Updated 6/26/2026. Approval criteria 1\u20138 and denial criteria 2\u20134 encoded as shared gates for both closed indications. Denial criterion 1 is failure to meet approval criteria.",
+      "Baseline score documentation and step therapy are attestations requiring chart verification. The antidepressant class attestation requires two distinct listed classes and \u22658 weeks each; augmentation requires \u22651 tried and failed therapy for \u22658 weeks. No numeric baseline score threshold is specified.",
+      "FDA usage (notes only): TRD in adults as monotherapy or with an oral antidepressant; MDD with acute suicidal ideation or behavior in adults in conjunction with an oral antidepressant.",
+      "Limitations (notes only): effectiveness in preventing suicide or reducing suicidal ideation or behavior has not been demonstrated; hospitalization may still be clinically warranted despite improvement. Not approved as an anesthetic; safety and effectiveness as an anesthetic are not established.",
+      "Cautions (notes only): cardiovascular/cerebrovascular conditions and risk factors may increase adverse effects. May impair attention, judgment, thinking, reaction speed and motor skills; do not drive or operate machinery until the next day after restful sleep. May cause fetal harm; consider pregnancy planning and prevention in females of reproductive potential.",
+      "Duration (notes only): initial approval 3 months; reauthorization 12 months with chart notes showing improvement from the baseline depression score.",
+      "Quantity (notes only): 8 \u00d7 56mg dose kits/month or 8 \u00d7 84mg dose kits/month; maximum 84mg twice weekly. Physician administered claims HCPCS J0013 (max 84 HCPCS per treatment). Pharmacy Point-of-Sale payment as of October 2022. max_units is null; quantity is not evaluated.",
+      "Documentation verification, FDA usage, limitations, cautions, duration, reauthorization and quantity require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of treatment-resistant depression or MDD with acute suicidal ideation or behavior.",
+        "options": [
+          {
+            "value": "treatment_resistant_depression",
+            "label": "Treatment-resistant depression"
+          },
+          {
+            "value": "mdd_with_acute_suicidal_ideation_or_behavior",
+            "label": "MDD with acute suicidal ideation or behavior"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "number",
+        "label": "Age in years (\u226518)"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a psychiatrist (approval criterion 2).",
+        "options": [
+          {
+            "value": "psychiatrist_or_consult",
+            "label": "Psychiatrist or consult"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "baseline_depression_score": {
+        "type": "select",
+        "label": "Documentation of at least one baseline depression score: HAMD17, QIDS-C16, MADRS, BDI or PHQ-9 (approval criterion 3).",
+        "options": [
+          {
+            "value": "hamd17",
+            "label": "HAMD17 documented"
+          },
+          {
+            "value": "qids_c16",
+            "label": "QIDS-C16 documented"
+          },
+          {
+            "value": "madrs",
+            "label": "MADRS documented"
+          },
+          {
+            "value": "bdi",
+            "label": "BDI documented"
+          },
+          {
+            "value": "phq9",
+            "label": "PHQ-9 documented"
+          },
+          {
+            "value": "not_documented",
+            "label": "No qualifying baseline score documented"
+          }
+        ]
+      },
+      "direct_supervision": {
+        "type": "select",
+        "label": "Administered under direct supervision of a healthcare provider (approval criterion 4).",
+        "options": [
+          {
+            "value": "confirmed",
+            "label": "Confirmed"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "blood_pressure_monitoring": {
+        "type": "select",
+        "label": "Blood pressure assessed before and after each administration (approval criterion 5).",
+        "options": [
+          {
+            "value": "confirmed",
+            "label": "Confirmed"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "antidepressant_class_trials": {
+        "type": "select",
+        "label": "Trial, failure or contraindication to two distinct listed antidepressant classes taken for \u22658 weeks each: SSRI, SNRI, serotonin modulators, aminoketone, NaSSA, TCA or MAOI (approval criterion 6).",
+        "options": [
+          {
+            "value": "met",
+            "label": "Met"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "augmentation_trial": {
+        "type": "select",
+        "label": "Tried and failed \u22651 antidepressant augmentation therapy for \u22658 weeks (e.g. antidepressant plus second-generation antipsychotic or lithium, or two concurrent antidepressants with different mechanisms of action) (approval criterion 7).",
+        "options": [
+          {
+            "value": "met",
+            "label": "Met"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "prescriber_rems": {
+        "type": "select",
+        "label": "Prescriber enrolled in Spravato REMS (approval criterion 8).",
+        "options": [
+          {
+            "value": "enrolled",
+            "label": "Enrolled"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "aneurysmal_vascular_disease_or_avm": {
+        "type": "select",
+        "label": "Aneurysmal vascular disease (thoracic/abdominal aorta, intracranial or peripheral arterial vessels) or arteriovenous malformation (denial criterion 2).",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "intracerebral_hemorrhage": {
+        "type": "select",
+        "label": "Intracerebral hemorrhage (denial criterion 3).",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "psychosis_history": {
+        "type": "select",
+        "label": "History of psychosis (denial criterion 4).",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "benefits_outweigh_risks_attestation": {
+        "type": "select",
+        "label": "Prescriber attests benefits of Spravato outweigh risks; required independently of psychosis history (denial criterion 4).",
+        "options": [
+          {
+            "value": "attested",
+            "label": "Attested"
+          },
+          {
+            "value": "not_attested",
+            "label": "Not attested"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "stadol": {
     "drug": {

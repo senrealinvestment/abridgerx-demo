@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 111,
-  "encoding_text_only": 87,
+  "encoding_partial": 112,
+  "encoding_text_only": 86,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -99,6 +99,7 @@
     "soliris",
     "somatropin",
     "spinal-muscular-atrophy",
+    "spravato",
     "stelara",
     "strensiq",
     "tepezza",
@@ -119,5 +120,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "spravato"
+  "next_candidate": "uptravi"
 }

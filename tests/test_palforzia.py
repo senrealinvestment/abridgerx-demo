@@ -98,18 +98,18 @@ def test_ui_and_metadata():
 def test_catalog():
     catalog = load_rule_pack_catalog()
     assert catalog['palforzia'] == PACK
-    assert catalog['spravato']['encoding_status'] == 'text_only'
+    assert catalog['uptravi']['encoding_status'] == 'text_only'
     assert (BASE/'palforzia.json').read_bytes() == (BASE/'rule_packs/palforzia.json').read_bytes()
     assert json.loads((BASE/'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f:
         assert json.load(f) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status']=='partial' for v in catalog.values()) == 111
-    assert sum(v['encoding_status']=='text_only' for v in catalog.values()) == 87
+    assert sum(v['encoding_status']=='partial' for v in catalog.values()) == 112
+    assert sum(v['encoding_status']=='text_only' for v in catalog.values()) == 86
     for d in [BASE,BASE.parent]:
         status=json.loads((d/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'],status['encoding_text_only']) == (111,87)
-        assert status['next_candidate'] == 'spravato'
+        assert (status['encoding_partial'],status['encoding_text_only']) == (112,86)
+        assert status['next_candidate'] == 'uptravi'
         assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status']=='partial')
     for name in ['ENCODING_STATUS.json','ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()

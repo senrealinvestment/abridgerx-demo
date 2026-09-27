@@ -63,9 +63,11 @@ Live clinician PA-check demo (advisory; published AK criteria):
 - **Deploy source (public mirror for Vercel Git):** https://github.com/senrealinvestment/abridgerx-demo  
   Private canonical repo remains https://github.com/senrealinvestment/abridgerx — grant the Vercel GitHub App access to link it directly later.
 - Framework: FastAPI (`app.py` entry + `vercel.json`). Rules engine only; no TypeSafe / SYSTEM_ONE keys in the client.
-- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 23 partial / 175 text_only; includes Benlysta, Bimzelx, Infliximab, Stelara, Skyrizi, Tremfya and Zymfentra), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
+- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 24 partial / 174 text_only; includes Kevzara, Benlysta, Bimzelx, Infliximab, Stelara, Skyrizi, Tremfya and Zymfentra), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
 
 
-Infliximab covers Avsola/Inflectra/Remicade/Renflexis across eight indications, with gated ages and prior therapies plus shared screening, infection, HF dosing and weight-submission criteria. HS requires neither age nor prior therapy. Duration, renewal, weight-based schedules and cautions remain manual review. Next alphabetical text-only brand: Actiq, followed by Amitiza; next biologic candidates: Kevzara, Evenity or Prolia.
+Infliximab covers Avsola/Inflectra/Remicade/Renflexis across eight indications, with gated ages and prior therapies plus shared screening, infection, HF dosing and weight-submission criteria. HS requires neither age nor prior therapy. Duration, renewal, weight-based schedules and cautions remain manual review. Next alphabetical text-only brand: Actiq, followed by Amitiza; next biologic candidates: Evenity and Prolia.
 
 Benlysta encodes SLE and lupus nephritis with age ≥5, pediatric IV-only routing, indication-gated specialty/labs/standard therapy and shared safety denials. Duration, reauthorization, dosing, quantity and cautions remain notes for manual review.
+
+Kevzara encodes adult RA/PMR, rheumatology specialty, gated RA therapy failures and PMR EULAR/ACR consistency plus either steroid-history path, shared infection/combination exclusions, and baseline lab thresholds. Documentation, duration, renewal, dosing, quantity enforcement and cautions remain manual review.

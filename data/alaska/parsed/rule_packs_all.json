@@ -8068,7 +8068,8 @@
       "skyrizi",
       "tremfya",
       "zymfentra",
-      "bimzelx"
+      "bimzelx",
+      "kevzara"
     ],
     "notes": [
       "Partial encoding from Alaska Medicaid Infliximab Criteria Version 1: Original 2/9/22; Approval 3/18/22; Effective 5/1/22. Covers Avsola, Inflectra, Remicade and Renflexis.",
@@ -8699,7 +8700,8 @@
   "kevzara": {
     "drug": {
       "name": "Kevzara",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "biologics",
+      "generic_name": "sarilumab"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -8710,17 +8712,424 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Qualifying diagnosis attested by the closed indication selection",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "rheumatoid_arthritis",
+            "polymyalgia_rheumatica"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient is at least 18 years old",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a rheumatologist",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "rheumatologist_or_consult"
+        }
+      },
+      {
+        "id": "ra_conventional_dmard_90d",
+        "text": "Tried and failed at least one conventional DMARD (e.g. methotrexate, hydroxychloroquine, leflunomide) for at least 90 days",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "ra_conventional_dmard_90d"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ra_conventional_dmard_90d",
+          "value": "trial_failure_gte_90d"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "rheumatoid_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "ra_tnf_blocker_90d",
+        "text": "Tried and failed a TNF blocker (e.g. Humira) for at least 90 days",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "ra_tnf_blocker_90d"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ra_tnf_blocker_90d",
+          "value": "trial_failure_gte_90d"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "rheumatoid_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "pmr_eular_acr_consistent",
+        "text": "PMR diagnosis consistent with EULAR/ACR criteria",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "pmr_eular_acr_consistent"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pmr_eular_acr_consistent",
+          "value": "consistent"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "polymyalgia_rheumatica"
+          ]
+        }
+      },
+      {
+        "id": "pmr_steroid_history",
+        "text": "Qualifying corticosteroid history (either path)",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "pmr_steroid_history"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pmr_steroid_history",
+          "values": [
+            "prednisone_gte_20mg_gt_8wk",
+            "flare_while_tapering_gte_7_5mg_last_12wk"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "polymyalgia_rheumatica"
+          ]
+        }
+      },
+      {
+        "id": "no_current_serious_active_infection",
+        "text": "No current serious active infection",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "no_current_serious_active_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_current_serious_active_infection",
+          "value": true
+        }
+      },
+      {
+        "id": "not_with_biologic_dmard_or_jak",
+        "text": "Not taking or planning to take Kevzara with another biologic DMARD or JAK inhibitor",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "not_with_biologic_dmard_or_jak"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_with_biologic_dmard_or_jak",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_anc",
+        "text": "Baseline absolute neutrophil count (ANC)",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "baseline_anc"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_anc",
+          "value": "anc_gte_2000"
+        }
+      },
+      {
+        "id": "baseline_ast_alt",
+        "text": "Baseline AST and ALT",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "baseline_ast_alt"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_ast_alt",
+          "value": "ast_alt_lte_1_5x_uln"
+        }
+      },
+      {
+        "id": "baseline_platelets",
+        "text": "Baseline platelet count",
+        "citation": "https://health.alaska.gov/media/p3uhkcex/5biii-kevzara_criteria_2023.pdf",
+        "required_facts": [
+          "baseline_platelets"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_platelets",
+          "value": "platelets_gte_150000"
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "infliximab"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Medicaid Kevzara (sarilumab), an IL-6 receptor antagonist. Version 1; Original: 03/13/2023; Accepted: 4/21/2023; Effective: 6/1/2023.",
+      "Closed indication selection attests to the FDA diagnosis and treatment-response qualifiers. Both indications require adults and rheumatology prescribing or consultation. PMR diagnosis must be consistent with EULAR/ACR criteria; explicit consistency attestation is encoded without a separate criteria checklist. PMR approval #4 OR #5 is encoded as either qualifying steroid-history path.",
+      "Initial authorization must include previous therapies trialed and the nature of the failure. Patients established on manufacturer-supplied samples or manufacturer-sponsored assistance must still meet initial authorization criteria as patients new to therapy.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 6 months. RA requires documented positive clinical response in at least one objective measure (e.g. CDAI, SDAI, PAS). PMR requires improved adherence to corticosteroid taper and a decreased number of flares while on Kevzara.",
+      "Quantity limit (notes only): 200 mg (1.14 ml) subcutaneously once every 14 days. Quantity enforcement requires manual review.",
+      "Cautions (notes only): increased risk of serious infections, including opportunistic infections, which may lead to hospitalization or death; many affected patients were receiving concomitant immunosuppressants. Evaluate tuberculosis, HIV, hepatitis B and hepatitis C before treatment. Live vaccines should generally not be administered during treatment unless the benefit outweighs the risk.",
+      "PDL status unknown: source is silent. Infliximab is linked for RA overlap and requires its own indication-specific review; it is not a PMR alternative.",
+      "Remaining gaps: documentation of prior therapies and nature of failure, authorization duration, reauthorization response documentation, dosing, quantity enforcement and cautions require manual review."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Qualifying diagnosis attested by the closed indication selection",
+        "options": [
+          {
+            "value": "rheumatoid_arthritis",
+            "label": "Moderately to severely active rheumatoid arthritis in an adult with inadequate response to at least one DMARD"
+          },
+          {
+            "value": "polymyalgia_rheumatica",
+            "label": "Adult polymyalgia rheumatica with inadequate response to corticosteroids or inability to tolerate corticosteroid taper"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a rheumatologist",
+        "options": [
+          {
+            "value": "rheumatologist_or_consult",
+            "label": "Rheumatologist or consultation with a rheumatologist"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ]
+      },
+      "ra_conventional_dmard_90d": {
+        "type": "select",
+        "label": "Tried and failed at least one conventional DMARD (e.g. methotrexate, hydroxychloroquine, leflunomide) for at least 90 days",
+        "options": [
+          {
+            "value": "trial_failure_gte_90d",
+            "label": "Trial and failure for at least 90 days"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "rheumatoid_arthritis"
+          ]
+        }
+      },
+      "ra_tnf_blocker_90d": {
+        "type": "select",
+        "label": "Tried and failed a TNF blocker (e.g. Humira) for at least 90 days",
+        "options": [
+          {
+            "value": "trial_failure_gte_90d",
+            "label": "Trial and failure for at least 90 days"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "rheumatoid_arthritis"
+          ]
+        }
+      },
+      "pmr_eular_acr_consistent": {
+        "type": "select",
+        "label": "PMR diagnosis consistent with EULAR/ACR criteria",
+        "options": [
+          {
+            "value": "consistent",
+            "label": "Consistent with EULAR/ACR criteria"
+          },
+          {
+            "value": "not_consistent",
+            "label": "Not consistent with EULAR/ACR criteria"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "polymyalgia_rheumatica"
+          ]
+        }
+      },
+      "pmr_steroid_history": {
+        "type": "select",
+        "label": "Qualifying corticosteroid history (either path)",
+        "options": [
+          {
+            "value": "prednisone_gte_20mg_gt_8wk",
+            "label": "History of prednisone at least 20 mg/day (or equivalent) for more than 8 weeks"
+          },
+          {
+            "value": "flare_while_tapering_gte_7_5mg_last_12wk",
+            "label": "At least one flare while tapering at at least 7.5 mg prednisone/day (or equivalent) within the last 12 weeks"
+          },
+          {
+            "value": "none",
+            "label": "Neither criterion met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "polymyalgia_rheumatica"
+          ]
+        }
+      },
+      "no_current_serious_active_infection": {
+        "type": "select",
+        "label": "No current serious active infection",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_with_biologic_dmard_or_jak": {
+        "type": "select",
+        "label": "Not taking or planning to take Kevzara with another biologic DMARD or JAK inhibitor",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "baseline_anc": {
+        "type": "select",
+        "label": "Baseline absolute neutrophil count (ANC)",
+        "options": [
+          {
+            "value": "anc_gte_2000",
+            "label": "ANC at least 2000/mm3"
+          },
+          {
+            "value": "anc_lt_2000",
+            "label": "ANC below 2000/mm3"
+          },
+          {
+            "value": "not_submitted",
+            "label": "Not submitted"
+          }
+        ]
+      },
+      "baseline_ast_alt": {
+        "type": "select",
+        "label": "Baseline AST and ALT",
+        "options": [
+          {
+            "value": "ast_alt_lte_1_5x_uln",
+            "label": "Both AST and ALT at or below 1.5 times ULN"
+          },
+          {
+            "value": "ast_alt_gt_1_5x_uln",
+            "label": "AST or ALT above 1.5 times ULN"
+          },
+          {
+            "value": "not_submitted",
+            "label": "Not submitted"
+          }
+        ]
+      },
+      "baseline_platelets": {
+        "type": "select",
+        "label": "Baseline platelet count",
+        "options": [
+          {
+            "value": "platelets_gte_150000",
+            "label": "Platelets at least 150,000/mm3"
+          },
+          {
+            "value": "platelets_lt_150000",
+            "label": "Platelets below 150,000/mm3"
+          },
+          {
+            "value": "not_submitted",
+            "label": "Not submitted"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": null,
+      "notes": "200 mg (1.14 ml) SC every 14 days; notes only, requires manual review."
+    }
   },
   "kisunla": {
     "drug": {

@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 63,
-  "encoding_text_only": 135,
+  "encoding_partial": 64,
+  "encoding_text_only": 134,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -22,6 +22,7 @@
     "beqvez-tm",
     "berinert",
     "bimzelx",
+    "botulinum-toxin-preparations",
     "briumvi",
     "calcitonin-gene-related-peptide",
     "cinqair",
@@ -71,5 +72,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "botulinum-toxin-preparations"
+  "next_candidate": "duchenne-muscular-dystrophy"
 }

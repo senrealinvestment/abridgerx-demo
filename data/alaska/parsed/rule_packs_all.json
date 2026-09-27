@@ -7669,7 +7669,8 @@
   "corlanor": {
     "drug": {
       "name": "Corlanor",
-      "therapeutic_class": "other"
+      "therapeutic_class": "hcn-channel-blocker",
+      "generic_name": "ivabradine"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -7680,18 +7681,637 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Qualifying diagnosis.",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "stable_symptomatic_chronic_hf_reduced_ef",
+            "pediatric_hf_dilated_cardiomyopathy",
+            "inappropriate_sinus_tachycardia"
+          ]
+        }
+      },
+      {
+        "id": "cardiologist_or_consultation",
+        "text": "Prescribed by or in consultation with a cardiologist.",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "cardiologist_or_consultation"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "cardiologist_or_consultation",
+          "value": true
+        }
+      },
+      {
+        "id": "adult_age_requirement_met",
+        "text": "Adult HF: age \u226518 years (18 included).",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "adult_age_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "adult_age_requirement_met",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      {
+        "id": "adult_hf_diagnosis",
+        "text": "Worsening heart failure diagnosis of stable, symptomatic chronic heart failure with reduced ejection fraction.",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "adult_hf_diagnosis"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "adult_hf_diagnosis",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      {
+        "id": "lvef_le_35",
+        "text": "Left ventricular ejection fraction \u226435% (35 included).",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "lvef_le_35"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "lvef_le_35",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      {
+        "id": "adult_normal_sinus_rhythm",
+        "text": "Patient is in normal sinus rhythm.",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "adult_normal_sinus_rhythm"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "adult_normal_sinus_rhythm",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      {
+        "id": "heart_rate_ge_70",
+        "text": "Heart rate \u226570 beats per minute (70 included).",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "heart_rate_ge_70"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "heart_rate_ge_70",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      {
+        "id": "adult_beta_blocker_requirement_met",
+        "text": "Tried and failed OR has a contraindication to beta blockers at maximally tolerated dose.",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "adult_beta_blocker_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "adult_beta_blocker_requirement_met",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      {
+        "id": "pediatric_age_requirement_met",
+        "text": "Pediatric HF: age \u22656 months and <18 years (6 months included; through age 17).",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "pediatric_age_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pediatric_age_requirement_met",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pediatric_hf_dilated_cardiomyopathy"
+        }
+      },
+      {
+        "id": "pediatric_dcm_diagnosis",
+        "text": "Stable symptomatic heart failure due to dilated cardiomyopathy.",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "pediatric_dcm_diagnosis"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pediatric_dcm_diagnosis",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pediatric_hf_dilated_cardiomyopathy"
+        }
+      },
+      {
+        "id": "pediatric_sinus_rhythm_elevated_hr",
+        "text": "Normal sinus rhythm with an elevated heart rate.",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "pediatric_sinus_rhythm_elevated_hr"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pediatric_sinus_rhythm_elevated_hr",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pediatric_hf_dilated_cardiomyopathy"
+        }
+      },
+      {
+        "id": "ist_diagnosis",
+        "text": "Diagnosis of inappropriate sinus tachycardia (IST).",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "ist_diagnosis"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ist_diagnosis",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "inappropriate_sinus_tachycardia"
+        }
+      },
+      {
+        "id": "ist_normal_sinus_rhythm",
+        "text": "Patient is in normal sinus rhythm.",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "ist_normal_sinus_rhythm"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ist_normal_sinus_rhythm",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "inappropriate_sinus_tachycardia"
+        }
+      },
+      {
+        "id": "ist_beta_blocker_requirement_met",
+        "text": "Trial of a beta blocker without adequate response OR contraindication to OR documented intolerance of a beta blocker.",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#approval-criteria",
+        "required_facts": [
+          "ist_beta_blocker_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ist_beta_blocker_requirement_met",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "inappropriate_sinus_tachycardia"
+        }
+      },
+      {
+        "id": "clinically_significant_hypotension",
+        "text": "Clinically significant hypotension (must be No).",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#denial-criteria",
+        "required_facts": [
+          "clinically_significant_hypotension"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "clinically_significant_hypotension",
+          "value": false
+        }
+      },
+      {
+        "id": "conduction_disorder_without_pacemaker",
+        "text": "Sick sinus syndrome, sino-atrial block, or third-degree atrioventricular block WITHOUT a functioning demand pacemaker (must be No).",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#denial-criteria",
+        "required_facts": [
+          "conduction_disorder_without_pacemaker"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "conduction_disorder_without_pacemaker",
+          "value": false
+        }
+      },
+      {
+        "id": "demand_pacemaker_rate_ge_60",
+        "text": "Demand pacemaker set to a rate \u226560 beats per minute (60 included) (must be No).",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#denial-criteria",
+        "required_facts": [
+          "demand_pacemaker_rate_ge_60"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "demand_pacemaker_rate_ge_60",
+          "value": false
+        }
+      },
+      {
+        "id": "severe_hepatic_impairment",
+        "text": "Severe hepatic impairment (must be No).",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#denial-criteria",
+        "required_facts": [
+          "severe_hepatic_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "severe_hepatic_impairment",
+          "value": false
+        }
+      },
+      {
+        "id": "acute_decompensated_hf",
+        "text": "Acute decompensated heart failure (must be No).",
+        "citation": "https://health.alaska.gov/media/2ppk3k4h/corlanor_criteria_update_2024.pdf#denial-criteria",
+        "required_facts": [
+          "acute_decompensated_hf"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "acute_decompensated_hf",
+          "value": false
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Corlanor Criteria Version 2; Original: 9/17/19; Approval: 11/15/2019; Update: 04/19/2024; Effective: 06/1/2024.",
+      "Closed adult HF, pediatric DCM and IST pathways use indication when gates. Clinical thresholds, ages, prior therapy alternatives and the functioning demand pacemaker exception use attestations; supporting documentation requires manual review. No age restriction is imposed on the IST pathway.",
+      "Cautions (notes only): females should use effective contraception due to fetal toxicity; monitor for atrial fibrillation; not recommended in patients with second degree AV block; monitor heart rate throughout therapy. Manual review required.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months. Manual review required.",
+      "Quantity limits (notes only): 60 \u2013 5mg tablets; 60 \u2013 7.5mg tablets; 450ml \u2013 5mg/5ml oral solution. Source does not specify a quantity time period. Quantity enforcement requires manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Qualifying diagnosis.",
+        "options": [
+          {
+            "value": "stable_symptomatic_chronic_hf_reduced_ef",
+            "label": "Adult stable symptomatic chronic heart failure with reduced EF"
+          },
+          {
+            "value": "pediatric_hf_dilated_cardiomyopathy",
+            "label": "Pediatric stable symptomatic heart failure due to dilated cardiomyopathy"
+          },
+          {
+            "value": "inappropriate_sinus_tachycardia",
+            "label": "Inappropriate sinus tachycardia (IST)"
+          }
+        ]
+      },
+      "cardiologist_or_consultation": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a cardiologist.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "adult_age_requirement_met": {
+        "type": "select",
+        "label": "Adult HF: age \u226518 years (18 included).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      "adult_hf_diagnosis": {
+        "type": "select",
+        "label": "Worsening heart failure diagnosis of stable, symptomatic chronic heart failure with reduced ejection fraction.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      "lvef_le_35": {
+        "type": "select",
+        "label": "Left ventricular ejection fraction \u226435% (35 included).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      "adult_normal_sinus_rhythm": {
+        "type": "select",
+        "label": "Patient is in normal sinus rhythm.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      "heart_rate_ge_70": {
+        "type": "select",
+        "label": "Heart rate \u226570 beats per minute (70 included).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      "adult_beta_blocker_requirement_met": {
+        "type": "select",
+        "label": "Tried and failed OR has a contraindication to beta blockers at maximally tolerated dose.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "stable_symptomatic_chronic_hf_reduced_ef"
+        }
+      },
+      "pediatric_age_requirement_met": {
+        "type": "select",
+        "label": "Pediatric HF: age \u22656 months and <18 years (6 months included; through age 17).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "pediatric_hf_dilated_cardiomyopathy"
+        }
+      },
+      "pediatric_dcm_diagnosis": {
+        "type": "select",
+        "label": "Stable symptomatic heart failure due to dilated cardiomyopathy.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "pediatric_hf_dilated_cardiomyopathy"
+        }
+      },
+      "pediatric_sinus_rhythm_elevated_hr": {
+        "type": "select",
+        "label": "Normal sinus rhythm with an elevated heart rate.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "pediatric_hf_dilated_cardiomyopathy"
+        }
+      },
+      "ist_diagnosis": {
+        "type": "select",
+        "label": "Diagnosis of inappropriate sinus tachycardia (IST).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "inappropriate_sinus_tachycardia"
+        }
+      },
+      "ist_normal_sinus_rhythm": {
+        "type": "select",
+        "label": "Patient is in normal sinus rhythm.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "inappropriate_sinus_tachycardia"
+        }
+      },
+      "ist_beta_blocker_requirement_met": {
+        "type": "select",
+        "label": "Trial of a beta blocker without adequate response OR contraindication to OR documented intolerance of a beta blocker.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "inappropriate_sinus_tachycardia"
+        }
+      },
+      "clinically_significant_hypotension": {
+        "type": "select",
+        "label": "Clinically significant hypotension (must be No).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "conduction_disorder_without_pacemaker": {
+        "type": "select",
+        "label": "Sick sinus syndrome, sino-atrial block, or third-degree atrioventricular block WITHOUT a functioning demand pacemaker (must be No).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "demand_pacemaker_rate_ge_60": {
+        "type": "select",
+        "label": "Demand pacemaker set to a rate \u226560 beats per minute (60 included) (must be No).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "severe_hepatic_impairment": {
+        "type": "select",
+        "label": "Severe hepatic impairment (must be No).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "acute_decompensated_hf": {
+        "type": "select",
+        "label": "Acute decompensated heart failure (must be No).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "crenessity": {
     "drug": {

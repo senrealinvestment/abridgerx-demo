@@ -32,7 +32,7 @@ STATIC_DIR = UI_DIR / "static"
 app = FastAPI(
     title="AbridgeRx",
     description="Alaska Medicaid prior-authorization criteria check (advisory).",
-    version="0.1.13",
+    version="0.1.14",
 )
 
 
@@ -42,7 +42,7 @@ class CheckRequest(BaseModel):
 
 
 def _coerce_patient(raw: dict[str, Any]) -> dict[str, Any]:
-    """Normalize form values; drop empty strings; coerce age_years to float.
+    """Normalize form values; drop empty strings; coerce age_years and weight_kg to float.
 
     Multi-select facts may arrive as a list (checkbox group) or a single string.
     """
@@ -55,7 +55,7 @@ def _coerce_patient(raw: dict[str, Any]) -> dict[str, Any]:
             if cleaned:
                 out[k] = cleaned
             continue
-        if k == "age_years":
+        if k in ("age_years", "weight_kg"):
             try:
                 out[k] = float(v)
             except (TypeError, ValueError):

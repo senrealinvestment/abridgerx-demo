@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 58,
-  "encoding_text_only": 140,
+  "encoding_partial": 59,
+  "encoding_text_only": 139,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -64,7 +64,8 @@
     "voxzogo",
     "xolair",
     "zolgensma",
-    "zymfentra"
+    "zymfentra",
+    "zynteglo"
   ],
-  "next_candidate": "zynteglo"
+  "next_candidate": "vyjuvek"
 }

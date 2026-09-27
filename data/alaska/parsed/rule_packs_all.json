@@ -25317,7 +25317,8 @@
   "zynteglo": {
     "drug": {
       "name": "Zynteglo",
-      "therapeutic_class": "cell-and-gene-therapy"
+      "therapeutic_class": "cell-and-gene-therapy",
+      "generic_name": "betibeglogene autotemcel"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -25328,16 +25329,377 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Adult and pediatric patients with \u03b2-thalassemia who require regular red blood cell (RBC) transfusions (FDA indication; approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/rkkfapch/zynteglo_criteria_2024.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      },
+      {
+        "id": "age_fda_labeled",
+        "text": "Patient is 4 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/rkkfapch/zynteglo_criteria_2024.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 4
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a hematologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/rkkfapch/zynteglo_criteria_2024.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "hematologist",
+            "hematologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "beta_thalassemia_genetic_testing_confirmed",
+        "text": "Diagnosis of \u03b2-thalassemia confirmed by genetic testing (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/rkkfapch/zynteglo_criteria_2024.pdf",
+        "required_facts": [
+          "beta_thalassemia_genetic_testing_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "beta_thalassemia_genetic_testing_confirmed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      },
+      {
+        "id": "weight_minimum",
+        "text": "Patient weighs a minimum of 6 kg (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/rkkfapch/zynteglo_criteria_2024.pdf",
+        "required_facts": [
+          "weight_kg"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "weight_kg",
+          "value": 6
+        }
+      },
+      {
+        "id": "adequate_cd34_cells_for_min_dose_5e6_per_kg",
+        "text": "Able to provide adequate cells to meet the minimum recommended dose of 5.0\u00d710^6 CD34+ cells/kg (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/rkkfapch/zynteglo_criteria_2024.pdf",
+        "required_facts": [
+          "adequate_cd34_cells_for_min_dose_5e6_per_kg"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "adequate_cd34_cells_for_min_dose_5e6_per_kg",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      },
+      {
+        "id": "negative_hbv_hcv_hiv_htlv_prior_to_cell_collection",
+        "text": "Negative tests for HBV, HCV, HIV, and HTLV-1&2 prior to collection of cells (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/rkkfapch/zynteglo_criteria_2024.pdf",
+        "required_facts": [
+          "negative_hbv_hcv_hiv_htlv_prior_to_cell_collection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "negative_hbv_hcv_hiv_htlv_prior_to_cell_collection",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      },
+      {
+        "id": "tdt_transfusion_history",
+        "text": "Documented history of \u2265100 mL/kg/year of pRBCs in the immediately preceding two years OR \u22658 transfusions of pRBCs in the immediately preceding two years (approval criterion 7).",
+        "citation": "https://health.alaska.gov/media/rkkfapch/zynteglo_criteria_2024.pdf",
+        "required_facts": [
+          "tdt_transfusion_history"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "tdt_transfusion_history",
+          "values": [
+            "prbc_ge_100_ml_per_kg_per_year_prior_2_years",
+            "prbc_transfusions_ge_8_prior_2_years"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      },
+      {
+        "id": "no_prior_gene_therapy_for_tdt",
+        "text": "No previous gene therapy for transfusion-dependent thalassemia (TDT) (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/rkkfapch/zynteglo_criteria_2024.pdf",
+        "required_facts": [
+          "no_prior_gene_therapy_for_tdt"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_prior_gene_therapy_for_tdt",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      },
+      {
+        "id": "no_prior_allogeneic_hsct_for_tdt",
+        "text": "No previous allogeneic hematopoietic stem cell transplant (HSCT) for TDT (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/rkkfapch/zynteglo_criteria_2024.pdf",
+        "required_facts": [
+          "no_prior_allogeneic_hsct_for_tdt"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_prior_allogeneic_hsct_for_tdt",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Zynteglo (betibeglogene autotemcel), autologous hematopoietic stem cell-based gene therapy for transfusion-dependent \u03b2-thalassemia. Version: 1; Original: 10/9/2024; Accepted: 11/15/2024; Effective: 01/01/2025. The PDF heading spells the generic betibeglogene-autoemcel.",
+      "Encoded: FDA indication, approval criteria 1-7 and denial exclusions 2-3. Denial criterion 1 (failure to meet approval criteria) is covered by the approval clauses.",
+      "Duration (notes only): initial approval up to 6 months; no reauthorization will be approved.",
+      "Quantity (notes only): one infusion per lifetime; HCPCS J3393. No numeric quantity enforcement; max_units is null.",
+      "Cautions (notes only): monitor platelet and neutrophil counts following infusion due to delayed or failed engraftment risk. Monitor for hematologic malignancy at least annually for a minimum of 15 years following infusion.",
+      "Cautions (notes only): avoid antiretroviral medications or hydroxyurea beginning a minimum of one month, or for the expected duration of elimination of all such medications, prior to mobilization until all cycles of apheresis are completed.",
+      "Cautions (notes only): discontinue iron chelators seven days before myeloablative conditioning and avoid until six months after Zynteglo infusion. Dimethyl sulfoxide (DMSO) may cause hypersensitivity reactions, including anaphylaxis.",
+      "Remaining gaps: documentation verification, duration, no reauthorization, lifetime quantity enforcement and monitoring require manual review. Genetic confirmation, adequate CD34+ cell dose, infectious testing and transfusion history are attestations.",
+      "PDL status unknown. No evaluate-linked alternatives."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Adult and pediatric patients with \u03b2-thalassemia who require regular red blood cell (RBC) transfusions (FDA indication; approval criterion 3).",
+        "options": [
+          {
+            "value": "beta_thalassemia_transfusion_dependent",
+            "label": "Transfusion-dependent \u03b2-thalassemia"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 4 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 4 years"
+          },
+          {
+            "value": "4",
+            "label": "4 years or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a hematologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "hematologist",
+            "label": "Hematologist"
+          },
+          {
+            "value": "hematologist_consult",
+            "label": "In consultation with a hematologist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "beta_thalassemia_genetic_testing_confirmed": {
+        "type": "select",
+        "label": "Diagnosis of \u03b2-thalassemia confirmed by genetic testing (approval criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      },
+      "weight_kg": {
+        "type": "select",
+        "label": "Patient weighs a minimum of 6 kg (approval criterion 4).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 6 kg"
+          },
+          {
+            "value": "6",
+            "label": "6 kg or more"
+          }
+        ]
+      },
+      "adequate_cd34_cells_for_min_dose_5e6_per_kg": {
+        "type": "select",
+        "label": "Able to provide adequate cells to meet the minimum recommended dose of 5.0\u00d710^6 CD34+ cells/kg (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      },
+      "negative_hbv_hcv_hiv_htlv_prior_to_cell_collection": {
+        "type": "select",
+        "label": "Negative tests for HBV, HCV, HIV, and HTLV-1&2 prior to collection of cells (approval criterion 6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      },
+      "tdt_transfusion_history": {
+        "type": "select",
+        "label": "Documented history of \u2265100 mL/kg/year of pRBCs in the immediately preceding two years OR \u22658 transfusions of pRBCs in the immediately preceding two years (approval criterion 7).",
+        "options": [
+          {
+            "value": "prbc_ge_100_ml_per_kg_per_year_prior_2_years",
+            "label": "\u2265100 mL/kg/year of pRBCs in the immediately preceding two years"
+          },
+          {
+            "value": "prbc_transfusions_ge_8_prior_2_years",
+            "label": "\u22658 pRBC transfusions in the immediately preceding two years"
+          },
+          {
+            "value": "not_met",
+            "label": "Neither history requirement met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      },
+      "no_prior_gene_therapy_for_tdt": {
+        "type": "select",
+        "label": "No previous gene therapy for transfusion-dependent thalassemia (TDT) (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      },
+      "no_prior_allogeneic_hsct_for_tdt": {
+        "type": "select",
+        "label": "No previous allogeneic hematopoietic stem cell transplant (HSCT) for TDT (denial criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "beta_thalassemia_transfusion_dependent"
+          ]
+        }
+      }
+    }
   }
 }

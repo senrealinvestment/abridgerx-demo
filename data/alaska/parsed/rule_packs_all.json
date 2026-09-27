@@ -4169,7 +4169,8 @@
   "crysvita": {
     "drug": {
       "name": "Crysvita",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "biologics",
+      "generic_name": "burosumab-twza"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -4180,18 +4181,255 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "X-linked hypophosphatemia (XLH), the closed FDA-labeled indication in this PDF.",
+        "citation": "https://health.alaska.gov/media/hmbfuity/20194crysvita_criteria_approved_20190419.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "x_linked_hypophosphatemia"
+          ]
+        }
+      },
+      {
+        "id": "age_fda_labeled",
+        "text": "Patient is 1 year of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/hmbfuity/20194crysvita_criteria_approved_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 1
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a nephrologist or endocrinologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/hmbfuity/20194crysvita_criteria_approved_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "nephrologist",
+            "endocrinologist",
+            "nephrologist_or_endocrinologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "xlh_genetic_and_baseline_fgf23",
+        "text": "XLH confirmed by genetic testing (e.g. PHEX mutation) AND baseline serum FGF23 level obtained (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/hmbfuity/20194crysvita_criteria_approved_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "xlh_genetic_and_baseline_fgf23"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "xlh_genetic_and_baseline_fgf23",
+          "value": "phex_or_genetic_confirmed_and_baseline_fgf23_obtained"
+        }
+      },
+      {
+        "id": "baseline_fasting_serum_phosphorus_below_normal_for_age",
+        "text": "Baseline fasting serum phosphorus documented below the normal range for age (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/hmbfuity/20194crysvita_criteria_approved_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_fasting_serum_phosphorus_below_normal_for_age"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_fasting_serum_phosphorus_below_normal_for_age",
+          "value": true
+        }
+      },
+      {
+        "id": "calcitriol_plus_oral_phosphate_step",
+        "text": "At least 2 months of calcitriol plus oral phosphate, or contraindication/intolerance, with phosphate levels documented before and after supplementation (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/hmbfuity/20194crysvita_criteria_approved_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "calcitriol_plus_oral_phosphate_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "calcitriol_plus_oral_phosphate_step",
+          "values": [
+            "trialed_ge_2_months_with_levels_documented",
+            "contraindication_or_intolerance_with_levels_documented"
+          ]
+        }
+      },
+      {
+        "id": "oral_phosphate_and_vitamin_d_analog_discontinued_ge_1_week",
+        "text": "Any oral phosphate and vitamin D analog discontinued for at least one week prior to therapy (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/hmbfuity/20194crysvita_criteria_approved_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "oral_phosphate_and_vitamin_d_analog_discontinued_ge_1_week"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "oral_phosphate_and_vitamin_d_analog_discontinued_ge_1_week",
+          "value": true
+        }
+      },
+      {
+        "id": "prescriber_agrees_monitor_document_serum_phosphorus",
+        "text": "Prescriber agrees to monitor and document serum phosphorus throughout therapy (approval criterion 7).",
+        "citation": "https://health.alaska.gov/media/hmbfuity/20194crysvita_criteria_approved_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_agrees_monitor_document_serum_phosphorus"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_agrees_monitor_document_serum_phosphorus",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Crysvita (burosumab-twza), an FGF23 blocking antibody, Criteria Version 1: Original 03/7/2019 (printed 03/7//2019); Approval 04/19/2019; Effective 06/10/2019.",
+      "Encoded: closed XLH indication and approval criteria 1-7. Denial criteria mirror the approval requirements. Genetic confirmation and baseline FGF23 are both required; no numeric FGF23 threshold is stated. Baseline phosphorus and therapy history are documentation attestations.",
+      "Cautions: do not use with oral phosphate and active vitamin D analogs. Pretherapy washout is encoded; ongoing combination avoidance remains notes only. Do not initiate if serum phosphorus is within or above normal for age (covered by baseline phosphorus criterion).",
+      "Cautions (notes only): contraindicated in severe renal impairment or end stage renal disease (ESRD). This is not a separate denial predicate.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months with documented improvement in phosphorus levels AND positive clinical response, e.g. decreased bone pain or improvement in skeletal deformities.",
+      "Quantity limits (notes only): 10 mg/ml vial: 2 per 28 days; 20 mg/ml vial: 2 per 28 days; 30 mg/ml vial: 6 per 28 days. Numeric quantity enforcement is not encoded.",
+      "Documentation verification, remaining cautions, duration, reauthorization response and quantity limits require manual review; this pack remains partial. No alternatives are specified."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "X-linked hypophosphatemia (XLH), the closed FDA-labeled indication in this PDF.",
+        "options": [
+          {
+            "value": "x_linked_hypophosphatemia",
+            "label": "X-linked hypophosphatemia (XLH)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 1 year of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 1 year"
+          },
+          {
+            "value": "1",
+            "label": "1 year or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a nephrologist or endocrinologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "nephrologist",
+            "label": "Nephrologist"
+          },
+          {
+            "value": "endocrinologist",
+            "label": "Endocrinologist"
+          },
+          {
+            "value": "nephrologist_or_endocrinologist_consult",
+            "label": "In consultation with a nephrologist or endocrinologist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "xlh_genetic_and_baseline_fgf23": {
+        "type": "select",
+        "label": "XLH confirmed by genetic testing (e.g. PHEX mutation) AND baseline serum FGF23 level obtained (approval criterion 3).",
+        "options": [
+          {
+            "value": "phex_or_genetic_confirmed_and_baseline_fgf23_obtained",
+            "label": "Genetic confirmation of XLH and baseline serum FGF23 obtained"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Genetic confirmation and/or baseline FGF23 not obtained"
+          }
+        ]
+      },
+      "baseline_fasting_serum_phosphorus_below_normal_for_age": {
+        "type": "select",
+        "label": "Baseline fasting serum phosphorus documented below the normal range for age (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "calcitriol_plus_oral_phosphate_step": {
+        "type": "select",
+        "label": "At least 2 months of calcitriol plus oral phosphate, or contraindication/intolerance, with phosphate levels documented before and after supplementation (approval criterion 5).",
+        "options": [
+          {
+            "value": "trialed_ge_2_months_with_levels_documented",
+            "label": "Trial of at least 2 months; phosphate levels documented before and after"
+          },
+          {
+            "value": "contraindication_or_intolerance_with_levels_documented",
+            "label": "Contraindication or intolerance; phosphate levels documented before and after"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "oral_phosphate_and_vitamin_d_analog_discontinued_ge_1_week": {
+        "type": "select",
+        "label": "Any oral phosphate and vitamin D analog discontinued for at least one week prior to therapy (approval criterion 6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "prescriber_agrees_monitor_document_serum_phosphorus": {
+        "type": "select",
+        "label": "Prescriber agrees to monitor and document serum phosphorus throughout therapy (approval criterion 7).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "dawnzeratm": {
     "drug": {

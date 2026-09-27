@@ -22837,7 +22837,7 @@
     "drug": {
       "name": "Oxbryta",
       "generic_name": "voxelotor",
-      "therapeutic_class": "other"
+      "therapeutic_class": "hemoglobin-s-polymerization-inhibitor"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -22848,18 +22848,237 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of sickle cell disease (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/ygtdvp5d/202209-oxbryta_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "sickle_cell_disease"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 4 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/ygtdvp5d/202209-oxbryta_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 4
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a hematologist or sickle-cell specialist (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/ygtdvp5d/202209-oxbryta_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "hematologist_or_sickle_cell_specialist_or_consult"
+        }
+      },
+      {
+        "id": "vaso_occlusive_crisis_within_6_months",
+        "text": "Documentation of at least one vaso-occlusive crisis within the past 6 months (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/ygtdvp5d/202209-oxbryta_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "vaso_occlusive_crisis_within_6_months"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "vaso_occlusive_crisis_within_6_months",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_hemoglobin_documented",
+        "text": "Has a documented baseline hemoglobin (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/ygtdvp5d/202209-oxbryta_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_hemoglobin_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_hemoglobin_documented",
+          "value": true
+        }
+      },
+      {
+        "id": "hydroxyurea_requirement_met",
+        "text": "Patient has tried and failed OR has a contraindication to hydroxyurea for at least 3 months (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/ygtdvp5d/202209-oxbryta_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "hydroxyurea_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hydroxyurea_requirement_met",
+          "value": true
+        }
+      },
+      {
+        "id": "no_concomitant_prophylactic_blood_transfusions",
+        "text": "Patient is not receiving concomitant prophylactic blood transfusions (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/ygtdvp5d/202209-oxbryta_criteria_2022.pdf#denial-criteria",
+        "required_facts": [
+          "no_concomitant_prophylactic_blood_transfusions"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_concomitant_prophylactic_blood_transfusions",
+          "value": true
+        }
+      },
+      {
+        "id": "no_concomitant_adakveo",
+        "text": "Patient is not concomitantly prescribed Adakveo (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/ygtdvp5d/202209-oxbryta_criteria_2022.pdf#denial-criteria",
+        "required_facts": [
+          "no_concomitant_adakveo"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_concomitant_adakveo",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Oxbryta (voxelotor) Criteria. Version 2; Original 02/28/2020; Approval 9/16/2022; Effective 11/1/2022.",
+      "Encoded: approval criteria 1\u20136 and denial criteria 2\u20133. Failure to meet approval criteria is a denial. Crisis history, baseline hemoglobin and the hydroxyurea requirement are attestations requiring documentation verification.",
+      "FDA indications (source note): hemoglobin S polymerization inhibitor approved under the accelerated pathway for sickle cell disease in patients 4 years and older.",
+      "Cautions (notes only): avoid concomitant moderate or strong CYP3A4 inhibitors. Monitor for hypersensitivity reactions and manage promptly.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months with documentation showing an increase in hemoglobin and/or decrease in vaso-occlusive crisis related emergencies.",
+      "Quantity (notes only): 90 \u00d7 500 mg tablets per 30 days; 90 \u00d7 300 mg tablets for oral suspension per 30 days. The source does not repeat the interval on the oral suspension line. max_units is null; quantity and dosing are not evaluated.",
+      "Documentation verification, cautions, duration, reauthorization response, dosing and quantity enforcement require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of sickle cell disease (approval criterion 2).",
+        "options": [
+          {
+            "value": "sickle_cell_disease",
+            "label": "Sickle cell disease"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 4 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 4 years"
+          },
+          {
+            "value": "4",
+            "label": "4+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a hematologist or sickle-cell specialist (approval criterion 3).",
+        "options": [
+          {
+            "value": "hematologist_or_sickle_cell_specialist_or_consult",
+            "label": "Hematologist or sickle-cell specialist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "vaso_occlusive_crisis_within_6_months": {
+        "type": "select",
+        "label": "Documentation of at least one vaso-occlusive crisis within the past 6 months (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "baseline_hemoglobin_documented": {
+        "type": "select",
+        "label": "Has a documented baseline hemoglobin (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "hydroxyurea_requirement_met": {
+        "type": "select",
+        "label": "Patient has tried and failed OR has a contraindication to hydroxyurea for at least 3 months (approval criterion 6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_concomitant_prophylactic_blood_transfusions": {
+        "type": "select",
+        "label": "Patient is not receiving concomitant prophylactic blood transfusions (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_concomitant_adakveo": {
+        "type": "select",
+        "label": "Patient is not concomitantly prescribed Adakveo (denial criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      }
+    }
   },
   "oxervate": {
     "drug": {

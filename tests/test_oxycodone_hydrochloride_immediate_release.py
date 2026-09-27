@@ -124,14 +124,14 @@ def test_metadata_and_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 175
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 23
-    for slug in ['fexmid', 'lyrica']:
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 176
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 22
+    for slug in ['fexmid', 'naloxone-opioid-overdose-treatment-evzio']:
         assert catalog[slug]['encoding_status'] == 'text_only'
     assert not json.loads((BASE / 'criteria_text/fexmid.json').read_text())['extracted_text'].strip()
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (175, 23)
-    assert status['next_candidate'] == 'lyrica'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (176, 22)
+    assert status['next_candidate'] == 'naloxone-opioid-overdose-treatment-evzio'
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

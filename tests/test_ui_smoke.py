@@ -152,25 +152,14 @@ def test_no_free_text_fact_fields():
             assert f.get("options"), (slug, f)
 
 
-def test_lyrica_text_only_options_from_criteria():
+def test_lyrica_encoded_options():
     detail = drug_detail("lyrica")
-    assert detail and detail["encoding_status"] == "text_only"
-    by_key = {f["key"]: f for f in detail["fact_fields"]}
-    assert "indication" in by_key
-    ind = by_key["indication"]
-    assert ind["type"] == "select"
-    assert ind["option_source"] == "criteria_text"
-    labels = " ".join(
-        (o["label"] if isinstance(o, dict) else str(o)) for o in ind["options"]
-    ).lower()
-    assert "fibromyalgia" in labels or "neuralgia" in labels
-    assert "prior_therapy_failures" in by_key
-    ptf = by_key["prior_therapy_failures"]
-    assert ptf["type"] == "multi"
-    vals = " ".join(
-        (o["value"] if isinstance(o, dict) else str(o)) for o in ptf["options"]
-    ).lower()
-    assert "gabapentin" in vals
+    assert detail and detail["encoding_status"] == "partial"
+    fields = {f["key"]: f for f in detail["fact_fields"]}
+    assert fields["indication"]["type"] == "select"
+    assert len(fields["indication"]["options"]) == 6
+    assert fields["gabapentin_inadequate"]["when"]["fact"] == "indication"
+    assert "prior_therapy_failures" not in fields
 
 
 def test_fail_and_text_only_alternatives():
@@ -255,7 +244,7 @@ if __name__ == "__main__":
     test_partial_pack_check()
     test_text_only_pack_surfaces_criteria()
     test_no_free_text_fact_fields()
-    test_lyrica_text_only_options_from_criteria()
+    test_lyrica_encoded_options()
     test_fail_and_text_only_alternatives()
     test_indication_never_yes_no_unknown()
     print("ui smoke ok")

@@ -31538,16 +31538,423 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "approval_path",
+        "text": "Continuation of care with benefit OR new start for a listed Table 1 diagnosis meeting its criteria.",
+        "citation": "https://health.alaska.gov/media/wnsbbdr0/ccfu_analgesic_lyrica_20161003.pdf",
+        "required_facts": [
+          "continuation_of_care_with_benefit",
+          "indication"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "continuation_of_care_with_benefit",
+              "value": true
+            },
+            {
+              "op": "in",
+              "fact": "indication",
+              "values": [
+                "postherpetic_neuralgia",
+                "fibromyalgia",
+                "partial_onset_seizures_adjunctive_adult",
+                "diabetic_peripheral_neuropathy",
+                "spinal_cord_injury_neuropathic_pain",
+                "cancer_pain_palliative"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "gabapentin_inadequate",
+        "text": "Well-documented gabapentin intolerance, hypersensitivity, contraindication, or insufficient response despite an adequate trial at maximally tolerated dose.",
+        "citation": "https://health.alaska.gov/media/wnsbbdr0/ccfu_analgesic_lyrica_20161003.pdf",
+        "required_facts": [
+          "continuation_of_care_with_benefit",
+          "gabapentin_inadequate"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "continuation_of_care_with_benefit",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "gabapentin_inadequate",
+              "value": true
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "postherpetic_neuralgia",
+            "fibromyalgia",
+            "diabetic_peripheral_neuropathy",
+            "spinal_cord_injury_neuropathic_pain",
+            "cancer_pain_palliative"
+          ]
+        }
+      },
+      {
+        "id": "phn_alternatives",
+        "text": "Tried and failed at least one OR contraindication to ALL of: tricyclic antidepressants, capsaicin cream, lidocaine patch.",
+        "citation": "https://health.alaska.gov/media/wnsbbdr0/ccfu_analgesic_lyrica_20161003.pdf",
+        "required_facts": [
+          "continuation_of_care_with_benefit",
+          "phn_alternative_failed",
+          "phn_all_alternatives_contraindicated"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "continuation_of_care_with_benefit",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "phn_alternative_failed",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "phn_all_alternatives_contraindicated",
+              "value": true
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "postherpetic_neuralgia"
+        }
+      },
+      {
+        "id": "dpn_alternatives",
+        "text": "Tried and failed at least one OR contraindication to ALL of: tricyclic antidepressants, an opioid, SNRI antidepressants, antiepileptic drugs (carbamazepine, phenytoin, or valproate).",
+        "citation": "https://health.alaska.gov/media/wnsbbdr0/ccfu_analgesic_lyrica_20161003.pdf",
+        "required_facts": [
+          "continuation_of_care_with_benefit",
+          "dpn_alternative_failed",
+          "dpn_all_alternatives_contraindicated"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "continuation_of_care_with_benefit",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "dpn_alternative_failed",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "dpn_all_alternatives_contraindicated",
+              "value": true
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "diabetic_peripheral_neuropathy"
+        }
+      },
+      {
+        "id": "other_fibromyalgia_therapy_tried_or_evidence",
+        "text": "Tried at least one other medication (other than gabapentin) labeled for fibromyalgia OR supported by published clinical evidence of safe and effective fibromyalgia use; evidence must be submitted.",
+        "citation": "https://health.alaska.gov/media/wnsbbdr0/ccfu_analgesic_lyrica_20161003.pdf",
+        "required_facts": [
+          "continuation_of_care_with_benefit",
+          "other_fibromyalgia_therapy_tried_or_evidence"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "continuation_of_care_with_benefit",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "other_fibromyalgia_therapy_tried_or_evidence",
+              "value": true
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "fibromyalgia"
+          ]
+        }
+      },
+      {
+        "id": "concurrent_aed_inadequate",
+        "text": "Adult partial onset seizures: concurrently taking at least one other antiepileptic drug with insufficient response at maximally tolerated dose.",
+        "citation": "https://health.alaska.gov/media/wnsbbdr0/ccfu_analgesic_lyrica_20161003.pdf",
+        "required_facts": [
+          "continuation_of_care_with_benefit",
+          "concurrent_aed_inadequate"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "continuation_of_care_with_benefit",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "concurrent_aed_inadequate",
+              "value": true
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "partial_onset_seizures_adjunctive_adult"
+          ]
+        }
+      },
+      {
+        "id": "not_concurrent_gabapentin",
+        "text": "No concomitant Lyrica and gabapentin (required on all approval paths).",
+        "citation": "https://health.alaska.gov/media/wnsbbdr0/ccfu_analgesic_lyrica_20161003.pdf",
+        "required_facts": [
+          "not_concurrent_gabapentin"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_gabapentin",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Lyrica (pregabalin), Schedule V. Capsules: 25, 50, 75, 100, 150, 200, 225, 300 mg; oral solution: 20 mg/mL.",
+      "Version 1; Last updated 4/6/2016; Approved 4/29/2016; Effective for Dates of Service 10/3/2016 and thereafter.",
+      "Continuation of care with benefit is an independent approval path, including off-list diagnoses under the explicit denial exception. New starts require one of six closed indications and its Table 1 criteria. Concomitant gabapentin is excluded on every path. Adult adjunctive partial onset seizures are represented by the indication and concurrent AED attestation; no gabapentin step applies.",
+      "Table 2 negative wording for alternative therapy is interpreted as the inverse of Table 1 approval: one failed alternative OR contraindication to ALL listed alternatives. Treatment history and supporting documentation require manual review.",
+      "Reauthorization (notes only): meets initial criteria AND documented positive clinical response; denial if initial criteria not met OR no documented positive clinical response.",
+      "Authorization (notes only): initial up to 6 months; reauthorization up to 1 year.",
+      "Quantity limits (notes only): 50, 75, 100, 150, 200 mg capsules: 3 capsules/day; 225, 300 mg capsules: 2 capsules/day; 20 mg/mL solution: 30 mL/day. No quantity limit specified for 25 mg capsules. max_units is null.",
+      "Mechanism of action and references are retained in the full extracted source for context only; no predicates. Documentation verification, reauthorization, duration and quantity enforcement require manual review."
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "continuation_of_care_with_benefit": {
+        "type": "select",
+        "label": "Patient already uses Lyrica with benefit and requests continuation of care (including off-list diagnoses).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "indication": {
+        "type": "select",
+        "label": "Indication (new starts require a listed diagnosis; continuation may qualify without a listed diagnosis)",
+        "options": [
+          {
+            "value": "postherpetic_neuralgia",
+            "label": "Postherpetic neuralgia"
+          },
+          {
+            "value": "fibromyalgia",
+            "label": "Fibromyalgia"
+          },
+          {
+            "value": "partial_onset_seizures_adjunctive_adult",
+            "label": "Partial onset seizures adjunctive adult"
+          },
+          {
+            "value": "diabetic_peripheral_neuropathy",
+            "label": "Diabetic peripheral neuropathy"
+          },
+          {
+            "value": "spinal_cord_injury_neuropathic_pain",
+            "label": "Spinal cord injury neuropathic pain"
+          },
+          {
+            "value": "cancer_pain_palliative",
+            "label": "Cancer pain palliative"
+          }
+        ]
+      },
+      "gabapentin_inadequate": {
+        "type": "select",
+        "label": "Well-documented gabapentin intolerance, hypersensitivity, contraindication, or insufficient response despite an adequate trial at maximally tolerated dose.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "postherpetic_neuralgia",
+            "fibromyalgia",
+            "diabetic_peripheral_neuropathy",
+            "spinal_cord_injury_neuropathic_pain",
+            "cancer_pain_palliative"
+          ]
+        }
+      },
+      "phn_alternative_failed": {
+        "type": "select",
+        "label": "Tried and failed at least one of: tricyclic antidepressants, capsaicin cream, lidocaine patch.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "postherpetic_neuralgia"
+        }
+      },
+      "phn_all_alternatives_contraindicated": {
+        "type": "select",
+        "label": "Contraindication to ALL of: tricyclic antidepressants, capsaicin cream, lidocaine patch.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "postherpetic_neuralgia"
+        }
+      },
+      "dpn_alternative_failed": {
+        "type": "select",
+        "label": "Tried and failed at least one of: tricyclic antidepressants, an opioid, SNRI antidepressants, antiepileptic drugs (carbamazepine, phenytoin, or valproate).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "diabetic_peripheral_neuropathy"
+        }
+      },
+      "dpn_all_alternatives_contraindicated": {
+        "type": "select",
+        "label": "Contraindication to ALL of: tricyclic antidepressants, an opioid, SNRI antidepressants, antiepileptic drugs (carbamazepine, phenytoin, or valproate).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "diabetic_peripheral_neuropathy"
+        }
+      },
+      "other_fibromyalgia_therapy_tried_or_evidence": {
+        "type": "select",
+        "label": "Tried at least one other medication (other than gabapentin) labeled for fibromyalgia OR supported by published clinical evidence of safe and effective fibromyalgia use; evidence must be submitted.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "fibromyalgia"
+          ]
+        }
+      },
+      "concurrent_aed_inadequate": {
+        "type": "select",
+        "label": "Adult partial onset seizures: concurrently taking at least one other antiepileptic drug with insufficient response at maximally tolerated dose.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "partial_onset_seizures_adjunctive_adult"
+          ]
+        }
+      },
+      "not_concurrent_gabapentin": {
+        "type": "select",
+        "label": "No concomitant Lyrica and gabapentin (required on all approval paths).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "marinol": {
     "drug": {

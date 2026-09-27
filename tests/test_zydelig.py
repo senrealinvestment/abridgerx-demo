@@ -115,11 +115,11 @@ def test_catalog():
     assert json.loads((BASE/'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f: assert json.load(f) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 183
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 15
+    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 184
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 14
     for directory in [BASE,BASE.parent]:
         status = json.loads((directory/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'],status['encoding_text_only']) == (183,15)
-        assert status['next_candidate'] == 'vitamin-d-50'
+        assert (status['encoding_partial'],status['encoding_text_only']) == (184,14)
+        assert status['next_candidate'] == 'h-pylori-kits'
         assert status['partial_slugs'] == sorted(k for k,p in catalog.items() if p['encoding_status']=='partial')
     assert catalog['bone-resorption-inhibitors']['encoding_status'] == 'partial'

@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 183,
-  "encoding_text_only": 15,
+  "encoding_partial": 184,
+  "encoding_text_only": 14,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -168,6 +168,7 @@
     "vesicular-monoamine",
     "viberzi",
     "vimovo",
+    "vitamin-d-50",
     "voxzogo",
     "voyxact",
     "vumerity",
@@ -191,5 +192,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "vitamin-d-50"
+  "next_candidate": "h-pylori-kits"
 }

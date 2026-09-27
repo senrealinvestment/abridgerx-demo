@@ -57882,27 +57882,165 @@
   },
   "vitamin-d-50": {
     "drug": {
-      "name": "Vitamin D; 50",
+      "name": "Drisdol (Ergocalciferol) Vitamin D2 50,000 IU (1.25 mg)",
       "therapeutic_class": "metabolic"
     },
     "source": {
       "payer": "alaska_medicaid",
-      "list": "Vitamin D; 50 Criteria",
+      "list": "Drisdol Criteria",
       "effective_date": "1970-01-01",
       "citation": "https://health.alaska.gov/media/2z2mce5u/drisdol-criteria.pdf",
       "criteria_pdf": "data/alaska/raw/drisdol-criteria.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Treatment of one of the five listed conditions.",
+        "citation": "https://health.alaska.gov/media/2z2mce5u/drisdol-criteria.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "hypoparathyroidism",
+            "refractory_rickets",
+            "familial_hypophosphatemia",
+            "secondary_hyperparathyroidism",
+            "vitamin_d_deficiency_failed_daily_otc"
+          ]
+        }
+      },
+      {
+        "id": "failed_1000_2000iu_daily_ge_6mo_labs_submitted",
+        "text": "Patient has compliantly taken at least 1,000\u20132,000 IU vitamin D daily for at least 6 months and failed to correct vitamin D deficiency; lab results submitted with the request.",
+        "citation": "https://health.alaska.gov/media/2z2mce5u/drisdol-criteria.pdf",
+        "required_facts": [
+          "failed_1000_2000iu_daily_ge_6mo_labs_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_1000_2000iu_daily_ge_6mo_labs_submitted",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "vitamin_d_deficiency_failed_daily_otc"
+          ]
+        }
+      },
+      {
+        "id": "not_dietary_supplement",
+        "text": "Medication is not being used as a dietary supplement.",
+        "citation": "https://health.alaska.gov/media/2z2mce5u/drisdol-criteria.pdf",
+        "required_facts": [
+          "not_dietary_supplement"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_dietary_supplement",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hypoparathyroidism",
+            "refractory_rickets",
+            "familial_hypophosphatemia",
+            "secondary_hyperparathyroidism",
+            "vitamin_d_deficiency_failed_daily_otc"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Drisdol criteria. Rules engine is the sole eligibility evaluator. The five listed indication paths are alternatives; only the vitamin D deficiency path requires the daily treatment failure and submitted laboratory results attestation.",
+      "FDA indication (notes only): \u201cDRISDOL is indicated for use in the treatment of hypoparathyroidism, refractory rickets, also known as vitamin D resistant rickets, and familial hypophosphatemia.\u201d",
+      "Secondary hyperparathyroidism is an additional approval path supported by footnote 2: Ergocalciferol, Vitamin D2 monograph, Clinical Pharmacology; accessed 12/1/2010.",
+      "Authorization (notes only): may be granted for up to 12 months.",
+      "Reference / footnote 1: Drisdol package insert, http://products.sanofi-aventis.us/drisdol/drisdol.pdf; accessed 12/1/2010.",
+      "Drisdol Criteria Version 1; Last updated 1/06/2011; Approved 1/21/2011. Extracted effective date is null; existing 1970-01-01 effective_date is retained as a metadata stub.",
+      "The duplicate scrape slug 000-unit is mislabeled and remains text_only; this encoding applies only to vitamin-d-50."
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Treatment indication",
+        "options": [
+          {
+            "value": "hypoparathyroidism",
+            "label": "Hypoparathyroidism"
+          },
+          {
+            "value": "refractory_rickets",
+            "label": "Refractory rickets (vitamin D resistant rickets)"
+          },
+          {
+            "value": "familial_hypophosphatemia",
+            "label": "Familial hypophosphatemia"
+          },
+          {
+            "value": "secondary_hyperparathyroidism",
+            "label": "Secondary hyperparathyroidism"
+          },
+          {
+            "value": "vitamin_d_deficiency_failed_daily_otc",
+            "label": "Vitamin D deficiency despite compliant daily vitamin D"
+          }
+        ]
+      },
+      "failed_1000_2000iu_daily_ge_6mo_labs_submitted": {
+        "type": "select",
+        "label": "Patient has compliantly taken at least 1,000\u20132,000 IU vitamin D daily for at least 6 months and failed to correct vitamin D deficiency; lab results submitted with the request.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "vitamin_d_deficiency_failed_daily_otc"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_dietary_supplement": {
+        "type": "select",
+        "label": "Medication is not being used as a dietary supplement.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hypoparathyroidism",
+            "refractory_rickets",
+            "familial_hypophosphatemia",
+            "secondary_hyperparathyroidism",
+            "vitamin_d_deficiency_failed_daily_otc"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "voxzogo": {
     "drug": {

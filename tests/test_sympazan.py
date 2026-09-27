@@ -83,15 +83,15 @@ def test_catalog():
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 183
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 15
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 184
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 14
     for root in (BASE, BASE.parent):
         status = json.loads((root / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (183, 15)
-        assert status['next_candidate'] == 'vitamin-d-50'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (184, 14)
+        assert status['next_candidate'] == 'h-pylori-kits'
         assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for ext in ('json', 'md'):
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()
-    assert catalog['vitamin-d-50']['encoding_status'] == 'text_only'
-    assert catalog['vitamin-d-50']['criteria'] == []
-    assert evaluate(catalog['vitamin-d-50'], FACTS).decision == 'need_info'
+    assert catalog['h-pylori-kits']['encoding_status'] == 'text_only'
+    assert catalog['h-pylori-kits']['criteria'] == []
+    assert evaluate(catalog['h-pylori-kits'], FACTS).decision == 'need_info'

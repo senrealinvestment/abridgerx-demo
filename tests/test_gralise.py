@@ -114,11 +114,11 @@ def test_artifacts():
     assert catalog == {p.stem: json.loads(p.read_text()) for p in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 183
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 15
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 184
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 14
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (183, 15, 'vitamin-d-50')
+    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (184, 14, 'h-pylori-kits')
     assert 'gralise' in status['partial_slugs']
-    assert catalog['vitamin-d-50']['encoding_status'] == 'text_only'
+    assert catalog['h-pylori-kits']['encoding_status'] == 'text_only'

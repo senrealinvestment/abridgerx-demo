@@ -1,4 +1,4 @@
-"""Oxervate: source-specific gates, UI choices, missing facts and catalog integrity."""
+"""Palynziq: source-specific gates, UI choices, missing facts and catalog integrity."""
 import gzip
 import json
 import sys
@@ -13,21 +13,30 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail, load_rule_pack_catalog
 
 BASE = ROOT / 'data/alaska/parsed'
-PACK = json.loads((BASE / 'rule_packs/oxervate.json').read_text())
+PACK = json.loads((BASE / 'rule_packs/palynziq.json').read_text())
 FACTS = dict(
-    indication='neurotrophic_keratitis', age_years=2,
-    nk_stage='stage_2_persistent_epithelial_defect',
-    prescriber_specialty='ophthalmologist_or_optometrist_or_consult',
-    decreased_corneal_sensitivity='decreased_in_at_least_one_eye',
-    conventional_nonsurgical_nk_treatment='one_or_more_documented',
+    indication='phenylketonuria', age_years=18,
+    prescriber_specialty='metabolic_specialist_or_consult',
+    rems_enrollment='prescriber_and_patient_enrolled',
+    baseline_phenylalanine_documented='documented',
+    phenylalanine_restricted_diet_active='actively_on_diet',
+    uncontrolled_phe_gt_600_on_existing_mgmt='phe_gt_600_umol_l_on_existing_incl_kuvan',
+    phenylalanine_monitored_through_therapy='monitored_and_recorded',
+    epinephrine_autoinjector_prescribed_and_trained='prescribed_and_trained',
+    not_concomitant_kuvan='not_using_kuvan_with_palynziq',
 )
 
 
+
 @pytest.mark.parametrize('fact,allowed,denied', [
-    ('nk_stage', ['stage_2_persistent_epithelial_defect', 'stage_3_corneal_ulcer'], ['stage_1_or_not_documented']),
     ('prescriber_specialty', [FACTS['prescriber_specialty']], ['none']),
-    ('decreased_corneal_sensitivity', ['decreased_in_at_least_one_eye'], ['not_documented']),
-    ('conventional_nonsurgical_nk_treatment', ['one_or_more_documented'], ['none']),
+    ('rems_enrollment', [FACTS['rems_enrollment']], ['not_enrolled']),
+    ('baseline_phenylalanine_documented', ['documented'], ['not_documented']),
+    ('phenylalanine_restricted_diet_active', ['actively_on_diet'], ['not_on_diet']),
+    ('uncontrolled_phe_gt_600_on_existing_mgmt', [FACTS['uncontrolled_phe_gt_600_on_existing_mgmt']], ['not_met']),
+    ('phenylalanine_monitored_through_therapy', ['monitored_and_recorded'], ['not_monitored']),
+    ('epinephrine_autoinjector_prescribed_and_trained', ['prescribed_and_trained'], ['not_met']),
+    ('not_concomitant_kuvan', ['not_using_kuvan_with_palynziq'], ['concomitant_kuvan']),
 ])
 def test_clinical_gates(fact, allowed, denied):
     assert {o['value'] for o in PACK['fact_ui'][fact]['options']} == set(allowed + denied)
@@ -54,7 +63,7 @@ def test_closed_indication(value):
     assert {c['id'] for c in result.failed_clauses} == {'indication'}
 
 
-@pytest.mark.parametrize('age,decision', [(0, 'fail'), (1.99, 'fail'), (2, 'pass'), (80, 'pass')])
+@pytest.mark.parametrize('age,decision', [(0, 'fail'), (17.99, 'fail'), (18, 'pass'), (80, 'pass')])
 def test_age_boundary(age, decision):
     result = evaluate(PACK, dict(FACTS, age_years=age))
     assert result.decision == decision
@@ -62,32 +71,32 @@ def test_age_boundary(age, decision):
 
 
 def test_ui():
-    fields = {f['key']: f for f in drug_detail('oxervate')['fact_fields']}
+    fields = {f['key']: f for f in drug_detail('palynziq')['fact_fields']}
     assert set(fields) == set(FACTS)
     assert fields['age_years']['option_style'] == 'age_bands'
-    assert fields['indication']['options'] == [{'value': 'neurotrophic_keratitis', 'label': 'Neurotrophic keratitis (NK)'}]
+    assert fields['indication']['options'] == [{'value': 'phenylketonuria', 'label': 'Confirmed phenylketonuria (PKU)'}]
     assert all('when' not in c for c in PACK['criteria'])
     assert all('when' not in f for f in PACK['fact_ui'].values())
     for field in fields.values():
         assert field['type'] == 'select' and not field.get('free_text')
     for option in fields['age_years']['options']:
         patient = _coerce_patient(dict(FACTS, age_years=option['value']))
-        assert evaluate(PACK, patient).decision == ('pass' if patient['age_years'] >= 2 else 'fail')
+        assert evaluate(PACK, patient).decision == ('pass' if patient['age_years'] >= 18 else 'fail')
 
 
 def test_metadata_and_catalog():
-    assert len(PACK['criteria']) == 6
-    assert PACK['drug'] == dict(name='Oxervate', generic_name='cenegermin-bkbj', therapeutic_class='ophthalmology')
+    assert len(PACK['criteria']) == 10
+    assert PACK['drug'] == dict(name='Palynziq', generic_name='pegvaliase-pqpz', therapeutic_class='metabolic-enzyme')
     assert PACK['encoding_status'] == 'partial'
-    assert PACK['source']['effective_date'] == '2020-11-16'
-    assert PACK['source']['citation'] == 'https://health.alaska.gov/media/l0cpkixo/202009oxervate_criteria_2020.pdf'
-    assert PACK['source']['criteria_pdf'] == 'data/alaska/raw/202009oxervate_criteria_2020.pdf'
+    assert PACK['source']['effective_date'] == '2019-03-11'
+    assert PACK['source']['citation'] == 'https://health.alaska.gov/media/5djjpvhf/20195-b-iii-palynziq_criteria_approved_2018.pdf'
+    assert PACK['source']['criteria_pdf'] == 'data/alaska/raw/20195-b-iii-palynziq_criteria_approved_2018.pdf'
     assert (ROOT / PACK['source']['criteria_pdf']).exists()
     assert PACK['max_units'] is None and PACK['alternatives'] == []
     assert 'inferred_required_facts' not in PACK
-    for text in ['Version 1', '07/06/2020', '09/18/2020', '11/16/2020', '8 weeks', 'Retreatment', 'lost or stolen', 'spilled', '8 kits per affected eye', '7 multi-dose vials', '15 minutes', 'eye pain', 'ocular hyperemia', 'inflammation', 'lacrimation', 'storage', 'manual review']:
+    for text in ['Version 1', '12/7/2018', '1/18/19', '3/11/19', '3 months', '6 months', '≥20%', 'Phe <600', 'no toxicities', '40 mg/day', '2 syringes', '60 syringes/month', '60 minutes', 'every 4 weeks', 'Carry', 'competency', 'Black Box', 'manual review']:
         assert text in ' '.join(PACK['notes'])
-    assert (BASE / 'oxervate.json').read_bytes() == (BASE / 'rule_packs/oxervate.json').read_bytes()
+    assert (BASE / 'palynziq.json').read_bytes() == (BASE / 'rule_packs/palynziq.json').read_bytes()
     catalog = load_rule_pack_catalog()
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog

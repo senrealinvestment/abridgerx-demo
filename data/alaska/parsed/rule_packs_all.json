@@ -21532,7 +21532,8 @@
   "palynziq": {
     "drug": {
       "name": "Palynziq",
-      "therapeutic_class": "other"
+      "therapeutic_class": "metabolic-enzyme",
+      "generic_name": "pegvaliase-pqpz"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -21543,17 +21544,291 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Confirmed diagnosis of phenylketonuria (PKU); the closed indication is adult PKU with uncontrolled Phe >600 \u00b5mol/L on existing management (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/5djjpvhf/20195-b-iii-palynziq_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "phenylketonuria"
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 18 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/5djjpvhf/20195-b-iii-palynziq_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a metabolic specialist (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/5djjpvhf/20195-b-iii-palynziq_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "metabolic_specialist_or_consult"
+        }
+      },
+      {
+        "id": "rems_enrollment",
+        "text": "Both prescriber and patient are enrolled in the REMS program (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/5djjpvhf/20195-b-iii-palynziq_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "rems_enrollment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "rems_enrollment",
+          "value": "prescriber_and_patient_enrolled"
+        }
+      },
+      {
+        "id": "baseline_phenylalanine_documented",
+        "text": "Baseline phenylalanine levels have been documented (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/5djjpvhf/20195-b-iii-palynziq_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_phenylalanine_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_phenylalanine_documented",
+          "value": "documented"
+        }
+      },
+      {
+        "id": "phenylalanine_restricted_diet_active",
+        "text": "Patient is actively on a phenylalanine restricted diet (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/5djjpvhf/20195-b-iii-palynziq_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "phenylalanine_restricted_diet_active"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "phenylalanine_restricted_diet_active",
+          "value": "actively_on_diet"
+        }
+      },
+      {
+        "id": "uncontrolled_phe_gt_600_on_existing_mgmt",
+        "text": "Uncontrolled blood phenylalanine >600 \u00b5mol/L on existing management (e.g. Kuvan agents; approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/5djjpvhf/20195-b-iii-palynziq_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "uncontrolled_phe_gt_600_on_existing_mgmt"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "uncontrolled_phe_gt_600_on_existing_mgmt",
+          "value": "phe_gt_600_umol_l_on_existing_incl_kuvan"
+        }
+      },
+      {
+        "id": "phenylalanine_monitored_through_therapy",
+        "text": "Phenylalanine levels are monitored and recorded through therapy (approval criterion 7).",
+        "citation": "https://health.alaska.gov/media/5djjpvhf/20195-b-iii-palynziq_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "phenylalanine_monitored_through_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "phenylalanine_monitored_through_therapy",
+          "value": "monitored_and_recorded"
+        }
+      },
+      {
+        "id": "epinephrine_autoinjector_prescribed_and_trained",
+        "text": "Auto-injectable epinephrine prescribed and patient trained on proper use (approval criterion 8).",
+        "citation": "https://health.alaska.gov/media/5djjpvhf/20195-b-iii-palynziq_criteria_approved_2018.pdf#approval-criteria",
+        "required_facts": [
+          "epinephrine_autoinjector_prescribed_and_trained"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "epinephrine_autoinjector_prescribed_and_trained",
+          "value": "prescribed_and_trained"
+        }
+      },
+      {
+        "id": "not_concomitant_kuvan",
+        "text": "Patient is not concomitantly using Kuvan agents with Palynziq (denial criterion 7).",
+        "citation": "https://health.alaska.gov/media/5djjpvhf/20195-b-iii-palynziq_criteria_approved_2018.pdf#denial-criteria",
+        "required_facts": [
+          "not_concomitant_kuvan"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concomitant_kuvan",
+          "value": "not_using_kuvan_with_palynziq"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Palynziq (pegvaliase-pqpz), a phenylalanine-metabolizing enzyme for adult PKU. Version 1; Original 12/7/2018; Approval 1/18/19; Effective 3/11/19.",
+      "Encoded: closed confirmed PKU indication, age \u226518, approval criteria 1-8, and denial criterion 7 (concomitant Kuvan). Other denials mirror approval gates. Specialty and both-party REMS enrollment are separate required attestations.",
+      "Existing management (e.g. Kuvan agents) is included in the uncontrolled Phe >600 \u00b5mol/L attestation; no separate Kuvan failure requirement is imposed. Prior management and concomitant Kuvan use are distinct.",
+      "Black Box Warning (notes only): anaphylaxis can occur at any time during treatment. Give the initial dose under healthcare provider supervision with capacity to manage anaphylaxis and observe for at least 60 minutes. Before self-injection, confirm self-administration competency and patient/observer ability to recognize anaphylaxis and administer epinephrine.",
+      "Cautions (notes only): before the first dose instruct the patient and observer, if applicable, on epinephrine use; seek immediate medical care after use. Carry auto-injectable epinephrine at all times during treatment.",
+      "Monitoring schedule (notes only): obtain blood Phe every 4 weeks until maintenance dosage is established, then periodically.",
+      "Duration (notes only): initial approval 3 months; reauthorization up to 6 months with continued improvement measured by \u226520% reduction from pre-treatment baseline OR Phe <600 \u00b5mol/L, and no toxicities or adverse reactions.",
+      "Quantity (notes only): up to 40 mg/day (2 syringes max daily); 60 syringes/month. max_units is null; dosing and quantity are not evaluated.",
+      "Documentation verification, monitoring schedule, administration and safety cautions, duration, reauthorization response and tolerability, dosing, and quantity limits require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Confirmed diagnosis of phenylketonuria (PKU); the closed indication is adult PKU with uncontrolled Phe >600 \u00b5mol/L on existing management (approval criterion 2).",
+        "options": [
+          {
+            "value": "phenylketonuria",
+            "label": "Confirmed phenylketonuria (PKU)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a metabolic specialist (approval criterion 3).",
+        "options": [
+          {
+            "value": "metabolic_specialist_or_consult",
+            "label": "Metabolic specialist or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "rems_enrollment": {
+        "type": "select",
+        "label": "Both prescriber and patient are enrolled in the REMS program (approval criterion 3).",
+        "options": [
+          {
+            "value": "prescriber_and_patient_enrolled",
+            "label": "Both prescriber and patient enrolled"
+          },
+          {
+            "value": "not_enrolled",
+            "label": "Prescriber and/or patient not enrolled"
+          }
+        ]
+      },
+      "baseline_phenylalanine_documented": {
+        "type": "select",
+        "label": "Baseline phenylalanine levels have been documented (approval criterion 4).",
+        "options": [
+          {
+            "value": "documented",
+            "label": "Baseline Phe documented"
+          },
+          {
+            "value": "not_documented",
+            "label": "Baseline Phe not documented"
+          }
+        ]
+      },
+      "phenylalanine_restricted_diet_active": {
+        "type": "select",
+        "label": "Patient is actively on a phenylalanine restricted diet (approval criterion 5).",
+        "options": [
+          {
+            "value": "actively_on_diet",
+            "label": "Actively on a Phe-restricted diet"
+          },
+          {
+            "value": "not_on_diet",
+            "label": "Not on a Phe-restricted diet"
+          }
+        ]
+      },
+      "uncontrolled_phe_gt_600_on_existing_mgmt": {
+        "type": "select",
+        "label": "Uncontrolled blood phenylalanine >600 \u00b5mol/L on existing management (e.g. Kuvan agents; approval criterion 6).",
+        "options": [
+          {
+            "value": "phe_gt_600_umol_l_on_existing_incl_kuvan",
+            "label": "Phe >600 \u00b5mol/L on existing management (e.g. Kuvan agents)"
+          },
+          {
+            "value": "not_met",
+            "label": "Phe >600 \u00b5mol/L on existing management not met"
+          }
+        ]
+      },
+      "phenylalanine_monitored_through_therapy": {
+        "type": "select",
+        "label": "Phenylalanine levels are monitored and recorded through therapy (approval criterion 7).",
+        "options": [
+          {
+            "value": "monitored_and_recorded",
+            "label": "Phe monitored and recorded through therapy"
+          },
+          {
+            "value": "not_monitored",
+            "label": "Phe monitoring and recording requirement not met"
+          }
+        ]
+      },
+      "epinephrine_autoinjector_prescribed_and_trained": {
+        "type": "select",
+        "label": "Auto-injectable epinephrine prescribed and patient trained on proper use (approval criterion 8).",
+        "options": [
+          {
+            "value": "prescribed_and_trained",
+            "label": "Epinephrine auto-injector prescribed and patient trained"
+          },
+          {
+            "value": "not_met",
+            "label": "Prescription and/or training requirement not met"
+          }
+        ]
+      },
+      "not_concomitant_kuvan": {
+        "type": "select",
+        "label": "Patient is not concomitantly using Kuvan agents with Palynziq (denial criterion 7).",
+        "options": [
+          {
+            "value": "not_using_kuvan_with_palynziq",
+            "label": "Not using Kuvan with Palynziq"
+          },
+          {
+            "value": "concomitant_kuvan",
+            "label": "Concomitant Kuvan with Palynziq"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "panretin": {
     "drug": {

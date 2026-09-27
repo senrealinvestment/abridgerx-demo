@@ -14166,7 +14166,8 @@
   "fintepla": {
     "drug": {
       "name": "Fintepla",
-      "therapeutic_class": "other"
+      "therapeutic_class": "antiepileptic",
+      "generic_name": "fenfluramine"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -14177,18 +14178,264 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Confirmed diagnosis of seizures associated with Dravet syndrome (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/l4wlptsp/202101-fintepla_criteria__2021.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "dravet_syndrome_seizures"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 2 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/l4wlptsp/202101-fintepla_criteria__2021.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 2
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/l4wlptsp/202101-fintepla_criteria__2021.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_consult"
+        }
+      },
+      {
+        "id": "icd10_on_prescription",
+        "text": "ICD-10 code is provided and written on the prescription (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/l4wlptsp/202101-fintepla_criteria__2021.pdf#approval-criteria",
+        "required_facts": [
+          "icd10_on_prescription"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "icd10_on_prescription",
+          "value": true
+        }
+      },
+      {
+        "id": "echocardiogram_prior_to_initiation",
+        "text": "Patient has undergone an echocardiogram prior to initiating therapy (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/l4wlptsp/202101-fintepla_criteria__2021.pdf#approval-criteria",
+        "required_facts": [
+          "echocardiogram_prior_to_initiation"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "echocardiogram_prior_to_initiation",
+          "value": true
+        }
+      },
+      {
+        "id": "two_asm_requirement_met",
+        "text": "Patient has tried for at least one month and failed OR has a contraindication to TWO or more of: valproate, clobazam, topiramate, levetiracetam (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/l4wlptsp/202101-fintepla_criteria__2021.pdf#approval-criteria",
+        "required_facts": [
+          "two_asm_requirement_met"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "two_asm_requirement_met",
+          "value": true
+        }
+      },
+      {
+        "id": "no_moderate_to_severe_renal_impairment",
+        "text": "Patient does not have moderate to severe renal impairment (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/l4wlptsp/202101-fintepla_criteria__2021.pdf#denial-criteria",
+        "required_facts": [
+          "no_moderate_to_severe_renal_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_moderate_to_severe_renal_impairment",
+          "value": true
+        }
+      },
+      {
+        "id": "no_hepatic_impairment",
+        "text": "Patient does not have hepatic impairment (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/l4wlptsp/202101-fintepla_criteria__2021.pdf#denial-criteria",
+        "required_facts": [
+          "no_hepatic_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_hepatic_impairment",
+          "value": true
+        }
+      },
+      {
+        "id": "no_maoi_within_14_days",
+        "text": "No concomitant use of monoamine oxidase inhibitors (MAOIs) or administration within 14 days (denial criterion 4).",
+        "citation": "https://health.alaska.gov/media/l4wlptsp/202101-fintepla_criteria__2021.pdf#denial-criteria",
+        "required_facts": [
+          "no_maoi_within_14_days"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_maoi_within_14_days",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Fintepla (fenfluramine) Criteria. Version 1; Original 12/04/20; Approval: Pending 1/15/21; Effective: Pending 3/15/21. Source effective_date 2020-11-16 is retained from the archived stub/source metadata; PDF pending stamps are recorded here.",
+      "Encoded: approval criteria 1\u20136 and denial criteria 2\u20134. Failure to meet approval criteria is a denial. Specialist consultation, ICD-10 on the prescription, prior echocardiogram, prior therapy and safety exclusions are attestations requiring documentation verification.",
+      "Prior therapy attestation requires TWO or more of valproate, clobazam, topiramate, levetiracetam, each tried for at least one month and failed OR contraindicated. A single qualifying medication, shorter failed trial, or an unlisted medication does not satisfy this requirement.",
+      "Cautions (notes only): advise patients about decreased appetite and decreased weight; monitor somnolence and sedation and advise against driving or operating machinery; monitor suicidal behavior and ideation. Serotonin syndrome has been observed particularly with concomitant serotonergic drugs. Monitor blood pressure during treatment.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months.",
+      "Quantity (notes only): up to 12 ml/day (maximum daily dose 26 mg); 360 ml per 30 days. max_units is null; dosing and quantity are not evaluated.",
+      "Documentation verification, cautions, ongoing monitoring, duration, reauthorization, dosing and quantity enforcement require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Confirmed diagnosis of seizures associated with Dravet syndrome (approval criterion 3).",
+        "options": [
+          {
+            "value": "dravet_syndrome_seizures",
+            "label": "Seizures associated with Dravet syndrome"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 2 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 2 years"
+          },
+          {
+            "value": "2",
+            "label": "2+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "neurologist_or_consult",
+            "label": "Neurologist or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "icd10_on_prescription": {
+        "type": "select",
+        "label": "ICD-10 code is provided and written on the prescription (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "echocardiogram_prior_to_initiation": {
+        "type": "select",
+        "label": "Patient has undergone an echocardiogram prior to initiating therapy (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "two_asm_requirement_met": {
+        "type": "select",
+        "label": "Patient has tried for at least one month and failed OR has a contraindication to TWO or more of: valproate, clobazam, topiramate, levetiracetam (approval criterion 6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_moderate_to_severe_renal_impairment": {
+        "type": "select",
+        "label": "Patient does not have moderate to severe renal impairment (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_hepatic_impairment": {
+        "type": "select",
+        "label": "Patient does not have hepatic impairment (denial criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_maoi_within_14_days": {
+        "type": "select",
+        "label": "No concomitant use of monoamine oxidase inhibitors (MAOIs) or administration within 14 days (denial criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "firazyr": {
     "drug": {

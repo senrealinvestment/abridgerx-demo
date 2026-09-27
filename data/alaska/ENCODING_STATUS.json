@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 88,
-  "encoding_text_only": 110,
+  "encoding_partial": 89,
+  "encoding_text_only": 109,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -46,6 +46,7 @@
     "evkeeza",
     "fabhalta",
     "fasenra",
+    "fintepla",
     "firdapse",
     "hemgenix",
     "hemlibra",
@@ -96,5 +97,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "fintepla"
+  "next_candidate": "epidiolex"
 }

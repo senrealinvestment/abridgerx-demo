@@ -21281,7 +21281,8 @@
   "oxervate": {
     "drug": {
       "name": "Oxervate",
-      "therapeutic_class": "other"
+      "therapeutic_class": "ophthalmology",
+      "generic_name": "cenegermin-bkbj"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -21292,17 +21293,188 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Neurotrophic keratitis (NK), the closed FDA-labeled indication.",
+        "citation": "https://health.alaska.gov/media/l0cpkixo/202009oxervate_criteria_2020.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "neurotrophic_keratitis"
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 2 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/l0cpkixo/202009oxervate_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 2
+        }
+      },
+      {
+        "id": "nk_stage",
+        "text": "Documented diagnosis of stage 2 (persistent epithelial defect) or stage 3 (corneal ulcer) neurotrophic keratitis in one or both eyes (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/l0cpkixo/202009oxervate_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "nk_stage"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "nk_stage",
+          "values": [
+            "stage_2_persistent_epithelial_defect",
+            "stage_3_corneal_ulcer"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with an ophthalmologist or optometrist (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/l0cpkixo/202009oxervate_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "ophthalmologist_or_optometrist_or_consult"
+        }
+      },
+      {
+        "id": "decreased_corneal_sensitivity",
+        "text": "Evidence of decreased corneal sensitivity in at least one eye (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/l0cpkixo/202009oxervate_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "decreased_corneal_sensitivity"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "decreased_corneal_sensitivity",
+          "value": "decreased_in_at_least_one_eye"
+        }
+      },
+      {
+        "id": "conventional_nonsurgical_nk_treatment",
+        "text": "Documented treatment with one or more conventional non-surgical treatments for neurotrophic keratitis (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/l0cpkixo/202009oxervate_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "conventional_nonsurgical_nk_treatment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "conventional_nonsurgical_nk_treatment",
+          "value": "one_or_more_documented"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Oxervate (cenegermin-bkbj), a recombinant human nerve growth factor for neurotrophic keratitis. Version 1; Original 07/06/2020; Approval 09/18/2020; Effective 11/16/2020.",
+      "Encoded: closed neurotrophic keratitis indication and approval criteria 1-5. Denial criterion 1 is failure to meet approval criteria; no additional denial predicate.",
+      "Duration (notes only): initial approval up to 8 weeks; treatment duration not to exceed 8 weeks.",
+      "Retreatment, lost or stolen, or spilled medication should not be authorized (notes only).",
+      "Quantity (notes only): up to a maximum of 8 kits per affected eye; 1 kit contains 7 multi-dose vials. max_units is null; quantity is not evaluated.",
+      "Cautions (notes only): common adverse reactions include eye pain, ocular hyperemia, eye inflammation and increased lacrimation. Remove contact lenses before applying Oxervate and wait 15 minutes after instillation before reinsertion. Follow proper administration and storage procedures in the package insert.",
+      "Documentation verification, duration, retreatment and replacement restrictions, quantity limits, and cautions require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Neurotrophic keratitis (NK), the closed FDA-labeled indication.",
+        "options": [
+          {
+            "value": "neurotrophic_keratitis",
+            "label": "Neurotrophic keratitis (NK)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 2 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 2 years"
+          },
+          {
+            "value": "2",
+            "label": "2+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "nk_stage": {
+        "type": "select",
+        "label": "Documented diagnosis of stage 2 (persistent epithelial defect) or stage 3 (corneal ulcer) neurotrophic keratitis in one or both eyes (approval criterion 2).",
+        "options": [
+          {
+            "value": "stage_2_persistent_epithelial_defect",
+            "label": "Stage 2: persistent epithelial defect"
+          },
+          {
+            "value": "stage_3_corneal_ulcer",
+            "label": "Stage 3: corneal ulcer"
+          },
+          {
+            "value": "stage_1_or_not_documented",
+            "label": "Stage 1 or not documented"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with an ophthalmologist or optometrist (approval criterion 3).",
+        "options": [
+          {
+            "value": "ophthalmologist_or_optometrist_or_consult",
+            "label": "Ophthalmologist or optometrist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "decreased_corneal_sensitivity": {
+        "type": "select",
+        "label": "Evidence of decreased corneal sensitivity in at least one eye (approval criterion 4).",
+        "options": [
+          {
+            "value": "decreased_in_at_least_one_eye",
+            "label": "Decreased corneal sensitivity in at least one eye"
+          },
+          {
+            "value": "not_documented",
+            "label": "Not documented"
+          }
+        ]
+      },
+      "conventional_nonsurgical_nk_treatment": {
+        "type": "select",
+        "label": "Documented treatment with one or more conventional non-surgical treatments for neurotrophic keratitis (approval criterion 5).",
+        "options": [
+          {
+            "value": "one_or_more_documented",
+            "label": "One or more conventional non-surgical NK treatments documented"
+          },
+          {
+            "value": "none",
+            "label": "No documented conventional non-surgical NK treatment"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "oxycodone-hydrochloride-immediate-release": {
     "drug": {

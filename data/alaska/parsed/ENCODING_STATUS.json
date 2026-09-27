@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 70,
-  "encoding_text_only": 128,
+  "encoding_partial": 71,
+  "encoding_text_only": 127,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -60,6 +60,7 @@
     "ocrevus",
     "ofev",
     "orkambi",
+    "oxervate",
     "praluent",
     "prolia",
     "roctavian",
@@ -78,5 +79,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "atypical-antipsychotic-therapeutic-duplication"
+  "next_candidate": "palynziq"
 }

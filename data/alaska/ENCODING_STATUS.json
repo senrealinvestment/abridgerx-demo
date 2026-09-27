@@ -4,9 +4,10 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 37,
-  "encoding_text_only": 161,
+  "encoding_partial": 38,
+  "encoding_text_only": 160,
   "partial_slugs": [
+    "actiq",
     "adbry",
     "adcirca",
     "aduhelm",
@@ -45,5 +46,5 @@
     "zolgensma",
     "zymfentra"
   ],
-  "next_candidate": "actiq"
+  "next_candidate": "amitiza"
 }

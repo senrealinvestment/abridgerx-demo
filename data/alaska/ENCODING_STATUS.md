@@ -22,8 +22,8 @@ Source hub: https://health.alaska.gov/en/education/prior-authorization-medicatio
 - Criteria text JSON files: **198**
 - Rule packs: **198**
 - Fully encoded (all clauses as predicates): **0**
-- Partially encoded: **37** (Adbry, Adcirca, Aduhelm, Benlysta, Bimzelx, Briumvi, Cinqair, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Fasenra, Hemlibra, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
-- Text-only (requires_pa, encoding pending): **161**
+- Partially encoded: **38** (Actiq, Adbry, Adcirca, Aduhelm, Benlysta, Bimzelx, Briumvi, Cinqair, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Fasenra, Hemlibra, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
+- Text-only (requires_pa, encoding pending): **160**
 - Scanned image criteria PDFs (OCR needed): **7**
 
 ## Blockers
@@ -55,7 +55,7 @@ Hemlibra encodes one closed hemophilia A prophylaxis indication (with or without
 
 ## Next encoding candidates
 
-Next candidate: Actiq (first remaining text_only brand alphabetically); Amitiza follows. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded. Other candidates: CGRP therapies, Hep C DAA, and growth hormone.
+Next candidate: Amitiza (first remaining text_only brand alphabetically). Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded. Other candidates: CGRP therapies, Hep C DAA, and growth hormone.
 
 Soliris/Ultomiris encodes aHUS, PNH, gMG and Soliris-only NMOSD, indication-specific ages and clinical gates, and shared vaccination, specialty and REMS requirements. Duration, renewal, quantity and cautions remain manual review.
 
@@ -70,3 +70,5 @@ Mavenclad encodes adult RRMS and active SPMS (CIS denied), neurology specialty, 
 Mayzent encodes adult CIS, RRMS and active SPMS, neurology specialty, baseline ECG/CBC/liver enzymes/ophthalmic evaluation, 6-month cardiovascular exclusions, conduction disease with a functioning-pacemaker exception, CYP2C9 genotyping, two failed MS drugs, baseline skin examination and no concurrent MS DMT. Documentation, duration, reauthorization, dosing, quantity and cautions remain manual review.
 
 Zolgensma encodes SMA with bi-allelic SMN1 mutations, age <2 years, pediatric neurology specialty, genetic confirmation, anti-AAV9 titer, no concomitant SMA therapy, baseline labs and prior-treatment, advanced-SMA and infection exclusions. Initial 3-month duration, no reauthorization, lifetime infusion limit, dose and liver cautions remain notes for manual review.
+
+Actiq encodes a closed cancer breakthrough pain indication, age ≥16, existing around-the-clock opioid therapy and opioid tolerance. TIRF REMS dispensing limitations, up-to-6-month authorization and 3-per-day quantity limit remain notes for manual review.

@@ -57,22 +57,138 @@
     "source": {
       "payer": "alaska_medicaid",
       "list": "Actiq Criteria",
-      "effective_date": "1970-01-01",
+      "effective_date": "2014-09-19",
       "citation": "https://health.alaska.gov/media/eujlbouj/actiq.pdf",
       "criteria_pdf": "data/alaska/raw/actiq.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Breakthrough pain in cancer patients who are already receiving and tolerant to around-the-clock opioid therapy for underlying persistent cancer pain (approval criterion 1 is covered by this closed indication).",
+        "citation": "https://health.alaska.gov/media/eujlbouj/actiq.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "cancer_breakthrough_pain"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is at least 16 years of age (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/eujlbouj/actiq.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 16
+        }
+      },
+      {
+        "id": "already_receiving_around_the_clock_opioid_for_cancer_pain",
+        "text": "Patient is already receiving around-the-clock opioid therapy for underlying persistent cancer pain (approval criterion 3 and Indication and Usage).",
+        "citation": "https://health.alaska.gov/media/eujlbouj/actiq.pdf#approval-criteria",
+        "required_facts": [
+          "already_receiving_around_the_clock_opioid_for_cancer_pain"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "already_receiving_around_the_clock_opioid_for_cancer_pain",
+          "value": true
+        }
+      },
+      {
+        "id": "opioid_tolerant_for_persistent_cancer_pain",
+        "text": "Patient is tolerant to the opioid therapy currently being used for underlying persistent cancer pain (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/eujlbouj/actiq.pdf#approval-criteria",
+        "required_facts": [
+          "opioid_tolerant_for_persistent_cancer_pain"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "opioid_tolerant_for_persistent_cancer_pain",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from AK Actiq Criteria Version 2. Updated/Approved: 09/19/2014; Previous: 09/19/2008. No explicit effective date is stated; effective_date uses the approval date 2014-09-19.",
+      "Approval criterion 1 (being treated for cancer pain) is covered by the closed cancer breakthrough pain indication; no separate cancer-pain attestation is required. Approval criteria 2\u20134 encode age at least 16, existing opioid therapy and opioid tolerance; around-the-clock therapy is specified in Indication and Usage.",
+      "Limitations of Use (notes only): Actiq may only be dispensed to outpatients enrolled in the TIRF (transmucosal immediate release fentanyl) REMS (risk evaluation and mitigation strategy) program. This is not listed as an approval criterion and is not a predicate.",
+      "Length of authorization (notes only): coverage may be approved for up to 6 months.",
+      "Quantity limit (notes only): 3 per day. REMS dispensing limitations, authorization duration and quantity enforcement remain manual review; this pack remains partial.",
+      "Reference: Actiq [package insert]. Frazer, PA; Cephalon, Inc., December 2011.",
+      "Fentora and Subsys remain text_only; no evaluate-linked alternatives are specified."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Indication (diagnosis)",
+        "options": [
+          {
+            "value": "cancer_breakthrough_pain",
+            "label": "Breakthrough pain in cancer patients who are already receiving and tolerant to around-the-clock opioid therapy for underlying persistent cancer pain"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 16 years"
+          },
+          {
+            "value": "16",
+            "label": "16 years or older"
+          }
+        ]
+      },
+      "already_receiving_around_the_clock_opioid_for_cancer_pain": {
+        "type": "select",
+        "label": "Patient is already receiving around-the-clock opioid therapy for underlying persistent cancer pain (approval criterion 3 and Indication and Usage).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "opioid_tolerant_for_persistent_cancer_pain": {
+        "type": "select",
+        "label": "Patient is tolerant to the opioid therapy currently being used for underlying persistent cancer pain (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": 1,
+      "notes": "Quantity limit: 3 per day. Notes only; quantity enforcement requires manual review and is not a predicate."
+    }
   },
   "adbry": {
     "drug": {

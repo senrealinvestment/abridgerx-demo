@@ -63,7 +63,7 @@ Live clinician PA-check demo (advisory; published AK criteria):
 - **Deploy source (public mirror for Vercel Git):** https://github.com/senrealinvestment/abridgerx-demo  
   Private canonical repo remains https://github.com/senrealinvestment/abridgerx — grant the Vercel GitHub App access to link it directly later.
 - Framework: FastAPI (`app.py` entry + `vercel.json`). Rules engine only; no TypeSafe / SYSTEM_ONE keys in the client.
-- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 37 partial / 161 text_only; includes Zolgensma, Mayzent, Mavenclad, Lemtrada, Tepezza, Praluent/Repatha, Soliris/Ultomiris, Hemlibra, Ocrevus/Ocrevus Zunovo, Kesimpta, Briumvi, Prolia/Xgeva, Evenity, Kevzara, Benlysta, Bimzelx, Infliximab, Stelara, Skyrizi, Tremfya and Zymfentra), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
+- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 38 partial / 160 text_only; includes Actiq, Zolgensma, Mayzent, Mavenclad, Lemtrada, Tepezza, Praluent/Repatha, Soliris/Ultomiris, Hemlibra, Ocrevus/Ocrevus Zunovo, Kesimpta, Briumvi, Prolia/Xgeva, Evenity, Kevzara, Benlysta, Bimzelx, Infliximab, Stelara, Skyrizi, Tremfya and Zymfentra), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
 
 
 Infliximab covers Avsola/Inflectra/Remicade/Renflexis across eight indications, with gated ages and prior therapies plus shared screening, infection, HF dosing and weight-submission criteria. HS requires neither age nor prior therapy. Duration, renewal, weight-based schedules and cautions remain manual review. Next alphabetical text-only brand: Actiq, followed by Amitiza; next biologic candidates: Evenity and Prolia.
@@ -85,3 +85,5 @@ Mavenclad encodes adult RRMS and active SPMS (CIS denied), neurology specialty, 
 Mayzent encodes adult CIS, RRMS and active SPMS, neurology specialty, baseline ECG/CBC/liver enzymes/ophthalmic evaluation, 6-month cardiovascular exclusions, conduction disease with a functioning-pacemaker exception, CYP2C9 genotyping, two failed MS drugs, baseline skin examination and no concurrent MS DMT. Documentation, duration, reauthorization, dosing, quantity and cautions remain manual review.
 
 Zolgensma encodes SMA eligibility for age <2 years, pediatric neurology specialty, SMN1 genetics, anti-AAV9 titer, baseline labs and treatment/safety exclusions. Duration, no reauthorization, lifetime quantity, dosing and liver cautions remain notes for manual review.
+
+Actiq encodes a closed cancer breakthrough pain indication, age ≥16, existing around-the-clock opioid therapy and opioid tolerance. TIRF REMS dispensing limitations, up-to-6-month authorization and 3-per-day quantity limit remain notes for manual review.

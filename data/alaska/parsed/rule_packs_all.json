@@ -28282,7 +28282,8 @@
   "opsumit": {
     "drug": {
       "name": "Opsumit",
-      "therapeutic_class": "pulmonary-arterial-hypertension"
+      "therapeutic_class": "endothelin-receptor-antagonist",
+      "generic_name": "macitentan"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -28293,17 +28294,264 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of pulmonary arterial hypertension (PAH, WHO Group 1).",
+        "citation": "https://health.alaska.gov/media/czcp4sb3/202301opsumit_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "pulmonary_arterial_hypertension_who_group_1"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a cardiologist or pulmonologist (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/czcp4sb3/202301opsumit_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "cardiologist_or_pulmonologist_or_consult"
+          ]
+        }
+      },
+      {
+        "id": "pah_confirmed_by_right_heart_catheterization",
+        "text": "WHO Group 1 PAH confirmed by right heart catheterization (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/czcp4sb3/202301opsumit_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "pah_confirmed_by_right_heart_catheterization"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pah_confirmed_by_right_heart_catheterization",
+          "values": [
+            "rhc_confirmed"
+          ]
+        }
+      },
+      {
+        "id": "currently_symptomatic",
+        "text": "Patient is currently symptomatic (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/czcp4sb3/202301opsumit_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "currently_symptomatic"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "currently_symptomatic",
+          "values": [
+            "symptomatic"
+          ]
+        }
+      },
+      {
+        "id": "pde5_inhibitor_therapy",
+        "text": "Tried and failed a PDE5 inhibitor after 60 days OR currently taking a PDE5 inhibitor (e.g. tadalafil) (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/czcp4sb3/202301opsumit_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "pde5_inhibitor_therapy"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pde5_inhibitor_therapy",
+          "values": [
+            "failed_after_60_days",
+            "currently_taking"
+          ]
+        }
+      },
+      {
+        "id": "pregnancy_attestation",
+        "text": "Provider certifies patient is not pregnant and will not become pregnant while receiving Opsumit (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/czcp4sb3/202301opsumit_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "pregnancy_attestation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pregnancy_attestation",
+          "values": [
+            "not_pregnant_will_not_become_pregnant"
+          ]
+        }
+      },
+      {
+        "id": "baseline_lfts_submitted",
+        "text": "Baseline liver function tests (LFTs) submitted (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/czcp4sb3/202301opsumit_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_lfts_submitted"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_lfts_submitted",
+          "values": [
+            "submitted"
+          ]
+        }
+      },
+      {
+        "id": "baseline_hepatic_impairment",
+        "text": "Baseline LFTs must not indicate moderate to severe hepatic impairment (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/czcp4sb3/202301opsumit_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "baseline_hepatic_impairment"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_hepatic_impairment",
+          "values": [
+            "none_or_mild"
+          ]
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "uptravi"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Medicaid Opsumit (macitentan) Criteria Version 1; Original 12/27/2022; Approval 01/20/2023; Effective 03/01/2023.",
+      "Encoded: closed WHO Group 1 PAH indication, approval criteria 1-6, and denial criterion 2. Denial criterion 1 is failure to meet approval criteria. Current PDE5 inhibitor use has no minimum duration requirement; prior failure requires at least 60 days.",
+      "Cautions (notes only): contraindicated in pregnancy; monitor for pulmonary edema in patients with PVOD (pulmonary veno-occlusive disease); monitor LFTs throughout treatment as clinically indicated; avoid strong CYP3A4 inhibitors (e.g. ritonavir) or moderate dual CYP3A4/CYP2C9 inhibitors (e.g. amiodarone).",
+      "Duration (notes only): initial approval 6 months; reauthorization 12 months with chart notes indicating positive clinical response to treatment.",
+      "Quantity (notes only): #30 10mg tablets per 30 days. max_units is null; quantity is not evaluated.",
+      "Documentation verification, cautions, duration, reauthorization and quantity require manual review; this pack remains partial. Linked alternatives require their own criteria review."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of pulmonary arterial hypertension (PAH, WHO Group 1).",
+        "options": [
+          {
+            "value": "pulmonary_arterial_hypertension_who_group_1",
+            "label": "WHO Group 1 PAH"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a cardiologist or pulmonologist (approval criterion 1).",
+        "options": [
+          {
+            "value": "cardiologist_or_pulmonologist_or_consult",
+            "label": "Cardiologist or pulmonologist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "pah_confirmed_by_right_heart_catheterization": {
+        "type": "select",
+        "label": "WHO Group 1 PAH confirmed by right heart catheterization (approval criterion 2).",
+        "options": [
+          {
+            "value": "rhc_confirmed",
+            "label": "Confirmed by right heart catheterization"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ]
+      },
+      "currently_symptomatic": {
+        "type": "select",
+        "label": "Patient is currently symptomatic (approval criterion 3).",
+        "options": [
+          {
+            "value": "symptomatic",
+            "label": "Currently symptomatic"
+          },
+          {
+            "value": "not_symptomatic",
+            "label": "Not currently symptomatic"
+          }
+        ]
+      },
+      "pde5_inhibitor_therapy": {
+        "type": "select",
+        "label": "Tried and failed a PDE5 inhibitor after 60 days OR currently taking a PDE5 inhibitor (e.g. tadalafil) (approval criterion 4).",
+        "options": [
+          {
+            "value": "failed_after_60_days",
+            "label": "Tried and failed after at least 60 days"
+          },
+          {
+            "value": "currently_taking",
+            "label": "Currently taking a PDE5 inhibitor"
+          },
+          {
+            "value": "failed_before_60_days",
+            "label": "Failed before 60 days and not currently taking"
+          },
+          {
+            "value": "not_met",
+            "label": "No qualifying trial or current use"
+          }
+        ]
+      },
+      "pregnancy_attestation": {
+        "type": "select",
+        "label": "Provider certifies patient is not pregnant and will not become pregnant while receiving Opsumit (approval criterion 5).",
+        "options": [
+          {
+            "value": "not_pregnant_will_not_become_pregnant",
+            "label": "Provider certifies not pregnant and will not become pregnant during therapy"
+          },
+          {
+            "value": "pregnant_or_no_attestation",
+            "label": "Pregnant or no provider certification"
+          }
+        ]
+      },
+      "baseline_lfts_submitted": {
+        "type": "select",
+        "label": "Baseline liver function tests (LFTs) submitted (approval criterion 6).",
+        "options": [
+          {
+            "value": "submitted",
+            "label": "Baseline LFTs submitted"
+          },
+          {
+            "value": "not_submitted",
+            "label": "Baseline LFTs not submitted"
+          }
+        ]
+      },
+      "baseline_hepatic_impairment": {
+        "type": "select",
+        "label": "Baseline LFTs must not indicate moderate to severe hepatic impairment (denial criterion 2).",
+        "options": [
+          {
+            "value": "none_or_mild",
+            "label": "No or mild hepatic impairment"
+          },
+          {
+            "value": "moderate",
+            "label": "Moderate hepatic impairment"
+          },
+          {
+            "value": "severe",
+            "label": "Severe hepatic impairment"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "opzelura": {
     "drug": {
@@ -38327,7 +38575,9 @@
     "pdl_status": "unknown",
     "encoding_status": "text_only",
     "criteria": [],
-    "alternatives": [],
+    "alternatives": [
+      "opsumit"
+    ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],

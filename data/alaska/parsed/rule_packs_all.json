@@ -40611,7 +40611,8 @@
   "wakix": {
     "drug": {
       "name": "Wakix",
-      "therapeutic_class": "other"
+      "therapeutic_class": "h3-receptor-antagonist",
+      "generic_name": "pitolisant"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -40622,18 +40623,482 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Excessive daytime sleepiness (EDS) with narcolepsy.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "excessive_daytime_sleepiness_with_narcolepsy"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 18 years old.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a sleep specialist or neurologist.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "sleep_specialist",
+            "sleep_specialist_consult",
+            "neurologist",
+            "neurologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "baseline_sleepiness_validated_scale",
+        "text": "Baseline daytime sleepiness measured by a validated scale (e.g. ESS, Stanford, Karolinska, Cleveland Adolescent, or VAS).",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_sleepiness_validated_scale"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_sleepiness_validated_scale",
+          "values": [
+            "documented_validated_scale"
+          ]
+        }
+      },
+      {
+        "id": "mslt_confirmation",
+        "text": "MSLT performed according to standard techniques shows mean sleep latency \u22648 minutes AND \u22652 SOREMPs.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "mslt_confirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "mslt_confirmation",
+          "values": [
+            "standard_mslt_latency_le_8_and_soremps_ge_2"
+          ]
+        }
+      },
+      {
+        "id": "other_hypersomnolence_causes_ruled_out",
+        "text": "Other causes of hypersomnolence ruled out: insufficient sleep, OSA, delayed sleep phase, medication/substance effects or withdrawal.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "other_hypersomnolence_causes_ruled_out"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "other_hypersomnolence_causes_ruled_out",
+          "values": [
+            "ruled_out"
+          ]
+        }
+      },
+      {
+        "id": "daily_sleep_lapses_3_months",
+        "text": "Daily irrepressible need to sleep or daytime lapses into sleep for at least 3 months.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "daily_sleep_lapses_3_months"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "daily_sleep_lapses_3_months",
+          "values": [
+            "daily_for_ge_3_months"
+          ]
+        }
+      },
+      {
+        "id": "cns_stimulant_step",
+        "text": "Tried for at least 30 days and failed at least one CNS stimulant (e.g. methylphenidate), OR contraindication to use.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "cns_stimulant_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "cns_stimulant_step",
+          "values": [
+            "failed_ge_1_after_ge_30_days",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "wakefulness_promoting_step",
+        "text": "Tried for at least 30 days and failed at least one CNS wakefulness-promoting drug (e.g. modafinil), OR contraindication to use.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "wakefulness_promoting_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "wakefulness_promoting_step",
+          "values": [
+            "failed_ge_1_after_ge_30_days",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "sleep_logs_last_30_days",
+        "text": "Sleep logs submitted for the last 30 days.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "sleep_logs_last_30_days"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "sleep_logs_last_30_days",
+          "values": [
+            "submitted_last_30_days"
+          ]
+        }
+      },
+      {
+        "id": "severe_hepatic_impairment",
+        "text": "Severe hepatic impairment: must be absent.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "severe_hepatic_impairment"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "severe_hepatic_impairment",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "qt_history_or_risk",
+        "text": "History or risk factor for prolonged QT interval: must be absent.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "qt_history_or_risk"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "qt_history_or_risk",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "qt_prolonging_drugs",
+        "text": "Using drugs that prolong QT interval: must be absent.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "qt_prolonging_drugs"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "qt_prolonging_drugs",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "h1_receptor_antagonist",
+        "text": "Using an H1 receptor antagonist: must be absent.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "h1_receptor_antagonist"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "h1_receptor_antagonist",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "sedative_hypnotic_agents",
+        "text": "Receiving sedative hypnotic agents (zolpidem, eszopiclone, zaleplon, benzodiazepines, barbiturates): must be absent.",
+        "citation": "https://health.alaska.gov/media/nyso05yh/202104-wakix_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "sedative_hypnotic_agents"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "sedative_hypnotic_agents",
+          "values": [
+            "absent"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Wakix (pitolisant) Criteria Version 1; Original 3/11/2021; Approval 4/16/2021; Effective 2021-05-24. Approval criteria and explicit denials encoded; diagnostic and therapy documentation attestations require manual review.",
+      "Denial criterion 4 contains awkward wording (\"Patient is not and will no use drugs that prolong the QT interval\"). Interpreted as denial for using QT-prolonging drugs, consistent with source intent; no management exception is encoded.",
+      "Cautions (notes only): WAKIX may reduce effectiveness of sensitive CYP3A4 substrates, including hormonal contraceptives. Use alternative non-hormonal contraception during treatment and for at least 21 days after discontinuation. With strong CYP2D6 inhibitors, maximum recommended dosage is 17.8 mg once daily.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 6 months with clinically meaningful chart notes showing positive response to therapy. Manual review required.",
+      "Quantity limits (notes only): 53 \u00d7 8.9 mg tablets per 30 days; 60 \u00d7 17.8 mg tablets per 30 days. Quantity enforcement requires manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Excessive daytime sleepiness (EDS) with narcolepsy.",
+        "options": [
+          {
+            "value": "excessive_daytime_sleepiness_with_narcolepsy",
+            "label": "EDS with narcolepsy"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old.",
+        "options": [
+          {
+            "value": "17",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18 or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a sleep specialist or neurologist.",
+        "options": [
+          {
+            "value": "sleep_specialist",
+            "label": "Sleep specialist"
+          },
+          {
+            "value": "sleep_specialist_consult",
+            "label": "Sleep specialist consult"
+          },
+          {
+            "value": "neurologist",
+            "label": "Neurologist"
+          },
+          {
+            "value": "neurologist_consult",
+            "label": "Neurologist consult"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "baseline_sleepiness_validated_scale": {
+        "type": "select",
+        "label": "Baseline daytime sleepiness measured by a validated scale (e.g. ESS, Stanford, Karolinska, Cleveland Adolescent, or VAS).",
+        "options": [
+          {
+            "value": "documented_validated_scale",
+            "label": "Documented validated scale"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "mslt_confirmation": {
+        "type": "select",
+        "label": "MSLT performed according to standard techniques shows mean sleep latency \u22648 minutes AND \u22652 SOREMPs.",
+        "options": [
+          {
+            "value": "standard_mslt_latency_le_8_and_soremps_ge_2",
+            "label": "Standard mslt latency le 8 and soremps ge 2"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "other_hypersomnolence_causes_ruled_out": {
+        "type": "select",
+        "label": "Other causes of hypersomnolence ruled out: insufficient sleep, OSA, delayed sleep phase, medication/substance effects or withdrawal.",
+        "options": [
+          {
+            "value": "ruled_out",
+            "label": "Ruled out"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "daily_sleep_lapses_3_months": {
+        "type": "select",
+        "label": "Daily irrepressible need to sleep or daytime lapses into sleep for at least 3 months.",
+        "options": [
+          {
+            "value": "daily_for_ge_3_months",
+            "label": "Daily for ge 3 months"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "cns_stimulant_step": {
+        "type": "select",
+        "label": "Tried for at least 30 days and failed at least one CNS stimulant (e.g. methylphenidate), OR contraindication to use.",
+        "options": [
+          {
+            "value": "failed_ge_1_after_ge_30_days",
+            "label": "Failed at least one after \u226530 days"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindication to use"
+          },
+          {
+            "value": "trial_under_30_days",
+            "label": "Trial under 30 days"
+          },
+          {
+            "value": "not_failed",
+            "label": "No qualifying failure or contraindication"
+          }
+        ]
+      },
+      "wakefulness_promoting_step": {
+        "type": "select",
+        "label": "Tried for at least 30 days and failed at least one CNS wakefulness-promoting drug (e.g. modafinil), OR contraindication to use.",
+        "options": [
+          {
+            "value": "failed_ge_1_after_ge_30_days",
+            "label": "Failed at least one after \u226530 days"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindication to use"
+          },
+          {
+            "value": "trial_under_30_days",
+            "label": "Trial under 30 days"
+          },
+          {
+            "value": "not_failed",
+            "label": "No qualifying failure or contraindication"
+          }
+        ]
+      },
+      "sleep_logs_last_30_days": {
+        "type": "select",
+        "label": "Sleep logs submitted for the last 30 days.",
+        "options": [
+          {
+            "value": "submitted_last_30_days",
+            "label": "Submitted last 30 days"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "severe_hepatic_impairment": {
+        "type": "select",
+        "label": "Severe hepatic impairment: must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "qt_history_or_risk": {
+        "type": "select",
+        "label": "History or risk factor for prolonged QT interval: must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "qt_prolonging_drugs": {
+        "type": "select",
+        "label": "Using drugs that prolong QT interval: must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "h1_receptor_antagonist": {
+        "type": "select",
+        "label": "Using an H1 receptor antagonist: must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "sedative_hypnotic_agents": {
+        "type": "select",
+        "label": "Receiving sedative hypnotic agents (zolpidem, eszopiclone, zaleplon, benzodiazepines, barbiturates): must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "winrevair": {
     "drug": {

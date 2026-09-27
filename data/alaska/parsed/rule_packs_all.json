@@ -1860,29 +1860,416 @@
   },
   "beqvez-tm": {
     "drug": {
-      "name": "Beqvez   TM",
-      "therapeutic_class": "cell-and-gene-therapy"
+      "name": "Beqvez",
+      "therapeutic_class": "cell-and-gene-therapy",
+      "generic_name": "fidanacogene elaparvovec-dzkt"
     },
     "source": {
       "payer": "alaska_medicaid",
-      "list": "Beqvez   TM Criteria",
+      "list": "Beqvez Criteria",
       "effective_date": "2024-11-01",
       "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
       "criteria_pdf": "data/alaska/raw/beqvez_criteria.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Moderate to severe hemophilia B (congenital Factor IX deficiency) (approval criterion 3; FDA indication).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "hemophilia_b_moderate_severe"
+          ]
+        }
+      },
+      {
+        "id": "hemophilia_b_clinical_eligibility",
+        "text": "Currently uses Factor IX prophylaxis OR has current or historical life-threatening hemorrhage OR repeated, serious spontaneous bleeding episodes (FDA indications 1-3; approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "hemophilia_b_clinical_eligibility"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "hemophilia_b_clinical_eligibility",
+          "values": [
+            "on_fix_ix_prophylaxis",
+            "current_or_historical_life_threatening_hemorrhage",
+            "repeated_serious_spontaneous_bleeding"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_b_moderate_severe"
+          ]
+        }
+      },
+      {
+        "id": "age_fda_labeled",
+        "text": "Patient is 18 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a hematologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "hematologist",
+            "hematologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "factor_ix_level_moderate_severe",
+        "text": "Factor IX levels \u22642% of normal or <2 IU/dl (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "factor_ix_level_moderate_severe"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "factor_ix_level_moderate_severe",
+          "value": "lte_2_percent_or_lt_2_iu_dl"
+        }
+      },
+      {
+        "id": "factor_ix_exposure_days_gt_150",
+        "text": "Patient has had >150 previous exposure days to Factor IX (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "factor_ix_exposure_days_gt_150"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "factor_ix_exposure_days_gt_150",
+          "value": true
+        }
+      },
+      {
+        "id": "no_neutralizing_antibodies_aavrh74var_fda_test",
+        "text": "No neutralizing antibodies to AAVRh74var capsid as detected by an FDA-approved test (approval criterion 6; FDA indication 4).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "no_neutralizing_antibodies_aavrh74var_fda_test"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_neutralizing_antibodies_aavrh74var_fda_test",
+          "value": true
+        }
+      },
+      {
+        "id": "no_fix_ix_inhibitors_screen_within_2w_le_0_5_bu",
+        "text": "No history of Factor IX inhibitors AND a negative screen \u22640.5 Bethesda units performed within two weeks prior to administration (approval criterion 7).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "no_fix_ix_inhibitors_screen_within_2w_le_0_5_bu"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_fix_ix_inhibitors_screen_within_2w_le_0_5_bu",
+          "value": "no_history_and_screen_le_0_5_bu_within_2_weeks"
+        }
+      },
+      {
+        "id": "hepatic_ultrasound_and_elastography_done",
+        "text": "Hepatic ultrasound AND elastography performed prior to administration (approval criterion 8).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "hepatic_ultrasound_and_elastography_done"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hepatic_ultrasound_and_elastography_done",
+          "value": true
+        }
+      },
+      {
+        "id": "no_active_hepatitis_b_or_c",
+        "text": "No current active hepatitis B or hepatitis C infection (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "no_active_hepatitis_b_or_c"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_hepatitis_b_or_c",
+          "value": true
+        }
+      },
+      {
+        "id": "no_uncontrolled_hiv",
+        "text": "No current uncontrolled HIV infection (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "no_uncontrolled_hiv"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_uncontrolled_hiv",
+          "value": true
+        }
+      },
+      {
+        "id": "no_advanced_hepatic_impairment",
+        "text": "No evidence of advanced hepatic impairment (denial criterion 4).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "no_advanced_hepatic_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_advanced_hepatic_impairment",
+          "value": true
+        }
+      },
+      {
+        "id": "no_prior_hemophilia_b_gene_therapy",
+        "text": "No previous gene therapy for hemophilia B (denial criterion 5).",
+        "citation": "https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf",
+        "required_facts": [
+          "no_prior_hemophilia_b_gene_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_prior_hemophilia_b_gene_therapy",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Beqvez (fidanacogene elaparvovec-dzkt), an AAV vector-based gene therapy for hemophilia B. Version: 1; Original: 8/12/2024; Accepted: 9/20/2024; Effective: 11/1/2024.",
+      "Encoded: closed indication, separate clinical eligibility OR paths, approval criteria 1-8 and denial exclusions 2-5. Denial criterion 1 is failure to meet approval criteria.",
+      "Duration (notes only): initial approval 3 months; no reauthorization will be approved.",
+      "Quantity (notes only): one infusion per lifetime. HCPCS J3590. No numeric quantity enforcement; max_units is null.",
+      "Cautions (notes only): monitor transaminase levels once weekly for three months following administration for possible hepatotoxicity.",
+      "Cautions (notes only): patients with preexisting hepatocellular carcinoma risk factors should be monitored regularly for elevated alpha-fetoprotein (AFP) and receive abdominal ultrasound screenings for five years following administration.",
+      "Remaining gaps: documentation verification, duration, no reauthorization, lifetime quantity enforcement and post-dose monitoring require manual review. Clinical findings, exposure days, testing and imaging are attestations.",
+      "PDL status unknown. No evaluate-linked alternatives; Hemgenix remains text_only."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Moderate to severe hemophilia B (congenital Factor IX deficiency) (approval criterion 3; FDA indication).",
+        "options": [
+          {
+            "value": "hemophilia_b_moderate_severe",
+            "label": "Moderate to severe hemophilia B (congenital Factor IX deficiency)"
+          }
+        ]
+      },
+      "hemophilia_b_clinical_eligibility": {
+        "type": "select",
+        "label": "Currently uses Factor IX prophylaxis OR has current or historical life-threatening hemorrhage OR repeated, serious spontaneous bleeding episodes (FDA indications 1-3; approval criterion 3).",
+        "options": [
+          {
+            "value": "on_fix_ix_prophylaxis",
+            "label": "Currently uses Factor IX prophylaxis therapy"
+          },
+          {
+            "value": "current_or_historical_life_threatening_hemorrhage",
+            "label": "Current or historical life-threatening hemorrhage"
+          },
+          {
+            "value": "repeated_serious_spontaneous_bleeding",
+            "label": "Repeated, serious spontaneous bleeding episodes"
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_b_moderate_severe"
+          ]
+        }
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a hematologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "hematologist",
+            "label": "Hematologist"
+          },
+          {
+            "value": "hematologist_consult",
+            "label": "In consultation with a hematologist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "factor_ix_level_moderate_severe": {
+        "type": "select",
+        "label": "Factor IX levels \u22642% of normal or <2 IU/dl (approval criterion 4).",
+        "options": [
+          {
+            "value": "lte_2_percent_or_lt_2_iu_dl",
+            "label": "\u22642% of normal or <2 IU/dl"
+          },
+          {
+            "value": "above_2_or_not_documented",
+            "label": "Above threshold or not documented"
+          }
+        ]
+      },
+      "factor_ix_exposure_days_gt_150": {
+        "type": "select",
+        "label": "Patient has had >150 previous exposure days to Factor IX (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_neutralizing_antibodies_aavrh74var_fda_test": {
+        "type": "select",
+        "label": "No neutralizing antibodies to AAVRh74var capsid as detected by an FDA-approved test (approval criterion 6; FDA indication 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_fix_ix_inhibitors_screen_within_2w_le_0_5_bu": {
+        "type": "select",
+        "label": "No history of Factor IX inhibitors AND a negative screen \u22640.5 Bethesda units performed within two weeks prior to administration (approval criterion 7).",
+        "options": [
+          {
+            "value": "no_history_and_screen_le_0_5_bu_within_2_weeks",
+            "label": "No history and negative screen \u22640.5 Bethesda units within two weeks"
+          },
+          {
+            "value": "history_or_screen_positive_or_missing",
+            "label": "History of inhibitors, positive screen, or missing qualifying screen"
+          }
+        ]
+      },
+      "hepatic_ultrasound_and_elastography_done": {
+        "type": "select",
+        "label": "Hepatic ultrasound AND elastography performed prior to administration (approval criterion 8).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_active_hepatitis_b_or_c": {
+        "type": "select",
+        "label": "No current active hepatitis B or hepatitis C infection (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_uncontrolled_hiv": {
+        "type": "select",
+        "label": "No current uncontrolled HIV infection (denial criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_advanced_hepatic_impairment": {
+        "type": "select",
+        "label": "No evidence of advanced hepatic impairment (denial criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_prior_hemophilia_b_gene_therapy": {
+        "type": "select",
+        "label": "No previous gene therapy for hemophilia B (denial criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "berinert": {
     "drug": {

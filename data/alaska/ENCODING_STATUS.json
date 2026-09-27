@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 146,
-  "encoding_text_only": 52,
+  "encoding_partial": 147,
+  "encoding_text_only": 51,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -36,6 +36,7 @@
     "crenessity",
     "crysvita",
     "dawnzeratm",
+    "diclegis-bonjesta",
     "dojolvi",
     "duchenne-muscular-dystrophy",
     "dupixent",
@@ -154,5 +155,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "diclegis-bonjesta"
+  "next_candidate": "fentora"
 }

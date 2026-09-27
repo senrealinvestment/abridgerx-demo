@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 35,
-  "encoding_text_only": 163,
+  "encoding_partial": 36,
+  "encoding_text_only": 162,
   "partial_slugs": [
     "adbry",
     "adcirca",
@@ -30,6 +30,7 @@
     "kevzara",
     "lemtrada",
     "mavenclad",
+    "mayzent",
     "nucala",
     "ocrevus",
     "praluent",

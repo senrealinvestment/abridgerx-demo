@@ -2805,6 +2805,7 @@
       "kesimpta",
       "lemtrada",
       "mavenclad",
+      "mayzent",
       "ocrevus"
     ],
     "notes": [
@@ -9598,6 +9599,7 @@
       "briumvi",
       "lemtrada",
       "mavenclad",
+      "mayzent",
       "ocrevus"
     ],
     "notes": [
@@ -10482,6 +10484,7 @@
       "briumvi",
       "kesimpta",
       "mavenclad",
+      "mayzent",
       "ocrevus"
     ],
     "notes": [
@@ -11090,6 +11093,7 @@
       "briumvi",
       "kesimpta",
       "lemtrada",
+      "mayzent",
       "ocrevus"
     ],
     "notes": [
@@ -11289,7 +11293,7 @@
     "drug": {
       "name": "Mayzent",
       "generic_name": "siponimod",
-      "therapeutic_class": "other"
+      "therapeutic_class": "ms-disease-modifying"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -11300,17 +11304,426 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Diagnosis of relapsing MS: CIS, RRMS or active SPMS (approval 2)",
+        "citation": "https://health.alaska.gov/media/0nmew0ca/202209-mayzent_criteria_2022.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient is 18 years of age or older (approval 1)",
+        "citation": "https://health.alaska.gov/media/0nmew0ca/202209-mayzent_criteria_2022.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist or provider specializing in MS (approval 3)",
+        "citation": "https://health.alaska.gov/media/0nmew0ca/202209-mayzent_criteria_2022.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_ms_specialist_or_consult"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "baseline_ecg_cbc_lft_ophthalmic_appropriate",
+        "text": "ECG, CBC, liver enzyme testing and ophthalmic evaluation completed with results appropriate for treatment (approval 4)",
+        "citation": "https://health.alaska.gov/media/0nmew0ca/202209-mayzent_criteria_2022.pdf",
+        "required_facts": [
+          "baseline_ecg_cbc_lft_ophthalmic_appropriate"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_ecg_cbc_lft_ophthalmic_appropriate",
+          "value": "all_done_appropriate"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "no_recent_major_cv_event_6mo",
+        "text": "No myocardial infarction, unstable angina, stroke, TIA, decompensated heart failure requiring hospitalization, or Class III/IV heart failure within the last 6 months (approval 5)",
+        "citation": "https://health.alaska.gov/media/0nmew0ca/202209-mayzent_criteria_2022.pdf",
+        "required_facts": [
+          "no_recent_major_cv_event_6mo"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_recent_major_cv_event_6mo",
+          "value": "no_mi_ua_stroke_tia_decomp_hf_or_class_iii_iv_hf_in_6mo"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "av_block_sss_status",
+        "text": "No presence or history of Mobitz type II second-degree or third-degree AV block or sick sinus syndrome, unless a functioning pacemaker is present (approval 6)",
+        "citation": "https://health.alaska.gov/media/0nmew0ca/202209-mayzent_criteria_2022.pdf",
+        "required_facts": [
+          "av_block_sss_status"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "av_block_sss_status",
+          "values": [
+            "no_mobitz_ii_third_degree_or_sss",
+            "has_condition_with_functioning_pacemaker"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "cyp2c9_genotype",
+        "text": "Prescriber performed genetic testing to rule out CYP2C9*3/*3 (approval 7)",
+        "citation": "https://health.alaska.gov/media/0nmew0ca/202209-mayzent_criteria_2022.pdf",
+        "required_facts": [
+          "cyp2c9_genotype"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "cyp2c9_genotype",
+          "value": "not_star3_star3"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "ms_dmt_step_two",
+        "text": "Adequate trial and failure of at least two drugs indicated for MS (approval 8)",
+        "citation": "https://health.alaska.gov/media/0nmew0ca/202209-mayzent_criteria_2022.pdf",
+        "required_facts": [
+          "ms_dmt_step_two"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ms_dmt_step_two",
+          "value": "trial_failure_two_ms_drugs"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "baseline_skin_exam_done",
+        "text": "Baseline skin examination conducted prior to initiating therapy (denial 2)",
+        "citation": "https://health.alaska.gov/media/0nmew0ca/202209-mayzent_criteria_2022.pdf",
+        "required_facts": [
+          "baseline_skin_exam_done"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_skin_exam_done",
+          "value": "conducted_prior_to_therapy"
+        }
+      },
+      {
+        "id": "not_concurrent_ms_dmt",
+        "text": "Not used concurrently with other MS disease-modifying agents (denial 3)",
+        "citation": "https://health.alaska.gov/media/0nmew0ca/202209-mayzent_criteria_2022.pdf",
+        "required_facts": [
+          "not_concurrent_ms_dmt"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_ms_dmt",
+          "value": true
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "alternatives": [
+      "briumvi",
+      "kesimpta",
+      "lemtrada",
+      "mavenclad",
+      "ocrevus"
+    ],
+    "notes": [
+      "Partial encoding of Alaska Medicaid Mayzent (siponimod), an S1P receptor modulator. Version: 2; Original: 7/05/2019; Approval: 09/16/2022; Effective: 11/01/2022.",
+      "Encoded: approval criteria 1-8 and denial criteria 1-3 (failure to meet approval criteria is handled by the approval predicates). Baseline workup, cardiovascular history, genetic testing, prior therapy and skin examination are attestations.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months.",
+      "Quantity (notes only): 120 tablets of 0.25 mg, 30 tablets of 1 mg, or 30 tablets of 2 mg per month. No numeric quantity enforcement.",
+      "Cautions (notes only): increased infection risk; increased macular edema risk with history of uveitis or diabetes mellitus; bradyarrhythmia and atrioventricular conduction delays; avoid live attenuated vaccines for up to 4 weeks after treatment; concomitant moderate CYP2C9 and moderate to strong CYP3A4 inhibitors and inducers not recommended; increased risk of cutaneous malignancies.",
+      "PDL status unknown: PDF is silent. MS peer alternatives require separate eligibility evaluation.",
+      "Remaining gaps: documentation verification, authorization duration, reauthorization, dosing, quantity enforcement and cautions require manual review."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of relapsing MS: CIS, RRMS or active SPMS (approval 2)",
+        "options": [
+          {
+            "value": "clinically_isolated_syndrome",
+            "label": "Clinically isolated syndrome (CIS)"
+          },
+          {
+            "value": "relapsing_remitting_ms",
+            "label": "Relapsing-remitting MS (RRMS)"
+          },
+          {
+            "value": "active_secondary_progressive_ms",
+            "label": "Active secondary progressive MS (SPMS)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older (approval 1)",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18+"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        },
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist or provider specializing in MS (approval 3)",
+        "options": [
+          {
+            "value": "neurologist_or_ms_specialist_or_consult",
+            "label": "Neurologist or MS specialist, or consultation with one"
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "baseline_ecg_cbc_lft_ophthalmic_appropriate": {
+        "type": "select",
+        "label": "ECG, CBC, liver enzyme testing and ophthalmic evaluation completed with results appropriate for treatment (approval 4)",
+        "options": [
+          {
+            "value": "all_done_appropriate",
+            "label": "All completed with appropriate results"
+          },
+          {
+            "value": "incomplete_or_not_appropriate",
+            "label": "Incomplete or results not appropriate"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "no_recent_major_cv_event_6mo": {
+        "type": "select",
+        "label": "No myocardial infarction, unstable angina, stroke, TIA, decompensated heart failure requiring hospitalization, or Class III/IV heart failure within the last 6 months (approval 5)",
+        "options": [
+          {
+            "value": "no_mi_ua_stroke_tia_decomp_hf_or_class_iii_iv_hf_in_6mo",
+            "label": "No listed cardiovascular event in the last 6 months"
+          },
+          {
+            "value": "recent_event_or_not_attested",
+            "label": "Recent event or not attested"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "av_block_sss_status": {
+        "type": "select",
+        "label": "No presence or history of Mobitz type II second-degree or third-degree AV block or sick sinus syndrome, unless a functioning pacemaker is present (approval 6)",
+        "options": [
+          {
+            "value": "no_mobitz_ii_third_degree_or_sss",
+            "label": "No listed conduction condition or history"
+          },
+          {
+            "value": "has_condition_with_functioning_pacemaker",
+            "label": "Listed condition with functioning pacemaker"
+          },
+          {
+            "value": "has_condition_without_pacemaker_or_not_attested",
+            "label": "Listed condition without functioning pacemaker or not attested"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "cyp2c9_genotype": {
+        "type": "select",
+        "label": "Prescriber performed genetic testing to rule out CYP2C9*3/*3 (approval 7)",
+        "options": [
+          {
+            "value": "not_star3_star3",
+            "label": "Genetic testing performed; CYP2C9*3/*3 ruled out"
+          },
+          {
+            "value": "star3_star3_or_not_tested",
+            "label": "CYP2C9*3/*3 or not tested"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "ms_dmt_step_two": {
+        "type": "select",
+        "label": "Adequate trial and failure of at least two drugs indicated for MS (approval 8)",
+        "options": [
+          {
+            "value": "trial_failure_two_ms_drugs",
+            "label": "Adequate trial and failure of at least two MS drugs"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "baseline_skin_exam_done": {
+        "type": "select",
+        "label": "Baseline skin examination conducted prior to initiating therapy (denial 2)",
+        "options": [
+          {
+            "value": "conducted_prior_to_therapy",
+            "label": "Conducted prior to therapy"
+          },
+          {
+            "value": "not_conducted",
+            "label": "Not conducted"
+          }
+        ]
+      },
+      "not_concurrent_ms_dmt": {
+        "type": "select",
+        "label": "Not used concurrently with other MS disease-modifying agents (denial 3)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "metformin-er": {
     "drug": {
@@ -12633,7 +13046,8 @@
       "briumvi",
       "kesimpta",
       "lemtrada",
-      "mavenclad"
+      "mavenclad",
+      "mayzent"
     ],
     "notes": [
       "Partial encoding of Alaska Medicaid Ocrevus (ocrelizumab), also covering Ocrevus Zunovo (ocrelizumab & hyaluronidase-ocsq), a CD20-directed cytolytic antibody, in one shared pack. Version: 2; Original: 1/31/22; Approval: 3/18/22; Effective: 5/1/22; Updated: 01/17/2025.",

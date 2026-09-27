@@ -217,7 +217,9 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "leqvio"
+  ],
   "notes": [
     "Partial encoding of Alaska Medicaid Praluent (alirocumab) / Repatha (evolocumab) PCSK9 inhibitor Criteria Version 3; Original 4/29/2016; Updated 4/17/2026; Effective 6/1/2026.",
     "Both products share approval and denial criteria. Closed indication attests diagnosis or calculated risk and the primary hypercholesterolemia pre-treatment baseline LDL-C threshold.",
@@ -226,7 +228,7 @@
     "Duration (notes only): initial approval up to 3 months; reauthorization up to 1 year.",
     "Quantity (notes only): Praluent 150 mg every 14 days; Repatha ASCVD/HeFH 140 mg every 14 days or 420 mg every 28 days; Repatha HoFH 420 mg every 14 days. Product/subtype dosing requires manual review; max_units is null.",
     "Caution (notes only): hypersensitivity reactions, including angioedema, have occurred.",
-    "PDL status unknown. No peer PCSK9 pack alternatives.",
+    "PDL status unknown. Leqvio is linked as an alternative, not concurrent therapy.",
     "Remains partial: submitted chart notes/labs, diagnosis, treatment history and baseline lipids are attestations; evidence verification, Praluent HoFH adult-only labeling, duration, reauthorization, dosing, quantity and cautions require manual review."
   ],
   "max_units": null,

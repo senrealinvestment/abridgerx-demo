@@ -22316,7 +22316,8 @@
   "leqvio": {
     "drug": {
       "name": "Leqvio",
-      "therapeutic_class": "lipotropics"
+      "therapeutic_class": "pcsk9-sirna",
+      "generic_name": "inclisiran"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -22327,18 +22328,539 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Qualifying diagnosis",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "heterozygous_familial_hypercholesterolemia",
+            "clinical_ascvd"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Adult age under the source FDA label",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Cardiologist, endocrinologist, or lipid specialist prescribing or consultation",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "cardiology",
+            "endocrinology",
+            "lipidology",
+            "cardiology_consult",
+            "endocrinology_consult",
+            "lipidology_consult"
+          ]
+        }
+      },
+      {
+        "id": "current_ldl_labs_submitted_within_12_months",
+        "text": "Labs within the last 12 months submitted with LDL values",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "current_ldl_labs_submitted_within_12_months"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "current_ldl_labs_submitted_within_12_months",
+          "value": true
+        }
+      },
+      {
+        "id": "statin_step",
+        "text": "High-potency statin and ezetimibe requirement",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "statin_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "statin_step",
+          "values": [
+            "two_high_potency_statins_max_tolerated_12wk_each_one_with_ezetimibe_failed",
+            "intolerant",
+            "contraindicated",
+            "stable_high_potency_statin_plus_ezetimibe"
+          ]
+        }
+      },
+      {
+        "id": "pcsk9_step",
+        "text": "Prior PCSK9 inhibitor requirement",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "pcsk9_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pcsk9_step",
+          "values": [
+            "failed_ldl_goal_12wk_with_or_without_statin",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "healthcare_professional_administration",
+        "text": "Administered by a healthcare professional",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "healthcare_professional_administration"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "healthcare_professional_administration",
+          "value": true
+        }
+      },
+      {
+        "id": "not_concurrent_pcsk9_inhibitor",
+        "text": "No concurrent PCSK9 inhibitor",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "not_concurrent_pcsk9_inhibitor"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_pcsk9_inhibitor",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_ldl_ge_190_before_lipid_therapy",
+        "text": "Baseline LDL-C \u2265190 mg/dL before any lipid-lowering pharmacologic therapy",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "baseline_ldl_ge_190_before_lipid_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_ldl_ge_190_before_lipid_therapy",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "heterozygous_familial_hypercholesterolemia"
+        }
+      },
+      {
+        "id": "hefh_confirmation",
+        "text": "HeFH confirmation route",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "hefh_confirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "hefh_confirmation",
+          "values": [
+            "first_degree_mi_under_60",
+            "second_degree_mi_under_50",
+            "family_ldl_gt_190",
+            "family_fh",
+            "family_tendinous_xanthoma_or_arcus_cornealis",
+            "genetic_ldlr_apob_pcsk9",
+            "physical_signs_hefh",
+            "dutch_score_gt_8",
+            "simon_broome_definite"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "heterozygous_familial_hypercholesterolemia"
+        }
+      },
+      {
+        "id": "hefh_ldl_goal_not_achieved",
+        "text": "Failed to achieve LDL-C <100 mg/dL (LDL-C remains \u2265100)",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "hefh_ldl_goal_not_achieved"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hefh_ldl_goal_not_achieved",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "heterozygous_familial_hypercholesterolemia"
+        }
+      },
+      {
+        "id": "ascvd_confirmation",
+        "text": "Clinical ASCVD confirmation route",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "ascvd_confirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ascvd_confirmation",
+          "values": [
+            "acute_coronary_syndromes",
+            "history_mi",
+            "revascularization",
+            "stroke",
+            "tia",
+            "atherosclerotic_pad"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "clinical_ascvd"
+        }
+      },
+      {
+        "id": "ascvd_ldl_goal_not_achieved",
+        "text": "Failed to achieve LDL-C <70 mg/dL (LDL-C remains \u226570)",
+        "citation": "https://health.alaska.gov/media/pmmhqqyy/202211-leqvio_criteria_2022.pdf",
+        "required_facts": [
+          "ascvd_ldl_goal_not_achieved"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ascvd_ldl_goal_not_achieved",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "clinical_ascvd"
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "praluent"
+    ],
+    "notes": [
+      "Partial encoding of Alaska Medicaid Leqvio (inclisiran) Criteria Version 1; Original 10/5/2022; Approval 11/18/2022; Effective 2023-01-02.",
+      "Source FDA indication: adults with HeFH or clinical ASCVD requiring additional LDL-C lowering, as an adjunct to diet and maximally tolerated statin therapy. Effect on cardiovascular morbidity and mortality has not been determined.",
+      "HeFH baseline LDL-C is before any lipid-lowering pharmacologic therapy. Confirmation routes and strict family age/LDL and Dutch score thresholds are attestations. LDL goals are <100 mg/dL for HeFH and <70 mg/dL for ASCVD.",
+      "Duration (notes only): initial approval 6 months; reauthorization 12 months with chart notes indicating at least 10% reduction in LDL-C.",
+      "Dosing/quantity (notes only): 284 mg as a single subcutaneous injection initially, again at 3 months, then every 6 months. HCPCS J1306 max of 284. max_units is null; quantity enforcement requires manual review.",
+      "Cautions (notes only): common adverse reactions (\u22653%) include injection site reaction, arthralgia, urinary tract infection, diarrhea, bronchitis, pain in extremity, and dyspnea. Inject subcutaneously only into abdomen, upper arm, or thigh.",
+      "Remains partial: diagnosis, confirmation, submitted labs, therapy history, intolerance/contraindications and administration are attestations; evidence verification, cautions, duration, reauthorization and dosing/quantity require manual review. PDL status unknown. Praluent/Repatha is linked as an alternative, not concurrent therapy."
+    ],
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Qualifying diagnosis",
+        "options": [
+          {
+            "value": "heterozygous_familial_hypercholesterolemia",
+            "label": "Heterozygous familial hypercholesterolemia (HeFH)"
+          },
+          {
+            "value": "clinical_ascvd",
+            "label": "Clinical ASCVD"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Adult age under the source FDA label",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Cardiologist, endocrinologist, or lipid specialist prescribing or consultation",
+        "options": [
+          {
+            "value": "cardiology",
+            "label": "Cardiology"
+          },
+          {
+            "value": "endocrinology",
+            "label": "Endocrinology"
+          },
+          {
+            "value": "lipidology",
+            "label": "Lipidology"
+          },
+          {
+            "value": "cardiology_consult",
+            "label": "Cardiology Consultation"
+          },
+          {
+            "value": "endocrinology_consult",
+            "label": "Endocrinology Consultation"
+          },
+          {
+            "value": "lipidology_consult",
+            "label": "Lipidology Consultation"
+          },
+          {
+            "value": "other",
+            "label": "None of these"
+          }
+        ]
+      },
+      "current_ldl_labs_submitted_within_12_months": {
+        "type": "select",
+        "label": "Labs within the last 12 months submitted with LDL values",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      },
+      "statin_step": {
+        "type": "select",
+        "label": "High-potency statin and ezetimibe requirement",
+        "options": [
+          {
+            "value": "two_high_potency_statins_max_tolerated_12wk_each_one_with_ezetimibe_failed",
+            "label": "Failed at least two high-potency statins (rosuvastatin or atorvastatin), each \u226512 weeks at maximum tolerated dose, one with ezetimibe"
+          },
+          {
+            "value": "intolerant",
+            "label": "Intolerance to use"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindication to use"
+          },
+          {
+            "value": "stable_high_potency_statin_plus_ezetimibe",
+            "label": "Already stable on high-potency statin plus ezetimibe; no additional statin trials required"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "pcsk9_step": {
+        "type": "select",
+        "label": "Prior PCSK9 inhibitor requirement",
+        "options": [
+          {
+            "value": "failed_ldl_goal_12wk_with_or_without_statin",
+            "label": "Failed to achieve LDL goal after \u226512 weeks of PCSK9 inhibitor with or without a statin"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "healthcare_professional_administration": {
+        "type": "select",
+        "label": "Administered by a healthcare professional",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_pcsk9_inhibitor": {
+        "type": "select",
+        "label": "No concurrent PCSK9 inhibitor",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      },
+      "baseline_ldl_ge_190_before_lipid_therapy": {
+        "type": "select",
+        "label": "Baseline LDL-C \u2265190 mg/dL before any lipid-lowering pharmacologic therapy",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "heterozygous_familial_hypercholesterolemia"
+        }
+      },
+      "hefh_confirmation": {
+        "type": "select",
+        "label": "HeFH confirmation route",
+        "options": [
+          {
+            "value": "first_degree_mi_under_60",
+            "label": "First-degree relative with myocardial infarction before age 60"
+          },
+          {
+            "value": "second_degree_mi_under_50",
+            "label": "Second-degree relative with myocardial infarction before age 50"
+          },
+          {
+            "value": "family_ldl_gt_190",
+            "label": "First- or second-degree relative with LDL-C >190 mg/dL"
+          },
+          {
+            "value": "family_fh",
+            "label": "First- or second-degree relative with HeFH or HoFH"
+          },
+          {
+            "value": "family_tendinous_xanthoma_or_arcus_cornealis",
+            "label": "First- or second-degree relative with tendinous xanthoma or arcus cornealis"
+          },
+          {
+            "value": "genetic_ldlr_apob_pcsk9",
+            "label": "Patient mutation in LDL receptor, ApoB, or PCSK9 gene"
+          },
+          {
+            "value": "physical_signs_hefh",
+            "label": "Patient physical signs of HeFH: tendon xanthomas, corneal arcus and age <45 years"
+          },
+          {
+            "value": "dutch_score_gt_8",
+            "label": "Dutch Lipid Clinic Network score >8 (definite FH)"
+          },
+          {
+            "value": "simon_broome_definite",
+            "label": "Simon Broome definite FH"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "heterozygous_familial_hypercholesterolemia"
+        }
+      },
+      "hefh_ldl_goal_not_achieved": {
+        "type": "select",
+        "label": "Failed to achieve LDL-C <100 mg/dL (LDL-C remains \u2265100)",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "heterozygous_familial_hypercholesterolemia"
+        }
+      },
+      "ascvd_confirmation": {
+        "type": "select",
+        "label": "Clinical ASCVD confirmation route",
+        "options": [
+          {
+            "value": "acute_coronary_syndromes",
+            "label": "Acute coronary syndromes"
+          },
+          {
+            "value": "history_mi",
+            "label": "History of myocardial infarction"
+          },
+          {
+            "value": "revascularization",
+            "label": "Coronary or other arterial revascularization"
+          },
+          {
+            "value": "stroke",
+            "label": "Stroke"
+          },
+          {
+            "value": "tia",
+            "label": "Transient ischemic attack"
+          },
+          {
+            "value": "atherosclerotic_pad",
+            "label": "Peripheral arterial disease presumed of atherosclerotic origin"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "clinical_ascvd"
+        }
+      },
+      "ascvd_ldl_goal_not_achieved": {
+        "type": "select",
+        "label": "Failed to achieve LDL-C <70 mg/dL (LDL-C remains \u226570)",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "clinical_ascvd"
+        }
+      }
+    }
   },
   "leuprolide": {
     "drug": {
@@ -27641,7 +28163,9 @@
         }
       }
     ],
-    "alternatives": [],
+    "alternatives": [
+      "leqvio"
+    ],
     "notes": [
       "Partial encoding of Alaska Medicaid Praluent (alirocumab) / Repatha (evolocumab) PCSK9 inhibitor Criteria Version 3; Original 4/29/2016; Updated 4/17/2026; Effective 6/1/2026.",
       "Both products share approval and denial criteria. Closed indication attests diagnosis or calculated risk and the primary hypercholesterolemia pre-treatment baseline LDL-C threshold.",
@@ -27650,7 +28174,7 @@
       "Duration (notes only): initial approval up to 3 months; reauthorization up to 1 year.",
       "Quantity (notes only): Praluent 150 mg every 14 days; Repatha ASCVD/HeFH 140 mg every 14 days or 420 mg every 28 days; Repatha HoFH 420 mg every 14 days. Product/subtype dosing requires manual review; max_units is null.",
       "Caution (notes only): hypersensitivity reactions, including angioedema, have occurred.",
-      "PDL status unknown. No peer PCSK9 pack alternatives.",
+      "PDL status unknown. Leqvio is linked as an alternative, not concurrent therapy.",
       "Remains partial: submitted chart notes/labs, diagnosis, treatment history and baseline lipids are attestations; evidence verification, Praluent HoFH adult-only labeling, duration, reauthorization, dosing, quantity and cautions require manual review."
     ],
     "max_units": null,

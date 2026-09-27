@@ -107,15 +107,15 @@ def test_metadata_catalog_notes():
     assert (BASE / 'hetlioz.json').read_bytes() == (BASE / 'rule_packs/hetlioz.json').read_bytes()
     catalog = load_rule_pack_catalog()
     assert catalog['hetlioz'] == p and len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 102
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 96
-    assert catalog['leqvio']['encoding_status'] == 'text_only'
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 103
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 95
+    assert catalog['juxtapid']['encoding_status'] == 'text_only'
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (102, 96)
-    assert status['next_candidate'] == 'leqvio'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (103, 95)
+    assert status['next_candidate'] == 'juxtapid'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

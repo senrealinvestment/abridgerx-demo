@@ -87,7 +87,7 @@ def test_metadata_and_catalog():
     assert p['source']['effective_date'] == '2026-06-01'
     assert p['source']['citation'] == 'https://health.alaska.gov/media/0qzn3tx2/pcsk9-inhibitor-update_2026.pdf'
     assert (ROOT / p['source']['criteria_pdf']).exists()
-    assert p['max_units'] is None and p['alternatives'] == []
+    assert p['max_units'] is None and p['alternatives'] == ['leqvio']
     assert 'inferred_required_facts' not in p
     for text in ('evolocumab', 'Version 3', '4/29/2016', '4/17/2026', '6/1/2026',
                  '3 months', '1 year', '150 mg', '140 mg', '420 mg', '28 days',
@@ -100,15 +100,15 @@ def test_metadata_and_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 102
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 96
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 103
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 95
     for slug in ['actiq', 'andembry']:
         assert catalog[slug]['encoding_status'] == 'partial'
     assert catalog['lemtrada']['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 102 and status['encoding_text_only'] == 96
+    assert status['encoding_partial'] == 103 and status['encoding_text_only'] == 95
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'leqvio'
+    assert status['next_candidate'] == 'juxtapid'
     for ext in ('json', 'md'):
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()
 

@@ -141,8 +141,8 @@ def test_catalog_mirrors_and_alternatives():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 102
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 96
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 103
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 95
     assert p['alternatives'] == PEERS
     for slug in ['infliximab'] + PEERS:
         assert (BASE / f'{slug}.json').read_bytes() == (BASE / 'rule_packs' / f'{slug}.json').read_bytes()
@@ -150,9 +150,9 @@ def test_catalog_mirrors_and_alternatives():
         if slug != 'infliximab':
             assert 'infliximab' in catalog[slug]['alternatives']
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 102 and status['encoding_text_only'] == 96
+    assert status['encoding_partial'] == 103 and status['encoding_text_only'] == 95
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'leqvio'
+    assert status['next_candidate'] == 'juxtapid'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
 

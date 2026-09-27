@@ -97,18 +97,18 @@ def test_metadata_notes_and_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 102
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 96
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 103
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 95
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (102, 96)
+        assert (status['encoding_partial'], status['encoding_text_only']) == (103, 95)
         assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-        assert status['next_candidate'] == 'leqvio'
+        assert status['next_candidate'] == 'juxtapid'
     assert (BASE / 'ENCODING_STATUS.md').read_bytes() == (BASE.parent / 'ENCODING_STATUS.md').read_bytes()
 
 
-def test_leqvio_remains_unencoded():
-    pack = load_rule_pack_catalog()['leqvio']
+def test_juxtapid_remains_unencoded():
+    pack = load_rule_pack_catalog()['juxtapid']
     assert pack['encoding_status'] == 'text_only'
     assert pack['criteria'] == []
     assert evaluate(pack, {}).decision == 'need_info'

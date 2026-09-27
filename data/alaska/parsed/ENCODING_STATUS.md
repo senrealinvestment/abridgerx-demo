@@ -22,8 +22,8 @@ Source hub: https://health.alaska.gov/en/education/prior-authorization-medicatio
 - Criteria text JSON files: **198**
 - Rule packs: **198**
 - Fully encoded (all clauses as predicates): **0**
-- Partially encoded: **117** (Kynamro, Juxtapid, Leqvio, Hetlioz, Jynarque / Samsca, Redemplo, Jascayd, Crenessity, Firazyr, Zurzuvae, Ztalmy, Xiaflex, Korlym, Isturisa, Epidiolex, Fintepla, Imcivree, Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Lupkynis, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra, Zulresso, MyqorzoTM, Corlanor, Kerendia, Opsumit, Palforzia, Spravato, Uptravi, Wakix, Veozah, Verquvo)
-- Text-only (requires_pa, encoding pending): **81**
+- Partially encoded: **118** (Kynamro, Juxtapid, Leqvio, Hetlioz, Jynarque / Samsca, Redemplo, Jascayd, Crenessity, Firazyr, Zurzuvae, Ztalmy, Xiaflex, Korlym, Isturisa, Epidiolex, Fintepla, Imcivree, Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Lupkynis, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra, Zulresso, MyqorzoTM, Corlanor, Kerendia, Opsumit, Palforzia, Spravato, Uptravi, Wakix, Veozah, Verquvo, RezdiffraTM, Rhapsido)
+- Text-only (requires_pa, encoding pending): **80**
 - Scanned image criteria PDFs (OCR needed): **7**
 
 ## Blockers
@@ -55,7 +55,7 @@ Hemlibra encodes one closed hemophilia A prophylaxis indication (with or without
 
 ## Next encoding candidates
 
-Next candidate: `uptravi` (PAH peer remaining). Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
+Next candidate: `voyxact`. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
 
 Soliris/Ultomiris encodes aHUS, PNH, gMG and Soliris-only NMOSD, indication-specific ages and clinical gates, and shared vaccination, specialty and REMS requirements. Duration, renewal, quantity and cautions remain manual review.
 
@@ -240,3 +240,6 @@ Verquvo (`verquvo`, vericiguat), effective 2022-01-04, encodes closed symptomati
 
 
 RezdiffraTM (`rezdiffratm`, resmetirom), effective 2026-06-01, encodes closed adult noncirrhotic NASH with F2–F3 fibrosis, specialist or consultation, biopsy within 12 months or at least two qualifying MRE/VCTE/ELF scores, FIB-4 ≥1.3, at least three current metabolic risk factors, documented physical activity and reduced calorie diet, and other liver disease exclusion. Limitations, cautions, duration and quantity remain notes. Catalog: **117 partial / 81 text_only**. Next: `rhapsido`.
+
+
+Rhapsido (`rhapsido`, remibrutinib), effective 2026-03-01, encodes closed adult CSU, specialist/consultation, urticaria ≥6 weeks, symptoms ≥3 days/week on maximum-dose non-sedating H1 antihistamine, medication review and feasible reduction/discontinuation, maximum-dose H1 failure ≥60 days or documented clinical contraindication, and concomitant biologic denial. Cautions, duration and quantity remain notes. Catalog: **118 partial / 80 text_only**. Next: `voyxact`.

@@ -32241,7 +32241,8 @@
   "rhapsido": {
     "drug": {
       "name": "Rhapsido",
-      "therapeutic_class": "other"
+      "therapeutic_class": "btk-inhibitor",
+      "generic_name": "remibrutinib"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -32252,18 +32253,315 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of chronic spontaneous urticaria.",
+        "citation": "https://health.alaska.gov/media/xjyjo12o/rhapsido_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "chronic_spontaneous_urticaria"
+          ]
+        }
+      },
+      {
+        "id": "age",
+        "text": "Patient meets FDA labeled adult age.",
+        "citation": "https://health.alaska.gov/media/xjyjo12o/rhapsido_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "age"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "age",
+          "values": [
+            "at_least_18"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a dermatologist, allergist or immunologist.",
+        "citation": "https://health.alaska.gov/media/xjyjo12o/rhapsido_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "dermatologist",
+            "allergist",
+            "immunologist",
+            "dermatologist_consult",
+            "allergist_consult",
+            "immunologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "urticaria_duration",
+        "text": "Urticaria for at least 6 weeks.",
+        "citation": "https://health.alaska.gov/media/xjyjo12o/rhapsido_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "urticaria_duration"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "urticaria_duration",
+          "values": [
+            "at_least_6_weeks"
+          ]
+        }
+      },
+      {
+        "id": "symptom_frequency",
+        "text": "Symptoms present on at least 3 days per week while taking a non-sedating H1 antihistamine titrated to maximum dose.",
+        "citation": "https://health.alaska.gov/media/xjyjo12o/rhapsido_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "symptom_frequency"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "symptom_frequency",
+          "values": [
+            "at_least_3_days_per_week"
+          ]
+        }
+      },
+      {
+        "id": "medication_review",
+        "text": "Evaluated medications known to cause or worsen urticaria (e.g. NSAIDs); reduced or discontinued where feasible.",
+        "citation": "https://health.alaska.gov/media/xjyjo12o/rhapsido_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "medication_review"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "medication_review",
+          "values": [
+            "evaluated_and_addressed",
+            "evaluated_none_identified",
+            "evaluated_reduction_not_feasible"
+          ]
+        }
+      },
+      {
+        "id": "prior_h1_therapy",
+        "text": "Tried and failed non-sedating H1 antihistamine at maximum dose for at least 60 days OR documented clinical contraindication.",
+        "citation": "https://health.alaska.gov/media/xjyjo12o/rhapsido_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "prior_h1_therapy"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prior_h1_therapy",
+          "values": [
+            "failed_max_dose_at_least_60_days",
+            "documented_clinical_contraindication"
+          ]
+        }
+      },
+      {
+        "id": "concomitant_biologic",
+        "text": "Not used in conjunction with another biologic medication (e.g. Dupixent, Xolair).",
+        "citation": "https://health.alaska.gov/media/xjyjo12o/rhapsido_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "concomitant_biologic"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "concomitant_biologic",
+          "values": [
+            "absent"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Rhapsido (remibrutinib), a BTK inhibitor / kinase inhibitor, effective 2026-03-01. Approval criteria and concomitant biologic denial encoded; supporting clinical documentation requires manual review.",
+      "Cautions (notes only): increased risk of mucocutaneous-related bleeding; concomitant antithrombotic agents may further increase risk. Avoid strong CYP3A4 inhibitors or inducers. Common adverse reactions include nasopharyngitis, bleeding, headache, nausea and abdominal pain.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 1 year. Manual review required.",
+      "Quantity (notes only): 60 tablets per 30 days. Manual review required."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of chronic spontaneous urticaria.",
+        "options": [
+          {
+            "value": "chronic_spontaneous_urticaria",
+            "label": "Chronic spontaneous urticaria"
+          }
+        ]
+      },
+      "age": {
+        "type": "select",
+        "label": "Patient meets FDA labeled adult age.",
+        "options": [
+          {
+            "value": "at_least_18",
+            "label": "18 years or older"
+          },
+          {
+            "value": "under_18",
+            "label": "Under 18 years"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a dermatologist, allergist or immunologist.",
+        "options": [
+          {
+            "value": "dermatologist",
+            "label": "Dermatologist"
+          },
+          {
+            "value": "allergist",
+            "label": "Allergist"
+          },
+          {
+            "value": "immunologist",
+            "label": "Immunologist"
+          },
+          {
+            "value": "dermatologist_consult",
+            "label": "Dermatologist consultation"
+          },
+          {
+            "value": "allergist_consult",
+            "label": "Allergist consultation"
+          },
+          {
+            "value": "immunologist_consult",
+            "label": "Immunologist consultation"
+          },
+          {
+            "value": "other",
+            "label": "No qualifying specialty or consultation"
+          }
+        ]
+      },
+      "urticaria_duration": {
+        "type": "select",
+        "label": "Urticaria for at least 6 weeks.",
+        "options": [
+          {
+            "value": "at_least_6_weeks",
+            "label": "At least 6 weeks"
+          },
+          {
+            "value": "less_than_6_weeks",
+            "label": "Less than 6 weeks"
+          }
+        ]
+      },
+      "symptom_frequency": {
+        "type": "select",
+        "label": "Symptoms present on at least 3 days per week while taking a non-sedating H1 antihistamine titrated to maximum dose.",
+        "options": [
+          {
+            "value": "at_least_3_days_per_week",
+            "label": "At least 3 days/week on maximum-dose non-sedating H1 antihistamine"
+          },
+          {
+            "value": "less_than_3_days_per_week",
+            "label": "Less than 3 days/week on that treatment"
+          },
+          {
+            "value": "not_on_max_dose",
+            "label": "Not taking non-sedating H1 antihistamine at maximum dose"
+          }
+        ]
+      },
+      "medication_review": {
+        "type": "select",
+        "label": "Evaluated medications known to cause or worsen urticaria (e.g. NSAIDs); reduced or discontinued where feasible.",
+        "options": [
+          {
+            "value": "evaluated_and_addressed",
+            "label": "Evaluated; causative/worsening agents reduced or discontinued where feasible"
+          },
+          {
+            "value": "evaluated_none_identified",
+            "label": "Evaluated; no causative/worsening agents identified"
+          },
+          {
+            "value": "evaluated_reduction_not_feasible",
+            "label": "Evaluated; reduction/discontinuation not feasible"
+          },
+          {
+            "value": "not_evaluated",
+            "label": "Not evaluated"
+          },
+          {
+            "value": "not_addressed",
+            "label": "Agents not reduced/discontinued despite feasibility"
+          }
+        ]
+      },
+      "prior_h1_therapy": {
+        "type": "select",
+        "label": "Tried and failed non-sedating H1 antihistamine at maximum dose for at least 60 days OR documented clinical contraindication.",
+        "options": [
+          {
+            "value": "failed_max_dose_at_least_60_days",
+            "label": "Failed maximum-dose non-sedating H1 antihistamine for at least 60 days"
+          },
+          {
+            "value": "documented_clinical_contraindication",
+            "label": "Documented clinical contraindication"
+          },
+          {
+            "value": "less_than_60_days",
+            "label": "Trial less than 60 days"
+          },
+          {
+            "value": "below_max_dose",
+            "label": "Trial below maximum dose"
+          },
+          {
+            "value": "not_failed",
+            "label": "No treatment failure"
+          },
+          {
+            "value": "not_tried",
+            "label": "Not tried; no documented clinical contraindication"
+          }
+        ]
+      },
+      "concomitant_biologic": {
+        "type": "select",
+        "label": "Not used in conjunction with another biologic medication (e.g. Dupixent, Xolair).",
+        "options": [
+          {
+            "value": "absent",
+            "label": "No concomitant biologic"
+          },
+          {
+            "value": "dupixent",
+            "label": "Concomitant Dupixent"
+          },
+          {
+            "value": "xolair",
+            "label": "Concomitant Xolair"
+          },
+          {
+            "value": "other_biologic",
+            "label": "Another concomitant biologic"
+          }
+        ]
+      }
+    }
   },
   "roctavian": {
     "drug": {

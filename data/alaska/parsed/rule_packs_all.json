@@ -2664,7 +2664,8 @@
   "briumvi": {
     "drug": {
       "name": "Briumvi",
-      "therapeutic_class": "other"
+      "therapeutic_class": "ms-disease-modifying",
+      "generic_name": "ublituximab-xiiy"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -2675,18 +2676,275 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Relapsing forms of multiple sclerosis (FDA indication; approval criterion 2)",
+        "citation": "https://health.alaska.gov/media/lznp2jzr/5bi-briumvi_criteria_2023.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient is 18 years of age or older",
+        "citation": "https://health.alaska.gov/media/lznp2jzr/5bi-briumvi_criteria_2023.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist or a prescriber that specializes in MS",
+        "citation": "https://health.alaska.gov/media/lznp2jzr/5bi-briumvi_criteria_2023.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_ms_specialist_or_consult"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "ms_dmt_step_two_12mo",
+        "text": "Ineffective response due to continued clinical relapse, intolerance, or contraindication to two or more MS drugs within the last 12 months",
+        "citation": "https://health.alaska.gov/media/lznp2jzr/5bi-briumvi_criteria_2023.pdf",
+        "required_facts": [
+          "ms_dmt_step_two_12mo"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ms_dmt_step_two_12mo",
+          "value": "trial_failure_intolerance_or_ci_two_or_more_12mo"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "reproductive_status",
+        "text": "For women of reproductive potential, provider attests patient is not pregnant and will not become pregnant while treated",
+        "citation": "https://health.alaska.gov/media/lznp2jzr/5bi-briumvi_criteria_2023.pdf",
+        "required_facts": [
+          "reproductive_status"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "reproductive_status",
+          "values": [
+            "not_of_reproductive_potential",
+            "not_pregnant_and_will_not_become_pregnant"
+          ]
+        }
+      },
+      {
+        "id": "not_concurrent_ms_dmt",
+        "text": "Not prescribed concurrently with other disease-modifying therapies for MS",
+        "citation": "https://health.alaska.gov/media/lznp2jzr/5bi-briumvi_criteria_2023.pdf",
+        "required_facts": [
+          "not_concurrent_ms_dmt"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_ms_dmt",
+          "value": true
+        }
+      },
+      {
+        "id": "hepatitis_b_status",
+        "text": "No active hepatitis B infection",
+        "citation": "https://health.alaska.gov/media/lznp2jzr/5bi-briumvi_criteria_2023.pdf",
+        "required_facts": [
+          "hepatitis_b_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hepatitis_b_status",
+          "value": "no_active_hepatitis_b"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Briumvi (ublituximab-xiiy), a CD20-directed cytolytic antibody. Version: 1; Original: 3/9/2023; Approval: 4/21/2023; Effective: 6/1/2023.",
+      "Encoded: three closed adult relapsing MS indications, approval criteria 1-5 and denial criteria 2-3. Denial criterion 1 (failure to meet approval criteria) is covered by the approval clauses. Prior therapy and reproductive status are attestations.",
+      "Duration (notes only): initial approval up to 6 months; reauthorization up to 12 months if the prescriber documents disease improvement or stabilization.",
+      "Quantity and dosing (notes only): initial 150 mg, followed by 450 mg 2 weeks later; maintenance 450 mg every 24 weeks. HCPCS J3590. No numeric quantity enforcement.",
+      "Cautions (notes only): test quantitative serum immunoglobulins before starting; low serum immunoglobulins require immunologist evaluation before treatment. Delay administration with an active infection until resolved or when receiving live-attenuated vaccines. Premedicate with methylprednisolone (or equivalent corticosteroid) and an antihistamine before each infusion. May cause fetal harm.",
+      "PDL status unknown: PDF is silent. No encoded MS CD20 peers; alternatives remain empty.",
+      "Remaining gaps: documentation verification, authorization duration, reauthorization response, dosing, quantity enforcement and cautions require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Relapsing forms of multiple sclerosis (FDA indication; approval criterion 2)",
+        "options": [
+          {
+            "value": "clinically_isolated_syndrome",
+            "label": "Clinically isolated syndrome (CIS)"
+          },
+          {
+            "value": "relapsing_remitting_ms",
+            "label": "Relapsing-remitting multiple sclerosis (RRMS)"
+          },
+          {
+            "value": "active_secondary_progressive_ms",
+            "label": "Active secondary progressive MS (SPMS)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18+"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        },
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist or a prescriber that specializes in MS",
+        "options": [
+          {
+            "value": "neurologist_or_ms_specialist_or_consult",
+            "label": "Neurologist or MS specialist, or consultation with one"
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "ms_dmt_step_two_12mo": {
+        "type": "select",
+        "label": "Ineffective response due to continued clinical relapse, intolerance, or contraindication to two or more MS drugs within the last 12 months",
+        "options": [
+          {
+            "value": "trial_failure_intolerance_or_ci_two_or_more_12mo",
+            "label": "Two or more MS drugs within the last 12 months: continued clinical relapse, intolerance, or contraindication"
+          },
+          {
+            "value": "none",
+            "label": "Not met: fewer than two drugs or outside the last 12 months"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "reproductive_status": {
+        "type": "select",
+        "label": "For women of reproductive potential, provider attests patient is not pregnant and will not become pregnant while treated",
+        "options": [
+          {
+            "value": "not_of_reproductive_potential",
+            "label": "Not a woman of reproductive potential"
+          },
+          {
+            "value": "not_pregnant_and_will_not_become_pregnant",
+            "label": "Woman of reproductive potential; provider attests not pregnant and will not become pregnant while treated"
+          },
+          {
+            "value": "pregnant_or_may_become_pregnant",
+            "label": "Pregnant or may become pregnant"
+          }
+        ]
+      },
+      "not_concurrent_ms_dmt": {
+        "type": "select",
+        "label": "Not prescribed concurrently with other disease-modifying therapies for MS",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hepatitis_b_status": {
+        "type": "select",
+        "label": "No active hepatitis B infection",
+        "options": [
+          {
+            "value": "no_active_hepatitis_b",
+            "label": "No active hepatitis B"
+          },
+          {
+            "value": "active_hepatitis_b",
+            "label": "Active hepatitis B"
+          }
+        ]
+      }
+    }
   },
   "calcitonin-gene-related-peptide": {
     "drug": {

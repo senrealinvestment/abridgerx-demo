@@ -121,13 +121,13 @@ def test_metadata_catalog_and_manual_review_gaps():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 60
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 138
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 61
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 137
     assert catalog['anzupgo']['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 60 and status['encoding_text_only'] == 138
+    assert status['encoding_partial'] == 61 and status['encoding_text_only'] == 137
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'serostim'
+    assert status['next_candidate'] == 'somatropin'
     assert catalog[status['next_candidate']]['encoding_status'] == 'text_only'
     for ext in ('json', 'md'):
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()

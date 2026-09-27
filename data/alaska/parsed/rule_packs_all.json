@@ -19575,16 +19575,419 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "HIV/AIDS-associated wasting syndrome/cachexia",
+        "citation": "https://health.alaska.gov/media/ippd24os/ccfu_growthhormones_serostim_20161003.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      {
+        "id": "hiv_positive",
+        "text": "Patient has Human Immunodeficiency Virus infection",
+        "citation": "https://health.alaska.gov/media/ippd24os/ccfu_growthhormones_serostim_20161003.pdf#approval-criteria",
+        "required_facts": [
+          "hiv_positive"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hiv_positive",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      {
+        "id": "currently_receiving_antiretroviral_therapy",
+        "text": "Patient is currently receiving antiretroviral therapy",
+        "citation": "https://health.alaska.gov/media/ippd24os/ccfu_growthhormones_serostim_20161003.pdf#approval-criteria",
+        "required_facts": [
+          "currently_receiving_antiretroviral_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "currently_receiving_antiretroviral_therapy",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      {
+        "id": "failed_or_contraindication_dronabinol_or_megestrol",
+        "text": "Tried and failed, or contraindication to either dronabinol (Marinol) or megestrol (Megace)",
+        "citation": "https://health.alaska.gov/media/ippd24os/ccfu_growthhormones_serostim_20161003.pdf#approval-criteria",
+        "required_facts": [
+          "failed_or_contraindication_dronabinol_or_megestrol"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "failed_or_contraindication_dronabinol_or_megestrol",
+          "values": [
+            "dronabinol_failed_or_contraindicated",
+            "megestrol_failed_or_contraindicated"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      {
+        "id": "other_causes_of_weight_loss_ruled_out",
+        "text": "Causes other than HIV for weight loss have been ruled out",
+        "citation": "https://health.alaska.gov/media/ippd24os/ccfu_growthhormones_serostim_20161003.pdf#approval-criteria",
+        "required_facts": [
+          "other_causes_of_weight_loss_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "other_causes_of_weight_loss_ruled_out",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      {
+        "id": "serostim_weight_loss_severity",
+        "text": "At least one weight-loss severity path is met",
+        "citation": "https://health.alaska.gov/media/ippd24os/ccfu_growthhormones_serostim_20161003.pdf#approval-criteria",
+        "required_facts": [
+          "serostim_weight_loss_severity"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "serostim_weight_loss_severity",
+          "values": [
+            "unintentional_loss_gt_10_percent_baseline",
+            "weight_lt_90_percent_lower_limit_ideal_body_weight",
+            "bmi_lt_20",
+            "lost_gt_5_percent_body_weight_past_6_months"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      {
+        "id": "serostim_clinical_syndrome",
+        "text": "At least one clinical syndrome path is met",
+        "citation": "https://health.alaska.gov/media/ippd24os/ccfu_growthhormones_serostim_20161003.pdf#approval-criteria",
+        "required_facts": [
+          "serostim_clinical_syndrome"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "serostim_clinical_syndrome",
+          "values": [
+            "chronic_diarrhea_ge_2_loose_stools_daily_ge_30_days",
+            "chronic_weakness_and_fever_intermittent_or_constant_ge_30_days"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      {
+        "id": "not_for_athletic_recreational_social_body_mass",
+        "text": "Not used solely to increase body mass or strength for professional, recreational, or social reasons (including athletes/bodybuilders)",
+        "citation": "https://health.alaska.gov/media/ippd24os/ccfu_growthhormones_serostim_20161003.pdf#denial-criteria",
+        "required_facts": [
+          "not_for_athletic_recreational_social_body_mass"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_for_athletic_recreational_social_body_mass",
+          "value": true
+        }
+      },
+      {
+        "id": "not_for_anti_aging",
+        "text": "Not used to reverse the effects of aging (anti-aging)",
+        "citation": "https://health.alaska.gov/media/ippd24os/ccfu_growthhormones_serostim_20161003.pdf#denial-criteria",
+        "required_facts": [
+          "not_for_anti_aging"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_for_anti_aging",
+          "value": true
+        }
+      },
+      {
+        "id": "no_gh_contraindications_malignancy_retinopathy_critical_illness",
+        "text": "No active malignancy or history of malignancy in the past 12 months; no active proliferative or severe non-proliferative diabetic retinopathy; and no acute critical illness",
+        "citation": "https://health.alaska.gov/media/ippd24os/ccfu_growthhormones_serostim_20161003.pdf#denial-criteria",
+        "required_facts": [
+          "no_gh_contraindications_malignancy_retinopathy_critical_illness"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_gh_contraindications_malignancy_retinopathy_critical_illness",
+          "value": true
+        }
+      },
+      {
+        "id": "not_concurrent_increlex",
+        "text": "No concurrent Increlex (mecasermin)",
+        "citation": "https://health.alaska.gov/media/ippd24os/ccfu_growthhormones_serostim_20161003.pdf#denial-criteria",
+        "required_facts": [
+          "not_concurrent_increlex"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_increlex",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Serostim Criteria Version 2. Last updated 4/15/2016; approved 4/29/2016; effective 10/3/2016.",
+      "Encoded: closed HIV/AIDS wasting/cachexia indication, HIV infection, current ART, failure or contraindication to either Marinol or Megace, exclusion of other weight-loss causes, any of four weight-loss severity paths, either clinical syndrome path, and all additional denial exclusions. No numeric age gate is specified.",
+      "Reauthorization (notes only): lean body mass and body weight must have increased and physical endurance improved due to Serostim. Deny if the rate of weight loss was unaffected (did not slow, stop, stabilize, or improve).",
+      "Initial coverage up to 6 months; subsequent reauthorization up to 12 months. Duration and reauthorization require manual review.",
+      "Quantity limit: None. Dosage forms: 4 mg, 5 mg, and 6 mg powder for injection.",
+      "Mechanism of action (notes only): anabolic and anticatabolic effects through receptors on multiple cell types, including muscle, liver, fat, lymphocytes and hematopoietic cells; some effects are mediated by IGF-1.",
+      "No evaluate()-linked alternatives: Egrifta treats excess abdominal fat in HIV lipodystrophy and is not indicated for weight loss management. Somatropin class criteria are not encoded by this pack."
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "HIV/AIDS-associated wasting syndrome/cachexia",
+        "options": [
+          {
+            "value": "hiv_aids_wasting_cachexia",
+            "label": "HIV/AIDS-associated wasting syndrome/cachexia"
+          }
+        ]
+      },
+      "hiv_positive": {
+        "type": "select",
+        "label": "Patient has Human Immunodeficiency Virus infection",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      "currently_receiving_antiretroviral_therapy": {
+        "type": "select",
+        "label": "Patient is currently receiving antiretroviral therapy",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      "failed_or_contraindication_dronabinol_or_megestrol": {
+        "type": "select",
+        "label": "Tried and failed, or contraindication to either dronabinol (Marinol) or megestrol (Megace)",
+        "options": [
+          {
+            "value": "dronabinol_failed_or_contraindicated",
+            "label": "Dronabinol (Marinol) failed or contraindicated"
+          },
+          {
+            "value": "megestrol_failed_or_contraindicated",
+            "label": "Megestrol (Megace) failed or contraindicated"
+          },
+          {
+            "value": "neither",
+            "label": "Neither"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      "other_causes_of_weight_loss_ruled_out": {
+        "type": "select",
+        "label": "Causes other than HIV for weight loss have been ruled out",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      "serostim_weight_loss_severity": {
+        "type": "select",
+        "label": "At least one weight-loss severity path is met",
+        "options": [
+          {
+            "value": "unintentional_loss_gt_10_percent_baseline",
+            "label": "Unintentional loss of more than 10% of baseline body weight"
+          },
+          {
+            "value": "weight_lt_90_percent_lower_limit_ideal_body_weight",
+            "label": "Weight less than 90% of the lower limit of ideal body weight"
+          },
+          {
+            "value": "bmi_lt_20",
+            "label": "BMI less than 20 kg/m\u00b2"
+          },
+          {
+            "value": "lost_gt_5_percent_body_weight_past_6_months",
+            "label": "Lost more than 5% body weight in the past 6 months"
+          },
+          {
+            "value": "not_met",
+            "label": "None met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      "serostim_clinical_syndrome": {
+        "type": "select",
+        "label": "At least one clinical syndrome path is met",
+        "options": [
+          {
+            "value": "chronic_diarrhea_ge_2_loose_stools_daily_ge_30_days",
+            "label": "Chronic diarrhea: at least 2 loose stools daily for at least 30 days"
+          },
+          {
+            "value": "chronic_weakness_and_fever_intermittent_or_constant_ge_30_days",
+            "label": "Chronic weakness AND fever, intermittent or constant, for at least 30 days"
+          },
+          {
+            "value": "not_met",
+            "label": "Neither met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hiv_aids_wasting_cachexia"
+          ]
+        }
+      },
+      "not_for_athletic_recreational_social_body_mass": {
+        "type": "select",
+        "label": "Not used solely to increase body mass or strength for professional, recreational, or social reasons (including athletes/bodybuilders)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_for_anti_aging": {
+        "type": "select",
+        "label": "Not used to reverse the effects of aging (anti-aging)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_gh_contraindications_malignancy_retinopathy_critical_illness": {
+        "type": "select",
+        "label": "No active malignancy or history of malignancy in the past 12 months; no active proliferative or severe non-proliferative diabetic retinopathy; and no acute critical illness",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_increlex": {
+        "type": "select",
+        "label": "No concurrent Increlex (mecasermin)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "skyclarys": {
     "drug": {

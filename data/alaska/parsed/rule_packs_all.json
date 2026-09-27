@@ -6153,7 +6153,8 @@
   "dojolvi": {
     "drug": {
       "name": "Dojolvi",
-      "therapeutic_class": "lipotropics"
+      "therapeutic_class": "lipotropics",
+      "generic_name": "triheptanoin"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -6164,16 +6165,223 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Source of calories and fatty acids for pediatric and adult patients with molecularly confirmed long-chain fatty acid oxidation disorders (LC-FAOD).",
+        "citation": "https://health.alaska.gov/media/3ofdnyp4/202011dojolvi_criteria_2020.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "lc_faod"
+          ]
+        }
+      },
+      {
+        "id": "lc_faod_molecular_confirmation",
+        "text": "Molecularly confirmed LC-FAOD diagnosis based on at least TWO: (a) disease-specific elevations of acylcarnitines on a newborn blood spot or in plasma; (b) enzyme activity assay in cultured fibroblasts or lymphocytes below the reporting laboratory normal reference range; (c) genetic testing demonstrating a pathogenic mutation in a gene associated with LC-FAOD (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/3ofdnyp4/202011dojolvi_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "lc_faod_molecular_confirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "lc_faod_molecular_confirmation",
+          "values": [
+            "acylcarnitines_and_enzyme",
+            "acylcarnitines_and_genetic",
+            "enzyme_and_genetic",
+            "all_three"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with an endocrinologist or metabolic disease specialist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/3ofdnyp4/202011dojolvi_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "endocrinologist",
+            "metabolic_disease_specialist",
+            "endocrinologist_or_metabolic_disease_specialist_consult"
+          ]
+        }
+      },
+      {
+        "id": "weight_and_daily_caloric_intake_submitted",
+        "text": "Prescriber has submitted the patient's weight AND total prescribed daily caloric intake (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/3ofdnyp4/202011dojolvi_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "weight_and_daily_caloric_intake_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "weight_and_daily_caloric_intake_submitted",
+          "value": true
+        }
+      },
+      {
+        "id": "dose_not_exceed_35_percent_daily_caloric_intake",
+        "text": "Dose does not exceed 35% of daily caloric intake (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/3ofdnyp4/202011dojolvi_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "dose_not_exceed_35_percent_daily_caloric_intake"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "dose_not_exceed_35_percent_daily_caloric_intake",
+          "value": true
+        }
+      },
+      {
+        "id": "no_concurrent_other_medium_chain_triglyceride",
+        "text": "Patient is not concurrently using another medium chain triglyceride product (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/3ofdnyp4/202011dojolvi_criteria_2020.pdf#denial-criteria",
+        "required_facts": [
+          "no_concurrent_other_medium_chain_triglyceride"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_concurrent_other_medium_chain_triglyceride",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Dojolvi (triheptanoin) Criteria Version 1: Original 10/08/20; Approval 11/20/20; Effective 1/11/21.",
+      "Encoded: closed LC-FAOD indication, approval criteria 1-4 and denial criteria 1-2. Pediatric and adult patients are included; no numeric age gate is stated.",
+      "Molecular confirmation requires at least TWO of the three listed pathways. Any pair or all three qualifies under the PDF; genetic testing alone does not. Diagnostic evidence, weight and total prescribed daily caloric intake submission, and dose at or below 35% of daily caloric intake are attestations requiring manual review.",
+      "Cautions (notes only): avoid co-administration of Pancreatic Lipase Inhibitors due to potential for reduced clinical effect.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months.",
+      "Quantity limit (notes only): 30 days; dose does not exceed 35% of the patient's caloric intake. The approval dose limit is encoded as an attestation; numeric dose calculation and quantity enforcement are not encoded.",
+      "Documentation verification, duration, quantity and cautions require manual review; this pack remains partial. No alternatives are specified."
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Source of calories and fatty acids for pediatric and adult patients with molecularly confirmed long-chain fatty acid oxidation disorders (LC-FAOD).",
+        "options": [
+          {
+            "value": "lc_faod",
+            "label": "Molecularly confirmed long-chain fatty acid oxidation disorder (LC-FAOD)"
+          }
+        ]
+      },
+      "lc_faod_molecular_confirmation": {
+        "type": "select",
+        "label": "Molecularly confirmed LC-FAOD diagnosis based on at least TWO: (a) disease-specific elevations of acylcarnitines on a newborn blood spot or in plasma; (b) enzyme activity assay in cultured fibroblasts or lymphocytes below the reporting laboratory normal reference range; (c) genetic testing demonstrating a pathogenic mutation in a gene associated with LC-FAOD (approval criterion 1).",
+        "options": [
+          {
+            "value": "acylcarnitines_and_enzyme",
+            "label": "(a) Acylcarnitines and (b) enzyme activity assay"
+          },
+          {
+            "value": "acylcarnitines_and_genetic",
+            "label": "(a) Acylcarnitines and (c) genetic testing"
+          },
+          {
+            "value": "enzyme_and_genetic",
+            "label": "(b) Enzyme activity assay and (c) genetic testing"
+          },
+          {
+            "value": "all_three",
+            "label": "All three pathways"
+          },
+          {
+            "value": "acylcarnitines_only",
+            "label": "Only (a) acylcarnitines"
+          },
+          {
+            "value": "enzyme_only",
+            "label": "Only (b) enzyme activity assay"
+          },
+          {
+            "value": "genetic_only",
+            "label": "Only (c) genetic testing"
+          },
+          {
+            "value": "none",
+            "label": "None of the listed pathways"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with an endocrinologist or metabolic disease specialist (approval criterion 2).",
+        "options": [
+          {
+            "value": "endocrinologist",
+            "label": "Endocrinologist"
+          },
+          {
+            "value": "metabolic_disease_specialist",
+            "label": "Metabolic disease specialist"
+          },
+          {
+            "value": "endocrinologist_or_metabolic_disease_specialist_consult",
+            "label": "In consultation with an endocrinologist or metabolic disease specialist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "weight_and_daily_caloric_intake_submitted": {
+        "type": "select",
+        "label": "Prescriber has submitted the patient's weight AND total prescribed daily caloric intake (approval criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "dose_not_exceed_35_percent_daily_caloric_intake": {
+        "type": "select",
+        "label": "Dose does not exceed 35% of daily caloric intake (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_concurrent_other_medium_chain_triglyceride": {
+        "type": "select",
+        "label": "Patient is not concurrently using another medium chain triglyceride product (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "duchenne-muscular-dystrophy": {
     "drug": {

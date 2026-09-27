@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 55,
-  "encoding_text_only": 143,
+  "encoding_partial": 56,
+  "encoding_text_only": 142,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -27,6 +27,7 @@
     "cinryze",
     "crysvita",
     "dawnzeratm",
+    "dojolvi",
     "dupixent",
     "ebglyss",
     "egrifta",
@@ -63,5 +64,5 @@
     "zolgensma",
     "zymfentra"
   ],
-  "next_candidate": "dojolvi"
+  "next_candidate": "auvelity"
 }

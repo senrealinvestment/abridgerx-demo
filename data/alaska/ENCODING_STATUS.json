@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 129,
-  "encoding_text_only": 69,
+  "encoding_partial": 130,
+  "encoding_text_only": 68,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -106,6 +106,7 @@
     "skyrizi",
     "soliris",
     "somatropin",
+    "sphingosine-1-phosphate-receptor",
     "spinal-muscular-atrophy",
     "spravato",
     "stelara",
@@ -137,5 +138,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "sphingosine-1-phosphate-receptor"
+  "next_candidate": "vykattm-xr"
 }

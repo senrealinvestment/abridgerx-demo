@@ -77,16 +77,16 @@ def test_metadata_ui_notes_and_catalog():
     catalog = load_rule_pack_catalog()
     assert catalog['qutenza'] == PACK
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 129
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 69
-    assert catalog['sphingosine-1-phosphate-receptor']['encoding_status'] == 'text_only'
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 130
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 68
+    assert catalog['vykattm-xr']['encoding_status'] == 'text_only'
     assert (BASE / 'qutenza.json').read_bytes() == (BASE / 'rule_packs/qutenza.json').read_bytes()
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (129, 69)
-    assert status['next_candidate'] == 'sphingosine-1-phosphate-receptor'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (130, 68)
+    assert status['next_candidate'] == 'vykattm-xr'
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

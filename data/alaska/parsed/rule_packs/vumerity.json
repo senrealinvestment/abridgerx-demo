@@ -150,7 +150,9 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "sphingosine-1-phosphate-receptor"
+  ],
   "notes": [
     "Partial encoding of Alaska Medicaid Vumerity (diroximel fumarate), a fumarate MS DMARD (ms-dmard). Version: 1; Original: 12/9/2019; Approval: 1/17/2020; Effective: 2020-03-16. The source typo fumerate is normalized to diroximel_fumarate.",
     "Encoded: approval criteria 1-7 and denial criteria 1-3; failure to meet approval criteria is handled by approval predicates. Baseline labs, documented liver analytes, counseling and prior treatment are attestations. Counseling is not applicable only for patients not of reproductive potential. Prior therapy must match the specific indication form of MS.",

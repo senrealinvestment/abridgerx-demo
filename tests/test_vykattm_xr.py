@@ -100,12 +100,12 @@ def test_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 131
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 67
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 132
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 66
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (131, 67)
-        assert status['next_candidate'] == 'imbruvica'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (132, 66)
+        assert status['next_candidate'] == 'h-p-acthar'
         assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
-    assert catalog['imbruvica']['encoding_status'] == 'text_only'
-    assert catalog['imbruvica']['criteria'] == []
+    assert catalog['h-p-acthar']['encoding_status'] == 'text_only'
+    assert catalog['h-p-acthar']['criteria'] == []

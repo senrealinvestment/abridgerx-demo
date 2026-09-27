@@ -97,17 +97,17 @@ def test_catalog_mirrors():
     catalog = load_rule_pack_catalog()
     assert catalog['xyrem'] == PACK
     assert 'xywav' not in catalog
-    assert catalog['imbruvica']['encoding_status'] == 'text_only'
+    assert catalog['h-p-acthar']['encoding_status'] == 'text_only'
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 131
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 67
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 132
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 66
     assert (BASE/'xyrem.json').read_bytes() == (BASE/'rule_packs/xyrem.json').read_bytes()
     assert json.loads((BASE/'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (131,67)
-    assert status['next_candidate'] == 'imbruvica'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (132,66)
+    assert status['next_candidate'] == 'h-p-acthar'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json','ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()

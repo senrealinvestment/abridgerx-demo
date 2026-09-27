@@ -105,8 +105,8 @@ def test_metadata_catalog_and_notes():
         assert text in notes
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 131
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 67
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 132
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 66
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
@@ -115,8 +115,8 @@ def test_metadata_catalog_and_notes():
         assert (BASE / f'{slug}.json').read_bytes() == (BASE / 'rule_packs' / f'{slug}.json').read_bytes()
     assert catalog['zolgensma']['alternatives'] == ['spinal-muscular-atrophy']
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (131, 67)
-    assert status['next_candidate'] == 'imbruvica'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (132, 66)
+    assert status['next_candidate'] == 'h-p-acthar'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for ext in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()

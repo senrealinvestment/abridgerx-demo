@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 131,
-  "encoding_text_only": 67,
+  "encoding_partial": 132,
+  "encoding_text_only": 66,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -56,6 +56,7 @@
     "hemlibra",
     "hetlioz",
     "hympavzi",
+    "imbruvica",
     "imcivree",
     "infliximab",
     "inhaled-prostacycline-mimetic",
@@ -139,5 +140,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "imbruvica"
+  "next_candidate": "h-p-acthar"
 }

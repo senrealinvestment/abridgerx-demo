@@ -78,15 +78,15 @@ def test_catalog_mirrors():
     assert catalog['nuedexta']==PACK
     assert catalog['interleukin-5-inhibitors']['encoding_status']=='partial'
     assert len(catalog)==198
-    assert sum(p['encoding_status']=='partial' for p in catalog.values())==155
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==43
+    assert sum(p['encoding_status']=='partial' for p in catalog.values())==156
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==42
     assert (BASE/'nuedexta.json').read_bytes()==(BASE/'rule_packs/nuedexta.json').read_bytes()
     assert json.loads((BASE/'rule_packs_all.json').read_text())==catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as stream:
         assert json.load(stream)==catalog
     status=json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'],status['encoding_text_only'])==(155,43)
-    assert status['next_candidate']=='nizoral'
+    assert (status['encoding_partial'],status['encoding_text_only'])==(156,42)
+    assert status['next_candidate']=='reclast'
     assert status['partial_slugs']==sorted(k for k,v in catalog.items() if v['encoding_status']=='partial')
     for name in ['ENCODING_STATUS.json','ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes()==(BASE.parent/name).read_bytes()

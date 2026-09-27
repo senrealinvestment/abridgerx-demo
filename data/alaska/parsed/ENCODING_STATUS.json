@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 128,
-  "encoding_text_only": 70,
+  "encoding_partial": 129,
+  "encoding_text_only": 69,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -96,6 +96,7 @@
     "qutenza",
     "raft",
     "redemplo",
+    "revatio",
     "rezdiffratm",
     "rhapsido",
     "roctavian",
@@ -136,5 +137,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "revatio"
+  "next_candidate": "sphingosine-1-phosphate-receptor"
 }

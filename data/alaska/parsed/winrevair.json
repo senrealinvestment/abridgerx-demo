@@ -114,7 +114,9 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "revatio"
+  ],
   "notes": [
     "Partial encoding from Alaska Medicaid Winrevair (sotatercept-csrk) Criteria Version 1; Original 10/15/2024; Accepted 11/15/2024; Effective 01/01/2025.",
     "Encoded: closed WHO Group 1 PAH indication and approval criteria 1-6. FDA adult age is represented as age >=18. Denial criterion 1 is failure to meet approval criteria. Pregnancy attestation includes a not-applicable male option.",

@@ -85,7 +85,7 @@ def test_metadata_and_catalog():
     assert PACK['source']['citation'] == 'https://health.alaska.gov/media/dzvlzgr1/winrevair_criteria_2024.pdf'
     assert PACK['source']['criteria_pdf'] == 'data/alaska/raw/winrevair_criteria_2024.pdf'
     assert (ROOT / PACK['source']['criteria_pdf']).exists()
-    assert PACK['max_units'] is None and PACK['alternatives'] == []
+    assert PACK['max_units'] is None and PACK['alternatives'] == ['revatio']
     assert 'inferred_required_facts' not in PACK
     for text in ['Version 1', '10/15/2024', '11/15/2024', '01/01/2025', '3 months', '1 year', '0.7 mg/kg', 'every 3 weeks', 'bleeding', 'prostacyclins', 'antithrombotics', 'erythrocytosis', 'thrombocytopenia', 'fertility', 'manual review']:
         assert text in ' '.join(PACK['notes'])
@@ -96,16 +96,16 @@ def test_metadata_and_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 128
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 70
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 129
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 69
     for slug in ['actiq', 'andembry']:
         assert catalog[slug]['encoding_status'] == 'partial'
     assert catalog['lemtrada']['encoding_status'] == 'partial'
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory / 'ENCODING_STATUS.json').read_text())
-        assert status['encoding_partial'] == 128 and status['encoding_text_only'] == 70
+        assert status['encoding_partial'] == 129 and status['encoding_text_only'] == 69
         assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-        assert status['next_candidate'] == 'revatio'
+        assert status['next_candidate'] == 'sphingosine-1-phosphate-receptor'
 
 
 def test_male_exemption_does_not_bypass_other_criteria():

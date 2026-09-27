@@ -78,7 +78,7 @@
     "Length of authorization (notes only): coverage may be approved for up to 6 months.",
     "Quantity limit (notes only): 3 per day. REMS dispensing limitations, authorization duration and quantity enforcement remain manual review; this pack remains partial.",
     "Reference: Actiq [package insert]. Frazer, PA; Cephalon, Inc., December 2011.",
-    "Fentora and Subsys remain text_only; no evaluate-linked alternatives are specified."
+    "Fentora and Subsys are partially encoded; no evaluate-linked alternatives are specified."
   ],
   "fact_ui": {
     "indication": {

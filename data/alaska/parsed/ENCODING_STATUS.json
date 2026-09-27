@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 169,
-  "encoding_text_only": 29,
+  "encoding_partial": 170,
+  "encoding_text_only": 28,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -139,6 +139,7 @@
     "spravato",
     "stelara",
     "strensiq",
+    "subsys",
     "sunosi",
     "sympazan",
     "symproic",
@@ -177,5 +178,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "subsys"
+  "next_candidate": "dilaudid"
 }

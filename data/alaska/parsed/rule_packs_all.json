@@ -128,7 +128,7 @@
       "Length of authorization (notes only): coverage may be approved for up to 6 months.",
       "Quantity limit (notes only): 3 per day. REMS dispensing limitations, authorization duration and quantity enforcement remain manual review; this pack remains partial.",
       "Reference: Actiq [package insert]. Frazer, PA; Cephalon, Inc., December 2011.",
-      "Fentora and Subsys remain text_only; no evaluate-linked alternatives are specified."
+      "Fentora and Subsys are partially encoded; no evaluate-linked alternatives are specified."
     ],
     "fact_ui": {
       "indication": {
@@ -49616,7 +49616,8 @@
   "subsys": {
     "drug": {
       "name": "Subsys",
-      "therapeutic_class": "analgesics-opioid-reversal-agents"
+      "therapeutic_class": "analgesics-opioid-reversal-agents",
+      "generic_name": "fentanyl sublingual spray"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -49627,16 +49628,148 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Breakthrough pain in adult cancer patients already receiving and tolerant to around-the-clock opioid therapy for underlying persistent cancer pain (approval criterion 2 is covered by this closed indication).",
+        "citation": "https://health.alaska.gov/media/qpmdfq5b/subsys-pa.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "cancer_breakthrough_pain"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is at least 18 years old (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/qpmdfq5b/subsys-pa.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "already_receiving_around_the_clock_opioid_for_cancer_pain",
+        "text": "Patient is receiving around-the-clock opioid therapy for underlying persistent cancer pain and must remain on this therapy while taking Subsys (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/qpmdfq5b/subsys-pa.pdf",
+        "required_facts": [
+          "already_receiving_around_the_clock_opioid_for_cancer_pain"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "already_receiving_around_the_clock_opioid_for_cancer_pain",
+          "value": true
+        }
+      },
+      {
+        "id": "opioid_tolerant_for_persistent_cancer_pain",
+        "text": "Patient is opioid tolerant: at least 60 mg oral morphine daily, 25 mcg/hour transdermal fentanyl, 30 mg oral oxycodone daily, 8 mg oral hydromorphone daily, or an equianalgesic dose of another opioid daily for at least 1 week (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/qpmdfq5b/subsys-pa.pdf",
+        "required_facts": [
+          "opioid_tolerant_for_persistent_cancer_pain"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "opioid_tolerant_for_persistent_cancer_pain",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Subsys (fentanyl sublingual spray). Available strengths: 100, 200, 400, 600, 800, 1200, 1600 mcg.",
+      "Source Version 1, Last updated 12/11/2012, Approved 01/18/2013. Extracted effective_date is null; existing effective_date stub 1970-01-01 retained; it is not a stated PDF effective date.",
+      "Approval criterion 2 (being treated for cancer pain) is covered by the closed cancer breakthrough pain indication; no separate cancer attestation is required. Criteria 1, 3 and 4 encode adult age, opioid tolerance and around-the-clock opioid therapy.",
+      "Patient is opioid tolerant: at least 60 mg oral morphine daily, 25 mcg/hour transdermal fentanyl, 30 mg oral oxycodone daily, 8 mg oral hydromorphone daily, or an equianalgesic dose of another opioid daily for at least 1 week (approval criterion 3). Dose equivalence and duration documentation require manual review.",
+      "Approval criterion 5 (notes only): patients and providers must comply with the TIRF REMS ACCESS program if applicable. https://www.tirfremsaccess.com/TirfUI/rems/home.action . Dispensing to outpatients requires program enrollment; patient enrollment is not required for inpatient administration (including hospitals, hospices and long-term care facilities prescribing for inpatient use). No REMS predicate is added.",
+      "Authorization: up to 6 months. Dispensing limit: 30-day supply. These limits remain notes only and require manual review.",
+      "Contraindicated in opioid non-tolerant patients and for acute or postoperative pain; life-threatening respiratory depression and death may occur. Closed indication and opioid tolerance predicates cover these exclusions.",
+      "Intended for oncologists and pain specialists knowledgeable and skilled in Schedule II opioids for cancer pain. Prescriber specialty is notes only, not an approval predicate.",
+      "Remaining gaps: REMS compliance, authorization duration, dispensing enforcement and documentation verification. Rules engine is the sole eligibility evaluator."
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Breakthrough pain in adult cancer patients already receiving and tolerant to around-the-clock opioid therapy for underlying persistent cancer pain (approval criterion 2 is covered by this closed indication).",
+        "options": [
+          {
+            "value": "cancer_breakthrough_pain",
+            "label": "Breakthrough pain in adult cancer patients already receiving and tolerant to around-the-clock opioid therapy for underlying persistent cancer pain"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "cancer_breakthrough_pain"
+          ]
+        }
+      },
+      "already_receiving_around_the_clock_opioid_for_cancer_pain": {
+        "type": "select",
+        "label": "Patient is receiving around-the-clock opioid therapy for underlying persistent cancer pain and must remain on this therapy while taking Subsys (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "cancer_breakthrough_pain"
+          ]
+        }
+      },
+      "opioid_tolerant_for_persistent_cancer_pain": {
+        "type": "select",
+        "label": "Patient is opioid tolerant: at least 60 mg oral morphine daily, 25 mcg/hour transdermal fentanyl, 30 mg oral oxycodone daily, 8 mg oral hydromorphone daily, or an equianalgesic dose of another opioid daily for at least 1 week (approval criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "cancer_breakthrough_pain"
+          ]
+        }
+      }
+    },
+    "max_units": null
   },
   "sunosi": {
     "drug": {

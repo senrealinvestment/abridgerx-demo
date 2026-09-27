@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 57,
-  "encoding_text_only": 141,
+  "encoding_partial": 58,
+  "encoding_text_only": 140,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -54,6 +54,7 @@
     "ocrevus",
     "praluent",
     "prolia",
+    "roctavian",
     "skyrizi",
     "soliris",
     "stelara",
@@ -65,5 +66,5 @@
     "zolgensma",
     "zymfentra"
   ],
-  "next_candidate": "atypical-antipsychotic-therapeutic-duplication"
+  "next_candidate": "zynteglo"
 }

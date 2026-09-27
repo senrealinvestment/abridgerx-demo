@@ -19022,7 +19022,8 @@
   "roctavian": {
     "drug": {
       "name": "Roctavian",
-      "therapeutic_class": "cell-and-gene-therapy"
+      "therapeutic_class": "cell-and-gene-therapy",
+      "generic_name": "valoctocogene roxaparvovec-rvox"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -19033,17 +19034,479 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Adults with severe hemophilia A (congenital factor VIII deficiency with factor VIII activity <1 IU/dL) without pre-existing AAV5 antibodies detected by an FDA-approved test (FDA indication; approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      {
+        "id": "age_fda_labeled",
+        "text": "Patient is 18 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a hematologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "hematologist",
+            "hematologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "factor_viii_level_severe",
+        "text": "Moderate to severe disease as defined by factor VIII levels <1 IU/dL (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "factor_viii_level_severe"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "factor_viii_level_severe",
+          "value": "lt_1_iu_dl"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      {
+        "id": "factor_viii_exposure_days_gt_150",
+        "text": "More than 150 previous exposure days to factor VIII (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "factor_viii_exposure_days_gt_150"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "factor_viii_exposure_days_gt_150",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      {
+        "id": "no_factor_viii_inhibitors_screen_within_2w_lt_0_6_bu",
+        "text": "No history of factor VIII inhibitors AND negative screen <0.6 Bethesda units within two weeks prior to administration (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "no_factor_viii_inhibitors_screen_within_2w_lt_0_6_bu"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_factor_viii_inhibitors_screen_within_2w_lt_0_6_bu",
+          "value": "no_history_and_screen_lt_0_6_bu_within_2_weeks"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      {
+        "id": "no_preexisting_antibodies_aav5_fda_test",
+        "text": "No pre-existing antibodies to AAV5 detected by an FDA-approved test (approval criterion 7; FDA indication).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "no_preexisting_antibodies_aav5_fda_test"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_preexisting_antibodies_aav5_fda_test",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      {
+        "id": "hepatic_ultrasound_and_elastography_done",
+        "text": "Hepatic ultrasound AND elastography performed prior to administration (approval criterion 8a).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "hepatic_ultrasound_and_elastography_done"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hepatic_ultrasound_and_elastography_done",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      {
+        "id": "baseline_liver_labs_documented",
+        "text": "Baseline liver function tests ALT, AST, GGT, ALP, total bilirubin, and INR documented (approval criterion 8b).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "baseline_liver_labs_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_liver_labs_documented",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      {
+        "id": "no_active_hepatitis_b_or_c",
+        "text": "No current active hepatitis B or hepatitis C infection (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "no_active_hepatitis_b_or_c"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_hepatitis_b_or_c",
+          "value": true
+        }
+      },
+      {
+        "id": "no_uncontrolled_hiv",
+        "text": "No current uncontrolled HIV infection (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "no_uncontrolled_hiv"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_uncontrolled_hiv",
+          "value": true
+        }
+      },
+      {
+        "id": "no_hepatic_fibrosis_stage_3_4_or_cirrhosis",
+        "text": "No known hepatic fibrosis stage 3 or 4 or cirrhosis (denial criterion 4).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "no_hepatic_fibrosis_stage_3_4_or_cirrhosis"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_hepatic_fibrosis_stage_3_4_or_cirrhosis",
+          "value": true
+        }
+      },
+      {
+        "id": "no_known_hypersensitivity_to_mannitol",
+        "text": "No known hypersensitivity to mannitol (denial criterion 5).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "no_known_hypersensitivity_to_mannitol"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_known_hypersensitivity_to_mannitol",
+          "value": true
+        }
+      },
+      {
+        "id": "no_prior_hemophilia_a_gene_therapy",
+        "text": "No previous gene therapy for hemophilia A (denial criterion 6).",
+        "citation": "https://health.alaska.gov/media/1xtnjrrz/roctavian_criteria_2023.pdf",
+        "required_facts": [
+          "no_prior_hemophilia_a_gene_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_prior_hemophilia_a_gene_therapy",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Roctavian (valoctocogene roxaparvovec-rvox), an AAV vector-based gene therapy for adults with severe hemophilia A. Version: 1; Original: 07/3/2023; Accepted: 09/15/2023; Effective: 11/1/2023.",
+      "Encoded: FDA indication, approval criteria 1-8 and denial exclusions 2-6. Denial criterion 1 (failure to meet approval criteria) is covered by the approval clauses.",
+      "Duration (notes only): initial approval 3 months; no reauthorization will be approved.",
+      "Quantity (notes only): one infusion per lifetime; HCPCS J3590. No numeric quantity enforcement; max_units is null.",
+      "Cautions (notes only): thromboembolic events may occur with elevated factor VIII activity above the upper limit of normal.",
+      "Cautions (notes only): patients with preexisting hepatocellular carcinoma risk factors should receive regular alpha-fetoprotein (AFP) monitoring and abdominal ultrasound screenings for five years following administration.",
+      "Cautions (notes only): monitor ALT weekly for at least 26 weeks after administration and institute corticosteroid treatment for elevations as required; continue ALT monitoring until baseline. Monitor factor VIII activity with ALT because ALT elevations may accompany decreased factor VIII activity.",
+      "Remaining gaps: documentation verification, duration, no reauthorization, lifetime quantity enforcement and post-dose monitoring require manual review. Clinical findings, exposure days, testing, imaging and baseline labs are attestations; no numeric liver lab thresholds are specified.",
+      "PDL status unknown. No evaluate-linked alternatives: hemophilia B peers are not alternatives for this hemophilia A indication."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Adults with severe hemophilia A (congenital factor VIII deficiency with factor VIII activity <1 IU/dL) without pre-existing AAV5 antibodies detected by an FDA-approved test (FDA indication; approval criterion 3).",
+        "options": [
+          {
+            "value": "hemophilia_a_severe",
+            "label": "Severe hemophilia A (congenital factor VIII deficiency)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a hematologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "hematologist",
+            "label": "Hematologist"
+          },
+          {
+            "value": "hematologist_consult",
+            "label": "In consultation with a hematologist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "factor_viii_level_severe": {
+        "type": "select",
+        "label": "Moderate to severe disease as defined by factor VIII levels <1 IU/dL (approval criterion 4).",
+        "options": [
+          {
+            "value": "lt_1_iu_dl",
+            "label": "Factor VIII <1 IU/dL"
+          },
+          {
+            "value": "ge_1_iu_dl_or_not_documented",
+            "label": "Factor VIII \u22651 IU/dL or not documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      "factor_viii_exposure_days_gt_150": {
+        "type": "select",
+        "label": "More than 150 previous exposure days to factor VIII (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      "no_factor_viii_inhibitors_screen_within_2w_lt_0_6_bu": {
+        "type": "select",
+        "label": "No history of factor VIII inhibitors AND negative screen <0.6 Bethesda units within two weeks prior to administration (approval criterion 6).",
+        "options": [
+          {
+            "value": "no_history_and_screen_lt_0_6_bu_within_2_weeks",
+            "label": "No history and screen <0.6 Bethesda units within two weeks"
+          },
+          {
+            "value": "history_or_screen_ge_0_6_bu_or_missing",
+            "label": "History of inhibitors, screen \u22650.6 Bethesda units, or missing qualifying screen"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      "no_preexisting_antibodies_aav5_fda_test": {
+        "type": "select",
+        "label": "No pre-existing antibodies to AAV5 detected by an FDA-approved test (approval criterion 7; FDA indication).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      "hepatic_ultrasound_and_elastography_done": {
+        "type": "select",
+        "label": "Hepatic ultrasound AND elastography performed prior to administration (approval criterion 8a).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      "baseline_liver_labs_documented": {
+        "type": "select",
+        "label": "Baseline liver function tests ALT, AST, GGT, ALP, total bilirubin, and INR documented (approval criterion 8b).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_severe"
+          ]
+        }
+      },
+      "no_active_hepatitis_b_or_c": {
+        "type": "select",
+        "label": "No current active hepatitis B or hepatitis C infection (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_uncontrolled_hiv": {
+        "type": "select",
+        "label": "No current uncontrolled HIV infection (denial criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_hepatic_fibrosis_stage_3_4_or_cirrhosis": {
+        "type": "select",
+        "label": "No known hepatic fibrosis stage 3 or 4 or cirrhosis (denial criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_known_hypersensitivity_to_mannitol": {
+        "type": "select",
+        "label": "No known hypersensitivity to mannitol (denial criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_prior_hemophilia_a_gene_therapy": {
+        "type": "select",
+        "label": "No previous gene therapy for hemophilia A (denial criterion 6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "rybix-odt": {
     "drug": {

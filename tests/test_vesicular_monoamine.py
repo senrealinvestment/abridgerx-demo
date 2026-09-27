@@ -132,11 +132,11 @@ def test_metadata_catalog_and_notes():
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 172
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 26
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 173
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 25
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (172, 26)
-        assert status['next_candidate'] == 'long-acting-opioid-analgesics'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (173, 25)
+        assert status['next_candidate'] == 'oxycodone-hydrochloride-immediate-release'
         assert status['partial_slugs'] == sorted(k for k,p in catalog.items() if p['encoding_status']=='partial')
     assert catalog['bone-resorption-inhibitors']['encoding_status'] == 'partial'

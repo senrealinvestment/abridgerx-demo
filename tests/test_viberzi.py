@@ -100,13 +100,13 @@ def test_catalog():
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 172
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 26
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 173
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 25
     for root in (BASE, BASE.parent):
         status = json.loads((root/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (172, 26, 'long-acting-opioid-analgesics')
+        assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (173, 25, 'oxycodone-hydrochloride-immediate-release')
         assert status['partial_slugs'] == sorted(k for k,p in catalog.items() if p['encoding_status'] == 'partial')
     for ext in ('json', 'md'):
         assert (BASE/f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent/f'ENCODING_STATUS.{ext}').read_bytes()
-    assert catalog['long-acting-opioid-analgesics']['encoding_status'] == 'text_only'
-    assert catalog['long-acting-opioid-analgesics']['criteria'] == []
+    assert catalog['oxycodone-hydrochloride-immediate-release']['encoding_status'] == 'text_only'
+    assert catalog['oxycodone-hydrochloride-immediate-release']['criteria'] == []

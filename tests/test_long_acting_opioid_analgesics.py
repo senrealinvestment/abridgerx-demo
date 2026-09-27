@@ -21,7 +21,7 @@ PRODUCT = ['letter_of_medical_necessity_around_the_clock', 'opioid_agreement_on_
 
 
 def pack():
-    return json.loads((BASE / 'rule_packs/extended-release.json').read_text())
+    return json.loads((BASE / 'rule_packs/long-acting-opioid-analgesics.json').read_text())
 
 
 def facts(kind):
@@ -68,7 +68,7 @@ def test_empty_and_notes_only():
 
 def test_ui_gating_and_coercion():
     p = pack()
-    detail = drug_detail('extended-release')
+    detail = drug_detail('long-acting-opioid-analgesics')
     assert detail['can_evaluate']
     fields = {f['key']: f for f in detail['fact_fields']}
     assert set(fields) == set(p['fact_ui'])
@@ -94,7 +94,7 @@ def test_metadata_catalog_and_companion():
     assert p['source']['effective_date'] == '2016-03-25'
     assert 'inferred_required_facts' not in p
     assert p['alternatives'] == [] and p['max_units'] is None
-    assert (BASE / 'extended-release.json').read_bytes() == (BASE / 'rule_packs/extended-release.json').read_bytes()
+    assert (BASE / 'long-acting-opioid-analgesics.json').read_bytes() == (BASE / 'rule_packs/long-acting-opioid-analgesics.json').read_bytes()
     catalog = load_rule_pack_catalog()
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
@@ -103,7 +103,7 @@ def test_metadata_catalog_and_companion():
     assert len(catalog) == 198
     assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 173
     assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 25
-    companion = catalog['long-acting-opioid-analgesics']
+    companion = catalog['extended-release']
     assert companion['encoding_status'] == 'partial'
     assert companion['criteria'] == p['criteria']
     assert companion['fact_ui'] == p['fact_ui']
@@ -114,3 +114,26 @@ def test_metadata_catalog_and_companion():
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()
+
+
+def test_source_metadata_and_exact_companion_semantics():
+    p = pack()
+    source = json.loads((BASE / 'criteria_text/long-acting-opioid-analgesics.json').read_text())
+    companion_source = json.loads((BASE / 'criteria_text/extended-release.json').read_text())
+    companion = json.loads((BASE / 'rule_packs/extended-release.json').read_text())
+    assert source['extracted_text'] == companion_source['extracted_text']
+    assert source['sha256'] == companion_source['sha256']
+    assert p['drug']['name'] == source['drug_name']
+    assert p['source']['list'] == source['drug_name'] + ' Criteria'
+    assert p['source']['citation'] == source['source_url']
+    assert p['source']['criteria_pdf'] == 'data/alaska/raw/' + source['source_file']
+    assert 'extended-release shares the same PDF' in p['notes'][-1]
+    normalized = json.loads(json.dumps(p))
+    normalized['drug']['name'] = companion['drug']['name']
+    normalized['source']['list'] = companion['source']['list']
+    normalized['notes'] = [
+        note.replace('criteria_text/long-acting-opioid-analgesics.json',
+                     'criteria_text/extended-release.json')
+        for note in p['notes'][:-1]
+    ]
+    assert normalized == companion

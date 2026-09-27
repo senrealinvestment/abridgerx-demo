@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 172,
-  "encoding_text_only": 26,
+  "encoding_partial": 173,
+  "encoding_text_only": 25,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -89,6 +89,7 @@
     "leqembi",
     "leqvio",
     "leuprolide",
+    "long-acting-opioid-analgesics",
     "lovaza",
     "lucemyra",
     "lupkynis",
@@ -180,5 +181,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "long-acting-opioid-analgesics"
+  "next_candidate": "oxycodone-hydrochloride-immediate-release"
 }

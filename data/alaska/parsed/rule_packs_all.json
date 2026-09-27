@@ -2801,14 +2801,16 @@
         }
       }
     ],
-    "alternatives": [],
+    "alternatives": [
+      "kesimpta"
+    ],
     "notes": [
       "Partial encoding of Alaska Medicaid Briumvi (ublituximab-xiiy), a CD20-directed cytolytic antibody. Version: 1; Original: 3/9/2023; Approval: 4/21/2023; Effective: 6/1/2023.",
       "Encoded: three closed adult relapsing MS indications, approval criteria 1-5 and denial criteria 2-3. Denial criterion 1 (failure to meet approval criteria) is covered by the approval clauses. Prior therapy and reproductive status are attestations.",
       "Duration (notes only): initial approval up to 6 months; reauthorization up to 12 months if the prescriber documents disease improvement or stabilization.",
       "Quantity and dosing (notes only): initial 150 mg, followed by 450 mg 2 weeks later; maintenance 450 mg every 24 weeks. HCPCS J3590. No numeric quantity enforcement.",
       "Cautions (notes only): test quantitative serum immunoglobulins before starting; low serum immunoglobulins require immunologist evaluation before treatment. Delay administration with an active infection until resolved or when receiving live-attenuated vaccines. Premedicate with methylprednisolone (or equivalent corticosteroid) and an antihistamine before each infusion. May cause fetal harm.",
-      "PDL status unknown: PDF is silent. No encoded MS CD20 peers; alternatives remain empty.",
+      "PDL status unknown: PDF is silent. Kesimpta is an encoded CD20 MS peer; alternative eligibility requires separate evaluation.",
       "Remaining gaps: documentation verification, authorization duration, reauthorization response, dosing, quantity enforcement and cautions require manual review."
     ],
     "max_units": null,
@@ -9235,7 +9237,8 @@
   "kesimpta": {
     "drug": {
       "name": "Kesimpta",
-      "therapeutic_class": "other"
+      "therapeutic_class": "ms-disease-modifying",
+      "generic_name": "ofatumumab"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -9246,17 +9249,372 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Confirmed diagnosis of a relapsing form of MS: clinically isolated syndrome, relapsing-remitting disease, or active secondary progressive disease (approval criterion 3)",
+        "citation": "https://health.alaska.gov/media/qkfoumhj/202101-kesimpta_criteria_2021.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient is 18 years of age or older",
+        "citation": "https://health.alaska.gov/media/qkfoumhj/202101-kesimpta_criteria_2021.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist or physician that specializes in MS",
+        "citation": "https://health.alaska.gov/media/qkfoumhj/202101-kesimpta_criteria_2021.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_ms_specialist_or_consult"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "igg_monitoring_agreement",
+        "text": "Prescriber agrees to monitor immunoglobulins at the beginning, during and after discontinuation of therapy",
+        "citation": "https://health.alaska.gov/media/qkfoumhj/202101-kesimpta_criteria_2021.pdf",
+        "required_facts": [
+          "igg_monitoring_agreement"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "igg_monitoring_agreement",
+          "value": "agrees_monitor_beginning_during_after"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "pretherapy_vaccination_window",
+        "text": "No live or live-attenuated vaccinations in the 4 weeks prior to, or non-live vaccinations in the 2 weeks prior to, the start of therapy",
+        "citation": "https://health.alaska.gov/media/qkfoumhj/202101-kesimpta_criteria_2021.pdf",
+        "required_facts": [
+          "pretherapy_vaccination_window"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pretherapy_vaccination_window",
+          "value": "no_live_4wk_and_no_nonlive_2wk"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "hepatitis_b_screen",
+        "text": "Screened for Hepatitis B before therapy initiation and confirmed negative",
+        "citation": "https://health.alaska.gov/media/qkfoumhj/202101-kesimpta_criteria_2021.pdf",
+        "required_facts": [
+          "hepatitis_b_screen"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hepatitis_b_screen",
+          "value": "screened_negative"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "ms_dmt_step_one",
+        "text": "Adequate trial and failure of at least one drug with the same specific indication form of MS",
+        "citation": "https://health.alaska.gov/media/qkfoumhj/202101-kesimpta_criteria_2021.pdf",
+        "required_facts": [
+          "ms_dmt_step_one"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ms_dmt_step_one",
+          "value": "trial_failure_one_same_indication"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "not_concurrent_ms_or_immunosuppressive",
+        "text": "Not used in combination with another MS disease-modifying agent or other immune-modulating or immunosuppressive therapies, including immunosuppressant doses of corticosteroids",
+        "citation": "https://health.alaska.gov/media/qkfoumhj/202101-kesimpta_criteria_2021.pdf",
+        "required_facts": [
+          "not_concurrent_ms_or_immunosuppressive"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_ms_or_immunosuppressive",
+          "value": true
+        }
+      },
+      {
+        "id": "no_active_infection",
+        "text": "No active infection",
+        "citation": "https://health.alaska.gov/media/qkfoumhj/202101-kesimpta_criteria_2021.pdf",
+        "required_facts": [
+          "no_active_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_infection",
+          "value": true
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "alternatives": [
+      "briumvi"
+    ],
+    "notes": [
+      "Partial encoding of Alaska Medicaid Kesimpta (ofatumumab), a CD20-directed cytolytic antibody. Version: 1; Original: 12/05/20; Approval: 1/15/21; Effective: 3/15/21.",
+      "Encoded: three closed adult relapsing MS indications, approval criteria 1-7 and denial criteria 2-3. Denial criterion 1 (failure to meet approval criteria) is covered by the approval clauses. Monitoring, vaccination windows, screening and prior therapy are attestations.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months.",
+      "Quantity (notes only): 4 injections for the initial month load dosing; 1 injection every 4 weeks for maintenance dosing. No numeric quantity enforcement.",
+      "Cautions (notes only): patients of reproductive potential should use effective contraception due to possible fetal risks. Consider discontinuing Kesimpta for serious opportunistic infection or recurrent infections if immunoglobulin levels indicate immune compromise. Treat injection site reactions based on severity.",
+      "PDL status unknown: PDF is silent. Briumvi is an encoded CD20 MS peer; alternative eligibility requires separate evaluation.",
+      "Remaining gaps: documentation verification, authorization duration, reauthorization, dosing, quantity enforcement and cautions require manual review."
+    ],
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Confirmed diagnosis of a relapsing form of MS: clinically isolated syndrome, relapsing-remitting disease, or active secondary progressive disease (approval criterion 3)",
+        "options": [
+          {
+            "value": "clinically_isolated_syndrome",
+            "label": "Clinically isolated syndrome (CIS)"
+          },
+          {
+            "value": "relapsing_remitting_ms",
+            "label": "Relapsing-remitting multiple sclerosis (RRMS)"
+          },
+          {
+            "value": "active_secondary_progressive_ms",
+            "label": "Active secondary progressive MS (SPMS)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18+"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        },
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist or physician that specializes in MS",
+        "options": [
+          {
+            "value": "neurologist_or_ms_specialist_or_consult",
+            "label": "Neurologist or MS specialist, or consultation with one"
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "igg_monitoring_agreement": {
+        "type": "select",
+        "label": "Prescriber agrees to monitor immunoglobulins at the beginning, during and after discontinuation of therapy",
+        "options": [
+          {
+            "value": "agrees_monitor_beginning_during_after",
+            "label": "Agrees to monitor at the beginning, during and after discontinuation"
+          },
+          {
+            "value": "does_not_agree",
+            "label": "Does not agree"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "pretherapy_vaccination_window": {
+        "type": "select",
+        "label": "No live or live-attenuated vaccinations in the 4 weeks prior to, or non-live vaccinations in the 2 weeks prior to, the start of therapy",
+        "options": [
+          {
+            "value": "no_live_4wk_and_no_nonlive_2wk",
+            "label": "No live/live-attenuated vaccines within 4 weeks and no non-live vaccines within 2 weeks"
+          },
+          {
+            "value": "vaccination_within_window_or_not_attested",
+            "label": "Vaccination within the exclusion window or not attested"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "hepatitis_b_screen": {
+        "type": "select",
+        "label": "Screened for Hepatitis B before therapy initiation and confirmed negative",
+        "options": [
+          {
+            "value": "screened_negative",
+            "label": "Screened before initiation and confirmed negative"
+          },
+          {
+            "value": "positive_or_not_screened",
+            "label": "Positive or not screened"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "ms_dmt_step_one": {
+        "type": "select",
+        "label": "Adequate trial and failure of at least one drug with the same specific indication form of MS",
+        "options": [
+          {
+            "value": "trial_failure_one_same_indication",
+            "label": "Adequate trial and failure of at least one drug for the same MS indication"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      "not_concurrent_ms_or_immunosuppressive": {
+        "type": "select",
+        "label": "Not used in combination with another MS disease-modifying agent or other immune-modulating or immunosuppressive therapies, including immunosuppressant doses of corticosteroids",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_active_infection": {
+        "type": "select",
+        "label": "No active infection",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "kevzara": {
     "drug": {

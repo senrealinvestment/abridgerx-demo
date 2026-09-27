@@ -63,11 +63,11 @@ def test_metadata_and_mirrors():
     assert json.loads((BASE/'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f: assert json.load(f) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 153
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 45
+    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 154
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 44
     for folder in [BASE,BASE.parent]:
         status=json.loads((folder/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'],status['encoding_text_only']) == (153,45)
-        assert status['next_candidate']=='movantik'
+        assert (status['encoding_partial'],status['encoding_text_only']) == (154,44)
+        assert status['next_candidate']=='mytesi'
         assert status['partial_slugs']==sorted(k for k,v in catalog.items() if v['encoding_status']=='partial')
     assert catalog['leuprolide']['encoding_status']=='partial'

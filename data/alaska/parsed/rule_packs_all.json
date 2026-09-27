@@ -29382,7 +29382,8 @@
   "palforzia": {
     "drug": {
       "name": "Palforzia",
-      "therapeutic_class": "other"
+      "therapeutic_class": "oral-immunotherapy",
+      "generic_name": "arachis_hypogaea_allergen_powder"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -29393,18 +29394,353 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Peanut allergy: mitigation of allergic reactions, including anaphylaxis, from accidental peanut exposure.",
+        "citation": "https://health.alaska.gov/media/boefu3p3/202011palforzia_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "peanut_allergy"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is 4 through 17 years old inclusive (initial dose escalation; approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/boefu3p3/202011palforzia_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "all",
+          "args": [
+            {
+              "op": "gte",
+              "fact": "age_years",
+              "value": 4
+            },
+            {
+              "op": "lte",
+              "fact": "age_years",
+              "value": 17
+            }
+          ]
+        }
+      },
+      {
+        "id": "peanut_reaction_history",
+        "text": "Clinical history of allergic reaction to peanuts (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/boefu3p3/202011palforzia_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "peanut_reaction_history"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "peanut_reaction_history",
+          "values": [
+            "present"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with an immunologist or allergist (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/boefu3p3/202011palforzia_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "immunologist_or_allergist_or_consult"
+          ]
+        }
+      },
+      {
+        "id": "peanut_allergy_testing",
+        "text": "Serum peanut IgE \u22650.35 kUA/L within the past 12 months and/or positive peanut SPT \u22653 mm compared to control (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/boefu3p3/202011palforzia_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "peanut_ige_kua_l",
+          "peanut_ige_months_ago",
+          "peanut_spt_mm_vs_control"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "gte",
+                  "fact": "peanut_ige_kua_l",
+                  "value": 0.35
+                },
+                {
+                  "op": "lte",
+                  "fact": "peanut_ige_months_ago",
+                  "value": 12
+                }
+              ]
+            },
+            {
+              "op": "gte",
+              "fact": "peanut_spt_mm_vs_control",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "id": "peanut_avoidance_diet",
+        "text": "Used in conjunction with a peanut allergen avoidance diet (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/boefu3p3/202011palforzia_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "peanut_avoidance_diet"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "peanut_avoidance_diet",
+          "values": [
+            "using"
+          ]
+        }
+      },
+      {
+        "id": "epinephrine_prescription",
+        "text": "Confirmed prescription for auto-injectable epinephrine (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/boefu3p3/202011palforzia_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "epinephrine_prescription"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "epinephrine_prescription",
+          "values": [
+            "confirmed"
+          ]
+        }
+      },
+      {
+        "id": "uncontrolled_asthma",
+        "text": "Uncontrolled asthma (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/boefu3p3/202011palforzia_criteria_2020.pdf#denial-criteria",
+        "required_facts": [
+          "uncontrolled_asthma"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "uncontrolled_asthma",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "esophagitis_or_eosinophilic_gi_history",
+        "text": "History of esophagitis or other eosinophilic gastrointestinal disease (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/boefu3p3/202011palforzia_criteria_2020.pdf#denial-criteria",
+        "required_facts": [
+          "esophagitis_or_eosinophilic_gi_history"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "esophagitis_or_eosinophilic_gi_history",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "mast_cell_disorder_history",
+        "text": "History of mast cell disorder, including mastocytosis, urticaria pigmentosa, chronic idiopathic or physical urticaria beyond simple dermatographism (e.g. cold or cholinergic urticaria), or hereditary/idiopathic angioedema (denial criterion 4).",
+        "citation": "https://health.alaska.gov/media/boefu3p3/202011palforzia_criteria_2020.pdf#denial-criteria",
+        "required_facts": [
+          "mast_cell_disorder_history"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "mast_cell_disorder_history",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "recent_severe_anaphylaxis",
+        "text": "History of severe/life-threatening anaphylaxis or anaphylactic shock within 60 days of screening (denial criterion 5).",
+        "citation": "https://health.alaska.gov/media/boefu3p3/202011palforzia_criteria_2020.pdf#denial-criteria",
+        "required_facts": [
+          "recent_severe_anaphylaxis"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "recent_severe_anaphylaxis",
+          "values": [
+            "absent"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Palforzia Criteria Version 1; Original 09/28/2020; Approval 11/20/2020; Effective 01/11/2021.",
+      "Encoded: closed peanut allergy indication, approval criteria 1\u20136 and denial criteria 2\u20135. Denial criterion 1 is failure to meet approval criteria. Initial dose escalation age band is 4\u201317 inclusive; the source states up-dosing and maintenance may continue at age 4 and older.",
+      "Testing: either qualifying serum peanut IgE \u22650.35 kUA/L within 12 months or positive peanut SPT \u22653 mm compared to control suffices; both may qualify. The source specifies no SPT recency limit.",
+      "Cautions (notes only): Palforzia can cause anaphylaxis; patients should be trained to use injectable epinephrine. Monitor for eosinophilic esophagitis and discontinue if suspected. Observe during and after initial dose escalation and the first dose of each up-dosing level for at least 60 minutes. Consider dose modification or discontinuation for chronic or recurrent local gastrointestinal allergic symptoms.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months.",
+      "Quantity (notes only): 34-day supply. max_units is null; quantity is not evaluated.",
+      "Documentation verification, cautions, duration, reauthorization and quantity require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "lab_ige_or_eosinophil"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Peanut allergy: mitigation of allergic reactions, including anaphylaxis, from accidental peanut exposure.",
+        "options": [
+          {
+            "value": "peanut_allergy",
+            "label": "Peanut allergy"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "number",
+        "label": "Age in years (4\u201317 inclusive)"
+      },
+      "peanut_reaction_history": {
+        "type": "select",
+        "label": "Clinical history of allergic reaction to peanuts (approval criterion 2).",
+        "options": [
+          {
+            "value": "present",
+            "label": "Clinical history present"
+          },
+          {
+            "value": "absent",
+            "label": "No clinical history"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with an immunologist or allergist (approval criterion 3).",
+        "options": [
+          {
+            "value": "immunologist_or_allergist_or_consult",
+            "label": "Immunologist or allergist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "peanut_ige_kua_l": {
+        "type": "number",
+        "label": "Serum peanut IgE (kUA/L)"
+      },
+      "peanut_ige_months_ago": {
+        "type": "number",
+        "label": "Months since serum peanut IgE test"
+      },
+      "peanut_spt_mm_vs_control": {
+        "type": "number",
+        "label": "Positive peanut skin prick test: mm compared to control"
+      },
+      "peanut_avoidance_diet": {
+        "type": "select",
+        "label": "Used in conjunction with a peanut allergen avoidance diet (approval criterion 5).",
+        "options": [
+          {
+            "value": "using",
+            "label": "Using peanut allergen avoidance diet"
+          },
+          {
+            "value": "not_using",
+            "label": "Not using avoidance diet"
+          }
+        ]
+      },
+      "epinephrine_prescription": {
+        "type": "select",
+        "label": "Confirmed prescription for auto-injectable epinephrine (approval criterion 6).",
+        "options": [
+          {
+            "value": "confirmed",
+            "label": "Confirmed prescription"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "No confirmed prescription"
+          }
+        ]
+      },
+      "uncontrolled_asthma": {
+        "type": "select",
+        "label": "Uncontrolled asthma (denial criterion 2).",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "esophagitis_or_eosinophilic_gi_history": {
+        "type": "select",
+        "label": "History of esophagitis or other eosinophilic gastrointestinal disease (denial criterion 3).",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "mast_cell_disorder_history": {
+        "type": "select",
+        "label": "History of mast cell disorder, including mastocytosis, urticaria pigmentosa, chronic idiopathic or physical urticaria beyond simple dermatographism (e.g. cold or cholinergic urticaria), or hereditary/idiopathic angioedema (denial criterion 4).",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "recent_severe_anaphylaxis": {
+        "type": "select",
+        "label": "History of severe/life-threatening anaphylaxis or anaphylactic shock within 60 days of screening (denial criterion 5).",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      }
+    }
   },
   "palynziq": {
     "drug": {

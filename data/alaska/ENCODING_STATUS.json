@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 110,
-  "encoding_text_only": 88,
+  "encoding_partial": 111,
+  "encoding_text_only": 87,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -85,6 +85,7 @@
     "orkambi",
     "oxbryta",
     "oxervate",
+    "palforzia",
     "palynziq",
     "praluent",
     "prolia",
@@ -118,5 +119,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "palforzia"
+  "next_candidate": "spravato"
 }

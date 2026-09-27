@@ -22,8 +22,8 @@ Source hub: https://health.alaska.gov/en/education/prior-authorization-medicatio
 - Criteria text JSON files: **198**
 - Rule packs: **198**
 - Fully encoded (all clauses as predicates): **0**
-- Partially encoded: **94** (Ztalmy, Xiaflex, Korlym, Isturisa, Epidiolex, Fintepla, Imcivree, Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
-- Text-only (requires_pa, encoding pending): **104**
+- Partially encoded: **95** (Zurzuvae, Ztalmy, Xiaflex, Korlym, Isturisa, Epidiolex, Fintepla, Imcivree, Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
+- Text-only (requires_pa, encoding pending): **103**
 - Scanned image criteria PDFs (OCR needed): **7**
 
 ## Blockers
@@ -55,7 +55,7 @@ Hemlibra encodes one closed hemophilia A prophylaxis indication (with or without
 
 ## Next encoding candidates
 
-Next candidate: `ztalmy`. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
+Next candidate: `firazyr` (HAE acute), then `crenessity`, `jascayd`, `redemplo`, `lupkynis`. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
 
 Soliris/Ultomiris encodes aHUS, PNH, gMG and Soliris-only NMOSD, indication-specific ages and clinical gates, and shared vaccination, specialty and REMS requirements. Duration, renewal, quantity and cautions remain manual review.
 
@@ -182,3 +182,5 @@ Korlym (`korlym`, mifepristone) encodes closed endogenous Cushing's hyperglycemi
 Xiaflex (`xiaflex`) encodes two closed adult indications with indication-gated provider experience, DC surgical history and functional limitations, and PD baseline curvature, stable disease, treatment intent and penile modeling. Dual-vial anatomy, duration, reauthorization, quantity enforcement and cautions remain manual review. Catalog: **93 partial / 105 text_only**. Next encoding candidate: `ztalmy`.
 
 Ztalmy (`ztalmy`, ganaxolone), effective 2023-06-01, encodes the closed CDD seizures indication, age ≥2, neurologist prescribing or consultation, genetically confirmed pathogenic or likely pathogenic CDKL5 mutation, and tried/failed or current use of ≥2 antiepileptic drugs. Cautions, initial ≤3 months, renewal ≤6 months with sustained reduction in monthly seizure frequency from pre-treatment baseline, and 1800 mg (36 ml) daily remain notes for manual review. Catalog: **94 partial / 104 text_only**. Next encoding candidate: `zurzuvae`.
+
+Zurzuvae (`zurzuvae`, zuranolone), effective 2024-03-01, encodes adult PPD, psychiatrist/consultation, episode onset and delivery windows, antidepressant therapy or contraindications to all listed options, current renal/LFT labs, eGFR ≥15 and no prior Zulresso/Zurzuvae for the current pregnancy. Cautions, initial 1 month, treatment limited to 14 days without extension, and #28 for 14 days (one course per pregnancy) remain manual review. Catalog: **95 partial / 103 text_only**. Next specialty candidate: `firazyr` (HAE acute), then `crenessity`, `jascayd`, `redemplo`, `lupkynis`.

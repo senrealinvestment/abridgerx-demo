@@ -111,16 +111,16 @@ def test_ui_and_clause_gates_and_age_options():
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 94
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 104
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 95
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 103
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     assert (BASE / 'benlysta.json').read_bytes() == (BASE / 'rule_packs/benlysta.json').read_bytes()
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 94 and status['encoding_text_only'] == 104
+    assert status['encoding_partial'] == 95 and status['encoding_text_only'] == 103
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'zurzuvae'
+    assert status['next_candidate'] == 'firazyr'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()

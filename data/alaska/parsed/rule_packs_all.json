@@ -36999,7 +36999,8 @@
   "zurzuvae": {
     "drug": {
       "name": "Zurzuvae",
-      "therapeutic_class": "other"
+      "therapeutic_class": "neuroactive-steroid",
+      "generic_name": "zuranolone"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -37010,18 +37011,262 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of postpartum depression (PPD).",
+        "citation": "https://health.alaska.gov/media/qxfeembt/zurzuvae_pa_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "postpartum_depression"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Adult age: at least 18 years.",
+        "citation": "https://health.alaska.gov/media/qxfeembt/zurzuvae_pa_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "psychiatrist_or_consultation",
+        "text": "Prescribed by or in consultation with a psychiatrist.",
+        "citation": "https://health.alaska.gov/media/qxfeembt/zurzuvae_pa_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "psychiatrist_or_consultation"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "psychiatrist_or_consultation",
+          "value": true
+        }
+      },
+      {
+        "id": "major_depressive_episode_onset_window",
+        "text": "Major depressive episode began no earlier than the third trimester of pregnancy and no later than 4 weeks following delivery.",
+        "citation": "https://health.alaska.gov/media/qxfeembt/zurzuvae_pa_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "major_depressive_episode_onset_window"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "major_depressive_episode_onset_window",
+          "value": true
+        }
+      },
+      {
+        "id": "within_12_months_since_delivery",
+        "text": "No more than 12 months have elapsed since delivery (12 months included).",
+        "citation": "https://health.alaska.gov/media/qxfeembt/zurzuvae_pa_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "within_12_months_since_delivery"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "within_12_months_since_delivery",
+          "value": true
+        }
+      },
+      {
+        "id": "antidepressant_trial_or_all_contraindicated",
+        "text": "Tried and failed an agent at a recognized therapeutic dose for at least 6 weeks from at least one of: SSRI, SNRI, bupropion, mirtazapine, TCA; OR has a contraindication to ALL five listed classes/agents.",
+        "citation": "https://health.alaska.gov/media/qxfeembt/zurzuvae_pa_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "antidepressant_trial_or_all_contraindicated"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "antidepressant_trial_or_all_contraindicated",
+          "value": true
+        }
+      },
+      {
+        "id": "current_renal_and_liver_labs_within_60_days",
+        "text": "Current laboratory assessments, including BOTH renal and liver function tests, within the last 60 days.",
+        "citation": "https://health.alaska.gov/media/qxfeembt/zurzuvae_pa_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "current_renal_and_liver_labs_within_60_days"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "current_renal_and_liver_labs_within_60_days",
+          "value": true
+        }
+      },
+      {
+        "id": "egfr_at_least_15",
+        "text": "eGFR is at least 15 mL/min/1.73 m\u00b2 (15 included; below 15 is denied).",
+        "citation": "https://health.alaska.gov/media/qxfeembt/zurzuvae_pa_criteria_2024.pdf#denial-criteria",
+        "required_facts": [
+          "egfr_at_least_15"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "egfr_at_least_15",
+          "value": true
+        }
+      },
+      {
+        "id": "prior_zulresso_or_zurzuvae_current_pregnancy",
+        "text": "Prior treatment with Zulresso or Zurzuvae for the current pregnancy.",
+        "citation": "https://health.alaska.gov/media/qxfeembt/zurzuvae_pa_criteria_2024.pdf#denial-criteria",
+        "required_facts": [
+          "prior_zulresso_or_zurzuvae_current_pregnancy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prior_zulresso_or_zurzuvae_current_pregnancy",
+          "value": false
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Zurzuvae Criteria Version 1; Original: 12/18/2023; Accepted: 01/19/2024; Effective: 03/01/2024. Archived source and effective date retained.",
+      "Encoded: closed postpartum_depression indication, adult age \u226518, psychiatrist prescribing or consultation, major depressive episode onset from the third trimester through 4 weeks after delivery inclusive, \u226412 months since delivery, \u22656 weeks at therapeutic dose of one listed antidepressant or contraindication to all listed classes/agents, and current renal and liver labs within 60 days. Clinical requirements are attestations; verify supporting documentation. Failure to meet approval criteria is represented by approval predicates.",
+      "Denials encoded: eGFR <15 mL/min/1.73 m\u00b2 (eGFR \u226515 qualifies by attestation); prior Zulresso or Zurzuvae treatment for the current pregnancy. Treatment for an earlier pregnancy alone is not this exclusion.",
+      "Duration (notes only): initial approval 1 month; treatment limited to 14 days; no extension of therapy will be authorized.",
+      "Quantity (notes only): #28 for 14 days; one course of treatment per pregnancy. Duration and quantity enforcement require manual review.",
+      "Cautions (notes only): avoid CYP3A4 inducers; the source PDF says CYP4A4 inducers (apparent typo). CNS depression and impaired driving: no driving or other potentially hazardous activities until at least 12 hours after administration. Abuse potential with risks of misuse, abuse, substance abuse disorder and addiction. May cause fetal harm. Cautions require manual review and are not additional denial predicates."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of postpartum depression (PPD).",
+        "options": [
+          {
+            "value": "postpartum_depression",
+            "label": "Postpartum depression (PPD)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Adult age: at least 18 years.",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "psychiatrist_or_consultation": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a psychiatrist.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "major_depressive_episode_onset_window": {
+        "type": "select",
+        "label": "Major depressive episode began no earlier than the third trimester of pregnancy and no later than 4 weeks following delivery.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "within_12_months_since_delivery": {
+        "type": "select",
+        "label": "No more than 12 months have elapsed since delivery (12 months included).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "antidepressant_trial_or_all_contraindicated": {
+        "type": "select",
+        "label": "Tried and failed an agent at a recognized therapeutic dose for at least 6 weeks from at least one of: SSRI, SNRI, bupropion, mirtazapine, TCA; OR has a contraindication to ALL five listed classes/agents.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "current_renal_and_liver_labs_within_60_days": {
+        "type": "select",
+        "label": "Current laboratory assessments, including BOTH renal and liver function tests, within the last 60 days.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "egfr_at_least_15": {
+        "type": "select",
+        "label": "eGFR is at least 15 mL/min/1.73 m\u00b2 (15 included; below 15 is denied).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "prior_zulresso_or_zurzuvae_current_pregnancy": {
+        "type": "select",
+        "label": "Prior treatment with Zulresso or Zurzuvae for the current pregnancy.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "zydelig": {
     "drug": {

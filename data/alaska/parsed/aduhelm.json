@@ -194,13 +194,15 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "leqembi"
+  ],
   "notes": [
     "Partial encoding from Alaska Medicaid Aduhelm (aducanumab-avwa), an amyloid beta-directed antibody, Criteria Version 1: Original 7/16/2021; Approval 9/17/21; Effective 11/1/21. The effective_date remains 2021-11-01.",
     "Encoded: approval criteria 1-9, with the closed Alzheimer's disease indication restricted to initiation at mild cognitive impairment or mild dementia stage per the PDF FDA indications; denial criteria 2-5 are approval-blocking predicates. Denial criterion 1 is failure to meet approval criteria.",
     "Initial approval: up to 3 months. Reauthorization: up to 6 months if MRI obtained prior to the 7th and 12th doses shows no increase in size or number of ARIA-H, and documented evidence shows positive response, slowed rate of cognitive decline, and no adverse reactions. These reauthorization requirements are notes only, not fully predicated.",
     "ARIA caution: enhanced clinical vigilance during the first 8 doses, particularly titration. Symptoms suggestive of ARIA require clinical evaluation, including MRI testing if indicated. ARIA imaging schedule and monitoring are not fully predicated; this pack remains partial.",
-    "PDL context only: Aduhelm is non-preferred in ALZHEIMER'S AGENTS. Leqembi and Kisunla remain text_only and are not evaluate-linked alternatives. Preferred oral Alzheimer's agents such as donepezil are PDL context only; no oral step-therapy requirement is encoded."
+    "PDL context only: Aduhelm is non-preferred in ALZHEIMER'S AGENTS. Leqembi is a same-class anti-amyloid alternative, subject to its own criteria and separate evaluation. Kisunla remains text_only. Preferred oral Alzheimer's agents such as donepezil are PDL context only; no oral step-therapy requirement is encoded."
   ],
   "fact_ui": {
     "indication": {

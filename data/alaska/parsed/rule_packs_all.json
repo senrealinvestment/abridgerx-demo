@@ -732,13 +732,15 @@
         }
       }
     ],
-    "alternatives": [],
+    "alternatives": [
+      "leqembi"
+    ],
     "notes": [
       "Partial encoding from Alaska Medicaid Aduhelm (aducanumab-avwa), an amyloid beta-directed antibody, Criteria Version 1: Original 7/16/2021; Approval 9/17/21; Effective 11/1/21. The effective_date remains 2021-11-01.",
       "Encoded: approval criteria 1-9, with the closed Alzheimer's disease indication restricted to initiation at mild cognitive impairment or mild dementia stage per the PDF FDA indications; denial criteria 2-5 are approval-blocking predicates. Denial criterion 1 is failure to meet approval criteria.",
       "Initial approval: up to 3 months. Reauthorization: up to 6 months if MRI obtained prior to the 7th and 12th doses shows no increase in size or number of ARIA-H, and documented evidence shows positive response, slowed rate of cognitive decline, and no adverse reactions. These reauthorization requirements are notes only, not fully predicated.",
       "ARIA caution: enhanced clinical vigilance during the first 8 doses, particularly titration. Symptoms suggestive of ARIA require clinical evaluation, including MRI testing if indicated. ARIA imaging schedule and monitoring are not fully predicated; this pack remains partial.",
-      "PDL context only: Aduhelm is non-preferred in ALZHEIMER'S AGENTS. Leqembi and Kisunla remain text_only and are not evaluate-linked alternatives. Preferred oral Alzheimer's agents such as donepezil are PDL context only; no oral step-therapy requirement is encoded."
+      "PDL context only: Aduhelm is non-preferred in ALZHEIMER'S AGENTS. Leqembi is a same-class anti-amyloid alternative, subject to its own criteria and separate evaluation. Kisunla remains text_only. Preferred oral Alzheimer's agents such as donepezil are PDL context only; no oral step-therapy requirement is encoded."
     ],
     "fact_ui": {
       "indication": {
@@ -17771,7 +17773,8 @@
   "leqembi": {
     "drug": {
       "name": "Leqembi",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "alzheimers-agents",
+      "generic_name": "lecanemab-irmb"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -17782,17 +17785,398 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of Alzheimer's disease",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "alzheimers_disease"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is 50 years of age or older",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 50
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "neurologist_or_consult"
+          ]
+        }
+      },
+      {
+        "id": "beta_amyloid_confirmed",
+        "text": "Beta-amyloid plaques verified by PET scan or CSF testing",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "beta_amyloid_confirmed"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "beta_amyloid_confirmed",
+          "values": [
+            "pet_scan",
+            "csf_testing"
+          ]
+        }
+      },
+      {
+        "id": "baseline_mri_aria_safety",
+        "text": "Documented brain MRI within the last year showing no localized superficial siderosis, fewer than 4 brain microhemorrhages, and no brain hemorrhages greater than 1 cm in the past year",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_mri_aria_safety"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_mri_aria_safety",
+          "values": [
+            "mri_within_1yr_no_siderosis_lt4_microhem_no_gt1cm_hemorrhage"
+          ]
+        }
+      },
+      {
+        "id": "objective_cognitive_impairment",
+        "text": "Objective evidence of cognitive impairment at screening",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "objective_cognitive_impairment"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "objective_cognitive_impairment",
+          "values": [
+            "documented"
+          ]
+        }
+      },
+      {
+        "id": "cdr_global_score",
+        "text": "Clinical Dementia Rating (CDR) global score of 0.5 or 1",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "cdr_global_score"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "cdr_global_score",
+          "values": [
+            "zero_point_five_or_one"
+          ]
+        }
+      },
+      {
+        "id": "mmse_score",
+        "text": "Mini-Mental State Exam (MMSE) score of at least 22",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "mmse_score"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "mmse_score",
+          "values": [
+            "ge_22"
+          ]
+        }
+      },
+      {
+        "id": "other_dementia_causes_ruled_out",
+        "text": "Other known causes of dementia ruled out, including vascular dementia and Parkinson's disease dementia",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "other_dementia_causes_ruled_out"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "other_dementia_causes_ruled_out",
+          "values": [
+            "ruled_out"
+          ]
+        }
+      },
+      {
+        "id": "not_on_blood_thinners_except_asa_le_81mg",
+        "text": "Not taking blood thinners other than aspirin 81 mg or less",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "not_on_blood_thinners_except_asa_le_81mg"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "not_on_blood_thinners_except_asa_le_81mg",
+          "values": [
+            "no_blood_thinners_or_asa_le_81_only"
+          ]
+        }
+      },
+      {
+        "id": "no_brain_hemorrhage_bleeding_cv_abnormality_6mo",
+        "text": "No brain hemorrhage, bleeding disorder, or cerebrovascular abnormalities in the last 6 months",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "no_brain_hemorrhage_bleeding_cv_abnormality_6mo"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "no_brain_hemorrhage_bleeding_cv_abnormality_6mo",
+          "values": [
+            "none_in_past_6mo"
+          ]
+        }
+      },
+      {
+        "id": "no_significant_systemic_illness_or_infection_30d",
+        "text": "No significant systemic illness or infection in the past 30 days",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "no_significant_systemic_illness_or_infection_30d"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "no_significant_systemic_illness_or_infection_30d",
+          "values": [
+            "none_in_past_30d"
+          ]
+        }
+      },
+      {
+        "id": "no_unstable_cardiac_within_1yr",
+        "text": "No unstable angina, myocardial infarction, advanced chronic heart failure, or clinically significant conduction abnormalities within 1 year prior to screening",
+        "citation": "https://health.alaska.gov/media/zyvamtbd/202301leqembi_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "no_unstable_cardiac_within_1yr"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "no_unstable_cardiac_within_1yr",
+          "values": [
+            "no_unstable_angina_mi_advanced_chf_conduction_abn_1yr"
+          ]
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "alternatives": [
+      "aduhelm"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Medicaid Leqembi (lecanemab-irmb) Criteria Version 1: Original 1/17/2023; Accepted 01/20/2023; Effective 03/01/2023.",
+      "Approval criteria 1-9 and denial criteria 2-5 encoded. Denial criterion 1 is failure to meet approval criteria. Treatment should be initiated at mild cognitive impairment or mild dementia stage of Alzheimer's disease; stage is notes only. The source describes accelerated approval and no safety or effectiveness data for initiation at earlier or later stages.",
+      "ARIA: enhanced clinical vigilance during the first 14 weeks. Symptoms suggestive of ARIA require clinical evaluation, including MRI if indicated. Common adverse reactions include infusion reactions, ARIA-Edema, headache, ARIA-H microhemorrhage and superficial siderosis. Cautions and monitoring remain notes only.",
+      "Initial approval: up to 3 months. Reauthorization: up to 6 months with MRI prior to the 5th dose showing no increase in size or number of ARIA, documented positive response, slowed rate of cognitive decline, and no adverse reactions. Additional MRIs before the 7th and 14th doses are required to screen for ARIA. Duration and reauthorization remain notes only.",
+      "Quantity per source label: 10 mg/kg infused over one hour once every two weeks; HCPCS J3590. Dosing and quantity enforcement remain notes only.",
+      "Aduhelm is a same-class anti-amyloid alternative, subject to its own criteria and separate evaluation. Kisunla remains text_only. No oral step-therapy requirement is encoded."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of Alzheimer's disease",
+        "options": [
+          {
+            "value": "alzheimers_disease",
+            "label": "Alzheimer's disease"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 50 years of age or older",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 50 years"
+          },
+          {
+            "value": "50",
+            "label": "50 years or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist",
+        "options": [
+          {
+            "value": "neurologist_or_consult",
+            "label": "Neurologist or consultation with a neurologist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "beta_amyloid_confirmed": {
+        "type": "select",
+        "label": "Beta-amyloid plaques verified by PET scan or CSF testing",
+        "options": [
+          {
+            "value": "pet_scan",
+            "label": "PET scan"
+          },
+          {
+            "value": "csf_testing",
+            "label": "CSF testing"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ]
+      },
+      "baseline_mri_aria_safety": {
+        "type": "select",
+        "label": "Documented brain MRI within the last year showing no localized superficial siderosis, fewer than 4 brain microhemorrhages, and no brain hemorrhages greater than 1 cm in the past year",
+        "options": [
+          {
+            "value": "mri_within_1yr_no_siderosis_lt4_microhem_no_gt1cm_hemorrhage",
+            "label": "MRI within 1 year meets all listed safety criteria"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "objective_cognitive_impairment": {
+        "type": "select",
+        "label": "Objective evidence of cognitive impairment at screening",
+        "options": [
+          {
+            "value": "documented",
+            "label": "Documented"
+          },
+          {
+            "value": "not_documented",
+            "label": "Not documented"
+          }
+        ]
+      },
+      "cdr_global_score": {
+        "type": "select",
+        "label": "Clinical Dementia Rating (CDR) global score of 0.5 or 1",
+        "options": [
+          {
+            "value": "zero_point_five_or_one",
+            "label": "CDR global score 0.5 or 1"
+          },
+          {
+            "value": "other_or_not_documented",
+            "label": "Other or not documented"
+          }
+        ]
+      },
+      "mmse_score": {
+        "type": "select",
+        "label": "Mini-Mental State Exam (MMSE) score of at least 22",
+        "options": [
+          {
+            "value": "ge_22",
+            "label": "MMSE 22 or higher"
+          },
+          {
+            "value": "lt_22_or_not_documented",
+            "label": "Below 22 or not documented"
+          }
+        ]
+      },
+      "other_dementia_causes_ruled_out": {
+        "type": "select",
+        "label": "Other known causes of dementia ruled out, including vascular dementia and Parkinson's disease dementia",
+        "options": [
+          {
+            "value": "ruled_out",
+            "label": "Ruled out"
+          },
+          {
+            "value": "not_ruled_out",
+            "label": "Not ruled out"
+          }
+        ]
+      },
+      "not_on_blood_thinners_except_asa_le_81mg": {
+        "type": "select",
+        "label": "Not taking blood thinners other than aspirin 81 mg or less",
+        "options": [
+          {
+            "value": "no_blood_thinners_or_asa_le_81_only",
+            "label": "No blood thinners or aspirin 81 mg or less only"
+          },
+          {
+            "value": "other_anticoagulant_or_antiplatelet",
+            "label": "Other anticoagulant or antiplatelet"
+          }
+        ]
+      },
+      "no_brain_hemorrhage_bleeding_cv_abnormality_6mo": {
+        "type": "select",
+        "label": "No brain hemorrhage, bleeding disorder, or cerebrovascular abnormalities in the last 6 months",
+        "options": [
+          {
+            "value": "none_in_past_6mo",
+            "label": "None in past 6 months"
+          },
+          {
+            "value": "present_in_past_6mo",
+            "label": "Present in past 6 months"
+          }
+        ]
+      },
+      "no_significant_systemic_illness_or_infection_30d": {
+        "type": "select",
+        "label": "No significant systemic illness or infection in the past 30 days",
+        "options": [
+          {
+            "value": "none_in_past_30d",
+            "label": "None in past 30 days"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "no_unstable_cardiac_within_1yr": {
+        "type": "select",
+        "label": "No unstable angina, myocardial infarction, advanced chronic heart failure, or clinically significant conduction abnormalities within 1 year prior to screening",
+        "options": [
+          {
+            "value": "no_unstable_angina_mi_advanced_chf_conduction_abn_1yr",
+            "label": "No listed cardiac history within 1 year"
+          },
+          {
+            "value": "history_present",
+            "label": "History present"
+          }
+        ]
+      }
+    }
   },
   "leqvio": {
     "drug": {

@@ -111,13 +111,13 @@ def test_catalog_and_mirror():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 130
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 68
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 131
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 67
     assert catalog['epidiolex']['encoding_status'] == 'partial'
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (130, 68)
-        assert status['next_candidate'] == 'vykattm-xr'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (131, 67)
+        assert status['next_candidate'] == 'imbruvica'
         assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()

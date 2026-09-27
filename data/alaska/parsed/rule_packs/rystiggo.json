@@ -178,7 +178,9 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "zilbrysq"
+  ],
   "notes": [
     "Partial encoding of Alaska Medicaid Rystiggo (rozanolixizumab-noli) Criteria Version 1; Original 07/25/2024; Accepted 09/20/2024; Effective 11/1/2024.",
     "Approval criteria 1-8 and denial exclusions are encoded as attestations. Immunosuppressive examples include corticosteroids, azathioprine and mycophenolate. The AChR and MuSK treatment-history branches are when-gated; required PE, IVIG or plasmapheresis in addition to maintenance therapy qualifies for either branch.",

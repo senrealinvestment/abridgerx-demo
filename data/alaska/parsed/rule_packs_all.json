@@ -24517,7 +24517,9 @@
         }
       }
     ],
-    "alternatives": [],
+    "alternatives": [
+      "zilbrysq"
+    ],
     "notes": [
       "Partial encoding of Alaska Medicaid Rystiggo (rozanolixizumab-noli) Criteria Version 1; Original 07/25/2024; Accepted 09/20/2024; Effective 11/1/2024.",
       "Approval criteria 1-8 and denial exclusions are encoded as attestations. Immunosuppressive examples include corticosteroids, azathioprine and mycophenolate. The AChR and MuSK treatment-history branches are when-gated; required PE, IVIG or plasmapheresis in addition to maintenance therapy qualifies for either branch.",
@@ -32464,7 +32466,8 @@
   "zilbrysq": {
     "drug": {
       "name": "Zilbrysq",
-      "therapeutic_class": "other"
+      "therapeutic_class": "complement-inhibitor",
+      "generic_name": "zilucoplan"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -32475,18 +32478,304 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Documented generalized myasthenia gravis (gMG).",
+        "citation": "https://health.alaska.gov/media/h15jf0kk/zilbrysq_pa_criteria_2024.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "generalized_myasthenia_gravis"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is at least 18 years old.",
+        "citation": "https://health.alaska.gov/media/h15jf0kk/zilbrysq_pa_criteria_2024.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist.",
+        "citation": "https://health.alaska.gov/media/h15jf0kk/zilbrysq_pa_criteria_2024.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_consult"
+        }
+      },
+      {
+        "id": "mgfa_class",
+        "text": "MGFA clinical classification II, III, or IV.",
+        "citation": "https://health.alaska.gov/media/h15jf0kk/zilbrysq_pa_criteria_2024.pdf",
+        "required_facts": [
+          "mgfa_class"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "mgfa_class",
+          "value": "ii_iii_or_iv"
+        }
+      },
+      {
+        "id": "mg_antibody",
+        "text": "Positive anti-acetylcholine receptor (AChR) antibody serology.",
+        "citation": "https://health.alaska.gov/media/h15jf0kk/zilbrysq_pa_criteria_2024.pdf",
+        "required_facts": [
+          "mg_antibody"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "mg_antibody",
+          "value": "achr_positive"
+        }
+      },
+      {
+        "id": "mg_adl_score",
+        "text": "Baseline MG-ADL total score at least 6.",
+        "citation": "https://health.alaska.gov/media/h15jf0kk/zilbrysq_pa_criteria_2024.pdf",
+        "required_facts": [
+          "mg_adl_score"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "mg_adl_score",
+          "value": "gte_6"
+        }
+      },
+      {
+        "id": "immunosuppressive_step",
+        "text": "Documented inadequate response or labeled contraindication to qualifying immunosuppressive therapy.",
+        "citation": "https://health.alaska.gov/media/h15jf0kk/zilbrysq_pa_criteria_2024.pdf",
+        "required_facts": [
+          "immunosuppressive_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "immunosuppressive_step",
+          "values": [
+            "inadequate_or_ci_two_or_more_is_agents_ge_12mo",
+            "inadequate_or_ci_one_is_agent_plus_chronic_pe_plasmapheresis_or_ivig"
+          ]
+        }
+      },
+      {
+        "id": "meningococcal_vaccine_acyw_and_b_ge_14d_prior",
+        "text": "Completed or current meningococcal vaccination for serogroups A, C, W, Y AND B at least 2 weeks before the first dose.",
+        "citation": "https://health.alaska.gov/media/h15jf0kk/zilbrysq_pa_criteria_2024.pdf",
+        "required_facts": [
+          "meningococcal_vaccine_acyw_and_b_ge_14d_prior"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "meningococcal_vaccine_acyw_and_b_ge_14d_prior",
+          "value": "completed_or_current_ge_14d"
+        }
+      },
+      {
+        "id": "prescriber_rems_enrolled",
+        "text": "Prescriber enrolled in the REMS program.",
+        "citation": "https://health.alaska.gov/media/h15jf0kk/zilbrysq_pa_criteria_2024.pdf",
+        "required_facts": [
+          "prescriber_rems_enrolled"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_rems_enrolled",
+          "value": "enrolled"
+        }
+      },
+      {
+        "id": "no_active_meningococcal_infection",
+        "text": "No evidence of active meningococcal infection.",
+        "citation": "https://health.alaska.gov/media/h15jf0kk/zilbrysq_pa_criteria_2024.pdf",
+        "required_facts": [
+          "no_active_meningococcal_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_meningococcal_infection",
+          "value": "no_active_infection"
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "rystiggo"
+    ],
+    "notes": [
+      "Partial encoding of Alaska Medicaid Zilbrysq (zilucoplan) Criteria Version 1; Original 12/21/2023; Accepted 01/19/2024; Effective 03/01/2024.",
+      "Approval criteria 1-7 and denial criteria 2-3 are encoded as attestations. AChR positivity is required; MuSK positivity alone does not qualify. Immunosuppressive examples include azathioprine, mycophenolate mofetil, cyclosporine, cyclophosphamide, methotrexate, tacrolimus and rituximab. The chronic plasma exchange/plasmapheresis/IVIG pathway has no stated 12-month minimum.",
+      "Cautions (notes only): life-threatening and fatal meningococcal infections have occurred with complement inhibitors and may progress rapidly if not recognized and treated early. Pancreatitis and pancreatic cysts have been reported. Based on animal data, Zilbrysq may cause fetal harm.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months with prescriber documentation of positive clinical response and tolerability.",
+      "Quantity (manual review): 32.4 mg per day; 30 prefilled syringes per 30 days. max_units is null; dosing and quantity enforcement require manual review.",
+      "Rystiggo is an alternative for overlapping gMG eligibility; its own antibody and treatment-history criteria require separate review.",
+      "Remains partial: evidence documentation, cautions, duration, reauthorization, dosing and quantity require manual review. PDL status unknown."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Documented generalized myasthenia gravis (gMG).",
+        "options": [
+          {
+            "value": "generalized_myasthenia_gravis",
+            "label": "Generalized myasthenia gravis (gMG)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old.",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist.",
+        "options": [
+          {
+            "value": "neurologist_or_consult",
+            "label": "Neurologist or consultation with one"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "mgfa_class": {
+        "type": "select",
+        "label": "MGFA clinical classification II, III, or IV.",
+        "options": [
+          {
+            "value": "ii_iii_or_iv",
+            "label": "Class II, III, or IV"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "mg_antibody": {
+        "type": "select",
+        "label": "Positive anti-acetylcholine receptor (AChR) antibody serology.",
+        "options": [
+          {
+            "value": "achr_positive",
+            "label": "AChR positive"
+          },
+          {
+            "value": "musk_positive",
+            "label": "MuSK positive"
+          },
+          {
+            "value": "neither",
+            "label": "Neither"
+          }
+        ]
+      },
+      "mg_adl_score": {
+        "type": "select",
+        "label": "Baseline MG-ADL total score at least 6.",
+        "options": [
+          {
+            "value": "gte_6",
+            "label": "At least 6"
+          },
+          {
+            "value": "lt_6_or_not_documented",
+            "label": "Below 6 or not documented"
+          }
+        ]
+      },
+      "immunosuppressive_step": {
+        "type": "select",
+        "label": "Documented inadequate response or labeled contraindication to qualifying immunosuppressive therapy.",
+        "options": [
+          {
+            "value": "inadequate_or_ci_two_or_more_is_agents_ge_12mo",
+            "label": "Inadequate response or labeled contraindication to at least 2 immunosuppressive agents alone or combined for at least 12 months"
+          },
+          {
+            "value": "inadequate_or_ci_one_is_agent_plus_chronic_pe_plasmapheresis_or_ivig",
+            "label": "Inadequate response or labeled contraindication to at least 1 immunosuppressive agent alone or combined AND requires chronic plasma exchange, plasmapheresis or IVIG"
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ]
+      },
+      "meningococcal_vaccine_acyw_and_b_ge_14d_prior": {
+        "type": "select",
+        "label": "Completed or current meningococcal vaccination for serogroups A, C, W, Y AND B at least 2 weeks before the first dose.",
+        "options": [
+          {
+            "value": "completed_or_current_ge_14d",
+            "label": "Completed or current for all required serogroups at least 14 days prior"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ]
+      },
+      "prescriber_rems_enrolled": {
+        "type": "select",
+        "label": "Prescriber enrolled in the REMS program.",
+        "options": [
+          {
+            "value": "enrolled",
+            "label": "Enrolled"
+          },
+          {
+            "value": "not_enrolled",
+            "label": "Not enrolled"
+          }
+        ]
+      },
+      "no_active_meningococcal_infection": {
+        "type": "select",
+        "label": "No evidence of active meningococcal infection.",
+        "options": [
+          {
+            "value": "no_active_infection",
+            "label": "No active meningococcal infection"
+          },
+          {
+            "value": "active_infection",
+            "label": "Active meningococcal infection"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "zolgensma": {
     "drug": {

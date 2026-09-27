@@ -100,13 +100,13 @@ def test_catalog():
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 189
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 9
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 190
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 8
     for root in (BASE, BASE.parent):
         status = json.loads((root/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (189, 9, '2024-2025-season')
+        assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (190, 8, None)
         assert status['partial_slugs'] == sorted(k for k,p in catalog.items() if p['encoding_status'] == 'partial')
     for ext in ('json', 'md'):
         assert (BASE/f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent/f'ENCODING_STATUS.{ext}').read_bytes()
-    assert catalog['2024-2025-season']['encoding_status'] == 'text_only'
-    assert catalog['2024-2025-season']['criteria'] == []
+    assert catalog['hemophilia']['encoding_status'] == 'text_only'
+    assert catalog['hemophilia']['criteria'] == []

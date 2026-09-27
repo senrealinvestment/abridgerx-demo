@@ -4,9 +4,10 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 189,
-  "encoding_text_only": 9,
+  "encoding_partial": 190,
+  "encoding_text_only": 8,
   "partial_slugs": [
+    "2024-2025-season",
     "actiq",
     "adbry",
     "adcirca",
@@ -197,5 +198,15 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "2024-2025-season"
+  "next_candidate": null,
+  "remaining_text_only_notes": {
+    "000-unit": "Mislabeled scrape of drisdol-criteria.pdf (identical to vitamin-d-50); not a real 000-unit QL criteria pack \u2014 left text_only.",
+    "hemophilia": "Skip \u2014 duplicate of clotting-factor (already partial).",
+    "atypical-antipsychotic-therapeutic-duplication": "Deferred per standing order.",
+    "bactroban-cream": "Deferred per standing order.",
+    "fexmid": "Empty OCR / no extracted text \u2014 do not force.",
+    "soma": "Empty OCR / no extracted text \u2014 do not force.",
+    "stadol": "Empty OCR / no extracted text \u2014 do not force.",
+    "ergocalciferol": "Empty OCR / no extracted text \u2014 do not force (Drisdol content lives under vitamin-d-50)."
+  }
 }

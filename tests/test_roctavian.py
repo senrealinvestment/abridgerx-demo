@@ -124,16 +124,16 @@ def test_metadata_notes_catalog_and_mirrors():
         assert text in ' '.join(p['notes'])
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 189
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 9
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 190
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 8
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert (BASE / 'roctavian.json').read_bytes() == (BASE / 'rule_packs/roctavian.json').read_bytes()
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (189, 9)
+    assert (status['encoding_partial'], status['encoding_text_only']) == (190, 8)
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == '2024-2025-season'
+    assert status['next_candidate'] == None
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()

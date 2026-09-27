@@ -100,12 +100,12 @@ def test_metadata_notes_and_catalog():
     with gzip.open(parsed / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 189
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 9
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 190
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 8
     assert catalog['evkeeza']['encoding_status'] == 'partial'
     status = json.loads((parsed / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 189 and status['encoding_text_only'] == 9
-    assert status['next_candidate'] == '2024-2025-season'
+    assert status['encoding_partial'] == 190 and status['encoding_text_only'] == 8
+    assert status['next_candidate'] == None
     assert status['partial_slugs'] == sorted(s for s, p in catalog.items() if p['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (parsed / name).read_bytes() == (parsed.parent / name).read_bytes()

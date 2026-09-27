@@ -25,7 +25,7 @@
   },
   "2024-2025-season": {
     "drug": {
-      "name": "2024-2025 Season",
+      "name": "Synagis (palivizumab) \u2014 2024-2025 Season",
       "therapeutic_class": "biologics"
     },
     "source": {
@@ -37,16 +37,523 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "RSV prophylaxis to prevent serious lower respiratory tract disease in a child at high risk: select a qualifying population cohort.",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "preterm_32_to_lt_35_weeks_no_cld_chd",
+            "preterm_29_to_lt_32_weeks_no_cld_chd",
+            "preterm_lt_29_weeks",
+            "airway_or_neuromuscular_compromising_secretions",
+            "hemodynamically_significant_chd",
+            "chronic_lung_disease_of_prematurity"
+          ]
+        }
+      },
+      {
+        "id": "born_aug19_or_after_season_window",
+        "text": "Born less than 3 months before onset or during RSV season (August 19 or after)?",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "born_aug19_or_after_season_window"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_32_to_lt_35_weeks_no_cld_chd"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "born_aug19_or_after_season_window",
+          "value": true
+        }
+      },
+      {
+        "id": "has_rsv_risk_factor",
+        "text": "At least one RSV risk factor: child care/daycare; sibling younger than 5; crowded living (at least 3 children per bedroom or 7 people per household); or no running water at home?",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "has_rsv_risk_factor"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_32_to_lt_35_weeks_no_cld_chd"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "has_rsv_risk_factor",
+          "value": true
+        }
+      },
+      {
+        "id": "age_lt_6mo_at_season_start",
+        "text": "Younger than 6 months at RSV season start (born after May 18)?",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "age_lt_6mo_at_season_start"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_29_to_lt_32_weeks_no_cld_chd"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "age_lt_6mo_at_season_start",
+          "value": true
+        }
+      },
+      {
+        "id": "age_lt_12mo_at_season_start",
+        "text": "Younger than 12 months at RSV season onset (born after November 18 of the prior year)?",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "age_lt_12mo_at_season_start"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_lt_29_weeks",
+            "airway_or_neuromuscular_compromising_secretions"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "age_lt_12mo_at_season_start",
+          "value": true
+        }
+      },
+      {
+        "id": "airway_or_nm_condition",
+        "text": "Congenital airway abnormality OR neuromuscular condition compromising handling of respiratory secretions?",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "airway_or_nm_condition"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "airway_or_neuromuscular_compromising_secretions"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "airway_or_nm_condition",
+          "value": true
+        }
+      },
+      {
+        "id": "age_le_24mo_at_season_start",
+        "text": "24 months of age or younger at RSV season onset?",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "age_le_24mo_at_season_start"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemodynamically_significant_chd"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "age_le_24mo_at_season_start",
+          "value": true
+        }
+      },
+      {
+        "id": "hemodynamically_significant_chd",
+        "text": "Hemodynamically significant cyanotic or acyanotic congenital heart disease?",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "hemodynamically_significant_chd"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemodynamically_significant_chd"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "hemodynamically_significant_chd",
+          "value": true
+        }
+      },
+      {
+        "id": "age_lt_24mo_at_season_start",
+        "text": "Younger than 24 months at RSV season onset?",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "age_lt_24mo_at_season_start"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "chronic_lung_disease_of_prematurity"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "age_lt_24mo_at_season_start",
+          "value": true
+        }
+      },
+      {
+        "id": "cld_therapy_within_6mo_pre_season",
+        "text": "Medical therapy for CLD within 6 months before season onset (after May 15 of the current year)?",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "cld_therapy_within_6mo_pre_season"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "chronic_lung_disease_of_prematurity"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "cld_therapy_within_6mo_pre_season",
+          "value": true
+        }
+      },
+      {
+        "id": "palivizumab_medical_necessity_over_nirsevimab",
+        "text": "Attestation of medical necessity of palivizumab over nirsevimab with documented rationale (for example, lack of availability)?",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "palivizumab_medical_necessity_over_nirsevimab"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_32_to_lt_35_weeks_no_cld_chd",
+            "preterm_29_to_lt_32_weeks_no_cld_chd",
+            "preterm_lt_29_weeks",
+            "airway_or_neuromuscular_compromising_secretions",
+            "hemodynamically_significant_chd",
+            "chronic_lung_disease_of_prematurity"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "palivizumab_medical_necessity_over_nirsevimab",
+          "value": true
+        }
+      },
+      {
+        "id": "dose_within_covered_rsv_season",
+        "text": "Dose delivered within the covered RSV season, November 18 through May 15, or Department-announced adjusted covered dates?",
+        "citation": "https://health.alaska.gov/media/a0hn0ndb/ccfu_synagis_2024-2025.pdf",
+        "required_facts": [
+          "dose_within_covered_rsv_season"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_32_to_lt_35_weeks_no_cld_chd",
+            "preterm_29_to_lt_32_weeks_no_cld_chd",
+            "preterm_lt_29_weeks",
+            "airway_or_neuromuscular_compromising_secretions",
+            "hemodynamically_significant_chd",
+            "chronic_lung_disease_of_prematurity"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "dose_within_covered_rsv_season",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding: six closed high-risk RSV prophylaxis population cohorts and shared medical-necessity-over-nirsevimab and covered-season attestations. Cohort selection attests gestational age and CLD/CHD status. Dose counts, continuation and season surveillance remain notes only; rules engine is the sole evaluator.",
+      "Synagis Criteria 2024-2025, Version 1; Last Updated 09/13/2024. Catalog effective date 2024-11-01. Solution for injection: 100mg/mL and 50mg/0.5mL.",
+      "Notes only: maximum 5 monthly doses per RSV season; this maximum is not increased if season dates float. For the 32 to <35 week cohort, no more than 3 monthly doses or monthly dosing until 90 days of age, whichever occurs first. If breakthrough RSV infection occurs and the infant has not received 3 monthly doses before reaching 90 days, prophylaxis may continue monthly up to 3 total doses for the season.",
+      "Notes only: for CHD, surgery utilizing cardiopulmonary bypass (CPB) during the RSV season may permit an extra post-operative dose.",
+      "Floating season (notes only): Alaska Medicaid recognizes November 18 through May 15 for all Alaska regions. The Department monitors RSV circulation beginning October 1, 2024 (10/1/2024). Earlier onset may be recognized if \u22652 tests and >10% of tests are positive from two or more geographic locations for a single week between 10/1/2024 and 11/18/2024. A changed onset is accompanied by revised approval criteria. Earlier or delayed offset is monitored using number and percentage of positive tests. Covered-date changes are communicated by fax to prescriber and pharmacy using numbers on the PA request.",
+      "Age wording: CHD permits age \u226424 months at onset; CLD requires age <24 months. The source parenthetically says born after November 18 two years prior for both; the explicit inclusive CHD age criterion is retained. CLD therapy uses the source wording within 6 months before onset (after May 15 current year).",
+      "References (notes only): Synagis package insert, MedImmune, March 2014; AAP Committee on Infectious Diseases modified palivizumab recommendations, Pediatrics 2009; AAP updated guidance, July 28, 2014, DOI 10.1542/peds.2014-1665; ACIP nirsevimab recommendations, Jones et al., MMWR 2023;72:920\u2013925, DOI 10.15585/mmwr.mm7234a4."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "RSV prophylaxis to prevent serious lower respiratory tract disease in a child at high risk: select a qualifying population cohort.",
+        "options": [
+          {
+            "value": "preterm_32_to_lt_35_weeks_no_cld_chd",
+            "label": "RSV prophylaxis: born 32 weeks to <35 weeks (34w6d), without CLD or significant CHD"
+          },
+          {
+            "value": "preterm_29_to_lt_32_weeks_no_cld_chd",
+            "label": "RSV prophylaxis: born 29 weeks to <32 weeks (31w6d), without CLD or significant CHD"
+          },
+          {
+            "value": "preterm_lt_29_weeks",
+            "label": "RSV prophylaxis: born <29 weeks (28w6d or earlier)"
+          },
+          {
+            "value": "airway_or_neuromuscular_compromising_secretions",
+            "label": "RSV prophylaxis: congenital airway abnormality or neuromuscular condition compromising respiratory secretions"
+          },
+          {
+            "value": "hemodynamically_significant_chd",
+            "label": "RSV prophylaxis: hemodynamically significant congenital heart disease"
+          },
+          {
+            "value": "chronic_lung_disease_of_prematurity",
+            "label": "RSV prophylaxis: chronic lung disease of prematurity"
+          }
+        ]
+      },
+      "born_aug19_or_after_season_window": {
+        "type": "select",
+        "label": "Born less than 3 months before onset or during RSV season (August 19 or after)?",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_32_to_lt_35_weeks_no_cld_chd"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "has_rsv_risk_factor": {
+        "type": "select",
+        "label": "At least one RSV risk factor: child care/daycare; sibling younger than 5; crowded living (at least 3 children per bedroom or 7 people per household); or no running water at home?",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_32_to_lt_35_weeks_no_cld_chd"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "age_lt_6mo_at_season_start": {
+        "type": "select",
+        "label": "Younger than 6 months at RSV season start (born after May 18)?",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_29_to_lt_32_weeks_no_cld_chd"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "age_lt_12mo_at_season_start": {
+        "type": "select",
+        "label": "Younger than 12 months at RSV season onset (born after November 18 of the prior year)?",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_lt_29_weeks",
+            "airway_or_neuromuscular_compromising_secretions"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "airway_or_nm_condition": {
+        "type": "select",
+        "label": "Congenital airway abnormality OR neuromuscular condition compromising handling of respiratory secretions?",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "airway_or_neuromuscular_compromising_secretions"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "age_le_24mo_at_season_start": {
+        "type": "select",
+        "label": "24 months of age or younger at RSV season onset?",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemodynamically_significant_chd"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hemodynamically_significant_chd": {
+        "type": "select",
+        "label": "Hemodynamically significant cyanotic or acyanotic congenital heart disease?",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemodynamically_significant_chd"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "age_lt_24mo_at_season_start": {
+        "type": "select",
+        "label": "Younger than 24 months at RSV season onset?",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "chronic_lung_disease_of_prematurity"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "cld_therapy_within_6mo_pre_season": {
+        "type": "select",
+        "label": "Medical therapy for CLD within 6 months before season onset (after May 15 of the current year)?",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "chronic_lung_disease_of_prematurity"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "palivizumab_medical_necessity_over_nirsevimab": {
+        "type": "select",
+        "label": "Attestation of medical necessity of palivizumab over nirsevimab with documented rationale (for example, lack of availability)?",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_32_to_lt_35_weeks_no_cld_chd",
+            "preterm_29_to_lt_32_weeks_no_cld_chd",
+            "preterm_lt_29_weeks",
+            "airway_or_neuromuscular_compromising_secretions",
+            "hemodynamically_significant_chd",
+            "chronic_lung_disease_of_prematurity"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "dose_within_covered_rsv_season": {
+        "type": "select",
+        "label": "Dose delivered within the covered RSV season, November 18 through May 15, or Department-announced adjusted covered dates?",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preterm_32_to_lt_35_weeks_no_cld_chd",
+            "preterm_29_to_lt_32_weeks_no_cld_chd",
+            "preterm_lt_29_weeks",
+            "airway_or_neuromuscular_compromising_secretions",
+            "hemodynamically_significant_chd",
+            "chronic_lung_disease_of_prematurity"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "actiq": {
     "drug": {

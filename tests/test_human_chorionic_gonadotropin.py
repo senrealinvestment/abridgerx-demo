@@ -47,11 +47,11 @@ def test_catalog_and_source():
     catalog = load_rule_pack_catalog()
     assert catalog[SLUG] == PACK
     assert catalog['leuprolide']['encoding_status'] == 'partial'
-    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 189
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 9
+    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 190
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 8
     assert json.loads((BASE/'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f:
         assert json.load(f) == catalog
     for name in ['ENCODING_STATUS.json','ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()
-    assert json.loads((BASE/'ENCODING_STATUS.json').read_text())['next_candidate'] == '2024-2025-season'
+    assert json.loads((BASE/'ENCODING_STATUS.json').read_text())['next_candidate'] == None

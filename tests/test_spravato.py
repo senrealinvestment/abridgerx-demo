@@ -82,12 +82,12 @@ def test_catalog():
     assert json.loads((BASE/'rule_packs_all.json').read_text())==catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f: assert json.load(f)==catalog
     assert len(catalog)==198
-    assert sum(v['encoding_status']=='partial' for v in catalog.values())==189
-    assert sum(v['encoding_status']=='text_only' for v in catalog.values())== 9
+    assert sum(v['encoding_status']=='partial' for v in catalog.values())==190
+    assert sum(v['encoding_status']=='text_only' for v in catalog.values())== 8
     for d in [BASE,BASE.parent]:
         status=json.loads((d/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'],status['encoding_text_only'])==(189,9)
-        assert status['next_candidate']=='2024-2025-season'
+        assert (status['encoding_partial'],status['encoding_text_only'])==(190,8)
+        assert status['next_candidate']==None
         assert status['partial_slugs']==sorted(k for k,v in catalog.items() if v['encoding_status']=='partial')
     for name in ['ENCODING_STATUS.json','ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes()==(BASE.parent/name).read_bytes()

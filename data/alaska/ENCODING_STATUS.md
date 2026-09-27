@@ -22,8 +22,8 @@ Source hub: https://health.alaska.gov/en/education/prior-authorization-medicatio
 - Criteria text JSON files: **198**
 - Rule packs: **198**
 - Fully encoded (all clauses as predicates): **0**
-- Partially encoded: **87** (Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
-- Text-only (requires_pa, encoding pending): **111**
+- Partially encoded: **88** (Imcivree, Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
+- Text-only (requires_pa, encoding pending): **110**
 - Scanned image criteria PDFs (OCR needed): **7**
 
 ## Blockers
@@ -55,7 +55,7 @@ Hemlibra encodes one closed hemophilia A prophylaxis indication (with or without
 
 ## Next encoding candidates
 
-Next candidate: `vyndaqel`. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
+Next candidate: `fintepla`. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
 
 Soliris/Ultomiris encodes aHUS, PNH, gMG and Soliris-only NMOSD, indication-specific ages and clinical gates, and shared vaccination, specialty and REMS requirements. Duration, renewal, quantity and cautions remain manual review.
 
@@ -167,4 +167,6 @@ Tzield (`tzield`, teplizumab-mzwv), effective 2023-03-01, encodes Stage 2 type 1
 
 Firdapse / Ruzurgi (`firdapse`, amifampridine), effective 2023-01-02, encodes closed LEMS indication, shared age ≥6, neurologist/neuromuscular specialist prescribing or consultation, no seizure history, medication monitoring agreement, and moderate to severe weakness interfering with daily functions. Product-specific age nuance, cautions, initial ≤3 months, renewal ≤12 months with positive muscle strength response AND no seizures, and product-specific quantity limits remain notes for manual review. Catalog: **86 partial / 112 text_only** (198 total). Next encoding candidate: `oxbryta`.
 
-Oxbryta (`oxbryta`, voxelotor), effective 2022-11-01, encodes closed SCD indication, age ≥4, hematologist/sickle-cell specialist prescribing or consultation, at least one crisis in 6 months, baseline hemoglobin, hydroxyurea failure or contraindication for at least 3 months, and prophylactic transfusion/Adakveo exclusions. Cautions, initial ≤3 months, renewal ≤12 months with increased hemoglobin and/or decreased crisis emergencies, and quantity remain notes for manual review. Catalog: **87 partial / 111 text_only** (198 total). Next encoding candidate: `imcivree`.
+Oxbryta (`oxbryta`, voxelotor), effective 2022-11-01, encodes closed SCD indication, age ≥4, hematologist/sickle-cell specialist prescribing or consultation, at least one crisis in 6 months, baseline hemoglobin, hydroxyurea failure or contraindication for at least 3 months, and prophylactic transfusion/Adakveo exclusions. Cautions, initial ≤3 months, renewal ≤12 months with increased hemoglobin and/or decreased crisis emergencies, and quantity remain notes for manual review. Catalog: **88 partial / 110 text_only** (198 total). Next encoding candidate: `fintepla`.
+
+Imcivree encodes two closed obesity indications with shared age ≥2, specialty, baseline weight/BMI, mental health and denial gates; deficiency-only genetic testing, variant classification, weight eligibility and sexual adverse reaction counseling; and BBS-only weight eligibility and chart-note exclusion of other causes. Documentation, duration, reauthorization, quantity and cautions remain notes for manual review.

@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 87,
-  "encoding_text_only": 111,
+  "encoding_partial": 88,
+  "encoding_text_only": 110,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -50,6 +50,7 @@
     "hemgenix",
     "hemlibra",
     "hympavzi",
+    "imcivree",
     "infliximab",
     "kalydeco",
     "kesimpta",
@@ -95,5 +96,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "imcivree"
+  "next_candidate": "fintepla"
 }

@@ -15539,7 +15539,8 @@
   "imcivree": {
     "drug": {
       "name": "Imcivree",
-      "therapeutic_class": "metabolic"
+      "therapeutic_class": "mc4-receptor-agonist",
+      "generic_name": "setmelanotide"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -15550,17 +15551,545 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosed obesity due to a qualifying deficiency or syndrome",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "pomc_pcsk1_lepr_deficiency_obesity",
+            "bardet_biedl_syndrome_obesity"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 2 years old",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 2
+        }
+      },
+      {
+        "id": "qualifying_genetic_testing",
+        "text": "Genetic testing demonstrates homozygous or compound heterozygous mutations in POMC, PCSK1, or LEPR",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "qualifying_genetic_testing"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "qualifying_genetic_testing",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pomc_pcsk1_lepr_deficiency_obesity"
+          ]
+        }
+      },
+      {
+        "id": "qualifying_variant",
+        "text": "Genetic variant is pathogenic, likely pathogenic, or of uncertain significance (VUS)",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "qualifying_variant"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "qualifying_variant",
+          "values": [
+            "pathogenic",
+            "likely_pathogenic",
+            "vus"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pomc_pcsk1_lepr_deficiency_obesity"
+          ]
+        }
+      },
+      {
+        "id": "deficiency_weight_eligibility",
+        "text": "Select an applicable age and weight eligibility branch",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "deficiency_weight_eligibility"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "deficiency_weight_eligibility",
+          "values": [
+            "adult_bmi_gte_30",
+            "age_6_17_weight_gte_95th",
+            "age_2_6_weight_gte_15kg_97th"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pomc_pcsk1_lepr_deficiency_obesity"
+          ]
+        }
+      },
+      {
+        "id": "bbs_weight_eligibility",
+        "text": "Select an applicable age and weight eligibility branch",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "bbs_weight_eligibility"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "bbs_weight_eligibility",
+          "values": [
+            "adult_bmi_gte_30",
+            "age_2_17_weight_gte_15kg_97th"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "bardet_biedl_syndrome_obesity"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with an endocrinologist, geneticist, or physician specializing in metabolic disorders",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "endocrinologist",
+            "geneticist",
+            "metabolic_specialist"
+          ]
+        }
+      },
+      {
+        "id": "baseline_weight_bmi_documented",
+        "text": "Prescriber has documented baseline weight and BMI",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "baseline_weight_bmi_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_weight_bmi_documented",
+          "value": true
+        }
+      },
+      {
+        "id": "not_suicidal_no_uncontrolled_depression",
+        "text": "Prescriber verifies patient is not suicidal and has no uncontrolled depression",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "not_suicidal_no_uncontrolled_depression"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_suicidal_no_uncontrolled_depression",
+          "value": true
+        }
+      },
+      {
+        "id": "sexual_adverse_reaction_counseling",
+        "text": "Prescriber has counseled the patient regarding potential sexual adverse reactions",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "sexual_adverse_reaction_counseling"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "sexual_adverse_reaction_counseling",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pomc_pcsk1_lepr_deficiency_obesity"
+          ]
+        }
+      },
+      {
+        "id": "other_obesity_causes_ruled_out",
+        "text": "Submitted chart notes establish that other causes of obesity have been ruled out",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "other_obesity_causes_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "other_obesity_causes_ruled_out",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "bardet_biedl_syndrome_obesity"
+          ]
+        }
+      },
+      {
+        "id": "no_benign_deficiency_variants",
+        "text": "No obesity due to suspected POMC, PCSK1, or LEPR deficiency with benign or likely benign variants",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "no_benign_deficiency_variants"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_benign_deficiency_variants",
+          "value": true
+        }
+      },
+      {
+        "id": "no_unrelated_obesity",
+        "text": "Not used for other obesity unrelated to BBS or POMC, PCSK1, or LEPR deficiency, including other genetic syndromes or general (polygenic) obesity",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "no_unrelated_obesity"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_unrelated_obesity",
+          "value": true
+        }
+      },
+      {
+        "id": "no_moderate_severe_esrd",
+        "text": "No moderate, severe, or end stage renal disease",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "no_moderate_severe_esrd"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_moderate_severe_esrd",
+          "value": true
+        }
+      },
+      {
+        "id": "not_pregnant_or_breastfeeding",
+        "text": "Patient is not pregnant or breastfeeding",
+        "citation": "https://health.alaska.gov/media/awuf0ck2/imcivree_criteria_update_2026.pdf",
+        "required_facts": [
+          "not_pregnant_or_breastfeeding"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_pregnant_or_breastfeeding",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Imcivree (setmelanotide). Version 2; Original: 2/27/2021; Updated: 12/23/2025; Effective: 03/01/2026.",
+      "Closed indications attest to diagnosis. Indication-specific approval gates and shared denial exclusions are encoded. Weight eligibility selects attest to the entire age/weight branch; numeric weight, BMI and percentile verification require manual review. Source age bands 6\u201317 and 2\u20136 overlap at age 6 and are preserved as written. FDA indications describe deficiency variants determined by an FDA-approved test.",
+      "Cautions (notes only): monitor disturbances in sexual arousal, depression and suicidal ideation; generalized increased skin pigmentation and darkening of pre-existing nevi may occur. Benzyl alcohol-preserved drugs can cause serious and fatal reactions including gasping syndrome in neonates and low birth weight infants.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months if current weight or BMI is documented and weight loss \u22655% of baseline body weight OR \u22655% of baseline BMI is achieved.",
+      "Quantity limit (notes only): 9 ml per month.",
+      "Remaining gaps: documentation verification, duration, reauthorization response, quantity enforcement and cautions require manual review. PDL status unknown; source is silent."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosed obesity due to a qualifying deficiency or syndrome",
+        "options": [
+          {
+            "value": "pomc_pcsk1_lepr_deficiency_obesity",
+            "label": "POMC, PCSK1, or LEPR deficiency obesity"
+          },
+          {
+            "value": "bardet_biedl_syndrome_obesity",
+            "label": "Bardet-Biedl syndrome obesity"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 2 years old",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 2 years"
+          },
+          {
+            "value": "2",
+            "label": "2 years or older"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "qualifying_genetic_testing": {
+        "type": "select",
+        "label": "Genetic testing demonstrates homozygous or compound heterozygous mutations in POMC, PCSK1, or LEPR",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pomc_pcsk1_lepr_deficiency_obesity"
+          ]
+        }
+      },
+      "qualifying_variant": {
+        "type": "select",
+        "label": "Genetic variant is pathogenic, likely pathogenic, or of uncertain significance (VUS)",
+        "options": [
+          {
+            "value": "pathogenic",
+            "label": "Pathogenic"
+          },
+          {
+            "value": "likely_pathogenic",
+            "label": "Likely pathogenic"
+          },
+          {
+            "value": "vus",
+            "label": "Variant of uncertain significance (VUS)"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying variant"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pomc_pcsk1_lepr_deficiency_obesity"
+          ]
+        }
+      },
+      "deficiency_weight_eligibility": {
+        "type": "select",
+        "label": "Select an applicable age and weight eligibility branch",
+        "options": [
+          {
+            "value": "adult_bmi_gte_30",
+            "label": "Age \u226518: BMI \u226530 kg/m\u00b2"
+          },
+          {
+            "value": "age_6_17_weight_gte_95th",
+            "label": "Age 6\u201317: weight \u226595th percentile for age and sex"
+          },
+          {
+            "value": "age_2_6_weight_gte_15kg_97th",
+            "label": "Age 2\u20136: weight \u226515 kg AND \u226597th percentile for age and sex"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying branch"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pomc_pcsk1_lepr_deficiency_obesity"
+          ]
+        }
+      },
+      "bbs_weight_eligibility": {
+        "type": "select",
+        "label": "Select an applicable age and weight eligibility branch",
+        "options": [
+          {
+            "value": "adult_bmi_gte_30",
+            "label": "Age \u226518: BMI \u226530 kg/m\u00b2"
+          },
+          {
+            "value": "age_2_17_weight_gte_15kg_97th",
+            "label": "Age 2\u201317: weight \u226515 kg AND \u226597th percentile for age and sex"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying branch"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "bardet_biedl_syndrome_obesity"
+          ]
+        }
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with an endocrinologist, geneticist, or physician specializing in metabolic disorders",
+        "options": [
+          {
+            "value": "endocrinologist",
+            "label": "Endocrinologist or consultation"
+          },
+          {
+            "value": "geneticist",
+            "label": "Geneticist or consultation"
+          },
+          {
+            "value": "metabolic_specialist",
+            "label": "Metabolic specialist or consultation"
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ]
+      },
+      "baseline_weight_bmi_documented": {
+        "type": "select",
+        "label": "Prescriber has documented baseline weight and BMI",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_suicidal_no_uncontrolled_depression": {
+        "type": "select",
+        "label": "Prescriber verifies patient is not suicidal and has no uncontrolled depression",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "sexual_adverse_reaction_counseling": {
+        "type": "select",
+        "label": "Prescriber has counseled the patient regarding potential sexual adverse reactions",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "pomc_pcsk1_lepr_deficiency_obesity"
+          ]
+        }
+      },
+      "other_obesity_causes_ruled_out": {
+        "type": "select",
+        "label": "Submitted chart notes establish that other causes of obesity have been ruled out",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "bardet_biedl_syndrome_obesity"
+          ]
+        }
+      },
+      "no_benign_deficiency_variants": {
+        "type": "select",
+        "label": "No obesity due to suspected POMC, PCSK1, or LEPR deficiency with benign or likely benign variants",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_unrelated_obesity": {
+        "type": "select",
+        "label": "Not used for other obesity unrelated to BBS or POMC, PCSK1, or LEPR deficiency, including other genetic syndromes or general (polygenic) obesity",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_moderate_severe_esrd": {
+        "type": "select",
+        "label": "No moderate, severe, or end stage renal disease",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_pregnant_or_breastfeeding": {
+        "type": "select",
+        "label": "Patient is not pregnant or breastfeeding",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "infliximab": {
     "drug": {

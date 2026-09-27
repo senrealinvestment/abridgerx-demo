@@ -1089,7 +1089,8 @@
   "benlysta": {
     "drug": {
       "name": "Benlysta",
-      "therapeutic_class": "other"
+      "therapeutic_class": "other",
+      "generic_name": "belimumab"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -1100,18 +1101,438 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Qualifying diagnosis attested by the closed indication selection",
+        "citation": "https://health.alaska.gov/media/1vjp4ova/202209-benlysta_criteria_2022.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "systemic_lupus_erythematosus",
+            "lupus_nephritis"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient is at least 5 years old",
+        "citation": "https://health.alaska.gov/media/1vjp4ova/202209-benlysta_criteria_2022.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 5
+        }
+      },
+      {
+        "id": "age_route_appropriate",
+        "text": "Ages 5\u201317: IV infusion only; ages 18 and older: IV infusion or subcutaneous injection",
+        "citation": "https://health.alaska.gov/media/1vjp4ova/202209-benlysta_criteria_2022.pdf",
+        "required_facts": [
+          "age_years",
+          "administration_route"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 18
+                },
+                {
+                  "op": "in",
+                  "fact": "administration_route",
+                  "values": [
+                    "iv_infusion",
+                    "subcutaneous"
+                  ]
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 5
+                },
+                {
+                  "op": "eq",
+                  "fact": "administration_route",
+                  "value": "iv_infusion"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty_sle",
+        "text": "Prescribed by or in consultation with a rheumatologist, immunologist, nephrologist, neurologist, or dermatologist",
+        "citation": "https://health.alaska.gov/media/1vjp4ova/202209-benlysta_criteria_2022.pdf",
+        "required_facts": [
+          "prescriber_specialty_sle"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty_sle",
+          "value": "rheum_immuno_nephro_neuro_derm_or_consult"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "systemic_lupus_erythematosus"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty_ln",
+        "text": "Prescribed by or in consultation with a nephrologist or rheumatologist",
+        "citation": "https://health.alaska.gov/media/1vjp4ova/202209-benlysta_criteria_2022.pdf",
+        "required_facts": [
+          "prescriber_specialty_ln"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty_ln",
+          "value": "nephrologist_or_rheumatologist_or_consult"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "lupus_nephritis"
+          ]
+        }
+      },
+      {
+        "id": "sle_autoantibody",
+        "text": "Positive antinuclear antibodies (ANA) and/or anti-double-stranded DNA (anti-dsDNA) antibodies",
+        "citation": "https://health.alaska.gov/media/1vjp4ova/202209-benlysta_criteria_2022.pdf",
+        "required_facts": [
+          "sle_autoantibody"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "sle_autoantibody",
+          "value": "ana_and_or_anti_dsdna_positive"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "systemic_lupus_erythematosus"
+          ]
+        }
+      },
+      {
+        "id": "ln_biopsy_class",
+        "text": "ISN/RPS biopsy-proven active Class III or IV lupus nephritis alone or in combination with Class V",
+        "citation": "https://health.alaska.gov/media/1vjp4ova/202209-benlysta_criteria_2022.pdf",
+        "required_facts": [
+          "ln_biopsy_class"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ln_biopsy_class",
+          "value": "isn_rps_class_iii_or_iv_alone_or_with_v"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "lupus_nephritis"
+          ]
+        }
+      },
+      {
+        "id": "sle_standard_therapy",
+        "text": "Currently receiving standard immunosuppressive therapy (hydroxychloroquine, chloroquine, prednisone, azathioprine, methotrexate) or has a contraindication to standard therapy",
+        "citation": "https://health.alaska.gov/media/1vjp4ova/202209-benlysta_criteria_2022.pdf",
+        "required_facts": [
+          "sle_standard_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "sle_standard_therapy",
+          "value": "receiving_or_ci"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "systemic_lupus_erythematosus"
+          ]
+        }
+      },
+      {
+        "id": "ln_standard_therapy",
+        "text": "Currently receiving standard immunosuppressive therapy (azathioprine, mycophenolate mofetil, cyclophosphamide) or has a contraindication to standard therapy",
+        "citation": "https://health.alaska.gov/media/1vjp4ova/202209-benlysta_criteria_2022.pdf",
+        "required_facts": [
+          "ln_standard_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ln_standard_therapy",
+          "value": "receiving_or_ci"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "lupus_nephritis"
+          ]
+        }
+      },
+      {
+        "id": "not_concomitant_biologic_dmard_or_lupkynis",
+        "text": "Not taking concomitantly a biologic DMARD or Lupkynis",
+        "citation": "https://health.alaska.gov/media/1vjp4ova/202209-benlysta_criteria_2022.pdf",
+        "required_facts": [
+          "not_concomitant_biologic_dmard_or_lupkynis"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concomitant_biologic_dmard_or_lupkynis",
+          "value": true
+        }
+      },
+      {
+        "id": "no_severe_active_cns_lupus",
+        "text": "No severe active central nervous system lupus",
+        "citation": "https://health.alaska.gov/media/1vjp4ova/202209-benlysta_criteria_2022.pdf",
+        "required_facts": [
+          "no_severe_active_cns_lupus"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_severe_active_cns_lupus",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Benlysta (belimumab), a B-lymphocyte stimulator (BLyS)-specific inhibitor. Version 2; Original: 12/20/21; Effective: 11/1/22.",
+      "Closed indication selection attests to diagnosis. Both approval sections allow ages 5\u201317 with IV infusions only and ages 18 and older with IV or subcutaneous administration. The FDA summary describes lupus nephritis in adults; the pediatric IV path follows the explicit Alaska approval criteria. Standard therapy or contraindication is separately attested for each indication.",
+      "Duration (notes only): initial approval up to 4 months; reauthorization up to 12 months if the prescriber documents disease improvement.",
+      "Quantity and dosing (manual review): IV 120 mg or 400 mg vials, 10 mg/kg at weeks 0, 2, 4 then every 4 weeks. Subcutaneous 200 mg/ml prefilled autoinjector/syringe for active lupus nephritis: 8 injections in the first 28 days, then 4 injections per 28 days. HCPCS: J0490.",
+      "Cautions (notes only): use caution with severe or chronic infections; serious and sometimes fatal infections have occurred. Evaluate new or worsening neurological signs and symptoms for progressive multifocal leukoencephalopathy (PML). Consider premedication for infusion and hypersensitivity reactions. Assess depression and suicidality before treatment and monitor during treatment.",
+      "FDA limitations: efficacy has not been evaluated in severe active CNS lupus; not studied with other biologics and use is not recommended in these situations. Subcutaneous dosing has not been evaluated and is not approved below age 18 in this source.",
+      "PDL status unknown: source is silent. Therapeutic class retains the stub value other. No encoded close SLE/LN alternatives are linked.",
+      "Remaining gaps: duration, reauthorization disease-improvement documentation, weight-based dosing, quantity enforcement and cautions require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis",
+        "options": [
+          {
+            "value": "systemic_lupus_erythematosus",
+            "label": "Active autoantibody-positive systemic lupus erythematosus receiving standard therapy (age 5 years or older)"
+          },
+          {
+            "value": "lupus_nephritis",
+            "label": "Active lupus nephritis receiving standard therapy (adults; pediatric IV path per Alaska approval criteria)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Age",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 5 years"
+          },
+          {
+            "value": "5",
+            "label": "5\u201317 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "administration_route": {
+        "type": "select",
+        "label": "Administration route",
+        "options": [
+          {
+            "value": "iv_infusion",
+            "label": "Intravenous infusion"
+          },
+          {
+            "value": "subcutaneous",
+            "label": "Subcutaneous injection"
+          }
+        ]
+      },
+      "prescriber_specialty_sle": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a rheumatologist, immunologist, nephrologist, neurologist, or dermatologist",
+        "options": [
+          {
+            "value": "rheum_immuno_nephro_neuro_derm_or_consult",
+            "label": "Prescribed by or in consultation with a rheumatologist, immunologist, nephrologist, neurologist, or dermatologist"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "systemic_lupus_erythematosus"
+          ]
+        }
+      },
+      "prescriber_specialty_ln": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a nephrologist or rheumatologist",
+        "options": [
+          {
+            "value": "nephrologist_or_rheumatologist_or_consult",
+            "label": "Prescribed by or in consultation with a nephrologist or rheumatologist"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "lupus_nephritis"
+          ]
+        }
+      },
+      "sle_autoantibody": {
+        "type": "select",
+        "label": "Positive antinuclear antibodies (ANA) and/or anti-double-stranded DNA (anti-dsDNA) antibodies",
+        "options": [
+          {
+            "value": "ana_and_or_anti_dsdna_positive",
+            "label": "Positive antinuclear antibodies (ANA) and/or anti-double-stranded DNA (anti-dsDNA) antibodies"
+          },
+          {
+            "value": "negative_or_not_documented",
+            "label": "Negative or not documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "systemic_lupus_erythematosus"
+          ]
+        }
+      },
+      "ln_biopsy_class": {
+        "type": "select",
+        "label": "ISN/RPS biopsy-proven active Class III or IV lupus nephritis alone or in combination with Class V",
+        "options": [
+          {
+            "value": "isn_rps_class_iii_or_iv_alone_or_with_v",
+            "label": "ISN/RPS biopsy-proven active Class III or IV lupus nephritis alone or in combination with Class V"
+          },
+          {
+            "value": "other_or_not_documented",
+            "label": "Other class or not documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "lupus_nephritis"
+          ]
+        }
+      },
+      "sle_standard_therapy": {
+        "type": "select",
+        "label": "Currently receiving standard immunosuppressive therapy (hydroxychloroquine, chloroquine, prednisone, azathioprine, methotrexate) or has a contraindication to standard therapy",
+        "options": [
+          {
+            "value": "receiving_or_ci",
+            "label": "Currently receiving standard immunosuppressive therapy (hydroxychloroquine, chloroquine, prednisone, azathioprine, methotrexate) or has a contraindication to standard therapy"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "systemic_lupus_erythematosus"
+          ]
+        }
+      },
+      "ln_standard_therapy": {
+        "type": "select",
+        "label": "Currently receiving standard immunosuppressive therapy (azathioprine, mycophenolate mofetil, cyclophosphamide) or has a contraindication to standard therapy",
+        "options": [
+          {
+            "value": "receiving_or_ci",
+            "label": "Currently receiving standard immunosuppressive therapy (azathioprine, mycophenolate mofetil, cyclophosphamide) or has a contraindication to standard therapy"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "lupus_nephritis"
+          ]
+        }
+      },
+      "not_concomitant_biologic_dmard_or_lupkynis": {
+        "type": "select",
+        "label": "Not taking concomitantly a biologic DMARD or Lupkynis",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_severe_active_cns_lupus": {
+        "type": "select",
+        "label": "No severe active central nervous system lupus",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": null,
+      "notes": "Quantity and dosing (manual review): IV 120 mg or 400 mg vials, 10 mg/kg at weeks 0, 2, 4 then every 4 weeks. Subcutaneous 200 mg/ml prefilled autoinjector/syringe for active lupus nephritis: 8 injections in the first 28 days, then 4 injections per 28 days. HCPCS: J0490."
+    }
   },
   "beqvez-tm": {
     "drug": {

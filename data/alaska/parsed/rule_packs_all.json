@@ -32639,7 +32639,8 @@
   "qutenza": {
     "drug": {
       "name": "Qutenza",
-      "therapeutic_class": "other"
+      "therapeutic_class": "trpv1-agonist",
+      "generic_name": "capsaicin"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -32650,17 +32651,248 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "age_years",
+        "text": "Patient age at least 18",
+        "citation": "https://health.alaska.gov/media/s03hd5wq/qutenza_pa_2024.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "indication",
+        "text": "Neuropathic pain diagnosis",
+        "citation": "https://health.alaska.gov/media/s03hd5wq/qutenza_pa_2024.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "neuropathic_pain_postherpetic_neuralgia",
+            "neuropathic_pain_dpn_of_the_feet"
+          ]
+        }
+      },
+      {
+        "id": "gabapentin_or_pregabalin_trial",
+        "text": "Gabapentin or pregabalin: tried and failed for at least 4 weeks at a recognized therapeutic dose or contraindicated",
+        "citation": "https://health.alaska.gov/media/s03hd5wq/qutenza_pa_2024.pdf",
+        "required_facts": [
+          "gabapentin_or_pregabalin_trial"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "gabapentin_or_pregabalin_trial",
+          "values": [
+            "failed_at_least_4_weeks_therapeutic_dose",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "tca_trial",
+        "text": "Any tricyclic antidepressant: tried and failed for at least 4 weeks at a recognized therapeutic dose or contraindicated",
+        "citation": "https://health.alaska.gov/media/s03hd5wq/qutenza_pa_2024.pdf",
+        "required_facts": [
+          "tca_trial"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "tca_trial",
+          "values": [
+            "failed_at_least_4_weeks_therapeutic_dose",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "topical_diclofenac_trial",
+        "text": "Topical diclofenac: tried and failed for at least 4 weeks at a recognized therapeutic dose or contraindicated",
+        "citation": "https://health.alaska.gov/media/s03hd5wq/qutenza_pa_2024.pdf",
+        "required_facts": [
+          "topical_diclofenac_trial"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "topical_diclofenac_trial",
+          "values": [
+            "failed_at_least_4_weeks_therapeutic_dose",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "lidocaine_patch_5_percent_trial",
+        "text": "Lidocaine patch 5%: tried and failed for at least 4 weeks at a recognized therapeutic dose or contraindicated",
+        "citation": "https://health.alaska.gov/media/s03hd5wq/qutenza_pa_2024.pdf",
+        "required_facts": [
+          "lidocaine_patch_5_percent_trial"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "lidocaine_patch_5_percent_trial",
+          "values": [
+            "failed_at_least_4_weeks_therapeutic_dose",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "hcp_only_application",
+        "text": "Product will only be applied by a health care professional",
+        "citation": "https://health.alaska.gov/media/s03hd5wq/qutenza_pa_2024.pdf",
+        "required_facts": [
+          "hcp_only_application"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "hcp_only_application",
+          "values": [
+            "confirmed"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Qutenza (capsaicin) criteria, effective 2024-03-01.",
+      "Encoded: adult age, closed PHN or DPN of the feet neuropathic pain indications, all four prior-therapy categories and HCP-only application. Each prior-therapy attestation requires failure for at least 4 weeks at a recognized therapeutic dose or contraindication. Gabapentin or pregabalin satisfies the first category. Intolerance alone is not an exception. Denial is failure to meet approval criteria; no additive clinical denials.",
+      "Cautions: only a licensed health care professional may apply Qutenza; not appropriate for self-administration. Unintended capsaicin exposure can cause severe irritation; do not use on or near eyes or mucous membranes. Transient increases in blood pressure may occur during and immediately following treatment. Substantial burning and pain may result from application. Reductions in sensory function have been reported.",
+      "Duration (notes only): initial approval 1 month; reauthorization up to 12 months.",
+      "Quantity limit (notes only): up to 4 patches per application; dose may be repeated up to once every 90 days. No numeric quantity enforcement.",
+      "PDL status unknown. Documentation verification, cautions, duration, reauthorization and quantity limits require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "age_years": {
+        "type": "select",
+        "label": "Patient age at least 18",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18 or older"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "indication": {
+        "type": "select",
+        "label": "Neuropathic pain diagnosis",
+        "options": [
+          {
+            "value": "neuropathic_pain_postherpetic_neuralgia",
+            "label": "Neuropathic pain associated with postherpetic neuralgia (PHN)"
+          },
+          {
+            "value": "neuropathic_pain_dpn_of_the_feet",
+            "label": "Neuropathic pain associated with diabetic peripheral neuropathy (DPN) of the feet"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "gabapentin_or_pregabalin_trial": {
+        "type": "select",
+        "label": "Gabapentin or pregabalin: tried and failed for at least 4 weeks at a recognized therapeutic dose or contraindicated",
+        "options": [
+          {
+            "value": "failed_at_least_4_weeks_therapeutic_dose",
+            "label": "Tried and failed for at least 4 weeks at a recognized therapeutic dose"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindication"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "tca_trial": {
+        "type": "select",
+        "label": "Any tricyclic antidepressant: tried and failed for at least 4 weeks at a recognized therapeutic dose or contraindicated",
+        "options": [
+          {
+            "value": "failed_at_least_4_weeks_therapeutic_dose",
+            "label": "Tried and failed for at least 4 weeks at a recognized therapeutic dose"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindication"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "topical_diclofenac_trial": {
+        "type": "select",
+        "label": "Topical diclofenac: tried and failed for at least 4 weeks at a recognized therapeutic dose or contraindicated",
+        "options": [
+          {
+            "value": "failed_at_least_4_weeks_therapeutic_dose",
+            "label": "Tried and failed for at least 4 weeks at a recognized therapeutic dose"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindication"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "lidocaine_patch_5_percent_trial": {
+        "type": "select",
+        "label": "Lidocaine patch 5%: tried and failed for at least 4 weeks at a recognized therapeutic dose or contraindicated",
+        "options": [
+          {
+            "value": "failed_at_least_4_weeks_therapeutic_dose",
+            "label": "Tried and failed for at least 4 weeks at a recognized therapeutic dose"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindication"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "hcp_only_application": {
+        "type": "select",
+        "label": "Product will only be applied by a health care professional",
+        "options": [
+          {
+            "value": "confirmed",
+            "label": "Confirmed: health care professional application only"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      }
+    }
   },
   "raft": {
     "drug": {

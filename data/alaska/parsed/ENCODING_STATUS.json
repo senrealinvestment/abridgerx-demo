@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 125,
-  "encoding_text_only": 73,
+  "encoding_partial": 126,
+  "encoding_text_only": 72,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -92,6 +92,7 @@
     "palynziq",
     "praluent",
     "prolia",
+    "qutenza",
     "raft",
     "redemplo",
     "rezdiffratm",
@@ -133,5 +134,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "qutenza"
+  "next_candidate": "inhaled-prostacycline-mimetic"
 }

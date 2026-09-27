@@ -17824,7 +17824,8 @@
   "krystexxa": {
     "drug": {
       "name": "Krystexxa",
-      "therapeutic_class": "other"
+      "therapeutic_class": "uricase",
+      "generic_name": "pegloticase"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -17835,18 +17836,314 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Chronic gout in adults refractory to conventional therapy.",
+        "citation": "https://health.alaska.gov/media/1scmdpo2/20220415-krystexxa_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "chronic_gout_refractory"
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 18 years of age or older.",
+        "citation": "https://health.alaska.gov/media/1scmdpo2/20220415-krystexxa_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a rheumatologist or nephrologist.",
+        "citation": "https://health.alaska.gov/media/1scmdpo2/20220415-krystexxa_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "rheumatologist_or_nephrologist_or_consult"
+        }
+      },
+      {
+        "id": "chronic_gout_definition",
+        "text": "Chronic gout defined by at least one qualifying manifestation.",
+        "citation": "https://health.alaska.gov/media/1scmdpo2/20220415-krystexxa_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "chronic_gout_definition"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "chronic_gout_definition",
+          "values": [
+            "three_or_more_flares_18mo",
+            "at_least_one_tophus",
+            "chronic_gouty_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "baseline_sua",
+        "text": "Baseline serum uric acid is at least 6 mg/dL.",
+        "citation": "https://health.alaska.gov/media/1scmdpo2/20220415-krystexxa_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_sua"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_sua",
+          "value": "ge_6_mg_dl"
+        }
+      },
+      {
+        "id": "g6pd_screened",
+        "text": "Patient has been screened for G6PD deficiency.",
+        "citation": "https://health.alaska.gov/media/1scmdpo2/20220415-krystexxa_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "g6pd_screened"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "g6pd_screened",
+          "value": true
+        }
+      },
+      {
+        "id": "allopurinol_step",
+        "text": "Allopurinol: contraindication, intolerance, or treatment failure after 3 months of therapy (both drugs required).",
+        "citation": "https://health.alaska.gov/media/1scmdpo2/20220415-krystexxa_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "allopurinol_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "allopurinol_step",
+          "values": [
+            "failure_after_ge_3_months",
+            "contraindication",
+            "intolerance"
+          ]
+        }
+      },
+      {
+        "id": "febuxostat_step",
+        "text": "Febuxostat: contraindication, intolerance, or treatment failure after 3 months of therapy (both drugs required).",
+        "citation": "https://health.alaska.gov/media/1scmdpo2/20220415-krystexxa_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "febuxostat_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "febuxostat_step",
+          "values": [
+            "failure_after_ge_3_months",
+            "contraindication",
+            "intolerance"
+          ]
+        }
+      },
+      {
+        "id": "flare_prophylaxis",
+        "text": "Currently (within the last 30 days) receiving gout flare prophylaxis with NSAIDs, colchicine, or both, or contraindication to use.",
+        "citation": "https://health.alaska.gov/media/1scmdpo2/20220415-krystexxa_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "flare_prophylaxis"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "flare_prophylaxis",
+          "values": [
+            "nsaid_within_30d",
+            "colchicine_within_30d",
+            "both_within_30d",
+            "contraindication"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Krystexxa (pegloticase), a PEGylated uric acid specific enzyme. Version 1; Original 2/17/2022; Approval 4/15/2022; Effective 6/1/2022.",
+      "Encoded: closed refractory chronic gout indication and approval criteria 1-7. Both allopurinol and febuxostat must independently qualify: contraindication, intolerance, or treatment failure after 3 months of therapy. Denial criterion is failure to meet approval criteria.",
+      "Cautions (notes only): anaphylaxis can occur with any infusion; patients should be pre-medicated and monitored. Screen patients at risk for G6PD deficiency; screening is encoded, not a negative-result requirement. Gout flare prophylaxis is recommended for at least the first 6 months of therapy. Congestive heart failure exacerbation may occur; monitor accordingly.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months if the prescriber documents positive clinical response to therapy.",
+      "Quantity (notes only): one 8 mg IV infusion every two weeks (16 mg per month, 2 vials); HCPCS J2507, maximum 16 billable units. max_units is null; quantity is not evaluated.",
+      "Documentation verification, safety monitoring, duration, reauthorization response, and quantity limits require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Chronic gout in adults refractory to conventional therapy.",
+        "options": [
+          {
+            "value": "chronic_gout_refractory",
+            "label": "Chronic gout refractory to conventional therapy"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older.",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a rheumatologist or nephrologist.",
+        "options": [
+          {
+            "value": "rheumatologist_or_nephrologist_or_consult",
+            "label": "Rheumatologist or nephrologist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "chronic_gout_definition": {
+        "type": "select",
+        "label": "Chronic gout defined by at least one qualifying manifestation.",
+        "options": [
+          {
+            "value": "three_or_more_flares_18mo",
+            "label": "Three or more flares in the past 18 months"
+          },
+          {
+            "value": "at_least_one_tophus",
+            "label": "At least one gout tophus"
+          },
+          {
+            "value": "chronic_gouty_arthritis",
+            "label": "Chronic gouty arthritis"
+          },
+          {
+            "value": "none",
+            "label": "None of the qualifying manifestations"
+          }
+        ]
+      },
+      "baseline_sua": {
+        "type": "select",
+        "label": "Baseline serum uric acid is at least 6 mg/dL.",
+        "options": [
+          {
+            "value": "ge_6_mg_dl",
+            "label": "At least 6 mg/dL"
+          },
+          {
+            "value": "lt_6_mg_dl",
+            "label": "Below 6 mg/dL"
+          }
+        ]
+      },
+      "g6pd_screened": {
+        "type": "select",
+        "label": "Patient has been screened for G6PD deficiency.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Screened"
+          },
+          {
+            "value": "no",
+            "label": "Not screened"
+          }
+        ]
+      },
+      "allopurinol_step": {
+        "type": "select",
+        "label": "Allopurinol: contraindication, intolerance, or treatment failure after 3 months of therapy (both drugs required).",
+        "options": [
+          {
+            "value": "failure_after_ge_3_months",
+            "label": "Treatment failure after at least 3 months"
+          },
+          {
+            "value": "contraindication",
+            "label": "Contraindication"
+          },
+          {
+            "value": "intolerance",
+            "label": "Intolerance"
+          },
+          {
+            "value": "not_met",
+            "label": "No qualifying exception or failure after 3 months"
+          }
+        ]
+      },
+      "febuxostat_step": {
+        "type": "select",
+        "label": "Febuxostat: contraindication, intolerance, or treatment failure after 3 months of therapy (both drugs required).",
+        "options": [
+          {
+            "value": "failure_after_ge_3_months",
+            "label": "Treatment failure after at least 3 months"
+          },
+          {
+            "value": "contraindication",
+            "label": "Contraindication"
+          },
+          {
+            "value": "intolerance",
+            "label": "Intolerance"
+          },
+          {
+            "value": "not_met",
+            "label": "No qualifying exception or failure after 3 months"
+          }
+        ]
+      },
+      "flare_prophylaxis": {
+        "type": "select",
+        "label": "Currently (within the last 30 days) receiving gout flare prophylaxis with NSAIDs, colchicine, or both, or contraindication to use.",
+        "options": [
+          {
+            "value": "nsaid_within_30d",
+            "label": "Currently receiving NSAID prophylaxis (within 30 days)"
+          },
+          {
+            "value": "colchicine_within_30d",
+            "label": "Currently receiving colchicine prophylaxis (within 30 days)"
+          },
+          {
+            "value": "both_within_30d",
+            "label": "Currently receiving both (within 30 days)"
+          },
+          {
+            "value": "contraindication",
+            "label": "Contraindication to flare prophylaxis"
+          },
+          {
+            "value": "not_met",
+            "label": "No current qualifying prophylaxis or contraindication"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "kynamro": {
     "drug": {

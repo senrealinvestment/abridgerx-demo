@@ -1,4 +1,4 @@
-"""Yorvipath source gates, independent calcium requirements and catalog integrity."""
+"""Krystexxa source gates, independent therapy steps, and catalog integrity."""
 import gzip
 import json
 import sys
@@ -13,18 +13,12 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail, load_rule_pack_catalog
 
 BASE = ROOT / 'data/alaska/parsed'
-PACK = json.loads((BASE / 'rule_packs/yorvipath.json').read_text())
-FACTS = dict(
-    indication='hypoparathyroidism', age_years=18,
-    prescriber_specialty='endocrinologist_or_nephrologist_or_consult',
-    baseline_albumin_corrected_ca_ge_7_8_on_ca_and_active_vitd='ge_7_8',
-    baseline_vitamin_d_above_lln='above_lln',
-    calcium_active_vitd_step_ge_12wk='inadequate_response_ge_12wk_after_vitd_restored',
-    will_continue_ca_and_vitd_during_titration='will_continue',
-    not_acute_postsurgical_hypoparathyroidism=True,
-    albumin_adjusted_ca_not_ge_8_3_on_ca_vitd_prior='lt_8_3_eligible',
-    not_pseudohypoparathyroidism=True,
-)
+PACK = json.loads((BASE / 'rule_packs/krystexxa.json').read_text())
+FACTS = dict(indication='chronic_gout_refractory', age_years=18,
+    prescriber_specialty='rheumatologist_or_nephrologist_or_consult',
+    chronic_gout_definition='three_or_more_flares_18mo', baseline_sua='ge_6_mg_dl',
+    g6pd_screened=True, allopurinol_step='failure_after_ge_3_months',
+    febuxostat_step='failure_after_ge_3_months', flare_prophylaxis='nsaid_within_30d')
 
 
 def test_eligible():
@@ -40,7 +34,7 @@ def test_missing_fact(fact):
     assert result.missing_facts == [fact]
 
 
-@pytest.mark.parametrize('value', ['yes', 'no', 'unknown', 'other', True, False, 'pseudohypoparathyroidism', 'acute_postsurgical_hypoparathyroidism'])
+@pytest.mark.parametrize('value', ['yes', 'no', 'unknown', 'other', True, False, 'gout', 'asymptomatic_hyperuricemia'])
 def test_closed_indication(value):
     result = evaluate(PACK, dict(FACTS, indication=value))
     assert result.decision == 'fail'
@@ -52,12 +46,12 @@ def test_age_boundary(age, decision):
     assert evaluate(PACK, dict(FACTS, age_years=age)).decision == decision
 
 
-def test_ui_options_and_all_denials():
-    fields = {f['key']: f for f in drug_detail('yorvipath')['fact_fields']}
+def test_ui_options_and_denials():
+    fields = {f['key']: f for f in drug_detail('krystexxa')['fact_fields']}
     assert set(fields) == set(FACTS)
-    assert fields['indication']['options'] == [{'value': 'hypoparathyroidism', 'label': 'Hypoparathyroidism'}]
+    assert fields['indication']['options'] == [{'value': 'chronic_gout_refractory', 'label': 'Chronic gout refractory to conventional therapy'}]
     assert all('when' not in c for c in PACK['criteria'])
-    denied = {'no', '0', 'other', 'lt_7_8_or_not_documented', 'not_met', 'will_not', 'ge_8_3_or_not_documented'}
+    denied = {'no', '0', 'none', 'not_met', 'lt_6_mg_dl'}
     for fact, field in fields.items():
         assert field['type'] == 'select' and not field.get('free_text')
         for option in field['options']:
@@ -68,34 +62,36 @@ def test_ui_options_and_all_denials():
             assert result.citations
 
 
-@pytest.mark.parametrize('baseline', ['ge_7_8', 'lt_7_8_or_not_documented'])
-@pytest.mark.parametrize('prior', ['lt_8_3_eligible', 'ge_8_3_or_not_documented'])
-def test_calcium_gates_are_independent(baseline, prior):
-    result = evaluate(PACK, dict(FACTS,
-        baseline_albumin_corrected_ca_ge_7_8_on_ca_and_active_vitd=baseline,
-        albumin_adjusted_ca_not_ge_8_3_on_ca_vitd_prior=prior))
-    failed = set()
-    if baseline != 'ge_7_8':
-        failed.add('baseline_albumin_corrected_ca_ge_7_8_on_ca_and_active_vitd')
-    if prior != 'lt_8_3_eligible':
-        failed.add('albumin_adjusted_ca_not_ge_8_3_on_ca_vitd_prior')
+@pytest.mark.parametrize('allo', ['failure_after_ge_3_months', 'contraindication', 'intolerance', 'not_met', 'failure_after_2_months'])
+@pytest.mark.parametrize('feb', ['failure_after_ge_3_months', 'contraindication', 'intolerance', 'not_met', 'failure_after_2_months'])
+def test_both_steps_independently_required(allo, feb):
+    result = evaluate(PACK, dict(FACTS, allopurinol_step=allo, febuxostat_step=feb))
+    accepted = {'failure_after_ge_3_months', 'contraindication', 'intolerance'}
+    failed = {k for k, v in [('allopurinol_step', allo), ('febuxostat_step', feb)] if v not in accepted}
     assert {c['id'] for c in result.failed_clauses} == failed
     assert result.decision == ('fail' if failed else 'pass')
 
 
+@pytest.mark.parametrize('value', ['nsaid_31_days_ago', 'colchicine_31_days_ago', 'planned', 'none', 'yes'])
+def test_prophylaxis_must_be_current_or_contraindicated(value):
+    result = evaluate(PACK, dict(FACTS, flare_prophylaxis=value))
+    assert result.decision == 'fail'
+    assert [c['id'] for c in result.failed_clauses] == ['flare_prophylaxis']
+
+
 def test_metadata_notes_and_catalog():
-    assert PACK['drug'] == dict(name='Yorvipath', generic_name='palopegteriparatide', therapeutic_class='endocrinology')
+    assert PACK['drug'] == dict(name='Krystexxa', generic_name='pegloticase', therapeutic_class='uricase')
     assert PACK['encoding_status'] == 'partial'
-    assert PACK['source']['effective_date'] == '2026-06-01'
-    assert PACK['source']['citation'] == 'https://health.alaska.gov/media/zl5lhrqn/yorvipath_criteria_2026.pdf'
+    assert PACK['source']['effective_date'] == '2022-06-01'
+    assert PACK['source']['citation'] == 'https://health.alaska.gov/media/1scmdpo2/20220415-krystexxa_criteria_2022.pdf'
     assert (ROOT / PACK['source']['criteria_pdf']).exists()
     assert PACK['max_units'] is None and PACK['alternatives'] == []
-    assert len(PACK['criteria']) == 10
+    assert len(PACK['criteria']) == 9
     assert 'inferred_required_facts' not in PACK
     assert {f for c in PACK['criteria'] for f in c['required_facts']} == set(FACTS)
-    for phrase in ['6 months', '12 months', 'two pens per month', '30 mcg per day', '7 to 10 days', 'osteosarcoma', 'orthostatic hypotension', 'Version 1', '2/27/2026', '4/17/2026', '6/1/2026', 'manual review']:
+    for phrase in ['anaphylaxis', 'pre-medicated', 'G6PD', '6 months', 'heart failure', '3 months', '12 months', 'positive clinical response', '8 mg', '16 mg', 'J2507', 'manual review']:
         assert phrase in ' '.join(PACK['notes'])
-    assert (BASE / 'yorvipath.json').read_bytes() == (BASE / 'rule_packs/yorvipath.json').read_bytes()
+    assert (BASE / 'krystexxa.json').read_bytes() == (BASE / 'rule_packs/krystexxa.json').read_bytes()
     catalog = load_rule_pack_catalog()
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog

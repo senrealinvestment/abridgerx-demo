@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 134,
-  "encoding_text_only": 64,
+  "encoding_partial": 135,
+  "encoding_text_only": 63,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -82,6 +82,7 @@
     "mayzent",
     "myalept",
     "myqorzotm",
+    "nexletol",
     "nucala",
     "nuedexta",
     "ocrevus",
@@ -142,5 +143,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "nexletol"
+  "next_candidate": "reyvow"
 }

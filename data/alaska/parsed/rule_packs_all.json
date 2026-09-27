@@ -24340,7 +24340,8 @@
   "rystiggo": {
     "drug": {
       "name": "Rystiggo",
-      "therapeutic_class": "other"
+      "therapeutic_class": "fc-receptor-blocker",
+      "generic_name": "rozanolixizumab-noli"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -24351,18 +24352,339 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Documented generalized myasthenia gravis (gMG).",
+        "citation": "https://health.alaska.gov/media/u1zpnxh4/rystiggo_criteria.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "generalized_myasthenia_gravis"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is at least 18 years old.",
+        "citation": "https://health.alaska.gov/media/u1zpnxh4/rystiggo_criteria.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist.",
+        "citation": "https://health.alaska.gov/media/u1zpnxh4/rystiggo_criteria.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_consult"
+        }
+      },
+      {
+        "id": "mgfa_class",
+        "text": "MGFA clinical classification II, III, or IV.",
+        "citation": "https://health.alaska.gov/media/u1zpnxh4/rystiggo_criteria.pdf",
+        "required_facts": [
+          "mgfa_class"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "mgfa_class",
+          "value": "ii_iii_or_iv"
+        }
+      },
+      {
+        "id": "mg_antibody",
+        "text": "Positive AChR or MuSK antibodies.",
+        "citation": "https://health.alaska.gov/media/u1zpnxh4/rystiggo_criteria.pdf",
+        "required_facts": [
+          "mg_antibody"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "mg_antibody",
+          "values": [
+            "achr_positive",
+            "musk_positive"
+          ]
+        }
+      },
+      {
+        "id": "mg_adl_score",
+        "text": "Baseline MG-ADL composite score at least 3.",
+        "citation": "https://health.alaska.gov/media/u1zpnxh4/rystiggo_criteria.pdf",
+        "required_facts": [
+          "mg_adl_score"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "mg_adl_score",
+          "value": "gte_3"
+        }
+      },
+      {
+        "id": "no_igg_deficiency_requiring_supplementation",
+        "text": "No IgG deficiency requiring IgG supplementation.",
+        "citation": "https://health.alaska.gov/media/u1zpnxh4/rystiggo_criteria.pdf",
+        "required_facts": [
+          "no_igg_deficiency_requiring_supplementation"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_igg_deficiency_requiring_supplementation",
+          "value": "pass"
+        }
+      },
+      {
+        "id": "not_combined_immunomodulatory_biologic",
+        "text": "Not used in combination with any other immunomodulatory biologic agent.",
+        "citation": "https://health.alaska.gov/media/u1zpnxh4/rystiggo_criteria.pdf",
+        "required_facts": [
+          "not_combined_immunomodulatory_biologic"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_combined_immunomodulatory_biologic",
+          "value": "pass"
+        }
+      },
+      {
+        "id": "no_active_clinically_significant_infection",
+        "text": "No active, clinically significant infection.",
+        "citation": "https://health.alaska.gov/media/u1zpnxh4/rystiggo_criteria.pdf",
+        "required_facts": [
+          "no_active_clinically_significant_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_clinically_significant_infection",
+          "value": "pass"
+        }
+      },
+      {
+        "id": "achr_positive_immunosuppressive_step",
+        "text": "Qualifying antibody-specific immunosuppressive therapy history or required PE/IVIG/plasmapheresis with maintenance therapy.",
+        "citation": "https://health.alaska.gov/media/u1zpnxh4/rystiggo_criteria.pdf",
+        "required_facts": [
+          "immunosuppressive_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "immunosuppressive_step",
+          "values": [
+            "failed_two_or_more_is_12mo",
+            "required_pe_ivig_or_plasmapheresis_with_maintenance"
+          ]
+        },
+        "when": {
+          "fact": "mg_antibody",
+          "eq": "achr_positive"
+        }
+      },
+      {
+        "id": "musk_positive_immunosuppressive_step",
+        "text": "Qualifying antibody-specific immunosuppressive therapy history or required PE/IVIG/plasmapheresis with maintenance therapy.",
+        "citation": "https://health.alaska.gov/media/u1zpnxh4/rystiggo_criteria.pdf",
+        "required_facts": [
+          "immunosuppressive_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "immunosuppressive_step",
+          "values": [
+            "failed_one_or_more_is_and_rituximab_12mo",
+            "required_pe_ivig_or_plasmapheresis_with_maintenance"
+          ]
+        },
+        "when": {
+          "fact": "mg_antibody",
+          "eq": "musk_positive"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Rystiggo (rozanolixizumab-noli) Criteria Version 1; Original 07/25/2024; Accepted 09/20/2024; Effective 11/1/2024.",
+      "Approval criteria 1-8 and denial exclusions are encoded as attestations. Immunosuppressive examples include corticosteroids, azathioprine and mycophenolate. The AChR and MuSK treatment-history branches are when-gated; required PE, IVIG or plasmapheresis in addition to maintenance therapy qualifies for either branch.",
+      "Duration (notes only): initial approval 6 weeks. Reauthorization up to 6 months requires at least a 1 point improvement in MG-ADL total score, ongoing treatment needed for new or worsening disease activity despite initial positive response, no treatment limiting adverse events, and at least 63 days since completion of the previous treatment cycle.",
+      "Cautions (notes only): aseptic meningitis has been reported; monitor for signs/symptoms during treatment. Live or live-attenuated vaccines are not recommended during treatment due to transient IgG reduction. Common adverse reactions include headache, infections, diarrhea, pyrexia, hypersensitivity reactions and nausea.",
+      "Quantity/dosing (manual review): follow labeling and the archived policy limits of 24 ml (12 2 ml vials) per 28 days; 36 ml (18 2 ml vials) per 63 days. PDF states maximum recommended dosage 840 mg once weekly for six weeks and subsequent cycles no sooner than 63 days after completion of the previous cycle. The PDF parenthetical says \"3 2mg vials\", inconsistent with its 2 ml vial units; verify against labeling. HCPCS J9333. max_units is null because multiple windows and dosing require manual review.",
+      "Remains partial: evidence documentation, cautions, duration, reauthorization, quantity and dosing require manual review. PDL status unknown."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Documented generalized myasthenia gravis (gMG).",
+        "options": [
+          {
+            "value": "generalized_myasthenia_gravis",
+            "label": "Generalized myasthenia gravis (gMG)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old.",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist.",
+        "options": [
+          {
+            "value": "neurologist_or_consult",
+            "label": "Neurologist or consultation with one"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "mgfa_class": {
+        "type": "select",
+        "label": "MGFA clinical classification II, III, or IV.",
+        "options": [
+          {
+            "value": "ii_iii_or_iv",
+            "label": "Class II, III, or IV"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "mg_antibody": {
+        "type": "select",
+        "label": "Positive AChR or MuSK antibodies.",
+        "options": [
+          {
+            "value": "achr_positive",
+            "label": "AChR positive"
+          },
+          {
+            "value": "musk_positive",
+            "label": "MuSK positive"
+          },
+          {
+            "value": "neither",
+            "label": "Neither"
+          }
+        ]
+      },
+      "mg_adl_score": {
+        "type": "select",
+        "label": "Baseline MG-ADL composite score at least 3.",
+        "options": [
+          {
+            "value": "gte_3",
+            "label": "At least 3"
+          },
+          {
+            "value": "lt_3_or_not_documented",
+            "label": "Below 3 or not documented"
+          }
+        ]
+      },
+      "no_igg_deficiency_requiring_supplementation": {
+        "type": "select",
+        "label": "No IgG deficiency requiring IgG supplementation.",
+        "options": [
+          {
+            "value": "pass",
+            "label": "Requirement met"
+          },
+          {
+            "value": "fail",
+            "label": "Requirement not met"
+          }
+        ]
+      },
+      "not_combined_immunomodulatory_biologic": {
+        "type": "select",
+        "label": "Not used in combination with any other immunomodulatory biologic agent.",
+        "options": [
+          {
+            "value": "pass",
+            "label": "Requirement met"
+          },
+          {
+            "value": "fail",
+            "label": "Requirement not met"
+          }
+        ]
+      },
+      "no_active_clinically_significant_infection": {
+        "type": "select",
+        "label": "No active, clinically significant infection.",
+        "options": [
+          {
+            "value": "pass",
+            "label": "Requirement met"
+          },
+          {
+            "value": "fail",
+            "label": "Requirement not met"
+          }
+        ]
+      },
+      "immunosuppressive_step": {
+        "type": "select",
+        "label": "Qualifying antibody-specific immunosuppressive therapy history or required PE/IVIG/plasmapheresis with maintenance therapy.",
+        "options": [
+          {
+            "value": "failed_two_or_more_is_12mo",
+            "label": "AChR+: tried and failed at least 2 immunosuppressive therapies for at least 1 year"
+          },
+          {
+            "value": "failed_one_or_more_is_and_rituximab_12mo",
+            "label": "MuSK+: tried and failed at least 1 immunosuppressive therapy and rituximab for at least 1 year"
+          },
+          {
+            "value": "required_pe_ivig_or_plasmapheresis_with_maintenance",
+            "label": "Required PE, IVIG, or plasmapheresis in addition to maintenance therapy"
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ],
+        "when": {
+          "fact": "mg_antibody",
+          "in": [
+            "achr_positive",
+            "musk_positive"
+          ]
+        }
+      }
+    },
+    "max_units": null
   },
   "serostim": {
     "drug": {

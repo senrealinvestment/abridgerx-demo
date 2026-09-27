@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 77,
-  "encoding_text_only": 121,
+  "encoding_partial": 78,
+  "encoding_text_only": 120,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -67,6 +67,7 @@
     "praluent",
     "prolia",
     "roctavian",
+    "rystiggo",
     "serostim",
     "skyclarys",
     "skyrizi",
@@ -85,5 +86,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "rystiggo"
+  "next_candidate": "zilbrysq"
 }

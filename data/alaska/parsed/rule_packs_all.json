@@ -1189,22 +1189,200 @@
     "source": {
       "payer": "alaska_medicaid",
       "list": "Amrix Criteria",
-      "effective_date": "2024-06-01",
+      "effective_date": "2014-09-19",
       "citation": "https://health.alaska.gov/media/ctyfzbbx/amrix.pdf",
       "criteria_pdf": "data/alaska/raw/amrix.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "approval_path",
+        "text": "Pharmacy may override PA for hospice, cancer or LTC (criterion 1); otherwise IR cyclobenzaprine 5mg or 10mg for at least 5 days was less than optimal, treatment is for acute painful musculoskeletal muscle spasm, and age is 18\u201365 (criteria 2\u20134).",
+        "required_facts": [
+          "pa_override_population",
+          "indication",
+          "age_years",
+          "ir_cyclobenzaprine_5_or_10mg_ge_5_days_suboptimal"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "pa_override_population",
+              "value": "hospice_or_cancer_or_ltc"
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "pa_override_population",
+                  "value": "standard_outpatient_path"
+                },
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "acute_painful_musculoskeletal_muscle_spasm"
+                  ]
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 18
+                },
+                {
+                  "op": "lte",
+                  "fact": "age_years",
+                  "value": 65
+                },
+                {
+                  "op": "eq",
+                  "fact": "ir_cyclobenzaprine_5_or_10mg_ge_5_days_suboptimal",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "citation": "https://health.alaska.gov/media/ctyfzbbx/amrix.pdf#approval-criteria"
+      },
+      {
+        "id": "no_hyperthyroidism",
+        "text": "No hyperthyroidism; address thyroid status in the authorization request.",
+        "required_facts": [
+          "no_hyperthyroidism"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_hyperthyroidism",
+          "value": true
+        },
+        "citation": "https://health.alaska.gov/media/ctyfzbbx/amrix.pdf#denial-criteria"
+      },
+      {
+        "id": "not_concurrent_maoi",
+        "text": "No concurrent use of a monoamine oxidase inhibitor (MAOI).",
+        "required_facts": [
+          "not_concurrent_maoi"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_maoi",
+          "value": true
+        },
+        "citation": "https://health.alaska.gov/media/ctyfzbbx/amrix.pdf#denial-criteria"
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from AK Amrix Criteria Version 2. Original 05/28/2009; last updated/Approved 09/19/2014. No explicit effective date is stated; effective_date uses approval date 2014-09-19 instead of the ingestion placeholder 2024-06-01.",
+      "Approval criterion 1 is an alternate pharmacy PA override for hospice, cancer or LTC; it waives approval criteria 2\u20134. The separately listed hyperthyroidism and concurrent MAOI denial criteria apply on both paths.",
+      "Indication: adjunct to rest and physical therapy for relief of muscle spasm associated with acute, painful musculoskeletal conditions.",
+      "Limitations (notes only): use for short periods up to 2\u20133 weeks; not found effective for spasticity or cerebral palsy.",
+      "Duration and quantity (notes only): dispensing limit 21 capsules / 21 days; approve 21 days only; no refills; a new PA must be requested for each 21 day supply. Duration, quantity and use limitations remain manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "fact_ui": {
+      "pa_override_population": {
+        "type": "select",
+        "label": "Pharmacy PA override population",
+        "options": [
+          {
+            "value": "hospice_or_cancer_or_ltc",
+            "label": "Hospice, cancer or long-term care facility"
+          },
+          {
+            "value": "standard_outpatient_path",
+            "label": "Standard outpatient path"
+          }
+        ]
+      },
+      "indication": {
+        "type": "select",
+        "label": "Indication (diagnosis)",
+        "options": [
+          {
+            "value": "acute_painful_musculoskeletal_muscle_spasm",
+            "label": "Relief of muscle spasm associated with acute, painful musculoskeletal conditions (adjunct to rest/PT)"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "standard_outpatient_path"
+        }
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18\u201365 years"
+          },
+          {
+            "value": "66",
+            "label": "Over 65 years"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "standard_outpatient_path"
+        }
+      },
+      "ir_cyclobenzaprine_5_or_10mg_ge_5_days_suboptimal": {
+        "type": "select",
+        "label": "IR cyclobenzaprine 5mg or 10mg for \u22655 days was less than optimal",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "pa_override_population",
+          "eq": "standard_outpatient_path"
+        }
+      },
+      "no_hyperthyroidism": {
+        "type": "select",
+        "label": "No hyperthyroidism (address thyroid status)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_maoi": {
+        "type": "select",
+        "label": "No concurrent MAOI use",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "andembry": {
     "drug": {

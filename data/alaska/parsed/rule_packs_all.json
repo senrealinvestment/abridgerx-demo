@@ -10536,7 +10536,8 @@
   "hympavzi": {
     "drug": {
       "name": "Hympavzi",
-      "therapeutic_class": "hemophilia"
+      "therapeutic_class": "hemophilia",
+      "generic_name": "marstacimab-hncq"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -10547,17 +10548,306 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Routine prophylaxis for hemophilia A without factor VIII inhibitors or hemophilia B without factor IX inhibitors (approval 3).",
+        "citation": "https://health.alaska.gov/media/vbbktmui/hympavzi_criteria_2025.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 12 years old (approval 1).",
+        "citation": "https://health.alaska.gov/media/vbbktmui/hympavzi_criteria_2025.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 12
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a hematologist (approval 2).",
+        "citation": "https://health.alaska.gov/media/vbbktmui/hympavzi_criteria_2025.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "hematologist_or_consult"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      },
+      {
+        "id": "not_combined_with_prophylactic_factor_replacement",
+        "text": "Will not be combined with prophylactic factor replacement therapy (approval 4; denial 2).",
+        "citation": "https://health.alaska.gov/media/vbbktmui/hympavzi_criteria_2025.pdf",
+        "required_facts": [
+          "not_combined_with_prophylactic_factor_replacement"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_combined_with_prophylactic_factor_replacement",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      },
+      {
+        "id": "hemophilia_severity_or_joint_bleeds",
+        "text": "Severe hemophilia (factor activity <1%) OR documented history of at least 2 spontaneous joint bleeds (approval 5).",
+        "citation": "https://health.alaska.gov/media/vbbktmui/hympavzi_criteria_2025.pdf",
+        "required_facts": [
+          "hemophilia_severity_or_joint_bleeds"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "hemophilia_severity_or_joint_bleeds",
+          "values": [
+            "severe_factor_activity_lt_1_percent",
+            "ge_2_spontaneous_joint_bleeds_documented"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      },
+      {
+        "id": "not_for_breakthrough_bleeding",
+        "text": "Will not be used to treat breakthrough bleeding episodes (denial 3).",
+        "citation": "https://health.alaska.gov/media/vbbktmui/hympavzi_criteria_2025.pdf",
+        "required_facts": [
+          "not_for_breakthrough_bleeding"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_for_breakthrough_bleeding",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      },
+      {
+        "id": "new_start_maintenance_dose_le_150mg_weekly",
+        "text": "New-start maintenance dose is no more than 150 mg once weekly, or patient is not a new start (denial 4).",
+        "citation": "https://health.alaska.gov/media/vbbktmui/hympavzi_criteria_2025.pdf",
+        "required_facts": [
+          "new_start_maintenance_dose_le_150mg_weekly"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "new_start_maintenance_dose_le_150mg_weekly",
+          "value": "le_150mg_weekly_or_not_new_start"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Hympavzi (marstacimab-hncq), a tissue factor pathway inhibitor (TFPI) antagonist for routine prophylaxis. Version: 1; Original: 11/12/2024; Accepted: 01/17/2025; Effective: 03/1/2025.",
+      "Encoded: two closed hemophilia A/B indications without the respective factor inhibitors, age \u226512, hematologist or consultation, no prophylactic factor replacement combination, severe factor activity <1% OR at least 2 documented spontaneous joint bleeds, no breakthrough bleeding treatment, and new-start maintenance dosing \u2264150 mg once weekly. Approval criteria 1-5 and denial criteria 1-4 are covered.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months.",
+      "Quantity (notes only): 8 prefilled 150mg/ml syringes or pens per 28 days. max_units is null; quantity enforcement requires manual review.",
+      "Cautions (notes only): thromboembolic events may occur; interrupt treatment if symptoms occur. Hympavzi may cause fetal harm.",
+      "Remaining gaps: documentation verification, duration, reauthorization, quantity and cautions require manual review. PDL status unknown.",
+      "Alternatives remain empty: Hemlibra is a hemophilia A prophylaxis peer, but its indication value differs and the evaluator does not translate indications between packs."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Routine prophylaxis for hemophilia A without factor VIII inhibitors or hemophilia B without factor IX inhibitors (approval 3).",
+        "options": [
+          {
+            "value": "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "label": "Hemophilia A without factor VIII inhibitors \u2014 routine prophylaxis"
+          },
+          {
+            "value": "hemophilia_b_without_fix_ix_inhibitors_prophylaxis",
+            "label": "Hemophilia B without factor IX inhibitors \u2014 routine prophylaxis"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 12 years old (approval 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 12 years"
+          },
+          {
+            "value": "12",
+            "label": "12+ years"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        },
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a hematologist (approval 2).",
+        "options": [
+          {
+            "value": "hematologist_or_consult",
+            "label": "Hematologist or consultation with a hematologist"
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      },
+      "not_combined_with_prophylactic_factor_replacement": {
+        "type": "select",
+        "label": "Will not be combined with prophylactic factor replacement therapy (approval 4; denial 2).",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      },
+      "hemophilia_severity_or_joint_bleeds": {
+        "type": "select",
+        "label": "Severe hemophilia (factor activity <1%) OR documented history of at least 2 spontaneous joint bleeds (approval 5).",
+        "options": [
+          {
+            "value": "severe_factor_activity_lt_1_percent",
+            "label": "Severe: factor activity <1%"
+          },
+          {
+            "value": "ge_2_spontaneous_joint_bleeds_documented",
+            "label": "Documented history of at least 2 spontaneous joint bleeds"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      },
+      "not_for_breakthrough_bleeding": {
+        "type": "select",
+        "label": "Will not be used to treat breakthrough bleeding episodes (denial 3).",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      },
+      "new_start_maintenance_dose_le_150mg_weekly": {
+        "type": "select",
+        "label": "New-start maintenance dose is no more than 150 mg once weekly, or patient is not a new start (denial 4).",
+        "options": [
+          {
+            "value": "le_150mg_weekly_or_not_new_start",
+            "label": "Maintenance \u2264150 mg once weekly, or not a new start"
+          },
+          {
+            "value": "above_150mg_weekly_new_start",
+            "label": "New start with maintenance >150 mg once weekly"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hemophilia_a_without_fviii_inhibitors_prophylaxis",
+            "hemophilia_b_without_fix_ix_inhibitors_prophylaxis"
+          ]
+        }
+      }
+    }
   },
   "imbruvica": {
     "drug": {

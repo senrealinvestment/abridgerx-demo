@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 45,
-  "encoding_text_only": 153,
+  "encoding_partial": 46,
+  "encoding_text_only": 152,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -33,6 +33,7 @@
     "fasenra",
     "hemgenix",
     "hemlibra",
+    "hympavzi",
     "infliximab",
     "kesimpta",
     "kevzara",
@@ -53,5 +54,5 @@
     "zolgensma",
     "zymfentra"
   ],
-  "next_candidate": "hympavzi"
+  "next_candidate": "calcitonin-gene-related-peptide"
 }

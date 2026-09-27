@@ -34687,7 +34687,8 @@
   "xiaflex": {
     "drug": {
       "name": "Xiaflex",
-      "therapeutic_class": "other"
+      "therapeutic_class": "collagenase",
+      "generic_name": "collagenase_clostridium_histolyticum"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -34698,17 +34699,404 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Confirmed diagnosis",
+        "citation": "https://health.alaska.gov/media/vo4fk24e/201911xiaflex_criteria_approved_2019.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "dupuytrens_contracture",
+            "peyronies_disease"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient age (at least 18 years)",
+        "citation": "https://health.alaska.gov/media/vo4fk24e/201911xiaflex_criteria_approved_2019.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dupuytrens_contracture",
+            "peyronies_disease"
+          ]
+        }
+      },
+      {
+        "id": "dc_experienced_provider",
+        "text": "Prescribed by or in consultation with a provider experienced in hand injection procedures and treatment of Dupuytren\u2019s contracture",
+        "citation": "https://health.alaska.gov/media/vo4fk24e/201911xiaflex_criteria_approved_2019.pdf",
+        "required_facts": [
+          "dc_experienced_provider"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "dc_experienced_provider",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dupuytrens_contracture"
+          ]
+        }
+      },
+      {
+        "id": "dc_no_recent_joint_surgery",
+        "text": "No surgical treatment (e.g. fasciotomy) on the selected primary joint within the last 90 days",
+        "citation": "https://health.alaska.gov/media/vo4fk24e/201911xiaflex_criteria_approved_2019.pdf",
+        "required_facts": [
+          "dc_no_recent_joint_surgery"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "dc_no_recent_joint_surgery",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dupuytrens_contracture"
+          ]
+        }
+      },
+      {
+        "id": "dc_functional_limitations",
+        "text": "Documentation that flexion deformity causes functional limitations",
+        "citation": "https://health.alaska.gov/media/vo4fk24e/201911xiaflex_criteria_approved_2019.pdf",
+        "required_facts": [
+          "dc_functional_limitations"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "dc_functional_limitations",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dupuytrens_contracture"
+          ]
+        }
+      },
+      {
+        "id": "pd_experienced_provider",
+        "text": "Prescribed by or in consultation with a provider experienced in treating male urological diseases",
+        "citation": "https://health.alaska.gov/media/vo4fk24e/201911xiaflex_criteria_approved_2019.pdf",
+        "required_facts": [
+          "pd_experienced_provider"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pd_experienced_provider",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peyronies_disease"
+          ]
+        }
+      },
+      {
+        "id": "pd_initial_curvature",
+        "text": "Curvature at the start of therapy",
+        "citation": "https://health.alaska.gov/media/vo4fk24e/201911xiaflex_criteria_approved_2019.pdf",
+        "required_facts": [
+          "pd_initial_curvature"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pd_initial_curvature",
+          "value": "gte_30_lt_90"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peyronies_disease"
+          ]
+        }
+      },
+      {
+        "id": "pd_stable_six_months",
+        "text": "Documented stable disease (penile curvature and pain) for at least 6 months",
+        "citation": "https://health.alaska.gov/media/vo4fk24e/201911xiaflex_criteria_approved_2019.pdf",
+        "required_facts": [
+          "pd_stable_six_months"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pd_stable_six_months",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peyronies_disease"
+          ]
+        }
+      },
+      {
+        "id": "pd_not_sexual_erectile_dysfunction",
+        "text": "Not used for sexual or erectile dysfunction associated with Peyronie\u2019s disease (7AAC 105.110)",
+        "citation": "https://health.alaska.gov/media/vo4fk24e/201911xiaflex_criteria_approved_2019.pdf",
+        "required_facts": [
+          "pd_not_sexual_erectile_dysfunction"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pd_not_sexual_erectile_dysfunction",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peyronies_disease"
+          ]
+        }
+      },
+      {
+        "id": "pd_penile_modeling",
+        "text": "Used in conjunction with penile modeling",
+        "citation": "https://health.alaska.gov/media/vo4fk24e/201911xiaflex_criteria_approved_2019.pdf",
+        "required_facts": [
+          "pd_penile_modeling"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pd_penile_modeling",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peyronies_disease"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Xiaflex (collagenase clostridium histolyticum), Version 1. Original 10/23/2019; Approval 11/15/2019; Effective 1/6/2020.",
+      "Closed indication selections attest to confirmed Dupuytren\u2019s contracture with a palpable cord or Peyronie\u2019s disease in an adult man with a palpable plaque. Both paths require age \u226518. Failure to meet approval criteria is grounds for denial.",
+      "Dupuytren\u2019s two-vial requests (notes only): verify one cord affecting two joints in the same finger OR two cords affecting two joints in the same hand. Requested quantity and anatomical configuration require manual review.",
+      "Duration (notes only): initial approval one treatment cycle; re-approval one treatment cycle. Dupuytren\u2019s administration no sooner than 4 weeks, up to 3 cycles in total. Peyronie\u2019s administration no sooner than 6 weeks with greater than 15 degree deformity, up to 4 cycles in total.",
+      "Quantity limit (notes only): 2 vials (injections) per treatment cycle; no days-supply conversion is specified.",
+      "Cautions (notes only): tendon rupture or serious injury to injected finger/hand; corporal rupture (penile fracture) or other serious penile injury. Contraindicated for Peyronie\u2019s plaques involving the penile urethra. Use caution with abnormal anticoagulation.",
+      "This pack remains partial: documentation verification, dual-vial anatomy, duration, reauthorization intervals and cycle totals, quantity enforcement and cautions require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Confirmed diagnosis",
+        "options": [
+          {
+            "value": "dupuytrens_contracture",
+            "label": "Dupuytren\u2019s contracture with a palpable cord"
+          },
+          {
+            "value": "peyronies_disease",
+            "label": "Peyronie\u2019s disease in an adult man with a palpable plaque"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age (at least 18 years)",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dupuytrens_contracture",
+            "peyronies_disease"
+          ]
+        },
+        "option_style": "age_bands"
+      },
+      "dc_experienced_provider": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a provider experienced in hand injection procedures and treatment of Dupuytren\u2019s contracture",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dupuytrens_contracture"
+          ]
+        }
+      },
+      "dc_no_recent_joint_surgery": {
+        "type": "select",
+        "label": "No surgical treatment (e.g. fasciotomy) on the selected primary joint within the last 90 days",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dupuytrens_contracture"
+          ]
+        }
+      },
+      "dc_functional_limitations": {
+        "type": "select",
+        "label": "Documentation that flexion deformity causes functional limitations",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dupuytrens_contracture"
+          ]
+        }
+      },
+      "pd_experienced_provider": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a provider experienced in treating male urological diseases",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peyronies_disease"
+          ]
+        }
+      },
+      "pd_initial_curvature": {
+        "type": "select",
+        "label": "Curvature at the start of therapy",
+        "options": [
+          {
+            "value": "lt_30",
+            "label": "Less than 30 degrees"
+          },
+          {
+            "value": "gte_30_lt_90",
+            "label": "At least 30 and less than 90 degrees"
+          },
+          {
+            "value": "gte_90",
+            "label": "90 degrees or greater"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peyronies_disease"
+          ]
+        }
+      },
+      "pd_stable_six_months": {
+        "type": "select",
+        "label": "Documented stable disease (penile curvature and pain) for at least 6 months",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peyronies_disease"
+          ]
+        }
+      },
+      "pd_not_sexual_erectile_dysfunction": {
+        "type": "select",
+        "label": "Not used for sexual or erectile dysfunction associated with Peyronie\u2019s disease (7AAC 105.110)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peyronies_disease"
+          ]
+        }
+      },
+      "pd_penile_modeling": {
+        "type": "select",
+        "label": "Used in conjunction with penile modeling",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peyronies_disease"
+          ]
+        }
+      }
+    },
+    "max_units": {
+      "quantity": 2,
+      "days_supply": null,
+      "notes": "2 vials (injections) per treatment cycle; cycle-based quantity enforcement requires manual review."
+    }
   },
   "xifaxan": {
     "drug": {

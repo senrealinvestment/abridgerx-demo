@@ -22,8 +22,8 @@ Source hub: https://health.alaska.gov/en/education/prior-authorization-medicatio
 - Criteria text JSON files: **198**
 - Rule packs: **198**
 - Fully encoded (all clauses as predicates): **0**
-- Partially encoded: **92** (Korlym, Isturisa, Epidiolex, Fintepla, Imcivree, Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
-- Text-only (requires_pa, encoding pending): **106**
+- Partially encoded: **93** (Xiaflex, Korlym, Isturisa, Epidiolex, Fintepla, Imcivree, Oxbryta, Firdapse / Ruzurgi, Tzield, Krystexxa, Yorvipath, Myalept, Vyndaqel / Vyndamax, Winrevair, Zilbrysq, Rystiggo, Kisunla, Leqembi, Evrysdi / Spinraza, Strensiq, Skyclarys, Palynziq, Oxervate, Ofev, Orkambi, Kalydeco, Esbriet, Cholbam, Duchenne Muscular Dystrophy ASOs, Botulinum Toxin Preparations, Clotting Factor, Somatropin, Serostim, Vyjuvek, Zynteglo, Roctavian, Auvelity, Dojolvi, Voxzogo, Actiq, Adbry, Adcirca, Aduhelm, Amitiza/Linzess, Ampyra, Amrix, Andembry, Anzupgo, Apokyn/Kynmobi, Benlysta, Berinert, Beqvez, Bimzelx, Briumvi, CGRP antagonists, Cinqair, Cinryze, Crysvita, Dawnzera, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Evkeeza, Fabhalta, Fasenra, Hemgenix, Hemlibra, Hympavzi, Infliximab, Kesimpta, Kevzara, Lemtrada, Mavenclad, Mayzent, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tepezza, Tezspire, Tremfya, Xolair, Zolgensma, Zymfentra)
+- Text-only (requires_pa, encoding pending): **105**
 - Scanned image criteria PDFs (OCR needed): **7**
 
 ## Blockers
@@ -55,7 +55,7 @@ Hemlibra encodes one closed hemophilia A prophylaxis indication (with or without
 
 ## Next encoding candidates
 
-Next candidate: `isturisa`. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
+Next candidate: `ztalmy`. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded.
 
 Soliris/Ultomiris encodes aHUS, PNH, gMG and Soliris-only NMOSD, indication-specific ages and clinical gates, and shared vaccination, specialty and REMS requirements. Duration, renewal, quantity and cautions remain manual review.
 
@@ -178,3 +178,5 @@ Epidiolex (`epidiolex`, cannabidiol) encodes three closed seizure indications, a
 Isturisa (`isturisa`, osilodrostat) encodes closed persistent/recurring Cushing's disease, adult age, specialist/consultation, surgery eligibility, two listed prior therapies for ≥30 days each, UFC testing, ECG and electrolyte monitoring attestations, and lactation/adrenal insufficiency exclusions. Cautions, initial ≤3 months, renewal ≤6 months with three of five responses, and 30-day supply ≤60 mg/day remain notes for manual review. Catalog: **91 partial / 107 text_only**. Next encoding candidate: `korlym`.
 
 Korlym (`korlym`, mifepristone) encodes closed endogenous Cushing's hyperglycemia indication, adult age, Cushing's diagnosis, T2DM or glucose intolerance, and failed surgery or not a surgery candidate. Limitations of Use, initial 3 months, renewal 9 months with clinical improvement, and 30-day supply with maximum 1200 mg once daily (≤20 mg/kg/day) remain notes for manual review. Reciprocal alternative: Isturisa. Catalog: **92 partial / 106 text_only**. Next encoding candidate: `xiaflex`.
+
+Xiaflex (`xiaflex`) encodes two closed adult indications with indication-gated provider experience, DC surgical history and functional limitations, and PD baseline curvature, stable disease, treatment intent and penile modeling. Dual-vial anatomy, duration, reauthorization, quantity enforcement and cautions remain manual review. Catalog: **93 partial / 105 text_only**. Next encoding candidate: `ztalmy`.

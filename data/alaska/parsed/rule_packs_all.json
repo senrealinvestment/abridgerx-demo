@@ -2071,7 +2071,8 @@
   "auvelity": {
     "drug": {
       "name": "Auvelity",
-      "therapeutic_class": "other"
+      "therapeutic_class": "antidepressants",
+      "generic_name": "dextromethorphan hbr / bupropion hcl"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -2082,17 +2083,235 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Diagnosis of major depressive disorder (MDD) in adults (FDA indication and approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/0jpjvndu/auvelity_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "major_depressive_disorder"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient meets FDA labeled adult age: 18 years or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/0jpjvndu/auvelity_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "failed_two_antidepressants_60_days_therapeutic_doses",
+        "text": "Patient has tried and failed at least two different antidepressants, each for at least 60 days at therapeutic dose levels (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/0jpjvndu/auvelity_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "failed_two_antidepressants_60_days_therapeutic_doses"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_two_antidepressants_60_days_therapeutic_doses",
+          "value": true
+        }
+      },
+      {
+        "id": "no_seizure_disorder",
+        "text": "Patient has been diagnosed with a seizure disorder (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/0jpjvndu/auvelity_criteria_2025.pdf#denial-criteria",
+        "required_facts": [
+          "seizure_disorder"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "seizure_disorder",
+          "value": false
+        }
+      },
+      {
+        "id": "no_current_or_prior_anorexia_or_bulimia",
+        "text": "Patient has a current or prior diagnosis of anorexia nervosa or bulimia nervosa (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/0jpjvndu/auvelity_criteria_2025.pdf#denial-criteria",
+        "required_facts": [
+          "current_or_prior_anorexia_or_bulimia"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "current_or_prior_anorexia_or_bulimia",
+          "value": false
+        }
+      },
+      {
+        "id": "no_auvelity_within_14_days_of_maoi",
+        "text": "Auvelity will be taken within 14 days of treatment with a monoamine oxidase inhibitor (MAOI) (denial criterion 4).",
+        "citation": "https://health.alaska.gov/media/0jpjvndu/auvelity_criteria_2025.pdf#denial-criteria",
+        "required_facts": [
+          "auvelity_within_14_days_of_maoi"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "auvelity_within_14_days_of_maoi",
+          "value": false
+        }
+      },
+      {
+        "id": "no_severe_hepatic_impairment",
+        "text": "Patient has severe hepatic impairment (denial criterion 5).",
+        "citation": "https://health.alaska.gov/media/0jpjvndu/auvelity_criteria_2025.pdf#denial-criteria",
+        "required_facts": [
+          "severe_hepatic_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "severe_hepatic_impairment",
+          "value": false
+        }
+      },
+      {
+        "id": "no_severe_renal_impairment",
+        "text": "Patient has severe renal impairment (denial criterion 5).",
+        "citation": "https://health.alaska.gov/media/0jpjvndu/auvelity_criteria_2025.pdf#denial-criteria",
+        "required_facts": [
+          "severe_renal_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "severe_renal_impairment",
+          "value": false
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Auvelity Criteria Version 1; Original: 12/3/2024; Accepted: 01/17/2025; Effective: 03/1/2025. Citation, archived PDF and effective date retained from the stub.",
+      "Encoded: closed adult MDD indication, age \u226518, and failure of at least two different antidepressants, each for \u226560 days at therapeutic doses (attestation). Denial criterion 1 (failure to meet approval criteria) is represented by the approval predicates.",
+      "Explicit denials encoded: diagnosed seizure disorder; current or prior anorexia nervosa or bulimia nervosa; Auvelity within 14 days of MAOI treatment; severe hepatic or renal impairment. Either severe organ impairment independently fails.",
+      "Duration (notes only): initial approval 3 months; renewal up to 12 months. No additional renewal response criterion is stated.",
+      "Quantity limit (notes only): 68 tablets within 34 days; maximum dose 2 tablets per day. Duration and quantity enforcement require manual review.",
+      "Cautions (notes only): may cause fetal harm; may cause or worsen hypertension; boxed warning relating to risk of suicidal thoughts and behaviors. Cautions require manual review and are not additional denial predicates."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of major depressive disorder (MDD) in adults (FDA indication and approval criterion 2).",
+        "options": [
+          {
+            "value": "major_depressive_disorder",
+            "label": "Major depressive disorder (MDD) \u2014 adults"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient meets FDA labeled adult age: 18 years or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "failed_two_antidepressants_60_days_therapeutic_doses": {
+        "type": "select",
+        "label": "Patient has tried and failed at least two different antidepressants, each for at least 60 days at therapeutic dose levels (approval criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 all requirements met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirements not met"
+          }
+        ]
+      },
+      "seizure_disorder": {
+        "type": "select",
+        "label": "Patient has been diagnosed with a seizure disorder (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "current_or_prior_anorexia_or_bulimia": {
+        "type": "select",
+        "label": "Patient has a current or prior diagnosis of anorexia nervosa or bulimia nervosa (denial criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "auvelity_within_14_days_of_maoi": {
+        "type": "select",
+        "label": "Auvelity will be taken within 14 days of treatment with a monoamine oxidase inhibitor (MAOI) (denial criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "severe_hepatic_impairment": {
+        "type": "select",
+        "label": "Patient has severe hepatic impairment (denial criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "severe_renal_impairment": {
+        "type": "select",
+        "label": "Patient has severe renal impairment (denial criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "bactroban-cream": {
     "drug": {

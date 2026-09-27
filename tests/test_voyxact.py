@@ -1,4 +1,4 @@
-"""Alaska Rhapsido closed gates, exceptions, notes and catalog mirrors."""
+"""Alaska Voyxact closed gates, exceptions, notes and catalog mirrors."""
 import gzip
 import json
 import sys
@@ -13,12 +13,12 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail, load_rule_pack_catalog
 
 BASE = ROOT / 'data/alaska/parsed'
-PACK = json.loads((BASE / 'rule_packs/rhapsido.json').read_text())
-FACTS = dict(indication='chronic_spontaneous_urticaria', age='at_least_18',
-             prescriber_specialty='allergist', urticaria_duration='at_least_6_weeks',
-             symptom_frequency='at_least_3_days_per_week',
-             medication_review='evaluated_and_addressed',
-             prior_h1_therapy='failed_max_dose_at_least_60_days', concomitant_biologic='absent')
+PACK = json.loads((BASE / 'rule_packs/voyxact.json').read_text())
+FACTS = dict(indication='primary_igan_at_risk_for_progression', age='at_least_18',
+             prescriber_specialty='nephrologist', kidney_biopsy='confirmed',
+             egfr='at_least_30', proteinuria_or_upcr='proteinuria_at_least_0_5',
+             acei_arb_therapy='acei_max_tolerated_at_least_90_days_continue',
+             systemic_immunosuppressant='absent', significant_active_infection='absent')
 
 
 @pytest.mark.parametrize('clause', PACK['criteria'])
@@ -43,38 +43,47 @@ def test_missing(key, omit):
     assert key in result.missing_facts
 
 
-def test_contraindication_does_not_waive_symptom_criterion():
-    facts = dict(FACTS, prior_h1_therapy='documented_clinical_contraindication')
+@pytest.mark.parametrize('therapy', [
+    'acei_max_tolerated_at_least_90_days_continue',
+    'arb_max_tolerated_at_least_90_days_continue',
+    'documented_ci_or_adverse_reaction_to_both'])
+@pytest.mark.parametrize('lab', ['proteinuria_at_least_0_5', 'upcr_at_least_0_75', 'both'])
+def test_alternative_routes_and_independent_denials(therapy, lab):
+    facts = dict(FACTS, acei_arb_therapy=therapy, proteinuria_or_upcr=lab)
     assert evaluate(PACK, facts).decision == 'pass'
-    facts['symptom_frequency'] = 'not_on_max_dose'
-    assert evaluate(PACK, facts).decision == 'fail'
+    for key in ['systemic_immunosuppressant', 'significant_active_infection']:
+        result = evaluate(PACK, dict(facts, **{key: 'present'}))
+        assert result.decision == 'fail'
+        assert [c['id'] for c in result.failed_clauses] == [key]
 
 
 def test_ui_metadata_and_notes():
-    detail = drug_detail('rhapsido')
+    detail = drug_detail('voyxact')
     assert detail['can_evaluate']
     fields = {f['key']: f for f in detail['fact_fields']}
     assert set(fields) == set(FACTS)
     assert len(fields['indication']['options']) == 1
     assert all(f['type'] == 'select' and not f.get('free_text') for f in fields.values())
     assert evaluate(PACK, _coerce_patient(FACTS)).decision == 'pass'
-    assert PACK['drug']['generic_name'] == 'remibrutinib'
-    assert PACK['drug']['therapeutic_class'] == 'btk-inhibitor'
-    assert PACK['source']['effective_date'] == '2026-03-01'
+    assert PACK['drug']['generic_name'] == 'sibeprenlimab-szsi'
+    assert PACK['drug']['therapeutic_class'] == 'april-blocker'
+    assert PACK['source']['effective_date'] == '2026-06-01'
     assert PACK['encoding_status'] == 'partial'
     assert PACK['max_units'] is None and PACK['alternatives'] == []
     assert 'inferred_required_facts' not in PACK
-    for text in ['mucocutaneous', 'antithrombotic', 'CYP3A4 inhibitors or inducers',
-                 'nasopharyngitis', 'bleeding', 'headache', 'nausea', 'abdominal pain',
-                 '3 months', '1 year', '60 tablets per 30 days', 'manual review']:
+    for text in ['Accelerated approval', 'proteinuria reduction', 'kidney function decline',
+                 'confirmatory clinical trial', 'infection risk', '30 days', 'during therapy',
+                 'upper respiratory tract infection', 'injection site erythema',
+                 '6 months', '12 months', 'one 400mg/2ml syringe every 28 days', 'manual review']:
         assert text in ' '.join(PACK['notes'])
+
 
 
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
-    assert catalog['rhapsido'] == PACK
+    assert catalog['voyxact'] == PACK
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
-    assert (BASE / 'rhapsido.json').read_bytes() == (BASE / 'rule_packs/rhapsido.json').read_bytes()
+    assert (BASE / 'voyxact.json').read_bytes() == (BASE / 'rule_packs/voyxact.json').read_bytes()
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog

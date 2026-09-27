@@ -41581,7 +41581,8 @@
   "voyxact": {
     "drug": {
       "name": "Voyxact",
-      "therapeutic_class": "other"
+      "therapeutic_class": "april-blocker",
+      "generic_name": "sibeprenlimab-szsi"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -41592,18 +41593,322 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Primary IgA nephropathy (IgAN) at risk for disease progression.",
+        "citation": "https://health.alaska.gov/media/pbqiyyr2/voyxact_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "primary_igan_at_risk_for_progression"
+          ]
+        }
+      },
+      {
+        "id": "age",
+        "text": "Patient meets FDA labeled adult age.",
+        "citation": "https://health.alaska.gov/media/pbqiyyr2/voyxact_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "age"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "age",
+          "values": [
+            "at_least_18"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a nephrologist.",
+        "citation": "https://health.alaska.gov/media/pbqiyyr2/voyxact_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "nephrologist",
+            "nephrologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "kidney_biopsy",
+        "text": "Primary IgAN confirmed by kidney biopsy.",
+        "citation": "https://health.alaska.gov/media/pbqiyyr2/voyxact_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "kidney_biopsy"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "kidney_biopsy",
+          "values": [
+            "confirmed"
+          ]
+        }
+      },
+      {
+        "id": "egfr",
+        "text": "eGFR \u226530 mL/min/1.73m\u00b2.",
+        "citation": "https://health.alaska.gov/media/pbqiyyr2/voyxact_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "egfr"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "egfr",
+          "values": [
+            "at_least_30"
+          ]
+        }
+      },
+      {
+        "id": "proteinuria_or_upcr",
+        "text": "Proteinuria \u22650.5 g/day OR UPCR \u22650.75 g/g (one or both).",
+        "citation": "https://health.alaska.gov/media/pbqiyyr2/voyxact_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "proteinuria_or_upcr"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "proteinuria_or_upcr",
+          "values": [
+            "proteinuria_at_least_0_5",
+            "upcr_at_least_0_75",
+            "both"
+          ]
+        }
+      },
+      {
+        "id": "acei_arb_therapy",
+        "text": "Taking ACEI or ARB at maximally tolerated dose for \u226590 days and will continue during Voyxact; OR documented clinical contraindication or prior adverse reaction to BOTH ACEI and ARBs.",
+        "citation": "https://health.alaska.gov/media/pbqiyyr2/voyxact_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "acei_arb_therapy"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "acei_arb_therapy",
+          "values": [
+            "acei_max_tolerated_at_least_90_days_continue",
+            "arb_max_tolerated_at_least_90_days_continue",
+            "documented_ci_or_adverse_reaction_to_both"
+          ]
+        }
+      },
+      {
+        "id": "systemic_immunosuppressant",
+        "text": "Not currently receiving a systemic immunosuppressant.",
+        "citation": "https://health.alaska.gov/media/pbqiyyr2/voyxact_criteria_2026.pdf#denial-criteria",
+        "required_facts": [
+          "systemic_immunosuppressant"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "systemic_immunosuppressant",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "significant_active_infection",
+        "text": "No significant active infection.",
+        "citation": "https://health.alaska.gov/media/pbqiyyr2/voyxact_criteria_2026.pdf#denial-criteria",
+        "required_facts": [
+          "significant_active_infection"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "significant_active_infection",
+          "values": [
+            "absent"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Voyxact (sibeprenlimab-szsi), an APRIL blocker, effective 2026-06-01. Approval criteria and explicit denials encoded; supporting clinical documentation requires manual review.",
+      "Accelerated approval based on proteinuria reduction. It has not been established whether Voyxact slows kidney function decline over the long-term in IgAN. Continued approval may depend on verification and description of clinical benefit in a confirmatory clinical trial.",
+      "Cautions (notes only): immunosuppression increases infection risk; monitor for signs and symptoms of infection. Live vaccines are not recommended within 30 days of treatment initiation or during therapy. Common adverse reactions include upper respiratory tract infection and injection site erythema.",
+      "Duration (notes only): initial approval up to 6 months; reauthorization up to 12 months. Manual review required.",
+      "Quantity (notes only): one 400mg/2ml syringe every 28 days. Manual review required."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Primary IgA nephropathy (IgAN) at risk for disease progression.",
+        "options": [
+          {
+            "value": "primary_igan_at_risk_for_progression",
+            "label": "Primary IgAN at risk for disease progression"
+          }
+        ]
+      },
+      "age": {
+        "type": "select",
+        "label": "Patient meets FDA labeled adult age.",
+        "options": [
+          {
+            "value": "at_least_18",
+            "label": "18 years or older"
+          },
+          {
+            "value": "under_18",
+            "label": "Under 18 years"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a nephrologist.",
+        "options": [
+          {
+            "value": "nephrologist",
+            "label": "Nephrologist"
+          },
+          {
+            "value": "nephrologist_consult",
+            "label": "Nephrologist consultation"
+          },
+          {
+            "value": "other",
+            "label": "No qualifying specialty or consultation"
+          }
+        ]
+      },
+      "kidney_biopsy": {
+        "type": "select",
+        "label": "Primary IgAN confirmed by kidney biopsy.",
+        "options": [
+          {
+            "value": "confirmed",
+            "label": "Primary IgAN confirmed by kidney biopsy"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed by kidney biopsy"
+          }
+        ]
+      },
+      "egfr": {
+        "type": "select",
+        "label": "eGFR \u226530 mL/min/1.73m\u00b2.",
+        "options": [
+          {
+            "value": "at_least_30",
+            "label": "\u226530 mL/min/1.73m\u00b2"
+          },
+          {
+            "value": "below_30",
+            "label": "<30 mL/min/1.73m\u00b2"
+          }
+        ]
+      },
+      "proteinuria_or_upcr": {
+        "type": "select",
+        "label": "Proteinuria \u22650.5 g/day OR UPCR \u22650.75 g/g (one or both).",
+        "options": [
+          {
+            "value": "proteinuria_at_least_0_5",
+            "label": "Proteinuria \u22650.5 g/day"
+          },
+          {
+            "value": "upcr_at_least_0_75",
+            "label": "UPCR \u22650.75 g/g"
+          },
+          {
+            "value": "both",
+            "label": "Both thresholds met"
+          },
+          {
+            "value": "neither",
+            "label": "Neither threshold met"
+          }
+        ]
+      },
+      "acei_arb_therapy": {
+        "type": "select",
+        "label": "Taking ACEI or ARB at maximally tolerated dose for \u226590 days and will continue during Voyxact; OR documented clinical contraindication or prior adverse reaction to BOTH ACEI and ARBs.",
+        "options": [
+          {
+            "value": "acei_max_tolerated_at_least_90_days_continue",
+            "label": "Taking ACEI at maximally tolerated dose \u226590 days; will continue"
+          },
+          {
+            "value": "arb_max_tolerated_at_least_90_days_continue",
+            "label": "Taking ARB at maximally tolerated dose \u226590 days; will continue"
+          },
+          {
+            "value": "documented_ci_or_adverse_reaction_to_both",
+            "label": "Documented clinical contraindication or prior adverse reaction to each of ACEI and ARBs"
+          },
+          {
+            "value": "less_than_90_days",
+            "label": "Therapy <90 days; no qualifying exception to both"
+          },
+          {
+            "value": "below_max_tolerated",
+            "label": "Below maximally tolerated dose; no qualifying exception to both"
+          },
+          {
+            "value": "will_not_continue",
+            "label": "Will not continue; no qualifying exception to both"
+          },
+          {
+            "value": "acei_exception_only",
+            "label": "Exception to ACEI only; no qualifying ARB therapy"
+          },
+          {
+            "value": "arb_exception_only",
+            "label": "Exception to ARBs only; no qualifying ACEI therapy"
+          },
+          {
+            "value": "not_taking",
+            "label": "Not taking ACEI/ARB; no qualifying exception to both"
+          }
+        ]
+      },
+      "systemic_immunosuppressant": {
+        "type": "select",
+        "label": "Not currently receiving a systemic immunosuppressant.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "No current systemic immunosuppressant"
+          },
+          {
+            "value": "present",
+            "label": "Currently receiving a systemic immunosuppressant"
+          }
+        ]
+      },
+      "significant_active_infection": {
+        "type": "select",
+        "label": "No significant active infection.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "No significant active infection"
+          },
+          {
+            "value": "present",
+            "label": "Significant active infection"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "vumerity": {
     "drug": {

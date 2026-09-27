@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 152,
-  "encoding_text_only": 46,
+  "encoding_partial": 153,
+  "encoding_text_only": 45,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -89,6 +89,7 @@
     "lucemyra",
     "lupkynis",
     "lybalvi",
+    "marinol",
     "mavenclad",
     "mayzent",
     "myalept",
@@ -160,5 +161,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "marinol"
+  "next_candidate": "movantik"
 }

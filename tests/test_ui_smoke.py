@@ -127,13 +127,13 @@ def test_partial_pack_check():
 
 
 def test_text_only_pack_surfaces_criteria():
-    detail = drug_detail("tremfya")
+    detail = drug_detail("zymfentra")
     assert detail is not None
     assert detail["encoding_status"] == "text_only"
     assert detail["can_evaluate"] is False
     assert detail["criteria_text"] and detail["criteria_text"].get("extracted_text")
 
-    resolved = get_rule_pack("tremfya")
+    resolved = get_rule_pack("zymfentra")
     assert resolved
     _, pack = resolved
     result = check(pack, {"age_years": 40, "indication": "psoriasis"}, None)
@@ -143,7 +143,7 @@ def test_text_only_pack_surfaces_criteria():
 
 def test_no_free_text_fact_fields():
     """Every clinician fact control is select or multi — never free text."""
-    for slug in ("dupixent", "xolair", "lyrica", "skyrizi"):
+    for slug in ("dupixent", "xolair", "lyrica", "skyrizi", "tremfya"):
         detail = drug_detail(slug)
         assert detail, slug
         for f in detail["fact_fields"]:

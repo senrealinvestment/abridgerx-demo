@@ -6339,7 +6339,8 @@
     "alternatives": [
       "entyvio",
       "stelara",
-      "skyrizi"
+      "skyrizi",
+      "tremfya"
     ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
@@ -10923,6 +10924,7 @@
   "tremfya": {
     "drug": {
       "name": "Tremfya",
+      "generic_name": "guselkumab",
       "therapeutic_class": "biologics"
     },
     "source": {
@@ -10933,22 +10935,429 @@
       "criteria_pdf": "data/alaska/raw/tremfya_criteria_2024.pdf"
     },
     "requires_pa": true,
-    "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "pdl_status": "non_preferred",
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "FDA-labeled indication and disease severity (FDA indications; approval #2 in each arm).",
+        "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "plaque_psoriasis",
+            "psoriatic_arthritis",
+            "ulcerative_colitis"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient meets FDA-labeled adult age for all three indications (age \u226518; approval #1 in each arm).",
+        "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "tnf_blocker_failure",
+        "text": "Trialed and failed a TNF blocker (approval #4 in each arm).",
+        "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf",
+        "required_facts": [
+          "tnf_blocker_failure"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "tnf_blocker_failure",
+          "values": [
+            "trial_failure"
+          ]
+        }
+      },
+      {
+        "id": "additional_prior_therapy",
+        "text": "Trialed and failed at least one other therapy; PsO must include at least one topical agent (approval #4 in each arm).",
+        "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf",
+        "required_facts": [
+          "indication",
+          "additional_prior_therapy"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "plaque_psoriasis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "additional_prior_therapy",
+                  "value": "trial_failure_including_topical"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "psoriatic_arthritis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "additional_prior_therapy",
+                  "value": "trial_failure"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "ulcerative_colitis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "additional_prior_therapy",
+                  "value": "trial_failure"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "pasi_status",
+        "text": "PASI \u226512 (or equivalent) (PsO approval #3).",
+        "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf",
+        "required_facts": [
+          "pasi_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pasi_status",
+          "value": "pasi_gte_12"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      {
+        "id": "haq_di_status",
+        "text": "HAQ-DI \u22652 (or equivalent) (PsA approval #3).",
+        "required_facts": [
+          "haq_di_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "haq_di_status",
+          "value": "haq_di_gte_2"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        },
+        "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf"
+      },
+      {
+        "id": "mayo_status",
+        "text": "Baseline Mayo score (or equivalent) submitted (UC approval #3; no numeric threshold).",
+        "required_facts": [
+          "mayo_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "mayo_status",
+          "value": "mayo_baseline_submitted"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ulcerative_colitis"
+          ]
+        },
+        "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf"
+      },
+      {
+        "id": "no_known_hypersensitivity_guselkumab",
+        "text": "No known hypersensitivity to guselkumab or any excipients (denial #1).",
+        "required_facts": [
+          "no_known_hypersensitivity_guselkumab"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_known_hypersensitivity_guselkumab",
+          "value": true
+        },
+        "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf"
+      },
+      {
+        "id": "no_active_severe_infection",
+        "text": "No current active severe infection (denial #2).",
+        "required_facts": [
+          "no_active_severe_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_severe_infection",
+          "value": true
+        },
+        "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf"
+      },
+      {
+        "id": "not_concurrent_another_biologic",
+        "text": "No concurrent therapy with another biologic agent (denial #3).",
+        "required_facts": [
+          "not_concurrent_another_biologic"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_another_biologic",
+          "value": true
+        },
+        "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf"
+      },
+      {
+        "id": "not_concurrent_phototherapy",
+        "text": "No concurrent phototherapy (denial #4; initial authorization confirmation).",
+        "required_facts": [
+          "not_concurrent_phototherapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_phototherapy",
+          "value": true
+        },
+        "citation": "https://health.alaska.gov/media/ukcp2cs2/tremfya_criteria_2024.pdf"
+      }
+    ],
     "alternatives": [
       "entyvio",
       "stelara",
-      "skyrizi"
+      "skyrizi",
+      "infliximab",
+      "zymfentra"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Tremfya (guselkumab), Version 1. Original 10/10/2024; Accepted 11/15/2024; Effective 01/01/2025.",
+      "Closed indication labels represent FDA indication severity and systemic therapy or phototherapy candidacy for PsO. All three indications require adults (age \u226518). Phototherapy candidacy does not permit concurrent phototherapy.",
+      "Specialty gap: no prescriber specialty requirement is specified in this PDF.",
+      "All three indications require trial and failure of a TNF blocker and at least one other therapy; PsO includes at least one topical agent. No minimum trial duration is specified.",
+      "Indication-gated activity: PsO PASI \u226512 (or equivalent); PsA HAQ-DI \u22652 (or equivalent); UC baseline Mayo score (or equivalent) submitted, without a numeric threshold.",
+      "Initial authorization (notes only): monitoring plan; previous therapies trialed and nature of failure; complete medication regimen; confirmation patient is not receiving concurrent phototherapy; requested dosing conforms to an FDA-approved regimen by indication. Documentation requires manual review.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months. No separate reauthorization clinical criteria are specified.",
+      "No QUANTITY LIMIT section in this PDF. Dosing per FDA label by indication requires manual review; no numeric quantity or days-supply limits are encoded.",
+      "Cautions (notes only): evaluate for tuberculosis (TB) before initiating guselkumab; do not initiate with active TB. No live vaccines during treatment. Serious hypersensitivity reactions including anaphylaxis have been reported. Infection risk: discontinue if a clinically significant infection develops until it resolves.",
+      "PDL context: all TREMFYA rows are non_preferred. Preferred cytokine peers without packs include Humira, Hadlima and Rinvoq (notes only). Linked alternatives require indication-specific review and do not imply confirmed coverage.",
+      "This pack remains partial: initial documentation, monitoring, duration, reauthorization, FDA dosing and cautions require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "FDA-labeled indication",
+        "options": [
+          {
+            "value": "plaque_psoriasis",
+            "label": "Moderate-to-severe plaque psoriasis in adults who are candidates for systemic therapy or phototherapy"
+          },
+          {
+            "value": "psoriatic_arthritis",
+            "label": "Active psoriatic arthritis in adults"
+          },
+          {
+            "value": "ulcerative_colitis",
+            "label": "Moderately to severely active ulcerative colitis in adults"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age",
+        "option_style": "age_bands"
+      },
+      "tnf_blocker_failure": {
+        "type": "select",
+        "label": "Prior TNF blocker failure",
+        "options": [
+          {
+            "value": "trial_failure",
+            "label": "Trialed and failed a TNF blocker"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "additional_prior_therapy": {
+        "type": "select",
+        "label": "Additional prior therapy",
+        "options": [
+          {
+            "value": "trial_failure_including_topical",
+            "label": "Trialed and failed \u22651 other therapy including \u22651 topical agent (PsO)"
+          },
+          {
+            "value": "trial_failure",
+            "label": "Trialed and failed \u22651 other therapy (PsA / UC e.g. azathioprine, cyclosporine, mesalamine)"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "pasi_status": {
+        "type": "select",
+        "label": "PASI \u226512 (or equivalent) (PsO approval #3).",
+        "options": [
+          {
+            "value": "pasi_gte_12",
+            "label": "PASI \u2265 12 (or equivalent)"
+          },
+          {
+            "value": "pasi_lt_12",
+            "label": "PASI < 12 (or equivalent)"
+          },
+          {
+            "value": "score_not_submitted",
+            "label": "PASI / equivalent not submitted"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      "haq_di_status": {
+        "type": "select",
+        "label": "HAQ-DI \u22652 (or equivalent) (PsA approval #3).",
+        "options": [
+          {
+            "value": "haq_di_gte_2",
+            "label": "HAQ-DI \u22652 (or equivalent)"
+          },
+          {
+            "value": "haq_di_lt_2",
+            "label": "HAQ-DI <2 (or equivalent)"
+          },
+          {
+            "value": "score_not_submitted",
+            "label": "HAQ-DI / equivalent not submitted"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      "mayo_status": {
+        "type": "select",
+        "label": "Baseline Mayo score (or equivalent) submitted (UC approval #3; no numeric threshold).",
+        "options": [
+          {
+            "value": "mayo_baseline_submitted",
+            "label": "Baseline Mayo score (or equivalent) submitted"
+          },
+          {
+            "value": "not_submitted",
+            "label": "Baseline Mayo score / equivalent not submitted"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ulcerative_colitis"
+          ]
+        }
+      },
+      "no_known_hypersensitivity_guselkumab": {
+        "type": "select",
+        "label": "No known hypersensitivity to guselkumab or any excipients (denial #1).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_active_severe_infection": {
+        "type": "select",
+        "label": "No current active severe infection (denial #2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_another_biologic": {
+        "type": "select",
+        "label": "No concurrent therapy with another biologic agent (denial #3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_phototherapy": {
+        "type": "select",
+        "label": "No concurrent phototherapy (denial #4; initial authorization confirmation).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": null,
+      "notes": "No quantity-limit section in this PDF; dosing per FDA label by indication requires manual review."
+    }
   },
   "tzield": {
     "drug": {
@@ -12426,7 +12835,8 @@
     "alternatives": [
       "entyvio",
       "stelara",
-      "skyrizi"
+      "skyrizi",
+      "tremfya"
     ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."

@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 18,
-  "encoding_text_only": 180,
+  "encoding_partial": 19,
+  "encoding_text_only": 179,
   "partial_slugs": [
     "adbry",
     "adcirca",
@@ -24,7 +24,8 @@
     "skyrizi",
     "stelara",
     "tezspire",
+    "tremfya",
     "xolair"
   ],
-  "next_candidate": "tremfya"
+  "next_candidate": "zymfentra"
 }

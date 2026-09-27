@@ -125,19 +125,19 @@ def test_catalog_mirrors_status_and_bidirectional_alternatives():
         assert json.load(stream) == catalog
     assert (base / 'entyvio.json').read_bytes() == (base / 'rule_packs/entyvio.json').read_bytes()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 18
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 180
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 19
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 179
     assert pack['alternatives'] == PEERS
     for peer in PEERS:
-        assert catalog[peer]['encoding_status'] == ('partial' if peer in ['stelara', 'skyrizi'] else 'text_only')
-        if peer not in ['stelara', 'skyrizi']:
+        assert catalog[peer]['encoding_status'] == ('partial' if peer in ['stelara', 'skyrizi', 'tremfya'] else 'text_only')
+        if peer not in ['stelara', 'skyrizi', 'tremfya']:
             assert catalog[peer]['criteria'] == []
         assert 'entyvio' in catalog[peer]['alternatives']
         mirror = base / f'{peer}.json'
         if mirror.exists():
             assert 'entyvio' in json.loads(mirror.read_text())['alternatives']
     status = json.loads((base / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 18 and status['encoding_text_only'] == 180
+    assert status['encoding_partial'] == 19 and status['encoding_text_only'] == 179
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     assert 'entyvio' in status['partial_slugs']
     for suffix in ['json', 'md']:

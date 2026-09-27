@@ -63,5 +63,5 @@ Live clinician PA-check demo (advisory; published AK criteria):
 - **Deploy source (public mirror for Vercel Git):** https://github.com/senrealinvestment/abridgerx-demo  
   Private canonical repo remains https://github.com/senrealinvestment/abridgerx — grant the Vercel GitHub App access to link it directly later.
 - Framework: FastAPI (`app.py` entry + `vercel.json`). Rules engine only; no TypeSafe / SYSTEM_ONE keys in the client.
-- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 18 partial / 180 text_only; includes Stelara and Skyrizi), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
+- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 19 partial / 179 text_only; includes Stelara, Skyrizi and Tremfya), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
 

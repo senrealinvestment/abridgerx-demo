@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 145,
-  "encoding_text_only": 53,
+  "encoding_partial": 146,
+  "encoding_text_only": 52,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -27,6 +27,7 @@
     "botulinum-toxin-preparations",
     "briumvi",
     "calcitonin-gene-related-peptide",
+    "cambia",
     "cholbam",
     "cinqair",
     "cinryze",
@@ -153,5 +154,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "cambia"
+  "next_candidate": "diclegis-bonjesta"
 }

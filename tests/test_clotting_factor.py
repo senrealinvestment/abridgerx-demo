@@ -119,13 +119,13 @@ def test_catalog_mirror_bundles_and_duplicate():
         assert json.load(stream) == catalog
     assert (BASE / 'clotting-factor.json').read_bytes() == (BASE / 'rule_packs/clotting-factor.json').read_bytes()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 145
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 53
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 146
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 52
     assert catalog['hemophilia']['encoding_status'] == 'text_only'
     assert evaluate(catalog['hemophilia'], patient()).decision == 'need_info'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (145, 53)
-    assert status['next_candidate'] == 'cambia'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (146, 52)
+    assert status['next_candidate'] == 'diclegis-bonjesta'
     assert status['partial_slugs'] == sorted(s for s, p in catalog.items() if p['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

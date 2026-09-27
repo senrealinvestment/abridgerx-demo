@@ -1,0 +1,12 @@
+{
+  "slug": "quinine",
+  "drug_name": "Quinine",
+  "source_url": "https://health.alaska.gov/media/slkktvch/200908_quinine.pdf",
+  "source_file": "200908_quinine.pdf",
+  "sha256": "3537e708cb9abae7d67b6ce7ff8eb0ae05228384b679bf9333f13ae5b82482e0",
+  "effective_date": "2009-01-01",
+  "extracted_text": "ALASKA MEDICAID\n\nQuinine Sulfate and Quinine Sulfate Powder\n\nCapsule: Qualaquin\u00ae 324 mg\n\nPreferred Medication:\n\nNA\n\nNon-Preferred Medication:\nNA\n\nINDICATION:\n\n1. \u201cQualaquin\u00ae is indicated only for treatment of uncomplicated Plasmodium. falciparum\nmalaria.\u201d!\n\nCRITERIA FOR APPROVAL:\n\n1. The patient is being treated for uncomplicated P. falciparum malaria.\n\nCRITERIA CAUSING DENIAL:\n\n1. The patient is being treated for any unapproved condition, such as; treatment of severe or\ncomplicated malaria, prevention of malaria and treatment or prevention of nocturnal leg\n1\ncramps .\n\nLENGTH OF AUTHORIZATION:\n\n1. Approved criteria may be authorized for up to 60 days.\n\nREFERENCES / FOOTNOTES:\n\n' Qualaquin\u00ae package insert, available at:\n\n<http://www.accessdata.fda.gov/drugsatfda_docs/label/2008/021799s008Ibl.pdf>\nAccessed 06/05/2009.\n\nQuinine criteria\nVersion 1\nLast updated 06/05/09\n",
+  "ocr_status": "needed",
+  "notes": "Scanned image PDF; text extraction returned empty. OCR not run in this ingest.",
+  "download_date": "2026-09-26"
+}

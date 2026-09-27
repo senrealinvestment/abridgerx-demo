@@ -1,0 +1,12 @@
+{
+  "slug": "panretin",
+  "drug_name": "Panretin",
+  "source_url": "https://health.alaska.gov/media/h5zb5fs1/200908_panretin.pdf",
+  "source_file": "200908_panretin.pdf",
+  "sha256": "8295e1ec16e1b10c570693699ba7b413cc457d430e215fcc6afec0ad015e1b2f",
+  "effective_date": "2009-01-01",
+  "extracted_text": "ALASKA MEDICAID\n\nPanretin\u00ae (Alitretinoin Gel)\nGel: 60 gram\n\nPREFERRED DRUG:\n\nNA\n\nNON-PREFERRED DRUG:\n\nNA\n\nINDICATION:\n\n\u201cPanretin\u00ae gel is indicated for topical treatment of cutaneous lesions in patients with\nAIDS-related Kaposi\u2019s sarcoma. Panretin\u00ae gel is not indicated when systemic anti-KS\ntherapy is required (e.g., more than 10 new KS lesions in the prior month, symptomatic\nlymphedema, symptomatic pulmonary KS, or symptomatic visceral involvement). There\nis no experience to date using Panretin\u00ae gel with systemic anti-KS treatment.\u201d\n\nCRITERIA FOR APPROVAL:\n\n1. The patient is being treated for cutaneous lesions with Kaposi\u2019s sarcoma; AND\n\n2. The patient is not being treated systemically for Kaposi\u2019s sarcoma.\n\nLENGTH OF APPROVAL:\n\n1. Coverage may be approved for up to 2 months.\n\nREFERENCES / FOOTNOTES:\n\n' Panretin\u00ae package insert, available at:\n\n<http://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?id=2095> Accessed 06/03/2009\n\nPanretin\u00ae Criteria\nVersion: 1\nLast updated: 06/04/2009\n\nPage 1 of 1\n",
+  "ocr_status": "needed",
+  "notes": "Scanned image PDF; text extraction returned empty. OCR not run in this ingest.",
+  "download_date": "2026-09-26"
+}

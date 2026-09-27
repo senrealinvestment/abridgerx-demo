@@ -88,15 +88,15 @@ def test_metadata_and_mirrors():
     assert catalog['xcopri'] == PACK
     assert catalog['revatio']['encoding_status'] == 'partial'
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 145
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 53
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 146
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 52
     assert (BASE / 'xcopri.json').read_bytes() == (BASE / 'rule_packs/xcopri.json').read_bytes()
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (145, 53)
-    assert status['next_candidate'] == 'cambia'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (146, 52)
+    assert status['next_candidate'] == 'diclegis-bonjesta'
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

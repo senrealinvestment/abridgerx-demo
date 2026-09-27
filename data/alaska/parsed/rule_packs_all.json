@@ -6713,7 +6713,8 @@
   "evenity": {
     "drug": {
       "name": "Evenity",
-      "therapeutic_class": "metabolic"
+      "therapeutic_class": "metabolic",
+      "generic_name": "romosozumab-aqqg"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -6724,16 +6725,316 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Qualifying diagnosis attested by the closed indication selection",
+        "citation": "https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "postmenopausal_osteoporosis_high_fracture_risk"
+        }
+      },
+      {
+        "id": "patient_population",
+        "text": "Patient is a postmenopausal woman at risk of fracture",
+        "citation": "https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf",
+        "required_facts": [
+          "patient_population"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "patient_population",
+          "value": "postmenopausal_woman"
+        }
+      },
+      {
+        "id": "osteoporosis_diagnosis",
+        "text": "Qualifying osteoporosis diagnosis",
+        "citation": "https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf",
+        "required_facts": [
+          "osteoporosis_diagnosis"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "osteoporosis_diagnosis",
+          "values": [
+            "tscore_lte_minus_2_5",
+            "low_trauma_fracture_high_risk"
+          ]
+        }
+      },
+      {
+        "id": "administered_by_healthcare_provider",
+        "text": "Administered by a healthcare provider",
+        "citation": "https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf",
+        "required_facts": [
+          "administered_by_healthcare_provider"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "administered_by_healthcare_provider",
+          "value": true
+        }
+      },
+      {
+        "id": "oral_bisphosphonate_step",
+        "text": "Qualifying oral bisphosphonate history",
+        "citation": "https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf",
+        "required_facts": [
+          "oral_bisphosphonate_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "oral_bisphosphonate_step",
+          "values": [
+            "trial_oral_bp_1yr_suboptimal",
+            "ci_to_oral_bp",
+            "unable_remain_upright_30min",
+            "intolerant_two_bp_manufacturers"
+          ]
+        }
+      },
+      {
+        "id": "injectable_osteo_step",
+        "text": "Prior injectable osteoporosis therapy",
+        "citation": "https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf",
+        "required_facts": [
+          "injectable_osteo_step"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "injectable_osteo_step",
+          "value": "trial_failure_or_intolerant"
+        }
+      },
+      {
+        "id": "calcium_vitd_counseling_done",
+        "text": "Prescriber counseled patient on adequate calcium and vitamin D supplementation throughout treatment",
+        "citation": "https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf",
+        "required_facts": [
+          "calcium_vitd_counseling_done"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "calcium_vitd_counseling_done",
+          "value": true
+        }
+      },
+      {
+        "id": "no_mi_or_stroke_preceding_year",
+        "text": "No myocardial infarction or stroke within the preceding year",
+        "citation": "https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf",
+        "required_facts": [
+          "no_mi_or_stroke_preceding_year"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_mi_or_stroke_preceding_year",
+          "value": true
+        }
+      },
+      {
+        "id": "no_hypocalcemia",
+        "text": "No hypocalcemia",
+        "citation": "https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf",
+        "required_facts": [
+          "no_hypocalcemia"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_hypocalcemia",
+          "value": true
+        }
+      },
+      {
+        "id": "lifetime_monthly_doses_lt_12",
+        "text": "Prior monthly doses received",
+        "citation": "https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf",
+        "required_facts": [
+          "lifetime_monthly_doses_lt_12"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "lifetime_monthly_doses_lt_12",
+          "value": "doses_received_lt_12"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Evenity (romosozumab-aqqg), a sclerostin inhibitor. Version 1; Original: 12/10/2019; Approval: 1/17/2020; Effective: 3/16/2020.",
+      "Closed indication selection attests to postmenopausal osteoporosis and high fracture risk as defined by the source. Approval criteria 1\u20136 and denial criteria 2\u20134 are encoded; denial criterion 1 is covered by the approval clauses.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to an additional 9 months. Total authorization cannot exceed 12 monthly doses. FDA treatment is limited to 12 monthly doses due to waning anabolic effect. The prior-dose attestation denies patients who already received at least 12 monthly doses; verify the requested course against the remaining lifetime cap manually.",
+      "Quantity limit (notes only): 2\u00d7105 mg syringes/month (210 mg total). Quantity enforcement requires manual review.",
+      "Cautions (notes only): monitor for major adverse cardiac events (MACE) and osteonecrosis of the jaw (ONJ); adequately supplement calcium and vitamin D throughout treatment. Hypersensitivity reactions including angioedema, erythema multiforme, rash and dermatitis have been observed.",
+      "PDL status unknown: source is silent. Prolia peer pending.",
+      "Remaining gaps: authorization duration, reauthorization, requested-course lifetime cap verification, dosing, quantity enforcement and monitoring cautions require manual review."
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Qualifying diagnosis attested by the closed indication selection",
+        "options": [
+          {
+            "value": "postmenopausal_osteoporosis_high_fracture_risk",
+            "label": "Osteoporosis in postmenopausal women at high risk of fracture (history of osteoporotic fracture or multiple risk factors; or failed or intolerant to other osteoporosis therapies)"
+          }
+        ]
+      },
+      "patient_population": {
+        "type": "select",
+        "label": "Patient is a postmenopausal woman at risk of fracture",
+        "options": [
+          {
+            "value": "postmenopausal_woman",
+            "label": "Postmenopausal woman"
+          },
+          {
+            "value": "not_postmenopausal_woman",
+            "label": "Not a postmenopausal woman"
+          }
+        ]
+      },
+      "osteoporosis_diagnosis": {
+        "type": "select",
+        "label": "Qualifying osteoporosis diagnosis",
+        "options": [
+          {
+            "value": "tscore_lte_minus_2_5",
+            "label": "BMD T-score \u2264 -2.5 at spine, femoral neck, total hip or distal 1/3 radius"
+          },
+          {
+            "value": "low_trauma_fracture_high_risk",
+            "label": "Clinical diagnosis based on low-trauma fracture history and high fracture risk"
+          },
+          {
+            "value": "none",
+            "label": "Neither criterion met"
+          }
+        ]
+      },
+      "administered_by_healthcare_provider": {
+        "type": "select",
+        "label": "Administered by a healthcare provider",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "oral_bisphosphonate_step": {
+        "type": "select",
+        "label": "Qualifying oral bisphosphonate history",
+        "options": [
+          {
+            "value": "trial_oral_bp_1yr_suboptimal",
+            "label": "Trial of oral bisphosphonate (e.g. alendronate) for at least 1 year with less than optimal results"
+          },
+          {
+            "value": "ci_to_oral_bp",
+            "label": "Contraindication to oral bisphosphonates"
+          },
+          {
+            "value": "unable_remain_upright_30min",
+            "label": "Unable to remain upright for at least 30 minutes"
+          },
+          {
+            "value": "intolerant_two_bp_manufacturers",
+            "label": "Intolerant to two bisphosphonate manufacturers"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying oral bisphosphonate history"
+          }
+        ]
+      },
+      "injectable_osteo_step": {
+        "type": "select",
+        "label": "Prior injectable osteoporosis therapy",
+        "options": [
+          {
+            "value": "trial_failure_or_intolerant",
+            "label": "Failed prior treatment with or intolerant to injectable osteoporosis therapy (e.g. zoledronic acid)"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ]
+      },
+      "calcium_vitd_counseling_done": {
+        "type": "select",
+        "label": "Prescriber counseled patient on adequate calcium and vitamin D supplementation throughout treatment",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_mi_or_stroke_preceding_year": {
+        "type": "select",
+        "label": "No myocardial infarction or stroke within the preceding year",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_hypocalcemia": {
+        "type": "select",
+        "label": "No hypocalcemia",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "lifetime_monthly_doses_lt_12": {
+        "type": "select",
+        "label": "Prior monthly doses received",
+        "options": [
+          {
+            "value": "doses_received_lt_12",
+            "label": "Prior monthly doses received < 12 (treatment duration not exceeding 12 monthly doses)"
+          },
+          {
+            "value": "doses_received_gte_12",
+            "label": "Already received \u226512 monthly doses"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": null,
+      "notes": "2\u00d7105 mg syringes/month (210 mg total); notes only, requires manual review."
+    }
   },
   "evkeeza": {
     "drug": {

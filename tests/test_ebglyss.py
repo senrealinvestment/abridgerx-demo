@@ -137,8 +137,8 @@ def test_catalog_and_mirrors_load_ebglyss_as_partial():
     assert json.loads((base / "rule_packs/ebglyss.json").read_text()) == pack
     with gzip.open(base / "rule_packs_all.json.gz", "rt", encoding="utf-8") as stream:
         assert json.load(stream) == catalog
-    assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 24
-    assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 174
+    assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 25
+    assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 173
 
 
 def test_bidirectional_alternatives_evaluate():
@@ -191,8 +191,8 @@ def test_full_catalog_and_status_mirrors():
     assert catalog == {p.stem: json.loads(p.read_text()) for p in (base / "rule_packs").glob("*.json")}
     assert (base / "ebglyss.json").read_bytes() == (base / "rule_packs/ebglyss.json").read_bytes()
     status = json.loads((base / "ENCODING_STATUS.json").read_text())
-    assert status["encoding_partial"] == 24
-    assert status["encoding_text_only"] == 174
+    assert status["encoding_partial"] == 25
+    assert status["encoding_text_only"] == 173
     assert status["partial_slugs"] == sorted(s for s, p in catalog.items() if p["encoding_status"] == "partial")
     assert "ebglyss" in status["partial_slugs"]
     for suffix in ["json", "md"]:

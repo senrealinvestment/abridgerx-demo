@@ -28963,7 +28963,8 @@
   "opzelura": {
     "drug": {
       "name": "Opzelura",
-      "therapeutic_class": "other"
+      "therapeutic_class": "jak-inhibitor-topical",
+      "generic_name": "ruxolitinib"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -28974,18 +28975,659 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "mild_to_moderate_atopic_dermatitis",
+            "nonsegmental_vitiligo"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Age 12 years or older",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 12
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a dermatologist",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "dermatologist",
+            "dermatologist_or_consult"
+          ]
+        }
+      },
+      {
+        "id": "ad_bsa",
+        "text": "AD up to 20% BSA",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "ad_bsa"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ad_bsa",
+          "values": [
+            "up_to_20_percent"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "mild_to_moderate_atopic_dermatitis"
+          ]
+        }
+      },
+      {
+        "id": "ad_low_mid_potency_corticosteroid_step",
+        "text": "Age ≤17: low-mid potency topical corticosteroid trial/failure or contraindication",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "age_years",
+          "ad_low_mid_potency_corticosteroid_step"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 17
+                },
+                {
+                  "op": "neq",
+                  "fact": "age_years",
+                  "value": 17
+                }
+              ]
+            },
+            {
+              "op": "in",
+              "fact": "ad_low_mid_potency_corticosteroid_step",
+              "values": [
+                "trial_failure",
+                "contraindicated"
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "mild_to_moderate_atopic_dermatitis"
+          ]
+        }
+      },
+      {
+        "id": "ad_high_potency_corticosteroid_step",
+        "text": "Age ≥17: high potency topical corticosteroid trial/failure or contraindication",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "age_years",
+          "ad_high_potency_corticosteroid_step"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "lt",
+              "fact": "age_years",
+              "value": 17
+            },
+            {
+              "op": "in",
+              "fact": "ad_high_potency_corticosteroid_step",
+              "values": [
+                "trial_failure",
+                "contraindicated"
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "mild_to_moderate_atopic_dermatitis"
+          ]
+        }
+      },
+      {
+        "id": "ad_calcineurin_step",
+        "text": "Topical calcineurin inhibitor (pimecrolimus or tacrolimus): trial/failure or contraindication",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "ad_calcineurin_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ad_calcineurin_step",
+          "values": [
+            "trial_failure",
+            "contraindicated"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "mild_to_moderate_atopic_dermatitis"
+          ]
+        }
+      },
+      {
+        "id": "ad_pde4_step",
+        "text": "Topical PDE-4 inhibitor (crisaborole): trial/failure or contraindication",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "ad_pde4_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ad_pde4_step",
+          "values": [
+            "trial_failure",
+            "contraindicated"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "mild_to_moderate_atopic_dermatitis"
+          ]
+        }
+      },
+      {
+        "id": "vitiligo_bsa",
+        "text": "Nonsegmental vitiligo 10% BSA (source wording)",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "vitiligo_bsa"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "vitiligo_bsa",
+          "values": [
+            "10_percent"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonsegmental_vitiligo"
+          ]
+        }
+      },
+      {
+        "id": "vitiligo_low_mid_potency_corticosteroid_step",
+        "text": "Age ≤17: low-mid potency topical corticosteroid trial/failure or contraindication",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "age_years",
+          "vitiligo_low_mid_potency_corticosteroid_step"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 17
+                },
+                {
+                  "op": "neq",
+                  "fact": "age_years",
+                  "value": 17
+                }
+              ]
+            },
+            {
+              "op": "in",
+              "fact": "vitiligo_low_mid_potency_corticosteroid_step",
+              "values": [
+                "trial_failure",
+                "contraindicated"
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonsegmental_vitiligo"
+          ]
+        }
+      },
+      {
+        "id": "vitiligo_high_potency_corticosteroid_step",
+        "text": "Age ≥17: high potency topical corticosteroid trial/failure or contraindication",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "age_years",
+          "vitiligo_high_potency_corticosteroid_step"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "lt",
+              "fact": "age_years",
+              "value": 17
+            },
+            {
+              "op": "in",
+              "fact": "vitiligo_high_potency_corticosteroid_step",
+              "values": [
+                "trial_failure",
+                "contraindicated"
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonsegmental_vitiligo"
+          ]
+        }
+      },
+      {
+        "id": "vitiligo_calcineurin_step",
+        "text": "Topical calcineurin inhibitor (pimecrolimus or tacrolimus): trial/failure or contraindication",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "vitiligo_calcineurin_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "vitiligo_calcineurin_step",
+          "values": [
+            "trial_failure",
+            "contraindicated"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonsegmental_vitiligo"
+          ]
+        }
+      },
+      {
+        "id": "immunocompromised",
+        "text": "Immunocompromised",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "immunocompromised"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "immunocompromised",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "concurrent_biologic_or_jak",
+        "text": "Combination with therapeutic biologics or other JAK inhibitors",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "concurrent_biologic_or_jak"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "concurrent_biologic_or_jak",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "concurrent_immunosuppressant",
+        "text": "Taking immunosuppressants such as azathioprine or cyclosporine",
+        "citation": "https://health.alaska.gov/media/kc4dopwv/202209-opzelura_criteria_2022.pdf",
+        "required_facts": [
+          "concurrent_immunosuppressant"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "concurrent_immunosuppressant",
+          "values": [
+            "absent"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Opzelura (ruxolitinib), effective 2022-11-01. Closed indications attest to mild to moderate AD or nonsegmental vitiligo.",
+      "Source wording preserved: AD up to 20% BSA; vitiligo states 10% BSA without an inequality. The vitiligo attestation is literal; interpretation as a maximum requires manual review.",
+      "The source overlaps corticosteroid age bands: age ≤17 low-mid potency and age ≥17 high potency. Both classes are required at exactly age 17; trial/failure or contraindication qualifies independently for each. Outside that overlap only the age-applicable class is required.",
+      "Cautions (notes only): serious bacterial, mycobacterial, fungal and viral infections; monitor and manage promptly. Basal cell and squamous cell skin cancers: periodic skin examinations. Cytopenias (thrombocytopenia, anemia, neutropenia): CBC monitoring as indicated. Thrombosis (DVT, pulmonary embolism, arterial thrombosis) and major adverse cardiac events (MACE).",
+      "Duration (notes only): initial approval up to 2 months; reauthorization up to 1 year with disease improvement and/or stabilization and no serious adverse effects.",
+      "Quantity (notes only): 4 × 60gm tubes per 28 days (60gm per 7 days); source also lists 2 × 100gm tubes per 28 days (100gm per 14 days).",
+      "Remaining gaps: cautions, monitoring, duration, reauthorization, quantity enforcement and BSA wording interpretation require manual review. PDL status unknown; source is silent."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis",
+        "options": [
+          {
+            "value": "mild_to_moderate_atopic_dermatitis",
+            "label": "Mild to moderate atopic dermatitis"
+          },
+          {
+            "value": "nonsegmental_vitiligo",
+            "label": "Nonsegmental vitiligo"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Age 12 years or older",
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a dermatologist",
+        "options": [
+          {
+            "value": "dermatologist",
+            "label": "dermatologist"
+          },
+          {
+            "value": "dermatologist_or_consult",
+            "label": "dermatologist or consult"
+          },
+          {
+            "value": "none",
+            "label": "none"
+          }
+        ]
+      },
+      "ad_bsa": {
+        "type": "select",
+        "label": "AD up to 20% BSA",
+        "options": [
+          {
+            "value": "up_to_20_percent",
+            "label": "Up to 20% BSA"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "mild_to_moderate_atopic_dermatitis"
+          ]
+        }
+      },
+      "ad_low_mid_potency_corticosteroid_step": {
+        "type": "select",
+        "label": "Age ≤17: low-mid potency topical corticosteroid trial/failure or contraindication",
+        "options": [
+          {
+            "value": "trial_failure",
+            "label": "Trial and failure"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "mild_to_moderate_atopic_dermatitis"
+          ]
+        }
+      },
+      "ad_high_potency_corticosteroid_step": {
+        "type": "select",
+        "label": "Age ≥17: high potency topical corticosteroid trial/failure or contraindication",
+        "options": [
+          {
+            "value": "trial_failure",
+            "label": "Trial and failure"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "mild_to_moderate_atopic_dermatitis"
+          ]
+        }
+      },
+      "ad_calcineurin_step": {
+        "type": "select",
+        "label": "Topical calcineurin inhibitor (pimecrolimus or tacrolimus): trial/failure or contraindication",
+        "options": [
+          {
+            "value": "trial_failure",
+            "label": "Trial and failure"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "mild_to_moderate_atopic_dermatitis"
+          ]
+        }
+      },
+      "ad_pde4_step": {
+        "type": "select",
+        "label": "Topical PDE-4 inhibitor (crisaborole): trial/failure or contraindication",
+        "options": [
+          {
+            "value": "trial_failure",
+            "label": "Trial and failure"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "mild_to_moderate_atopic_dermatitis"
+          ]
+        }
+      },
+      "vitiligo_bsa": {
+        "type": "select",
+        "label": "Nonsegmental vitiligo 10% BSA (source wording)",
+        "options": [
+          {
+            "value": "10_percent",
+            "label": "10% BSA"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonsegmental_vitiligo"
+          ]
+        }
+      },
+      "vitiligo_low_mid_potency_corticosteroid_step": {
+        "type": "select",
+        "label": "Age ≤17: low-mid potency topical corticosteroid trial/failure or contraindication",
+        "options": [
+          {
+            "value": "trial_failure",
+            "label": "Trial and failure"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonsegmental_vitiligo"
+          ]
+        }
+      },
+      "vitiligo_high_potency_corticosteroid_step": {
+        "type": "select",
+        "label": "Age ≥17: high potency topical corticosteroid trial/failure or contraindication",
+        "options": [
+          {
+            "value": "trial_failure",
+            "label": "Trial and failure"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonsegmental_vitiligo"
+          ]
+        }
+      },
+      "vitiligo_calcineurin_step": {
+        "type": "select",
+        "label": "Topical calcineurin inhibitor (pimecrolimus or tacrolimus): trial/failure or contraindication",
+        "options": [
+          {
+            "value": "trial_failure",
+            "label": "Trial and failure"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonsegmental_vitiligo"
+          ]
+        }
+      },
+      "immunocompromised": {
+        "type": "select",
+        "label": "Immunocompromised",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "concurrent_biologic_or_jak": {
+        "type": "select",
+        "label": "Combination with therapeutic biologics or other JAK inhibitors",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "concurrent_immunosuppressant": {
+        "type": "select",
+        "label": "Taking immunosuppressants such as azathioprine or cyclosporine",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "oral-benzodiazepines": {
     "drug": {

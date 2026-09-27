@@ -1,0 +1,15 @@
+{
+  "slug": "vitamin-d-50",
+  "drug_name": "Vitamin D; 50",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/2z2mce5u/drisdol-criteria.pdf",
+  "source_file": "drisdol-criteria.pdf",
+  "sha256": "2edb85c137c5a9ced4920d714e959eceeb78ca5b0e445fe37c7b92f531c2c25a",
+  "effective_date": null,
+  "section": "METABOLIC",
+  "extracted_text": "                                     ALASKA MEDICAID\n\n                                  Drisdol (Ergocalciferol)\n                                   Vitamin D2 50,000 IU (1.25mg)\n\n\nINDICATION:\n\n\u201cDRISDOL is indicated for use in the treatment of hypoparathyroidism, refractory rickets, also\nknown as vitamin D resistant rickets, and familial hypophosphatemia.\u201d1\n\n\nCRITERIA FOR APPROVAL:\n\nThe following criteria must be met for the approval of coverage:\n\n1. The patient is being treated for hypoparathyroidism; OR\n\n2. The patient is being treated for refractory rickets (vitamin D resistant rickets); OR\n\n3. The patient is being treated for familial hypophosphatemia; OR\n\n4. The patient is being treated for secondary hyperparathyroidism2; OR\n\n5. The patient has been compliantly taking at least 1,000 - 2,000IU of Vitamin D daily for no less\n   than 6 months and has failed to correct a vitamin D deficiency (lab results must be submitted\n   with the request).\n\n\nCRITERIA CAUSING DENIAL:\n\n1. The patient is being treated for a condition, disorder or disease other than the above; OR\n\n2. The medication is being used as a dietary supplement.\n\n\nLENGTH OF AUTHORIZATION:\n\n1. Authorization may be granted for up to 12 months.\n\n\nREFERENCES / FOOTNOTES:\n\n\u00b9 Drisdol package insert, available at: <http://products.sanofi-aventis.us/drisdol/drisdol.pdf>\nAccessed 12/1/2010.\n2\n    Ergocalciferol, Vitamin D2 monograph. Clinical Pharmacology. Accessed 12/1/2010.\n\n\n\nDrisdol Criteria\nVersion: 1\nLast updated: 1/06/2011\nApproved: 1/21/2011\n                                             Page 1 of 1\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

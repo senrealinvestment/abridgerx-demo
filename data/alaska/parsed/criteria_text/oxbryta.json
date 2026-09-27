@@ -1,0 +1,18 @@
+{
+  "slug": "oxbryta",
+  "drug_name": "Oxbryta",
+  "generic_name": "voxelotor",
+  "source_url": "https://health.alaska.gov/media/ygtdvp5d/202209-oxbryta_criteria_2022.pdf",
+  "source_file": "202209-oxbryta_criteria_2022.pdf",
+  "sha256": "aacaabd9160111e10d25e714dbe3ba82de63e1dd9a5c5c40dc7d73880e850800",
+  "effective_date": "2022-11-01",
+  "section": "OTHER",
+  "extracted_text": "                                          ALASKA MEDICAID\n                                        Prior Authorization Criteria\n\n                                      Oxbryta\u2122 (voxelotor)\n\n\n FDA INDICATIONS AND USAGE1\n\nOxbryta\u2122 is indicated to treat sickle cell disease in patients 4 years of age and older. It is a hemoglobin\nS polymerization inhibitor that was approve under the accelerated pathway. The drug is thought to inhibit\nred blood cell sickling, improve red blood cell deformity, and reduce whole blood viscosity.\n\nAPPROVAL CRITERIA1,2\n\n     1. Patient is 4 years of age or older AND;\n     2. Patient has the diagnosis of sickle cell disease AND;\n     3. Prescribed by or consultation with a hematologist or a provider that specializes in sickle\n        cell disease AND;\n     4. Documentation that the patient has had at least one vaso-occlusive crisis within the past 6\n        months AND;\n     5. Has a documented baseline hemoglobin AND;\n     6. Patient has tried and failed or has a contraindication to hydroxyurea for at least 3 months.\n\nDENIAL CRITERIA1,2\n\n       1. Failure to meet approval criteria OR;\n       2. Patient is receiving concomitant, prophylactic blood transfusions OR;\n       3. Concomitantly being prescribed with Adakveo.\n\nCAUTIONS1\n\n       \u2022    Concomitant use of moderate to strong CYP3A4 inhibitors should be avoided.\n       \u2022    Monitor for hypersensitivity reactions and manage promptly.\n\nDURATION OF APPROVAL\n       \u2022    Approval: Up to 3 months\n       \u2022    Reauthorization: Up to 12 months with documentation showing an increase in\n            hemoglobin and/or decrease in vaso-occlusive crisis related emergencies.\n\nQUANTITY LIMITS\n       \u2022    90 \u2013 500mg tablets per 30 days\n       \u2022    90 \u2013 300mg tablets for oral suspension\n\n\n\n\nOxbryta\u2122 Criteria\nVersion: 2\nOriginal: 02/28/2020\nApproval: 9/16/2022\nEffective: 11/1/2022\n\f                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\n\n\nREFERENCES / FOOTNOTES:\n\n          1. Oxbryta\u2122 [prescribing information]. San Francisco, CA: Global Blood Therapeutics;\n             November 2019.\n          2. Brown C, Hoppe C, Inati A, et al. Efficacy and Safety of 1500 mg Voxelotor in a\n             Phase 2a Study (GBT440-007) in Adolescents with Sickle Cell Disease.\n             Blood:132(Suppl 1):509. Accessed November 26, 2019.\n\n\n\n\nOxbryta\u2122 Criteria\nVersion: 2\nOriginal: 02/28/2020\nApproval: 9/16/2022\nEffective: 11/1/2022\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

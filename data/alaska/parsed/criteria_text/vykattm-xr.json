@@ -1,0 +1,17 @@
+{
+  "slug": "vykattm-xr",
+  "drug_name": "VykatTM XR",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/liaj23mb/vykatxr_criteria.pdf",
+  "source_file": "vykatxr_criteria.pdf",
+  "sha256": "a7a5dbf4b4c88bf4312d597ff2d1fd5955da09784f3e04dc71a3dcdc379dc655",
+  "effective_date": "2026-01-01",
+  "section": "OTHER",
+  "extracted_text": "                                         ALASKA MEDICAID\n                                       Prior Authorization Criteria\n\n                                            VykatTM XR\n                                        (diazoxide choline)\n\nFDA INDICATIONS AND USAGE1\n\nVykat XR is indicated for the treatment of hyperphagia in adults and pediatric patients 4 years of age and\nolder with Prader-Willi syndrome (PWS).\n\nAPPROVAL CRITERIA1,2\n\n     1. Patient meets FDA labeled age AND;\n     2. Prescribed by or in consultation with an endocrinologist or geneticist AND;\n     3. Patient has the diagnosis of Prader Willi Syndrome confirmed by genetic testing indicating\n        chromosome 15 mutation AND;\n     4. Hyperphagia is present.\n\nDENIAL CRITERIA 1\n\n     1. Failure to meet approval criteria OR;\n     2. Patient has a history of hypersensitivity to diazoxide or thiazides\n\nCAUTIONS1\n\n     \u2022    Hemoglobin A1C(HbA1c) and fasting glucose should be monitored prior to and throughout\n          treatment.\n     \u2022    Dose adjustment may be necessary in patients receiving strong CYP 1A2 inhibitors.\n     \u2022    Edema, including severe reactions associated with fluid overload, has been reported.\n\nDURATION OF APPROVAL\n\n     \u2022    Initial Approval: up to 3 months\n     \u2022    Reauthorization Approval: up to one year\n\nQUANTITY LIMIT1\n\n   \u2022 25 mg tablets: 120 tablets/30 days*\n   \u2022 75 mg tablets: 210 tablets/30 days*\n   \u2022 150 mg tablets: 90 tablets/30 days*\n*Total cumulative dose not to exceed FDA label recommended weight-based target dose.\n\nREFERENCES / FOOTNOTES:\n\n1. VykatTM XR (diazoxide choline) [prescribing information]. Redwood City, CA; Soleno Therapeutics;\n   March 2025\n2. Miller JL, Gevers E, Bridges N, et al. Diazoxide choline extended-release tablet in people with\n   Prader-Willi syndrome: results from long-term open-label study. Obesity. 2024;32(2):252-261.\nVykatTM XR Criteria\nVersion: 1\nOriginal: 10/13/2025\nAccepted: 11/21/2025\nEffective: 01/01/2026\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ],
+  "download_date": "2026-09-26"
+}

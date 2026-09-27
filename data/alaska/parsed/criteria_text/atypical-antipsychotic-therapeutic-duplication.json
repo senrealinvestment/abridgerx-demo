@@ -1,0 +1,15 @@
+{
+  "slug": "atypical-antipsychotic-therapeutic-duplication",
+  "drug_name": "Atypical Antipsychotic Therapeutic Duplication",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/jmenw3me/therapeuticduplicationcriteria.pdf",
+  "source_file": "therapeuticduplicationcriteria.pdf",
+  "sha256": "13b025143325e4d0713b0f921c5143cd786e8f715a20624d2fba8d1439aba03f",
+  "effective_date": null,
+  "section": "ANTIPSYCHOTICS",
+  "extracted_text": "                                                     ALASKA MEDICAID\n\n                                     Atypical Antipsychotic Therapeutic Duplication\n            Abilify, Clozaril, Fanapt, Geodon, Invega, Latuda, Risperdal, Saphris, Seroquel, Seroquel XR, Symbyax, Zyprexa\n                                                           Oral and Injectable\n\n\nCRITERIA FOR APPROVAL:\n\nThe use of more than one (1) atypical antipsychotic for a recipient of any age, or the use of any atypical antipsychotic in a\nchild less than 5 years of age, will require the prescriber to obtain prior authorization and provide at least the following:\n\n          Documentation of the condition being treated and that the addition of a second atypical antipsychotic is medically\n          necessary.\n\n          Documentation that the initial atypical antipsychotic cannot be discontinued with the addition of the second\n          atypical antipsychotic.\n\n          A treatment plan that includes monitoring for adverse drug reactions, metabolic side effects, and efficacy.\n\n          Medication profile history showing at least 2 weeks of single-drug therapy at an adequate dose of the medication\n          and progress notes.\n\n\nLENGTH OF APPROVAL:\n\nInitial approval may be obtained for up to 3 months.\n\nRenewals can be obtained for up to 1 year following the initial 3 month approval with documentation of monitoring for\nadverse drug reactions, metabolic side effects, and documentation of improved efficacy of the combination therapy.\n\n\n\n\nAtypical Antipsychotic TD Criteria\nVersion: 1\nLast updated: 4/25/2012\nApproved 3/16/2012\n                                                             Page 1 of 1\n\f",
+  "inferred_required_facts": [
+    "age_years"
+  ],
+  "download_date": "2026-09-26"
+}

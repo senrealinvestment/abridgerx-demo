@@ -1,0 +1,18 @@
+{
+  "slug": "ztalmy",
+  "drug_name": "Ztalmy",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/4vlf31zn/5biv-ztalmy_criteria_2023.pdf",
+  "source_file": "5biv-ztalmy_criteria_2023.pdf",
+  "sha256": "a5f7c33c2be7326075b6622e8d4a9bf41a343fced52f9b5fc5d3234bcfe9956a",
+  "effective_date": "2023-06-01",
+  "section": "OTHER",
+  "extracted_text": "                                        ALASKA MEDICAID\n                                      Prior Authorization Criteria\n\n                                             Ztalmy\u2122\n                                           (ganaxolone)\n\n\nFDA INDICATIONS AND USAGE1\n\nZtalmyTM is a neuroactive steroid gamma-aminobutyric acid (GABA) A receptor positive modulator\nindicated for the treatment of seizures associated with cyclin-dependent kinase-like 5 (CDKL5)\ndeficiency disorder (CDD) in patients 2 years of age and older.\n\nAPPROVAL CRITERIA1,2\n\n    1. Patient is 2 years of age or older AND;\n    2. Prescribed by or in consultation with a neurologist AND;\n    3. Patient has the diagnosis of CDKL5 deficiency disorder (CDD) AND;\n    4. Patient has a genetically confirmed mutation in the CDKL5 gene which is pathogenic or likely\n       pathogenic AND\n    5. Patient has tried and failed or is currently taking at least two previous antiepileptic drugs.\n\nDENIAL CRITERIA 1,2\n\n    1. Failure to meet approval criteria\n\nCAUTIONS1\n\n    \u2022    Controlled substance: Ztalmy contains ganaxolone, a schedule V controlled substance.\n    \u2022    Monitor patients for suicidal behavior and ideation.\n    \u2022    If discontinued, Ztalmy should be withdrawn gradually to minimize the risk of increased seizure\n         frequency or status epilepticus.\n    \u2022    Ztalmy may cause fetal harm.\n\n\nDURATION OF APPROVAL1,2\n\n    \u2022    Initial Approval: up to 3 months\n    \u2022    Reauthorization Approval: up to 6 months with confirmation of a sustained reduction in monthly\n         seizure frequency from pre-treatment baseline\n  \u2022\nQUANTITY LIMIT1\n\n    \u2022    1800mg (36ml) daily\n\n\n\n\nZtalmy\u2122 Criteria\nVersion: 1\nOriginal: 2/28/2023\nAccepted: 4/21/2023\nEffective: 6/1/2023\n\f                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\n\nREFERENCES / FOOTNOTES:\n\n1. ZtalmyTM (ganaxolone) [prescribing information]. Radnor, PA: Marinus; November 2022\n2. Knight EMP, Amin S, Bahi-Buisson N, et al. Safety and efficacy of ganaxolone in patients with\n   CDKL5 deficiency disorder: results from the double-blind phase of a randomised, placebo-controlled,\n   phase 3 trial. Lancet Neurol. 2022;21:417-427\n\n\n\n\nZtalmy\u2122 Criteria\nVersion: 1\nOriginal: 2/28/2023\nAccepted: 4/21/2023\nEffective: 6/1/2023\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

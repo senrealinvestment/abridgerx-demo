@@ -1,0 +1,15 @@
+{
+  "slug": "ampyra",
+  "drug_name": "Ampyra",
+  "generic_name": "dalfampridine",
+  "source_url": "https://health.alaska.gov/media/0p0gytxf/ampyra.pdf",
+  "source_file": "ampyra.pdf",
+  "sha256": "35a68880451ac9f10c5f8786b2a44985ed105c36f7492b48619817f5394ea018",
+  "effective_date": null,
+  "section": "OTHER",
+  "extracted_text": "                                     ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\n                                Ampyra\u00ae (dalfampridine)\n\nINDICATION: 1\n\n\u201cAMPYRA (dalfampridine) is indicated as a treatment to improve walking in patients with\nmultiple sclerosis (MS). This was demonstrated by an increase in walking speed.\u201d\n\nCRITERIA FOR APPROVAL:\n\n1. The patient has multiple sclerosis (MS); AND\n2. The patient has a Creatinine Clearance (CrCl) of > 50mL/min; AND\n3. The patient has a Kurtzke Expanded Disability Status Score (EDSS) of > 4.0 and < 7.0 OR\n    a. The patient has difficulty walking but is able to walk 25 feet with or without the\n       assistance of a cane, crutches or braces.\n\nCRITERIA CAUSING DENIAL:\n\n1. The patient does not have multiple sclerosis (MS); OR\n2. The patient has a Creatinine Clearance (CrCl) of \u2264 50mL/min; OR\n3. The patient has a Kurtzke Expanded Disability Status Score (EDSS) of \u2264 4.0 or \u2265 7.0; OR\n4. The patient does not have difficulty walking or is restricted to a wheelchair.\n\nLENGTH OF AUTHORIZATION:\n\n1. Prior authorization may be approved for up to six (6) months.\n2. Prior authorization may be renewed if the patient meets the criteria for approval and reports\n   having experienced an increase in walking speed while taking Ampyra\u00ae.\n\nDISPENSING LIMIT:\n\n1. The dispensing limit is a thirty (30) days supply.\n2. The quantity limit is two (2) tablets per day.\n\nREFERENCES / FOOTNOTES:\n\n1. Ampyra [package insert]. Ardsley, NY; Acorda Therapeutics, Inc., Jan 2014.\n\n\n\n\nAmpyra\u00ae criteria\nVersion 2\nLast updated: 10/14/2010\nApproved: 11/19/2010\nReviewed: 09/19/2014 (format & reference update)\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

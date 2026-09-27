@@ -1,0 +1,17 @@
+{
+  "slug": "auvelity",
+  "drug_name": "Auvelity",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/0jpjvndu/auvelity_criteria_2025.pdf",
+  "source_file": "auvelity_criteria_2025.pdf",
+  "sha256": "4fa5050a66c31ea9325c1ee788a5dba89f9eef0c1bc33e828d90ac28ead972fc",
+  "effective_date": "2025-03-01",
+  "section": "OTHER",
+  "extracted_text": "                                     ALASKA MEDICAID\n                                   Prior Authorization Criteria\n\n                                          Auvelity\u00ae\n                                  (dextromethorophan HBr &\n                                        bupropion HCl)\n\n\n\nFDA INDICATIONS AND USAGE1\nAuvelity\u00ae is combination of dextromethorphan, an uncompetitive N-methyl D-aspartate\n(NMDA) receptor antagonist and sigma-1 receptor agonist, and bupropion, an aminoketone and\nCYP450 2D6 inhibitor, indicated for the treatment of major depressive disorder (MDD) in\nadults.\n\nAPPROVAL CRITERIA1,2,3\n\n    1. Patient meets FDA labeled age AND;\n    2. Patient has the diagnosis of major depressive disorder AND;\n    3. Patient has tried and failed a minimum of two different antidepressants for a minimum of\n       60 days at therapeutic dose levels\n\nDENIAL CRITERIA 1,2\n\n    1. Failure to meet approval criteria OR;\n    2. Patient has been diagnosed with a seizure disorder OR;\n    3. Patient has a current or prior diagnosis of anorexia nervosa or bulimia nervosa OR;\n    4. Auvelity\u00ae will be taken within 14 days of treatment with a monoamine oxidase inhibitor\n       (MAOI) OR;\n    5. Patient has severe hepatic or renal impairment\n\nCAUTIONS1\n\n\u2022   May cause fetal harm.\n\u2022   May cause or worsen hypertension\n\u2022   As with other antidepressants, dextromethorphan/bupropion carries a boxed warning\n    relating to risk of suicidal thoughts and behaviors.\n\nDURATION OF APPROVAL\n\u2022   Initial Approval: 3 months\n\u2022   Renewal: up to 12 months\n\nQUANTITY LIMIT\n\u2022   68 tablets within 34 days/max dose 2 tablets per day\n\n\nAuvelity\u00ae Criteria\nVersion: 1\nOriginal: 12/3/2024\nAccepted: 01/17/2025\nEffective: 03/1/2025\n\f                                    ALASKA MEDICAID\n                                  Prior Authorization Criteria\n\n\n\n\nREFERENCES / FOOTNOTES:\n\n    1. Auvelity (dextromethorphan HBR/bupropion HCl) [prescribing information]. New York,\n       NY: Axsome Therapeutics; August 2024\n    2. Tabuteau H, Jones A, Anderson A, et al. Effect of AXS-05 (Dextromethorphan-\n       Bupropion) in major depressive disorder: a randomized double-blind controlled trial. Am\n       J Psychiatry. 2022 Jul;179(7):490-499.\n    3. American Psychological Association. Clinical practice guideline for the treatment of\n       depression across three age cohorts. 2019. Available at: https://www.apa.org/depression-\n       guideline.\n\n\n\n\nAuvelity\u00ae Criteria\nVersion: 1\nOriginal: 12/3/2024\nAccepted: 01/17/2025\nEffective: 03/1/2025\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

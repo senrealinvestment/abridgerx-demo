@@ -1,0 +1,16 @@
+{
+  "slug": "actiq",
+  "drug_name": "Actiq",
+  "generic_name": "fentanyl citrate, oral transmucosal",
+  "source_url": "https://health.alaska.gov/media/eujlbouj/actiq.pdf",
+  "source_file": "actiq.pdf",
+  "sha256": "66fb6389f91cbe8ba81f0f3515a3ae21a5b30786f98e2ed4f188c50ac0ec12eb",
+  "effective_date": null,
+  "section": "ANALGESICS, OPIOID & REVERSAL AGENTS",
+  "extracted_text": "                                    ALASKA MEDICAID\n                                  Prior Authorization Criteria\n\n                       Actiq\u00ae (fentanyl citrate, oral transmucosal)\n\n\nINDICATION AND USAGE\n\nAn opioid analgesic indicated for the management of breakthrough pain in cancer patients 16\nyears and older who are already receiving and who are tolerant to around-the-clock opioid\ntherapy for their underlying persistent cancer pain.\n  Limitations\n    \u2022 Actiq may only be dispensed to outpatients enrolled in the TIRF (transmucosal\n        immediate release fentanyl) REMS (risk evaluation and mitigation strategy) program.\n\n\nAPPROVAL CRITERIA\n\nThe following criteria must be met for approval of coverage:\n\n1. The patient is being treated for cancer pain; AND\n\n2. The patient is at least 16 years of age; AND\n\n3. The patient is already receiving opioid therapy for underlying persistent cancer pain; AND\n\n4. The patient is tolerant to the opioid therapy currently being used for their underlying\n   persistent cancer pain.\n\n\nLENGTH OF AUTHORIZATION:\n\n1. Coverage may be approved for up to 6 months.\n\n\nQUANTITY LIMIT:\n\n1. Quantity limit of 3 per day\n\n\nREFERENCES / FOOTNOTES:\n\n1. Actiq [package insert]. Frazer, PA; Cephalon, Inc., December 2011.\n\n\n\n\nActiq\u00ae Criteria\nVersion 2\nUpdated: 09/19/2014\nApproved: 09/19/2014\nPrevious: 09/19/2008\n                                            Page 1 of 1\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

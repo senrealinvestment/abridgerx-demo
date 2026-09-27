@@ -1,0 +1,18 @@
+{
+  "slug": "xcopri",
+  "drug_name": "Xcopri",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/f3ziw32q/202101-xcopri_criteria_2021.pdf",
+  "source_file": "202101-xcopri_criteria_2021.pdf",
+  "sha256": "b159c3d0dab2db65f708227bd6ca0f2754fab32f1149fa25138abf521a6d2967",
+  "effective_date": "2021-03-15",
+  "section": "OTHER",
+  "extracted_text": "                                       ALASKA MEDICAID\n                                     Prior Authorization Criteria\n\n                                            Xcopri\u00ae\n                                         (cenobamate)\n\n FDA INDICATIONS AND USAGE 1\n\n Xcopri\u00ae is a voltage-gated sodium channel inhibitor and a positive allosteric modulator of the\n \u03b3-aminobutyric acid (GABAa) ion channel. It is indicated for the treatment of partial-onset\n seizures in adult patients.\n\nAPPROVAL CRITERIA 1,2\n\n     1. Patient is 18 years of age or older AND;\n     2. The medication is being prescribed by or in consultation with a neurologist or physician\n        that specializes in seizure disorders AND;\n     3. The patient has the diagnosis of partial-onset seizures AND;\n     4. The patient has tried and failed or has a contraindication to two anticonvulsants indicated\n        for partial seizures.\n\nDENIAL CRITERIA 1,2\n\n     1. Failure to meet approval criteria OR;\n     2. The patient has Familial Short QT syndrome OR;\n     3. Dosages exceeding 400mg per day.\n\nCAUTIONS1\n\n       \u2022    Dosage adjustments may be needed when concomitantly being prescribed with\n            other medications.\n       \u2022    Monitor patients for suicidal behavior and ideation.\n       \u2022    Monitor for somnolence and fatigue and advise patients not to drive or operate\n            machinery until they have gained sufficient experience on XCOPRI.\n            Concomitant use with other CNS depressants or alcohol may have additive\n            effects.\n       \u2022    Effectiveness of hormonal oral contraceptives may be reduced when\n            administered concomitantly with XCOPRI.\n\n\nDURATION OF APPROVAL\n       \u2022    Initial Approval: up to 3 months\n       \u2022    Reauthorization Approval: up to 12 months\n\n\nXcopri\u00ae Criteria\nVersion: 1\nOriginal: 12/07/20\nApproval: 1/15/21\nEffective: 3/15/21\n\f                                         ALASKA MEDICAID\n                                       Prior Authorization Criteria\n\nQUANTITY LIMIT\n       \u2022    30 days (not to exceed maximum dose 400mg per day)\n\nREFERENCES / FOOTNOTES:\n\n       1. Xcopri [prescribing information]. Paramus, NJ: SK Life Sciences, Inc.; August 2020.\n       2. Krauss GL, Klein P, Brandt C, et al. Safety and efficacy of adjunctive cenobamate (YKP3089)\n          in patients with uncontrolled focal seizures: a multicenter, double-blind, randomized, placebo-\n          controlled, dose-response trial. Lancet Neurology 2019; published online November 13, 2019;\n          https://doi.org/10.1016/S1474-4422(19)30399-0.\n\n\n\n\nXcopri\u00ae Criteria\nVersion: 1\nOriginal: 12/07/20\nApproval: 1/15/21\nEffective: 3/15/21\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

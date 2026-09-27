@@ -1,0 +1,15 @@
+{
+  "slug": "fentora",
+  "drug_name": "Fentora",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/jmmhlcvi/fentora.pdf",
+  "source_file": "fentora.pdf",
+  "sha256": "194074934fbaa681ccc36dbc8fa3c0fe51c82b74c4ed383509e06f79de2ca04d",
+  "effective_date": "2016-10-03",
+  "section": "ANALGESICS, OPIOID & REVERSAL AGENTS",
+  "extracted_text": "                                     ALASKA MEDICAID\n\n\n                          Fentora\u00ae (Fentanyl Buccal Tablet)\n                Buccal tablets: 100mcg, 200mcg, 300mcg, 400mcg, 600mcg and 800mcg\n\n\nPREFERRED MEDICATION:\n\nNA\n\n\nNON-PREFERRED MEDICATION:\n\nNA\n\nINDICATION:\n\n\u201cFENTORA is indicated only for the management of breakthrough pain in patients with\ncancer who are already receiving and who are tolerant to around-the-clock opioid therapy\nfor their underlying persistent cancer pain. Patients considered opioid tolerant are those who\nare taking around-the-clock medicine consisting of at least 60 mg of oral morphine daily, at least\n25 mcg of transdermal fentanyl/hour, at least 30 mg of oxycodone daily, at least 8 mg of oral\nhydromorphone daily, or an equianalgesic dose of another opioid daily for a week or longer.\u201d\u00b9\n\n\nCRITERIA FOR APPROVAL:\n\nThe following criteria must be met for the approval of coverage:\n\n1. The patient is at least 18 years old; AND\n\n2. The patient is being treated for cancer pain; AND\n\n3. The patient is receiving around-the-clock opioid therapy; AND\n\n4. The patient is opioid tolerant as described above.\n\n\nCRITERIA CAUSING DENIAL:\n\n1. The medication is prescribed for anything other than breakthrough cancer pain.\n\n2. The patient is not receiving around-the-clock opioid therapy.\n\n3. The patient is not opioid tolerant.\n\n\n\n\nFentora\u00ae Criteria\nVersion 1\nLast Updated 03/04/2010\nApproved: 3/19/2010\n\fLENGTH OF AUTHORIZATION:\n\n1. Coverage may be approved for up to 6 months.\n\n\nDISPENSING LIMIT:\n\n1. The dispensing limit is a 30 day supply of medication.\n\n\nQUANTITY LIMIT:\n\n1. The quantity limit is 90 tablets per 30 days.\n\n\nREFERENCES / FOOTNOTES:\n\n\u00b9Fentora\u00ae package insert, available at: <http://www.fentora.com/hcp300_default.aspx> Accessed\n03/04/2010.\n\n\n\n\nFentora\u00ae Criteria\nVersion 1\nLast Updated 03/04/2010\nApproved: 3/19/2010\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

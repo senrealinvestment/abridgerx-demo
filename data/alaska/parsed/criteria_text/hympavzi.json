@@ -1,0 +1,17 @@
+{
+  "slug": "hympavzi",
+  "drug_name": "Hympavzi",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/vbbktmui/hympavzi_criteria_2025.pdf",
+  "source_file": "hympavzi_criteria_2025.pdf",
+  "sha256": "35c5b73f0fe4edd82c171df248c2fd2eec8f989d7aa57da6c694adcb5673d69f",
+  "effective_date": "2025-03-01",
+  "section": "HEMOPHILIA",
+  "extracted_text": "                                        ALASKA MEDICAID\n                                      Prior Authorization Criteria\n\n                                         Hympavzi\u2122\n                                      (marstacimab-hncq)\n\n\nFDA INDICATIONS AND USAGE1\n\nHympavziTM is a tissue factor pathway inhibitor (TFPI) antagonist indicated for routine prophylaxis to\nprevent or reduce the frequency of bleeding episodes in adult and pediatric patients 12 years of age and\nolder with:\n        \u2022 hemophilia A (congenital factor VIII deficiency) without factor VIII inhibitors, or\n        \u2022 hemophilia B (congenital factor IX deficiency) without factor IX inhibitors.\n\nAPPROVAL CRITERIA1,2,3\n\n    1. Patient meets FDA labeled age AND;\n    2. Prescribed by or in consultation with a hematologist AND;\n    3. Patient has the diagnosis hemophilia A (without factor VIII inhibitors) or hemophilia B (without\n       factor IX inhibitors) AND;\n    4. Hympavzi will not be used in combination with prophylactic factor replacement therapy AND;\n    5. One of the following applies for the patient:\n           a. Patient hemophilia is classified as severe (defined as factor activity <1%) OR\n           b. Patient has a documented history of 2 or more episodes of spontaneous bleeding into\n                joints.\n\nDENIAL CRITERIA 1\n\n    1.   Failure to meet approval criteria OR;\n    2.   Patient will use HympavziTM in combination with prophylactic factor therapy OR;\n    3.   HympavziTM will be used to treat breakthrough bleeding episodes OR;\n    4.   Dosing will be initiated at a maintenance level above 150mg once weekly in new-start patients\n\nCAUTIONS1\n\n    \u2022    Thromboembolic events may occur. Interrupt HympavziTM treatment if symptoms occur.\n    \u2022    HympavziTM may cause fetal harm.\n\nDURATION OF APPROVAL\n\n    \u2022    Initial Approval: up to 3 months\n    \u2022    Reauthorization Approval: up to 12 months\n\nQUANTITY LIMIT\n\n    \u2022    8 prefilled 150mg/ml syringes or pens per 28 days\n\nREFERENCES / FOOTNOTES:\nHympavzi\u2122 Criteria\nVersion: 1\nOriginal: 11/12/2024\nAccepted 01/17/2025\nEffective: 03/1/2025\n\f                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\n\n1. Hympavzi (marstacimab-hncq) [prescribing information]. New York, NY: Pfizer; October 2024\n2. Study of the efficacy and safety PF-06741086 in adult and teenage participants with severe\n   hemophilia A or moderately severe to severe hemophilia B. NCT03938792. Available at:\n   https://clinicaltrials.gov/study/NCT03938792\n3. Guidelines for the management of hemophilia. 3rd Edition. World Federation of Hemophilia 2020.\n   Available at: https://www1.wfh.org/publications/files/pdf-1863.pdf\n\n\n\n\nHympavzi\u2122 Criteria\nVersion: 1\nOriginal: 11/12/2024\nAccepted 01/17/2025\nEffective: 03/1/2025\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ],
+  "download_date": "2026-09-26"
+}

@@ -1,0 +1,17 @@
+{
+  "slug": "relistor",
+  "drug_name": "RELISTOR",
+  "generic_name": "methylnaltrexone bromide",
+  "source_url": "https://health.alaska.gov/media/vb1pvijy/20199relistor_criteria_updated2019.pdf",
+  "source_file": "20199relistor_criteria_updated2019.pdf",
+  "sha256": "dfd19232b11c85fe5487cf581f2f130778c2a2488d6adaace90e6099096e682b",
+  "effective_date": "2019-11-20",
+  "section": "GASTROINTESTINAL",
+  "extracted_text": "                                          ALASKA MEDICAID\n                                        Prior Authorization Criteria\n\n                                 RELISTOR\u00ae (methylnaltrexone bromide)\n Available 8mg/0.4ml syringe, 12mg/0.6ml kit, 12mg/0.6ml syringe, 12mg/0.6ml vial, 150mg tablet\n\nFDA INDICATIONS AND USAGE 1\n\nRELISTOR is an opioid antagonist that comes as a tablet and an injection. The tablet is indicated\nfor the treatment of opioid-induced constipation (OIC) in adults with chronic non-cancer pain\nwhile the injection is indicated for the treatment of OIC in adults with chronic non-cancer pain\nand OIC in adults with advanced illness who are receiving palliative care, when response to\nlaxative therapy has not been sufficient.\n\nAPPROVAL CRITERIA 1,2\n\n     1. Patient is 18 year of age or older; AND\n     2. Diagnosis of Opioid-induced constipation (OIC) in adults with chronic non-cancer pain\n        OR OIC in adults with advanced illness who are receiving palliative care; AND\n     3. Recipient has been taking opioids for a period longer than 4 weeks; AND\n     4. Recipient does not have or suspected mechanical gastrointestinal obstruction; AND\n     5. Submit dates of trial or inadequate response from at least 2 laxative therapies.\n\nDENIAL CRITERIA1,2\n   1. Patient is less than 18 years of age; OR\n   2. Recipient does not have a diagnosis of Opioid-induced constipation (OIC) in adults with\n            chronic non-cancer pain OR OIC in adults with advanced illness who are receiving\n            palliative care; AND\n         3. Recipient has not taken opioids for a period longer than 4 weeks; AND\n         4. Recipient is at risk or has a suspected mechanical gastrointestinal obstruction; AND\n         5. Dates of trial or inadequate response from at least 2 laxative therapies has not been\n            submitted.\n\nCAUTIONS1\n\n     \uf0b7       There is a potential for gastrointestinal perforation.\n     \uf0b7       May cause severe or persistent diarrhea.\n     \uf0b7       Patients should be monitored for symptoms of opioid withdrawal.\n\n\n\nDURATION OF APPROVAL\n         \uf0b7    Approval: up to a maximum of 4 months\n\nQUANTITY LIMITS\n         \uf0b7    30 day supply at FDA approved dosage.\n\nRelistor\u00ae Criteria\nVersion: 2\nOriginal: 10/09/2013\nApproval: 9/20/2019\nEffective: 11/20/2019\n\f                                     ALASKA MEDICAID\n                                   Prior Authorization Criteria\n\n\n\nREFERENCES / FOOTNOTES:\n\n     1. Relistor\u00ae [prescribing information]. Bridgewater, NJ: Salix Pharmaceuticals, November\n        2018.\n     2. American Gastroenterological Association Technical Review on Constipation. Bharucha,\n        Adil E.Pemberton, John H.Locke, G. Richard et al. Gastroenterology , Volume 144 ,\n        Issue 1 , 218 - 238\n\n\n\n\nRelistor\u00ae Criteria\nVersion: 2\nOriginal: 10/09/2013\nApproval: 9/20/2019\nEffective: 11/20/2019\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

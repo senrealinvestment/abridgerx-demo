@@ -1,0 +1,17 @@
+{
+  "slug": "invokana",
+  "drug_name": "Invokana",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/4wvmb5qt/invokana_pa.pdf",
+  "source_file": "invokana_pa.pdf",
+  "sha256": "5fea42e0a9d56f03d6754dccba3a5add750aab4bf2bcc6d2ed318ef025ff2bb4",
+  "effective_date": null,
+  "section": "METABOLIC",
+  "extracted_text": "                                            Alaska Medicaid\n\n                                      INVOKANA\u2122(canagliflozin)\n                                  Available 100mg and 300mg tablets\n\n\nINDICATIONS and USAGE:\n\nINVOKANA is a sodium-glucose co-transporter 2 (SGLT2) inhibitor indicated as an adjunct to diet and\nexercise to improve glycemic control in adults with type 2 diabetes mellitus.\nLimitation of Use:\n    \u2022 Not for treatment of type 1 diabetes mellitus or diabetic ketoacidosis.\n\nCriteria for Approval:\n\n    1. Diagnosis from the \u2018Indication and Usage\u2019 section and must be supported by documentation\n       from the patient\u2019s medical record; AND\n    2. Trial and failure or had an inadequate response to metformin or other antidiabetic medication;\n       AND\n    3. Age restrictions apply, must be 18 years of age or older\n\nLength of Authorization:\n\nCoverage may be approved for 12 months.\n\nDispensing Limit:\n\nThe dispensing limit is a 30 day supply of medication with the following Quantity Limits:\n    \u2022 100mg up to 1 tablet per day\n    \u2022 300mg up to 1 tablet per day\n\nReminder: You are encouraged to report negative side effects of prescription drugs to the FDA. Visit\nhttp://www.fda.gov/Safety/MedWatch/default.htm or call 1-800-FDA-1088\n\nReferences:\n\nInvokana\u2122 package insert is available at: < http://www.invokana.com/ >\n Accessed 10/14/13\n\n\n\n\nInvokana criteria\nVersion 1\nLast updated 10/14/2013\nApproved 11/15/2013\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

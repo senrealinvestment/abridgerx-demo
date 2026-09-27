@@ -1,0 +1,15 @@
+{
+  "slug": "zydelig",
+  "drug_name": "Zydelig",
+  "generic_name": "idelalisib",
+  "source_url": "https://health.alaska.gov/media/rw5npazm/zydelig.pdf",
+  "source_file": "zydelig.pdf",
+  "sha256": "fd1f16f09fd357d06362dce174e53b760212be802f6e503792e5b236b881e578",
+  "effective_date": null,
+  "section": "OTHER",
+  "extracted_text": "                                     ALASKA MEDICAID\n                                   Prior Authorization Criteria\n\n                                     Zydelig\u00ae (idelalisib)\n\nBlack Box Warning\n   \u2022 Refer to package insert for specific warning information on serious and/or fatal\n       hepatotoxicity, colitis, pneumonitis, and intestinal perforation risks while taking\n       idelalisib.\n\nFDA INDICATIONS AND USAGE\n\n     \u2022    Relapsed chronic lymphocytic leukemia (CLL) in combination with rituximab.\n     \u2022    Relapsed follicular B-cell non-Hodgkin lymphoma (FL) and relapsed small lymphocytic\n          lymphoma (SLL) in patients who have trialed at least two prior systemic therapies.\n\nAPPROVAL CRITERIA\n\n     1. Patients with a diagnosis of relapsed chronic lymphocytic leukemia (CLL) taken in\n        combination with rituximab; OR\n     2. Patients with a diagnosis of relapsed follicular B-cell non-Hodgkin lymphoma (FL) who\n        have trialed at least two prior systemic therapies; OR\n     3. Patients with a diagnosis of relapsed small lymphocytic lymphoma (SLL) who have\n        trialed at least two prior systemic therapies.\n\nDENIAL CRITERIA:\n\n     1. Renewal authorizations will not be approved if the patient has had AST/ALT > 20 time\n        the upper limit of normal (ULN), Bilirubin > 10 times the ULN, or life-threatening\n        diarrhea.\n     2. Pregnancy\n\nCAUTIONS:\n\n     \u2022    Zydelig should only be used in the treatment of relapsed CLL in patients for whom\n          rituximab alone would be considered appropriate when taking into account the patient\u2019s\n          other co-morbidities.\n     \u2022    Zydelig approval for FL and SLL was based on Overall Response Rate; improvements in\n          patient survival or disease symptoms have not been established.\n\nDURATION OF APPROVAL:\n\n     \u2022    Approval may be granted up to 1 year\n\nQUANTITY LIMIT:\n\n     \u2022    Two 150mg capsules per day\n\nREFERENCES / FOOTNOTES:\n     1. Zydelig\u00ae [package insert]. Foster City, CA; Gilead Sciences, Inc., July 2014.\n\n\nZydelig\u00ae Criteria\nVersion: 1\nOriginal: 11/14/2014\nApproval: 11/21/2014\n                                             Page 1 of 1\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

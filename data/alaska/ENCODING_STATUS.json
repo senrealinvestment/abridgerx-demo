@@ -4,9 +4,10 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 190,
-  "encoding_text_only": 8,
+  "encoding_partial": 198,
+  "encoding_text_only": 0,
   "partial_slugs": [
+    "000-unit",
     "2024-2025-season",
     "actiq",
     "adbry",
@@ -18,7 +19,9 @@
     "andembry",
     "anzupgo",
     "apokyn",
+    "atypical-antipsychotic-therapeutic-duplication",
     "auvelity",
+    "bactroban-cream",
     "baxdela",
     "benlysta",
     "beqvez-tm",
@@ -52,6 +55,7 @@
     "empaveli",
     "entyvio",
     "epidiolex",
+    "ergocalciferol",
     "esbriet",
     "evenity",
     "evkeeza",
@@ -59,6 +63,7 @@
     "fabhalta",
     "fasenra",
     "fentora",
+    "fexmid",
     "fintepla",
     "firazyr",
     "firdapse",
@@ -68,6 +73,7 @@
     "h-pylori-kits",
     "hemgenix",
     "hemlibra",
+    "hemophilia",
     "hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc",
     "hetlioz",
     "human-chorionic-gonadotropin",
@@ -151,10 +157,12 @@
     "skyclarys",
     "skyrizi",
     "soliris",
+    "soma",
     "somatropin",
     "sphingosine-1-phosphate-receptor",
     "spinal-muscular-atrophy",
     "spravato",
+    "stadol",
     "statins",
     "stelara",
     "strensiq",
@@ -199,14 +207,17 @@
     "zynteglo"
   ],
   "next_candidate": null,
-  "remaining_text_only_notes": {
-    "000-unit": "Mislabeled scrape of drisdol-criteria.pdf (identical to vitamin-d-50); not a real 000-unit QL criteria pack \u2014 left text_only.",
-    "hemophilia": "Skip \u2014 duplicate of clotting-factor (already partial).",
-    "atypical-antipsychotic-therapeutic-duplication": "Deferred per standing order.",
-    "bactroban-cream": "Deferred per standing order.",
-    "fexmid": "Empty OCR / no extracted text \u2014 do not force.",
-    "soma": "Empty OCR / no extracted text \u2014 do not force.",
-    "stadol": "Empty OCR / no extracted text \u2014 do not force.",
-    "ergocalciferol": "Empty OCR / no extracted text \u2014 do not force (Drisdol content lives under vitamin-d-50)."
+  "remaining_text_only_notes": {},
+  "retired_aliases": {
+    "000-unit": "Retired alias of vitamin-d-50 (mislabeled Drisdol scrape); now partial via aliased predicates.",
+    "hemophilia": "Retired alias of clotting-factor (same SOC PDF); now partial via aliased predicates."
+  },
+  "completion_notes": {
+    "atypical-antipsychotic-therapeutic-duplication": "Encoded to partial from extracted criteria text.",
+    "bactroban-cream": "Encoded to partial from extracted criteria text.",
+    "fexmid": "OCR recovered from scanned PDF; encoded to partial.",
+    "soma": "OCR recovered from scanned PDF; encoded to partial.",
+    "stadol": "OCR recovered from scanned PDF; encoded to partial.",
+    "ergocalciferol": "OCR recovered from scanned PDF (oral drops / rickets); encoded to partial — distinct from vitamin-d-50."
   }
 }

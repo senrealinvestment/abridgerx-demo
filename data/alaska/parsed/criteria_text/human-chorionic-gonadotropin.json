@@ -1,0 +1,15 @@
+{
+  "slug": "human-chorionic-gonadotropin",
+  "drug_name": "Human Chorionic Gonadotropin",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/m4fpgy0w/hcg-criteria.pdf",
+  "source_file": "hcg-criteria.pdf",
+  "sha256": "22f52c91a9928ad7d3db42c257b2eef7e62d9fc6798d08f749e8118f3ccf0c3f",
+  "effective_date": "2019-01-15",
+  "section": "HORMONES",
+  "extracted_text": "                                      ALASKA MEDICAID\n\n                        Human Chorionic Gonadotropin (HCG)\n\nREIMBURSIBLE INDICATION:\n\n\u201cPrepubertal cryptorchidism not due to anatomic obstruction. In general, HCG is thought to\ninduce testicular descent in situations when descent would have occurred at puberty. HCG thus\nmay help to predict whether or not orchiopexy will be needed in the future. Although, in some\ncases, descent following HCG administration is permanent, in most cases the response is\ntemporary.\u201d1-3\n\n\n\nCRITERIA FOR APPROVAL:\n\n1. The patient is male; AND\n\n2. The patient is being treated for prepubertal cryptorchidism.\n\n\nCRITERIA CAUSING DENIAL:\n\n1. The patient is not male; OR\n\n2. The patient is being treated infertility or any off-label indication, including weight loss.\n\n\nREFERENCES / FOOTNOTES:\n\n\u00b9 Novarel\u00ae package insert, available at:\n<http://www.ferringfertility.com/medications/novarel/novarelpi.pdf> Accessed 05/03/2011.\n2\n Pregnyl\u00ae package insert, available at: <http://www.drugs.com/pro/pregnyl.html>\nAccessed 05/03/2011.\n3\n Chorionic Gonadotropin package insert, available at:\n<http://editor.apppharma.com/PIs/Chorionic_for_Inj_45792F_Jan_08.pdf> Accessed 05/03/2011.\n\n\n\n\nHCG criteria\nVersion 1\nLast updated 5/3/2011\nApproved 5/3/2011\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

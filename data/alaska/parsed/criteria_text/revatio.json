@@ -1,0 +1,16 @@
+{
+  "slug": "revatio",
+  "drug_name": "Revatio",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/uq0javh3/revatio-criteria-9-6-2012-v2.pdf",
+  "source_file": "revatio-criteria-9-6-2012-v2.pdf",
+  "sha256": "c228ace50a2d28821b81c3f80dbe76f7d9b4a1426cc7e1d94800369477f7ebe7",
+  "effective_date": "2012-01-01",
+  "section": "PULMONARY ARTERIAL HYPERTENSION",
+  "extracted_text": "                                              Alaska Medicaid\n\n                                          Revatio\u00ae (Sildenafil)\n                                                  Tablet: 20mg\n                                            Injectable: 10mg/12.5mL\n\n\nINDICATIONS AND USAGE:\n\n\u201cREVATIO is a phosphodiesterase-5 (PDE-5) inhibitor indicated for the treatment of pulmonary arterial\nhypertension (PAH) (WHO Group I) in adults to improve exercise ability and delay clinical worsening.\nStudies establishing effectiveness were short-term (12 to 16 weeks), and included predominately\npatients with NYHA Functional Class II-III symptoms. Etiologies were idiopathic (71%) or associated\nwith connective tissue disease (25%).\nLimitation of Use: The efficacy of REVATIO has not been adequately evaluated in patients taking\nbosentan concurrently.\u201d1\n\nCRITERIA FOR APPROVAL:\n\n     1. The patient has been diagnosed with pulmonary arterial hypertension (WHO Group I); AND\n     2. The patient is not currently being treated with any nitrate product; AND\n     3. Age of recipient is 18 years of age or older\n\nLENGTH OF AUTHORIZATION: Coverage may be approved for up to 12 months\n\nDISPENSING LIMIT:\n\n     1. The dispensing limit is a 30 day supply of the medication with the following QUANTITY LIMITS:\n           a. Tablets, up to 3 per day ( #90 tablets)\n           b. Injection, up to 3 per day (#90 vials)\n\n\nREFERENCES / FOOTNOTES:\n1\n Revatio\u00ae package insert, available at: < http://labeling.pfizer.com/ShowLabeling.aspx?id=645 >\nAccessed 09/06/2012\n\n\n\n\nRevatio\u00ae Criteria\nVersion: 4\nLast updated: 09/06/2012\nApproved: 3/19/2010, 9/21/2012\n                                                  Page 1 of 1\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

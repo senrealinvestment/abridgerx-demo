@@ -1,0 +1,17 @@
+{
+  "slug": "skyclarys",
+  "drug_name": "Skyclarys",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/aznpmojd/skyclarys_criteria_2023.pdf",
+  "source_file": "skyclarys_criteria_2023.pdf",
+  "sha256": "c63b18b7f3229e43e14549a1c426c44ad38ee3877d7678db6ef636815b6b45fd",
+  "effective_date": "2023-11-01",
+  "section": "BIOLOGICS",
+  "extracted_text": "                                         ALASKA MEDICAID\n                                       Prior Authorization Criteria\n\n                                            Skyclarys\u2122\n                                          (omaveloxolone)\n\n\nFDA INDICATIONS AND USAGE1\n\nSkyclarys is indicated for the treatment of Friedreich\u2019s ataxia in adults and adolescents aged 16 years and\nolder.\n\nAPPROVAL CRITERIA1,2\n\n    1. Patient meets FDA labeling approved age AND;\n    2. Prescribed by or in consultation with a neurologist AND;\n    3. Patient has the diagnosis of Friedreich\u2019s ataxia AND;\n    4. Patient has a mutation in the frataxin (FXN) gene confirmed by genetic testing AND;\n    5. Patient is clinically symptomatic (e.g. impaired coordination, diminished reflexes, frequent falls,\n       skeletal muscle weakness, etc.) AND;\n    6. Patient has a modified Friedreich\u2019s Ataxia Rating Scale score \u2265 20, but \u2264 80 AND;\n    7. Patient has baseline laboratory values within the past year, including LFTs, BNP, HbA1C, and\n       LVEF.\n\nDENIAL CRITERIA 1,2\n\n    1.   Failure to meet approval criteria OR;\n    2.   Patient has a left ventricular ejection fraction (LVEF) <40% OR;\n    3.   Patient has a hemoglobin A1C >11% OR;\n    4.   Patient has a B-type natriuretic peptide (BNP) > 200pg/mL OR;\n\nCAUTIONS1\n\n    \u2022    Monitor ALT, AST, and total bilirubin prior to initiation, every month for the first three months\n         of treatment, and periodically thereafter\n    \u2022    Avoid concomitant use with moderate or strong CYP3A4 inducers or inhibitors\n    \u2022    May cause fetal harm\n\nDURATION OF APPROVAL\n\n  \u2022 Initial Approval: up to 3 months\n  \u2022 Reauthorization Approval: up to 6 months\nQUANTITY LIMIT1\n\n    \u2022    102 capsules per 34 days\n\n\n\n\nREFERENCES / FOOTNOTES:\nSkyclarys\u2122 Criteria\nVersion: 1\nOriginal: 06/30/2023\nAccepted: 09/15/2023\nEffective: 11/1/2023\n\f                                     ALASKA MEDICAID\n                                   Prior Authorization Criteria\n\n\n1. Skyclarys [prescribing information]. Plano, TX; Reata Pharmaceuticals; February 2023\n2. Lynch DR, Chin MP, Delatycki MB et al. Safety and Efficacy of Omaveloxolone in Friedreich Ataxia\n   (MOXIe Study). Ann Neurol. 2021 Feb;89(2):212-225. doi: 10.1002/ana.25934. Epub 2020 Nov 5.\n   PMID: 33068037; PMCID: PMC7894504. Available at\n   https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7894504/\n\n\n\n\nSkyclarys\u2122 Criteria\nVersion: 1\nOriginal: 06/30/2023\nAccepted: 09/15/2023\nEffective: 11/1/2023\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ],
+  "download_date": "2026-09-26"
+}

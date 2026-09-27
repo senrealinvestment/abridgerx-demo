@@ -1,0 +1,15 @@
+{
+  "slug": "adcirca",
+  "drug_name": "Adcirca",
+  "generic_name": "tadalafil",
+  "source_url": "https://health.alaska.gov/media/aqvmnzsx/adcirca.pdf",
+  "source_file": "adcirca.pdf",
+  "sha256": "e1f448d6417d15a604dd653289522e167e55a85d660c5d0be65787bd7a24239d",
+  "effective_date": "2023-06-01",
+  "section": "PULMONARY ARTERIAL HYPERTENSION",
+  "extracted_text": "                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\n                                      Adcirca\u00ae (tadalafil)\n\nINDICATIONS AND USAGE\n\nA phosphodiesterase 5 (PDE5) inhibitor indicated for the treatment of pulmonary arterial\nhypertension (PAH) (WHO Group I) to improve exercise ability\n\n\nAPPROVAL CRITERIA\n\n    1. The patient has a diagnosis of PAH (WHO Group I); AND\n    2. The patient has been diagnosed with pulmonary arterial hypertension (WHO Group I);\n       AND\n    3. The patient is not currently being treated with or taking any nitrate products; AND\n    4. The patient has trialed generic sildenafil; OR\n    5. The patient has a documented allergy or hypersensitivity to a component of all available\n       generic sildenafil.\n\n\nDENIAL CRITERIA:\n\n    \u2022    The patient is on any nitrate product.\n\n\nDURATION OF APPROVAL:\n\n    \u2022    Approval may be granted up to 1 year\n\n\nQUANTITY LIMIT:\n\n    \u2022    Quantity limit is 2 tablets per day.\n\n\nREFERENCES / FOOTNOTES:\n\n    1. Adcirca\u00ae [package insert]. Indianapolis, IN; Eli Lilly and Company, April 2014.\n\n\n\n\nAdcirca\u00ae Criteria\nVersion: 2\nUpdated: 09/19/2014\nApproved: 09/19/2014\nPrevious: 02/09/2010\n\n                                                Page 1 of 1\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

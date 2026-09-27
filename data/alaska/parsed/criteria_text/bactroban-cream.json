@@ -1,0 +1,15 @@
+{
+  "slug": "bactroban-cream",
+  "drug_name": "Bactroban Cream",
+  "generic_name": "mupirocin cream",
+  "source_url": "https://health.alaska.gov/media/phhat5b0/bactroban-cream.pdf",
+  "source_file": "bactroban-cream.pdf",
+  "sha256": "044ebfc1f0625cba197307cc857d7f2a9f995576922cac935f732db2d9295f3e",
+  "effective_date": null,
+  "section": "INFECTIOUS DISEASE",
+  "extracted_text": "                                    ALASKA MEDICAID\n                                  Prior Authorization Criteria\n\n                       Bactroban Cream\u00ae (mupirocin cream)\n\nINDICATION\n\n\u201cBACTROBAN CREAM is indicated for the treatment of secondarily infected traumatic skin\nlesions (up to 10 cm in length or 100 cm2 in area) due to susceptible strains of S. aureus and S.\npyogenes.\u201d\n\n\nCRITERIA FOR APPROVAL\n\n1. The patient is being treated for an infection suspected to be S. aureus or S. pyogenes\n   susceptible to mupirocin; AND\n\n2. The patient is unable to use mupirocin 2% ointment due to a documented allergy to one or\n   more of the inactive ingredients present in the ointment formulation that are absent in the\n   cream.\n\n\nCRITERIA CAUSING DENIAL\n\n1. The patient does not have a documented allergy to one or more of the inactive ingredients\n   present in the ointment formulation.\n\n\nREFERENCES / FOOTNOTES\n\n1. Bactroban cream [package insert]. Research Triangle Park, NC; GlaxoSmithKline, May 2014.\n\n\n\n\nBactroban Cream criteria\nVersion 1\nLast updated 3/21/2011\nApproved 4/15/2011\nReviewed 09/19/2014 (format & reference update)\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

@@ -1,0 +1,18 @@
+{
+  "slug": "dawnzeratm",
+  "drug_name": "DawnzeraTM",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/jbmaasjr/dawnzera_criteria.pdf",
+  "source_file": "dawnzera_criteria.pdf",
+  "sha256": "7adb163e736f49d21b98b6647af73ee2f1bfc8a984f3592614e06dad1735086c",
+  "effective_date": "2026-01-01",
+  "section": "OTHER",
+  "extracted_text": "                                          ALASKA MEDICAID\n                                        Prior Authorization Criteria\n\n                                            DawnzeraTM\n                                           (donidalorsen)\n\n\nFDA INDICATIONS AND USAGE1\n\nDawnzeraTM is a prekallikrein-directed antisense oligonucleotide indicated for prophylaxis to prevent\nattacks of hereditary angioedema (HAE) in adults and pediatric patients 12 years of age and older.\n\nAPPROVAL CRITERIA1,2,3\n\n     1. Patient meets FDA labeled age AND;\n     2. Prescribed by or in consultation with an allergist or immunologist AND;\n     3. Patient has the diagnosis of hereditary angioedema due to C1-esterase inhibitor deficiency (HAE-\n        C1-INH) [type 1 or type 2] AND;\n     4. DawnzeraTM will be used for HAE prophylaxis AND;\n     5. Patient has a documented history of 3 or more moderate to severe HAE attacks per month AND;\n     6. Medications with an established link to angioedema (e.g. angiotensin converting enzyme\n        inhibitors, estrogen replacement therapy, etc,) have been evaluated and discontinued where\n        appropriate AND;\n     7. Patient has tried and failed or has a documented clinical contraindication to at least two preferred\n        agents approved for HAE prophylaxis from two different therapeutic classes.\n\nDENIAL CRITERIA 1\n\n     1. Failure to meet approval criteria OR;\n     2. DawnzeraTM prescribed to be used in combination with another agent indicated for HAE\n        prophylaxis\n\nCAUTIONS1\n\n     \u2022    The safety of DawnzeraTM in pregnancy or breastfeeding has not been determined.\n     \u2022    The most common adverse reactions include injection site reactions, upper respiratory tract\n          infection, urinary tract infection, and abdominal discomfort.\n\nDURATION OF APPROVAL\n\n     \u2022    Initial Approval: up to 3 months\n     \u2022    Reauthorization Approval: up to one year\n\nQUANTITY LIMIT\n  \u2022 1 80mg autoinjector per 28 days\n\n\n\nREFERENCES / FOOTNOTES:\n\n\nDawnzeraTM Criteria\nVersion: 1\nOriginal: 10/10/2025\nAccepted: 11/21/2025\nEffective: 01/01/2026\n\f                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\n1. DawnzeraTM (donidalorsen) [prescribing information]. Carlsbad, CA: Ionis Pharmaceuticals Inc.;\n   August 2025\n2. Maurer M, Magerl M, Betschel S, et al. The international WAO/EAACI guideline for the\n   management of hereditary angioedema \u2013 the 2021 revision and update. Allergy. 2022;77(7):1961-\n   1990.\n3. Riedl MA, Tachdjian R, Lumry WR, et al. Efficacy and safety of donidalorsen for hereditary\n   angioedema. N Engl J Med. 2024;391(1):21-31.\n\n\n\n\nDawnzeraTM Criteria\nVersion: 1\nOriginal: 10/10/2025\nAccepted: 11/21/2025\nEffective: 01/01/2026\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

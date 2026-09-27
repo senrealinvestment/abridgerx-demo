@@ -1,0 +1,15 @@
+{
+  "slug": "nizoral",
+  "drug_name": "Nizoral",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/sezhwos3/nizoral-oral-pa.pdf",
+  "source_file": "nizoral-oral-pa.pdf",
+  "sha256": "6e25272f51fc45295b461dbb670b27a833bfa40fac149661fc3cecfd85d9aa0f",
+  "effective_date": "2022-06-01",
+  "section": "INFECTIOUS DISEASE",
+  "extracted_text": "                                                 Alaska Medicaid\n\n                                         ORAL NIZORAL\u00ae(ketoconazole)\n                                            Available 200mg tablet\n\nINDICATIONS and USAGE:\n\nNIZORAL\u00ae Tablets should be used only when other effective antifungal therapy is not available or tolerated and\nthe potential benefits are considered to outweigh the potential risks.\n\nNIZORAL\u00ae (ketoconazole) Tablets are indicated for the treatment of the following systemic fungal infections in\npatients who have failed or who are intolerant to other therapies: blastomycosis, coccidioidomycosis,\nhistoplasmosis, chromomycosis, and paracoccidioidomycosis. NIZORAL\u00ae Tablets should not be used for fungal\nmeningitis because it penetrates poorly into the cerebrospinal fluid.\n\nCriteria for Approval:\n\n    1. Diagnosis from the \u2018Indication and Usage\u2019 section and must be supported by documentation from the\n       patient\u2019s medical record; AND\n    2. Submit dates of trial from at least one alternative antifungal medication; AND\n    3. Appropriate baseline laboratory test for liver assessment; AND\n    4. No history of acute or chronic liver disease; AND\n    5. Box Warnings discussed with recipient.\n\nLength of Authorization:\n\nCoverage may be approved for 1 month.\n\nDispensing Limit: The dispensing limit is a 30 day supply of medication with a Quantity Limit of 2 per day.\n\nReminder: You are encouraged to report negative side effects of prescription drugs to the FDA. Visit\nhttp://www.fda.gov/Safety/MedWatch/default.htm or call 1-800-FDA-1088\n\nReferences:\n\nNizoral\u00ae package insert is available at: <\nhttp://www.accessdata.fda.gov/drugsatfda_docs/label/2013/018533s040lbl.pdf >\nAccessed 12/11/13\n\nFDA Drug Safety Communication < http://www.fda.gov/Drugs/DrugSafety/ucm362415.htm >\n\n\n\n\nNizoral (oral) criteria\nVersion 1\nLast updated 12/11/2013\nApproved 1/17/2014\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

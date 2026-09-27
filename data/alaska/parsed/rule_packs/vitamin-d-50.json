@@ -35,7 +35,7 @@
     },
     {
       "id": "failed_1000_2000iu_daily_ge_6mo_labs_submitted",
-      "text": "Patient has compliantly taken at least 1,000\u20132,000 IU vitamin D daily for at least 6 months and failed to correct vitamin D deficiency; lab results submitted with the request.",
+      "text": "Patient has compliantly taken at least 1,000–2,000 IU vitamin D daily for at least 6 months and failed to correct vitamin D deficiency; lab results submitted with the request.",
       "citation": "https://health.alaska.gov/media/2z2mce5u/drisdol-criteria.pdf",
       "required_facts": [
         "failed_1000_2000iu_daily_ge_6mo_labs_submitted"
@@ -76,15 +76,17 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "ergocalciferol"
+  ],
   "notes": [
     "Partial encoding of Drisdol criteria. Rules engine is the sole eligibility evaluator. The five listed indication paths are alternatives; only the vitamin D deficiency path requires the daily treatment failure and submitted laboratory results attestation.",
-    "FDA indication (notes only): \u201cDRISDOL is indicated for use in the treatment of hypoparathyroidism, refractory rickets, also known as vitamin D resistant rickets, and familial hypophosphatemia.\u201d",
+    "FDA indication (notes only): “DRISDOL is indicated for use in the treatment of hypoparathyroidism, refractory rickets, also known as vitamin D resistant rickets, and familial hypophosphatemia.”",
     "Secondary hyperparathyroidism is an additional approval path supported by footnote 2: Ergocalciferol, Vitamin D2 monograph, Clinical Pharmacology; accessed 12/1/2010.",
     "Authorization (notes only): may be granted for up to 12 months.",
     "Reference / footnote 1: Drisdol package insert, http://products.sanofi-aventis.us/drisdol/drisdol.pdf; accessed 12/1/2010.",
     "Drisdol Criteria Version 1; Last updated 1/06/2011; Approved 1/21/2011. Extracted effective date is null; existing 1970-01-01 effective_date is retained as a metadata stub.",
-    "The duplicate scrape slug 000-unit is mislabeled and remains text_only; this encoding applies only to vitamin-d-50."
+    "The duplicate scrape slug 000-unit is a retired alias of this pack (same drisdol-criteria.pdf)."
   ],
   "fact_ui": {
     "indication": {
@@ -115,7 +117,7 @@
     },
     "failed_1000_2000iu_daily_ge_6mo_labs_submitted": {
       "type": "select",
-      "label": "Patient has compliantly taken at least 1,000\u20132,000 IU vitamin D daily for at least 6 months and failed to correct vitamin D deficiency; lab results submitted with the request.",
+      "label": "Patient has compliantly taken at least 1,000–2,000 IU vitamin D daily for at least 6 months and failed to correct vitamin D deficiency; lab results submitted with the request.",
       "when": {
         "fact": "indication",
         "in": [

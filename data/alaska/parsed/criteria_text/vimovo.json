@@ -1,0 +1,15 @@
+{
+  "slug": "vimovo",
+  "drug_name": "Vimovo",
+  "generic_name": "naproxen/ esomeprazole magnesium",
+  "source_url": "https://health.alaska.gov/media/mbxfp0ed/ccfu_analgesicsnonopioid_vimovo_20140117.pdf",
+  "source_file": "ccfu_analgesicsnonopioid_vimovo_20140117.pdf",
+  "sha256": "ed93eea95f307cccd6fa053ceb640a74fcb6fcdc3e2b93a4fccdb84199179512",
+  "effective_date": "2014-01-17",
+  "section": "ANALGESICS, NON-OPIOID",
+  "extracted_text": "                                     ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\n                    Vimovo\u00ae (naproxen/ esomeprazole magnesium)\n\n\nFDA Indications and Usage:\n\u201cVimovo is a combination product that contains naproxen and esomeprazole. It is indicated for\nthe relief of signs and symptoms of osteoarthritis, rheumatoid arthritis and ankylosing\nspondylitis and to decrease the risk of developing gastric ulcers in patients at risk of developing\nNSAID-associated gastric ulcers. Vimovo is not recommended for initial treatment of acute pain\nbecause the absorption of naproxen is delayed compared to absorption from other naproxen-\ncontaining products. Controlled studies do not extend beyond 6 months.\u201d1\n\nDosage Form/Strength:\nDelayed Release Tablet: 375mg-20mg, 500mg-20mg\n\nCriteria for Approval:\n    1. Diagnosis from the \u2018Indication and Usage\u2019 section; AND\n    2. Trial of a combination of a generic medication from both class types (NSAID and PPI) for\n        one month; AND\n    3. Submit letter of medical necessity that details the treatment failure of the two separate\n        medications.\n\nLength of Authorization:\n       Coverage may be approved for 6 months.\n\nDispensing Limit:\n       The dispensing limit is a 30 day supply of medication with the following Quantity Limit\nof 2 doses per day.\n\nReminder: You are encouraged to report negative side effects of prescription drugs to the FDA.\nVisit http://www.fda.gov/Safety/MedWatch/default.htm or call 1-800-FDA-1088\n\n\n\nReferences:\n1\n  Vimovo\u00ae package insert is available at: < http://www.vimovo.com/ > Accessed 8/16/13\n\n\n\n\nVimovo Criteria\nVersion 1\nLast updated 8/16/2013\nApproved 1/17/2014                                                                       Page 1 of 1\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

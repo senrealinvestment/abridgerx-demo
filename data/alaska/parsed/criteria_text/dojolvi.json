@@ -1,0 +1,16 @@
+{
+  "slug": "dojolvi",
+  "drug_name": "Dojolvi",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/3ofdnyp4/202011dojolvi_criteria_2020.pdf",
+  "source_file": "202011dojolvi_criteria_2020.pdf",
+  "sha256": "2b1fe52e481b4efbf8b2f3d2f429187116f41ce6a01084dcc7a3d74de41f8da2",
+  "effective_date": "2021-01-11",
+  "section": "LIPOTROPICS",
+  "extracted_text": "                                          ALASKA MEDICAID\n                                        Prior Authorization Criteria\n\n                                               Dojolvi\u2122\n                                            (triheptanoin)\n\n FDA INDICATIONS AND USAGE1,2\n\n Dojolvi\u2122 is a medium-chain triglyceride indicated as a source of calories and fatty acids for the\n treatment of pediatric and adult patients with molecularly confirmed long-chain fatty acid oxidation\n disorders (LC-FAOD).\n\nAPPROVAL CRITERIA1,2\n\n     1. Patient has a molecularly confirmed diagnosis of a long-chain fatty acid oxidation\n        disorder based on at least TWO of the following (a, b, or c):\n        a. Disease-specific elevations of acylcarnitines on a newborn blood spot or in plasma;\n            OR\n        b. Enzyme activity assay (in cultured fibroblasts or lymphocytes) below the lower limit\n            of the normal reference range for the reporting laboratory; OR\n        c. Genetic testing demonstrating pathogenic mutation in a gene associated with long-\n            chain fatty acid oxidation disorders AND;\n     2. Is being prescribed by or in consultation with an endocrinologist or metabolic disease\n        specialist AND;\n     3. The prescriber has submitted the patient\u2019s weight and total prescribed daily caloric intake\n        AND;\n     4. The dose does not to exceed 35% of Daily Caloric Intake.\n\nDENIAL CRITERIA1\n\n     1. Failure to meet approval criteria OR;\n     2. Patient is concurrently using another medium chain triglyceride product.\n\n\nCAUTIONS1\n\n      \u2022     Avoid co-administration of Pancreatic Lipase Inhibitors due to potential\n            for reduced clinical effect.\n\n\nDURATION OF APPROVAL\n      \u2022     Initial Approval: up to 3 months\n      \u2022     Reauthorization Approval: up to 12 months\n\n\n\nQUANTITY LIMIT\nDojolvi\u2122 Criteria\nVersion: 1\nOriginal: 10/08/20\nApproval: 11/20/20\nEffective: 1/11/21\n\f                                       ALASKA MEDICAID\n                                     Prior Authorization Criteria\n\n      \u2022     30 days \u2013 dose does not exceed 35% of the patient\u2019s caloric intake\n\nREFERENCES / FOOTNOTES:\n\n      1. Dojolvi [package insert]. Novato, CA Ultragenyx Pharmaceutical Inc. June 2020 .\n         https://www.ultragenyx.com/medicines/dojolvi-full-prescribing-information/. Accessed\n         on 10/08/2020\n      2. FDA Approves Dojolvi (triheptanoin) for the Treatment of Long-Chain Fatty Acid\n         Oxidation Disorders, https://www.drugs.com/newdrugs/fda-approves-dojolvi-\n         triheptanoin-long-chain-fatty-acid-oxidation-disorders-5283.html. Accessed 10/08/2020\n\n\n\n\nDojolvi\u2122 Criteria\nVersion: 1\nOriginal: 10/08/20\nApproval: 11/20/20\nEffective: 1/11/21\n\f",
+  "inferred_required_facts": [
+    "indication",
+    "prescriber_specialty"
+  ],
+  "download_date": "2026-09-26"
+}

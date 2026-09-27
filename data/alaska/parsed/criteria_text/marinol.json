@@ -1,0 +1,15 @@
+{
+  "slug": "marinol",
+  "drug_name": "Marinol",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/2jnjvsie/marinol-pa-v2.pdf",
+  "source_file": "marinol-pa-v2.pdf",
+  "sha256": "009cc36c8549e42edc79231797f2cd1898173c959baa6f7a2e64de5accabc066",
+  "effective_date": null,
+  "section": "GASTROINTESTINAL",
+  "extracted_text": "                                            Alaska Medicaid\n\n                                      MARINOL\u00ae(DRONABINOL)\n               Available 2.5mg, 5mg and 10mg capsules, Schedule III controlled substance\n\n\nINDICATIONS and USAGE:\n\n\u201cMARINOL Capsules is indicated for the treatment of:\n      1. anorexia associated with weight loss in patients with AIDS; and\n      2. nausea and vomiting associated with cancer chemotherapy in patients who have failed to\n          respond adequately to conventional antiemetic treatments.\u201d1\n\nCriteria for Approval:\n\nFor anorexia or nausea associated with weight loss in patients with AIDS\n         Must have a documented trial and failure/intolerant of megestrol acetate suspension\n             a. Submit documentation/chart notes\nFor the treatment of nausea and vomiting associated with cancer\n         Must have documented trial and failure/intolerant to at least one previous antiemetic therapies,\n         including a serotonin 5HT3 antagonist, antihistamine, corticosteroid, prokinetic, or\n         phenothiazine\n             a. Submit dates of each therapy, notes for discontinuation/treatment failure and current\n                 schedule of chemotherapy\n\nLength of Authorization:\n\nFor anorexia associated with weight loss in patients with AIDS\n         Coverage may be approved for up to 6 months\nFor the treatment of nausea and vomiting associated with cancer chemotherapy\n         Coverage may be approved for up to 6 months\n\nDispensing Limit:\n\nFor anorexia associated with weight loss in patients with AIDS\n         The dispensing limit is a 30 day supply of medication with a Quantity Limit of 2 doses per day\nFor the treatment of nausea and vomiting associated with cancer chemotherapy\n         The dispensing limit is a 30 day supply of medication per chemotherapy cycle\n\nReferences:\n1\n Marinol\u00ae package insert is available at:\n<http://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?id=48704 >\nAccessed 8/15/12\n\n\nMarinol criteria\nVersion 1\nLast updated 3/15/2013\nApproved 3/15/2013\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

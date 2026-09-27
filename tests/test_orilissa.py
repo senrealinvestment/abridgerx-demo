@@ -100,14 +100,14 @@ def test_ui_metadata_catalog_and_mirrors():
     assert catalog['interleukin-5-inhibitors']['encoding_status'] == 'partial'
     assert 'oriahnn' not in catalog and 'myfembree' not in catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 190
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 8
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 198
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 0
     assert (BASE / 'orilissa.json').read_bytes() == (BASE / 'rule_packs/orilissa.json').read_bytes()
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (190, 8)
+    assert (status['encoding_partial'], status['encoding_text_only']) == (198, 0)
     assert status['next_candidate'] == None
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:

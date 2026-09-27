@@ -1,0 +1,15 @@
+{
+  "slug": "zanaflex",
+  "drug_name": "Zanaflex",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/kuzlzacl/zanaflex-capsule-criteria.pdf",
+  "source_file": "zanaflex-capsule-criteria.pdf",
+  "sha256": "1c104b10940524425a84650d60a62a5e819bd8c521bac9f754f2e368d549384b",
+  "effective_date": null,
+  "section": "SKELETAL MUSCLE RELAXANTS",
+  "extracted_text": "                                     ALASKA MEDICAID\n\n                            Zanaflex Capsules (tizanidine)\n                                      Capsule: 2mg, 4mg & 6mg\n\n\nINDICATION:\n\n\u201cTizanidine is a short-acting drug for the management of spasticity. Because of the short duration\nof effect, treatment with tizanidine should be reserved for those daily activities and times when\nrelief of spasticity is most important\u201d1\n\n\nCRITERIA FOR APPROVAL:\n\n          No prior authorization is needed for Tizanidine 2mg and 4mg tablets.\n\n          Prior authorization may be obtained for Zanaflex Capsules if the recipient has been on a\n          comparable dose of Tizanidine tablets for at least 5 days without an improvement in\n          symptoms.\n\n\nCRITERIA CAUSING DENIAL:\n\n1. The recipient has not used a comparable dose of Tizanidine tablets for at least 5 days.\n\n2. The recipient is using Tizanidine tablets concurrently with Zanaflex Capsules .\n\n\nLENGTH OF AUTHORIZATION:\n\n1. Authorization may be granted for up to 6 months.\n\n\nREFERENCES / FOOTNOTES:\n\n\u00b9 Zanaflex Capsules and Zanaflex Tablets package insert, available at:\n<http://www.zanaflexcapsules.com/pdf/Zanaflex_Capsules_PI.pdf> Accessed 12/21/2010.\n\n\n\n\nZanaflex Criteria\nVersion: 1\nLast updated: 12/21/2010\nApproved: 1/21/2011\n                                             Page 1 of 1\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

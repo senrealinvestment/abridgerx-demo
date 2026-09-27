@@ -1,0 +1,18 @@
+{
+  "slug": "anzupgo",
+  "drug_name": "Anzupgo",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/0agnjymc/anzupgo_criteria.pdf",
+  "source_file": "anzupgo_criteria.pdf",
+  "sha256": "d863972de18e92193285bf27c09543340484c23870275bb579e71253229427bc",
+  "effective_date": "2026-03-01",
+  "section": "OTHER",
+  "extracted_text": "                                          ALASKA MEDICAID\n                                        Prior Authorization Criteria\n\n                                               Anzupgo\u00ae\n                                             (delgocitinib)\n\n\nFDA INDICATIONS AND USAGE1\n\nAnzupgo\u00ae is a Janus kinase (JAK) inhibitor indicated for the topical treatment of moderate to severe\nchronic hand eczema (CHE) in adults who have had an inadequate response to, or for whom topical\ncorticosteroids are not advisable.*\n\n*Limitations of use: Use of Anzupgo\u00ae in combination with other JAK inhibitors or potent immunosuppressants is\nnot recommended.\n\nAPPROVAL CRITERIA1,2\n\n     1. Patient meets FDA labeled age AND;\n     2. Prescribed by or in consultation with an allergist, dermatologist or immunologist AND;\n     3. Patient has the diagnosis of chronic hand eczema AND;\n     4. The patient has hand eczema that has been present for a minimum of three months or has\n        experienced three or more distinct episodes of hand eczema within a 12 month period with\n        subsequent clearance between episodes AND;\n     5. Patient has tried and failed a minimum of one medium potency topical corticosteroid for at least\n        one month or has a documented clinical contraindication to all medium potency topical\n        corticosteroids\n\nDENIAL CRITERIA 1\n\n     1. Failure to meet approval criteria OR;\n     2. Concomitant use together with another JAK inhibitor or potent immunosuppressant, including\n        biologic immunomodulators\n\nCAUTIONS1\n\n     \u2022    Anzupgo\u00ae may increase the risk of infection.\n     \u2022    Non-melanoma skin cancers, including basal cell carcinoma, have been reported in patients\n          treated with Anzupgo\u00ae.\n     \u2022    It is currently unknown whether Anzupgo\u00ae may be associated with the previously observed or\n          potential adverse reactions associated with JAK inhibition.\n\nDURATION OF APPROVAL\n\n     \u2022    Initial Approval: up to 3 months\n     \u2022    Reauthorization Approval: up to one year\n\nQUANTITY LIMIT\n  \u2022 60 grams per 30 days\n\n\nAnzupgo\u00ae Criteria\nVersion: 1\nOriginal: 12/18/2025\nAccepted: 1/16/2026\nEffective: 03/01/2026\n\f                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\nREFERENCES / FOOTNOTES:\n\n1. Anzupgo\u00ae (delgocitinib) [prescribing information]. Madison, NJ: Leo Pharma Inc.; July 2025\n2. Davis DMR, Frazer-Green L, Alikhan A, et al. Focused update: guidelines of care for the\n   management of atopic dermatitis in adults. J Am Acad Dermatol. 2025 Sep;93(3):745.e1-745.e7.1.\n\n\n\n\nAnzupgo\u00ae Criteria\nVersion: 1\nOriginal: 12/18/2025\nAccepted: 1/16/2026\nEffective: 03/01/2026\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

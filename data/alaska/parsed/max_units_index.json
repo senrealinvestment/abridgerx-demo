@@ -1,0 +1,4685 @@
+{
+  "generated": "2026-09-26",
+  "rows": [
+    {
+      "brand_name": "Avinza\u00ae",
+      "strength": "30mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "avinza",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Avinza\u00ae",
+      "strength": "45mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "avinza",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Avinza\u00ae",
+      "strength": "60mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "avinza",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Avinza\u00ae",
+      "strength": "75mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "avinza",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Avinza\u00ae",
+      "strength": "90mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "avinza",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Avinza\u00ae",
+      "strength": "120mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "avinza",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Belbuca\u00ae",
+      "strength": "750mcg, 900mcg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "belbuca",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Bunavail strip",
+      "strength": "2.1/0.3mg, 4.2/0.7mg,",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "bunavail-strip",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Bunavail strip",
+      "strength": "6.3/1mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "bunavail-strip",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Butalbital / Acetaminophen / Caffeine",
+      "strength": "50-325-40 TAB",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "butalbital-acetaminophen-caffeine",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Butalbital / Acetaminophen / Caffeine",
+      "strength": "50-300-40 CAP",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "butalbital-acetaminophen-caffeine",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "BUTORPHANOL NS",
+      "strength": "10mg/mL",
+      "max_units_30_days": "5mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "butorphanol-ns",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Celebrex\u00ae",
+      "strength": "50mg, 100mg, 200mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "celebrex",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Celebrex\u00ae",
+      "strength": "400mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "celebrex",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Codeine tablet",
+      "strength": "15mg",
+      "max_units_30_days": "180*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Codeine tablet",
+      "strength": "30mg",
+      "max_units_30_days": "180*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Codeine tablet",
+      "strength": "60mg",
+      "max_units_30_days": "180*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE PHOSPHATE / Acetaminophen",
+      "strength": "12-120/5",
+      "max_units_30_days": "960",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-phosphate-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE PHOSPHATE/CARISOPRODOL/ASA",
+      "strength": "16-200-325",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-phosphate-carisoprodol-asa",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE / Acetaminophen",
+      "strength": "30/325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE / Acetaminophen",
+      "strength": "60/325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE / Acetaminophen",
+      "strength": "15/300",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE / Acetaminophen",
+      "strength": "30/300",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE / Acetaminophen",
+      "strength": "60/300",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE/ASA",
+      "strength": "30/325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-asa",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE/ASA",
+      "strength": "15/325",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-asa",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE/ASA",
+      "strength": "60/325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-asa",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE/BUTALBITAL/Aspirin/CAFFEINE",
+      "strength": "30-50-325-40",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-butalbital-aspirin-caffeine",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CODEINE/BUTALBITAL/Acetaminophen/CAFFEINE",
+      "strength": "30-50-325-40",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "codeine-butalbital-acetaminophen-caffeine",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Conzip Extended-Release Capsules",
+      "strength": "100mg,200mg,300mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "conzip-extended-release-capsules",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "DIHY-COD APAP CAFFEINE",
+      "strength": "16-356-30",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "dihy-cod-apap-caffeine",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Embeda\u00ae",
+      "strength": "20-0.8",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "embeda",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Embeda\u00ae",
+      "strength": "30-1.2",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "embeda",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Embeda\u00ae",
+      "strength": "50-2",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "embeda",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Embeda\u00ae",
+      "strength": "60-2.4",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "embeda",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Embeda\u00ae",
+      "strength": "80-3.2",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "embeda",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Embeda\u00ae",
+      "strength": "100-4",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "embeda",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Exalgo\u2122 tab 24h",
+      "strength": "8mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "exalgo-tab-24h",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Exalgo\u2122 tab 24h",
+      "strength": "12mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "exalgo-tab-24h",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Exalgo\u2122 tab 24h",
+      "strength": "16mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "exalgo-tab-24h",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Exalgo\u2122 tab 24h",
+      "strength": "32mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "exalgo-tab-24h",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fentanyl patch",
+      "strength": "12.5mcg/hr",
+      "max_units_30_days": "10",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fentanyl-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fentanyl patch",
+      "strength": "25mcg/hr",
+      "max_units_30_days": "10",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fentanyl-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fentanyl patch",
+      "strength": "37.5mcg/hr",
+      "max_units_30_days": "10",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fentanyl-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fentanyl patch",
+      "strength": "50mcg/hr",
+      "max_units_30_days": "10",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fentanyl-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fentanyl patch",
+      "strength": "62.5mcg/hr",
+      "max_units_30_days": "10",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fentanyl-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fentanyl patch",
+      "strength": "75mcg/hr",
+      "max_units_30_days": "10",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fentanyl-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fentanyl patch",
+      "strength": "87.5mcg/hr",
+      "max_units_30_days": "10",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fentanyl-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fentanyl patch",
+      "strength": "100mcg/hr",
+      "max_units_30_days": "10",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fentanyl-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Flector patch",
+      "strength": "1.3%",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "flector-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BIT / Acetaminophen",
+      "strength": "2.5/300",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bit-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BIT / Acetaminophen",
+      "strength": "5-300",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bit-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BIT / Acetaminophen",
+      "strength": "7.5-300",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bit-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BIT / Acetaminophen",
+      "strength": "10-300",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bit-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BIT / Acetaminophen",
+      "strength": "2.5-325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bit-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BIT / Acetaminophen",
+      "strength": "5-325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bit-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BIT / Acetaminophen",
+      "strength": "7.5-325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bit-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BIT / Acetaminophen",
+      "strength": "10/325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bit-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BIT / Acetaminophen",
+      "strength": "7.5/325/15ml",
+      "max_units_30_days": "960",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bit-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BIT / Acetaminophen",
+      "strength": "10/325/15ml",
+      "max_units_30_days": "960",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bit-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BITARTRATE/IBUPROFEN",
+      "strength": "2.5/200",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bitartrate-ibuprofen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BITARTRATE/IBUPROFEN",
+      "strength": "5/200",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bitartrate-ibuprofen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BITARTRATE/IBUPROFEN",
+      "strength": "7.5/200",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bitartrate-ibuprofen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HYDROCODONE BITARTRATE/IBUPROFEN",
+      "strength": "10/200",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydrocodone-bitartrate-ibuprofen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Hydromorphone tablet",
+      "strength": "2mg",
+      "max_units_30_days": "180*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydromorphone-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Hydromorphone tablet",
+      "strength": "4mg",
+      "max_units_30_days": "180*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydromorphone-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Hydromorphone tablet",
+      "strength": "8mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydromorphone-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Hydromorphone sol",
+      "strength": "1mg/mL            720mL*",
+      "max_units_30_days": "96",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hydromorphone-sol",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Hysingla ER",
+      "strength": "20mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hysingla-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Hysingla ER",
+      "strength": "30mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hysingla-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Hysingla ER",
+      "strength": "40mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hysingla-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Hysingla ER",
+      "strength": "60mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hysingla-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Hysingla ER",
+      "strength": "80mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hysingla-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Hysingla ER",
+      "strength": "100mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hysingla-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Hysingla ER",
+      "strength": "120mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "hysingla-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kadian\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kadian",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kadian\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kadian",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kadian\u00ae",
+      "strength": "30mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kadian",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kadian\u00ae",
+      "strength": "40mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kadian",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kadian\u00ae",
+      "strength": "50mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kadian",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kadian\u00ae",
+      "strength": "60mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kadian",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kadian\u00ae",
+      "strength": "80mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kadian",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kadian\u00ae",
+      "strength": "100mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kadian",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kadian\u00ae",
+      "strength": "200mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kadian",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Meperidine tablet",
+      "strength": "50mg",
+      "max_units_30_days": "120*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "meperidine-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Meperidine tablet",
+      "strength": "100mg",
+      "max_units_30_days": "120*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "meperidine-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Meperidine sol",
+      "strength": "50mg/5mL      600mL*",
+      "max_units_30_days": "20",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "meperidine-sol",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Methadone tab",
+      "strength": "5mg",
+      "max_units_30_days": "150*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "methadone-tab",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Methadone tab",
+      "strength": "10mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "methadone-tab",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine sol",
+      "strength": "10mg/5mL      1350mL*",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-sol",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine sol",
+      "strength": "20mg/5mL      1350mL*",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-sol",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine sol",
+      "strength": "20mg/mL       270mL*",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-sol",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine tablet",
+      "strength": "15mg",
+      "max_units_30_days": "180*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine cap",
+      "strength": "15mg",
+      "max_units_30_days": "180*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-cap",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine tablet",
+      "strength": "30mg",
+      "max_units_30_days": "180*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine cap",
+      "strength": "30mg",
+      "max_units_30_days": "180*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-cap",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine tab ER",
+      "strength": "15mg",
+      "max_units_30_days": "180*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-tab-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine tablet ER",
+      "strength": "30mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-tablet-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine tablet ER",
+      "strength": "60mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-tablet-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine tablet ER",
+      "strength": "100mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-tablet-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Morphine tablet ER",
+      "strength": "200mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "morphine-tablet-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Nucynta\u00ae",
+      "strength": "50mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nucynta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Nucynta\u00ae",
+      "strength": "75mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nucynta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Nucynta\u00ae",
+      "strength": "100mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nucynta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Nucynta\u00ae ER",
+      "strength": "50mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nucynta-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Nucynta\u00ae ER",
+      "strength": "100mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nucynta-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Nucynta\u00ae ER",
+      "strength": "150mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nucynta-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Nucynta\u00ae ER",
+      "strength": "200mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nucynta-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Nucynta\u00ae ER",
+      "strength": "250mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nucynta-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Opana\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "120*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "opana",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Opana\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "opana",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Opana\u00ae ER",
+      "strength": "5mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "opana-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Opana\u00ae ER",
+      "strength": "7.5mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "opana-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Opana\u00ae ER",
+      "strength": "10mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "opana-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Opana\u00ae ER",
+      "strength": "15mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "opana-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Opana\u00ae ER",
+      "strength": "20mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "opana-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Opana\u00ae ER",
+      "strength": "30mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "opana-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Opana\u00ae ER",
+      "strength": "40mg",
+      "max_units_30_days": "30*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "opana-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone sol",
+      "strength": "5mg/5mL                      1200mL*",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-sol",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone sol",
+      "strength": "20mg/mL                      180mL*",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-sol",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone tablet",
+      "strength": "5mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone cap",
+      "strength": "5mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-cap",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone tablet",
+      "strength": "7.5mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone tablet",
+      "strength": "10mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone tab",
+      "strength": "15mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-tab",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone tab",
+      "strength": "20mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-tab",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone tab",
+      "strength": "30mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-tab",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone SR",
+      "strength": "10mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-sr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone SR",
+      "strength": "15mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-sr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone SR",
+      "strength": "20mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-sr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone SR",
+      "strength": "30mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-sr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone SR",
+      "strength": "40mg",
+      "max_units_30_days": "90*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-sr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone SR",
+      "strength": "60mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-sr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxycodone SR",
+      "strength": "80mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-sr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXYCODONE / ACETAMINOPHEN",
+      "strength": "5/325-5ml",
+      "max_units_30_days": "450",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXYCODONE / ACETAMINOPHEN",
+      "strength": "2.5/300",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXYCODONE / ACETAMINOPHEN",
+      "strength": "5/300",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXYCODONE / ACETAMINOPHEN",
+      "strength": "7.5/300",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXYCODONE / ACETAMINOPHEN",
+      "strength": "10/300",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXYCODONE / ACETAMINOPHEN",
+      "strength": "2.5/325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXYCODONE / ACETAMINOPHEN",
+      "strength": "5/325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXYCODONE / ACETAMINOPHEN",
+      "strength": "7.5/325",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXYCODONE / ACETAMINOPHEN",
+      "strength": "10/325",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-acetaminophen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXYCODONE/ASPIRIN",
+      "strength": "4.8/325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-aspirin",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXYCODONE/IBUPROFEN",
+      "strength": "5/400",
+      "max_units_30_days": "28",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxycodone-ibuprofen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "PENTAZOCINE NX",
+      "strength": "50",
+      "max_units_30_days": "40",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "pentazocine-nx",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Suboxone\u00ae SL Film",
+      "strength": "2/0.5mg, 4/1mg 8/2mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "suboxone-sl-film",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Suboxone\u00ae SL Film",
+      "strength": "12mg/3mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "suboxone-sl-film",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Suboxone\u00ae SL Tablets",
+      "strength": "All Strengths",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "suboxone-sl-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TRAMADOL",
+      "strength": "50 MG",
+      "max_units_30_days": "240",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "tramadol",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TRAMADOL/APAP",
+      "strength": "37.5-325",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "tramadol-apap",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TRAMADOL ER CAPSULES",
+      "strength": "150MG",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "tramadol-er-capsules",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TRAMADOL ER TABLET",
+      "strength": "100 mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "tramadol-er-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TRAMADOL ER TABLET",
+      "strength": "200 mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "tramadol-er-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TRAMADOL ER TABLET",
+      "strength": "300 mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "tramadol-er-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vimovo",
+      "strength": "500-20, 375-20",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vimovo",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Xtampza ER\u00ae",
+      "strength": "9mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "xtampza-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Xtampza ER\u00ae",
+      "strength": "13.5mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "xtampza-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Xtampza ER\u00ae",
+      "strength": "18mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "xtampza-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Xtampza ER\u00ae",
+      "strength": "27mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "xtampza-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Xtampza ER\u00ae",
+      "strength": "36mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "xtampza-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zipsor",
+      "strength": "25mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zipsor",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Zohydro ER\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zohydro-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zohydro ER\u00ae",
+      "strength": "15mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zohydro-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zohydro ER\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zohydro-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zohydro ER\u00ae",
+      "strength": "30mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zohydro-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zohydro ER\u00ae",
+      "strength": "40mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zohydro-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zohydro ER\u00ae",
+      "strength": "50mg",
+      "max_units_30_days": "60*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zohydro-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zubsolv SL Tablet",
+      "strength": "2.9/0.71mg, 5.7/1.4mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zubsolv-sl-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zubsolv SL Tablet",
+      "strength": "8.6/2.1mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zubsolv-sl-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zubsolv SL Tablet",
+      "strength": "11.4/2.9mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zubsolv-sl-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM",
+      "strength": "0.25 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM",
+      "strength": "0.5 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM",
+      "strength": "1 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM",
+      "strength": "2 MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM ER",
+      "strength": "0.5 MG",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM ER",
+      "strength": "1 MG",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM ER",
+      "strength": "2 MG",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM ER",
+      "strength": "3 MG",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM ODT",
+      "strength": "0.25 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam-odt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM ODT",
+      "strength": "0.5 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam-odt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM ODT",
+      "strength": "1 MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam-odt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ALPRAZOLAM ODT",
+      "strength": "2 MG",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "alprazolam-odt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CHLORDIAZEPOXIDE HCL",
+      "strength": "10 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "chlordiazepoxide-hcl",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CHLORDIAZEPOXIDE HCL",
+      "strength": "25 MG",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "chlordiazepoxide-hcl",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CHLORDIAZEPOXIDE HCL",
+      "strength": "5 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "chlordiazepoxide-hcl",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CLONAZEPAM",
+      "strength": "0.5 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clonazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CLONAZEPAM",
+      "strength": "1 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clonazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CLONAZEPAM",
+      "strength": "2 MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clonazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CLONAZEPAM ODT",
+      "strength": "0.125 MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clonazepam-odt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CLONAZEPAM ODT",
+      "strength": "0.25 MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clonazepam-odt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CLONAZEPAM ODT",
+      "strength": "0.5 MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clonazepam-odt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CLONAZEPAM ODT",
+      "strength": "1 MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clonazepam-odt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CLONAZEPAM ODT",
+      "strength": "2 MG",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clonazepam-odt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CLORAZEPATE",
+      "strength": "3.75MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clorazepate",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CLORAZEPATE",
+      "strength": "7.5MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clorazepate",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CLORAZEPATE",
+      "strength": "15MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clorazepate",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "DIAZEPAM",
+      "strength": "10 MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "diazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "DIAZEPAM",
+      "strength": "2 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "diazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "DIAZEPAM",
+      "strength": "5 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "diazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ESTAZOLAM",
+      "strength": "1 MG",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "estazolam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ESTAZOLAM",
+      "strength": "2 MG",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "estazolam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "FLURAZEPAM HCL",
+      "strength": "15 MG",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "flurazepam-hcl",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "FLURAZEPAM HCL",
+      "strength": "30 MG",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "flurazepam-hcl",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "LORAZEPAM",
+      "strength": "0.5 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lorazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "LORAZEPAM",
+      "strength": "1 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lorazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "LORAZEPAM",
+      "strength": "2 MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lorazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXAZEPAM",
+      "strength": "10 MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXAZEPAM",
+      "strength": "15 MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OXAZEPAM",
+      "strength": "30 MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "QUAZEPAM",
+      "strength": "15 MG",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "quazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TEMAZEPAM",
+      "strength": "15 MG",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "temazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TEMAZEPAM",
+      "strength": "30 MG",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "temazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TEMAZEPAM",
+      "strength": "7.5 MG",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "temazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TEMAZEPAM",
+      "strength": "22.5 MG",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "temazepam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TRIAZOLAM",
+      "strength": "0.125 MG",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "triazolam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "TRIAZOLAM",
+      "strength": "0.25 MG",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "triazolam",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ASTELIN 137MCG",
+      "strength": "N/A",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "astelin-137mcg",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "DYMISTA",
+      "strength": "N/A",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "dymista",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "FLONASE",
+      "strength": "N/A",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "flonase",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "NASONEX 50MCG/SPRAY",
+      "strength": "N/A",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nasonex-50mcg-spray",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OMNARIS 50MCG",
+      "strength": "N/A",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "omnaris-50mcg",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "QNASL 80MCG/SPRAY",
+      "strength": "N/A",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "qnasl-80mcg-spray",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "RHINOCORT AQ",
+      "strength": "N/A",
+      "max_units_30_days": "2",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "rhinocort-aq",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "ZETONNA 37MCG",
+      "strength": "N/A",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zetonna-37mcg",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Aloxi\u00ae",
+      "strength": "0.25 mg/ 5 ml Vial",
+      "max_units_30_days": "4",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "aloxi",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Anzemet\u00ae Tablets",
+      "strength": "50 & 100 mg",
+      "max_units_30_days": "5",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "anzemet-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Anzemet\u00ae Injection",
+      "strength": "100 mg/5ml Vial",
+      "max_units_30_days": "4",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "anzemet-injection",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Anzemet\u00ae Injection",
+      "strength": "12.5 mg/0.625ml Vial",
+      "max_units_30_days": "8",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "anzemet-injection",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Emend\u00ae Capsules",
+      "strength": "125 mg & 80 mg",
+      "max_units_30_days": "12",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "emend-capsules",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kytril\u00ae Tablets",
+      "strength": "1 mg",
+      "max_units_30_days": "8",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kytril-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kytril\u00ae Liquid",
+      "strength": "1 mg/5 ml",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kytril-liquid",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kytril\u00ae Injection",
+      "strength": "1 mg/ml Vials",
+      "max_units_30_days": "8",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kytril-injection",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Marinol\u00ae Capsules",
+      "strength": "2.5, 5, 10mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "marinol-capsules",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Zofran\u00ae Tablets",
+      "strength": "4 mg & 8 mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zofran-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zofran\u00ae Tablets",
+      "strength": "24 mg",
+      "max_units_30_days": "4",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zofran-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zofran\u00ae Liquid",
+      "strength": "4 mg/5 ml",
+      "max_units_30_days": "50",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zofran-liquid",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zofran\u00ae Injection",
+      "strength": "2 mg/ml - 20 ml vials",
+      "max_units_30_days": "4",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zofran-injection",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zofran\u00ae Injection",
+      "strength": "2 mg/ml - 2 ml vials",
+      "max_units_30_days": "8",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zofran-injection",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Amerge\u00ae Tablets",
+      "strength": "1 mg & 2.5 mg",
+      "max_units_30_days": "9",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "amerge-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Axert\u00ae Tablets",
+      "strength": "6.25 mg and 12.5 mg",
+      "max_units_30_days": "6",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "axert-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Frova\u00ae Tablets",
+      "strength": "2.5 mg",
+      "max_units_30_days": "9",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "frova-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Imitrex\u00ae Tablets",
+      "strength": "25 mg, 50 mg, & 100 mg",
+      "max_units_30_days": "9",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "imitrex-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Imitrex\u00ae Nasal Spray",
+      "strength": "5 mg & 20 mg",
+      "max_units_30_days": "6",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "imitrex-nasal-spray",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Imitrex\u00ae Injection",
+      "strength": "6 mg/0.5ml",
+      "max_units_30_days": "4",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "imitrex-injection",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Nurtec ODT",
+      "strength": "75mg",
+      "max_units_30_days": "16",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nurtec-odt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Maxalt\u00ae Tablets",
+      "strength": "5 mg & 10 mg",
+      "max_units_30_days": "9",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "maxalt-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Maxalt MLT\u00ae Tablets",
+      "strength": "5 mg & 10 mg",
+      "max_units_30_days": "9",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "maxalt-mlt-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Reyvow",
+      "strength": "50mg, 100mg",
+      "max_units_30_days": "8",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "reyvow",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Relpax\u00ae Tablets",
+      "strength": "20 mg and 40 mg",
+      "max_units_30_days": "6",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "relpax-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Ubrelvy",
+      "strength": "50mg, 100mg",
+      "max_units_30_days": "16",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ubrelvy",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zomig\u00ae Tablets",
+      "strength": "2.5 mg & 5 mg",
+      "max_units_30_days": "6",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zomig-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zomig ZMT\u00ae Tablets",
+      "strength": "2.5 mg & 5 mg",
+      "max_units_30_days": "6",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zomig-zmt-tablets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zomig\u00ae Nasal Spray",
+      "strength": "5 mg",
+      "max_units_30_days": "6",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zomig-nasal-spray",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adcirca\u00ae Tablets",
+      "strength": "20mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adcirca-tablets",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Ampyra\u2122",
+      "strength": "10mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ampyra",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Amrix\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "21",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "amrix",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Aubagio",
+      "strength": "7mg, 14mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "aubagio",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Berinert Kit",
+      "strength": "N/A",
+      "max_units_30_days": "12",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "berinert-kit",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Bystolic",
+      "strength": "2.5mg,5mg,10mg,20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "bystolic",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "CARISOPRODOL",
+      "strength": "All Strengths",
+      "max_units_30_days": "56",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "carisoprodol",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "cefixime capsule",
+      "strength": "400mg",
+      "max_units_30_days": "14",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "cefixime-capsule",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "colchicine",
+      "strength": "0.6mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "colchicine",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Daliresp\u00ae",
+      "strength": "500mcg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "daliresp",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Delzicol DR",
+      "strength": "400mg",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "delzicol-dr",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Diclegis DR",
+      "strength": "10-10mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "diclegis-dr",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Doryx DR",
+      "strength": "200mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "doryx-dr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Eliquis",
+      "strength": "2.5mg, 5mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "eliquis",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Ergocalciferol capsule",
+      "strength": "50,000 unit",
+      "max_units_30_days": "4",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ergocalciferol-capsule",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fexmid\u00ae",
+      "strength": "7.5mg",
+      "max_units_30_days": "63",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fexmid",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Firazyr\u00ae",
+      "strength": "30mg/3mL",
+      "max_units_30_days": "3",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "firazyr",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Giazo",
+      "strength": "1.1gram",
+      "max_units_30_days": "180",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "giazo",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Gilenya",
+      "strength": "0.5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "gilenya",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kalydeco\u2122",
+      "strength": "150mg",
+      "max_units_30_days": "2",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kalydeco",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Korlym\u2122",
+      "strength": "300mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "korlym",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "lidocaine ointment",
+      "strength": "All Strengths",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lidocaine-ointment",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "lidocaine-prilocaine cream",
+      "strength": "2.5%-2.5%",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lidocaine-prilocaine-cream",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Lyrica\u00ae",
+      "strength": "50mg to 200mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lyrica",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Lyrica\u00ae",
+      "strength": "225mg, 300mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lyrica",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Mitigare",
+      "strength": "0.6mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "mitigare",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Mupirocin ointment",
+      "strength": "2%",
+      "max_units_30_days": "88",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "mupirocin-ointment",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Namenda XR",
+      "strength": "7mg 14mg 21mg 28mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "namenda-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Onmel",
+      "strength": "200mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "onmel",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Onfi\u2122",
+      "strength": "5mg, 10mg, 20mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "onfi",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Osphena",
+      "strength": "60mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "osphena",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oxtellar XR",
+      "strength": "150mg,300mg,600mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oxtellar-xr",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Potiga\u2122",
+      "strength": "All Strengths",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "potiga",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Promacta",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "promacta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Qelbree",
+      "strength": "100mg,150mg,200mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "qelbree",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Revatio\u00ae Injection",
+      "strength": "10mg/12.5mL",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "revatio-injection",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Revatio\u00ae Tablets",
+      "strength": "20mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "revatio-tablets",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Sirturo",
+      "strength": "100mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "sirturo",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Tecfidera DR",
+      "strength": "120mg, 240mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "tecfidera-dr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vancocin",
+      "strength": "All Strengths",
+      "max_units_30_days": "80",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vancocin",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Vascepa",
+      "strength": "1gram",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vascepa",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Vecamyl",
+      "strength": "2.5mg",
+      "max_units_30_days": "300",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vecamyl",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Viibryd",
+      "strength": "10mg,20,mg,40mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "viibryd",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Xifaxan\u00ae",
+      "strength": "200mg",
+      "max_units_30_days": "9",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "xifaxan",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Xifaxan\u00ae",
+      "strength": "550mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "xifaxan",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Zyvox\u00ae",
+      "strength": "600mg tablet",
+      "max_units_30_days": "28*",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyvox",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Bosulif",
+      "strength": "100mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "bosulif",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Bosulif",
+      "strength": "500mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "bosulif",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Cometriq",
+      "strength": "60mg, 100mg, 140mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "cometriq",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Fulyzaq DR",
+      "strength": "125mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fulyzaq-dr",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Juxtapid",
+      "strength": "5mg, 10mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "juxtapid",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Juxtapid",
+      "strength": "20mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "juxtapid",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Pomalyst",
+      "strength": "1mg, 2mg, 3mg, 4mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "pomalyst",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Stivarga",
+      "strength": "40mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "stivarga",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Tafinlar",
+      "strength": "50mg 75mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "tafinlar",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Tobi Podhaler",
+      "strength": "N/A",
+      "max_units_30_days": "224",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "tobi-podhaler",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Xeljanz",
+      "strength": "5mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "xeljanz",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Xtandi",
+      "strength": "40mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "xtandi",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Invokana",
+      "strength": "100mg, 300mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "invokana",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Janumet\u00ae",
+      "strength": "50-500,50-1000",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "janumet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Janumet\u00ae XR",
+      "strength": "50-500,50-1000",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "janumet-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Janumet\u00ae XR",
+      "strength": "100-1000",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "janumet-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Januvia\u00ae",
+      "strength": "25mg,50mg,100mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "januvia",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Jardiance",
+      "strength": "10mg,25mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "jardiance",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Jentadueto\u00ae",
+      "strength": "2.5-500,2.5-850,2.5-1000",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "jentadueto",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Juvisync\u00ae",
+      "strength": "50mg and 100mg combo",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "juvisync",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kazano",
+      "strength": "12.5-500,12.5-1000",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kazano",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kombiglyze\u00ae XR",
+      "strength": "2.5-1000",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kombiglyze-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Kombiglyze\u00ae XR",
+      "strength": "5-500,5-1000",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "kombiglyze-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Nesina",
+      "strength": "6.25mg,12.5mg,25mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nesina",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Onglyza\u00ae",
+      "strength": "2.5mg, 5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "onglyza",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Oseni",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "oseni",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Tradjenta\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "tradjenta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Helidac\u00ae",
+      "strength": "N/A",
+      "max_units_30_days": "224",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "helidac",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Pylera\u2122",
+      "strength": "N/A",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "pylera",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "PrevPac\u00ae",
+      "strength": "N/A",
+      "max_units_30_days": "112",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "prevpac",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Omeclamox-Pak\u2122",
+      "strength": "N/A",
+      "max_units_30_days": "80",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "omeclamox-pak",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "ADMELOG SOLOSTAR",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "admelog-solostar",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "APIDRA 100 UNITS/ML VIAL",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "apidra-100-units-ml-vial",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "APIDRA SOLOSTAR",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "apidra-solostar",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "BASAGLAR KWIKPEN U-100",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "basaglar-kwikpen-u-100",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HUMALOG 100 UNITS/ML CARTRIDGE",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "humalog-100-units-ml-cartridge",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HUMALOG 100UNITS/ML KWIKPEN",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "humalog-100units-ml-kwikpen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HUMALOG 100UNITS/ML VIAL",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "humalog-100units-ml-vial",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HUMALOG MIX 75-25 INSULIN PEN",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "humalog-mix-75-25-insulin-pen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HUMALOG MIX 75-25 VIAL",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "humalog-mix-75-25-vial",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HUMULIN 70-30 INSULIN PEN",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "humulin-70-30-insulin-pen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HUMULIN 70-30 VIAL",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "humulin-70-30-vial",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HUMULIN N 100/ML",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "humulin-n-100-ml",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HUMULIN N 100/ML INSULIN PEN",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "humulin-n-100-ml-insulin-pen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "HUMULIN R U-500 KWIKPEN",
+      "strength": "N/A",
+      "max_units_30_days": "12mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "humulin-r-u-500-kwikpen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "INSULIN ASPART FLEXPEN",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "insulin-aspart-flexpen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "INSULIN ASPART PROT-INSULN ASP",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "insulin-aspart-prot-insuln-asp",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "INSULIN ASPART PENFILL",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "insulin-aspart-penfill",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "INSULIN LISPRO KWIKPEN U-100",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "insulin-lispro-kwikpen-u-100",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "INSULIN LISPRO PROTAMINE MIX",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "insulin-lispro-protamine-mix",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "LANTUS 100UNIT/ML",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lantus-100unit-ml",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "LANTUS SOLOSTAR 100U/ML",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lantus-solostar-100u-ml",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "LEVEMIR 100U/ML FLEXPEN",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "levemir-100u-ml-flexpen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "LEVEMIR 100U/ML VIAL",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "levemir-100u-ml-vial",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "NOVOLOG 100 UNITS/ML CARTRIDGE",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "novolog-100-units-ml-cartridge",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "NOVOLOG 100UNITS/ML VIAL",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "novolog-100units-ml-vial",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "NOVOLIN 70-30 VIAL",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "novolin-70-30-vial",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "NOVOLIN 70-30 FLEXPEN",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "novolin-70-30-flexpen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "NOVOLIN N 100/ML VIAL",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "novolin-n-100-ml-vial",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "NOVOLIN R VIAL",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "novolin-r-vial",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "NOVOLOG 100/ML FLEXPEN",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "novolog-100-ml-flexpen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "NOVOLOG MIX 70-30 FLEXPEN",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "novolog-mix-70-30-flexpen",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "NOVOLOG MIX 70-30 VIAL",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "novolog-mix-70-30-vial",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "OZEMPIC 4mg/3ml",
+      "strength": "N/A",
+      "max_units_30_days": "3mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ozempic-4mg-3ml",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "SEMGLEE 100UNITS/ML",
+      "strength": "N/A",
+      "max_units_30_days": "30mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "semglee-100units-ml",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Amitiza",
+      "strength": "8mcg & 24mcg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "amitiza",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Linzess",
+      "strength": "145mcg & 290mcg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "linzess",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Aciphex",
+      "strength": "20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "aciphex",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Dexilant",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "dexilant",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Nexium capsules and packets",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "nexium-capsules-and-packets",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Omeprazole capsule",
+      "strength": "10mg, 20mg, 40mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "omeprazole-capsule",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Omeprazole tablet",
+      "strength": "20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "omeprazole-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Pantoprazole tablet",
+      "strength": "20mg, 40mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "pantoprazole-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Prevacid capsules and Rap-Dis",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "prevacid-capsules-and-rap-dis",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Advicor\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "advicor",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Altoprev\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "altoprev",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Crestor\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "crestor",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Lescol\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lescol",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Lescol\u00ae XL",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lescol-xl",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Lipitor\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lipitor",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Liptruzet",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "liptruzet",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Livalo\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "livalo",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Lovastatin",
+      "strength": "All Strengths",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lovastatin",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Mevacor\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "mevacor",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Pravachol\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "pravachol",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Pravastatin",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "pravastatin",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Simcor\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "simcor",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Simvastatin",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "simvastatin",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vytorin\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vytorin",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zocor\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zocor",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Ambien\u00ae",
+      "strength": "5mg & 10mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ambien",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Ambien CR\u00ae",
+      "strength": "6.25mg &12.5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ambien-cr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Edluar\u2122",
+      "strength": "5mg & 10mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "edluar",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Intermezzo\u00ae",
+      "strength": "1.75mg, 3.5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "intermezzo",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Lunesta\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "lunesta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Restoril\u00ae",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "restoril",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Rozerem\u00ae",
+      "strength": "8mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "rozerem",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Sonata\u00ae",
+      "strength": "5mg & 10mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "sonata",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Cymbalta",
+      "strength": "20mg, 60mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "cymbalta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Cymbalta",
+      "strength": "30mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "cymbalta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fetzima ER",
+      "strength": "20mg 40mg 80mg 120mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fetzima-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Venlafaxine XR capsule",
+      "strength": "37.5mg, 75mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "venlafaxine-xr-capsule",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Venlafaxine XR capsule",
+      "strength": "150mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "venlafaxine-xr-capsule",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Venlafaxine XR tablet",
+      "strength": "37.5mg, 75mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "venlafaxine-xr-tablet",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Venlafaxine XR tablet",
+      "strength": "150mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "venlafaxine-xr-tablet",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Venlafaxine XR tablet",
+      "strength": "225mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "venlafaxine-xr-tablet",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Abilify\u00ae",
+      "strength": "2mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "abilify",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Abilify\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "abilify",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Abilify\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "abilify",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Abilify\u00ae",
+      "strength": "15mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "abilify",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Abilify\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "abilify",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Abilify\u00ae",
+      "strength": "30mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "abilify",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Abilify\u00ae Discmelt",
+      "strength": "10mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "abilify-discmelt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Abilify\u00ae Discmelt",
+      "strength": "15mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "abilify-discmelt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Abilify\u00ae Solution",
+      "strength": "1mg/mL",
+      "max_units_30_days": "750",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "abilify-solution",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Abilify\u00ae Maintena ER",
+      "strength": "300mg, 400mg",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "abilify-maintena-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Clozaril\u00ae",
+      "strength": "25mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clozaril",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Clozaril\u00ae",
+      "strength": "100mg",
+      "max_units_30_days": "270",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "clozaril",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fanapt\u2122",
+      "strength": "1mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fanapt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fanapt\u2122",
+      "strength": "2mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fanapt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fanapt\u2122",
+      "strength": "4mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fanapt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fanapt\u2122",
+      "strength": "6mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fanapt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fanapt\u2122",
+      "strength": "10mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fanapt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Fanapt\u2122",
+      "strength": "12mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "fanapt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Geodon\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "geodon",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Geodon\u00ae",
+      "strength": "40mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "geodon",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Geodon\u00ae",
+      "strength": "60mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "geodon",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Geodon\u00ae",
+      "strength": "80mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "geodon",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Invega\u00ae",
+      "strength": "1.5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "invega",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Invega\u00ae",
+      "strength": "3mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "invega",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Invega\u00ae",
+      "strength": "6mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "invega",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Invega\u00ae",
+      "strength": "9mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "invega",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Invega\u00ae Sustenna",
+      "strength": "156mg/mL",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "invega-sustenna",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Latuda\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "latuda",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Latuda\u00ae",
+      "strength": "40mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "latuda",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Latuda\u00ae",
+      "strength": "60mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "latuda",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Latuda\u00ae",
+      "strength": "80mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "latuda",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Latuda\u00ae",
+      "strength": "120mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "latuda",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Rexulti",
+      "strength": "0.25mg, 0.5mg, 1mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "rexulti",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Rexulti",
+      "strength": "2mg, 3mg, 4mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "rexulti",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae",
+      "strength": "0.25mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae",
+      "strength": "0.5mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae",
+      "strength": "1mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae",
+      "strength": "2mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae",
+      "strength": "3mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae",
+      "strength": "4mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae Solution",
+      "strength": "1mg/mL",
+      "max_units_30_days": "300mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal-solution",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae M-TAB\u00ae",
+      "strength": "0.5MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal-m-tab",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae M-TAB\u00ae",
+      "strength": "1MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal-m-tab",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae M-TAB\u00ae",
+      "strength": "2MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal-m-tab",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae M-TAB\u00ae",
+      "strength": "3MG",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal-m-tab",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae M-TAB\u00ae",
+      "strength": "4MG",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal-m-tab",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperidone ODT",
+      "strength": "0.25mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperidone-odt",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae Consta\u00ae",
+      "strength": "12.5mg",
+      "max_units_30_days": "2",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal-consta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae Consta\u00ae",
+      "strength": "25mg",
+      "max_units_30_days": "2",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal-consta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae Consta\u00ae",
+      "strength": "37.5mg",
+      "max_units_30_days": "2",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal-consta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Risperdal\u00ae Consta\u00ae",
+      "strength": "50mg",
+      "max_units_30_days": "2",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "risperdal-consta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Saphris\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "saphris",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Saphris\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "saphris",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Seroquel\u00ae",
+      "strength": "25mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "seroquel",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Seroquel\u00ae",
+      "strength": "50mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "seroquel",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Seroquel\u00ae",
+      "strength": "100mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "seroquel",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Seroquel\u00ae",
+      "strength": "200mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "seroquel",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Seroquel\u00ae",
+      "strength": "300mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "seroquel",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Seroquel\u00ae",
+      "strength": "400mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "seroquel",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Seroquel XR\u00ae",
+      "strength": "150mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "seroquel-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Seroquel XR\u00ae",
+      "strength": "200mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "seroquel-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Seroquel XR\u00ae",
+      "strength": "300mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "seroquel-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Seroquel XR\u00ae",
+      "strength": "400mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "seroquel-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Symbax\u00ae",
+      "strength": "3mg-25mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "symbax",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Symbax\u00ae",
+      "strength": "6mg-25mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "symbax",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Symbax\u00ae",
+      "strength": "12mg-25mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "symbax",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Symbax\u00ae",
+      "strength": "6mg-50mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "symbax",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Symbax\u00ae",
+      "strength": "12mg-50mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "symbax",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vraylar",
+      "strength": "1.5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vraylar",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vraylar",
+      "strength": "3mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vraylar",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vraylar",
+      "strength": "4.5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vraylar",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vraylar",
+      "strength": "6mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vraylar",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae",
+      "strength": "2.5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae",
+      "strength": "7.5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae",
+      "strength": "15mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae Zydis\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa-zydis",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae Zydis\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa-zydis",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae Zydis\u00ae",
+      "strength": "15mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa-zydis",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae Zydis\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa-zydis",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae Relprevv\u00ae",
+      "strength": "210mg",
+      "max_units_30_days": "2",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa-relprevv",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae Relprevv\u00ae",
+      "strength": "300mg",
+      "max_units_30_days": "2",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa-relprevv",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zyprexa\u00ae Relprevv\u00ae",
+      "strength": "405mg",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zyprexa-relprevv",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall\u00ae",
+      "strength": "7.5mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall\u00ae",
+      "strength": "12.5mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall\u00ae",
+      "strength": "15mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall\u00ae",
+      "strength": "30mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall XR\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall XR\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall XR\u00ae",
+      "strength": "15mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall XR\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall XR\u00ae",
+      "strength": "25mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adderall XR\u00ae",
+      "strength": "30mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adderall-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adhansia XR",
+      "strength": "25mg, 35mg, 45mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adhansia-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adhansia XR",
+      "strength": "55mg, 70mg, 85mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adhansia-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adzenys XR",
+      "strength": "3.1mg, 6.3mg, 9.4mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adzenys-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Adzenys XR",
+      "strength": "12.5mg,15.7mg,18.8mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "adzenys-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Aptensio XR",
+      "strength": "10mg, 15mg, 20mg, 30mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "aptensio-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Aptensio XR",
+      "strength": "40mg, 50mg, 60mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "aptensio-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Azstarys",
+      "strength": "26.1mg/5.2mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "azstarys",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Azstarys",
+      "strength": "39.2mg/7.8mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "azstarys",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Azstarys",
+      "strength": "52.3mg/10.4mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "azstarys",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Concerta\u00ae",
+      "strength": "18mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "concerta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Concerta\u00ae",
+      "strength": "27mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "concerta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Concerta\u00ae",
+      "strength": "36mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "concerta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Concerta\u00ae",
+      "strength": "54mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "concerta",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Daytrana\u00ae Patch",
+      "strength": "10mg/9hr",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "daytrana-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Daytrana\u00ae Patch",
+      "strength": "15mg/9hr",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "daytrana-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Daytrana\u00ae Patch",
+      "strength": "20mg/9hr",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "daytrana-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Daytrana\u00ae Patch",
+      "strength": "30mg/9hr",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "daytrana-patch",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Desoxyn\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "150",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "desoxyn",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Dexedrine\u00ae Spansule\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "dexedrine-spansule",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Dexedrine\u00ae Spansule\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "dexedrine-spansule",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Dexedrine\u00ae Spansule\u00ae",
+      "strength": "15mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "dexedrine-spansule",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Dextroamphetamine Tablet",
+      "strength": "5mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "dextroamphetamine-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Dextroamphetamine Tablet",
+      "strength": "10mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "dextroamphetamine-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Focalin\u00ae",
+      "strength": "2.5mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "focalin",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Focalin\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "focalin",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Focalin\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "focalin",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Focalin XR\u00ae",
+      "strength": "5mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "focalin-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Focalin XR\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "focalin-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Focalin XR\u00ae",
+      "strength": "15mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "focalin-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Focalin XR\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "focalin-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Focalin XR\u00ae",
+      "strength": "25mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "focalin-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Focalin XR\u00ae",
+      "strength": "30mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "focalin-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Focalin XR\u00ae",
+      "strength": "35mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "focalin-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Focalin XR\u00ae",
+      "strength": "40mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "focalin-xr",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Jornay PM",
+      "strength": "20mg,40mg,60mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "jornay-pm",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Jornay PM",
+      "strength": "80mg, 100mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "jornay-pm",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Metadate CD\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "metadate-cd",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Metadate CD\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "metadate-cd",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Metadate CD\u00ae",
+      "strength": "30mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "metadate-cd",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Metadate CD\u00ae",
+      "strength": "40mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "metadate-cd",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Metadate CD\u00ae",
+      "strength": "50mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "metadate-cd",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Metadate CD\u00ae",
+      "strength": "60mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "metadate-cd",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Methylin\u2122 ER Tablet",
+      "strength": "10mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "methylin-er-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Tablet",
+      "strength": "20mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Chewable",
+      "strength": "2.5mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "chewable",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Chewable",
+      "strength": "5mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "chewable",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Chewable",
+      "strength": "10mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "chewable",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Methylphenidate Solution",
+      "strength": "5mg/5mL",
+      "max_units_30_days": "900mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "methylphenidate-solution",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Methylphenidate Solution",
+      "strength": "10mg/5mL",
+      "max_units_30_days": "900mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "methylphenidate-solution",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Mydayis capsule",
+      "strength": "All Strengths",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "mydayis-capsule",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Ritalin LA\u00ae",
+      "strength": "10mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ritalin-la",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Ritalin LA\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ritalin-la",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Ritalin LA\u00ae",
+      "strength": "30mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ritalin-la",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Ritalin LA\u00ae",
+      "strength": "40mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ritalin-la",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vyvanse\u00ae",
+      "strength": "20mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vyvanse",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vyvanse\u00ae",
+      "strength": "30mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vyvanse",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vyvanse\u00ae",
+      "strength": "40mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vyvanse",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vyvanse\u00ae",
+      "strength": "50mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vyvanse",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vyvanse\u00ae",
+      "strength": "60mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vyvanse",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vyvanse\u00ae",
+      "strength": "70mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vyvanse",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zenzedi",
+      "strength": "2.5mg 5mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zenzedi",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Zenzedi",
+      "strength": "7.5mg 10mg",
+      "max_units_30_days": "90",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "zenzedi",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Detrol",
+      "strength": "1mg, 2mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "detrol",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Detrol LA capsule",
+      "strength": "2mg, 4mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "detrol-la-capsule",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Ditropan tablet",
+      "strength": "5mg",
+      "max_units_30_days": "120",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ditropan-tablet",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Ditropan syrup",
+      "strength": "N/A",
+      "max_units_30_days": "600mL",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ditropan-syrup",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Ditropan XL",
+      "strength": "5mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ditropan-xl",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Ditropan XL",
+      "strength": "10mg, 15mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "ditropan-xl",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Enablex ER",
+      "strength": "7.5mg, 15mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "enablex-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Myrbetriq ER",
+      "strength": "25mg, 50mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "myrbetriq-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Santura",
+      "strength": "20mg",
+      "max_units_30_days": "60",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "santura",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Santura XR capsule",
+      "strength": "60mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "santura-xr-capsule",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Toviaz ER",
+      "strength": "4mg, 8mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "toviaz-er",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Urispas",
+      "strength": "100mg",
+      "max_units_30_days": "240",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "urispas",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Vesicare",
+      "strength": "5mg, 10mg",
+      "max_units_30_days": "30",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "vesicare",
+      "requires_pa_note": false
+    },
+    {
+      "brand_name": "Mavyret",
+      "strength": "N/A",
+      "max_units_30_days": "3",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "mavyret",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Epclusa",
+      "strength": "N/A",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "epclusa",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Harvoni",
+      "strength": "N/A",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "harvoni",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Olysio\u00ae",
+      "strength": "N/A",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "olysio",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "Sovaldi\u00ae",
+      "strength": "N/A",
+      "max_units_30_days": "1",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "sovaldi",
+      "requires_pa_note": true
+    },
+    {
+      "brand_name": "VieKira PakTM",
+      "strength": "N/A",
+      "max_units_30_days": "4",
+      "source_file": "maximum-units-med-list-2-25-2025.pdf",
+      "slug": "viekira-paktm",
+      "requires_pa_note": true
+    }
+  ]
+}

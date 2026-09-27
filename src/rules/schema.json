@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://abridgerx.local/schemas/drug-rule-pack.json",
+  "title": "AbridgeRx drug rule pack",
+  "type": "object",
+  "required": [
+    "drug",
+    "source",
+    "requires_pa",
+    "criteria"
+  ],
+  "properties": {
+    "drug": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "generic_name": {
+          "type": "string"
+        },
+        "rxnorm": {
+          "type": "string"
+        },
+        "ndcs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "therapeutic_class": {
+          "type": "string"
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "payer",
+        "list",
+        "effective_date",
+        "citation"
+      ],
+      "properties": {
+        "payer": {
+          "const": "alaska_medicaid"
+        },
+        "list": {
+          "type": "string"
+        },
+        "effective_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "citation": {
+          "type": "string"
+        },
+        "criteria_pdf": {
+          "type": "string"
+        }
+      }
+    },
+    "requires_pa": {
+      "type": "boolean"
+    },
+    "pdl_status": {
+      "type": "string",
+      "enum": [
+        "preferred",
+        "non_preferred",
+        "not_listed",
+        "unknown"
+      ]
+    },
+    "encoding_status": {
+      "type": "string",
+      "enum": [
+        "full",
+        "partial",
+        "text_only",
+        "encoding_incomplete"
+      ],
+      "description": "How completely criteria PDF clauses are expressed as predicates. text_only / encoding_incomplete must not auto-pass."
+    },
+    "inferred_required_facts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Heuristic facts likely needed; used when criteria array is empty"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "max_units": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "number"
+        },
+        "days_supply": {
+          "type": "number"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "citation",
+          "required_facts",
+          "predicate"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "citation": {
+            "type": "string"
+          },
+          "required_facts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "predicate": {
+            "type": "object",
+            "description": "Deterministic predicate over patient facts (engine-defined ops)"
+          },
+          "when": {
+            "type": "object",
+            "description": "Optional applicability gate. When present and not satisfied for the patient (e.g. indication not in the listed values), evaluate() skips the clause \u2014 it neither fails nor contributes missing facts.",
+            "properties": {
+              "fact": {
+                "type": "string"
+              },
+              "in": {
+                "type": "array",
+                "items": {}
+              },
+              "eq": {},
+              "value": {}
+            },
+            "required": [
+              "fact"
+            ]
+          }
+        }
+      }
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Drug names or rule-pack IDs in the same therapeutic class"
+    },
+    "fact_ui": {
+      "type": "object",
+      "description": "Authored clinician UI controls keyed by fact name. Each entry may include type, label, options, hint, option_style, and optional when gate: {fact, in:[...]} so the UI shows the control only when the gating fact (usually indication) matches.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "hint": {
+            "type": "string"
+          },
+          "option_style": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array"
+          },
+          "when": {
+            "type": "object",
+            "properties": {
+              "fact": {
+                "type": "string"
+              },
+              "in": {
+                "type": "array",
+                "items": {}
+              },
+              "eq": {},
+              "value": {}
+            },
+            "required": [
+              "fact"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

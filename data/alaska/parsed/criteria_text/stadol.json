@@ -1,0 +1,15 @@
+{
+  "slug": "stadol",
+  "drug_name": "Stadol",
+  "source_url": "https://health.alaska.gov/media/tiuewcuz/200908_stadol.pdf",
+  "source_file": "200908_stadol.pdf",
+  "sha256": "81614351e7515fa7ccfe6d89aa136f342639b0e7a0e2314148d456a5c2cd45ca",
+  "effective_date": "2009-01-01",
+  "extracted_text": "ALASKA MEDICAID\nButorphanol Tartrate Nasal Spray\nNasal Spray: 10 mg/mL, in 2.5 mL vials\nPREFERRED DRUG:\nNA\nNON-PREFERRED DRUG:\nNA\nINDICATION:\nButorphanol tartrate is an opioid agonist / antagonist analgesic, and is “indicated for the\nmanagement of pain when the use of an opioid analgesic is appropriate.”!\nNOTE: The filling pharmacy may override PA for patients in hospice, who have cancer, or are\nin LTC facilities\nCRITERIA FOR APPROVAL:\n1. The patient is at least 18 years of age; AND\n2. Treatment with at least one “first line” medication has been less than optimal; AND\n3. The patient can not be either safely or effectively treated with a combination opioid analgesic\nthat is combined with either acetaminophen, aspirin, or ibuprofen; OR\n4. If requested for the treatment of migraines, the patient must also be on prophylactic migraine\ntherapy and Triptans, (unless this therapy is contraindicated).\nLENGTH OF AUTHORIZATION:\n1. Coverage may be approved for up to 3 months.\nDISPENSING LIMIT:\n1. The dispensing limit is 2 units (5 mL) per month. (This product is supplied in 2.5 mL bottles).\nButorphanol Nasal Spray Criteria\nVersion: 2\nLast updated: 06/24/09\nPage 1 of 2\nADDITIONAL INFORMATION:\n\n“Because of its opioid antagonist properties, butorphanol is not recommended for use in patients\ndependent on opioids. Such patients should have an adequate period of withdrawal from opioid\ndrugs prior to beginning butorphanol therapy. In patients taking opioid analgesics chronically,\nbutorphanol has precipitated withdrawal symptoms such as anxiety, agitation, mood changes,\nhallucinations, dysphoria, weakness and diarrhea. Because of the difficulty in assessing opioid\ntolerance in patients who have recently received repeated doses of narcotic analgesic medication,\ncaution should be used in the administration of butorphanol to such patients.”\n\nREFERENCES / FOOTNOTES:\n\n' Butorphanol Nasal Spray package insert, available at: <http://bidocs.boehringer-\ningelheim.com/BIWebAccess/ViewServlet.ser?docBase=renetnt&folderPath=/Prescribing+Infor\nmation/PIs/Roxane/Butorphanol/Butorphanol+Tartrate+Nasal+Spray.pdf >\n\nAccessed 05/28/2009.\n\nButorphanol Nasal Spray Criteria\nVersion: 2\n\nLast updated: 06/24/09\n\nPage 2 of 2\n",
+  "ocr_status": "tesseract_recovered",
+  "notes": [
+    "Source PDF is scanned/image-only (Hewlett Packard MFP). Text recovered via pdftoppm 300dpi + tesseract eng PSM 6 on 2026-09-27.",
+    "OCR may contain minor character errors (e.g. Smg vs 5mg); encoding uses human-corrected criteria."
+  ],
+  "download_date": "2026-09-26"
+}

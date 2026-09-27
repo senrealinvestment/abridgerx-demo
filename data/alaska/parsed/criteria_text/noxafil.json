@@ -1,0 +1,16 @@
+{
+  "slug": "noxafil",
+  "drug_name": "Noxafil",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/2ocfl4v2/noxafil-pa-v2.pdf",
+  "source_file": "noxafil-pa-v2.pdf",
+  "sha256": "8ac61d3d6b22b130f8e082239eebd00bbc9a1291e95a83dc80f13d25900d75a5",
+  "effective_date": "2022-06-01",
+  "section": "INFECTIOUS DISEASE",
+  "extracted_text": "                                                     Alaska Medicaid\n\n                                    NOXAFIL ORAL SUSPENSION\u00ae(POSACONAZOLE)\n                                           Available 40mg/mL per 105mL\n\n\nINDICATIONS and USAGE:\n\n\u201cNOXAFIL is a triazole antifungal agent indicated for:\n          prophylaxis of invasive Aspergillus and Candida infections in patients, 13 years of age and older, who are at\n          high risk of developing these infections due to being severely immunocompromised, such as hematopoietic\n          stem cell transplant (HSCT) recipients with graft-versus-host disease (GVHD) or those with hematologic\n          malignancies with prolonged neutropenia from chemotherapy.\n          the treatment of oropharyngeal candidiasis (OPC), including OPC refractory (rOPC) to itraconazole and/or\n          fluconazole. \u201c1\n\nCriteria for Approval:\n\nProphylaxis of invasive Aspergillus and Candida\n       At risk of developing Aspergillus and Candida infections due to immune-compromised state caused by the\n       following conditions:\n            \uf076 Hematopoietic stem cell transplant (HSCT) with graft-versus-host disease (GVHD); OR\n            \uf076 Hematologic malignancies with prolonged neutronpenia from chemotherapy.\n\nTreatment of oropharyngeal candidiasis infections (OPC)\n       Fungal culture and any other relevant laboratory documentation\n\nTreatment of oropharyngeal candidiasis infections (rOPC) refactory to standard course of fluconazole and/or\nitraconazole\n            \uf076 Provide clinical documentation and treatment dates of previous medication regimens\n\nLength of Authorization:\n\n          Coverage may be approved up to 3 months; reauthorization maybe approved for an extended period with\n          progress note of clinical improvement or medical rationale justifying continuation of therapy.\n\nDispensing Limit:\n\nTreatment of oropharyngeal candidiasis infections (OPC) up to a 14 day supply of medication\n\nReferences:\n1\n    Noxafill\u00ae package insert is available at: < http://www.merck.com/product/usa/pi_circulars/n/noxafil/noxafil_pi.pdf\n>\nAccessed 3/26/13\n\n\n\nNoxafil criteria\nVersion 1\nLast updated 3/26/2013\nApproved 4/19/2013\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

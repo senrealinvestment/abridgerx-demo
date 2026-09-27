@@ -1,0 +1,17 @@
+{
+  "slug": "firdapse",
+  "drug_name": "Firdapse",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/zcclcbld/202211-firdapse_ruzurgi_criteria_2022.pdf",
+  "source_file": "202211-firdapse_ruzurgi_criteria_2022.pdf",
+  "sha256": "31655b21b549bb280391cbbc8c94bde7d3beff2478222f4f05a547594ed87157",
+  "effective_date": "2023-01-02",
+  "section": "OTHER",
+  "extracted_text": "                                        ALASKA MEDICAID\n                                      Prior Authorization Criteria\n\n\n                                    Firdapse\u00ae, Ruzurgi\u00ae\n                                      (amifampridine)\n\n    FDA INDICATIONS AND USAGE1,2\n\n    Firdapse\u00ae and Ruzurgi\u00ae are a potassium channel blocker indicated for the treatment of\n    Lambert-Eaton myasthenic syndrome (LEMS). Ruzurgi\u00ae is only indicated for patients age 6 to\n    less than 17 years of age and FIRDAPSE\u00ae is only indicated for adult patients.\n\nAPPROVAL CRITERIA1,2,3\n\n      1. For Ruzurgi\u00ae the patient is between 6 and less than 17 years of age or for Firdapse\u00ae the\n         patient is 6 years of age or older AND;\n      2. Patient has the diagnosis of Lambert-Eaton myasthenic syndrome (LEMS) AND;\n      3. Prescribed by or in consultation of a neurologist or neuromuscular specialist AND;\n      4. Patient does not have a history of seizures AND;\n      5. Prescriber agrees to monitor for use with acetylcholinesterase inhibitors or other\n         medication that can lower seizure threshold AND;\n      6. Patient has moderate to severe weakness that that interferes with daily functions.\n\nDENIAL CRITERIA1,2,3\n   1. Failure to meet approval criteria.\nCAUTIONS1,2\n\n\u2022     Can cause paresthesia/dysesthesia, abdominal pain, dyspepsia, dizziness, and nausea.\n\u2022     Consider discontinuation or dose reduction for patients that have a seizure while on\n      treatment.\n\u2022     The concomitant use of drugs that lower seizure threshold may lead to an increased risk of\n      seizures.\n\u2022     Concomitant use of drugs with cholinergic effects can increase the risk of adverse reactions.\n\nDURATION OF APPROVAL\n       \u2022    Initial Approval: up to 3 months\n       \u2022    Reauthorization Approval: up to 12 months if the patient is responding positively based\n            on clinical muscle strength and the patient hasn\u2019t had any seizures.\n\n\nQUANTITY LIMITS\n       \u2022    Ruzurgi\u00ae 10 tablets per day. Max daily dose 100mg.\n       \u2022    Firdapse\u00ae 8 tablets per day. Max daily dose 80mg.\nFirdapse\u00ae, Ruzurgi\u00ae Criteria\nVersion: 2\nOriginal: 10/3/2019\nApproval: 11/18/2022\nEffective: 1/2/2023\n\f                                    ALASKA MEDICAID\n                                  Prior Authorization Criteria\n\n\nREFERENCES / FOOTNOTES:\n\n       1. Ruzurgi\u00ae [prescribing information]. Princeton, NJ. Jacobus Pharmaceutical Company\n          Inc. May 2019.\n       2. Firdapse\u00ae tablets [prescribing information]. Coral Gables, FL: Catalyst\n          Pharmaceuticals, Inc.; November 2018.\n       3. Kesner VG, Oh SJ, Dimachkie MM, et al. Lambert-Eaton Myasthenic Syndrome.\n          Neurol Clin. 2018;36(2):379-394.\n\n\n\n\nFirdapse\u00ae, Ruzurgi\u00ae Criteria\nVersion: 2\nOriginal: 10/3/2019\nApproval: 11/18/2022\nEffective: 1/2/2023\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ],
+  "download_date": "2026-09-26"
+}

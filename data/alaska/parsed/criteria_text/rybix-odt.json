@@ -1,0 +1,16 @@
+{
+  "slug": "rybix-odt",
+  "drug_name": "Rybix ODT",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/ti0msiqr/rybix-odt-pa.pdf",
+  "source_file": "rybix-odt-pa.pdf",
+  "sha256": "a09e88ac6b2beee39c3f9ae83a68355e1c096b51303d554c600d31a291803c2d",
+  "effective_date": "2020-01-06",
+  "section": "ANALGESICS, OPIOID & REVERSAL AGENTS",
+  "extracted_text": "                                            Alaska Medicaid\n\n                                     RYBIX ODT\u00ae(TRAMADOL HCL)\n                              Available 50mg, orally disintegrating tablets\n\n\nINDICATIONS and USAGE:\n\n\u201cRYBIX ODT is indicated for the management of moderate to moderately severe pain in adults.\u201d1\n\nCriteria for Approval:\n\n    1. Recipient age is 17 or older; AND\n    2. Accumulative tramadol dose does not exceed 400mg/day. *If being co-administered with other\n       products containing tramadol (Tramadol IR, Tramadol ER, Tramadol/acetaminophen) then\n       dispensing limit may be reduced to not exceed 400mg/day*; AND\n    3. Trial and treatment failure of immediate release tramadol; OR\n    4. Recipient has documented inability to swallow or medical rationale that requires the ODT\n       formulation over the immediate release oral tablets.\n\nLength of Authorization:\n\n        Coverage may be approved up to 6 months\n\nDispensing Limit:\n\n        The dispensing limit is a 30 day supply of medication with the following Quantity Limit of 8\n        doses per day. If tramadol ODT therapy is being co-administered with another tramadol\n        regimen, the dispensing limit is up to a total of 400mg of tramadol per day. (Example:\n        tramadol ER 300mg daily, then the dispensing limit of tramadol ODT would be up to 2 daily for a\n        total of 400mg a day)\n\nReferences:\n1\n Rybix\u00ae package insert is available at: < http://www.rybixodt.com/im/rybixodt_pi.pdf >\nAccessed 3/20/13\n\n\n\n\nRybix ODT criteria\nVersion 1\nLast updated 3/20/2013\nApproved 4/19/2013\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

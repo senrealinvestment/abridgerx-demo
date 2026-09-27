@@ -1,0 +1,17 @@
+{
+  "slug": "oxervate",
+  "drug_name": "Oxervate",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/l0cpkixo/202009oxervate_criteria_2020.pdf",
+  "source_file": "202009oxervate_criteria_2020.pdf",
+  "sha256": "661f4229cc921f23e15fe0a01e2371f99973675e59ad9c9d5457c8357288eae1",
+  "effective_date": "2020-11-16",
+  "section": "OTHER",
+  "extracted_text": "                                             ALASKA MEDICAID\n                                           Prior Authorization Criteria\n\n                                                 Oxervate\u2122\n                                            (cenegermin-bkbj)\n\n FDA INDICATIONS AND USAGE1,3\n\n Oxervate\u2122 (cenegermin-bkbj) is a recombinant human nerve growth factor indicated for the treatment\n of neurotrophic keratitis (NK). NK is a degenerative disease that decreases corneal sensitivity and\n healing, leaving the cornea to be more susceptible to injury and decreased reflex tearing.\n\nAPPROVAL CRITERIA1,2,3\n\n     1. Patient is 2 years of age or older AND;\n     2. Patient has a documented diagnosis of stage 2 (persistent epithelial defect) or stage 3\n        (corneal ulcer) neurotrophic keratitis in one or both eyes AND;\n     3. Is being prescribed by or in consultation with an ophthalmologist or optometrist AND;\n     4. The patient has evidence of decreased corneal sensitivity in at least one eye AND;\n     5. The patient has a documented treatment with one or more conventional non-surgical\n        treatments for neurotrophic keratitis.\n\nDENIAL CRITERIA\n  1. Failure to meet approval criteria.\n\nCAUTIONS1\n\n         \uf0b7    The most common adverse reactions are eye pain, ocular hyperemia, eye inflammation\n              and increased lacrimation.\n         \uf0b7    Patients should remove contact lenses before applying OXERVATE and wait 15\n              minutes after instillation of the dose before reinsertion.\n         \uf0b7    Patients should follow proper administration and storage procedures outlined in the\n              package insert.\n\n\nDURATION OF APPROVAL\n         \uf0b7    Initial Approval: up to 8 weeks (treatment duration not to exceed 8 weeks)\n         \uf0b7    Retreatment, lost or stolen, or spilled medication should not be authorized.\n\n\nQUANTITY LIMIT\n\n     \uf0b7       Up to maximum of 8 kits per affected eye (1 kit contains 7 multiple-dose vials)\n\n\nREFERENCES / FOOTNOTES:\n\n\nOxervate\u2122 Criteria\nVersion: 1\nOriginal: 07/06/2020\nApproval: 09/18/2020\nEffective: 11/16/2020\n\f                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\n       1. Oxervate\u2122 [prescribing information]. Boston, MA: Dompe U.S. Inc.; October 2019.\n       2. Sacchetti, M., Lambiase, A. Diagnosis and management of neurotrophic keratitis.\n          Clinical Ophthalmology 2014;8: 571-9.\n       3. Evaluation of Safety and Efficacy of rhNGF in Patients With Stage 2 and 3\n          Neurotrophic Keratitis. - Full Text View - ClinicalTrials.gov. (2019). Retrieved from\n          https://clinicaltrials.gov/ct2/show/NCT01756456\n\n\n\n\nOxervate\u2122 Criteria\nVersion: 1\nOriginal: 07/06/2020\nApproval: 09/18/2020\nEffective: 11/16/2020\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ],
+  "download_date": "2026-09-26"
+}

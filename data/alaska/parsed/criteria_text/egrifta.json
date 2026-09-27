@@ -1,0 +1,15 @@
+{
+  "slug": "egrifta",
+  "drug_name": "Egrifta",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/4mhdc51p/egrifta.pdf",
+  "source_file": "egrifta.pdf",
+  "sha256": "fea26081bf36d32a994dc6f8652c109a8c9f6d5e6e0785f585bfe3d07ffd9475",
+  "effective_date": "2025-03-01",
+  "section": "HORMONES",
+  "extracted_text": "                                            Alaska Medicaid\n\n                                        EgriftaTM (Tesamorelin)\n                                   1mg vial for subcutaneous injection\n\n\nINDICATIONS:\n\u201cEGRIFTATM is a growth hormone releasing factor (GRF) analog indicated for the reduction\nof excess abdominal fat in HIV-infected patients with lipodystrophy.\nLimitations of use:\n        Long-term cardiovascular benefit and safety of EGRIFTATM have not been studied.\n        Not indicated for weight loss management (weight neutral effect).\n        There are no data to support compliance with anti-retroviral therapies in HIV-positive patients\n        taking EGRIFTATM.\u201d1\n\n.Criteria for Approval:\n\n\n1.      The patient is HIV-positive.\n\nLength of Authorization:\nCoverage may be approved for 3 months. Reauthorization may be approved pending documentation of\nclinical improvement of lipodystrophy.\n\nDispensing Limit:\nThe dispensing limit is a 30 day supply of medication.\n\nReferences:\n1\n  EgriftaTM package insert is available at:\n<http://www.egrifta.com/Pdfs/Prescribing_Information.pdf > Accessed 10/25/11\n\n\n\n\nEgrifta criteria\nVersion 1\nLast updated 11/18/2011\nApproved 11/18/2011\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

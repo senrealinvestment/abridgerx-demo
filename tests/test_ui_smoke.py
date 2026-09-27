@@ -126,19 +126,22 @@ def test_partial_pack_check():
     assert "asthma" in xvals
 
 
-def test_text_only_pack_surfaces_criteria():
+def test_former_text_only_pack_now_evaluable():
+    """Former text_only atypical pack is now partial with criteria text retained."""
     detail = drug_detail("atypical-antipsychotic-therapeutic-duplication")
     assert detail is not None
-    assert detail["encoding_status"] == "text_only"
-    assert detail["can_evaluate"] is False
+    assert detail["encoding_status"] == "partial"
+    assert detail["can_evaluate"] is True
     assert detail["criteria_text"] and detail["criteria_text"].get("extracted_text")
 
     resolved = get_rule_pack("atypical-antipsychotic-therapeutic-duplication")
     assert resolved
     _, pack = resolved
-    result = check(pack, {"age_years": 40, "indication": "psoriasis"}, None)
+    assert pack["encoding_status"] == "partial" and pack.get("criteria")
+    # Incomplete facts still need_info (not encoding_incomplete)
+    result = check(pack, {}, None)
     assert result.decision == "need_info"
-    assert any("encoding_incomplete" in n for n in result.notes)
+    assert not any("encoding_incomplete" in n for n in result.notes)
 
 
 def test_no_free_text_fact_fields():

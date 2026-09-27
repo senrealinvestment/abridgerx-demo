@@ -1,0 +1,16 @@
+{
+  "slug": "firazyr",
+  "drug_name": "Firazyr",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/dxeln3fy/firazyr.pdf",
+  "source_file": "firazyr.pdf",
+  "sha256": "e1c14d37393f17fa66e9afd5b98bd414bb257cfa2fcb4442f0286aa0015f29ac",
+  "effective_date": "2023-01-02",
+  "section": "OTHER",
+  "extracted_text": "                                            Alaska Medicaid\n\n                                           Firazyr\u00ae (icatibant)\n                            Available single-use, prefilled syringe 30mg/3mL\n\n\nINDICATIONS and Usage:\n\n\u201cFirazyr\u00ae is a bradykinin B2 receptor antagonist indicated for treatment of acute attacks of hereditary\nangioedema (HAE) in adults 18 years of age and older.\u201d1\n\nCriteria for Approval:\n\nThe prescriber must submit a letter of medical necessity along with all necessary documentation\nsubstantiating all of the criteria below.\n\n    1. The patient has a documented diagnosis of hereditary angioedema (HAE) by an immunologist;\n       and\n    2. The recipient is on a prophylactic therapy (such as 17-\u03b1 \u2013 alkylated androgens or anti-fibrinolytic\n       agents) unless contraindicated or response failure.\n\n\nLength of Authorization:\n\nFirazyr: Coverage may be approved for date of service.\n\nDispensing Limit:\n\nFirazyr: The dispensing limit is 3 units. Refills require documentation of Emergency Room or Hospital\nintervention.\n\nReferences:\n1\n Firazyr\u00ae package insert is available at: < http://pi.shirecontent.com/PI/PDFs/Firazyr_USA_ENG.pdf >\nAccessed 3/2/12\n\n\n\n\nFirazyr criteria\nVersion 1\nLast updated 3/2/2012\nApproved 03/16/2012\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

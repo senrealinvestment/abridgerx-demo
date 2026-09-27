@@ -1,0 +1,17 @@
+{
+  "slug": "sympazan",
+  "drug_name": "Sympazan",
+  "generic_name": "Clobazam",
+  "source_url": "https://health.alaska.gov/media/a2edkmco/20199onfi-pa_updated20190807.pdf",
+  "source_file": "20199onfi-pa_updated20190807.pdf",
+  "sha256": "217d4a36edab8b890f55f49b9437a18b2c4d09a2e7ae6a641aa48a5c7a7107f5",
+  "effective_date": "2019-11-20",
+  "section": "OTHER",
+  "extracted_text": "                                       ALASKA MEDICAID\n                                     Prior Authorization Criteria\n\n                              Sympazan\u2122, Onfi\u00ae (Clobazam)\n                                   Schedule IV Controlled Substance\n\n\nFDA Indication and Usage:\n\nAdjunctive treatment of seizures associated with Lennox-Gastaut syndrome (LGS) in patients 2 years of\nage or older\n\nDosage Form/Strength:\n\nTablet: 10mg, 20mg\nOral suspension: 2.5 mg/mL in 120mL bottles\nFilms: 5mg, 10mg, 20 mg\n\nCriteria for Approval:\n\n   1. Diagnosis of Lennox-Gastaut Syndrome; AND\n   2. Current therapy with at least one other antiepileptic medication including documentation of\n      current and prior therapies; AND\n   3. Recipient is 2 years of age or older; AND\n   4. Patient has tried and failed generic clobazam.\n\nLength of Authorization:\n\n   \uf0b7   Coverage may be approved for up to 6 months.\n\nQuantity Limit:\n\n   \uf0b7   Maximum 2 doses per day (not to exceed 40mg per day).\n\nReferences:\n\nOnfi\u00ae [package insert]. Deerfield, IL; Lundbeck, November 2013.\nSypazan\u2122 [package insert] Warren, NJ; Aquestive Therapeutics. November 2018.\n\n\n\n\nOnfi\u00ae, Sympazan\u2122 criteria\nVersion 3\nLast updated: 09/2/2014\nPrevious: 09/19/2014\nApproved: 9/20/2019\nEffective: 11/20/2019\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

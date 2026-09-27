@@ -1,0 +1,15 @@
+{
+  "slug": "imbruvica",
+  "drug_name": "Imbruvica",
+  "generic_name": "ibrutinib",
+  "source_url": "https://health.alaska.gov/media/ig1dbw55/imbruvica.pdf",
+  "source_file": "imbruvica.pdf",
+  "sha256": "3cb5e479e0bca8df6cf9a05f668f29c0f6ba2128236012228bf0951ae07432a1",
+  "effective_date": "2022-05-01",
+  "section": "OTHER",
+  "extracted_text": "                                    ALASKA MEDICAID\n                                  Prior Authorization Criteria\n\n                                  Imbruvica\u00ae (ibrutinib)\n\nFDA INDICATIONS AND USAGE\n\n     \u2022    Mantle cell lymphoma (MCL) and chronic lymphocytic leukemia (CLL) in patients who\n          have received at least one prior therapy.\n     \u2022    Chronic lymphocytic leukemia 17p deletion.\n\n\nAPPROVAL CRITERIA\n\n     1. Patients with a diagnosis of mantle cell lymphoma (MCL) who have trialed at least one\n        prior therapy; OR\n     2. Patients with a diagnosis of chronic lymphocytic leukemia (CLL) who do not have 17p\n        deletion who have trialed at least one prior therapy; OR\n     3. Patients with a diagnosis of deletion 17p chronic lymphocytic leukemia (CLL).\n\nDENIAL CRITERIA:\n\n     1. Renewal authorizations will not be approved if the patient has had more than three\n        therapy interruptions due to adverse reactions/toxicities.\n     2. Pregnancy\n\nCAUTIONS:\n\n     \u2022    Imbruvica should be avoided in patients taking strong CYP3A inhibitors and inducers\n          (see package insert for complete information).\n     \u2022    If Imbruvica must be taken concomitantly with a moderate CYP3A inhibitor, please refer\n          to package insert for dose reduction guidance of Imbruvica.\n\nDURATION OF APPROVAL:\n\n     \u2022    Approval may be granted up to 1 year\n\nQUANTITY LIMIT:\n\n     \u2022    MCL \u2013 four 140mg capsules (560mg) per day\n     \u2022    CLL \u2013 three 140mg capsules (420mg) per day\n\n\nREFERENCES / FOOTNOTES:\n\n     1. Imbruvica\u00ae [package insert]. Sunnyvale, CA; Pharmacyclics, Inc., July 2014.\n\n\n\n\nImbruvica\u00ae Criteria\nVersion: 1\nOriginal: 11/14/2014\nApproval: 11/21/2014\n\n                                            Page 1 of 1\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

@@ -1,0 +1,17 @@
+{
+  "slug": "jascayd",
+  "drug_name": "Jascayd",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/h3yphwc0/jascayd_criteria.pdf",
+  "source_file": "jascayd_criteria.pdf",
+  "sha256": "9773ea513440a429c73e5cc5275c1e7d7ccc0c0ca1dfaac6fec330fe78a5949d",
+  "effective_date": "2026-03-01",
+  "section": "RESPIRATORY",
+  "extracted_text": "                                         ALASKA MEDICAID\n                                       Prior Authorization Criteria\n\n                                            Jascayd\u00ae\n                                         (nerandomilast)\n\n\nFDA INDICATIONS AND USAGE1\n\nJascayd\u00ae is a is a phosphodiesterase 4 (PDE4) inhibitor indicated for:\n    \u2022 The treatment of idiopathic pulmonary fibrosis in adult patients.\n    \u2022 The treatment of progressive pulmonary fibrosis in adult patients.\n\nAPPROVAL CRITERIA1,2,3\n\n     1. Patient meets FDA labeled age AND;\n     2. Prescribed by or in consultation with a pulmonologist AND;\n     3. Other known causes of interstitial lung disease have been ruled out (e.g. environmental exposure,\n        drug toxicity, connective tissue disease, etc.) AND;\n     4. Documented pulmonary function test within the past 60 days reflecting Forced Vital Capacity\n        (FVC) \u226545% of predicted AND;\n     5. Patient baseline carbon monoxide diffusing capacity (DLCO, corrected for hemoglobin) \u226525% of\n        predicted AND;\n     6. Patient has the diagnosis of Idiopathic Pulmonary Fibrosis (IPF) confirmed by lung biopsy OR\n        high-resolution computed tomography OR;\n     7. Patient has the diagnosis of Progressive Pulmonary Fibrosis (PPF) consistent with current,\n        established guidelines.\n\nDENIAL CRITERIA 1\n\n     1. Failure to meet approval criteria OR;\n     2. Jascayd\u00ae is being used in combination with a moderate or strong CYP3A inducer\n\nCAUTIONS1\n\n     \u2022    Dose modification may be necessary when used concomitantly with strong CYP3A inhibitors.\n     \u2022    Diarrhea was the most commonly reported side effect\n\nDURATION OF APPROVAL\n\n     \u2022    Initial Approval: up to 3 months\n     \u2022    Reauthorization Approval: up to one year\n\nQUANTITY LIMIT\n  \u2022 60 tablets per 30 days\n\n\n\n\nJascayd\u00ae Criteria\nVersion: 1\nOriginal: 12/19/2025\nAccepted: 01/16/2026\nEffective: 03/01/2026\n\f                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\nREFERENCES / FOOTNOTES:\n\n1. Jascayd (nerandomilast) [prescribing information]. Ridgefield, CT: Boehringer Ingelheim.; December\n   2025\n2. Richeldi L, Azuma A, Cottin V, et al. Nerandomilast in Patients with Idiopathic Pulmonary Fibrosis.\n   N Engl J Med. 2025;392(22):2193-2202..\n3. Maher T, Assassi S, Azuma A, et al. Nerandomilast in Patients with Progressive Pulmonary Fibrosis.\n   N Engl J Med 2025; 392(22): 2203-2214\n\n\n\n\nJascayd\u00ae Criteria\nVersion: 1\nOriginal: 12/19/2025\nAccepted: 01/16/2026\nEffective: 03/01/2026\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ],
+  "download_date": "2026-09-26"
+}

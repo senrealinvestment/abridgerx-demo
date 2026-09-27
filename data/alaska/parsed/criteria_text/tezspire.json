@@ -1,0 +1,22 @@
+{
+  "slug": "tezspire",
+  "drug_name": "Tezspire",
+  "generic_name": "tezepelumab-ekko",
+  "source_url": "https://health.alaska.gov/media/ttyjmstk/tezspire_criteria_2023.pdf",
+  "source_file": "tezspire_criteria_2023.pdf",
+  "sha256": "801b8876937e976e51f588a1c37a3c23b8a7c8abb319b6256be25a0dd7055bce",
+  "effective_date": "2023-11-01",
+  "section": "BIOLOGICS",
+  "extracted_text": "                                         ALASKA MEDICAID\n                                       Prior Authorization Criteria\n\n                                            Tezspire\u2122\n                                        (tezeplumab-ekko)\n\n\nFDA INDICATIONS AND USAGE1\n\nTezspireTM is a thymic stromal lymphopoietin (TSLP) blocker, human monoclonal antibody (IgG2\u03bb),\nindicated for the add-on maintenance treatment of adult and pediatric patients aged 12 years and older\nwith severe asthma.\n APPROVAL CRITERIA1,2,3\n\n    1.   Patient meets FDA labeling approved age AND;\n    2.   Prescribed by or in consultation with a pulmonologist, allergist, or immunologist AND;\n    3.   Patient has the diagnosis of severe asthma AND;\n    4.   In the preceding year, patient has experienced at least one of the following:\n             a. \u2265 2 exacerbations which required oral or injectable corticosteroid therapy\n    5.       b. \u2265 1 exacerbation resulting in hospitalization AND;\n    6.   Must be used as an adjunct therapy to patients receiving both of the following for at least three\n         months:\n              a. a medium to high dose inhaled steroid\n              b. an additional controller medication (e.g. leukotriene modifier, long acting beta agonist,\n                  etc..) AND;\n    7.   Will not be used for the relief of acute asthma exacerbation or status asthmaticus AND;\n    8.   Will not be used concomitantly with any other biologic product for asthma treatment AND;\n\nDENIAL CRITERIA 1\n\n    1. Failure to meet approval criteria OR;\n    2. Patient is non-adherent to controller medication therapy\n\nCAUTIONS1\n\n    \u2022    Tezspire should not be used for treatment of acute asthma symptoms or exacerbations.\n    \u2022    The use of live attenuated vaccines should be avoided in patients receiving Tezspire.\n    \u2022    Do not discontinue systemic or inhaled steroids abruptly on initiation of treatment with Tezspire.\n         Taper gradually, if appropriate.\n\nDURATION OF APPROVAL\n\n  \u2022 Initial Approval: up to 3 months.\n  \u2022 Reauthorization Approval: up to 12 months.\nQUANTITY LIMIT\n\n    \u2022    Not to exceed 210mg every 28 days.\n\nREFERENCES / FOOTNOTES:\nTezspire\u2122 Criteria\nVersion: 1\nOriginal: 08/22/2023\nAccepted: 09/15/2023\nEffective: 11/1/2023\n\f                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\n\n1. Tezspire [prescribing information]. Thousand Oaks, CA; Amgen Inc. and AstraZeneca AB; May\n   2023\n2. Global Initiative for Asthma(GINA). Global strategy for asthma management and prevention (2023\n   report). Available at https://ginasthma.org/2023-gina-main-report/. Accessed 8/21/2023\n3. National Asthma Education and Prevention Program: Expert Panel Report III: Guidelines for the\n   diagnosis and management of asthma. Bethesda, MD: National Heart, Lung, and Blood Institute,\n   2007. Available at https://www.nhlbi.nih.gov/health-topics/guidelines-for-diagnosis-management-of-\n   asthma. Accessed 07/15/2023.\n\n\n\n\nTezspire\u2122 Criteria\nVersion: 1\nOriginal: 08/22/2023\nAccepted: 09/15/2023\nEffective: 11/1/2023\n\f",
+  "inferred_required_facts": [
+    "indication",
+    "age_years",
+    "prescriber_specialty",
+    "asthma_exacerbation_prior_year",
+    "tezspire_adjunct_ics_plus_controller_3mo",
+    "not_acute_bronchospasm",
+    "not_used_with_another_biologic",
+    "controller_adherent"
+  ],
+  "download_date": "2026-09-26"
+}

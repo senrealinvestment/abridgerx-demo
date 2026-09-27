@@ -1,0 +1,15 @@
+{
+  "slug": "leuprolide",
+  "drug_name": "Leuprolide",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/32jda2oz/leuprolide.pdf",
+  "source_file": "leuprolide.pdf",
+  "sha256": "b08ef80a0c4970dafa93e0305a61133f33b85df9b28b0b01ba51b69b4e0ab40b",
+  "effective_date": null,
+  "section": "METABOLIC",
+  "extracted_text": "                                      ALASKA MEDICAID\n\n                               Leuprolide Acetate Injection\n                           LUPRON\u00ae and Leuprolide Acetate: 5mg/mL solution\n                        LUPRON DEPOT\u00ae: 3.75mg, 7.5mg, 11.25mg, 22.5mg, 30mg\n                            LUPRON DEPOT-PED\u00ae: 7.5mg, 11.25mg, 15mg\n                                Eligard\u00ae: 7.5mg, 22.5mg, 30mg, 45mg\n                              FOR DISPENSING BY THE PHARMACY\n\nPreferred Medication:\n\nNA\n\nNon-Preferred Medication:\n\nNA\n\n\nINDICATION:\n\n1. \u201cLUPRON DEPOT-PED\u00ae is indicated in the treatment of children with central precocious\n    puberty.\u201d1\n\n2. LUPRON DEPOT\u00ae is indicated for the management of endometriosis and uterine\n   leiomyomata2,3.\n\n3. LUPRON DEPOT\u00ae is \u201cindicated for the palliative treatment of advanced prostatic cancer\u201d4,5,6.\n\n4. \u201cELIGARD\u00ae is indicated for the palliative treatment of advanced prostate cancer\u201d8.\n\n\nCRITERIA FOR APPROVAL:\n\n1. The patient is a child being treated for central precocious puberty; OR\n\n2. The patient is a woman being treated for endometriosis or uterine leiomyomata; OR\n\n3. The patient is a man being treated for advanced prostatic cancer.\n\n\nLENGTH OF APPROVAL :\n\n1. All criteria may be approved for up to 1 year.\n\n\n\n\nLupron criteria\nVersion 2\nLast updated 10/04/09\n\fREFERENCES / FOOTNOTES:\n\n\u00b9 LUPRON DEPOT-PED\u00ae package insert, available at:\n<http://pitap.abbott.com/lupronpediatric.pdf>\nAccessed 06/03/2009.\n2\n LUPRON DEPOT\u00ae - 3.75mg package insert, available at:\n<http://www.accessdata.fda.gov/drugsatfda_docs/label/2001/20011s21lbl.pdf>\nAccessed 06/03/2009.\n3\n LUPRON DEPOT\u00ae- 11.25mg package insert, available at:\n<http://www.accessdata.fda.gov/drugsatfda_docs/nda/2001/20-708S011_Lupron_prntlbl.pdf>\nAccessed 06/03/2009.\n4\n LUPRON DEPOT\u00ae - 7.5mg package insert, available at:\n<http://publicfiles.home.att.net/meds/lupron_datasheet_7_5mg_4week_9.pdf>\nAccessed 06/03/2009.\n5\n LUPRON DEPOT\u00ae - 3 month 22.5mg package insert, available at:\n<http://pitap.abbott.com/lupron3month22_5mg.pdf> Accessed 06/03/2009.\n6\n LUPRON DEPOT\u00ae - 4 month 30mg package insert, available at: <http://www.hfhs-radonc-\ngenetherapy.com/documents/General%20Documents/Lupron%20Package%20Insert%20(4%20m\nonth%2030%20mg).pdf> Accessed 06/03/2009.\n7\n    Leuprolide monograph, Clinical Pharmacology. Accessed 06/03/2009.\n8\n Eligard\u00ae package insert, available at: <http://products.sanofi-aventis.us/eligard/eligard_75.html>\nAccessed 10/04/2009.\n\n\n\n\nLupron criteria\nVersion 2\nLast updated 10/04/09\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

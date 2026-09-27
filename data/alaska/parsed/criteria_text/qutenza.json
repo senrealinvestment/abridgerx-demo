@@ -1,0 +1,17 @@
+{
+  "slug": "qutenza",
+  "drug_name": "Qutenza",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/s03hd5wq/qutenza_pa_2024.pdf",
+  "source_file": "qutenza_pa_2024.pdf",
+  "sha256": "bb1c8bd1eb742ce62400b14743074864204ddebce758d0dc17a411df18dbc7cf",
+  "effective_date": "2024-03-01",
+  "section": "OTHER",
+  "extracted_text": "                                          ALASKA MEDICAID\n                                        Prior Authorization Criteria\n\n                                               Qutenza\u2122\n                                               (capsaicin)\n\n\nFDA INDICATIONS AND USAGE1\n\nQutenzaTM is a TRPV1 channel agonist indicated for the treatment of neuropathic pain associated with\npostherpetic neuralgia (PHN) and neuropathic pain associated with diabetic peripheral neuropathy (DPN)\nof the feet.\n\nAPPROVAL CRITERIA1,2,3\n\n     1. Patient is \u2265 18 years of age AND;\n     2. Patient has a diagnosis of neuropathic pain associated with postherpetic neuralgia (PHN) OR pain\n        associated with diabetic peripheral neuropathy of the feet (DPN) AND;\n     3. Patient has tried and failed for a minimum of four weeks at a recognized therapeutic dose or has a\n        contraindication to ALL of the following:\n            a. Gabapentin or pregabalin\n            b. Any tricyclic antidepressant\n            c. Topical diclofenac\n            d. Lidocaine patch 5% AND;\n     4. Product will only be applied by a health care professional.\n\nDENIAL CRITERIA 1\n\n     1. Failure to meet approval criteria\n\nCAUTIONS1\n\n     \u2022    QutenzaTM is only to be applied by a licensed health care professional and not appropriate for self-\n          administration.\n     \u2022    Unintended capsaicin exposure can cause severe irritation.\n              o Do not use on or near eyes or mucous membranes.\n     \u2022    Transient increases in blood pressure may occur during and immediately following QutenzaTM\n          treatment.\n     \u2022    Substantial burning and pain may result from application of QutenzaTM.\n     \u2022    Reductions in sensory function have been reported following administration of QutenzaTM.\n\nDURATION OF APPROVAL1\n\n     \u2022    Initial Approval: 1 month\n     \u2022    Reauthorization Approval: up to 12 months\n\nQUANTITY LIMIT1\n\n     \u2022    Up to 4 patches per application. Dose may be repeated up to once every 90 days\n\n\nQutenza\u2122 Criteria\nVersion: 1\nOriginal: 12/18/2023\nAccepted: 1/19/2024\nEffective: 3/1/2024\n\f                                       ALASKA MEDICAID\n                                     Prior Authorization Criteria\n\nREFERENCES / FOOTNOTES:\n\n1. Qutenza (capsaicin) [prescribing information]. Morristown, NJ: Averitas Pharma Inc; February 2023\n2. Price R, Smith D, Franklin G, et al. Oral and Topical Treatment of Painful Diabetic Polyneuropathy:\n   Practice Guideline Update Summary. Neurology. 2022; 98 (1) 31-43.\n3. Johnson, Robert and Rice, Andrew. Postherpetic Neuralgia. N Engl J Med 2014; 371:1526-1533\n   DOI: 10.1056/NEJMcp1403062\n\n\n\n\nQutenza\u2122 Criteria\nVersion: 1\nOriginal: 12/18/2023\nAccepted: 1/19/2024\nEffective: 3/1/2024\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

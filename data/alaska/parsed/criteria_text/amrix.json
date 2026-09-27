@@ -1,0 +1,16 @@
+{
+  "slug": "amrix",
+  "drug_name": "Amrix",
+  "generic_name": "cyclobenzaprine extended release",
+  "source_url": "https://health.alaska.gov/media/ctyfzbbx/amrix.pdf",
+  "source_file": "amrix.pdf",
+  "sha256": "86d21fa317fc9108749396fd25c8dda95045d71e687ea2e794cbc3d4370a4a56",
+  "effective_date": "2024-06-01",
+  "section": "SKELETAL MUSCLE RELAXANTS",
+  "extracted_text": "                                    ALASKA MEDICAID\n                                  Prior Authorization Criteria\n\n                    Amrix\u00ae (cyclobenzaprine extended release)\n\nINDICATIONS AND USAGE\n\nAdjunct to rest and physical therapy for relief of muscle spasm associated with acute, painful\nmusculoskeletal conditions.\n Limitations:\n   \u2022 To be used only for short periods (up to 2 or 3 weeks)\n   \u2022 Not found effective in the treatment of spasticity or cerebral palsy\n\nAPPROVAL CRITERIA\n\n    1. The dispensing pharmacy may override PA for patients in hospice, or who have cancer,\n       or are in a LTC facility; OR\n    2. Treatment with immediate release cyclobenzaprine 5mg or 10mg for at least 5 days has\n       been less than optimal; AND\n    3. The patient is being treated for relief of an acute, painful musculoskeletal condition;\n       AND\n    4. The patient is 18 to 65 years of age.\n\n\nDENIAL CRITERIA\n\n    1. Hyperthyroidism (please address thyroid status in authorization request)\n    2. Concurrent use of a monoamine oxidase inhibitor (MAOI)\n\n\nDURATION OF APPROVAL, LIMITATIONS\n\n    1. Dispensing limit is 21 capsules for a 21 day supply\n    2. Medication may be approved for 21 days only. No refills will be authorized and a new\n       PA must be requested for each 21 day supply.\n\n\nREFERENCES\n\n1. Amrix [package insert]. North Wales, PA; Teva Pharmaceuticals USA, Inc., June 2013.\n\n2. Amrix monograph, Clinical Pharmacology. Accessed 05/28/2009.\n\n\n\n\nAmrix criteria\nVersion 2\nOriginal 05/28/2009\nLast updated 09/19/2014\nApproved 09/19/2014\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

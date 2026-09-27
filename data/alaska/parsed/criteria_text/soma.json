@@ -1,0 +1,15 @@
+{
+  "slug": "soma",
+  "drug_name": "Soma",
+  "source_url": "https://health.alaska.gov/media/eirjq4yp/200908_soma.pdf",
+  "source_file": "200908_soma.pdf",
+  "sha256": "b5ccf6191bbb149e9d6f7f08195bd66d5d7f7457708f1525f40e42580cb92c3e",
+  "effective_date": "2009-01-01",
+  "extracted_text": "ALASKA MEDICAID\nSoma® (Carisoprodol)\nOral Tablets: 250mg, 350mg\nPREFERRED DRUG:\nNA\nNON-PREFERRED DRUG:\nNA\nINDICATION:\n“Soma is indicated for the relief of discomfort associated with acute, painful\nmusculoskeletal conditions in adults. Soma tablets should only be used for short periods\n(up to two or three weeks) because adequate evidence of effectiveness for more\nprolonged use has not been established and because acute, painful musculoskeletal\nconditions are generally of short duration.”\"\nNOTE: The filling pharmacy may override PA for patients in hospice, or who have cancer, or are\nin LTC facilities.\nCRITERIA FOR APPROVAL:\n1. The patient is being treated for the relief of discomfort associated with acute, painful\nmusculoskeletal conditions; AND\n2. The patient is at least 16 years of age.\nCRITERIA CAUSING DENIAL:\n1. The patient is on any other muscle relaxant.\nDISPENSING LIMIT:\n1. The dispensing limit is 56 tablets per 14 days.\n2. Medication may be approved for 14 days only. No refills will be authorized and a new PA\nmust be requested for each 14 day supply.\nSoma® Criteria\nVersion: 3\nLast updated: 06/24/2009\nPage 1 of 2\nREFERENCES / FOOTNOTES:\n' Soma® 250mg package insert, available at:\n<http://www.soma250.com/pdf/full_prescribing info.pdf>\nAccessed 05/28/2009.\n? Carisoprodol® package insert, available at:\n<http://pi.watson.com/data_stream.asp?product_group=1213&p=pi&language=E>\nAccessed 05/28/2009.\nSoma® Criteria\nVersion: 3\nLast updated: 06/24/2009\n\nPage 2 of 2\n",
+  "ocr_status": "tesseract_recovered",
+  "notes": [
+    "Source PDF is scanned/image-only (Hewlett Packard MFP). Text recovered via pdftoppm 300dpi + tesseract eng PSM 6 on 2026-09-27.",
+    "OCR may contain minor character errors (e.g. Smg vs 5mg); encoding uses human-corrected criteria."
+  ],
+  "download_date": "2026-09-26"
+}

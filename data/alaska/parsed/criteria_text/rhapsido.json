@@ -1,0 +1,18 @@
+{
+  "slug": "rhapsido",
+  "drug_name": "Rhapsido",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/xjyjo12o/rhapsido_criteria.pdf",
+  "source_file": "rhapsido_criteria.pdf",
+  "sha256": "de316cfd45295cb745ae6236584f1eca46c0fbb17fc19e14ea826139a6acdaa2",
+  "effective_date": "2026-03-01",
+  "section": "OTHER",
+  "extracted_text": "                                         ALASKA MEDICAID\n                                       Prior Authorization Criteria\n\n                                            Rhapsido\u00ae\n                                          (remibrutinib)\n\n\nFDA INDICATIONS AND USAGE1\n\nRhapsido\u00ae is a kinase inhibitor indicated for the treatment of chronic spontaneous urticaria (CSU) in\nadult patients who remain symptomatic despite H1 antihistamine treatment.\n\nAPPROVAL CRITERIA1,2,3\n\n     1. Patient meets FDA labeled age AND;\n     2. Prescribed by or in consultation with a dermatologist, allergist or immunologist AND;\n     3. Patient has the diagnosis of chronic spontaneous urticaria AND;\n     4. Patient has had urticaria for at least 6 weeks with symptoms present on 3 or more days a week\n        while taking a non-sedating H1 antihistamine titrated to maximum dose AND;\n     5. Patient has been evaluated for medications known to cause or worsen urticaria (e.g. NSAIDs) and\n        these agents have been reduced or discontinued where feasible AND;\n     6. Patient has tried and failed or has a documented clinical contraindication to a non-sedating H1\n        antihistamine at maximum dose for a minimum of 60 days\n\nDENIAL CRITERIA 1\n\n     1. Failure to meet approval criteria OR;\n     2. Being used in conjunction with another biologic medication (e.g. Dupixent, Xolair, etc.)\n\nCAUTIONS1\n\n     \u2022    Rhapsido\u00ae has been associated with an increased risk of mucocutaneous-related bleeding.\n          Concomitant use with antithrombotic agents may further increase this risk.\n     \u2022    Concomitant use with strong CYP3A4 inhibitors or inducers should be avoided\n     \u2022    The most common adverse reactions include nasopharyngitis, bleeding, headache, nausea, and\n          abdominal pain.\n\nDURATION OF APPROVAL\n\n     \u2022    Initial Approval: up to 3 months\n     \u2022    Reauthorization Approval: up to one year\n\nQUANTITY LIMIT\n\n     \u2022    60 tablets per 30 days\n\n\n\n\nRhapsido\u00ae Criteria\nVersion: 1\nOriginal: 12/17/2025\nAccepted: 01/16/2026\nEffective: 03/01/2026\n\f                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\nREFERENCES / FOOTNOTES:\n\n1. Rhapsido\u00ae (remibrutinib) [prescribing information]. East Hanover, NJ: Novartis; September 2025\n2. The International EAACI/GA2 LEN/EuroGuiDerm/APAAACI guideline for the definition,\n   classification, diagnosis, and management of urticaria. Allergy. 2022 Mar;77(3):734-766\n3. Metz M, Gimenez-Arnau A, Hide M, et al. Remibrutinib in chronic spontaneous urticaria. N Engl J\n   Med. 2025;392(10):984-994.\n\n\n\n\nRhapsido\u00ae Criteria\nVersion: 1\nOriginal: 12/17/2025\nAccepted: 01/16/2026\nEffective: 03/01/2026\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

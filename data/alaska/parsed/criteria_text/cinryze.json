@@ -1,0 +1,16 @@
+{
+  "slug": "cinryze",
+  "drug_name": "Cinryze",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/q5lprxdg/cinryze-criteria.pdf",
+  "source_file": "cinryze-criteria.pdf",
+  "sha256": "f96a1a663ab5e312be4221d65fb83ec0ba0055e725c59267c8a570f87a9493f6",
+  "effective_date": null,
+  "section": "OTHER",
+  "extracted_text": "                                     ALASKA MEDICAID\n\n                            Cinryze (C1 Esterase Inhibitor)\n                                           500 unit vial\n\n\nINDICATION:\n\n\u201cCINRYZE is a C1 esterase inhibitor indicated for routine prophylaxis against angioedema\nattacks in adolescent and adult patients with Hereditary Angioedema (HAE).\u201d1\n\n\n\nCRITERIA FOR APPROVAL:\n\nThe prescriber must submitted a letter of medical necessity along with all necessary\ndocumentation substantiating all of the criteria below.\n\n1. The patient has a documented diagnosis of hereditary angioedema (HAE) by an immunologist;\n   AND\n\n2. The recipient\u2019s history of HAE attacks is consistent with monthly abdominal or respiratory\n   attacks that require hospital ER intervention, generally with usage of Berinert or Kalbitor in\n   the previous 6 months (ER documentation is required); AND\n\n3. The recipient is NOT concurrently taking an angiotensin converting enzyme (ACE) inhibitor\n   or estrogen replacement therapy; AND\n\n4. The recipient has had an insufficient response or contraindication to BOTH of the following\n   classes of preventative medication:\n        a. 17\u03ac \u2013 alkylated androgens (e.g. danazol, stanozolol, oxandrolone, methyltestosterone)\n           \u2013 any contraindication must be documented by an endocrinologist.\n        b. Antifibrinolytic agents (e.g. aminocaproic acid, tranexamic acid)\n\nNote: The Alaska Medicaid Medical Director will work with hospital emergency departments to\nensure the availability of Berinert or Kalbitor for acute attacks of HAE for authorized recipients.\n\n\nREFERENCES / FOOTNOTES:\n1\n Cinryze package insert, available at<http://www.cinryze.com/documents/cinryze-prescribing-\ninformation.pdf> Accessed 7/6/2011.\n2\n    UP-TO-DATE, Long-term prophylaxis of hereditary angioedema.\n\n\n\n\nCinryze criteria\nVersion 1\nLast updated 7/6/2011\nApproved xx/xx/xxxx\n\f",
+  "inferred_required_facts": [
+    "indication",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

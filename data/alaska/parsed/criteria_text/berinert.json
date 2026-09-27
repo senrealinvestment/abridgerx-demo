@@ -1,0 +1,16 @@
+{
+  "slug": "berinert",
+  "drug_name": "Berinert",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/2icfelak/berinert-pa.pdf",
+  "source_file": "berinert-pa.pdf",
+  "sha256": "5a28c6caf8c3d59b20997af18e5fa26afd4be9ad34f7deaa35a2c0faa0b75ebb",
+  "effective_date": "2022-11-01",
+  "section": "OTHER",
+  "extracted_text": "                                            Alaska Medicaid\n\n                               BERINERT\u00ae(C1 Esterase Inhibitor, Human)\n                                    Available 500iu single-use vial\n\n\nINDICATIONS and USAGE:\n\n\u201cBerinert is a plasma-derived C1 Esterase Inhibitor (Human) indicated for the treatment of acute\nabdominal, facial, or laryngeal attacks of hereditary angioedema (HAE) in adult and adolescent patients.\n\nThe safety and efficacy of Berinert for prophylactic therapy have not been established.\u201d1\n\nCriteria for Approval:\n\nThe prescriber must submitted a letter of medical necessity along with all necessary documentation\nsubstantiating all of the criteria below.\n\n\n1. The patient has a documented diagnosis of hereditary angioedema (HAE) by an immunologist; AND\n2. The recipient\u2019s history of HAE attacks is consistent with monthly abdominal or respiratory attack\n   that require hospital ER intervention in the previous 6 months (ER documentation is required); AND\n3. The recipient is NOT concurrently taking an angiotensin converting enzyme (ACE) inhibitor or\n   estrogen replacement therapy; AND\n4. The recipient has had an insufficient response or contraindication to BOTH of the following classes\n   of preventative medication:\n       a. 17\u03ac \u2013 alkylated androgens (e.g. danazol, stanozolol, oxandrolone, methyltestosterone)\n           \u2013 any contraindication must be documented by an endocrinologist.\n       b. Antifibrinolytic agents (e.g. aminocaproic acid, tranexamic acid)\n\nReferences:\n1\n Berinert\u00ae package insert is available at: < http://labeling.cslbehring.com/PI/US/Berinert/EN/Berinert-\nPrescribing-Information.pdf >\nAccessed 1/7/13\n\n\n\n\nBerinert criteria\nVersion 1\nLast updated 1/7/2013\nApproved 01/18/2013\n\f",
+  "inferred_required_facts": [
+    "indication",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

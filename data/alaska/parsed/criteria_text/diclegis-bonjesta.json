@@ -1,0 +1,15 @@
+{
+  "slug": "diclegis-bonjesta",
+  "drug_name": "Diclegis Bonjesta",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/3lrpw3j0/20220415-diclegis_bonjesta_criteria_2022.pdf",
+  "source_file": "20220415-diclegis_bonjesta_criteria_2022.pdf",
+  "sha256": "c05f061fed1b3e5d4262d3a1818f6285e5423a878e5b28ce96171ee206aca127",
+  "effective_date": "2022-04-15",
+  "section": "GASTROINTESTINAL",
+  "extracted_text": "                                            Alaska Medicaid\n\n                   DICLEGIS\u00ae, Bonjesta\u00ae (doxylamine succinate and pyridoxine hcl)\n                                 Available Delayed Released tablets\n\n\nINDICATIONS and USAGE:\n\nDICLEGIS is a fixed dose combination drug product of 10 mg doxylamine succinate, an antihistamine, and\n10 mg pyridoxine hydrochloride, a Vitamin B6 analog, indicated for the treatment of nausea and\nvomiting of pregnancy in women who do not respond to conservative management. BONJESTA is a fixed\ndose combination drug product of 20 mg doxylamine succinate, an antihistamine, and 20 mg pyridoxine\nhydrochloride, a Vitamin B6 analog, indicated for the treatment of nausea and vomiting of pregnancy in\nwomen who do not respond to conservative management.\n\nLimitations of Use\nDICLEGIS and BONJESTA are contraindicated with concurrent use of MAO inhibitors.\n\n\nCriteria for Approval:\n\n    1. Diagnosis from the \u2018Indication and Usage\u2019 section; AND\n    2. Documented trial and failure of at least one conservative management regimen for nausea and\n       vomiting.\n\nLength of Authorization:\n\nCoverage may be approved for 3 months.\n\nQuantity Limit:\n       Diclegis \u2013 120 tablets per 30 days\n       Bonjesta \u2013 60 tablets per 30 days\n\nReminder: You are encouraged to report negative side effects of prescription drugs to the FDA. Visit\nhttp://www.fda.gov/Safety/MedWatch/default.htm or call 1-800-FDA-1088\n\nReferences:\n\nDiclegis\u00ae [Package Insert] Bryn Mawr, PA; Duchesnay Inc.; May 2013.\n\nBonjesta\u00ae [Package Insert] Bryn Mawr, PA; Duchesnay Inc.; June 2018.\n\n\n\n\nDiclegis criteria\nVersion 2\nOriginal: 1/02/2014\nLast updated 4/15/2022\nApproved 4/15/2022\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

@@ -47,8 +47,8 @@ def test_catalog_and_source():
     catalog = load_rule_pack_catalog()
     assert catalog[SLUG] == PACK
     assert catalog['leuprolide']['encoding_status'] == 'partial'
-    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 190
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 8
+    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 198
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 0
     assert json.loads((BASE/'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f:
         assert json.load(f) == catalog

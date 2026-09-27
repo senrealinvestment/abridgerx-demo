@@ -1,0 +1,15 @@
+{
+  "slug": "korlym",
+  "drug_name": "Korlym",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/2hwgnaft/korlym-pa.pdf",
+  "source_file": "korlym-pa.pdf",
+  "sha256": "567e420b2325c05e518c118cd96490cc788ff60cea1386f534badf1d7ad4219d",
+  "effective_date": null,
+  "section": "METABOLIC",
+  "extracted_text": "                                            Alaska Medicaid\n\n                                      KORLYMTM(MIFEPRISTONE)\n                                        Available 300mg tablet\n\n\nINDICATIONS and USAGE:\n\n\u201cKorlym (mifepristone) is a cortisol receptor blocker indicated to control hyperglycemia secondary to\nhypercortisolism in adult patients with endogenous Cushing\u2019s syndrome who have type 2 diabetes\nmellitus or glucose intolerance and have failed surgery or are not candidates for surgery.\n\nImportant Limitations of Use\n  Do not use for the treatment of type 2 diabetes mellitus unrelated to endogenous Cushing\u2019s\n  syndrome.\u201d1\n\nCriteria for Approval:\n\n    1. Diagnosis of Cushing\u2019s syndrome; AND\n    2. Diagnosis of type 2 diabetes mellitus or glucose intolerance; AND\n    3. Has failed surgery or is not a candidate for surgery\n\nLength of Authorization:\n\n    1. Initial authorization may be approved for 3 months.\n    2. Re-authorization, documentation of clinical improvement may be approved for 9 months.\n\nDispensing Limit:\n\n    1. The dispensing limit is a 30 day supply of medication with a maximum Quantity Limit of 1200mg\n       once daily (not to exceed 20mg/kg per day).\n\nReferences:\n1\n KorlymTM package insert is available at:\n<http://www.korlym.com/docs/KorlymPrescribingInformation.pdf >\nAccessed 12/11/12\n\n\n\n\nKorlym criteria\nVersion 1\nLast updated 12/11/2012\nApproved 01/18/2013\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

@@ -100,10 +100,10 @@ def test_source_and_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 190
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 8
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 198
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 0
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (190, 8)
+    assert (status['encoding_partial'], status['encoding_text_only']) == (198, 0)
     assert status['next_candidate'] == None
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['firazyr', 'berinert']:

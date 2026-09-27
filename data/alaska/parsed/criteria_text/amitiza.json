@@ -1,0 +1,17 @@
+{
+  "slug": "amitiza",
+  "drug_name": "Amitiza",
+  "generic_name": "lubiprostone",
+  "source_url": "https://health.alaska.gov/media/lwcnvd3j/amitiza_and_linzess_pa.pdf",
+  "source_file": "amitiza_and_linzess_pa.pdf",
+  "sha256": "83b5f190a10d343fe4523335112f4c696a51b90c30da7b8838a2995a86742552",
+  "effective_date": "2019-06-10",
+  "section": "GASTROINTESTINAL",
+  "extracted_text": "                                            ALASKA MEDICAID\n                                          Prior Authorization Criteria\n\n                        Amitiza\u00ae (lubiprostone) or LinzessTM (linaclotide)\n\nFDA INDICATIONS and USAGE\n    AMITIZA:\n      1. Amitiza\u00ae is indicated for the treatment of chronic idiopathic constipation in adults.\n      2. Amitiza is indicated for the treatment of opioid-induced constipation (OIC) in adults with chronic non-\n         cancer pain.\n      Limitations of Use:\n         \u2022 Effectiveness of Amitiza in the treatment of opioid-induced constipation in patients taking\n              diphenylheptane opioids (e.g., methadone) has not been established.\n      3. Amitiza is indicated for the treatment of irritable bowel syndrome with constipation (IBS-C) in women\n         \u2265 18 years old.\n\n    LINZESS:\n       A guanylate cyclase-C agonist indicated in adults for treatment of:\n          \u2022 Irritable bowel syndrome with constipation (IBS-C)\n          \u2022 Chronic idiopathic constipation (CIC)\n\nDOSAGE FORM/STRENGTH\n    \u2022   Amitiza; 8mcg and 24mcg capsule\n    \u2022   Linzess; 145mcg and 290mcg capsule\n\nAPPROVAL CRITERIA\n    1. Diagnosis from the \u2018Indication and Usage\u2019 section and must be supported by documentation from the\n       patient\u2019s medical record; AND\n    2. Age restrictions apply, must be 18 years of age or older; AND\n    3. Submit dates of trial or inadequate response from two of the following groups:\n       \u2022 Fiber supplements\n       \u2022 Stimulant laxatives\n       \u2022 Osmotic laxatives\n\nLENGTH OF AUTHORIZATION\n    \u2022   Coverage may be approved for 12 months.\n\nQUANTITY LIMIT\n    \u2022   AMITIZA; maximum two (2) capsules per day either strength\n    \u2022   LINZESS\n           o IBS-C; maximum one (1) capsule per day of 290mcg\n           o CIC; maximum one (1) capsule per day of 145mcg\n\n\nReminder: You are encouraged to report negative side effects of prescription drugs to the FDA. Visit\nhttp://www.fda.gov/Safety/MedWatch/default.htm or call 1-800-FDA-1088\n\n\n\nAmitiza or Linzess criteria\nVersion 2\nApproved 11/15/2013\nReviewed 09/19/2014 (format and reference update)\n\f                                           ALASKA MEDICAID\n                                         Prior Authorization Criteria\n\nREFERENCES\n\n   \u2022   Amitiza\u00ae [package insert]. Deerfield, IL; Takeda Pharmaceuticals Americal, Inc., April 2013.\n   \u2022   Linzess\u2122 [package insert]. St. Louis, MO; Forest Pharmaceuticals, Inc., July 2014.\n\n\n\n\nAmitiza or Linzess criteria\nVersion 2\nApproved 11/15/2013\nReviewed 09/19/2014 (format and reference update)\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

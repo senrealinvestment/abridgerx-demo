@@ -1,0 +1,18 @@
+{
+  "slug": "andembry",
+  "drug_name": "Andembry",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/hvcpvabc/andembry_criteria.pdf",
+  "source_file": "andembry_criteria.pdf",
+  "sha256": "4e017e7814a5fec880d65ddb92a583554da605d218c1db467ff07ceb9c191193",
+  "effective_date": "2025-11-01",
+  "section": "OTHER",
+  "extracted_text": "                                         ALASKA MEDICAID\n                                       Prior Authorization Criteria\n\n                                            Andembry\n                                        (garadacimab-gxii)\n\n\nFDA INDICATIONS AND USAGE1\n\nAndembry is an activated Factor XII (FXIIa) inhibitor (monoclonal antibody) indicated for prophylaxis to\nprevent attacks of hereditary angioedema (HAE) in adult and pediatric patients aged 12 years and older.\n\nAPPROVAL CRITERIA1,2,3\n\n     \u2022    Patient meets FDA labeled age AND;\n     \u2022    Prescribed by or in consultation with an allergist or immunologist AND;\n     \u2022    Patient has the diagnosis of hereditary angioedema due to C1-esterase inhibitor deficiency (HAE-\n          C1-INH) [type 1 or type 2] AND;\n     \u2022    Andembry will be used for HAE prophylaxis AND;\n     \u2022    Andembry will not be used in combination with another agent indicated for HAE prophylaxis\n          AND;\n     Patient has a documented history of 3 or more moderate to severe HAE attacks per month AND;\n     \u2022\n     Medications with an established link to angioedema (e.g. angiotensin converting enzyme\n     \u2022\n     inhibitors, estrogen replacement therapy, etc,) have been evaluated and discontinued where\n     appropriate. AND;\n  \u2022 Patient has tried and failed or has a documented clinical contraindication to at least one preferred\n     agent approved for HAE prophylaxis from one of the following classes\n         a. C1 Esterase Inhibitor\n         b. Plasma kallikrein inhibitor\nDENIAL CRITERIA 1\n\n     1. Failure to meet approval criteria OR;\n     2. Andembry prescribed to be used in combination with another agent indicated for HAE\n        prophylaxis\n\nCAUTIONS1\n\n     \u2022    The safety of Andembry in pregnancy or breastfeeding has not been determined.\n     \u2022    The most common adverse reactions include nasopharyngitis and abdominal pain.\n\nDURATION OF APPROVAL\n\n     \u2022    Initial Approval: up to 3 months\n     \u2022    Reauthorization Approval: up to one year\n\nQUANTITY LIMIT\n  \u2022 Initial loading dose of 400mg (two 200mg autoinjectors/syringes) on day 1 of treatment, followed\n    by 200mg (1 autoinjector/syringe) once monthly\n\nAndembry Criteria\nVersion: 1\nOriginal: 08/18/2025\nAccepted: 9/19/2025\nEffective: 11/1/2025\n\f                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\n\n\nREFERENCES / FOOTNOTES:\n\n1. Andembry (garadacimab-gxii) [prescribing information]. King of Prussia, PA: CSL Behring; June\n   2025\n2. Maurer M, Magerl M, Betschel S, et al. The international WAO/EAACI guideline for the\n   management of hereditary angioedema \u2013 the 2021 revision and update. Allergy. 2022;77(7):1961-\n   1990.\n3. Craig TJ, Reshef A, Li HH, et al. Efficacy and safety of garadacimab, a factor XIIa inhibitor for\n   hereditary angioedema prevention (VANGUARD): a global, multicentre, randomised, double-blind,\n   placebo-controlled phase 3 trial. Lancet. 2023;401(10382):1079-1090.\n\n\n\n\nAndembry Criteria\nVersion: 1\nOriginal: 08/18/2025\nAccepted: 9/19/2025\nEffective: 11/1/2025\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

@@ -1,0 +1,16 @@
+{
+  "slug": "vecamyl",
+  "drug_name": "Vecamyl",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/rwpe0eap/vecamyl-_pa.pdf",
+  "source_file": "vecamyl-_pa.pdf",
+  "sha256": "303e6d36082b91ace47850d22f3e3935f61fdee12bbef7982dc15fcc9e8999b1",
+  "effective_date": null,
+  "section": "OTHER",
+  "extracted_text": "                                            Alaska Medicaid\n\n                                    VECAMYL \u2122(mecamylamine hcl)\n                                        Available 2.5mg tablet\n\n\nINDICATIONS and USAGE:\n\nFor the management of moderately severe to severe essential hypertension and in uncomplicated cases\nof malignant hypertension.\n\n\nCriteria for Approval:\n\n    1. Diagnosis from the \u2018Indication and Usage\u2019 section; AND\n    2. Use of at least 6 classes of medications within the last 12 months with documented history of\n       failure to achieve blood pressure goals using maximum tolerated doses; AND\n    3. Prescriber must verify the recipient does not have any the following contraindications:\n            a. Coronary insufficiency\n            b. Recent myocardial infarction\n            c. Rising or elevated BUN, or known renal insufficiency\n            d. Uremia\n            e. Receiving antibiotics and sulfonamides\n            f. Glaucoma\n            g. Organic pyloric stenosis\n            h. Hypersensitivity to mecamylamine\n\nLength of Authorization:\n\nCoverage may be approved for 6 months.\n\nDispensing Limit:\n\nThe dispensing limit is a 30 day supply of medication with the following Quantity Limit of 10 doses per\nday.\n\nReminder: You are encouraged to report negative side effects of prescription drugs to the FDA. Visit\nhttp://www.fda.gov/Safety/MedWatch/default.htm or call 1-800-FDA-1088\n\nReferences:\n\nVecamyl\u2122 package insert is available at: <http://www.manchesterpharma.com/vecamyl.html>\nAccessed 1/02/14\n\n\n\n\nVecamyl criteria\nVersion 1\nLast updated 1/02/2014\nApproved 1/17/2014\n\f",
+  "inferred_required_facts": [
+    "indication",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

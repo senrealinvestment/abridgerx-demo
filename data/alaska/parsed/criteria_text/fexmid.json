@@ -1,0 +1,15 @@
+{
+  "slug": "fexmid",
+  "drug_name": "Fexmid",
+  "source_url": "https://health.alaska.gov/media/1lnptojd/200908_fexmid.pdf",
+  "source_file": "200908_fexmid.pdf",
+  "sha256": "5ef98caa21ae8877a39a16369d27889c338a0678a9bd194e25d41c99c626f195",
+  "effective_date": "2024-06-01",
+  "extracted_text": "ALASKA MEDICAID\nFexmid® (Cyclobenzaprine)\nTablet: 7.5mg\nPreferred Medication:\nNA\nNon-Preferred Medication:\nNA\nINDICATION:\n“Fexmid® is indicated as an adjunct to rest and physical therapy for relief of muscle spasm\nassociated with acute, painful musculoskeletal conditions. Improvement is manifested by relief\nof muscle spasm and its associated signs and symptoms, namely, pain, tenderness, and limitation\nof motion and restriction in activities of daily living. Fexmid® should be used only (up to two to\nthree weeks) because adequate evidence of effectiveness for more prolonged use is not available\nand because muscle spasm associated with acute, painful musculoskeletal conditions is generally\nof short duration and specific therapy for longer periods is seldom warranted.”\nNOTE: The dispensing pharmacy may override PA for patients in hospice, or who have cancer,\nor are in a LTC facility\nCRITERIA FOR APPROVAL:\n1. Treatment with Immediate Release Cyclobenzaprine Smg or 10mg for at least 5 days has been\nless than optimal; AND\n2. The patient is being treated for relief of an acute, painful musculoskeletal condition; AND\n3. The patient is at least 16 years of age.'”\nCRITERIA CAUSING DENIAL:\n1. The patient is on any other muscle relaxant.\nDISPENSING LIMIT:\n1. The dispensing limit is 63 tablets for a 21 day supply.\n2. Medication may be approved for 21 days only. No refills will be authorized and a new PA\nmust be requested for each 21 day supply.\nFexmid criteria\nVersion 1\nLast updated 06/24/09\nREFERENCES / FOOTNOTES:\n\n' Fexmid® package insert, available at: <http://www.victorypharma.com/inserts/Fexmid.pdf>\nAccessed 05/28/09.\n\n Fexmid® monograph, Clinical Pharmacology. Accessed 05/28/2009.\n\nFexmid criteria\n\nVersion 1\n\nLast updated 06/24/09\n",
+  "ocr_status": "tesseract_recovered",
+  "notes": [
+    "Source PDF is scanned/image-only (Hewlett Packard MFP). Text recovered via pdftoppm 300dpi + tesseract eng PSM 6 on 2026-09-27.",
+    "OCR may contain minor character errors (e.g. Smg vs 5mg); encoding uses human-corrected criteria."
+  ],
+  "download_date": "2026-09-26"
+}

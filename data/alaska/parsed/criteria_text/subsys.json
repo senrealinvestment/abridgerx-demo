@@ -1,0 +1,16 @@
+{
+  "slug": "subsys",
+  "drug_name": "Subsys",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/qpmdfq5b/subsys-pa.pdf",
+  "source_file": "subsys-pa.pdf",
+  "sha256": "38f03ae8ad90d9bceca5b24718176349d400bba79285b8f7d7526fd783c65ef8",
+  "effective_date": null,
+  "section": "ANALGESICS, OPIOID & REVERSAL AGENTS",
+  "extracted_text": "                                               Alaska Medicaid\n\n                                 SUBSYS\u00ae(FENTANYL SUBLINGUAL SPRAY)\n                               Available 100,200,400,600,800,1200,1600mcg\n\n\nINDICATIONS and USAGE:\n\n\u201cSUBSYS is indicated for the management of breakthrough pain in adult cancer patients who are already\nreceiving and who are tolerant to around-the-clock opioid therapy for their underlying persistent cancer\npain. Patients considered opioid tolerant are those who are taking around-the-clock medicine consisting of\nat least 60 mg of oral morphine daily, at least 25 mcg of transdermal fentanyl/hour, at least 30 mg of oral\noxycodone daily, at least 8 mg of oral hydromorphone daily or an equianalgesic dose of another opioid daily\nfor a week or longer. Patients must remain on around-the-clock opioids when taking SUBSYS.\nThis product must not be used in opioid non-tolerant patients because life-threatening respiratory\ndepression and death could occur at any dose in patients not on a chronic regimen of opioids. For this\nreason, SUBSYS is contraindicated in the management of acute or postoperative pain.\nSUBSYS is intended to be used only in the care of cancer patients and only by oncologists and pain\nspecialists who are knowledgeable of and skilled in the use of Schedule II opioids to treat cancer pain.\nLimitations of Use\nAs part of the Transmucosal Immediate-Release Fentanyl (TIRF) REMS ACCESS Program, SUBSYS may be\ndispensed only to outpatients enrolled in the program. For inpatient administration (e.g. hospitals,\nhospices, and long-term care facilities that prescribe for inpatient use) of SUBSYS, patient enrollment is not\nrequired.\u201d1\n\nCriteria for Approval:\n\n    1.   The patient is a 18 years or older; AND\n    2.   The patient is being treated for cancer pain; AND\n    3.   The patient is opioid tolerant as described above; AND\n    4.   The patient is receiving around-the-clock opioid therapy; AND\n    5.   Patients and provider must comply with the TIRF REMS ACCESS program if applicable.\n             a. https://www.tirfremsaccess.com/TirfUI/rems/home.action\n\nLength of Authorization:\n\n    1. Authorization may be approved for 6 months.\n\nDispensing Limit:\n\n    1. The dispensing limit is a 30 day supply of medication\n\nReferences:\n1\n Subsys\u00ae package insert is available at: <http://subsysspray.com/assets/Prescribing%20Information.pdf >\nAccessed 12/11/12\nSubsys criteria\nVersion 1\nLast updated 12/11/2012\nApproved 01/18/2013\n\f",
+  "inferred_required_facts": [
+    "indication",
+    "prescriber_specialty"
+  ],
+  "download_date": "2026-09-26"
+}

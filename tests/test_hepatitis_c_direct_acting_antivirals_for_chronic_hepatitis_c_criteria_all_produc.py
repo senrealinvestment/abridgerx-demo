@@ -78,13 +78,13 @@ def test_artifacts_and_scope():
     assert catalog == {p.stem: json.loads(p.read_text()) for p in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 190
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 8
-    assert catalog['hemophilia']['encoding_status'] == 'text_only'
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 198
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 0
+    assert catalog['hemophilia']['encoding_status'] == 'partial'
     for filename in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE/filename).read_bytes() == (BASE.parent/filename).read_bytes()
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (190, 8, NEXT)
+    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (198, 0, NEXT)
     assert status['partial_slugs'] == sorted(s for s,p in catalog.items() if p['encoding_status']=='partial')
     notes = ' '.join(PACK['notes'])
     for phrase in ['Tables 1a/1b', 'Table 2', 'non-preferred', 'do not require PA', '16 weeks', '<25 IU/mL', 'dispensing error', 'lost/stolen', '7 calendar days', 'ribavirin', '11/19/2021', '5/5/2022']:
@@ -100,4 +100,4 @@ def test_twin_parity_and_scope():
     assert PACK['source']['citation'] == twin['source']['citation']
     assert 'hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc' in ' '.join(twin['notes'])
     for slug in ['000-unit', 'hemophilia']:
-        assert json.loads((BASE / f'rule_packs/{slug}.json').read_text())['encoding_status'] == 'text_only'
+        assert json.loads((BASE / f'rule_packs/{slug}.json').read_text())['encoding_status'] == 'partial'

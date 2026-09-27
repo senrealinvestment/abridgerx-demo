@@ -1,0 +1,18 @@
+{
+  "slug": "fintepla",
+  "drug_name": "Fintepla",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/l4wlptsp/202101-fintepla_criteria__2021.pdf",
+  "source_file": "202101-fintepla_criteria__2021.pdf",
+  "sha256": "80b0e708ecea8f7dc20d42b2810ffe8f7612f634fcc469555afbef6f33e754a2",
+  "effective_date": "2020-11-16",
+  "section": "OTHER",
+  "extracted_text": "                                       ALASKA MEDICAID\n                                     Prior Authorization Criteria\n\n                                           Fintepla\u00ae\n                                        (fenfluramine)\n\n FDA INDICATIONS AND USAGE 1\n\n Fintepla\u00ae is indicated for the treatment of seizures associated with Dravet syndrome in patients\n 2 years of age and older. Fenfluramine increases extracellular serotonin levels and acts as both\n a serotonergic 5-HT2 receptor agonist and \u03c31 receptor antagonist.\n\nAPPROVAL CRITERIA 1,2,3\n\n     1. Patient is 2 years of age or older AND;\n     2. The medication is being prescribed by or in consultation with a neurologist AND;\n     3. Patient has a confirmed diagnosis of seizures associated with Dravet syndrome AND;\n     4. ICD-10 code is provided and written on the prescription AND;\n     5. The patient has undergone an echocardiogram prior to initiating therapy AND;\n     6. The patient has tried for at least one month and failed or contraindication to TWO or\n        more of the following:\n        a. valproate\n        b. clobazam\n        c. topiramate\n        d. levetiracetam\n\nDENIAL CRITERIA 1,3\n\n     1. Failure to meet approval criteria OR;\n     2. Patient has moderate to severe renal impairment OR;\n     3. Patient has hepatic impairment OR;\n     4. Concomitant use of, or within 14 days of the administration of monoamine oxidase\n        inhibitors.\n\nCAUTIONS1\n\n       \u2022    Patients should be advised that the drug can cause decreased appetite and\n            decreased weight.\n       \u2022    Monitor for somnolence and sedation. Patients should be advised not to drive or\n            operate machinery.\n       \u2022    Monitor for suicidal behavior and ideation.\n       \u2022    Serotonin Syndrome has been observed particularly with concomitant\n            administration of other serotonergic drugs.\n       \u2022    Blood pressure should be monitored during treatment.\n\n\nFintepla\u00ae Criteria\nVersion: 1\nOriginal: 12/04/20\nApproval: Pending 1/15/21\nEffective: Pending 3/15/21\n\f                                       ALASKA MEDICAID\n                                     Prior Authorization Criteria\n\n\nDURATION OF APPROVAL\n       \u2022    Initial Approval: up to 3 months\n       \u2022    Reauthorization Approval: up to 12 months\n\nQUANTITY LIMIT\n       \u2022    Up to 12ml per day (max daily dose is 26mg)\n       \u2022    360ml per 30 days\n\nREFERENCES / FOOTNOTES:\n\n       1. Fintepla [prescribing information]. Emeryville, CA: Zogenix Inc.; June 2020.\n       2. Dravet Foundation \u2013 Dravet Syndrome. Available at:\n          https://www.dravetfoundation.org/what-is-dravet-syndrome/. Accessed on December 3,\n          2020.\n       3. Cross JH, Caraballo RH, Nabbout R, Vigevano F, Guerrini R, Lagae L. Dravet\n          syndrome: Treatment options and management of prolonged seizures. Epilepsia.\n          2019;60(S3):S39\u2013S48.\n\n\n\n\nFintepla\u00ae Criteria\nVersion: 1\nOriginal: 12/04/20\nApproval: Pending 1/15/21\nEffective: Pending 3/15/21\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

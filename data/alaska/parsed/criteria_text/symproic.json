@@ -1,0 +1,17 @@
+{
+  "slug": "symproic",
+  "drug_name": "Symproic",
+  "generic_name": "naldemedine",
+  "source_url": "https://health.alaska.gov/media/vyxhy3wc/symproic_criteria_2025.pdf",
+  "source_file": "symproic_criteria_2025.pdf",
+  "sha256": "263812b84c318e00e56b1e9fb2a04574517c983658011ae7ab1ec7871d197eaa",
+  "effective_date": "2025-06-01",
+  "section": "GASTROINTESTINAL",
+  "extracted_text": "                                          ALASKA MEDICAID\n                                        Prior Authorization Criteria\n\n                                     Symproic\u00ae (naldemedine)\n\nFDA INDICATIONS AND USAGE1\n\nSymproic\u00ae is an opioid antagonist indicated for the treatment of opioid-induced constipation\n(OIC) in adult patients with chronic non-cancer pain, including patients with chronic pain related\nto prior cancer or its treatment who do not require frequent (e.g., weekly) opioid dosage\nescalation.\n\nAPPROVAL CRITERIA1,2\n\n     1. Patient meets FDA labeled age; AND\n     2. Diagnosis of Opioid-induced constipation (OIC) in adults with chronic non-cancer pain;\n        AND\n     3. Recipient has been taking opioids for a period longer than 4 weeks; AND\n     4. Recipient does not have or suspected mechanical gastrointestinal obstruction; AND\n     5. Submit dates of trial or inadequate response from at least 2 laxative therapies.\n\nDENIAL CRITERIA1,2\n   1. Recipient does not have a diagnosis of Opioid-induced constipation (OIC) in adults with\n            chronic non-cancer pain; OR\n         2. Recipient has not taken opioids for a period longer than 4 weeks; OR\n         3. Recipient is at risk or has a suspected mechanical gastrointestinal obstruction; OR\n         4. Dates of trial or inadequate response from at least 2 laxative therapies has not been\n            submitted.\n\nCAUTIONS1\n\n     \u2022       There is a potential for gastrointestinal perforation.\n     \u2022       May cause severe or persistent diarrhea.\n     \u2022       Patients should be monitored for symptoms of opioid withdrawal.\n\n\nDURATION OF APPROVAL\n         \u2022    Approval: up to a maximum of 4 months\n\nQUANTITY LIMITS\n         \u2022    34 day supply at FDA approved dosage.\n\n\n\n\nSymproic\u00ae Criteria\nOriginal: 02/25/2025\nApproval: 04/18/2025\nEffective: 06/01/2025\n\f                                    ALASKA MEDICAID\n                                  Prior Authorization Criteria\n\nREFERENCES / FOOTNOTES:\n\n     1. Symproic\u00ae [prescribing information]. Raleigh, NC: BioDelivery Sciences International\n        Inc, May 2020.\n     2. American Gastroenterological Association Technical Review on Constipation. Bharucha,\n        Adil E.Pemberton, John H.Locke, G. Richard et al. Gastroenterology , Volume 144 ,\n        Issue 1 , 218 - 238\n\n\n\n\nSymproic\u00ae Criteria\nOriginal: 02/25/2025\nApproval: 04/18/2025\nEffective: 06/01/2025\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

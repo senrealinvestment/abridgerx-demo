@@ -1,0 +1,18 @@
+{
+  "slug": "reyvow",
+  "drug_name": "Reyvow",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/wg5kyvgs/202011reyvow_criteria_2020.pdf",
+  "source_file": "202011reyvow_criteria_2020.pdf",
+  "sha256": "0ea33531f8783dddedbebbea8e9add0cc212d8655d0cf86ca40be3ccbee8e6dc",
+  "effective_date": "2021-01-11",
+  "section": "OTHER",
+  "extracted_text": "                                        ALASKA MEDICAID\n                                      Prior Authorization Criteria\n\n                                            Reyvow\u2122\n                                           (lasmiditan)\n\n FDA INDICATIONS AND USAGE1\n\n Reyvow\u2122 is a serotonin (5-HT) 1F receptor agonist indicated for the acute treatment of migraine with\n or without aura in adults and is not indicated for the preventive treatment of migraine.\n\nAPPROVAL CRITERIA1,2,3\n\n     1. Patient is 18 years of age or older AND;\n     2. Patient has a diagnosis of migraine headaches with or without aura AND;\n     3. Is being prescribed by or in consultation with a neurologist, pain specialist, or headache\n        specialist AND;\n     4. The provider has ruled out medication overuse as a cause of migraines AND;\n     5. The patient has trialed at least 1 prophylactic medication (i.e. beta blocker, antiepileptic,\n        antidepressant, etc.) for at least 2 months AND;\n     6. Patient has trialed 2 different triptans or has a contraindication (i.e. cardiovascular) to\n        their use AND;\n     7. Patient agrees to not to drive or operate machinery until at least 8 hours after taking a\n        dose.\n\nDENIAL CRITERIA\n\n     1. Failure to meet approval criteria.\n\n\nCAUTIONS1,2,3\n\n      \u2022     Patients should not take more than one dose in 24 hours.\n      \u2022     Reyvow\u2122 can cause CNS depression, caution is advised when in combination with\n            alcohol or other CNS depressants.\n      \u2022     Serotonin Syndrome has been observed and patients should discontinue if symptoms\n            occur.\n      \u2022     Reyvow\u2122 is not recommended in patients with severe hepatic impairment.\n      \u2022     Based on animal data, may cause fetal harm.\n\n\nDURATION OF APPROVAL\n      \u2022     Initial Approval: up to 3 months\n      \u2022     Reauthorization Approval: up to 12 months\n\n\n\nReyvow\u2122 Criteria\nVersion: 1\nOriginal: 9/30/20\nApproval: 11/20/20\nEffective: 1/11/21\n\f                                       ALASKA MEDICAID\n                                     Prior Authorization Criteria\n\nQUANTITY LIMIT\n      \u2022     50mg tablets - 8 per 30 days\n      \u2022     100mg tablets - 8 per 30 days\n\nREFERENCES / FOOTNOTES:\n\n      1. Reyvow\u2122 (lasmiditan) [package insert]. Indianapolis, IN. Lilly USA, LLC; October\n         2019. Available at:\n         https://www.accessdata.fda.gov/drugsatfda_docs/label/2019/211280s000lbl.pdf\n         Accessed September 30, 2020\n      2. Goadsby PJ, Wietecha LA, Dennehy EB, et al. Phase 3 randomized, placebo-controlled,\n         double-blind study of lasmiditan for acute treatment of migraine. Brain. 2019;142:1894-\n         1904.\n      3. American Headache Society. The American Headache Society position statement on\n         integrating new migraine treatments into clinical practice. Headache. 2019;59:1-18.\n\n\n\n\nReyvow\u2122 Criteria\nVersion: 1\nOriginal: 9/30/20\nApproval: 11/20/20\nEffective: 1/11/21\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

@@ -1,0 +1,17 @@
+{
+  "slug": "opsumit",
+  "drug_name": "Opsumit",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/czcp4sb3/202301opsumit_criteria_2023.pdf",
+  "source_file": "202301opsumit_criteria_2023.pdf",
+  "sha256": "6c1475f5658cd666e85781f94ac7aeef4c9e6addf5d076bfbb5584dc2c3e35d1",
+  "effective_date": "2023-03-01",
+  "section": "PULMONARY ARTERIAL HYPERTENSION",
+  "extracted_text": "                                       ALASKA MEDICAID\n                                     Prior Authorization Criteria\n\n\n                                          Opsumit\u2122\n                                         (macitentan)\n\nFDA INDICATIONS AND USAGE1\n\nOpsumitTM is an endothelin receptor antagonist (ERA) indicated for the treatment of pulmonary\narterial hypertension (PAH, WHO Group I) to reduce the risks of disease progression and\nhospitalization for PAH\n\nAPPROVAL CRITERIA1,2\n\n     1. Prescribed by or in consultation with a cardiologist or pulmonologist; AND\n     2. The diagnosis of pulmonary arterial hypertension (PAH, WHO Group 1) as confirmed by\n        right heart catheterization; AND\n     3. The patient is currently symptomatic.\n     4. The patient has tried and failed after 60 days or is currently taking a PDE5 inhibitor (e.g.\n        tadalafil) AND\n     5. Provider certifies patient is not pregnant or will not become pregnant while receiving\n        OpsumitTM treatment.\n     6. Baseline liver function tests (LFT) required.\n\nDENIAL CRITERIA 1\n\n     1. Failure to meet approval criteria; OR\n     2. Baseline LFT indicate moderate to severe hepatic impairment\n\n\n\nCAUTIONS1\n\n     \u2022    Opsumit\u2122 is contraindicated in pregnancy.\n     \u2022    Monitor for pulmonary edema in patients with PVOD (pulmonary veno-occlusive\n          disease)\n     \u2022    Monitor LFTs throughout treatment as clinically indicated\n     \u2022    Avoid co-administration with strong CYP3A4 inhibitors (e.g. ritonavir) or moderate dual\n          CYP3A4/CYP2C9 inhibitors (e.g. amiodarone)\n\n\n\n\nDURATION OF APPROVAL\n\nOpsumit\u2122 Criteria\nVersion: 1\nOriginal: 12/27/2022\nApproval: 01/20/2023\nEffective: 03/01/2023\n\f                                        ALASKA MEDICAID\n                                      Prior Authorization Criteria\n\n       \u2022    Initial Approval: 6 months\n       \u2022    Reauthorization 12 months with chart notes indicating the patient has shown a positive\n            clinical response to treatment.\n\n\n\nQUANTITY LIMIT1\n\n       \u2022    #30 10mg tablets per 30 days\n\n\nREFERENCES / FOOTNOTES:\n\n1. Opsumit\u2122 [prescribing information]. South San Francisco, CA: Actelion Pharmaceuticals\n   US, Inc. Revised 04/2019\n2. Klinger JR, Elliott CG, Levine DJ, et al. Therapy for pulmonary arterial hypertension in\n   adults. Update of the CHEST guideline and Expert Panel Report. CHEST. 2019;155(3):565-\n   586\n3. Hopkins, W., and Rubin, L.(2022). Treatment of pulmonary arterial hypertension (group 1)\n   in adults: Pulmonary hypertension-specific therapy. In J. Mandel(Ed.), UpToDate.\n   Retrieved Dec 28, 2022 from https://www.uptodate.com/contents/treatment-of-pulmonary-\n   arterial-hypertension-group-1-in-adults-pulmonary-hypertension-specific-therapy#!\n\n\n\n\nOpsumit\u2122 Criteria\nVersion: 1\nOriginal: 12/27/2022\nApproval: 01/20/2023\nEffective: 03/01/2023\n\f",
+  "inferred_required_facts": [
+    "indication",
+    "prescriber_specialty",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

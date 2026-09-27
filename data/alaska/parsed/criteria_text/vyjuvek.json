@@ -1,0 +1,17 @@
+{
+  "slug": "vyjuvek",
+  "drug_name": "Vyjuvek",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/c1uhnqmi/vyjuvek_criteria_2023.pdf",
+  "source_file": "vyjuvek_criteria_2023.pdf",
+  "sha256": "6ffa560739e1afa20e923bf79b20e9e6677595cf4ded13b2e62caf062015a0bf",
+  "effective_date": "2024-01-01",
+  "section": "CELL AND GENE THERAPY",
+  "extracted_text": "                                         ALASKA MEDICAID\n                                       Prior Authorization Criteria\n\n                                             Vyjuvek\u2122\n                                     (beramagene geperpavec-svdt)\n\n\n\nFDA INDICATIONS AND USAGE1\n\nVyjuvek is a herpes-simplex virus type 1 (HSV-1) vector-based gene therapy indicated for the treatment\nof wounds in patients 6 months of age and older with dystrophic epidermolysis bullosa with mutation(s)\nin the collagen type VII alpha 1 chain (COL7A1) gene.\n\nAPPROVAL CRITERIA1,2,3\n\n    1. Patient meets FDA labeled age AND;\n    2. Prescribed by or in consultation with a dermatologist AND;\n    3. Patient has the diagnosis of dystrophic epidermolysis bullosa (DEB) AND;\n    4. Patient has a mutation in the collagen type VII alpha 1 chain gene confirmed by genetic testing\n       AND;\n    5. Documentation of baseline size of target wounds has been provided AND;\n    6. Provider has attested that wounds to be treated meet all of the following:\n           a. Adequate granulation tissue is present\n           b. Tissue is well vascularized\n           c. No evidence of active infection is present\n           d. No evidence of squamous cell carcinoma\n\n\n\nDENIAL CRITERIA 1\n\n    1. Failure to meet approval criteria\n\nCAUTIONS1\n\n    \u2022     The safety of Vyjuvek in pregnancy or lactation has not been established.\n    \u2022     Avoid direct contact with treated would and dressings of treated wounds for approximately 24\n          hours following application.\n\nDURATION OF APPROVAL\n\n    \u2022     Initial Approval: up to 6 months\n    \u2022     Reauthorization Approval: up to 6 months\n\nQUANTITY LIMIT1\n\n    \u2022     Patients age 6 months to <3 years old: 3.2ml per 28 days\n    \u2022     Patients age \u22653 years old: 6.4ml per 28 days\n    \u2022     HCPCS: J3401\nVyjuvek\u2122 Criteria\nVersion: 1\nOriginal: 10/20/2023\nAccepted:11/17/2023\nEffective: 01/1/2024\n\f                                      ALASKA MEDICAID\n                                    Prior Authorization Criteria\n\n\nREFERENCES / FOOTNOTES:\n\n1. Vyjuvek [prescribing information]. Pittsburg, PA: Krystal Biotech; May 2023\n2. Guide S, Gonzalez ME, Ba\u01e7c\u0131 IS, et al. Trial of beremagene geperpavec (B-VEC) for\n   dystrophic epidermolysis bullosa. N Engl J Med. 2022;387(24):2211-2219.\n   doi:10.1056/NEJMoa2206663.\n3. NIH: U.S. National Library of Medicine. Ph 3 Efficacy and Safety of B-VEC for the Treatment of\n   DEB (GEM-3).\n   https://clinicaltrials.gov/ct2/show/NCT04491604?term=beremagene&draw=2&rank=3. Accessed\n   10/20/2023.\n\n\n\n\nVyjuvek\u2122 Criteria\nVersion: 1\nOriginal: 10/20/2023\nAccepted:11/17/2023\nEffective: 01/1/2024\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prescriber_specialty"
+  ],
+  "download_date": "2026-09-26"
+}

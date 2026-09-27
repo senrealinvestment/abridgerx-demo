@@ -1,0 +1,15 @@
+{
+  "slug": "ergocalciferol",
+  "drug_name": "Ergocalciferol",
+  "source_url": "https://health.alaska.gov/media/4nrf5x0h/200908_ergocalciferol.pdf",
+  "source_file": "200908_ergocalciferol.pdf",
+  "sha256": "737ab729e361e8792606f500c3cf352bf9ff243c66473ac4fb853d2d61577101",
+  "effective_date": "2009-01-01",
+  "extracted_text": "ALASKA MEDICAID\nErgocalciferol Oral Drops\nOral Solution: 8000 units/mL, 60mL\nPreferred Medication:\nDrisdol®\nNon-Preferred Medication:\nCalciferol®\nINDICATION:\nErgocalciferol is a dietary supplement’. As a dietary supplement under the Dietary Supplement\nHealth and Education Act (DSHEA) of 1994 this product cannot be labeled to “...to\ndiagnose, treat, cure, or prevent any disease.””\nCRITERIA FOR APPROVAL:\n1. The patient has a diagnosis of Rickets’.\nLength of Authorization:\n1. Coverage may be approved for up to 1 year.\nREFERENCES / FOOTNOTES:\n'Ergocalciferol monograph, Clinical Pharmacology. Accessed 06/04/2009.\n* Dietary Supplement Health And Education Act of 1994, available at\n<http://web.health.gov/dietsupp/ch1.htm> Accessed 06/04/2009.\nErgocalciferol criteria\nVersion 1\nLast updated 06/04/09\n",
+  "ocr_status": "tesseract_recovered",
+  "notes": [
+    "Source PDF is scanned/image-only (Hewlett Packard MFP). Text recovered via pdftoppm 300dpi + tesseract eng PSM 6 on 2026-09-27.",
+    "OCR may contain minor character errors (e.g. Smg vs 5mg); encoding uses human-corrected criteria."
+  ],
+  "download_date": "2026-09-26"
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "cialis",
+  "drug_name": "Cialis",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/d0gby2pu/cialis.pdf",
+  "source_file": "cialis.pdf",
+  "sha256": "4c867e4e0f3e112e8b73c8c1305e114c8fc0a90489d8848c79d4491269dd6855",
+  "effective_date": null,
+  "section": "GENITOURINARY",
+  "extracted_text": "                                             Alaska Medicaid\n\n                                           Cialis\u00ae (Tadalafil)\n                                             Available 5mg\n                                    Not Covered 2.5mg, 10mg, 20mg\n\n\nINDICATIONS:\n\u201cCialis\u00ae is a phosphodiesterase- 5 (PDE5) inhibitor indicated for the treatment of the signs and\nsymptoms of benign prostatic hyperplasia (BPH)\u201d 1.\n\n\nCriteria for Approval:\n\n1. The patient is male; AND\n\n2. The patient is not currently taking an alpha-blocker or nitrate; AND\n\n3. The patient has had one treatment failure of an alpha-blocker (30 days) OR 5-Alpha reductase\ninhibitor (six months); AND\n\n3. The patient is being treated for benign prostatic hyperplasia.\n\nLength of Authorization:\n\nCoverage may be approved for six months. After six months a new prior authorization must be\nobtained.\n\nDispensing Limit:\n\nThe dispensing limit is a 30 day supply of medication, not to exceed 5mg per day.\n\nReferences:\n1\n Cialis\u00ae prescribing information is available at:\n<http://pi.lilly.com/us/cialis-pi.pdf > accessed 10/25/11\n\n\n\n\nCialis criteria\nVersion 1\nLast updated 11/18/2011\nApproved 11/18/2011\n\f",
+  "inferred_required_facts": [
+    "indication"
+  ],
+  "download_date": "2026-09-26"
+}

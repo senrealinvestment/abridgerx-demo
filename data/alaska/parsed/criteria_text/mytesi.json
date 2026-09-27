@@ -1,0 +1,17 @@
+{
+  "slug": "mytesi",
+  "drug_name": "Mytesi",
+  "generic_name": null,
+  "source_url": "https://health.alaska.gov/media/wyefsrwx/202104-mytesi_criteria_2021.pdf",
+  "source_file": "202104-mytesi_criteria_2021.pdf",
+  "sha256": "d82044fe878183f57136e465d3d1fdd7a6db031ad4316afb14108cecbc3b815a",
+  "effective_date": "2021-05-24",
+  "section": "GENITOURINARY",
+  "extracted_text": "                                         ALASKA MEDICAID\n                                       Prior Authorization Criteria\n\n\n                                             Mytesi\u00ae\n                                           (crofelemer)\n\nFDA INDICATIONS AND USAGE1\n\nMytesi\u00ae is an anti-diarrheal indicated for the symptomatic relief of non-infectious diarrhea in\nadult patients with HIV/AIDS on anti-retroviral therapy.\n\nAPPROVAL CRITERIA1,2\n\n    1. Patient is 18 years of age or older AND;\n    2. Patient has a diagnosis of HIV/AIDS confirmed by history of antiretroviral claims within\n       the last 90 days AND;\n    3. Patient is experiencing diarrhea (i.e., one or more watery stools daily for 5 out of 7 days\n       per week) AND;\n    4. Secondary causes of diarrhea (i.e., irritable bowel syndrome, gluten and lactose\n       intolerance, traveler\u2019s diarrhea, functional diarrhea, and antiretroviral therapy associated\n       diarrhea) have been ruled out by complete and appropriate physical and historical\n       examination AND;\n    5. Patient has tried and failed or has a contraindication to both loperamide and atropine-\n       diphenoxylate.\n\n\nDENIAL CRITERIA1\n\n      1. Failure to meet approval criteria.\n\nCAUTIONS1\n\n      \u2022     Consider infectious etiologies of diarrhea before starting treatment to reduce the risk of\n            inappropriate therapy and worsening disease.\n\nDURATION OF APPROVAL\n      \u2022     Initial Approval: up to 3 months\n      \u2022     Re-authorization: up to 12 months\n\nQUANTITY LIMITS\n      \u2022     60 \u2013 125mg tablets per 30 days\n\n\n\nMytesi\u00ae Criteria\nVersion: 1\nOriginal: 3/12/2021\nApproval: 4/16/2021\nEffective: 5/24/2021\n\f                                        ALASKA MEDICAID\n                                      Prior Authorization Criteria\n\n\nREFERENCES / FOOTNOTES:\n\n          1. Mytesi (crofelemer) [prescribing information]. San Francisco, CA: Napo\n             Pharmaceuticals, Inc.; November 2020.\n          2. MacArthur RD, DuPont HL. Etiology and pharmacologic management of\n             noninfectious diarrhea in HIV-infected individuals in the highly active antiretroviral\n             therapy era. Clin Infect Dis. 2012b;55(6):860-7.\n          3. Framptom JE. Crofelemer: a review of its use in the management of non-infectious\n             diarrhea in adult patients with HIV/AIDS on antiretroviral therapy. Drugs. 2013\n             Jul;73(10):1121-9.\n\n\n\n\nMytesi\u00ae Criteria\nVersion: 1\nOriginal: 3/12/2021\nApproval: 4/16/2021\nEffective: 5/24/2021\n\f",
+  "inferred_required_facts": [
+    "age_years",
+    "indication",
+    "prior_therapy_failures"
+  ],
+  "download_date": "2026-09-26"
+}

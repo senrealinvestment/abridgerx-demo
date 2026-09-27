@@ -31222,7 +31222,8 @@
   "tzield": {
     "drug": {
       "name": "Tzield",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "cd3-monoclonal",
+      "generic_name": "teplizumab-mzwv"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -31233,16 +31234,291 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Documented stage 2 type 1 diabetes, to delay onset of Stage 3 type 1 diabetes (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/fx4jn0rx/202301tzield_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "stage_2_type_1_diabetes"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 8 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/fx4jn0rx/202301tzield_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 8
+        }
+      },
+      {
+        "id": "islet_autoantibodies_confirmed",
+        "text": "Presence of TWO or more pancreatic islet autoantibodies: ICA, IA-2A, IAA, ZnT8A, or GAD65 (approval criterion 2a).",
+        "citation": "https://health.alaska.gov/media/fx4jn0rx/202301tzield_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "islet_autoantibodies_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "islet_autoantibodies_confirmed",
+          "value": true
+        }
+      },
+      {
+        "id": "dysglycemia_confirmed",
+        "text": "Dysglycemia on oral glucose tolerance test (OGTT), or an alternative glycemic test if oral GTT is unavailable (approval criterion 2b).",
+        "citation": "https://health.alaska.gov/media/fx4jn0rx/202301tzield_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "dysglycemia_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "dysglycemia_confirmed",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_labs_obtained",
+        "text": "Complete blood count AND liver enzyme panel obtained prior to initiation (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/fx4jn0rx/202301tzield_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_labs_obtained"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_labs_obtained",
+          "value": true
+        }
+      },
+      {
+        "id": "body_surface_area_submitted",
+        "text": "Provider submitted documentation of body surface area in m\u00b2 (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/fx4jn0rx/202301tzield_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "body_surface_area_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "body_surface_area_submitted",
+          "value": true
+        }
+      },
+      {
+        "id": "no_stage_3_type_1_diabetes",
+        "text": "Patient does not currently have Stage 3 type 1 diabetes (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/fx4jn0rx/202301tzield_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "no_stage_3_type_1_diabetes"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_stage_3_type_1_diabetes",
+          "value": true
+        }
+      },
+      {
+        "id": "no_type_2_diabetes_history",
+        "text": "No clinical history consistent with type 2 diabetes (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/fx4jn0rx/202301tzield_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "no_type_2_diabetes_history"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_type_2_diabetes_history",
+          "value": true
+        }
+      },
+      {
+        "id": "no_active_serious_or_chronic_infection",
+        "text": "No active serious infection or chronic infection, including EBV or CMV (denial criterion 4).",
+        "citation": "https://health.alaska.gov/media/fx4jn0rx/202301tzield_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "no_active_serious_or_chronic_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_serious_or_chronic_infection",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_lab_eligibility",
+        "text": "All baseline laboratory eligibility thresholds met: lymphocytes \u22651,000/mcL, hemoglobin \u226510 g/dL, platelets \u2265150,000/mcL, ALT and AST \u22642\u00d7ULN, and bilirubin \u22641.5\u00d7ULN (denial criterion 5).",
+        "citation": "https://health.alaska.gov/media/fx4jn0rx/202301tzield_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "baseline_lab_eligibility"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_lab_eligibility",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Tzield (teplizumab-mzwv), a CD3-directed monoclonal antibody to delay onset of Stage 3 type 1 diabetes in patients with Stage 2 type 1 diabetes. Version 1; Original 12/27/2022; Approval 01/20/2023; Effective 03/01/2023.",
+      "Encoded: approval criteria 1\u20134 and denial criteria 2\u20135. Failure to meet approval criteria is also a denial. Autoantibody confirmation, dysglycemia, baseline panels, submitted BSA, and baseline laboratory eligibility are attestations requiring documentation verification.",
+      "Cautions (notes only): monitor liver enzymes throughout treatment; discontinue if AST or ALT >5\u00d7ULN. Monitor white blood cell counts; discontinue for prolonged severe lymphopenia (<500 cells/mcL lasting 1 week or longer). Monitor for signs/symptoms of infection; discontinue if serious infection develops.",
+      "Cautions (notes only): contraindicated during pregnancy and at least 30 days prior to planned pregnancy.",
+      "Duration (notes only): initial approval 3 months. Reauthorization not approved. Treatment consists of 14 infusions total, once daily for 14 consecutive days.",
+      "Quantity (notes only): BSA-based intravenous infusion over a minimum of 30 minutes: Day 1 65 mcg/m\u00b2; Day 2 125 mcg/m\u00b2; Day 3 250 mcg/m\u00b2; Day 4 500 mcg/m\u00b2; Days 5\u201314 1,030 mcg/m\u00b2 daily. HCPCS J3490, J3590, C9399. max_units is null; dosing and quantity are not evaluated.",
+      "Documentation verification, monitoring, cautions, duration, no reauthorization, dosing, and quantity enforcement require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Documented stage 2 type 1 diabetes, to delay onset of Stage 3 type 1 diabetes (approval criterion 2).",
+        "options": [
+          {
+            "value": "stage_2_type_1_diabetes",
+            "label": "Stage 2 type 1 diabetes"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 8 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 8 years"
+          },
+          {
+            "value": "8",
+            "label": "8+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "islet_autoantibodies_confirmed": {
+        "type": "select",
+        "label": "Presence of TWO or more pancreatic islet autoantibodies: ICA, IA-2A, IAA, ZnT8A, or GAD65 (approval criterion 2a).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "dysglycemia_confirmed": {
+        "type": "select",
+        "label": "Dysglycemia on oral glucose tolerance test (OGTT), or an alternative glycemic test if oral GTT is unavailable (approval criterion 2b).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "baseline_labs_obtained": {
+        "type": "select",
+        "label": "Complete blood count AND liver enzyme panel obtained prior to initiation (approval criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "body_surface_area_submitted": {
+        "type": "select",
+        "label": "Provider submitted documentation of body surface area in m\u00b2 (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_stage_3_type_1_diabetes": {
+        "type": "select",
+        "label": "Patient does not currently have Stage 3 type 1 diabetes (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_type_2_diabetes_history": {
+        "type": "select",
+        "label": "No clinical history consistent with type 2 diabetes (denial criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "no_active_serious_or_chronic_infection": {
+        "type": "select",
+        "label": "No active serious infection or chronic infection, including EBV or CMV (denial criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "baseline_lab_eligibility": {
+        "type": "select",
+        "label": "All baseline laboratory eligibility thresholds met: lymphocytes \u22651,000/mcL, hemoglobin \u226510 g/dL, platelets \u2265150,000/mcL, ALT and AST \u22642\u00d7ULN, and bilirubin \u22641.5\u00d7ULN (denial criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      }
+    }
   },
   "uptravi": {
     "drug": {

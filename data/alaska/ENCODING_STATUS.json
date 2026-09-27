@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 84,
-  "encoding_text_only": 114,
+  "encoding_partial": 85,
+  "encoding_text_only": 113,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -81,6 +81,7 @@
     "tepezza",
     "tezspire",
     "tremfya",
+    "tzield",
     "voxzogo",
     "vyjuvek",
     "vyndaqel",
@@ -92,5 +93,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "tzield"
+  "next_candidate": "firdapse"
 }

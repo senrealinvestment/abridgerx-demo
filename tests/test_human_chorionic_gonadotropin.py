@@ -46,12 +46,12 @@ def test_catalog_and_source():
     assert (BASE/f'{SLUG}.json').read_bytes() == (BASE/'rule_packs'/f'{SLUG}.json').read_bytes()
     catalog = load_rule_pack_catalog()
     assert catalog[SLUG] == PACK
-    assert catalog['invokana']['encoding_status'] == 'text_only'
-    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 149
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 49
+    assert catalog['leuprolide']['encoding_status'] == 'text_only'
+    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 150
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 48
     assert json.loads((BASE/'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f:
         assert json.load(f) == catalog
     for name in ['ENCODING_STATUS.json','ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()
-    assert json.loads((BASE/'ENCODING_STATUS.json').read_text())['next_candidate'] == 'invokana'
+    assert json.loads((BASE/'ENCODING_STATUS.json').read_text())['next_candidate'] == 'leuprolide'

@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 149,
-  "encoding_text_only": 49,
+  "encoding_partial": 150,
+  "encoding_text_only": 48,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -68,6 +68,7 @@
     "infliximab",
     "inhaled-prostacycline-mimetic",
     "interleukin-5-inhibitors",
+    "invokana",
     "isturisa",
     "jascayd",
     "juxtapid",
@@ -157,5 +158,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "invokana"
+  "next_candidate": "leuprolide"
 }

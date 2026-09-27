@@ -52426,7 +52426,8 @@
   "viberzi": {
     "drug": {
       "name": "Viberzi",
-      "therapeutic_class": "gastrointestinal"
+      "therapeutic_class": "gastrointestinal",
+      "generic_name": "eluxadoline"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -52437,17 +52438,419 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of irritable bowel syndrome with diarrhea (IBS-D).",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "ibs_d"
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 18 years old.",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "no_concomitant_opioids_or_benzodiazepine",
+        "text": "Patient is not on concomitant opioids or benzodiazepine.",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "no_concomitant_opioids_or_benzodiazepine"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_concomitant_opioids_or_benzodiazepine",
+          "value": true
+        }
+      },
+      {
+        "id": "failed_tca_or_ssri_8_weeks",
+        "text": "Patient has trialed at least one TCA or SSRI for 8 weeks.",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "failed_tca_or_ssri_8_weeks"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_tca_or_ssri_8_weeks",
+          "value": true
+        }
+      },
+      {
+        "id": "failed_antispasmodic",
+        "text": "Patient has trialed at least one antispasmodic agent (e.g. hyoscyamine).",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "failed_antispasmodic"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_antispasmodic",
+          "value": true
+        }
+      },
+      {
+        "id": "failed_antidiarrheal",
+        "text": "Patient has trialed at least one antidiarrheal agent (e.g. loperamide).",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "failed_antidiarrheal"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_antidiarrheal",
+          "value": true
+        }
+      },
+      {
+        "id": "hypersensitivity_contraindication_or_intolerance",
+        "text": "Known hypersensitivity, contraindication, or intolerance to Viberzi.",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "hypersensitivity_contraindication_or_intolerance"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hypersensitivity_contraindication_or_intolerance",
+          "value": false
+        }
+      },
+      {
+        "id": "biliary_obstruction_or_sphincter_of_oddi_dysfunction",
+        "text": "Biliary duct obstruction or sphincter of Oddi dysfunction.",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "biliary_obstruction_or_sphincter_of_oddi_dysfunction"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "biliary_obstruction_or_sphincter_of_oddi_dysfunction",
+          "value": false
+        }
+      },
+      {
+        "id": "no_gallbladder",
+        "text": "Patient does not have a gallbladder.",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "no_gallbladder"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_gallbladder",
+          "value": false
+        }
+      },
+      {
+        "id": "severe_hepatic_impairment",
+        "text": "Severe hepatic impairment.",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "severe_hepatic_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "severe_hepatic_impairment",
+          "value": false
+        }
+      },
+      {
+        "id": "history_of_severe_constipation",
+        "text": "History of severe constipation.",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "history_of_severe_constipation"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "history_of_severe_constipation",
+          "value": false
+        }
+      },
+      {
+        "id": "alcohol_history_or_more_than_three_drinks_daily",
+        "text": "History of alcoholism, alcohol abuse, or alcohol addiction, OR drinks more than 3 alcoholic beverages/day.",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "alcohol_history_or_more_than_three_drinks_daily"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "alcohol_history_or_more_than_three_drinks_daily",
+          "value": false
+        }
+      },
+      {
+        "id": "pancreatitis_history_or_structural_pancreatic_disease",
+        "text": "History of pancreatitis or structural disease of the pancreas.",
+        "citation": "https://health.alaska.gov/media/sqbb2d0u/5-b-iii-viberzi_criteria_approved_2018.pdf",
+        "required_facts": [
+          "pancreatitis_history_or_structural_pancreatic_disease"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pancreatitis_history_or_structural_pancreatic_disease",
+          "value": false
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Viberzi Criteria Version 1. Viberzi (eluxadoline), a mu-opioid receptor agonist, is indicated for adults with IBS-D; tablets 75 mg and 100 mg.",
+      "Source dates: Original 8/06/2018; Approval 9/21/2018. effective_date 2018-01-01 is an extracted metadata stub, not either actual PDF date.",
+      "Approval predicates encode adult IBS-D, no concomitant opioids or benzodiazepine, and the three required medication trials. The failed_* fact names represent trial completion; the source does not explicitly require documented failure.",
+      "Denial predicates encode known hypersensitivity/contraindication/intolerance attestation and all six concrete clinical exclusions. A negative response confirms absence; missing safety responses require more information.",
+      "Cautions (notes only): monitor for pancreatitis and sphincter of Oddi spasm, including new or worsening abdominal pain with or without nausea/vomiting, or acute biliary pain with liver or pancreatic enzyme elevations; immediately discontinue Viberzi and seek medical attention if symptoms develop.",
+      "Cautions (notes only): stop Viberzi and immediately contact the healthcare provider for severe constipation; avoid other drugs that may cause constipation (e.g. opioids).",
+      "Authorization (notes only): initial approval up to 3 months; reauthorization up to 12 months with a reported improvement.",
+      "Quantity limits (notes only): 60 tablets of 75 mg per month; 60 tablets of 100 mg per month."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of irritable bowel syndrome with diarrhea (IBS-D).",
+        "options": [
+          {
+            "value": "ibs_d",
+            "label": "Irritable bowel syndrome with diarrhea (IBS-D)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old.",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "no_concomitant_opioids_or_benzodiazepine": {
+        "type": "select",
+        "label": "Patient is not on concomitant opioids or benzodiazepine.",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "failed_tca_or_ssri_8_weeks": {
+        "type": "select",
+        "label": "Patient has trialed at least one TCA or SSRI for 8 weeks.",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "failed_antispasmodic": {
+        "type": "select",
+        "label": "Patient has trialed at least one antispasmodic agent (e.g. hyoscyamine).",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "failed_antidiarrheal": {
+        "type": "select",
+        "label": "Patient has trialed at least one antidiarrheal agent (e.g. loperamide).",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hypersensitivity_contraindication_or_intolerance": {
+        "type": "select",
+        "label": "Known hypersensitivity, contraindication, or intolerance to Viberzi.",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "biliary_obstruction_or_sphincter_of_oddi_dysfunction": {
+        "type": "select",
+        "label": "Biliary duct obstruction or sphincter of Oddi dysfunction.",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_gallbladder": {
+        "type": "select",
+        "label": "Patient does not have a gallbladder.",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "severe_hepatic_impairment": {
+        "type": "select",
+        "label": "Severe hepatic impairment.",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "history_of_severe_constipation": {
+        "type": "select",
+        "label": "History of severe constipation.",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "alcohol_history_or_more_than_three_drinks_daily": {
+        "type": "select",
+        "label": "History of alcoholism, alcohol abuse, or alcohol addiction, OR drinks more than 3 alcoholic beverages/day.",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "pancreatitis_history_or_structural_pancreatic_disease": {
+        "type": "select",
+        "label": "History of pancreatitis or structural disease of the pancreas.",
+        "when": {
+          "fact": "indication",
+          "eq": "ibs_d"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "vimovo": {
     "drug": {

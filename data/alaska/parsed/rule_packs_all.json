@@ -22269,7 +22269,8 @@
   "voxzogo": {
     "drug": {
       "name": "Voxzogo",
-      "therapeutic_class": "growth-hormones"
+      "therapeutic_class": "growth-hormones",
+      "generic_name": "vosoritide"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -22280,17 +22281,343 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Increase linear growth in achondroplasia with open epiphyses.",
+        "citation": "https://health.alaska.gov/media/gnkfeftl/202211-voxzogo_criteria_2022.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "achondroplasia_increase_linear_growth"
+          ]
+        }
+      },
+      {
+        "id": "age_fda_labeled",
+        "text": "Patient is at least 5 years and under 18 years of age (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/gnkfeftl/202211-voxzogo_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "all",
+          "args": [
+            {
+              "op": "gte",
+              "fact": "age_years",
+              "value": 5
+            },
+            {
+              "op": "lt",
+              "fact": "age_years",
+              "value": 18
+            }
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with an endocrinologist or pediatric endocrinologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/gnkfeftl/202211-voxzogo_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "endocrinologist",
+            "pediatric_endocrinologist",
+            "endocrinologist_or_pediatric_endocrinologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "achondroplasia_fgfr3_genetic_confirmation",
+        "text": "Achondroplasia confirmed by genetic testing with an identifiable FGFR3 gene mutation (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/gnkfeftl/202211-voxzogo_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "achondroplasia_fgfr3_genetic_confirmation"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "achondroplasia_fgfr3_genetic_confirmation",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_and_ongoing_growth_measurements",
+        "text": "Body weight, growth velocity, height, and physical development will be measured at baseline and monitored throughout therapy (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/gnkfeftl/202211-voxzogo_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_and_ongoing_growth_measurements"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_and_ongoing_growth_measurements",
+          "value": true
+        }
+      },
+      {
+        "id": "open_epiphyses",
+        "text": "Patient does not have closure of epiphyses (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/gnkfeftl/202211-voxzogo_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "open_epiphyses"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "open_epiphyses",
+          "value": true
+        }
+      },
+      {
+        "id": "no_limb_lengthening_surgery_previous_18_months",
+        "text": "No limb-lengthening surgery within the previous 18 months (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/gnkfeftl/202211-voxzogo_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "no_limb_lengthening_surgery_previous_18_months"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_limb_lengthening_surgery_previous_18_months",
+          "value": true
+        }
+      },
+      {
+        "id": "no_planned_limb_lengthening_surgery",
+        "text": "Patient will not receive limb-lengthening surgery (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/gnkfeftl/202211-voxzogo_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "no_planned_limb_lengthening_surgery"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_planned_limb_lengthening_surgery",
+          "value": true
+        }
+      },
+      {
+        "id": "no_concurrent_human_growth_hormone",
+        "text": "Voxzogo is not prescribed concurrently with any human growth hormone product (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/gnkfeftl/202211-voxzogo_criteria_2022.pdf#denial-criteria",
+        "required_facts": [
+          "no_concurrent_human_growth_hormone"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_concurrent_human_growth_hormone",
+          "value": true
+        }
+      },
+      {
+        "id": "no_concurrent_insulin_like_growth_factor",
+        "text": "Voxzogo is not prescribed concurrently with an insulin-like growth factor (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/gnkfeftl/202211-voxzogo_criteria_2022.pdf#denial-criteria",
+        "required_facts": [
+          "no_concurrent_insulin_like_growth_factor"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_concurrent_insulin_like_growth_factor",
+          "value": true
+        }
+      },
+      {
+        "id": "other_causes_of_achondroplasia_or_short_stature_ruled_out",
+        "text": "Other causes of achondroplasia or short stature ruled out (e.g., malnutrition, hypothyroidism, hypercortisolism, hypochondroplasia, thanatophoric dysplasia, SADDAN syndrome, homozygous achondroplasia) (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/gnkfeftl/202211-voxzogo_criteria_2022.pdf#denial-criteria",
+        "required_facts": [
+          "other_causes_of_achondroplasia_or_short_stature_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "other_causes_of_achondroplasia_or_short_stature_ruled_out",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Voxzogo (vosoritide) Criteria Version 1: Original 10/16/2022; Approval 11/18/2022; Effective 1/2/2023. Voxzogo is a C type natriuretic peptide (CNP) analog.",
+      "Encoded: closed indication, approval criteria 1-6 and denial criteria 1-3. Clinical documentation and monitoring commitments are attestations requiring manual review.",
+      "Accelerated approval based on improvement in annualized growth velocity. Continued approval may be contingent upon verification and description of clinical benefit in confirmatory trial(s).",
+      "Cautions (notes only): transient decreases in blood pressure have been reported. Monitor growth and adjust dosage according to body weight. Permanently discontinue upon closure of epiphyses.",
+      "Duration (notes only): initial approval 6 months; reauthorization 12 months with chart notes indicating improvements in annualized growth velocity AND height compared to pre-treatment baseline.",
+      "Quantity limits (notes only): 0.4 mg single-dose vial for reconstitution: 1 vial daily; 0.56 mg single-dose vial for reconstitution: 1 vial daily; 1.2 mg single-dose vial for reconstitution: 1 vial daily. Numeric quantity enforcement is not encoded.",
+      "Documentation verification, ongoing monitoring, duration, reauthorization response, quantity limits and cautions require manual review; this pack remains partial. No alternatives are specified."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Increase linear growth in achondroplasia with open epiphyses.",
+        "options": [
+          {
+            "value": "achondroplasia_increase_linear_growth",
+            "label": "Increase linear growth in achondroplasia with open epiphyses"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 5 years and under 18 years of age (approval criterion 1).",
+        "options": [
+          {
+            "value": "4",
+            "label": "Under 5 years"
+          },
+          {
+            "value": "5",
+            "label": "5 to under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with an endocrinologist or pediatric endocrinologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "endocrinologist",
+            "label": "Endocrinologist"
+          },
+          {
+            "value": "pediatric_endocrinologist",
+            "label": "Pediatric endocrinologist"
+          },
+          {
+            "value": "endocrinologist_or_pediatric_endocrinologist_consult",
+            "label": "In consultation with an endocrinologist or pediatric endocrinologist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "achondroplasia_fgfr3_genetic_confirmation": {
+        "type": "select",
+        "label": "Achondroplasia confirmed by genetic testing with an identifiable FGFR3 gene mutation (approval criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "baseline_and_ongoing_growth_measurements": {
+        "type": "select",
+        "label": "Body weight, growth velocity, height, and physical development will be measured at baseline and monitored throughout therapy (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "open_epiphyses": {
+        "type": "select",
+        "label": "Patient does not have closure of epiphyses (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_limb_lengthening_surgery_previous_18_months": {
+        "type": "select",
+        "label": "No limb-lengthening surgery within the previous 18 months (approval criterion 6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_planned_limb_lengthening_surgery": {
+        "type": "select",
+        "label": "Patient will not receive limb-lengthening surgery (approval criterion 6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_concurrent_human_growth_hormone": {
+        "type": "select",
+        "label": "Voxzogo is not prescribed concurrently with any human growth hormone product (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_concurrent_insulin_like_growth_factor": {
+        "type": "select",
+        "label": "Voxzogo is not prescribed concurrently with an insulin-like growth factor (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "other_causes_of_achondroplasia_or_short_stature_ruled_out": {
+        "type": "select",
+        "label": "Other causes of achondroplasia or short stature ruled out (e.g., malnutrition, hypothyroidism, hypercortisolism, hypochondroplasia, thanatophoric dysplasia, SADDAN syndrome, homozygous achondroplasia) (denial criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "voyxact": {
     "drug": {

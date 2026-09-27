@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 54,
-  "encoding_text_only": 144,
+  "encoding_partial": 55,
+  "encoding_text_only": 143,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -58,9 +58,10 @@
     "tepezza",
     "tezspire",
     "tremfya",
+    "voxzogo",
     "xolair",
     "zolgensma",
     "zymfentra"
   ],
-  "next_candidate": "atypical-antipsychotic-therapeutic-duplication"
+  "next_candidate": "dojolvi"
 }

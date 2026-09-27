@@ -122,16 +122,16 @@ def test_catalog_bundles_mirrors_and_status():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 54
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 144
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 55
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 143
     assert catalog['evkeeza']['encoding_status'] == 'partial'
     assert pack['alternatives'] == ['empaveli', 'soliris']
     for slug in pack['alternatives']:
         assert 'fabhalta' in catalog[slug]['alternatives']
         assert (BASE / f'{slug}.json').read_bytes() == (BASE / f'rule_packs/{slug}.json').read_bytes()
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 54 and status['encoding_text_only'] == 144
-    assert status['next_candidate'] == 'atypical-antipsychotic-therapeutic-duplication'
+    assert status['encoding_partial'] == 55 and status['encoding_text_only'] == 143
+    assert status['next_candidate'] == 'dojolvi'
     assert status['partial_slugs'] == sorted(s for s, p in catalog.items() if p['encoding_status'] == 'partial')
     assert json.loads((BASE.parent / 'ENCODING_STATUS.json').read_text()) == status
     assert (BASE.parent / 'ENCODING_STATUS.md').read_bytes() == (BASE / 'ENCODING_STATUS.md').read_bytes()

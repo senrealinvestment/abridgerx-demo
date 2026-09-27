@@ -177,7 +177,7 @@
     "Duration and dosing (notes only): initial approval 14 weeks, with IV infusions at weeks 0, 2, 6, and 14. Reauthorization up to 12 months, with IV infusions at week 22 and beyond every eight weeks. Subcutaneous dosing is 108 mg every 2 weeks beginning at week 6 following IV infusions at weeks 0 and 2.",
     "Quantity limits (manual review): 300 mg (1 vial) per dose; 216 mg (2 syringes or pens) per 28 days. HCPCS J3380 maximum 300 units for IV formulation. Quantity metadata does not numerically enforce route-specific limits or dosing.",
     "Cautions (notes only): monitor new or worsening neurological issues because PML risk cannot be ruled out. Live vaccines should not be administered during vedolizumab treatment unless benefit outweighs risk.",
-    "PDL context: ENTYVIO injection, IV, and pen are non_preferred in CYTOKINE AND CAM ANTAGONISTS. Preferred class peers include Humira, Hadlima, Rinvoq, and preferred infliximab products; peers without rule packs are mentioned only here. Linked Stelara is partial; Skyrizi, infliximab, Tremfya, and Zymfentra packs remain text_only and require criteria review, not confirmed coverage.",
+    "PDL context: ENTYVIO injection, IV, and pen are non_preferred in CYTOKINE AND CAM ANTAGONISTS. Preferred class peers include Humira, Hadlima, Rinvoq, and preferred infliximab products; peers without rule packs are mentioned only here. Linked Stelara, Skyrizi, Infliximab, Tremfya and Zymfentra packs are partial and require indication-specific criteria review; links do not imply confirmed coverage.",
     "This pack remains partial: initial documentation, reauthorization, monitoring, cautions, duration, dosing, and quantity enforcement require manual review."
   ],
   "fact_ui": {

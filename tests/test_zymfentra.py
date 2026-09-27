@@ -62,7 +62,7 @@ def test_metadata_and_selects():
     for text in ['Version 1', '03/12/2025', '04/18/2025', '06/01/2025', '12 months',
                  'initial/reauthorization', '120 mg every 14 days', '2 prefilled',
                  'lymphoma', '3 to 4 months', 'severe infection', 'live vaccines',
-                 'manual review', 'IV Infliximab', 'text_only']:
+                 'manual review', 'IV Infliximab', 'partial']:
         assert text in ' '.join(p['notes']), text
 
 
@@ -108,22 +108,21 @@ def test_catalog_and_alternatives():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 20
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 178
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 21
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 177
     assert p['alternatives'] == PEERS
     for peer in PEERS:
         assert 'zymfentra' in catalog[peer]['alternatives']
-        assert catalog[peer]['encoding_status'] == ('text_only' if peer == 'infliximab' else 'partial')
-        if peer == 'infliximab':
-            assert catalog[peer]['criteria'] == []
+        assert catalog[peer]['encoding_status'] == 'partial'
+        assert catalog[peer]['criteria']
         mirror = BASE / f'{peer}.json'
         if mirror.exists():
             assert json.loads(mirror.read_text()) == catalog[peer]
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 20 and status['encoding_text_only'] == 178
+    assert status['encoding_partial'] == 21 and status['encoding_text_only'] == 177
     assert 'zymfentra' in status['partial_slugs']
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'infliximab'
+    assert status['next_candidate'] == 'actiq'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
 

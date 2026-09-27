@@ -5105,7 +5105,7 @@
       "Duration and dosing (notes only): initial approval 14 weeks, with IV infusions at weeks 0, 2, 6, and 14. Reauthorization up to 12 months, with IV infusions at week 22 and beyond every eight weeks. Subcutaneous dosing is 108 mg every 2 weeks beginning at week 6 following IV infusions at weeks 0 and 2.",
       "Quantity limits (manual review): 300 mg (1 vial) per dose; 216 mg (2 syringes or pens) per 28 days. HCPCS J3380 maximum 300 units for IV formulation. Quantity metadata does not numerically enforce route-specific limits or dosing.",
       "Cautions (notes only): monitor new or worsening neurological issues because PML risk cannot be ruled out. Live vaccines should not be administered during vedolizumab treatment unless benefit outweighs risk.",
-      "PDL context: ENTYVIO injection, IV, and pen are non_preferred in CYTOKINE AND CAM ANTAGONISTS. Preferred class peers include Humira, Hadlima, Rinvoq, and preferred infliximab products; peers without rule packs are mentioned only here. Linked Stelara is partial; Skyrizi, infliximab, Tremfya, and Zymfentra packs remain text_only and require criteria review, not confirmed coverage.",
+      "PDL context: ENTYVIO injection, IV, and pen are non_preferred in CYTOKINE AND CAM ANTAGONISTS. Preferred class peers include Humira, Hadlima, Rinvoq, and preferred infliximab products; peers without rule packs are mentioned only here. Linked Stelara, Skyrizi, Infliximab, Tremfya and Zymfentra packs are partial and require indication-specific criteria review; links do not imply confirmed coverage.",
       "This pack remains partial: initial documentation, reauthorization, monitoring, cautions, duration, dosing, and quantity enforcement require manual review."
     ],
     "fact_ui": {
@@ -6323,7 +6323,8 @@
   "infliximab": {
     "drug": {
       "name": "Infliximab",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "biologics",
+      "generic_name": "infliximab"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -6334,8 +6335,333 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Diagnosis listed in Alaska approval criterion #1.",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "crohns_disease",
+            "ulcerative_colitis",
+            "rheumatoid_arthritis",
+            "psoriatic_arthritis",
+            "ankylosing_spondylitis",
+            "juvenile_idiopathic_arthritis",
+            "plaque_psoriasis",
+            "hidradenitis_suppurativa"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Age \u22656 for CD/UC; \u22654 for RA/JIA; \u226518 for PsA/AS/plaque psoriasis (approval #1).",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "indication",
+          "age_years"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "crohns_disease",
+                    "ulcerative_colitis"
+                  ]
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 6
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "rheumatoid_arthritis",
+                    "juvenile_idiopathic_arthritis"
+                  ]
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 4
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "psoriatic_arthritis",
+                    "ankylosing_spondylitis",
+                    "plaque_psoriasis"
+                  ]
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 18
+                }
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "crohns_disease",
+            "ulcerative_colitis",
+            "rheumatoid_arthritis",
+            "psoriatic_arthritis",
+            "ankylosing_spondylitis",
+            "juvenile_idiopathic_arthritis",
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      {
+        "id": "conventional_therapy_two",
+        "text": "Trial and inadequate response or contraindication to two conventional therapies (e.g. mesalamine, sulfasalazine, azathioprine/6-MP, methotrexate).",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "conventional_therapy_two"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "conventional_therapy_two",
+          "value": "trial_failure_or_ci_two"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "crohns_disease",
+            "ulcerative_colitis"
+          ]
+        }
+      },
+      {
+        "id": "dmard_concurrent_two",
+        "text": "Trial and inadequate response or contraindication to two DMARDs used concurrently.",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "dmard_concurrent_two"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "dmard_concurrent_two",
+          "value": "trial_failure_or_ci_two_concurrent"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "rheumatoid_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "psa_conventional_two",
+        "text": "Trial and inadequate response or contraindication to two conventional therapies (e.g. methotrexate, sulfasalazine, leflunomide).",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "psa_conventional_two"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "psa_conventional_two",
+          "value": "trial_failure_or_ci_two"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "as_nsaid_step",
+        "text": "Trial and inadequate response or contraindication to two NSAIDs at maximum therapeutic dose for at least 3 months.",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "as_nsaid_step"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "as_nsaid_step",
+          "value": "trial_failure_or_ci_two_nsaids_3mo"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      {
+        "id": "as_dmard_step",
+        "text": "Trial and inadequate response or contraindication to one conventional DMARD for at least 30 days.",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "as_dmard_step"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "as_dmard_step",
+          "value": "trial_failure_or_ci_one_dmard_30d"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      {
+        "id": "jia_intraarticular_steroid",
+        "text": "Trial and inadequate response or contraindication to intraarticular glucocorticoid injection.",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "jia_intraarticular_steroid"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "jia_intraarticular_steroid",
+          "value": "trial_failure_or_ci"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "juvenile_idiopathic_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "jia_conventional_two",
+        "text": "Trial and inadequate response or contraindication to two conventional therapies (e.g. methotrexate, sulfasalazine, leflunomide).",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "jia_conventional_two"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "jia_conventional_two",
+          "value": "trial_failure_or_ci_two"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "juvenile_idiopathic_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "pso_prior_therapy",
+        "text": "Trial and inadequate response or contraindication to phototherapy, systemic retinoids (oral isotretinoin), methotrexate, or cyclosporine.",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "pso_prior_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pso_prior_therapy",
+          "value": "trial_failure_or_ci"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      {
+        "id": "tb_screened",
+        "text": "Screened for Tuberculosis (denial #2).",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "tb_screened"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "tb_screened",
+          "value": true
+        }
+      },
+      {
+        "id": "hepatitis_b_or_c_screened",
+        "text": "Screened for hepatitis B or C (denial #3).",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "hepatitis_b_or_c_screened"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hepatitis_b_or_c_screened",
+          "value": true
+        }
+      },
+      {
+        "id": "no_serious_infection",
+        "text": "No serious infection (denial #4).",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "no_serious_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_serious_infection",
+          "value": true
+        }
+      },
+      {
+        "id": "hf_dosing_safe",
+        "text": "Dose must not exceed 5 mg/kg in moderate to severe heart failure (denial #5).",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "hf_dosing_safe"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "hf_dosing_safe",
+          "values": [
+            "no_moderate_severe_hf",
+            "moderate_severe_hf_dose_lte_5mg_kg"
+          ]
+        }
+      },
+      {
+        "id": "weight_submitted",
+        "text": "Patient\u2019s weight submitted (denial #6).",
+        "citation": "https://health.alaska.gov/media/3nplwnjp/202203-infliximab_criteria_2022.pdf",
+        "required_facts": [
+          "weight_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "weight_submitted",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [
       "entyvio",
       "stelara",
@@ -6344,13 +6670,343 @@
       "zymfentra"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Infliximab Criteria Version 1: Original 2/9/22; Approval 3/18/22; Effective 5/1/22. Covers Avsola, Inflectra, Remicade and Renflexis.",
+      "FDA section biosimilar note: Avsola, Inflectra and Renflexis are biosimilars to Remicade; highly similar to the reference product with no clinically meaningful differences.",
+      "Specialty gap: no prescriber specialty requirement in PDF. HS age not specified in PDF; no trial required for hidradenitis suppurativa (PDF spelling \u201cHydradenitis\u201d). No age or prior-therapy facts required for HS. Ages reflect this Alaska PDF.",
+      "Duration (notes only): initial approval up to 6 months; reauthorization up to 12 months if prescriber documents disease improvement or stabilization.",
+      "Quantity and dosing (manual review): adult and pediatric CD and UC: 5 mg/kg at weeks 0, 2 and 6, then every 8 weeks. Adult CD initial responders who later lose response may benefit from 10 mg/kg. RA: with methotrexate, 3 mg/kg at weeks 0, 2 and 6, then every 8 weeks; some may benefit from up to 10 mg/kg or as often as every 4 weeks. AS: 5 mg/kg at weeks 0, 2 and 6, then every 6 weeks. PsA and plaque psoriasis: 5 mg/kg at weeks 0, 2 and 6, then every 8 weeks. JIA and HS schedules are not specified. Weight-based limits are not numerically enforced; weight submission and HF dosing safety are encoded.",
+      "HCPCS (notes only): Remicade J1745; Avsola Q5121; Inflectra Q5103; Renflexis Q5104.",
+      "Cautions: see package inserts: Remicade https://www.janssenlabels.com/package-insert/product-monograph/prescribing-information/REMICADE-pi.pdf ; Avsola https://www.pi.amgen.com/~/media/amgen/repositorysites/pi-amgen-com/avsola/avsola_pi_english.ashx ; Inflectra https://labeling.pfizer.com/ShowLabeling.aspx?id=9271 ; Renflexis https://www.organon.com/product/usa/pi_circulars/r/renflexis/renflexis-pi.pdf",
+      "PDL context: mixed product status; unbranded INFLIXIMAB (INJECTION) is preferred; AVSOLA, INFLECTRA, REMICADE and RENFLEXIS are non_preferred. Pack pdl_status is unknown because the schema does not support mixed. Linked alternatives require their own indication-specific review.",
+      "This pack remains partial: duration, reauthorization response documentation, weight-based quantity schedules and package-insert cautions require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis listed in Alaska approval criterion #1.",
+        "options": [
+          {
+            "value": "crohns_disease",
+            "label": "Crohn\u2019s disease"
+          },
+          {
+            "value": "ulcerative_colitis",
+            "label": "Ulcerative colitis"
+          },
+          {
+            "value": "rheumatoid_arthritis",
+            "label": "Rheumatoid arthritis"
+          },
+          {
+            "value": "psoriatic_arthritis",
+            "label": "Psoriatic arthritis"
+          },
+          {
+            "value": "ankylosing_spondylitis",
+            "label": "Ankylosing spondylitis"
+          },
+          {
+            "value": "juvenile_idiopathic_arthritis",
+            "label": "Juvenile idiopathic arthritis"
+          },
+          {
+            "value": "plaque_psoriasis",
+            "label": "Plaque psoriasis (adults)"
+          },
+          {
+            "value": "hidradenitis_suppurativa",
+            "label": "Hidradenitis suppurativa"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Age \u22656 for CD/UC; \u22654 for RA/JIA; \u226518 for PsA/AS/plaque psoriasis (approval #1).",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "crohns_disease",
+            "ulcerative_colitis",
+            "rheumatoid_arthritis",
+            "psoriatic_arthritis",
+            "ankylosing_spondylitis",
+            "juvenile_idiopathic_arthritis",
+            "plaque_psoriasis"
+          ]
+        },
+        "option_style": "age_bands",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 6 months"
+          },
+          {
+            "value": "0.5",
+            "label": "6 months \u2013 under 1 year"
+          },
+          {
+            "value": "1",
+            "label": "1\u20133 years"
+          },
+          {
+            "value": "4",
+            "label": "4\u20135 years"
+          },
+          {
+            "value": "6",
+            "label": "6\u201311 years"
+          },
+          {
+            "value": "12",
+            "label": "12\u201317 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ]
+      },
+      "conventional_therapy_two": {
+        "type": "select",
+        "label": "Trial and inadequate response or contraindication to two conventional therapies (e.g. mesalamine, sulfasalazine, azathioprine/6-MP, methotrexate).",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_two",
+            "label": "Trial and inadequate response or contraindication to two conventional therapies (e.g. mesalamine, sulfasalazine, azathioprine/6-MP, methotrexate)."
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "crohns_disease",
+            "ulcerative_colitis"
+          ]
+        }
+      },
+      "dmard_concurrent_two": {
+        "type": "select",
+        "label": "Trial and inadequate response or contraindication to two DMARDs used concurrently.",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_two_concurrent",
+            "label": "Trial and inadequate response or contraindication to two DMARDs used concurrently."
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "rheumatoid_arthritis"
+          ]
+        }
+      },
+      "psa_conventional_two": {
+        "type": "select",
+        "label": "Trial and inadequate response or contraindication to two conventional therapies (e.g. methotrexate, sulfasalazine, leflunomide).",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_two",
+            "label": "Trial and inadequate response or contraindication to two conventional therapies (e.g. methotrexate, sulfasalazine, leflunomide)."
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      "as_nsaid_step": {
+        "type": "select",
+        "label": "Trial and inadequate response or contraindication to two NSAIDs at maximum therapeutic dose for at least 3 months.",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_two_nsaids_3mo",
+            "label": "Trial and inadequate response or contraindication to two NSAIDs at maximum therapeutic dose for at least 3 months."
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      "as_dmard_step": {
+        "type": "select",
+        "label": "Trial and inadequate response or contraindication to one conventional DMARD for at least 30 days.",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_one_dmard_30d",
+            "label": "Trial and inadequate response or contraindication to one conventional DMARD for at least 30 days."
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      "jia_intraarticular_steroid": {
+        "type": "select",
+        "label": "Trial and inadequate response or contraindication to intraarticular glucocorticoid injection.",
+        "options": [
+          {
+            "value": "trial_failure_or_ci",
+            "label": "Trial and inadequate response or contraindication to intraarticular glucocorticoid injection."
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "juvenile_idiopathic_arthritis"
+          ]
+        }
+      },
+      "jia_conventional_two": {
+        "type": "select",
+        "label": "Trial and inadequate response or contraindication to two conventional therapies (e.g. methotrexate, sulfasalazine, leflunomide).",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_two",
+            "label": "Trial and inadequate response or contraindication to two conventional therapies (e.g. methotrexate, sulfasalazine, leflunomide)."
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "juvenile_idiopathic_arthritis"
+          ]
+        }
+      },
+      "pso_prior_therapy": {
+        "type": "select",
+        "label": "Trial and inadequate response or contraindication to phototherapy, systemic retinoids (oral isotretinoin), methotrexate, or cyclosporine.",
+        "options": [
+          {
+            "value": "trial_failure_or_ci",
+            "label": "Trial and inadequate response or contraindication to phototherapy, systemic retinoids (oral isotretinoin), methotrexate, or cyclosporine."
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      "tb_screened": {
+        "type": "select",
+        "label": "Screened for Tuberculosis (denial #2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hepatitis_b_or_c_screened": {
+        "type": "select",
+        "label": "Screened for hepatitis B or C (denial #3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_serious_infection": {
+        "type": "select",
+        "label": "No serious infection (denial #4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hf_dosing_safe": {
+        "type": "select",
+        "label": "Dose must not exceed 5 mg/kg in moderate to severe heart failure (denial #5).",
+        "options": [
+          {
+            "value": "no_moderate_severe_hf",
+            "label": "No moderate to severe heart failure"
+          },
+          {
+            "value": "moderate_severe_hf_dose_lte_5mg_kg",
+            "label": "Moderate\u2013severe HF and dose \u22645 mg/kg"
+          },
+          {
+            "value": "moderate_severe_hf_dose_gt_5mg_kg",
+            "label": "Moderate\u2013severe HF and dose >5 mg/kg"
+          }
+        ]
+      },
+      "weight_submitted": {
+        "type": "select",
+        "label": "Patient\u2019s weight submitted (denial #6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": null,
+      "notes": "Weight-based schedules require manual review; see notes. Weight submission is encoded."
+    }
   },
   "inhaled-prostacycline-mimetic": {
     "drug": {
@@ -9421,7 +10077,7 @@
       "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months. No separate reauthorization clinical criteria are specified in this PDF.",
       "Manual review: PS/PsA: 150 mg SC at week 0, week 4, then every 12 weeks. CD: initial 600 mg IV at weeks 0/4/8; maintenance 180\u2013360 mg SC at week 12 then every 8 weeks. UC: initial 1200 mg IV at weeks 0/4/8; maintenance 180\u2013360 mg SC at week 12 then every 8 weeks. Use the lowest effective maintenance dose for CD/UC. Route, dosing and quantity are not numerically enforced.",
       "Cautions (notes only): evaluate for tuberculosis (TB) before initiating treatment; avoid active TB. Monitor liver function tests (LFT), alkaline phosphatase and bilirubin during IBD treatment. Live vaccines are not recommended.",
-      "PDL context: all SKYRIZI rows are non_preferred / OFF in CYTOKINE AND CAM ANTAGONISTS. Preferred peers without packs include Humira, Hadlima, Rinvoq and preferred infliximab products (notes only). Linked alternatives require indication-specific review and do not imply confirmed coverage.",
+      "PDL context: all SKYRIZI rows are non_preferred / OFF in CYTOKINE AND CAM ANTAGONISTS. Preferred peers without packs include Humira, Hadlima and Rinvoq (notes only). Infliximab has a separate partial class pack with product-specific PDL status in its notes. Linked alternatives require indication-specific review and do not imply confirmed coverage.",
       "This pack remains partial: initial documentation, reauthorization duration, monitoring, cautions, dosing and quantity enforcement require manual review."
     ],
     "fact_ui": {
@@ -10220,7 +10876,7 @@
       "Duration (notes only): initial 4 weeks (injections at 0 and 4 weeks); reauthorization up to 12 months (week 16 and beyond every 12 weeks). FDA regimen by indication requires manual review.",
       "Manual review: 45 mg/dose for weight \u2264100 kg; 90 mg/dose for weight >100 kg for plaque psoriasis; 90 mg/dose for CD and UC after initial IV infusion. Weight, route, and quantity limits are not numerically enforced.",
       "Cautions (notes only): initial dose under physician supervision; subsequent self-administration only with physician determination, training and demonstrated competency, close monitoring and follow-up. Monitor new/worsening neurological issues for RPLS; no live vaccines unless benefit outweighs risk; avoid excessive UV exposure and monitor new skin growths; monitor therapeutic effect of CYP450 therapies, especially narrow therapeutic index agents. IL-12/IL-23 p40 binding may increase malignancy risk. Refer to prescribing information and medication guide.",
-      "PDL context: all STELARA vial, syringe and IV rows are non_preferred in CYTOKINE AND CAM ANTAGONISTS. Preferred peers without packs include Humira, Hadlima, Rinvoq and preferred infliximab products (notes only). Linked alternatives require indication-specific review and do not imply confirmed coverage. Dupixent, Adbry and Ebglyss belong to IMMUNOMODULATORS, ATOPIC DERMATITIS and are not linked alternatives.",
+      "PDL context: all STELARA vial, syringe and IV rows are non_preferred in CYTOKINE AND CAM ANTAGONISTS. Preferred peers without packs include Humira, Hadlima and Rinvoq (notes only). Infliximab has a separate partial class pack with product-specific PDL status in its notes. Linked alternatives require indication-specific review and do not imply confirmed coverage. Dupixent, Adbry and Ebglyss belong to IMMUNOMODULATORS, ATOPIC DERMATITIS and are not linked alternatives.",
       "This pack remains partial: initial documentation, reauthorization, monitoring, cautions, duration, dosing and quantity enforcement require manual review."
     ],
     "fact_ui": {
@@ -12983,7 +13639,7 @@
       "Duration (notes only): authorization up to 12 months. The PDF does not specify a separate initial/reauthorization split.",
       "Quantity and dosing (manual review): 2 prefilled pens or syringes every 28 days; maximum dose 120 mg every 14 days (120 mg q14d ceiling). Quantity metadata does not numerically enforce these limits.",
       "Cautions (notes only): increased malignancy risk, including lymphoma; monitor hepatic enzymes and liver function tests every 3 to 4 months due to severe hepatic reaction risk; increased severe infection risk; avoid live vaccines during treatment.",
-      "PDL context: Zymfentra is non_preferred. Preferred cytokine peers without rule packs (e.g. Humira, Hadlima, Rinvoq) are notes only. Linked alternatives require their own criteria review. IV Infliximab remains a separate text_only peer; its criteria are not encoded here.",
+      "PDL context: Zymfentra is non_preferred. Preferred cytokine peers without rule packs (e.g. Humira, Hadlima, Rinvoq) are notes only. Linked alternatives require their own criteria review. IV Infliximab is a separate partial peer with its own criteria.",
       "This pack remains partial: duration, dosing, quantity enforcement, monitoring and cautions require manual review."
     ],
     "fact_ui": {

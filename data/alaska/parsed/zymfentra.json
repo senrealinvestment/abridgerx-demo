@@ -164,7 +164,7 @@
     "Duration (notes only): authorization up to 12 months. The PDF does not specify a separate initial/reauthorization split.",
     "Quantity and dosing (manual review): 2 prefilled pens or syringes every 28 days; maximum dose 120 mg every 14 days (120 mg q14d ceiling). Quantity metadata does not numerically enforce these limits.",
     "Cautions (notes only): increased malignancy risk, including lymphoma; monitor hepatic enzymes and liver function tests every 3 to 4 months due to severe hepatic reaction risk; increased severe infection risk; avoid live vaccines during treatment.",
-    "PDL context: Zymfentra is non_preferred. Preferred cytokine peers without rule packs (e.g. Humira, Hadlima, Rinvoq) are notes only. Linked alternatives require their own criteria review. IV Infliximab remains a separate text_only peer; its criteria are not encoded here.",
+    "PDL context: Zymfentra is non_preferred. Preferred cytokine peers without rule packs (e.g. Humira, Hadlima, Rinvoq) are notes only. Linked alternatives require their own criteria review. IV Infliximab is a separate partial peer with its own criteria.",
     "This pack remains partial: duration, dosing, quantity enforcement, monitoring and cautions require manual review."
   ],
   "fact_ui": {

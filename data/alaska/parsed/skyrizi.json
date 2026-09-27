@@ -293,7 +293,7 @@
     "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months. No separate reauthorization clinical criteria are specified in this PDF.",
     "Manual review: PS/PsA: 150 mg SC at week 0, week 4, then every 12 weeks. CD: initial 600 mg IV at weeks 0/4/8; maintenance 180\u2013360 mg SC at week 12 then every 8 weeks. UC: initial 1200 mg IV at weeks 0/4/8; maintenance 180\u2013360 mg SC at week 12 then every 8 weeks. Use the lowest effective maintenance dose for CD/UC. Route, dosing and quantity are not numerically enforced.",
     "Cautions (notes only): evaluate for tuberculosis (TB) before initiating treatment; avoid active TB. Monitor liver function tests (LFT), alkaline phosphatase and bilirubin during IBD treatment. Live vaccines are not recommended.",
-    "PDL context: all SKYRIZI rows are non_preferred / OFF in CYTOKINE AND CAM ANTAGONISTS. Preferred peers without packs include Humira, Hadlima, Rinvoq and preferred infliximab products (notes only). Linked alternatives require indication-specific review and do not imply confirmed coverage.",
+    "PDL context: all SKYRIZI rows are non_preferred / OFF in CYTOKINE AND CAM ANTAGONISTS. Preferred peers without packs include Humira, Hadlima and Rinvoq (notes only). Infliximab has a separate partial class pack with product-specific PDL status in its notes. Linked alternatives require indication-specific review and do not imply confirmed coverage.",
     "This pack remains partial: initial documentation, reauthorization duration, monitoring, cautions, dosing and quantity enforcement require manual review."
   ],
   "fact_ui": {

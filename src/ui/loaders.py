@@ -499,13 +499,12 @@ def build_fact_field(
         ):
             field["type"] = "select"
             field["label"] = authored.get("label") or "Age"
-            field["options"] = list(AGE_BAND_OPTIONS)
+            field["options"] = list(authored.get("options") or AGE_BAND_OPTIONS)
             field["option_style"] = "age_bands"
             field["option_source"] = "age_bands"
             field.setdefault(
                 "hint",
-                "Band value sets age_years to the band minimum for gte checks "
-                "(0 / 0.5 / 1 / 6 / 12 / 18).",
+                "Band value sets age_years to the band minimum for gte checks.",
             )
             return field
         opts = _normalize_options(authored.get("options"))

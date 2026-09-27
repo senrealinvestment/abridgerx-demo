@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 20,
-  "encoding_text_only": 178,
+  "encoding_partial": 21,
+  "encoding_text_only": 177,
   "partial_slugs": [
     "adbry",
     "adcirca",
@@ -20,6 +20,7 @@
     "empaveli",
     "entyvio",
     "fasenra",
+    "infliximab",
     "nucala",
     "skyrizi",
     "stelara",
@@ -28,5 +29,5 @@
     "xolair",
     "zymfentra"
   ],
-  "next_candidate": "infliximab"
+  "next_candidate": "actiq"
 }

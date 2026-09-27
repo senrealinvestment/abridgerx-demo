@@ -90,12 +90,12 @@ def test_metadata_and_catalog():
     assert catalog == {p.stem: json.loads(p.read_text()) for p in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 166
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 32
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 167
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 31
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (166, 32, 'zanaflex')
+    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (167, 31, 'gralise')
     assert 'symproic' in status['partial_slugs']
-    assert catalog['zanaflex']['encoding_status'] == 'text_only'
-    assert catalog['zanaflex']['criteria'] == []
+    assert catalog['gralise']['encoding_status'] == 'text_only'
+    assert catalog['gralise']['criteria'] == []

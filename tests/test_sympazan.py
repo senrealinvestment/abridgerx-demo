@@ -83,15 +83,15 @@ def test_catalog():
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 166
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 32
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 167
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 31
     for root in (BASE, BASE.parent):
         status = json.loads((root / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (166, 32)
-        assert status['next_candidate'] == 'zanaflex'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (167, 31)
+        assert status['next_candidate'] == 'gralise'
         assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for ext in ('json', 'md'):
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()
-    assert catalog['zanaflex']['encoding_status'] == 'text_only'
-    assert catalog['zanaflex']['criteria'] == []
-    assert evaluate(catalog['zanaflex'], FACTS).decision == 'need_info'
+    assert catalog['gralise']['encoding_status'] == 'text_only'
+    assert catalog['gralise']['criteria'] == []
+    assert evaluate(catalog['gralise'], FACTS).decision == 'need_info'

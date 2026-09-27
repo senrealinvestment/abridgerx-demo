@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 166,
-  "encoding_text_only": 32,
+  "encoding_partial": 167,
+  "encoding_text_only": 31,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -166,6 +166,7 @@
     "xolair",
     "xyrem",
     "yorvipath",
+    "zanaflex",
     "zilbrysq",
     "zolgensma",
     "ztalmy",
@@ -174,5 +175,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "zanaflex"
+  "next_candidate": "gralise"
 }

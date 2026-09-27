@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 29,
-  "encoding_text_only": 169,
+  "encoding_partial": 30,
+  "encoding_text_only": 168,
   "partial_slugs": [
     "adbry",
     "adcirca",
@@ -24,6 +24,7 @@
     "entyvio",
     "evenity",
     "fasenra",
+    "hemlibra",
     "infliximab",
     "kesimpta",
     "kevzara",

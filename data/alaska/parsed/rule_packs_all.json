@@ -8083,7 +8083,8 @@
   "hemlibra": {
     "drug": {
       "name": "Hemlibra",
-      "therapeutic_class": "hemophilia"
+      "therapeutic_class": "hemophilia",
+      "generic_name": "emicizumab-kxwh"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -8094,16 +8095,183 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Hemophilia A (congenital factor VIII deficiency) routine prophylaxis to prevent or reduce bleeds, with or without FVIII inhibitors.",
+        "citation": "https://health.alaska.gov/media/rbhparp4/ac_20194hemlibra_criteria_approved_20190419.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "hemophilia_a_prophylaxis"
+          ]
+        }
+      },
+      {
+        "id": "fviii_deficiency_confirmed",
+        "text": "Documented congenital factor VIII deficiency confirmed by blood coagulation testing (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/rbhparp4/ac_20194hemlibra_criteria_approved_20190419.pdf",
+        "required_facts": [
+          "fviii_deficiency_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "fviii_deficiency_confirmed",
+          "value": "confirmed_by_coagulation_testing"
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a hematologist or hemophilia specialist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/rbhparp4/ac_20194hemlibra_criteria_approved_20190419.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "hematologist_or_hemophilia_specialist_or_consult"
+        }
+      },
+      {
+        "id": "iti_combination_status",
+        "text": "Hemlibra is not used in combination with Immune Tolerance Induction (ITI) (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/rbhparp4/ac_20194hemlibra_criteria_approved_20190419.pdf",
+        "required_facts": [
+          "iti_combination_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "iti_combination_status",
+          "value": "not_used_with_iti"
+        }
+      },
+      {
+        "id": "therapy_intent",
+        "text": "Medication will be used as routine prophylaxis to prevent or reduce bleeds (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/rbhparp4/ac_20194hemlibra_criteria_approved_20190419.pdf",
+        "required_facts": [
+          "therapy_intent"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "therapy_intent",
+          "value": "routine_prophylaxis_prevent_or_reduce_bleeds"
+        }
+      },
+      {
+        "id": "bleed_log_agreement",
+        "text": "Patient agrees to maintain a log of bleeds (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/rbhparp4/ac_20194hemlibra_criteria_approved_20190419.pdf",
+        "required_facts": [
+          "bleed_log_agreement"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "bleed_log_agreement",
+          "value": "agrees_maintain_bleed_log"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Hemlibra (emicizumab-kxwh), a bispecific factor IXa- and factor X-directed antibody. Version: 1; Original: 03/14/2019; Approval: 04/19/2019; Effective: 06/10/2019.",
+      "Encoded: one closed hemophilia A prophylaxis indication with or without factor VIII inhibitors, explicit congenital FVIII deficiency confirmation by blood coagulation testing, specialty consultation, no ITI combination, routine prophylaxis intent, and bleed log agreement. Approval criteria 1-5 and their corresponding denial failures are covered.",
+      "FDA labeled age: newborn and older, including adult and pediatric patients. No numeric age clause or pediatric cutoff is imposed. Inhibitor status does not create separate eligibility gates.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months with a positive response reducing spontaneous bleeds verified by the provider AND the patient has not developed neutralizing antibodies to the drug.",
+      "Quantity and dosing (notes only): loading 3 mg/kg subcutaneously once weekly for the first 4 weeks; maintenance 1.5 mg/kg weekly OR 3 mg/kg every 2 weeks OR 6 mg/kg every 4 weeks. No numeric quantity enforcement; max_units is null.",
+      "Cautions (notes only): thrombotic events have been reported; monitor for thromboembolism, thrombocytopenia, microangiopathic hemolytic anemia (thrombotic microangiopathy/TMA), and acute kidney injury (AKI). Common reactions include injection site reactions, pyrexia, headache, diarrhea, and arthralgia.",
+      "Remaining gaps: documentation verification, authorization duration, reauthorization response and neutralizing antibodies, dosing, quantity and cautions require manual review.",
+      "PDL status unknown. No other hemophilia packs are encoded; alternatives remain empty."
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Hemophilia A (congenital factor VIII deficiency) routine prophylaxis to prevent or reduce bleeds, with or without FVIII inhibitors.",
+        "options": [
+          {
+            "value": "hemophilia_a_prophylaxis",
+            "label": "Hemophilia A (congenital factor VIII deficiency) routine prophylaxis to prevent or reduce bleeds, with or without FVIII inhibitors."
+          }
+        ]
+      },
+      "fviii_deficiency_confirmed": {
+        "type": "select",
+        "label": "Documented congenital factor VIII deficiency confirmed by blood coagulation testing (approval criterion 1).",
+        "options": [
+          {
+            "value": "confirmed_by_coagulation_testing",
+            "label": "Documented congenital factor VIII deficiency confirmed by blood coagulation testing (approval criterion 1)."
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a hematologist or hemophilia specialist (approval criterion 2).",
+        "options": [
+          {
+            "value": "hematologist_or_hemophilia_specialist_or_consult",
+            "label": "Prescribed by or in consultation with a hematologist or hemophilia specialist (approval criterion 2)."
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ]
+      },
+      "iti_combination_status": {
+        "type": "select",
+        "label": "Hemlibra is not used in combination with Immune Tolerance Induction (ITI) (approval criterion 3).",
+        "options": [
+          {
+            "value": "not_used_with_iti",
+            "label": "Hemlibra is not used in combination with Immune Tolerance Induction (ITI) (approval criterion 3)."
+          },
+          {
+            "value": "used_with_iti",
+            "label": "Used with ITI"
+          }
+        ]
+      },
+      "therapy_intent": {
+        "type": "select",
+        "label": "Medication will be used as routine prophylaxis to prevent or reduce bleeds (approval criterion 4).",
+        "options": [
+          {
+            "value": "routine_prophylaxis_prevent_or_reduce_bleeds",
+            "label": "Medication will be used as routine prophylaxis to prevent or reduce bleeds (approval criterion 4)."
+          },
+          {
+            "value": "on_demand_or_other",
+            "label": "On-demand use or other intent"
+          }
+        ]
+      },
+      "bleed_log_agreement": {
+        "type": "select",
+        "label": "Patient agrees to maintain a log of bleeds (approval criterion 5).",
+        "options": [
+          {
+            "value": "agrees_maintain_bleed_log",
+            "label": "Patient agrees to maintain a log of bleeds (approval criterion 5)."
+          },
+          {
+            "value": "does_not_agree",
+            "label": "Does not agree"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "hemophilia": {
     "drug": {

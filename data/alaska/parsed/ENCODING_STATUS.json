@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 126,
-  "encoding_text_only": 72,
+  "encoding_partial": 127,
+  "encoding_text_only": 71,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -58,6 +58,7 @@
     "hympavzi",
     "imcivree",
     "infliximab",
+    "inhaled-prostacycline-mimetic",
     "isturisa",
     "jascayd",
     "juxtapid",
@@ -134,5 +135,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "inhaled-prostacycline-mimetic"
+  "next_candidate": "xcopri"
 }

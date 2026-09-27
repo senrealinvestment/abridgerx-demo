@@ -18742,7 +18742,8 @@
   "inhaled-prostacycline-mimetic": {
     "drug": {
       "name": "Inhaled Prostacycline Mimetic",
-      "therapeutic_class": "pulmonary-arterial-hypertension"
+      "therapeutic_class": "prostacyclin-mimetic-inhaled",
+      "generic_name": "treprostinil inhaled / iloprost"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -18753,18 +18754,582 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "product",
+        "text": "Requested inhaled product.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "product"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "product",
+          "values": [
+            "tyvaso",
+            "ventavis"
+          ]
+        }
+      },
+      {
+        "id": "indication",
+        "text": "Documented WHO pulmonary hypertension group.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "pulmonary_arterial_hypertension_who_group_1",
+            "pulmonary_hypertension_ild_who_group_3"
+          ]
+        }
+      },
+      {
+        "id": "ventavis_indication",
+        "text": "Ventavis is eligible only for WHO Group 1 PAH.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "pulmonary_arterial_hypertension_who_group_1"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "eq": "ventavis"
+        }
+      },
+      {
+        "id": "ph_ild_product",
+        "text": "The WHO Group 3 PH-ILD path is Tyvaso only.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "product"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "product",
+          "values": [
+            "tyvaso"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pulmonary_hypertension_ild_who_group_3"
+        }
+      },
+      {
+        "id": "age_to_fda_label",
+        "text": "Patient age meets the requested product FDA label.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "age_to_fda_label"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "age_to_fda_label",
+          "values": [
+            "meets_label"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pulmonary_arterial_hypertension_who_group_1"
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "PH-ILD: age \u226518 years.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pulmonary_hypertension_ild_who_group_3"
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a cardiologist or pulmonologist.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "cardiologist_or_pulmonologist_or_consult"
+          ]
+        }
+      },
+      {
+        "id": "rhc_confirmation",
+        "text": "Selected WHO diagnosis confirmed by right heart catheterization.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "rhc_confirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "rhc_confirmation",
+          "values": [
+            "rhc_confirmed"
+          ]
+        }
+      },
+      {
+        "id": "baseline_6mwd",
+        "text": "Baseline 6-minute walk distance obtained or deemed inappropriate by prescriber.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_6mwd"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_6mwd",
+          "values": [
+            "obtained",
+            "inappropriate_by_prescriber"
+          ]
+        }
+      },
+      {
+        "id": "pah_hemodynamics",
+        "text": "Group 1 RHC: mean PAP \u226525 mmHg AND PCWP \u226415 mmHg AND PVR >3 Wood units.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "mean_pap_mmhg",
+          "pcwp_mmhg",
+          "pvr_wood_units"
+        ],
+        "predicate": {
+          "op": "all",
+          "args": [
+            {
+              "op": "in",
+              "fact": "mean_pap_mmhg",
+              "values": [
+                "ge25_lt30",
+                "ge30"
+              ]
+            },
+            {
+              "op": "in",
+              "fact": "pcwp_mmhg",
+              "values": [
+                "le12",
+                "gt12_le15"
+              ]
+            },
+            {
+              "op": "in",
+              "fact": "pvr_wood_units",
+              "values": [
+                "gt3_lt4",
+                "ge4_lt6_25",
+                "ge6_25"
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pulmonary_arterial_hypertension_who_group_1"
+        }
+      },
+      {
+        "id": "ph_ild_hemodynamics",
+        "text": "Group 3 RHC: mean PAP \u226530 mmHg AND PVR \u22654 WU; PCWP \u226412 if PVR 4\u2013<6.25, OR PCWP \u226415 if PVR \u22656.25.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "mean_pap_mmhg",
+          "pvr_wood_units",
+          "pcwp_mmhg"
+        ],
+        "predicate": {
+          "op": "all",
+          "args": [
+            {
+              "op": "in",
+              "fact": "mean_pap_mmhg",
+              "values": [
+                "ge30"
+              ]
+            },
+            {
+              "op": "any",
+              "args": [
+                {
+                  "op": "all",
+                  "args": [
+                    {
+                      "op": "in",
+                      "fact": "pvr_wood_units",
+                      "values": [
+                        "ge4_lt6_25"
+                      ]
+                    },
+                    {
+                      "op": "in",
+                      "fact": "pcwp_mmhg",
+                      "values": [
+                        "le12"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "op": "all",
+                  "args": [
+                    {
+                      "op": "in",
+                      "fact": "pvr_wood_units",
+                      "values": [
+                        "ge6_25"
+                      ]
+                    },
+                    {
+                      "op": "in",
+                      "fact": "pcwp_mmhg",
+                      "values": [
+                        "le12",
+                        "gt12_le15"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pulmonary_hypertension_ild_who_group_3"
+        }
+      },
+      {
+        "id": "pah_functional_class_and_therapy",
+        "text": "Functional Class III or IV OR Class II with trial/failure or contraindication to BOTH sildenafil or tadalafil AND one other oral PAH agent.",
+        "citation": "https://health.alaska.gov/media/nwwp3ec5/202201-inhaled-prostacyclins_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "who_functional_class",
+          "pde5_trial",
+          "other_oral_pah_trial"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "in",
+              "fact": "who_functional_class",
+              "values": [
+                "iii",
+                "iv"
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "who_functional_class",
+                  "values": [
+                    "ii"
+                  ]
+                },
+                {
+                  "op": "in",
+                  "fact": "pde5_trial",
+                  "values": [
+                    "failed",
+                    "contraindicated"
+                  ]
+                },
+                {
+                  "op": "in",
+                  "fact": "other_oral_pah_trial",
+                  "values": [
+                    "failed",
+                    "contraindicated"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pulmonary_arterial_hypertension_who_group_1"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Inhaled Prostacycline Mimetic Criteria, Version 1; Original 12/2/2021; Approval 1/21/22; Effective 2022-03-01. Products: Tyvaso (treprostinil inhaled) and Ventavis (iloprost).",
+      "Encoded shared Group 1 PAH and Tyvaso-only Group 3 PH-ILD approval paths. FDA labeled age for PAH is an attestation; PH-ILD requires age \u226518. RHC pressure/resistance bands preserve every source threshold, including strict PVR >3 and the 6.25 WU branch boundary.",
+      "Denial criterion: failure to meet approval criteria only. No additive clinical denials. Class II steps require trial and failure or contraindication; no minimum trial duration or intolerance exception is specified.",
+      "Cautions (notes only): symptomatic hypotension, including increased hypotensive effects of vasodilators and antihypertensives; increased bleeding risk, particularly with anticoagulants.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months with documented improvement or stability from baseline in 6-minute walk distance, OR improved or stable functional class if the walk test is inappropriate.",
+      "Quantity (notes only): 34-day supply. max_units is null; quantity is not evaluated.",
+      "Documentation verification, cautions, duration, reauthorization and quantity require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "product": {
+        "type": "select",
+        "label": "Requested inhaled product.",
+        "options": [
+          {
+            "value": "tyvaso",
+            "label": "Tyvaso (treprostinil inhaled)"
+          },
+          {
+            "value": "ventavis",
+            "label": "Ventavis (iloprost)"
+          }
+        ]
+      },
+      "indication": {
+        "type": "select",
+        "label": "Documented WHO pulmonary hypertension group.",
+        "options": [
+          {
+            "value": "pulmonary_arterial_hypertension_who_group_1",
+            "label": "WHO Group 1 PAH"
+          },
+          {
+            "value": "pulmonary_hypertension_ild_who_group_3",
+            "label": "WHO Group 3 PH associated with interstitial lung disease"
+          }
+        ]
+      },
+      "age_to_fda_label": {
+        "type": "select",
+        "label": "Patient age meets the requested product FDA label.",
+        "options": [
+          {
+            "value": "meets_label",
+            "label": "Meets FDA labeled age"
+          },
+          {
+            "value": "not_met",
+            "label": "Does not meet FDA labeled age"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "pulmonary_arterial_hypertension_who_group_1"
+        }
+      },
+      "age_years": {
+        "type": "select",
+        "label": "PH-ILD: patient is at least 18 years old.",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "pulmonary_hypertension_ild_who_group_3"
+        },
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a cardiologist or pulmonologist.",
+        "options": [
+          {
+            "value": "cardiologist_or_pulmonologist_or_consult",
+            "label": "Cardiologist or pulmonologist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "rhc_confirmation": {
+        "type": "select",
+        "label": "Selected WHO diagnosis confirmed by right heart catheterization.",
+        "options": [
+          {
+            "value": "rhc_confirmed",
+            "label": "Confirmed by RHC"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed by RHC"
+          }
+        ]
+      },
+      "baseline_6mwd": {
+        "type": "select",
+        "label": "Baseline 6-minute walk distance obtained or deemed inappropriate by prescriber.",
+        "options": [
+          {
+            "value": "obtained",
+            "label": "Baseline obtained"
+          },
+          {
+            "value": "inappropriate_by_prescriber",
+            "label": "Deemed inappropriate by prescriber"
+          },
+          {
+            "value": "not_met",
+            "label": "Neither obtained nor deemed inappropriate"
+          }
+        ]
+      },
+      "mean_pap_mmhg": {
+        "type": "select",
+        "label": "RHC mean pulmonary artery pressure (mmHg).",
+        "options": [
+          {
+            "value": "lt25",
+            "label": "<25"
+          },
+          {
+            "value": "ge25_lt30",
+            "label": "\u226525 to <30"
+          },
+          {
+            "value": "ge30",
+            "label": "\u226530"
+          }
+        ]
+      },
+      "pcwp_mmhg": {
+        "type": "select",
+        "label": "RHC pulmonary capillary wedge pressure (mmHg).",
+        "options": [
+          {
+            "value": "le12",
+            "label": "\u226412"
+          },
+          {
+            "value": "gt12_le15",
+            "label": ">12 to \u226415"
+          },
+          {
+            "value": "gt15",
+            "label": ">15"
+          }
+        ]
+      },
+      "pvr_wood_units": {
+        "type": "select",
+        "label": "RHC pulmonary vascular resistance (Wood units).",
+        "options": [
+          {
+            "value": "le3",
+            "label": "\u22643"
+          },
+          {
+            "value": "gt3_lt4",
+            "label": ">3 to <4"
+          },
+          {
+            "value": "ge4_lt6_25",
+            "label": "\u22654 to <6.25"
+          },
+          {
+            "value": "ge6_25",
+            "label": "\u22656.25"
+          }
+        ]
+      },
+      "who_functional_class": {
+        "type": "select",
+        "label": "PAH functional class.",
+        "options": [
+          {
+            "value": "i",
+            "label": "I"
+          },
+          {
+            "value": "ii",
+            "label": "II"
+          },
+          {
+            "value": "iii",
+            "label": "III"
+          },
+          {
+            "value": "iv",
+            "label": "IV"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "pulmonary_arterial_hypertension_who_group_1"
+        }
+      },
+      "pde5_trial": {
+        "type": "select",
+        "label": "Class II: sildenafil or tadalafil trial and failure or contraindication.",
+        "options": [
+          {
+            "value": "failed",
+            "label": "Tried and failed"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "who_functional_class",
+          "eq": "ii"
+        }
+      },
+      "other_oral_pah_trial": {
+        "type": "select",
+        "label": "Class II: one other oral PAH agent (e.g. bosentan, macitentan, treprostinil) trial and failure or contraindication.",
+        "options": [
+          {
+            "value": "failed",
+            "label": "Tried and failed"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindicated"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "who_functional_class",
+          "eq": "ii"
+        }
+      }
+    }
   },
   "insulin-pens": {
     "drug": {

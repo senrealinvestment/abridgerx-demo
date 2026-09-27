@@ -6338,7 +6338,8 @@
     "criteria": [],
     "alternatives": [
       "entyvio",
-      "stelara"
+      "stelara",
+      "skyrizi"
     ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
@@ -9126,7 +9127,8 @@
   "skyrizi": {
     "drug": {
       "name": "Skyrizi",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "biologics",
+      "generic_name": "risankizumab-rzaa"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -9136,20 +9138,526 @@
       "criteria_pdf": "data/alaska/raw/skyrizi-criteria-2025.pdf"
     },
     "requires_pa": true,
-    "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "pdl_status": "non_preferred",
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "FDA-labeled indication and disease severity (FDA indications; approval #2 in each arm).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "plaque_psoriasis",
+            "psoriatic_arthritis",
+            "crohns_disease",
+            "ulcerative_colitis"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient meets FDA-labeled adult age for all four indications (age \u226518; approval #1 in each arm).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "tnf_blocker_failure",
+        "text": "Trialed and failed a TNF blocker (PsO approval #4; PsA/CD/UC approval #5).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "tnf_blocker_failure"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "tnf_blocker_failure",
+          "values": [
+            "trial_failure"
+          ]
+        }
+      },
+      {
+        "id": "additional_prior_therapy",
+        "text": "Trialed and failed \u22651 other therapy; PsO must include \u22651 topical agent (PsO approval #4; PsA/CD/UC approval #5).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "indication",
+          "additional_prior_therapy"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "plaque_psoriasis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "additional_prior_therapy",
+                  "value": "trial_failure_including_topical"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "psoriatic_arthritis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "additional_prior_therapy",
+                  "value": "trial_failure"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "crohns_disease"
+                },
+                {
+                  "op": "eq",
+                  "fact": "additional_prior_therapy",
+                  "value": "trial_failure"
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "ulcerative_colitis"
+                },
+                {
+                  "op": "eq",
+                  "fact": "additional_prior_therapy",
+                  "value": "trial_failure"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "pasi_status",
+        "text": "PASI \u226512 (or equivalent) (PsO approval #3).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "pasi_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pasi_status",
+          "value": "pasi_gte_12"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      {
+        "id": "psa_clinical_activity",
+        "text": "At least one clinical manifestation of active PsA (PsA approval #3).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "psa_clinical_activity"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "psa_clinical_activity",
+          "values": [
+            "actively_inflamed_joints",
+            "dactylitis",
+            "enthesitis",
+            "axial_disease",
+            "active_skin_and_or_nail"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "haq_di_baseline",
+        "text": "Baseline HAQ-DI (or equivalent) submitted (PsA approval #4; no score threshold specified).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "haq_di_baseline"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "haq_di_baseline",
+          "value": "submitted"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "cdai_status",
+        "text": "Baseline CDAI submitted and \u2265220 (CD approval #3 and #4).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "cdai_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "cdai_status",
+          "value": "cdai_gte_220"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "crohns_disease"
+          ]
+        }
+      },
+      {
+        "id": "mms_status",
+        "text": "Baseline modified Mayo score (mMS) (or equivalent) submitted and \u22655 (UC approval #3 and #4).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "mms_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "mms_status",
+          "value": "mms_gte_5"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ulcerative_colitis"
+          ]
+        }
+      },
+      {
+        "id": "no_active_clinically_significant_infection",
+        "text": "No active clinically significant infection (denial #2).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "no_active_clinically_significant_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_clinically_significant_infection",
+          "value": true
+        }
+      },
+      {
+        "id": "not_receiving_phototherapy",
+        "text": "Not receiving phototherapy (denial #3).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "not_receiving_phototherapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_receiving_phototherapy",
+          "value": true
+        }
+      },
+      {
+        "id": "not_receiving_another_biologic",
+        "text": "Not receiving another biologic response modifying agent (denial #4).",
+        "citation": "https://health.alaska.gov/media/bm3hvtyo/skyrizi-criteria-2025.pdf",
+        "required_facts": [
+          "not_receiving_another_biologic"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_receiving_another_biologic",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [
       "entyvio",
-      "stelara"
+      "stelara",
+      "tremfya",
+      "infliximab",
+      "zymfentra"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Skyrizi (risankizumab-rzaa), Version 1. Original 12/11/2024; Accepted 01/17/2025; Effective 03/1/2025. The references-page footer still says Accepted pending / Effective pending; dated approval pages govern this metadata.",
+      "Closed indication labels represent FDA indication severity and systemic therapy or phototherapy candidacy for PsO. All four indications are adults (age \u226518). Phototherapy candidacy does not permit receiving concurrent phototherapy.",
+      "Specialty gap: no prescriber specialty requirement in this Alaska PDF. No latex or hypersensitivity-to-risankizumab denial is specified; none is added.",
+      "All four indications require trial and failure of a TNF blocker plus at least one other therapy; PsO includes at least one topical agent. No minimum trial duration is specified.",
+      "Indication-gated categorical activity attestations: PsO PASI \u226512 (or equivalent); PsA one or more listed clinical manifestations plus baseline HAQ-DI (or equivalent) submitted, without a numeric threshold; CD baseline CDAI submitted and \u2265220; UC baseline mMS (or equivalent) submitted and \u22655.",
+      "Initial authorization (notes only): monitoring plan; previous therapies and nature of failure; complete medication regimen; requested dosing conforms to an FDA-approved regimen by indication. Documentation requires manual review.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months. No separate reauthorization clinical criteria are specified in this PDF.",
+      "Manual review: PS/PsA: 150 mg SC at week 0, week 4, then every 12 weeks. CD: initial 600 mg IV at weeks 0/4/8; maintenance 180\u2013360 mg SC at week 12 then every 8 weeks. UC: initial 1200 mg IV at weeks 0/4/8; maintenance 180\u2013360 mg SC at week 12 then every 8 weeks. Use the lowest effective maintenance dose for CD/UC. Route, dosing and quantity are not numerically enforced.",
+      "Cautions (notes only): evaluate for tuberculosis (TB) before initiating treatment; avoid active TB. Monitor liver function tests (LFT), alkaline phosphatase and bilirubin during IBD treatment. Live vaccines are not recommended.",
+      "PDL context: all SKYRIZI rows are non_preferred / OFF in CYTOKINE AND CAM ANTAGONISTS. Preferred peers without packs include Humira, Hadlima, Rinvoq and preferred infliximab products (notes only). Linked alternatives require indication-specific review and do not imply confirmed coverage.",
+      "This pack remains partial: initial documentation, reauthorization duration, monitoring, cautions, dosing and quantity enforcement require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "FDA-labeled indication",
+        "options": [
+          {
+            "value": "plaque_psoriasis",
+            "label": "Moderate-to-severe plaque psoriasis in adults who are candidates for systemic therapy or phototherapy"
+          },
+          {
+            "value": "psoriatic_arthritis",
+            "label": "Active psoriatic arthritis in adults"
+          },
+          {
+            "value": "crohns_disease",
+            "label": "Moderately to severely active Crohn\u2019s disease in adults"
+          },
+          {
+            "value": "ulcerative_colitis",
+            "label": "Moderately to severely active ulcerative colitis in adults"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age",
+        "option_style": "age_bands"
+      },
+      "tnf_blocker_failure": {
+        "type": "select",
+        "label": "Prior TNF blocker failure",
+        "options": [
+          {
+            "value": "trial_failure",
+            "label": "Trialed and failed a TNF blocker"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "additional_prior_therapy": {
+        "type": "select",
+        "label": "Additional prior therapy",
+        "options": [
+          {
+            "value": "trial_failure_including_topical",
+            "label": "Trialed and failed \u22651 other therapy including \u22651 topical agent (PsO)"
+          },
+          {
+            "value": "trial_failure",
+            "label": "Trialed and failed \u22651 other therapy (PsA / CD e.g. mesalamine, sulfasalazine, corticosteroid / UC e.g. azathioprine, cyclosporine, mesalamine)"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "pasi_status": {
+        "type": "select",
+        "label": "PASI \u226512 (or equivalent) (PsO approval #3).",
+        "options": [
+          {
+            "value": "pasi_gte_12",
+            "label": "PASI \u2265 12 (or equivalent)"
+          },
+          {
+            "value": "pasi_lt_12",
+            "label": "PASI < 12 (or equivalent)"
+          },
+          {
+            "value": "score_not_submitted",
+            "label": "PASI / equivalent not submitted"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      "psa_clinical_activity": {
+        "type": "select",
+        "label": "At least one clinical manifestation of active PsA (PsA approval #3).",
+        "options": [
+          {
+            "value": "actively_inflamed_joints",
+            "label": "Actively inflamed joints"
+          },
+          {
+            "value": "dactylitis",
+            "label": "Dactylitis"
+          },
+          {
+            "value": "enthesitis",
+            "label": "Enthesitis"
+          },
+          {
+            "value": "axial_disease",
+            "label": "Axial disease"
+          },
+          {
+            "value": "active_skin_and_or_nail",
+            "label": "Active skin and/or nail involvement"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      "haq_di_baseline": {
+        "type": "select",
+        "label": "Baseline HAQ-DI (or equivalent) submitted (PsA approval #4; no score threshold specified).",
+        "options": [
+          {
+            "value": "submitted",
+            "label": "Baseline HAQ-DI (or equivalent) submitted"
+          },
+          {
+            "value": "not_submitted",
+            "label": "Baseline HAQ-DI (or equivalent) not submitted"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      "cdai_status": {
+        "type": "select",
+        "label": "Baseline CDAI submitted and \u2265220 (CD approval #3 and #4).",
+        "options": [
+          {
+            "value": "cdai_gte_220",
+            "label": "Baseline CDAI submitted and \u2265 220"
+          },
+          {
+            "value": "cdai_lt_220",
+            "label": "Baseline CDAI < 220"
+          },
+          {
+            "value": "not_submitted",
+            "label": "Baseline CDAI not submitted"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "crohns_disease"
+          ]
+        }
+      },
+      "mms_status": {
+        "type": "select",
+        "label": "Baseline modified Mayo score (mMS) (or equivalent) submitted and \u22655 (UC approval #3 and #4).",
+        "options": [
+          {
+            "value": "mms_gte_5",
+            "label": "Baseline modified Mayo score (mMS) (or equivalent) submitted and \u2265 5"
+          },
+          {
+            "value": "mms_lt_5",
+            "label": "Baseline modified Mayo score (mMS) (or equivalent) < 5"
+          },
+          {
+            "value": "not_submitted",
+            "label": "Baseline modified Mayo score (mMS) (or equivalent) not submitted"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ulcerative_colitis"
+          ]
+        }
+      },
+      "no_active_clinically_significant_infection": {
+        "type": "select",
+        "label": "No active clinically significant infection (denial #2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_receiving_phototherapy": {
+        "type": "select",
+        "label": "Not receiving phototherapy (denial #3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_receiving_another_biologic": {
+        "type": "select",
+        "label": "Not receiving another biologic response modifying agent (denial #4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": null,
+      "notes": "Manual review: PS/PsA: 150 mg SC at week 0, week 4, then every 12 weeks. CD: initial 600 mg IV at weeks 0/4/8; maintenance 180\u2013360 mg SC at week 12 then every 8 weeks. UC: initial 1200 mg IV at weeks 0/4/8; maintenance 180\u2013360 mg SC at week 12 then every 8 weeks. Use the lowest effective maintenance dose for CD/UC. Route, dosing and quantity are not numerically enforced."
+    }
   },
   "soliris": {
     "drug": {
@@ -10430,7 +10938,8 @@
     "criteria": [],
     "alternatives": [
       "entyvio",
-      "stelara"
+      "stelara",
+      "skyrizi"
     ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
@@ -11916,7 +12425,8 @@
     "criteria": [],
     "alternatives": [
       "entyvio",
-      "stelara"
+      "stelara",
+      "skyrizi"
     ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."

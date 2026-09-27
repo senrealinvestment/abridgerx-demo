@@ -63,7 +63,7 @@ Live clinician PA-check demo (advisory; published AK criteria):
 - **Deploy source (public mirror for Vercel Git):** https://github.com/senrealinvestment/abridgerx-demo  
   Private canonical repo remains https://github.com/senrealinvestment/abridgerx — grant the Vercel GitHub App access to link it directly later.
 - Framework: FastAPI (`app.py` entry + `vercel.json`). Rules engine only; no TypeSafe / SYSTEM_ONE keys in the client.
-- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 40 partial / 158 text_only; includes Beqvez, Andembry, Actiq, Zolgensma, Mayzent, Mavenclad, Lemtrada, Tepezza, Praluent/Repatha, Soliris/Ultomiris, Hemlibra, Ocrevus/Ocrevus Zunovo, Kesimpta, Briumvi, Prolia/Xgeva, Evenity, Kevzara, Benlysta, Bimzelx, Infliximab, Stelara, Skyrizi, Tremfya and Zymfentra), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
+- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 41 partial / 157 text_only; includes Hemgenix, Beqvez, Andembry, Actiq, Zolgensma, Mayzent, Mavenclad, Lemtrada, Tepezza, Praluent/Repatha, Soliris/Ultomiris, Hemlibra, Ocrevus/Ocrevus Zunovo, Kesimpta, Briumvi, Prolia/Xgeva, Evenity, Kevzara, Benlysta, Bimzelx, Infliximab, Stelara, Skyrizi, Tremfya and Zymfentra), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
 
 
 Infliximab covers Avsola/Inflectra/Remicade/Renflexis across eight indications, with gated ages and prior therapies plus shared screening, infection, HF dosing and weight-submission criteria. HS requires neither age nor prior therapy. Duration, renewal, weight-based schedules and cautions remain manual review. Next alphabetical text-only brand: Actiq, followed by Amitiza; next biologic candidates: Evenity and Prolia.
@@ -87,3 +87,5 @@ Mayzent encodes adult CIS, RRMS and active SPMS, neurology specialty, baseline E
 Zolgensma encodes SMA eligibility for age <2 years, pediatric neurology specialty, SMN1 genetics, anti-AAV9 titer, baseline labs and treatment/safety exclusions. Duration, no reauthorization, lifetime quantity, dosing and liver cautions remain notes for manual review.
 
 Actiq encodes a closed cancer breakthrough pain indication, age ≥16, existing around-the-clock opioid therapy and opioid tolerance. TIRF REMS dispensing limitations, up-to-6-month authorization and 3-per-day quantity limit remain notes for manual review.
+
+Hemgenix encodes moderate to severe hemophilia B, three clinical eligibility paths, adult age, hematology specialty, Factor IX severity and exposure, inhibitor history/screen, hepatic imaging and four denial exclusions. No AAV neutralizing antibody test is required. Hemgenix and Beqvez have reciprocal alternative links. Documentation, initial 3-month duration, no reauthorization, lifetime infusion limit and post-dose monitoring remain notes for manual review.

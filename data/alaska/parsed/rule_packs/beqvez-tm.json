@@ -200,7 +200,9 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "hemgenix"
+  ],
   "notes": [
     "Partial encoding of Alaska Medicaid Beqvez (fidanacogene elaparvovec-dzkt), an AAV vector-based gene therapy for hemophilia B. Version: 1; Original: 8/12/2024; Accepted: 9/20/2024; Effective: 11/1/2024.",
     "Encoded: closed indication, separate clinical eligibility OR paths, approval criteria 1-8 and denial exclusions 2-5. Denial criterion 1 is failure to meet approval criteria.",
@@ -209,7 +211,7 @@
     "Cautions (notes only): monitor transaminase levels once weekly for three months following administration for possible hepatotoxicity.",
     "Cautions (notes only): patients with preexisting hepatocellular carcinoma risk factors should be monitored regularly for elevated alpha-fetoprotein (AFP) and receive abdominal ultrasound screenings for five years following administration.",
     "Remaining gaps: documentation verification, duration, no reauthorization, lifetime quantity enforcement and post-dose monitoring require manual review. Clinical findings, exposure days, testing and imaging are attestations.",
-    "PDL status unknown. No evaluate-linked alternatives; Hemgenix remains text_only."
+    "PDL status unknown. Evaluate-linked alternative: Hemgenix; peer eligibility requires its own criteria review."
   ],
   "fact_ui": {
     "indication": {

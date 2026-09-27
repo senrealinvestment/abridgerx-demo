@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 40,
-  "encoding_text_only": 158,
+  "encoding_partial": 41,
+  "encoding_text_only": 157,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -27,6 +27,7 @@
     "entyvio",
     "evenity",
     "fasenra",
+    "hemgenix",
     "hemlibra",
     "infliximab",
     "kesimpta",
@@ -48,5 +49,5 @@
     "zolgensma",
     "zymfentra"
   ],
-  "next_candidate": "hemgenix"
+  "next_candidate": "crysvita"
 }

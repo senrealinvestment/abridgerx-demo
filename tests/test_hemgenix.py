@@ -1,4 +1,4 @@
-"""Beqvez Alaska Medicaid Version 1 eligibility and catalog regressions."""
+"""Hemgenix Alaska Medicaid Version 1 eligibility and catalog regressions."""
 import gzip
 import json
 import sys
@@ -11,12 +11,12 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail, load_rule_pack_catalog
 
 BASE = ROOT / 'data/alaska/parsed'
-PATHS = ['on_fix_ix_prophylaxis', 'current_or_historical_life_threatening_hemorrhage',
+PATHS = ['on_factor_ix_prophylaxis', 'current_or_historical_life_threatening_hemorrhage',
          'repeated_serious_spontaneous_bleeding']
 
 
 def pack():
-    return json.loads((BASE / 'rule_packs/beqvez-tm.json').read_text())
+    return json.loads((BASE / 'rule_packs/hemgenix.json').read_text())
 
 
 def facts(**updates):
@@ -25,7 +25,6 @@ def facts(**updates):
                      prescriber_specialty='hematologist',
                      factor_ix_level_moderate_severe='lte_2_percent_or_lt_2_iu_dl',
                      factor_ix_exposure_days_gt_150=True,
-                     no_neutralizing_antibodies_aavrh74var_fda_test=True,
                      no_fix_ix_inhibitors_screen_within_2w_le_0_5_bu='no_history_and_screen_le_0_5_bu_within_2_weeks',
                      hepatic_ultrasound_and_elastography_done=True,
                      no_active_hepatitis_b_or_c=True, no_uncontrolled_hiv=True,
@@ -69,7 +68,7 @@ def test_approval_denial_and_missing_facts():
 
 
 def test_gated_clinical_select_and_every_ui_option():
-    fields = {f['key']: f for f in drug_detail('beqvez-tm')['fact_fields']}
+    fields = {f['key']: f for f in drug_detail('hemgenix')['fact_fields']}
     assert set(fields) == set(facts())
     assert [o['value'] for o in fields['indication']['options']] == ['hemophilia_b_moderate_severe']
     gate = {'fact': 'indication', 'in': ['hemophilia_b_moderate_severe']}
@@ -96,16 +95,16 @@ def test_gated_clinical_select_and_every_ui_option():
 
 def test_metadata_notes_and_catalog():
     p = pack()
-    assert p['drug'] == dict(name='Beqvez', generic_name='fidanacogene elaparvovec-dzkt', therapeutic_class='cell-and-gene-therapy')
+    assert p['drug'] == dict(name='Hemgenix', generic_name='etranacogene dezaparvovec-drlb', therapeutic_class='cell-and-gene-therapy')
     assert p['encoding_status'] == 'partial'
-    assert p['source']['effective_date'] == '2024-11-01'
-    assert p['source']['citation'] == 'https://health.alaska.gov/media/zoqnk40b/beqvez_criteria.pdf'
-    assert p['source']['criteria_pdf'] == 'data/alaska/raw/beqvez_criteria.pdf'
-    assert p['alternatives'] == ['hemgenix'] and p['max_units'] is None
+    assert p['source']['effective_date'] == '2023-06-01'
+    assert p['source']['citation'] == 'https://health.alaska.gov/media/pyydcag1/5bii-hemgenix_criteria_2023.pdf'
+    assert p['source']['criteria_pdf'] == 'data/alaska/raw/5bii-hemgenix_criteria_2023.pdf'
+    assert p['alternatives'] == ['beqvez-tm'] and p['max_units'] is None
     assert 'inferred_required_facts' not in p
-    assert len(p['criteria']) == 13
+    assert len(p['criteria']) == 12
     assert {f for c in p['criteria'] for f in c['required_facts']} == set(facts())
-    for text in ['Version: 1', '8/12/2024', '9/20/2024', '11/1/2024', '3 months',
+    for text in ['Version: 1', '1/25/2023', '4/21/2023', '6/1/2023', '3 months',
                  'no reauthorization', 'one infusion per lifetime', 'J3590', 'weekly',
                  'five years', 'alpha-fetoprotein', 'manual review']:
         assert text in ' '.join(p['notes'])
@@ -117,12 +116,19 @@ def test_metadata_notes_and_catalog():
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
-    assert (BASE / 'beqvez-tm.json').read_bytes() == (BASE / 'rule_packs/beqvez-tm.json').read_bytes()
-    assert catalog['hemgenix']['encoding_status'] == 'partial'
-    assert catalog['hemgenix']['alternatives'] == ['beqvez-tm']
+    assert (BASE / 'hemgenix.json').read_bytes() == (BASE / 'rule_packs/hemgenix.json').read_bytes()
+    assert catalog['beqvez-tm']['encoding_status'] == 'partial'
+    assert catalog['beqvez-tm']['alternatives'] == ['hemgenix']
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
     assert status['encoding_partial'] == 41 and status['encoding_text_only'] == 157
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     assert status['next_candidate'] == 'crysvita'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
+
+
+def test_no_aav_antibody_requirement():
+    antibody = 'no_neutralizing_antibodies_aavrh74var_fda_test'
+    assert 'aavrh74var' not in json.dumps(pack()).lower()
+    for extra in [{}, {antibody: False}, {antibody: True}]:
+        assert evaluate(pack(), facts(**extra)).decision == 'pass'

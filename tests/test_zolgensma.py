@@ -96,8 +96,8 @@ def test_metadata_notes_and_catalog():
         assert text in ' '.join(p['notes'])
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 40
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 158
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 41
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 157
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
@@ -105,9 +105,9 @@ def test_metadata_notes_and_catalog():
     assert (BASE / 'zolgensma.json').read_bytes() == (BASE / 'rule_packs/zolgensma.json').read_bytes()
     assert catalog['actiq']['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 40 and status['encoding_text_only'] == 158
+    assert status['encoding_partial'] == 41 and status['encoding_text_only'] == 157
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'hemgenix'
+    assert status['next_candidate'] == 'crysvita'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
 

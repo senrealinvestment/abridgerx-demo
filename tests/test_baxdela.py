@@ -82,11 +82,11 @@ def test_catalog_metadata_notes_and_ui():
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 174
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 24
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 175
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 23
     for folder in [BASE, BASE.parent]:
         status = json.loads((folder/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (174, 24)
-        assert status['next_candidate'] == 'rybix-odt'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (175, 23)
+        assert status['next_candidate'] == 'lyrica'
         assert status['partial_slugs'] == sorted(k for k,p in catalog.items() if p['encoding_status']=='partial')
     assert catalog['bone-resorption-inhibitors']['encoding_status'] == 'partial'

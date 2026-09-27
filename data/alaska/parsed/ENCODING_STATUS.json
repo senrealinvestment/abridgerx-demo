@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 174,
-  "encoding_text_only": 24,
+  "encoding_partial": 175,
+  "encoding_text_only": 23,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -132,6 +132,7 @@
     "rezdiffratm",
     "rhapsido",
     "roctavian",
+    "rybix-odt",
     "rystiggo",
     "serostim",
     "skyclarys",
@@ -182,5 +183,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "rybix-odt"
+  "next_candidate": "lyrica"
 }

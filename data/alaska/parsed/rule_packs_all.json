@@ -45080,7 +45080,8 @@
   "rybix-odt": {
     "drug": {
       "name": "Rybix ODT",
-      "therapeutic_class": "analgesics-opioid-reversal-agents"
+      "therapeutic_class": "analgesics-opioid-reversal-agents",
+      "generic_name": "tramadol HCl"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -45091,16 +45092,195 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Management of moderate to moderately severe pain in adults",
+        "citation": "https://health.alaska.gov/media/ti0msiqr/rybix-odt-pa.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "moderate_to_moderately_severe_pain"
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Recipient is 17 years of age or older",
+        "citation": "https://health.alaska.gov/media/ti0msiqr/rybix-odt-pa.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 17
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "moderate_to_moderately_severe_pain"
+          ]
+        }
+      },
+      {
+        "id": "cumulative_tramadol_dose_le_400mg_day",
+        "text": "Cumulative tramadol dose across all products does not exceed 400 mg/day",
+        "citation": "https://health.alaska.gov/media/ti0msiqr/rybix-odt-pa.pdf",
+        "required_facts": [
+          "cumulative_tramadol_dose_le_400mg_day"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "cumulative_tramadol_dose_le_400mg_day",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "moderate_to_moderately_severe_pain"
+          ]
+        }
+      },
+      {
+        "id": "formulation_requirement",
+        "text": "Trial and treatment failure of immediate-release tramadol OR Documented inability to swallow or medical rationale requiring ODT over immediate-release oral tablets",
+        "citation": "https://health.alaska.gov/media/ti0msiqr/rybix-odt-pa.pdf",
+        "required_facts": [
+          "failed_tramadol_ir",
+          "unable_to_swallow_or_odt_rationale"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "failed_tramadol_ir",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "unable_to_swallow_or_odt_rationale",
+              "value": true
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "moderate_to_moderately_severe_pain"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Rybix ODT (tramadol HCl) approval criteria. Clinical attestations require manual verification. The source adult indication is paired with the explicit approval age threshold of 17 years.",
+      "Available strength: 50 mg orally disintegrating tablets.",
+      "Authorization (notes only): coverage may be approved up to 6 months.",
+      "Dispensing (notes only): 30-day supply; quantity limit 8 doses/day. If co-administered with other tramadol products (IR, ER, or tramadol/acetaminophen), reduce the dispensing limit accordingly so total tramadol does not exceed 400 mg/day. Example: tramadol ER 300 mg/day plus ODT up to 2 doses/day totals 400 mg/day.",
+      "Source: Version 1; Last updated 3/20/2013; Approved 4/19/2013. Existing effective_date 2020-01-06 retained as a metadata stub; the source does not state an effective date."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Management of moderate to moderately severe pain in adults",
+        "options": [
+          {
+            "value": "moderate_to_moderately_severe_pain",
+            "label": "Management of moderate to moderately severe pain in adults"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Recipient is 17 years of age or older",
+        "options": [
+          {
+            "value": "17",
+            "label": "17 years or older"
+          },
+          {
+            "value": "16",
+            "label": "Younger than 17 years"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "moderate_to_moderately_severe_pain"
+          ]
+        }
+      },
+      "cumulative_tramadol_dose_le_400mg_day": {
+        "type": "select",
+        "label": "Cumulative tramadol dose across all products does not exceed 400 mg/day",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "moderate_to_moderately_severe_pain"
+          ]
+        }
+      },
+      "failed_tramadol_ir": {
+        "type": "select",
+        "label": "Trial and treatment failure of immediate-release tramadol",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "moderate_to_moderately_severe_pain"
+          ]
+        }
+      },
+      "unable_to_swallow_or_odt_rationale": {
+        "type": "select",
+        "label": "Documented inability to swallow or medical rationale requiring ODT over immediate-release oral tablets",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "moderate_to_moderately_severe_pain"
+          ]
+        }
+      }
+    }
   },
   "rystiggo": {
     "drug": {

@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 97,
-  "encoding_text_only": 101,
+  "encoding_partial": 98,
+  "encoding_text_only": 100,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -57,6 +57,7 @@
     "imcivree",
     "infliximab",
     "isturisa",
+    "jascayd",
     "kalydeco",
     "kesimpta",
     "kevzara",
@@ -105,5 +106,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "jascayd"
+  "next_candidate": "redemplo"
 }

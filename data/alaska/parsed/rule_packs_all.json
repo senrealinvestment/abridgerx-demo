@@ -17948,7 +17948,8 @@
   "jascayd": {
     "drug": {
       "name": "Jascayd",
-      "therapeutic_class": "respiratory"
+      "therapeutic_class": "pde4-inhibitor",
+      "generic_name": "nerandomilast"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -17959,17 +17960,308 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Treatment of idiopathic pulmonary fibrosis (IPF) or progressive pulmonary fibrosis (PPF) in adults.",
+        "citation": "https://health.alaska.gov/media/h3yphwc0/jascayd_criteria.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "idiopathic_pulmonary_fibrosis",
+            "progressive_pulmonary_fibrosis"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 18 years old (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/h3yphwc0/jascayd_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a pulmonologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/h3yphwc0/jascayd_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "pulmonologist",
+            "pulmonologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "other_known_causes_of_ild_ruled_out",
+        "text": "Other known causes of interstitial lung disease, including environmental exposure, drug toxicity and connective tissue disease, ruled out (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/h3yphwc0/jascayd_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "other_known_causes_of_ild_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "other_known_causes_of_ild_ruled_out",
+          "value": true
+        }
+      },
+      {
+        "id": "fvc_percent_predicted_ge_45_within_60_days",
+        "text": "Documented pulmonary function test within the past 60 days shows FVC \u226545% predicted (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/h3yphwc0/jascayd_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "fvc_percent_predicted_ge_45_within_60_days"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "fvc_percent_predicted_ge_45_within_60_days",
+          "value": true
+        }
+      },
+      {
+        "id": "dlco_hb_corrected_percent_predicted_ge_25",
+        "text": "Baseline DLCO, corrected for hemoglobin, \u226525% predicted (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/h3yphwc0/jascayd_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "dlco_hb_corrected_percent_predicted_ge_25"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "dlco_hb_corrected_percent_predicted_ge_25",
+          "value": true
+        }
+      },
+      {
+        "id": "ipf_confirmed_by",
+        "text": "IPF confirmed by lung biopsy OR high-resolution computed tomography (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/h3yphwc0/jascayd_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "ipf_confirmed_by"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ipf_confirmed_by",
+          "values": [
+            "lung_biopsy",
+            "high_resolution_ct"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "idiopathic_pulmonary_fibrosis"
+          ]
+        }
+      },
+      {
+        "id": "ppf_consistent_with_guidelines",
+        "text": "PPF diagnosis consistent with current, established guidelines (approval criterion 7).",
+        "citation": "https://health.alaska.gov/media/h3yphwc0/jascayd_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "ppf_consistent_with_guidelines"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ppf_consistent_with_guidelines",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "progressive_pulmonary_fibrosis"
+          ]
+        }
+      },
+      {
+        "id": "no_moderate_or_strong_cyp3a_inducer",
+        "text": "Jascayd is not used in combination with a moderate or strong CYP3A inducer (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/h3yphwc0/jascayd_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "no_moderate_or_strong_cyp3a_inducer"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_moderate_or_strong_cyp3a_inducer",
+          "value": true
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "alternatives": [
+      "ofev",
+      "esbriet"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Medicaid Jascayd (nerandomilast) Criteria Version 1: Original 12/19/2025; Accepted 01/16/2026; Effective 03/01/2026.",
+      "Encoded: two closed indications, shared approval criteria 1\u20135, indication-specific confirmation criteria 6\u20137, and denial criterion 2. Denial criterion 1 (failure to meet approval criteria) is represented by approval clauses. Clinical documentation attestations require manual review.",
+      "Cautions (notes only): dose modification may be necessary with concomitant strong CYP3A inhibitors; diarrhea was the most commonly reported side effect.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to one year.",
+      "Quantity limit (notes only): 60 tablets per 30 days. Numeric quantity enforcement is not encoded.",
+      "Documentation verification, monitoring, duration, reauthorization and quantity limits require manual review. Ofev and Esbriet are alternatives subject to their own indication and eligibility criteria."
+    ],
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Treatment of idiopathic pulmonary fibrosis (IPF) or progressive pulmonary fibrosis (PPF) in adults.",
+        "options": [
+          {
+            "value": "idiopathic_pulmonary_fibrosis",
+            "label": "Idiopathic pulmonary fibrosis"
+          },
+          {
+            "value": "progressive_pulmonary_fibrosis",
+            "label": "Progressive pulmonary fibrosis"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old (approval criterion 1).",
+        "options": [
+          {
+            "value": "17",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a pulmonologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "pulmonologist",
+            "label": "Pulmonologist"
+          },
+          {
+            "value": "pulmonologist_consult",
+            "label": "In consultation with a pulmonologist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "other_known_causes_of_ild_ruled_out": {
+        "type": "select",
+        "label": "Other known causes of interstitial lung disease, including environmental exposure, drug toxicity and connective tissue disease, ruled out (approval criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "fvc_percent_predicted_ge_45_within_60_days": {
+        "type": "select",
+        "label": "Documented pulmonary function test within the past 60 days shows FVC \u226545% predicted (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "dlco_hb_corrected_percent_predicted_ge_25": {
+        "type": "select",
+        "label": "Baseline DLCO, corrected for hemoglobin, \u226525% predicted (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "ipf_confirmed_by": {
+        "type": "select",
+        "label": "IPF confirmed by lung biopsy OR high-resolution computed tomography (approval criterion 6).",
+        "options": [
+          {
+            "value": "lung_biopsy",
+            "label": "Lung biopsy"
+          },
+          {
+            "value": "high_resolution_ct",
+            "label": "High-resolution CT"
+          },
+          {
+            "value": "not_met",
+            "label": "Neither confirmation documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "idiopathic_pulmonary_fibrosis"
+          ]
+        }
+      },
+      "ppf_consistent_with_guidelines": {
+        "type": "select",
+        "label": "PPF diagnosis consistent with current, established guidelines (approval criterion 7).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "progressive_pulmonary_fibrosis"
+          ]
+        }
+      },
+      "no_moderate_or_strong_cyp3a_inducer": {
+        "type": "select",
+        "label": "Jascayd is not used in combination with a moderate or strong CYP3A inducer (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "juxtapid": {
     "drug": {

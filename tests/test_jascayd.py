@@ -1,4 +1,4 @@
-"""Ofev's three indication branches, threshold attestations and catalog integration."""
+"""Jascayd closed indications, shared gates, confirmation branches and catalog integration."""
 import gzip
 import json
 import sys
@@ -14,22 +14,15 @@ from ui.loaders import drug_detail, load_rule_pack_catalog
 
 BASE = ROOT / 'data/alaska/parsed'
 IPF = 'idiopathic_pulmonary_fibrosis'
-SSC = 'ssc_associated_ild'
-CF = 'chronic_fibrosing_ild_progressive_phenotype'
-SHARED = {'nonsmoker_or_abstinent_ge_6_weeks', 'baseline_liver_function_test_obtained',
-          'no_moderate_to_severe_hepatic_impairment', 'not_combined_with_esbriet'}
-FVC40 = 'fvc_percent_predicted_ge_40_within_60_days'
-BRANCHES = {
-    IPF: {'ipf_confirmed_by', 'other_known_causes_of_ild_ruled_out', FVC40, 'dlco_percent_predicted_ge_30'},
-    SSC: {'ssc_ild_confirmed_by_hrct', FVC40},
-    CF: {'chronic_fibrosing_ild_progressive_phenotype_diagnosed',
-         'fvc_percent_predicted_ge_45_within_60_days', 'dlco_percent_predicted_30_to_79'},
-}
+PPF = 'progressive_pulmonary_fibrosis'
+SHARED = {'other_known_causes_of_ild_ruled_out', 'fvc_percent_predicted_ge_45_within_60_days',
+          'dlco_hb_corrected_percent_predicted_ge_25', 'no_moderate_or_strong_cyp3a_inducer'}
+BRANCHES = {IPF: {'ipf_confirmed_by'}, PPF: {'ppf_consistent_with_guidelines'}}
 GATED = set.union(*BRANCHES.values())
 
 
 def pack():
-    return json.loads((BASE / 'rule_packs/ofev.json').read_text())
+    return json.loads((BASE / 'rule_packs/jascayd.json').read_text())
 
 
 def patient(indication):
@@ -90,7 +83,7 @@ def test_closed_indication_and_gating():
 
 def test_ui_options_and_exact_branch_gates():
     p = pack()
-    fields = {f['key']: f for f in drug_detail('ofev')['fact_fields']}
+    fields = {f['key']: f for f in drug_detail('jascayd')['fact_fields']}
     assert set(fields) == GATED | SHARED | {'indication', 'age_years', 'prescriber_specialty'}
     for fact, field in fields.items():
         clause = next(c for c in p['criteria'] if c['required_facts'] == [fact])
@@ -113,29 +106,27 @@ def test_ui_options_and_exact_branch_gates():
                 result = evaluate(p, _coerce_patient(dict(patient(indication), **{fact: value})))
                 assert result.decision == ('pass' if value in passing.get(fact, {'yes'}) else 'fail')
     assert {o['value'] for o in fields['ipf_confirmed_by']['options']} == {'lung_biopsy', 'high_resolution_ct', 'not_met'}
-    for fact, terms in [(FVC40, ['≥40%', '60 days']), ('fvc_percent_predicted_ge_45_within_60_days', ['≥45%', '60 days']),
-                        ('dlco_percent_predicted_30_to_79', ['30–79%'])]:
+    for fact, terms in [('fvc_percent_predicted_ge_45_within_60_days', ['≥45%', '60 days']),
+                        ('dlco_hb_corrected_percent_predicted_ge_25', ['≥25%', 'hemoglobin'])]:
         assert all(term in fields[fact]['label'] for term in terms)
-    assert 'fvc_percent_predicted_ge_50_within_60_days' not in fields
 
 
 def test_metadata_and_catalog():
     p = pack()
-    assert p['drug'] == dict(name='Ofev', generic_name='nintedanib', therapeutic_class='respiratory')
-    assert p['source']['effective_date'] == '2021-03-15'
-    assert p['source']['citation'] == 'https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf'
+    assert p['drug'] == dict(name='Jascayd', generic_name='nerandomilast', therapeutic_class='pde4-inhibitor')
+    assert p['source']['effective_date'] == '2026-03-01'
+    assert p['source']['citation'] == 'https://health.alaska.gov/media/h3yphwc0/jascayd_criteria.pdf'
     assert (ROOT / p['source']['criteria_pdf']).exists()
-    assert p['encoding_status'] == 'partial' and len(p['criteria']) == 15
+    assert p['encoding_status'] == 'partial' and len(p['criteria']) == 9
     assert 'inferred_required_facts' not in p and p['max_units'] is None
     notes = ' '.join(p['notes'])
-    for term in ['Version 1', '12/02/20', '1/15/21', '3/15/21', 'ALT', 'AST', 'bilirubin',
-                 'perforation', 'diarrhea', 'fetal harm', 'contraception', 'bleeding',
-                 '3 months', '12 months', '60 × 100 mg', '60 × 150 mg', '30 days', 'manual review']:
+    for term in ['Version 1', '12/19/2025', '01/16/2026', '03/01/2026', 'strong CYP3A inhibitors',
+                 'diarrhea', '3 months', 'one year', '60 tablets per 30 days', 'manual review']:
         assert term in notes
-    assert (BASE / 'ofev.json').read_bytes() == (BASE / 'rule_packs/ofev.json').read_bytes()
+    assert (BASE / 'jascayd.json').read_bytes() == (BASE / 'rule_packs/jascayd.json').read_bytes()
     catalog = load_rule_pack_catalog()
-    assert catalog['ofev'] == p and p['alternatives'] == ['esbriet']
-    assert catalog['esbriet']['alternatives'] == ['ofev']
+    assert catalog['jascayd'] == p and p['alternatives'] == ['ofev', 'esbriet']
+    assert catalog['redemplo']['encoding_status'] == 'text_only'
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:

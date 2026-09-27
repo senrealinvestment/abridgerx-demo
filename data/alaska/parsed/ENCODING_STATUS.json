@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 178,
-  "encoding_text_only": 20,
+  "encoding_partial": 179,
+  "encoding_text_only": 19,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -113,6 +113,7 @@
     "ofev",
     "opsumit",
     "opzelura",
+    "oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme",
     "orexin-receptor-antagonists",
     "orilissa",
     "orkambi",
@@ -186,5 +187,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme"
+  "next_candidate": "metformin-er"
 }

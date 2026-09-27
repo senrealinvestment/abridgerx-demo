@@ -38203,16 +38203,338 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Opioid dependence only.",
+        "citation": "https://health.alaska.gov/media/2vymvpl4/5c-oral-buprenorphine-pa-20230420.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "opioid_dependence"
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 16 years old.",
+        "citation": "https://health.alaska.gov/media/2vymvpl4/5c-oral-buprenorphine-pa-20230420.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 16
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        }
+      },
+      {
+        "id": "mat_approval",
+        "text": "First 28 days of newly initiated MAT OR buprenorphine/naloxone at \u226424 mg/day OR PA treatment-plan, support, product and denial criteria satisfied.",
+        "citation": "https://health.alaska.gov/media/2vymvpl4/5c-oral-buprenorphine-pa-20230420.pdf",
+        "required_facts": [
+          "new_mat_first_28_days",
+          "daily_buprenorphine_le_24mg",
+          "single_ingredient_buprenorphine",
+          "mat_treatment_plan_on_record",
+          "regular_psychosocial_support",
+          "patient_pregnant_female",
+          "agreed_to_treatment_plan",
+          "prescriber_qualified_for_buprenorphine_mat",
+          "no_concomitant_other_opioids"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "new_mat_first_28_days",
+              "value": true
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "daily_buprenorphine_le_24mg",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "single_ingredient_buprenorphine",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "mat_treatment_plan_on_record",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "regular_psychosocial_support",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "agreed_to_treatment_plan",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "prescriber_qualified_for_buprenorphine_mat",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "no_concomitant_other_opioids",
+                  "value": true
+                },
+                {
+                  "op": "any",
+                  "args": [
+                    {
+                      "op": "eq",
+                      "fact": "single_ingredient_buprenorphine",
+                      "value": false
+                    },
+                    {
+                      "op": "all",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "fact": "single_ingredient_buprenorphine",
+                          "value": true
+                        },
+                        {
+                          "op": "eq",
+                          "fact": "patient_pregnant_female",
+                          "value": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Oral Buprenorphine Criteria: Version 2 Approved 09/21/2018, Effective 11/12/2018, Revised 4/21/2023 (standards of care); Version 2.1 Revised 5/19/2023 (PA criteria). Rules engine only; no TypeSafe.",
+      "No-PA arms: patients new to buprenorphine MAT within the most recent 60 days have no PA requirement for the first 28 days when initiating therapy; buprenorphine/naloxone \u226424 mg buprenorphine/day requires no PA. Above 24 mg/day requires PA. Age \u226516 and opioid dependence apply to all encoded arms; treatment-plan adherence, prescriber qualifications, other-opioid exclusion and single-ingredient pregnancy restriction apply on the PA arm.",
+      "Standards of care framework: accessibility, comprehensiveness, coordination and continuity. Includes patient-centric options, barriers to treatment, initial/follow-up care, behavioral health integration, HIV/Hep C screening and treatment, family planning, prenatal care, co-morbid conditions, family engagement, education, harm reduction and self-care; coordination with primary/specialty care, level-of-care escalation, social supports and peri-procedure planning; care management, team emphasis and exit/re-entry protocols.",
+      "Authorization (notes only): satisfactory Standards of Care Attestation application and commitment to minimum standards confers a 12-month prescriber blanket authorization; prescriptions filled during that period require no separate per-member PA. Otherwise individual PA may be authorized for up to 12 months and renewed. Prescribers failing to maintain standards must submit individual requests until deficiencies are resolved.",
+      "Prescriber responsibilities (notes only): if psychosocial support is provided elsewhere, maintain a coordinated shared care plan and copies with both practitioners; routinely screen for anxiety and mental health challenges and provide supportive access to care; establish a patient-centric chronic pain plan without opioids that optimizes non-opioid therapies; encourage Care Management Program (CMP) enrollment and refer as appropriate; request continuation authorization in time to prevent treatment interruption; maintain an up-to-date plan and review with the patient at least every six months, considering trial tapers to lower maintenance doses when stable and ready.",
+      "Dispensing limit (notes only): 34-day supply.",
+      "Maximum daily dose (notes only): buprenorphine (Suboxone/Subutex) 24 mg/day (three 8 mg films); Zubsolv 22.8 mg/day (two 11.4 mg tablets). PA is required above these thresholds. The source separately states a general buprenorphine/naloxone \u226424 mg no-PA pathway; the product-specific Zubsolv threshold requires manual review and is not numerically enforced by this partial pack.",
+      "Preferred medication: refer to the PDL at http://dhss.alaska.gov/dhcs/pages/pharmacy/medpriorauthoriz.aspx; no preferred-agent trial predicate is inferred from this referral.",
+      "Regulatory authority (notes only): 7 AAC 120.120, 120.130, 120.140; 42 USC 1396r-8; 42 CFR 456 Subpart K; 7 AAC 105.230(c) medical necessity, clinical effectiveness, cost-effectiveness, adverse effects and service-specific requirements. Newly FDA-approved drugs in reviewed classes are subject to the same DUR standards, including preferred-agent trials absent documented clinical contraindication. Covered outpatient drugs must meet 7 AAC 120.110; FDA approval without established clinical benefit does not qualify.",
+      "References (notes only): 12 AAC 40.975 controlled-substance prescribing; Mullin D and Martin S, Primary Care of Patients with Opioid Use Disorder, Alaska Primary Care Association (2017); SAMHSA Buprenorphine Waiver Management and NP/PA waiver qualification resources; SAMHSA PEP18 Treatment Locator; Center for Substance Abuse Treatment, Clinical Guidelines for the Use of Buprenorphine in the Treatment of Opioid Addiction, TIP 40, DHHS (SMA) 04-3939 (2004). Archived source references and regulatory language are retained as provenance, not newly imposed predicates."
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Indication",
+        "options": [
+          {
+            "value": "opioid_dependence",
+            "label": "Opioid dependence"
+          },
+          {
+            "value": "other",
+            "label": "Other indication"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "number",
+        "label": "Age (years)",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        }
+      },
+      "new_mat_first_28_days": {
+        "type": "select",
+        "label": "New to buprenorphine MAT within the most recent 60 days and requesting the first 28 days of initiating therapy (no PA).",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "daily_buprenorphine_le_24mg": {
+        "type": "select",
+        "label": "Receiving buprenorphine/naloxone at a daily buprenorphine dose of 24 mg or less (no PA; see Zubsolv dose note).",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "single_ingredient_buprenorphine": {
+        "type": "select",
+        "label": "Requested product is single-ingredient buprenorphine (e.g., Subutex), rather than buprenorphine/naloxone.",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "mat_treatment_plan_on_record": {
+        "type": "select",
+        "label": "Patient and prescriber have a defined MAT treatment plan, including functional goals, and projected timeline on record.",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "regular_psychosocial_support": {
+        "type": "select",
+        "label": "Patient is receiving regular psychosocial support.",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "patient_pregnant_female": {
+        "type": "select",
+        "label": "Patient is a pregnant female (required for single-ingredient buprenorphine on the PA path).",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "agreed_to_treatment_plan": {
+        "type": "select",
+        "label": "Patient has agreed to adhere to the treatment plan.",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "prescriber_qualified_for_buprenorphine_mat": {
+        "type": "select",
+        "label": "Prescriber meets all qualifications to prescribe buprenorphine-based products for opioid dependence.",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_concomitant_other_opioids": {
+        "type": "select",
+        "label": "No concomitant prescriptions for other opioids while receiving oral buprenorphine MAT.",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_dependence"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "orexin-receptor-antagonists": {
     "drug": {

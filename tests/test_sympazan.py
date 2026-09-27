@@ -83,15 +83,15 @@ def test_catalog():
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 178
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 20
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 179
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 19
     for root in (BASE, BASE.parent):
         status = json.loads((root / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (178, 20)
-        assert status['next_candidate'] == 'oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (179, 19)
+        assert status['next_candidate'] == 'metformin-er'
         assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for ext in ('json', 'md'):
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()
-    assert catalog['oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme']['encoding_status'] == 'text_only'
-    assert catalog['oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme']['criteria'] == []
-    assert evaluate(catalog['oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme'], FACTS).decision == 'need_info'
+    assert catalog['metformin-er']['encoding_status'] == 'text_only'
+    assert catalog['metformin-er']['criteria'] == []
+    assert evaluate(catalog['metformin-er'], FACTS).decision == 'need_info'

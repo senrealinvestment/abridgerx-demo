@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 32,
-  "encoding_text_only": 166,
+  "encoding_partial": 33,
+  "encoding_text_only": 165,
   "partial_slugs": [
     "adbry",
     "adcirca",
@@ -35,6 +35,7 @@
     "skyrizi",
     "soliris",
     "stelara",
+    "tepezza",
     "tezspire",
     "tremfya",
     "xolair",

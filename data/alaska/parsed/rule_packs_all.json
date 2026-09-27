@@ -16001,7 +16001,8 @@
   "tepezza": {
     "drug": {
       "name": "Tepezza",
-      "therapeutic_class": "other"
+      "therapeutic_class": "igf1r-inhibitor",
+      "generic_name": "teprotumumab-trbw"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -16012,18 +16013,284 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Thyroid Eye Disease with a confirmed diagnosis of Graves\u2019 disease (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/0u2eh20f/202211-tepezza_criteria_2022.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "thyroid_eye_disease"
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 18 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/0u2eh20f/202211-tepezza_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with ophthalmology, endocrinology, oculoplastic surgery or neuro-ophthalmology (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/0u2eh20f/202211-tepezza_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "ophthalmology_endocrinology_oculoplastic_or_neuroophth_or_consult"
+        }
+      },
+      {
+        "id": "thyroid_status",
+        "text": "Documented euthyroid status or mild hypo-/hyperthyroidism with FT4 and FT3 levels <50% above or below normal limits (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/0u2eh20f/202211-tepezza_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "thyroid_status"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "thyroid_status",
+          "values": [
+            "euthyroid",
+            "mild_hypo_or_hyper_ft4_ft3_within_50pct_normal"
+          ]
+        }
+      },
+      {
+        "id": "clinical_activity_score",
+        "text": "Documented Clinical Activity Score at least 4 in the more severely affected eye(s) (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/0u2eh20f/202211-tepezza_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "clinical_activity_score"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "clinical_activity_score",
+          "value": "cas_gte_4_worse_eye"
+        }
+      },
+      {
+        "id": "active_ted_daily_living_impact",
+        "text": "Active phase TED is non-sight threatening but significantly impacts daily living (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/0u2eh20f/202211-tepezza_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "active_ted_daily_living_impact"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "active_ted_daily_living_impact",
+          "value": "non_sight_threatening_significant_impact"
+        }
+      },
+      {
+        "id": "glucocorticoid_step",
+        "text": "Documented inadequate response to high-dose glucocorticoids for at least one month, or contraindication or intolerance (approval criterion 7).",
+        "citation": "https://health.alaska.gov/media/0u2eh20f/202211-tepezza_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "glucocorticoid_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "glucocorticoid_step",
+          "values": [
+            "inadequate_response_high_dose_gc_1mo",
+            "contraindication_or_intolerance_high_dose_gc"
+          ]
+        }
+      },
+      {
+        "id": "pregnancy_contraception_attestation",
+        "text": "For females of reproductive potential: not pregnant and appropriate contraception before, during and 6 months after the last infusion (approval criterion 8).",
+        "citation": "https://health.alaska.gov/media/0u2eh20f/202211-tepezza_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "pregnancy_contraception_attestation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pregnancy_contraception_attestation",
+          "values": [
+            "not_pregnant_contraception_before_during_6mo_after",
+            "not_applicable_male_or_not_of_reproductive_potential"
+          ]
+        }
+      },
+      {
+        "id": "diabetes_controlled",
+        "text": "Patient does not have poorly or uncontrolled diabetes (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/0u2eh20f/202211-tepezza_criteria_2022.pdf#denial-criteria",
+        "required_facts": [
+          "diabetes_controlled"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "diabetes_controlled",
+          "value": "no_poorly_uncontrolled_diabetes"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Tepezza (teprotumumab-trbw), an IGF-1R inhibitor. Version 1; Original 09/26/2022; Approval 11/18/22; Effective 1/2/2023.",
+      "Encoded: approval criteria 1\u20138 and denial criterion 2. The closed thyroid_eye_disease indication explicitly attests to Graves\u2019 disease with TED (approval criterion 3). Denial criterion 1 is failure to meet approval criteria.",
+      "Thyroid status attestation requires FT4 AND FT3 levels <50% above or below normal limits for mild hypo-/hyperthyroidism; the option name is shorthand, not an inclusive 50% boundary.",
+      "Active TED impact examples: lid retraction \u22652 mm, moderate or severe soft tissue involvement, exophthalmos \u22653 mm above normal for race and gender, and/or inconstant or constant diplopia. These are examples within one attestation, not separate mandatory predicates.",
+      "Duration (notes only): initial approval 6 months; reauthorization not approved. Treatment is 8 infusions total given every 3 weeks.",
+      "Quantity/dosing (notes only): 10 mg/kg for the first infusion, followed by 20 mg/kg every 3 weeks for 7 additional infusions. HCPCS J3490. max_units is null; dosing and quantity are not evaluated.",
+      "Cautions (notes only): if an infusion reaction occurs, interrupt or slow infusion and use appropriate medical management. Monitor preexisting IBD for flare; discontinue if IBD worsens. Monitor glucose in all patients and treat hyperglycemia with glycemic control medications.",
+      "Documentation verification, duration, no reauthorization, infusion count, dosing, quantity and cautions require manual review; this pack remains partial. No PDL hit; pdl_status remains unknown."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Thyroid Eye Disease with a confirmed diagnosis of Graves\u2019 disease (approval criterion 3).",
+        "options": [
+          {
+            "value": "thyroid_eye_disease",
+            "label": "Thyroid Eye Disease (Graves\u2019 disease with TED)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with ophthalmology, endocrinology, oculoplastic surgery or neuro-ophthalmology (approval criterion 2).",
+        "options": [
+          {
+            "value": "ophthalmology_endocrinology_oculoplastic_or_neuroophth_or_consult",
+            "label": "Qualifying specialist or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "thyroid_status": {
+        "type": "select",
+        "label": "Documented euthyroid status or mild hypo-/hyperthyroidism with FT4 and FT3 levels <50% above or below normal limits (approval criterion 4).",
+        "options": [
+          {
+            "value": "euthyroid",
+            "label": "Euthyroid"
+          },
+          {
+            "value": "mild_hypo_or_hyper_ft4_ft3_within_50pct_normal",
+            "label": "Mild hypo-/hyperthyroidism: FT4 and FT3 <50% above/below normal limits"
+          },
+          {
+            "value": "uncontrolled_or_not_documented",
+            "label": "Uncontrolled or not documented"
+          }
+        ]
+      },
+      "clinical_activity_score": {
+        "type": "select",
+        "label": "Documented Clinical Activity Score at least 4 in the more severely affected eye(s) (approval criterion 5).",
+        "options": [
+          {
+            "value": "cas_gte_4_worse_eye",
+            "label": "CAS \u22654 in worse eye(s)"
+          },
+          {
+            "value": "cas_lt_4_or_not_documented",
+            "label": "CAS <4 or not documented"
+          }
+        ]
+      },
+      "active_ted_daily_living_impact": {
+        "type": "select",
+        "label": "Active phase TED is non-sight threatening but significantly impacts daily living (approval criterion 6).",
+        "options": [
+          {
+            "value": "non_sight_threatening_significant_impact",
+            "label": "Active, non-sight-threatening TED with significant daily living impact"
+          },
+          {
+            "value": "sight_threatening_or_not_documented",
+            "label": "Sight threatening or qualifying active TED impact not documented"
+          }
+        ]
+      },
+      "glucocorticoid_step": {
+        "type": "select",
+        "label": "Documented inadequate response to high-dose glucocorticoids for at least one month, or contraindication or intolerance (approval criterion 7).",
+        "options": [
+          {
+            "value": "inadequate_response_high_dose_gc_1mo",
+            "label": "Inadequate response to \u22651 month of high-dose glucocorticoids"
+          },
+          {
+            "value": "contraindication_or_intolerance_high_dose_gc",
+            "label": "Contraindication or intolerance to high-dose glucocorticoids"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying glucocorticoid step"
+          }
+        ]
+      },
+      "pregnancy_contraception_attestation": {
+        "type": "select",
+        "label": "For females of reproductive potential: not pregnant and appropriate contraception before, during and 6 months after the last infusion (approval criterion 8).",
+        "options": [
+          {
+            "value": "not_pregnant_contraception_before_during_6mo_after",
+            "label": "Not pregnant; contraception before, during and 6 months after last infusion"
+          },
+          {
+            "value": "not_applicable_male_or_not_of_reproductive_potential",
+            "label": "Not applicable: male or not of reproductive potential"
+          },
+          {
+            "value": "pregnant_or_no_contraception_plan",
+            "label": "Pregnant or no qualifying contraception plan"
+          }
+        ]
+      },
+      "diabetes_controlled": {
+        "type": "select",
+        "label": "Patient does not have poorly or uncontrolled diabetes (denial criterion 2).",
+        "options": [
+          {
+            "value": "no_poorly_uncontrolled_diabetes",
+            "label": "No poorly or uncontrolled diabetes"
+          },
+          {
+            "value": "poorly_or_uncontrolled_diabetes",
+            "label": "Poorly or uncontrolled diabetes"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "tezspire": {
     "drug": {

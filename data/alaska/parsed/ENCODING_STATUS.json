@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 66,
-  "encoding_text_only": 132,
+  "encoding_partial": 67,
+  "encoding_text_only": 131,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -41,6 +41,7 @@
     "emflaza",
     "empaveli",
     "entyvio",
+    "esbriet",
     "evenity",
     "evkeeza",
     "fabhalta",
@@ -74,5 +75,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "esbriet"
+  "next_candidate": "kalydeco"
 }

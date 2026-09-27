@@ -51841,15 +51841,132 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Statin request path: preferred atorvastatin, lovastatin, pravastatin or simvastatin, or another statin.",
+        "citation": "https://health.alaska.gov/media/u5mplqto/statin-criteria-v2.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "preferred_statin",
+            "other_statin"
+          ]
+        }
+      },
+      {
+        "id": "hypercholesterolemia_or_hyperlipidemia",
+        "text": "Treatment of hypercholesterolemia or hyperlipidemia.",
+        "citation": "https://health.alaska.gov/media/u5mplqto/statin-criteria-v2.pdf",
+        "required_facts": [
+          "hypercholesterolemia_or_hyperlipidemia"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hypercholesterolemia_or_hyperlipidemia",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preferred_statin",
+            "other_statin"
+          ]
+        }
+      },
+      {
+        "id": "preferred_statin_75_of_90_days_inadequate_ldl_or_adr",
+        "text": "Patient has compliantly taken atorvastatin, lovastatin, pravastatin or simvastatin for 75 of the last 90 days without acceptable LDL reduction OR experienced an adverse drug reaction with those preferred agents.",
+        "citation": "https://health.alaska.gov/media/u5mplqto/statin-criteria-v2.pdf",
+        "required_facts": [
+          "preferred_statin_75_of_90_days_inadequate_ldl_or_adr"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "preferred_statin_75_of_90_days_inadequate_ldl_or_adr",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "other_statin"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Statin Electronic Step-Edit Criteria: when electronic step-edit does not result in automatic coverage, these criteria determine coverage. Rules engine is the sole eligibility evaluator.",
+      "Listed agents: Advicor, Altoprev, Crestor, Lescol, Lescol XL, Lovastatin, Lipitor, Livalo, Mevacor, Pravachol, Pravastatin, Simcor, Simvastatin, Vytorin and Zocor.",
+      "FDA approved indications vary by product; all products are used for hypercholesterolemia or hyperlipidemia. Consult product prescribing information for the complete indications. No product-specific indication lists are encoded.",
+      "Coverage is given for atorvastatin, lovastatin, pravastatin or simvastatin. Other statins require compliant preferred-agent use for 75 of the last 90 days without acceptable LDL reduction OR an adverse drug reaction with the preferred agents. The ADR alternative does not require a 75-day trial.",
+      "Dispensing (notes only): 30-day supply. Quantity limit is 1 tablet/day except Lescol, Mevacor and Lovastatin: 2 tablets or capsules/day.",
+      "Statin Electronic Step-Edit Criteria Version 2; Last updated 02/11/2013; Approved 9/17/2010. Catalog effective_date 2024-03-01 is retained as a metadata stub, not a source revision date.",
+      "References / footnotes (notes only):\nAdvicor\u00ae package insert, available at: <http://www.rxabbott.com/pdf/advicor.pdf>\nAccessed 08/03/2010.\n\nAltoprev\u00ae package insert, available at: <http://www.altoprev.com/AltoprevPI.pdf>\nAccessed 08/03/2010.\n\nLipitor\u00ae package insert, available at: <http://www.pfizer.com/files/products/uspi_lipitor.pdf>\nAccessed 06/25/2010.\n\nLescol\u00ae and Lescol\u00ae XL package insert, available at:\n<http://www.pharma.us.novartis.com/product/pi/pdf/Lescol.pdf> Accessed 06/25/2010.\nStatin Electronic Step-Edit Criteria\nVersion 2\nLast updated 02/11/2013\nApproved: 9/17/2010\n\fLivalo package insert, available at:<http://www.kowapharma.com/documents\n/LIVALOpitavastatinprescribinginformationV1_220100131.pdf> Accessed 08/03/2010.\n\nMevacor package insert, available at:<http://www.merck.com/product/usa/pi_circulars\n/m/mevacor/mevacor_pi.pdf> Accessed 08/03/2010.\n\nPravachol package insert, available at:<http://packageinserts.bms.com/pi/pi_pravachol.pdf>\nAccessed 08/03/2010.\n\nSimcor package insert, available at:<http://rxabbott.com/pdf/simcor_pi.pdf>\nAccessed 08/03/2010.\n\nVytorin package insert, available at:<http://www.msppharma.com/msppharma/\ndocuments/vytorin_pi.pdf> Accessed 08/03/2010.\n\nZocor\u00ae package insert, available at:\n<http://www.merck.com/product/usa/pi_circulars/z/zocor/zocor_pi.pdf> Accessed 06/25/2010.\n\n\n\n\nStatin Electronic Step-Edit Criteria\nVersion 2\nLast updated 02/11/2013\nApproved: 9/17/2010"
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Statin request path",
+        "options": [
+          {
+            "value": "preferred_statin",
+            "label": "Preferred: atorvastatin, lovastatin, pravastatin or simvastatin"
+          },
+          {
+            "value": "other_statin",
+            "label": "Other (non-preferred) statin"
+          }
+        ]
+      },
+      "hypercholesterolemia_or_hyperlipidemia": {
+        "type": "select",
+        "label": "Treatment of hypercholesterolemia or hyperlipidemia.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "preferred_statin",
+            "other_statin"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "preferred_statin_75_of_90_days_inadequate_ldl_or_adr": {
+        "type": "select",
+        "label": "Patient has compliantly taken atorvastatin, lovastatin, pravastatin or simvastatin for 75 of the last 90 days without acceptable LDL reduction OR experienced an adverse drug reaction with those preferred agents.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "other_statin"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "stelara": {
     "drug": {

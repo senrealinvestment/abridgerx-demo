@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 182,
-  "encoding_text_only": 16,
+  "encoding_partial": 183,
+  "encoding_text_only": 15,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -149,6 +149,7 @@
     "sphingosine-1-phosphate-receptor",
     "spinal-muscular-atrophy",
     "spravato",
+    "statins",
     "stelara",
     "strensiq",
     "subsys",
@@ -190,5 +191,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "statins"
+  "next_candidate": "vitamin-d-50"
 }

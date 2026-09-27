@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 170,
-  "encoding_text_only": 28,
+  "encoding_partial": 171,
+  "encoding_text_only": 27,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -38,6 +38,7 @@
     "crysvita",
     "dawnzeratm",
     "diclegis-bonjesta",
+    "dilaudid",
     "dojolvi",
     "duchenne-muscular-dystrophy",
     "dupixent",
@@ -178,5 +179,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "dilaudid"
+  "next_candidate": "extended-release"
 }

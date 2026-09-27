@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 184,
-  "encoding_text_only": 14,
+  "encoding_partial": 185,
+  "encoding_text_only": 13,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -63,6 +63,7 @@
     "firdapse",
     "gralise",
     "h-p-acthar",
+    "h-pylori-kits",
     "hemgenix",
     "hemlibra",
     "hetlioz",
@@ -192,5 +193,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "h-pylori-kits"
+  "next_candidate": "new-prescription-medications"
 }

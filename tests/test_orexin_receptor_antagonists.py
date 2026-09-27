@@ -98,12 +98,12 @@ def test_catalog():
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 184
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 14
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 185
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 13
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (184, 14)
-        assert status['next_candidate'] == 'h-pylori-kits'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (185, 13)
+        assert status['next_candidate'] == 'new-prescription-medications'
         assert status['partial_slugs'] == sorted(k for k,p in catalog.items() if p['encoding_status']=='partial')
-    for slug in ['h-pylori-kits', 'atypical-antipsychotic-therapeutic-duplication']:
+    for slug in ['new-prescription-medications', 'atypical-antipsychotic-therapeutic-duplication']:
         assert catalog[slug]['encoding_status'] == 'text_only'

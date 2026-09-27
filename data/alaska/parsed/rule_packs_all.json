@@ -18857,15 +18857,85 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "H. pylori infection with duodenal ulcer disease (active or history per product labeling).",
+        "citation": "https://health.alaska.gov/media/oimlgus4/h-pylori-proposed-pa-for-kits.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "h_pylori_with_duodenal_ulcer_disease"
+          ]
+        }
+      },
+      {
+        "id": "positive_h_pylori_diagnostic_test",
+        "text": "Positive diagnostic test results confirming diagnosis of Helicobacter pylori.",
+        "citation": "https://health.alaska.gov/media/oimlgus4/h-pylori-proposed-pa-for-kits.pdf",
+        "required_facts": [
+          "positive_h_pylori_diagnostic_test"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "positive_h_pylori_diagnostic_test",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "h_pylori_with_duodenal_ulcer_disease"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding for Helidac\u00ae, Pylera\u00ae, Prevpac\u00ae, Omeclamox-Pak\u2122. Rules engine is the sole eligibility evaluator. Encoded: closed indication and positive diagnostic test. Product-specific labeling requires manual review.",
+      "Product-specific FDA indication quotes (notes only): HELIDAC\u2013 \u201cThe components of the HELIDAC Therapy (bismuth subsalicylate, metronidazole, and tetracycline hydrochloride), in combination with an H2 antagonist, are indicated for the eradication of H. pylori for treatment of patients with H. pylori infection and duodenal ulcer disease (active or a history of duodenal ulcer). Appropriate doses of H2 antagonists for the treatment of active duodenal ulcers should be prescribed in all patients. The eradication of H. pylori has been demonstrated to reduce the risk of duodenal ulcer recurrence in patients with active duodenal ulcer disease. To reduce the development of drug-resistant bacteria and maintain the effectiveness of HELIDAC Therapy and other antibacterial drugs, HELIDAC Therapy should be used only to treat or prevent infections that are proven or strongly suspected to be caused by bacteria.\u201d 1 PYLERA \u201cis a combination antibacterial indicated for the treatment of patients with Helicobacter pylori infection and duodenal ulcer disease (active or history of within the past 5 years) to eradicate H. pylori.\u201d2 Prevpac \u2013\u201c The components in PREVPAC (PREVACID, amoxicillin, and clarithromycin) are indicated for the treatment of patients with H. pylori infection and duodenal ulcer disease (active or one-year history of a duodenal ulcer) to eradicate H. pylori. Eradication of H. pylori has been shown to reduce the risk of duodenal ulcer recurrence. To reduce the development of drug-resistant bacteria and maintain the effectiveness of PREVPAC and other antibacterial drugs, PREVPAC should be used only to treat or prevent infections that are proven or strongly suspected to be caused by susceptible bacteria.\u201d3 Omeclamox-Pak,\u201d a copackaged product containing a proton pump inhibitor, a macrolide antimicrobial, and a penicillin class antibacterial, is indicated for the treatment of patients with Helicobacter pylori infection and duodenal ulcer disease (active or up to one-year history) to eradicate H. pylori.\u201d4",
+      "Authorization (notes only): coverage may be approved for one pre-packaged therapy from manufacturer.",
+      "Dispensing / quantity limit (notes only): one kit (one pre-packaged therapy from manufacturer): Helidac 224 pills; Pylera 120 pills; Prevpac 112 pills; Omeclamox-Pak 80 pills.",
+      "References (notes only): 1 Helidac\u00ae package insert is available at: < http://www.prometheuslabs.com/Resources/PI/Helidac.pdf > Accessed 12/24/12 2 Pylera\u00ae package insert is available at: < http://www.pylera.com/pdf/prescribing-info.pdf > Accessed 12/24/12 3 Prevpac\u00ae package insert is available at: < http://www.takeda.us/products/default.aspx > ; under Prevpac Prescribing Information Accessed 12/24/12 4 Omeclamox-Pak\u2122 package insert is available at: < http://www.omeclamox.com/PDF/PRNX005%20Omeclamox-Pak%20PI%20V9.pdf > Accessed 12/24/12",
+      "Helicobacter Pylori criteria Version 1; Last updated 12/24/2012; Approved 01/18/2013. Extracted effective date is null; existing 1970-01-01 effective_date is retained as a metadata stub."
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Treatment indication",
+        "options": [
+          {
+            "value": "h_pylori_with_duodenal_ulcer_disease",
+            "label": "H. pylori infection with duodenal ulcer disease (active or history per product labeling)"
+          }
+        ]
+      },
+      "positive_h_pylori_diagnostic_test": {
+        "type": "select",
+        "label": "Positive diagnostic test results confirming diagnosis of Helicobacter pylori",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "h_pylori_with_duodenal_ulcer_disease"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "hemgenix": {
     "drug": {

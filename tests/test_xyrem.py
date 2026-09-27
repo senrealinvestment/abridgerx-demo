@@ -99,15 +99,15 @@ def test_catalog_mirrors():
     assert 'xywav' not in catalog
     assert catalog['interleukin-5-inhibitors']['encoding_status'] == 'partial'
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 184
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 14
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 185
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 13
     assert (BASE/'xyrem.json').read_bytes() == (BASE/'rule_packs/xyrem.json').read_bytes()
     assert json.loads((BASE/'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (184,14)
-    assert status['next_candidate'] == 'h-pylori-kits'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (185,13)
+    assert status['next_candidate'] == 'new-prescription-medications'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json','ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()

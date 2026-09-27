@@ -90,8 +90,8 @@ def test_missing_facts_and_ui_roundtrip():
 def test_catalog_mirrors_and_peers():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 184
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 14
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 185
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 13
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
@@ -101,9 +101,9 @@ def test_catalog_mirrors_and_peers():
     for slug in ['lupkynis', 'benlysta']:
         assert (BASE / f'{slug}.json').read_bytes() == (BASE / f'rule_packs/{slug}.json').read_bytes()
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (184, 14)
+    assert (status['encoding_partial'], status['encoding_text_only']) == (185, 13)
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'h-pylori-kits'
+    assert status['next_candidate'] == 'new-prescription-medications'
     assert catalog[status['next_candidate']]['encoding_status'] == 'text_only'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()

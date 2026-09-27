@@ -105,8 +105,8 @@ def test_metadata_catalog_and_notes():
         assert text in notes
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 188
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 10
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 189
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 9
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
@@ -115,8 +115,8 @@ def test_metadata_catalog_and_notes():
         assert (BASE / f'{slug}.json').read_bytes() == (BASE / 'rule_packs' / f'{slug}.json').read_bytes()
     assert catalog['zolgensma']['alternatives'] == ['spinal-muscular-atrophy']
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (188, 10)
-    assert status['next_candidate'] == 'hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (189, 9)
+    assert status['next_candidate'] == '2024-2025-season'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for ext in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()

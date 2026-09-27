@@ -91,11 +91,11 @@ def test_catalog_mirrors_and_scope():
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 188
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 10
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 189
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 9
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (188, 10)
-    assert status['next_candidate'] == 'hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (189, 9)
+    assert status['next_candidate'] == '2024-2025-season'
     assert catalog['bone-resorption-inhibitors']['encoding_status'] == 'partial'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status']=='partial')
     for ext in ('json', 'md'):

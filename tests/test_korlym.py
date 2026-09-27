@@ -97,18 +97,18 @@ def test_metadata_notes_and_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 188
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 10
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 189
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 9
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (188, 10)
+        assert (status['encoding_partial'], status['encoding_text_only']) == (189, 9)
         assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-        assert status['next_candidate'] == 'hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc'
+        assert status['next_candidate'] == '2024-2025-season'
     assert (BASE / 'ENCODING_STATUS.md').read_bytes() == (BASE.parent / 'ENCODING_STATUS.md').read_bytes()
 
 
 def test_next_pack_remains_unencoded():
-    pack = load_rule_pack_catalog()['hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc']
+    pack = load_rule_pack_catalog()['2024-2025-season']
     assert pack['encoding_status'] == 'text_only'
     assert pack['criteria'] == []
     assert evaluate(pack, {}).decision == 'need_info'

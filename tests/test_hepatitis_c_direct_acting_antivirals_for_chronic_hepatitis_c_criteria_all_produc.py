@@ -13,7 +13,7 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail
 
 BASE = ROOT / 'data/alaska/parsed'
-PACK = json.loads((BASE / 'rule_packs/genotypes.json').read_text())
+PACK = json.loads((BASE / 'rule_packs/hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc.json').read_text())
 IND = 'chronic_hepatitis_c'
 NEXT = '2024-2025-season'
 FACTS = [c['id'] for c in PACK['criteria'] if c['id'] not in ['indication', 'age_ge_12_or_pediatric_specialty']]
@@ -56,7 +56,7 @@ def test_closed_indication(indication):
 
 
 def test_ui():
-    fields = {f['key']: f for f in drug_detail('genotypes')['fact_fields']}
+    fields = {f['key']: f for f in drug_detail('hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc')['fact_fields']}
     assert set(fields) == set(PACK['fact_ui'])
     assert {o['value'] for o in fields['indication']['options']} == {IND, 'other'}
     for f in set(fields) - {'indication'}:
@@ -73,7 +73,7 @@ def test_artifacts_and_scope():
     assert len(PACK['criteria']) == 16
     assert PACK['source']['effective_date'] == '2022-01-04'
     assert 'inferred_required_facts' not in PACK
-    assert (BASE/'genotypes.json').read_bytes() == (BASE/'rule_packs/genotypes.json').read_bytes()
+    assert (BASE/'hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc.json').read_bytes() == (BASE/'rule_packs/hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc.json').read_bytes()
     catalog = json.loads((BASE/'rule_packs_all.json').read_text())
     assert catalog == {p.stem: json.loads(p.read_text()) for p in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
@@ -89,3 +89,15 @@ def test_artifacts_and_scope():
     notes = ' '.join(PACK['notes'])
     for phrase in ['Tables 1a/1b', 'Table 2', 'non-preferred', 'do not require PA', '16 weeks', '<25 IU/mL', 'dispensing error', 'lost/stolen', '7 calendar days', 'ribavirin', '11/19/2021', '5/5/2022']:
         assert phrase.lower() in notes.lower()
+
+
+def test_twin_parity_and_scope():
+    twin = json.loads((BASE / 'rule_packs/genotypes.json').read_text())
+    for key in ['criteria', 'fact_ui', 'requires_pa', 'pdl_status', 'alternatives']:
+        assert PACK[key] == twin[key]
+    assert PACK['drug']['name'] == 'Hepatitis C Direct Acting Antivirals for Chronic Hepatitis C Criteria - All Products'
+    assert 'Twin slug genotypes' in ' '.join(PACK['notes'])
+    assert PACK['source']['citation'] == twin['source']['citation']
+    assert 'hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc' in ' '.join(twin['notes'])
+    for slug in ['000-unit', '2024-2025-season']:
+        assert json.loads((BASE / f'rule_packs/{slug}.json').read_text())['encoding_status'] == 'text_only'

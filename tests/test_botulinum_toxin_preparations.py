@@ -147,10 +147,10 @@ def test_ui_age_round_trip_gates_and_catalog():
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as stream:
         assert json.load(stream) == c
     assert len(c) == 198
-    assert sum(v['encoding_status']=='partial' for v in c.values()) == 188
-    assert sum(v['encoding_status']=='text_only' for v in c.values()) == 10
+    assert sum(v['encoding_status']=='partial' for v in c.values()) == 189
+    assert sum(v['encoding_status']=='text_only' for v in c.values()) == 9
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert status['next_candidate'] == 'hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc'
+    assert status['next_candidate'] == '2024-2025-season'
     for suffix in ['md','json']:
         assert (BASE/f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent/f'ENCODING_STATUS.{suffix}').read_bytes()
     notes = ' '.join(p['notes'])

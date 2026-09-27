@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 188,
-  "encoding_text_only": 10,
+  "encoding_partial": 189,
+  "encoding_text_only": 9,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -67,6 +67,7 @@
     "h-pylori-kits",
     "hemgenix",
     "hemlibra",
+    "hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc",
     "hetlioz",
     "human-chorionic-gonadotropin",
     "hympavzi",
@@ -196,5 +197,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc"
+  "next_candidate": "2024-2025-season"
 }

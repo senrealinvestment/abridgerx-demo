@@ -31503,7 +31503,8 @@
   "vyndaqel": {
     "drug": {
       "name": "Vyndaqel",
-      "therapeutic_class": "other"
+      "therapeutic_class": "ttr-stabilizer",
+      "generic_name": "tafamidis meglumine"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -31514,17 +31515,215 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Cardiomyopathy of wild type or hereditary transthyretin-mediated amyloidosis (ATTR-CM), the closed FDA-labeled indication.",
+        "citation": "https://health.alaska.gov/media/bzii2oda/201911vyndaqel_vyndamax_criteria_approved_2019.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "attr_cardiomyopathy"
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 18 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/bzii2oda/201911vyndaqel_vyndamax_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a cardiologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/bzii2oda/201911vyndaqel_vyndamax_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "cardiologist_or_consult"
+        }
+      },
+      {
+        "id": "attr_confirmation",
+        "text": "ATTR-mediated amyloidosis with cardiomyopathy confirmed by cardiac biopsy amyloid deposits OR confirmation of a TTR mutation by genetic testing or wild type amyloidosis (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/bzii2oda/201911vyndaqel_vyndamax_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "attr_confirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "attr_confirmation",
+          "values": [
+            "cardiac_biopsy_amyloid_deposits",
+            "ttr_mutation_genetic_or_wild_type"
+          ]
+        }
+      },
+      {
+        "id": "cardiomyopathy_hf_symptoms",
+        "text": "Clinical symptoms of cardiomyopathy and heart failure are present (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/bzii2oda/201911vyndaqel_vyndamax_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "cardiomyopathy_hf_symptoms"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "cardiomyopathy_hf_symptoms",
+          "value": "present"
+        }
+      },
+      {
+        "id": "no_liver_or_heart_transplant",
+        "text": "Patient has not had a liver or heart transplant (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/bzii2oda/201911vyndaqel_vyndamax_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "no_liver_or_heart_transplant"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_liver_or_heart_transplant",
+          "value": true
+        }
+      },
+      {
+        "id": "nyha_class",
+        "text": "Patient does not have NYHA class IV heart failure (denial criterion 6).",
+        "citation": "https://health.alaska.gov/media/bzii2oda/201911vyndaqel_vyndamax_criteria_approved_2019.pdf#denial-criteria",
+        "required_facts": [
+          "nyha_class"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "nyha_class",
+          "value": "i_ii_or_iii"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Vyndaqel (tafamidis meglumine) / Vyndamax (tafamidis), transthyretin (TTR) stabilizers. Version 1; Original 8/13/2019; Approval 11/15/2019; Effective 1/6/2020.",
+      "Encoded: closed ATTR cardiomyopathy indication, approval criteria 1-5 and denial criterion 6 (NYHA class IV). Denial criteria 1-5 mirror approval requirements.",
+      "Cautions (notes only): tafamidis may cause fetal harm; contraception is recommended for females. Breastfeeding is not recommended during treatment due to potential serious adverse reactions in a breastfed infant.",
+      "Vyndaqel and Vyndamax are not equivalent on a per mg to mg basis (notes only).",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months. No additional reauthorization response criteria are stated.",
+      "Quantity limits (notes only): Vyndaqel 120 capsules of 20 mg (80 mg per day); Vyndamax 30 capsules of 61 mg. The PDF does not specify a quantity-limit time interval. max_units is null; quantity is not evaluated.",
+      "Documentation verification, cautions, duration, reauthorization and quantity limits require manual review; this pack remains partial. No alternatives are specified."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Cardiomyopathy of wild type or hereditary transthyretin-mediated amyloidosis (ATTR-CM), the closed FDA-labeled indication.",
+        "options": [
+          {
+            "value": "attr_cardiomyopathy",
+            "label": "ATTR cardiomyopathy"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a cardiologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "cardiologist_or_consult",
+            "label": "Cardiologist or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "attr_confirmation": {
+        "type": "select",
+        "label": "ATTR-mediated amyloidosis with cardiomyopathy confirmed by cardiac biopsy amyloid deposits OR confirmation of a TTR mutation by genetic testing or wild type amyloidosis (approval criterion 3).",
+        "options": [
+          {
+            "value": "cardiac_biopsy_amyloid_deposits",
+            "label": "Amyloid deposits identified on cardiac biopsy"
+          },
+          {
+            "value": "ttr_mutation_genetic_or_wild_type",
+            "label": "TTR mutation confirmed by genetic testing or wild type amyloidosis"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ]
+      },
+      "cardiomyopathy_hf_symptoms": {
+        "type": "select",
+        "label": "Clinical symptoms of cardiomyopathy and heart failure are present (approval criterion 4).",
+        "options": [
+          {
+            "value": "present",
+            "label": "Present"
+          },
+          {
+            "value": "absent",
+            "label": "Absent"
+          }
+        ]
+      },
+      "no_liver_or_heart_transplant": {
+        "type": "select",
+        "label": "Patient has not had a liver or heart transplant (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "No liver or heart transplant"
+          },
+          {
+            "value": "no",
+            "label": "History of liver or heart transplant"
+          }
+        ]
+      },
+      "nyha_class": {
+        "type": "select",
+        "label": "Patient does not have NYHA class IV heart failure (denial criterion 6).",
+        "options": [
+          {
+            "value": "i_ii_or_iii",
+            "label": "NYHA class I, II or III"
+          },
+          {
+            "value": "iv",
+            "label": "NYHA class IV"
+          }
+        ]
+      }
+    }
   },
   "wakix": {
     "drug": {

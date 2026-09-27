@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 80,
-  "encoding_text_only": 118,
+  "encoding_partial": 81,
+  "encoding_text_only": 117,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -81,6 +81,7 @@
     "tremfya",
     "voxzogo",
     "vyjuvek",
+    "vyndaqel",
     "winrevair",
     "xolair",
     "zilbrysq",
@@ -88,5 +89,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "vyndaqel"
+  "next_candidate": "myalept"
 }

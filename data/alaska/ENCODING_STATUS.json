@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 180,
-  "encoding_text_only": 18,
+  "encoding_partial": 181,
+  "encoding_text_only": 17,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -25,6 +25,7 @@
     "bimzelx",
     "bone-resorption-inhibitors",
     "botulinum-toxin-preparations",
+    "brand-name-multisource-medications",
     "briumvi",
     "calcitonin-gene-related-peptide",
     "cambia",
@@ -188,5 +189,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "brand-name-multisource-medications"
+  "next_candidate": "oral-benzodiazepines"
 }

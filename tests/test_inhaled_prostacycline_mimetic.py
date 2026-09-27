@@ -128,13 +128,13 @@ def test_catalog_and_mirrors():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 180
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 18
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 181
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 17
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (180, 18)
+        assert (status['encoding_partial'], status['encoding_text_only']) == (181, 17)
         assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
-        assert status['next_candidate'] == 'brand-name-multisource-medications'
+        assert status['next_candidate'] == 'oral-benzodiazepines'
         assert catalog[status['next_candidate']]['encoding_status'] == 'text_only'
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

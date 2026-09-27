@@ -1,21 +1,23 @@
-"""Metformin ER initial criteria, no grandfathering, UI gating and mirrors."""
+"""DAW policy conjunction, closed request scope, UI and catalog integrity."""
 import gzip
 import json
 import sys
 from pathlib import Path
+
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from engine.evaluate import evaluate
 from ui.app import _coerce_patient
-from ui.loaders import drug_detail, load_rule_pack_catalog
+from ui.loaders import drug_detail
 
 BASE = ROOT / 'data/alaska/parsed'
-PACK = json.loads((BASE / 'rule_packs/metformin-er.json').read_text())
-INDICATION = 'type_2_diabetes_mellitus'
-GATES = ['tried_glucophage_xr_generic', 'inert_ingredient_allergy_glucophage_xr_not_in_requested', 'fda_medwatch_submitted']
-FACTS = dict(indication=INDICATION, age_years=18, **dict.fromkeys(GATES, True))
+SLUG = 'brand-name-multisource-medications'
+PACK = json.loads((BASE / 'rule_packs' / f'{SLUG}.json').read_text())
+INDICATION = 'brand_multisource_daw_request'
+GATES = ['tried_two_generic_manufacturers_failed', 'medwatch_and_lmn_submitted']
+FACTS = dict(indication=INDICATION, **dict.fromkeys(GATES, True))
 
 
 def test_approval():
@@ -25,8 +27,8 @@ def test_approval():
 
 
 @pytest.mark.parametrize('key', GATES)
-def test_each_condition_required_even_for_current_users(key):
-    result = evaluate(PACK, dict(FACTS, **{key: False, 'current_therapy': True, 'positive_clinical_response': True}))
+def test_each_condition_required(key):
+    result = evaluate(PACK, dict(FACTS, **{key: False}))
     assert result.decision == 'fail'
     assert [c['id'] for c in result.failed_clauses] == [key]
     assert result.failed_clauses[0]['citation'] == PACK['source']['citation']
@@ -43,49 +45,51 @@ def test_missing_or_unknown(key, omit):
     assert result.missing_facts == [key]
 
 
-@pytest.mark.parametrize('indication', ['type_1_diabetes_mellitus', 'prediabetes', 'polycystic_ovary_syndrome', 'other', '', True, False])
-def test_closed_indication(indication):
+@pytest.mark.parametrize('indication', ['other', 'diabetes', '', True, False])
+def test_closed_request(indication):
     result = evaluate(PACK, {'indication': indication})
     assert result.decision == 'fail'
-    assert [c['id'] for c in result.failed_clauses] == ['indication']
+    assert result.missing_facts == []
 
 
-def test_age_and_indication_gating():
-    assert evaluate(PACK, dict(FACTS, age_years=17)).decision == 'fail'
+def test_gating():
     assert evaluate(PACK, {}).missing_facts == ['indication']
-    assert evaluate(PACK, {'indication': INDICATION}).missing_facts == ['age_years'] + GATES
+    assert evaluate(PACK, {'indication': INDICATION}).missing_facts == GATES
+    assert evaluate(PACK, dict.fromkeys(GATES, True)).decision == 'need_info'
 
 
-def test_ui_and_notes():
-    detail = drug_detail('metformin-er')
+def test_ui_and_source_fidelity():
+    detail = drug_detail(SLUG)
     assert detail['can_evaluate']
-    assert {f['key'] for f in detail['fact_fields']} == set(FACTS)
+    fields = {f['key']: f for f in detail['fact_fields']}
+    assert set(fields) == set(FACTS)
     assert PACK['fact_ui']['indication']['options'][0]['value'] == INDICATION
-    for key in ['age_years'] + GATES:
-        assert PACK['fact_ui'][key]['when'] == {'fact': 'indication', 'in': [INDICATION]}
-    ui = dict(FACTS, **dict.fromkeys(GATES, 'yes'))
+    for key in GATES:
+        assert fields[key]['when'] == {'fact': 'indication', 'eq': INDICATION}
+    ui = dict(indication=INDICATION, **dict.fromkeys(GATES, 'yes'))
     assert evaluate(PACK, _coerce_patient(ui)).decision == 'pass'
     for key in GATES:
         assert evaluate(PACK, _coerce_patient(dict(ui, **{key: 'no'}))).decision == 'fail'
+    assert len(PACK['criteria']) == 3
+    assert 'inferred_required_facts' not in PACK
     assert PACK['encoding_status'] == 'partial'
     assert PACK['requires_pa'] is True
-    assert PACK['max_units'] is None
-    assert 'inferred_required_facts' not in PACK
-    assert len(PACK['criteria']) == 5
     notes = ' '.join(PACK['notes'])
-    for phrase in ['not permitted', 'positive clinical response', 'better tolerance', '6 months', '1 year', 'Fortamet 2 tablets/day', 'Glumetza 2 tablets/day', '500 mg/750 mg', '500 mg/1000 mg', 'Version 1', '4/7/2016', '4/29/2016', '10/3/2016', 'Pharmacokinetics', 'Mechanism', 'references']:
-        assert phrase in notes
-    source = json.loads((BASE / 'criteria_text/metformin-er.json').read_text())
-    assert PACK['source']['effective_date'] == source['effective_date'] == '2016-10-03'
+    for term in ['Digoxin', 'Levothyroxine', 'Phenytoin', 'Warfarin', 'Orange Book', 'Version 1', '1/21/2011', '6/8/2012', 'DAW']:
+        assert term in notes
+    for term in ['same dose and interval', 'at least two different manufacturers', 'each product']:
+        assert term in PACK['criteria'][1]['text']
+    for term in ['each adverse', 'completed FDA MedWatch', 'letter of medical necessity', 'prescriber']:
+        assert term in PACK['criteria'][2]['text']
+    source = json.loads((BASE / 'criteria_text' / f'{SLUG}.json').read_text())
     assert PACK['source']['citation'] == source['source_url']
 
 
 def test_catalog_and_mirrors():
-    catalog = load_rule_pack_catalog()
-    assert catalog['metformin-er'] == PACK
+    catalog = json.loads((BASE / 'rule_packs_all.json').read_text())
+    assert catalog[SLUG] == PACK
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
-    assert (BASE / 'metformin-er.json').read_bytes() == (BASE / 'rule_packs/metformin-er.json').read_bytes()
-    assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
+    assert (BASE / f'{SLUG}.json').read_bytes() == (BASE / 'rule_packs' / f'{SLUG}.json').read_bytes()
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198

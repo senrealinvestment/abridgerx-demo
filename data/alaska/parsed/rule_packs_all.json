@@ -6367,13 +6367,114 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Brand name multi-source medication coverage request (DAW) with an A-rated generic equivalent in the Orange Book.",
+        "citation": "https://health.alaska.gov/media/pr5p5fmc/brandnamemultisourcemedications.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "brand_multisource_daw_request"
+          ]
+        }
+      },
+      {
+        "id": "tried_two_generic_manufacturers_failed",
+        "text": "Recipient has tried the generic version at the same dose and interval requested from at least two different manufacturers, with a documented adverse drug reaction or therapeutic failure with each product.",
+        "citation": "https://health.alaska.gov/media/pr5p5fmc/brandnamemultisourcemedications.pdf",
+        "required_facts": [
+          "tried_two_generic_manufacturers_failed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "tried_two_generic_manufacturers_failed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "brand_multisource_daw_request"
+        }
+      },
+      {
+        "id": "medwatch_and_lmn_submitted",
+        "text": "Documentation of each adverse drug reaction or treatment failure, including a copy of the completed FDA MedWatch form, has been submitted with a letter of medical necessity from the prescriber detailing the need for the brand name version.",
+        "citation": "https://health.alaska.gov/media/pr5p5fmc/brandnamemultisourcemedications.pdf",
+        "required_facts": [
+          "medwatch_and_lmn_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "medwatch_and_lmn_submitted",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "brand_multisource_daw_request"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid DAW / brand-over-generic policy for brand name multi-source medications with A-rated generic equivalents. Both approval conditions are required; submitted documentation requires manual review.",
+      "Excluded medications (notes only): Digoxin, Levothyroxine, Phenytoin, and Warfarin are excluded from the criteria above.",
+      "Reference: Approved Drug Products with Therapeutic Equivalence Evaluations (Orange Book), http://www.accessdata.fda.gov/scripts/cder/ob/default.cfm.",
+      "DAW Criteria Version 1; Approved 1/21/2011; Last updated 6/8/2012. Rules engine is the sole eligibility evaluator."
     ],
-    "inferred_required_facts": []
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Brand name multi-source medication coverage request (DAW) with an A-rated generic equivalent in the Orange Book.",
+        "options": [
+          {
+            "value": "brand_multisource_daw_request",
+            "label": "Brand multisource DAW request (A-rated generic equivalent)"
+          }
+        ]
+      },
+      "tried_two_generic_manufacturers_failed": {
+        "type": "select",
+        "label": "Recipient has tried the generic version at the same dose and interval requested from at least two different manufacturers, with a documented adverse drug reaction or therapeutic failure with each product.",
+        "when": {
+          "fact": "indication",
+          "eq": "brand_multisource_daw_request"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "medwatch_and_lmn_submitted": {
+        "type": "select",
+        "label": "Documentation of each adverse drug reaction or treatment failure, including a copy of the completed FDA MedWatch form, has been submitted with a letter of medical necessity from the prescriber detailing the need for the brand name version.",
+        "when": {
+          "fact": "indication",
+          "eq": "brand_multisource_daw_request"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "briumvi": {
     "drug": {

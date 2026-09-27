@@ -88,13 +88,13 @@ def test_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 180
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 18
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 181
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 17
     for root in [BASE, BASE.parent]:
         status = json.loads((root / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (180, 18, 'brand-name-multisource-medications')
+        assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (181, 17, 'oral-benzodiazepines')
         assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for ext in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()
-    for slug in ['brand-name-multisource-medications', 'fexmid', 'soma', 'stadol', 'ergocalciferol']:
+    for slug in ['oral-benzodiazepines', 'fexmid', 'soma', 'stadol', 'ergocalciferol']:
         assert catalog[slug]['encoding_status'] == 'text_only'

@@ -94,11 +94,11 @@ def test_catalog_mirrors_notes_and_alternatives():
     for slug in ['zilbrysq', 'rystiggo']:
         assert (BASE / f'{slug}.json').read_bytes() == (BASE / 'rule_packs' / f'{slug}.json').read_bytes()
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 127
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 71
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 128
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 70
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 127 and status['encoding_text_only'] == 71
-    assert status['next_candidate'] == 'xcopri'
+    assert status['encoding_partial'] == 128 and status['encoding_text_only'] == 70
+    assert status['next_candidate'] == 'revatio'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for ext in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()

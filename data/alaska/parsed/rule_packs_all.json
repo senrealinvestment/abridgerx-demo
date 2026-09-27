@@ -46220,7 +46220,8 @@
   "xcopri": {
     "drug": {
       "name": "Xcopri",
-      "therapeutic_class": "other"
+      "therapeutic_class": "anticonvulsant",
+      "generic_name": "cenobamate"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -46231,18 +46232,203 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "age_years",
+        "text": "Patient is at least 18 years old.",
+        "citation": "https://health.alaska.gov/media/f3ziw32q/202101-xcopri_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist or physician specializing in seizure disorders.",
+        "citation": "https://health.alaska.gov/media/f3ziw32q/202101-xcopri_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "neurologist",
+            "neurologist_consult",
+            "seizure_disorders_specialist",
+            "seizure_disorders_specialist_consult"
+          ]
+        }
+      },
+      {
+        "id": "indication",
+        "text": "Diagnosis of partial-onset seizures in adults.",
+        "citation": "https://health.alaska.gov/media/f3ziw32q/202101-xcopri_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "partial_onset_seizures"
+          ]
+        }
+      },
+      {
+        "id": "qualifying_anticonvulsants_count",
+        "text": "At least two distinct anticonvulsants indicated for partial seizures have been tried and failed or are contraindicated; count each qualifying drug once.",
+        "citation": "https://health.alaska.gov/media/f3ziw32q/202101-xcopri_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "qualifying_anticonvulsants_count"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "qualifying_anticonvulsants_count",
+          "value": 2
+        }
+      },
+      {
+        "id": "familial_short_qt_syndrome",
+        "text": "No Familial Short QT syndrome.",
+        "citation": "https://health.alaska.gov/media/f3ziw32q/202101-xcopri_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "familial_short_qt_syndrome"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "familial_short_qt_syndrome",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "daily_dose_mg",
+        "text": "Requested dosage does not exceed 400 mg per day.",
+        "citation": "https://health.alaska.gov/media/f3ziw32q/202101-xcopri_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "daily_dose_mg"
+        ],
+        "predicate": {
+          "op": "lte",
+          "fact": "daily_dose_mg",
+          "value": 400
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Xcopri (cenobamate), an anticonvulsant / voltage-gated sodium channel inhibitor and GABAa positive allosteric modulator; effective 2021-03-15. Approval criteria and explicit denials encoded. Failure to meet approval criteria is represented by the approval predicates.",
+      "The two-anticonvulsant step counts distinct drugs indicated for partial seizures with failure or contraindication, including mixed histories. Supporting documentation requires manual review.",
+      "Cautions (notes only): drug interactions may require concomitant medication dose adjustments; monitor for suicidal behavior and ideation; monitor somnolence and fatigue and advise against driving or operating machinery until sufficient experience on Xcopri. Other CNS depressants or alcohol may have additive effects. Hormonal oral contraceptive efficacy may be reduced.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months. Manual review required.",
+      "Quantity (notes only): 30 days (maximum 400 mg/day). The explicit denial for dosages exceeding 400 mg per day is encoded; supply quantity enforcement remains manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old.",
+        "options": [
+          {
+            "value": "17",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18 or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist or physician specializing in seizure disorders.",
+        "options": [
+          {
+            "value": "neurologist",
+            "label": "Neurologist"
+          },
+          {
+            "value": "neurologist_consult",
+            "label": "In consultation with a neurologist"
+          },
+          {
+            "value": "seizure_disorders_specialist",
+            "label": "Physician specializing in seizure disorders"
+          },
+          {
+            "value": "seizure_disorders_specialist_consult",
+            "label": "In consultation with a physician specializing in seizure disorders"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of partial-onset seizures in adults.",
+        "options": [
+          {
+            "value": "partial_onset_seizures",
+            "label": "Partial-onset (focal) seizures"
+          }
+        ]
+      },
+      "qualifying_anticonvulsants_count": {
+        "type": "select",
+        "label": "At least two distinct anticonvulsants indicated for partial seizures have been tried and failed or are contraindicated; count each qualifying drug once.",
+        "options": [
+          {
+            "value": "0",
+            "label": "None"
+          },
+          {
+            "value": "1",
+            "label": "One qualifying anticonvulsant"
+          },
+          {
+            "value": "2",
+            "label": "Two or more: failures, contraindications, or a combination"
+          }
+        ]
+      },
+      "familial_short_qt_syndrome": {
+        "type": "select",
+        "label": "No Familial Short QT syndrome.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "daily_dose_mg": {
+        "type": "select",
+        "label": "Requested dosage does not exceed 400 mg per day.",
+        "options": [
+          {
+            "value": "400",
+            "label": "400 mg/day or less"
+          },
+          {
+            "value": "401",
+            "label": "More than 400 mg/day"
+          }
+        ]
+      }
+    }
   },
   "xiaflex": {
     "drug": {

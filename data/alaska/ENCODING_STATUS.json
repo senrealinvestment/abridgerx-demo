@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 144,
-  "encoding_text_only": 54,
+  "encoding_partial": 145,
+  "encoding_text_only": 53,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -23,6 +23,7 @@
     "beqvez-tm",
     "berinert",
     "bimzelx",
+    "bone-resorption-inhibitors",
     "botulinum-toxin-preparations",
     "briumvi",
     "calcitonin-gene-related-peptide",
@@ -152,5 +153,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "bone-resorption-inhibitors"
+  "next_candidate": "cambia"
 }

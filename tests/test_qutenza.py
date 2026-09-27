@@ -77,16 +77,16 @@ def test_metadata_ui_notes_and_catalog():
     catalog = load_rule_pack_catalog()
     assert catalog['qutenza'] == PACK
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 144
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 54
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 145
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 53
     assert catalog['interleukin-5-inhibitors']['encoding_status'] == 'partial'
     assert (BASE / 'qutenza.json').read_bytes() == (BASE / 'rule_packs/qutenza.json').read_bytes()
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (144, 54)
-    assert status['next_candidate'] == 'bone-resorption-inhibitors'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (145, 53)
+    assert status['next_candidate'] == 'cambia'
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

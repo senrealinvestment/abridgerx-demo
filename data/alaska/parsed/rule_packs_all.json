@@ -23565,7 +23565,8 @@
   "vyjuvek": {
     "drug": {
       "name": "Vyjuvek",
-      "therapeutic_class": "cell-and-gene-therapy"
+      "therapeutic_class": "cell-and-gene-therapy",
+      "generic_name": "beremagene geperpavec-svdt"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -23576,17 +23577,226 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Treatment of wounds in patients with dystrophic epidermolysis bullosa (DEB) with COL7A1 mutation(s) (FDA indication; approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/c1uhnqmi/vyjuvek_criteria_2023.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "dystrophic_epidermolysis_bullosa"
+          ]
+        }
+      },
+      {
+        "id": "age_fda_labeled",
+        "text": "Patient is 6 months of age or older (FDA labeled age; approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/c1uhnqmi/vyjuvek_criteria_2023.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 0.5
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a dermatologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/c1uhnqmi/vyjuvek_criteria_2023.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "dermatologist",
+            "dermatologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "col7a1_mutation_genetic_testing_confirmed",
+        "text": "COL7A1 gene mutation confirmed by genetic testing (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/c1uhnqmi/vyjuvek_criteria_2023.pdf",
+        "required_facts": [
+          "col7a1_mutation_genetic_testing_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "col7a1_mutation_genetic_testing_confirmed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dystrophic_epidermolysis_bullosa"
+          ]
+        }
+      },
+      {
+        "id": "baseline_target_wound_size_documented",
+        "text": "Documentation of baseline size of target wounds has been provided (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/c1uhnqmi/vyjuvek_criteria_2023.pdf",
+        "required_facts": [
+          "baseline_target_wound_size_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_target_wound_size_documented",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dystrophic_epidermolysis_bullosa"
+          ]
+        }
+      },
+      {
+        "id": "treated_wounds_meet_readiness_criteria",
+        "text": "Provider attests that all wounds to be treated have adequate granulation tissue, are well vascularized, and have no evidence of active infection or squamous cell carcinoma (approval criterion 6a\u2013d).",
+        "citation": "https://health.alaska.gov/media/c1uhnqmi/vyjuvek_criteria_2023.pdf",
+        "required_facts": [
+          "treated_wounds_meet_readiness_criteria"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "treated_wounds_meet_readiness_criteria",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dystrophic_epidermolysis_bullosa"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Vyjuvek (beremagene geperpavec-svdt). Version: 1; Original: 10/20/2023; Accepted: 11/17/2023; Effective: 01/1/2024. The PDF spells the generic beramagene geperpavec-svdt.",
+      "Encoded: closed FDA indication and approval criteria 1\u20136. Diagnosis is covered by the indication. Denial criterion 1 (failure to meet approval criteria) is covered by the approval clauses; no additional denial predicates.",
+      "Wound readiness is one combined provider attestation requiring all of 6a\u2013d: adequate granulation tissue, well vascularized tissue, no evidence of active infection, and no evidence of squamous cell carcinoma.",
+      "Duration (notes only): initial approval up to 6 months; reauthorization approval up to 6 months.",
+      "Quantity (notes only): ages 6 months to <3 years: 3.2 mL per 28 days; ages \u22653 years: 6.4 mL per 28 days. HCPCS J3401. No numeric quantity enforcement; max_units is null.",
+      "Cautions (notes only): safety in pregnancy or lactation has not been established. Avoid direct contact with treated wounds and dressings for approximately 24 hours following application.",
+      "Remaining gaps: genetic testing and baseline wound size documentation verification, wound readiness, duration, reauthorization, quantity enforcement and cautions require manual review. Genetic confirmation, baseline documentation and wound readiness are attestations.",
+      "PDL status unknown. No evaluate-linked alternatives."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Treatment of wounds in patients with dystrophic epidermolysis bullosa (DEB) with COL7A1 mutation(s) (FDA indication; approval criterion 3).",
+        "options": [
+          {
+            "value": "dystrophic_epidermolysis_bullosa",
+            "label": "Wounds in dystrophic epidermolysis bullosa with COL7A1 mutation(s)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 6 months of age or older (FDA labeled age; approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 6 months"
+          },
+          {
+            "value": "0.5",
+            "label": "6 months or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a dermatologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "dermatologist",
+            "label": "Dermatologist"
+          },
+          {
+            "value": "dermatologist_consult",
+            "label": "In consultation with a dermatologist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "col7a1_mutation_genetic_testing_confirmed": {
+        "type": "select",
+        "label": "COL7A1 gene mutation confirmed by genetic testing (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dystrophic_epidermolysis_bullosa"
+          ]
+        }
+      },
+      "baseline_target_wound_size_documented": {
+        "type": "select",
+        "label": "Documentation of baseline size of target wounds has been provided (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dystrophic_epidermolysis_bullosa"
+          ]
+        }
+      },
+      "treated_wounds_meet_readiness_criteria": {
+        "type": "select",
+        "label": "Provider attests that all wounds to be treated have adequate granulation tissue, are well vascularized, and have no evidence of active infection or squamous cell carcinoma (approval criterion 6a\u2013d).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "dystrophic_epidermolysis_bullosa"
+          ]
+        }
+      }
+    }
   },
   "vykattm-xr": {
     "drug": {

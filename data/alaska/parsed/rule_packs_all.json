@@ -12484,28 +12484,377 @@
     "drug": {
       "name": "Praluent",
       "generic_name": "alirocumab",
-      "therapeutic_class": "lipotropics"
+      "therapeutic_class": "pcsk9-inhibitor"
     },
     "source": {
       "payer": "alaska_medicaid",
-      "list": "Praluent Criteria",
+      "list": "Praluent / Repatha Criteria",
       "effective_date": "2026-06-01",
       "citation": "https://health.alaska.gov/media/0qzn3tx2/pcsk9-inhibitor-update_2026.pdf",
       "criteria_pdf": "data/alaska/raw/pcsk9-inhibitor-update_2026.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Documented qualifying diagnosis or risk",
+        "citation": "https://health.alaska.gov/media/0qzn3tx2/pcsk9-inhibitor-update_2026.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "primary_hypercholesterolemia_ldl_gte_190",
+            "familial_hypercholesterolemia",
+            "ascvd_risk_score_gte_20"
+          ]
+        }
+      },
+      {
+        "id": "product",
+        "text": "Requested product",
+        "citation": "https://health.alaska.gov/media/0qzn3tx2/pcsk9-inhibitor-update_2026.pdf",
+        "required_facts": [
+          "product"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "product",
+          "values": [
+            "praluent",
+            "repatha"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Adults for primary hypercholesterolemia or ASCVD risk; familial floor 8 years for Praluent or 10 years for Repatha. Praluent HoFH remains adult-only (manual review).",
+        "citation": "https://health.alaska.gov/media/0qzn3tx2/pcsk9-inhibitor-update_2026.pdf",
+        "required_facts": [
+          "product",
+          "indication",
+          "age_years"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "product",
+                  "values": [
+                    "praluent",
+                    "repatha"
+                  ]
+                },
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "primary_hypercholesterolemia_ldl_gte_190",
+                    "ascvd_risk_score_gte_20"
+                  ]
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 18
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "product",
+                  "values": [
+                    "praluent"
+                  ]
+                },
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "familial_hypercholesterolemia"
+                  ]
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 8
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "product",
+                  "values": [
+                    "repatha"
+                  ]
+                },
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "familial_hypercholesterolemia"
+                  ]
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 10
+                }
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "primary_hypercholesterolemia_ldl_gte_190",
+            "familial_hypercholesterolemia",
+            "ascvd_risk_score_gte_20"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a cardiologist",
+        "citation": "https://health.alaska.gov/media/0qzn3tx2/pcsk9-inhibitor-update_2026.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "cardiologist_or_consult"
+        }
+      },
+      {
+        "id": "statin_step",
+        "text": "Documented high-potency statin failure or intolerance",
+        "citation": "https://health.alaska.gov/media/0qzn3tx2/pcsk9-inhibitor-update_2026.pdf",
+        "required_facts": [
+          "statin_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "statin_step",
+          "values": [
+            "high_potency_max_tolerated_12wk_failure",
+            "statin_intolerance_chart_notes"
+          ]
+        }
+      },
+      {
+        "id": "ldl_above_target",
+        "text": "Failure to reach LDL-C target supported by submitted chart notes/labs",
+        "citation": "https://health.alaska.gov/media/0qzn3tx2/pcsk9-inhibitor-update_2026.pdf",
+        "required_facts": [
+          "ldl_above_target"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ldl_above_target",
+          "values": [
+            "ascvd_ldl_gte_70",
+            "non_ascvd_ldl_gte_100"
+          ]
+        }
+      },
+      {
+        "id": "baseline_ldl_and_total_cholesterol_provided",
+        "text": "Baseline LDL-C and total cholesterol levels provided",
+        "citation": "https://health.alaska.gov/media/0qzn3tx2/pcsk9-inhibitor-update_2026.pdf",
+        "required_facts": [
+          "baseline_ldl_and_total_cholesterol_provided"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_ldl_and_total_cholesterol_provided",
+          "value": "both_provided"
+        }
+      },
+      {
+        "id": "not_concurrent_other_pcsk9",
+        "text": "Product will not be used together with another PCSK9 drug",
+        "citation": "https://health.alaska.gov/media/0qzn3tx2/pcsk9-inhibitor-update_2026.pdf",
+        "required_facts": [
+          "not_concurrent_other_pcsk9"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_other_pcsk9",
+          "value": "not_combined"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Praluent (alirocumab) / Repatha (evolocumab) PCSK9 inhibitor Criteria Version 3; Original 4/29/2016; Updated 4/17/2026; Effective 6/1/2026.",
+      "Both products share approval and denial criteria. Closed indication attests diagnosis or calculated risk and the primary hypercholesterolemia pre-treatment baseline LDL-C threshold.",
+      "FDA age: primary hypercholesterolemia and increased MACE risk are adult indications. Familial uses the permissive HeFH floor: Praluent \u22658 years; Repatha \u226510 years. Praluent HoFH is adult-only and requires manual review because familial subtype is not collected; Repatha HeFH and HoFH are labeled for age \u226510 years.",
+      "LDL targets are ASCVD <70 mg/dL and non-ASCVD <100 mg/dL. Either documented failed-target option is accepted across indications: calculated ASCVD risk does not establish ASCVD disease, and familial/primary hypercholesterolemia may coexist with ASCVD. Denial for at/below goal before initiation is represented by the failing LDL option.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 1 year.",
+      "Quantity (notes only): Praluent 150 mg every 14 days; Repatha ASCVD/HeFH 140 mg every 14 days or 420 mg every 28 days; Repatha HoFH 420 mg every 14 days. Product/subtype dosing requires manual review; max_units is null.",
+      "Caution (notes only): hypersensitivity reactions, including angioedema, have occurred.",
+      "PDL status unknown. No peer PCSK9 pack alternatives.",
+      "Remains partial: submitted chart notes/labs, diagnosis, treatment history and baseline lipids are attestations; evidence verification, Praluent HoFH adult-only labeling, duration, reauthorization, dosing, quantity and cautions require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Documented qualifying diagnosis or risk",
+        "options": [
+          {
+            "value": "primary_hypercholesterolemia_ldl_gte_190",
+            "label": "Primary hypercholesterolemia with pre-treatment baseline LDL-C \u2265190 mg/dL"
+          },
+          {
+            "value": "familial_hypercholesterolemia",
+            "label": "Familial hypercholesterolemia (HeFH or HoFH)"
+          },
+          {
+            "value": "ascvd_risk_score_gte_20",
+            "label": "Increased MACE risk: calculated 10-year ASCVD risk score \u226520%"
+          }
+        ]
+      },
+      "product": {
+        "type": "select",
+        "label": "Requested product",
+        "options": [
+          {
+            "value": "praluent",
+            "label": "Praluent (alirocumab)"
+          },
+          {
+            "value": "repatha",
+            "label": "Repatha (evolocumab)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Age (Praluent HoFH requires adult age on manual review)",
+        "option_style": "age_bands",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 8 years"
+          },
+          {
+            "value": "8",
+            "label": "8\u20139 years"
+          },
+          {
+            "value": "10",
+            "label": "10\u201317 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "primary_hypercholesterolemia_ldl_gte_190",
+            "familial_hypercholesterolemia",
+            "ascvd_risk_score_gte_20"
+          ]
+        }
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a cardiologist",
+        "options": [
+          {
+            "value": "cardiologist_or_consult",
+            "label": "Cardiologist or consultation with cardiologist"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "statin_step": {
+        "type": "select",
+        "label": "Documented high-potency statin failure or intolerance",
+        "options": [
+          {
+            "value": "high_potency_max_tolerated_12wk_failure",
+            "label": "Documented failure of atorvastatin or rosuvastatin at maximum tolerated dose for at least 12 weeks"
+          },
+          {
+            "value": "statin_intolerance_chart_notes",
+            "label": "Statin intolerance supported by submitted chart notes"
+          },
+          {
+            "value": "none",
+            "label": "Neither documented"
+          }
+        ]
+      },
+      "ldl_above_target": {
+        "type": "select",
+        "label": "Failure to reach LDL-C target supported by submitted chart notes/labs",
+        "options": [
+          {
+            "value": "ascvd_ldl_gte_70",
+            "label": "ASCVD: LDL-C target <70 mg/dL not reached (still \u226570)"
+          },
+          {
+            "value": "non_ascvd_ldl_gte_100",
+            "label": "Non-ASCVD: LDL-C target <100 mg/dL not reached (still \u2265100)"
+          },
+          {
+            "value": "at_or_below_target_or_not_documented",
+            "label": "At/below goal before initiation or not documented"
+          }
+        ]
+      },
+      "baseline_ldl_and_total_cholesterol_provided": {
+        "type": "select",
+        "label": "Baseline LDL-C and total cholesterol levels provided",
+        "options": [
+          {
+            "value": "both_provided",
+            "label": "Both provided"
+          },
+          {
+            "value": "missing",
+            "label": "One or both missing"
+          }
+        ]
+      },
+      "not_concurrent_other_pcsk9": {
+        "type": "select",
+        "label": "Product will not be used together with another PCSK9 drug",
+        "options": [
+          {
+            "value": "not_combined",
+            "label": "Not combined with another PCSK9 drug"
+          },
+          {
+            "value": "combined_with_other_pcsk9",
+            "label": "Combined with another PCSK9 drug"
+          }
+        ]
+      }
+    }
   },
   "prolia": {
     "drug": {

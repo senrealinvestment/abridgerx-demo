@@ -22,8 +22,8 @@ Source hub: https://health.alaska.gov/en/education/prior-authorization-medicatio
 - Criteria text JSON files: **198**
 - Rule packs: **198**
 - Fully encoded (all clauses as predicates): **0**
-- Partially encoded: **31** (Adbry, Adcirca, Aduhelm, Benlysta, Bimzelx, Briumvi, Cinqair, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Fasenra, Hemlibra, Infliximab, Kesimpta, Kevzara, Nucala, Ocrevus, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tezspire, Tremfya, Xolair, Zymfentra)
-- Text-only (requires_pa, encoding pending): **167**
+- Partially encoded: **32** (Adbry, Adcirca, Aduhelm, Benlysta, Bimzelx, Briumvi, Cinqair, Dupixent, Ebglyss, Egrifta, Ekterly, Elevidys, Emflaza, Empaveli, Entyvio, Evenity, Fasenra, Hemlibra, Infliximab, Kesimpta, Kevzara, Nucala, Ocrevus, Praluent/Repatha, Prolia, Skyrizi, Soliris/Ultomiris, Stelara, Tezspire, Tremfya, Xolair, Zymfentra)
+- Text-only (requires_pa, encoding pending): **166**
 - Scanned image criteria PDFs (OCR needed): **7**
 
 ## Blockers
@@ -58,3 +58,5 @@ Hemlibra encodes one closed hemophilia A prophylaxis indication (with or without
 Next candidate: Actiq (first remaining text_only brand alphabetically); Amitiza follows. Biologics batch exhausted: Evenity, Prolia, Kevzara, Benlysta and Bimzelx are partially encoded. Other candidates: CGRP therapies, Hep C DAA, and growth hormone.
 
 Soliris/Ultomiris encodes aHUS, PNH, gMG and Soliris-only NMOSD, indication-specific ages and clinical gates, and shared vaccination, specialty and REMS requirements. Duration, renewal, quantity and cautions remain manual review.
+
+Praluent/Repatha encodes three closed indication paths, product-specific familial age floors, cardiology specialty, statin failure/intolerance, failed LDL target, baseline lipids and no dual PCSK9 therapy. Praluent HoFH adult-only labeling, evidence verification, duration, renewal, quantity and cautions remain manual review.

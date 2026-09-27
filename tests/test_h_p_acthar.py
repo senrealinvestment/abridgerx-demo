@@ -85,11 +85,11 @@ def test_catalog():
     assert json.loads((BASE/'rule_packs_all.json').read_text())==catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f:assert json.load(f)==catalog
     assert len(catalog)==198
-    assert sum(p['encoding_status']=='partial' for p in catalog.values())==176
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==22
+    assert sum(p['encoding_status']=='partial' for p in catalog.values())==177
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==21
     assert catalog['interleukin-5-inhibitors']['encoding_status']=='partial'
     for slug in ['fasenra','nucala','cinqair']: assert catalog[slug]['encoding_status']=='partial'
     for root in [BASE,BASE.parent]:
         status=json.loads((root/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'],status['encoding_text_only'])==(176,22)
-        assert status['next_candidate']=='naloxone-opioid-overdose-treatment-evzio'
+        assert (status['encoding_partial'],status['encoding_text_only'])==(177,21)
+        assert status['next_candidate']=='narcan-nasal-spray-naloxone-opioid-overdose-treatment'

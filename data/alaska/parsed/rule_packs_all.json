@@ -34004,15 +34004,113 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Emergency treatment of known or suspected opioid overdose manifested by respiratory and/or central nervous system depression.",
+        "citation": "https://health.alaska.gov/media/cxspizyt/ccfu_opioidreversalagent_evzio_20161003.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "opioid_overdose_emergency"
+        }
+      },
+      {
+        "id": "narcan_nasal_spray_exception",
+        "text": "Previous Narcan Nasal Spray use with documented intolerance OR a documented clinical reason why Narcan Nasal Spray cannot be used.",
+        "citation": "https://health.alaska.gov/media/cxspizyt/ccfu_opioidreversalagent_evzio_20161003.pdf",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_overdose_emergency"
+        },
+        "required_facts": [
+          "narcan_nasal_spray_intolerance",
+          "narcan_nasal_spray_cannot_be_used"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "narcan_nasal_spray_intolerance",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "narcan_nasal_spray_cannot_be_used",
+              "value": true
+            }
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Evzio (naloxone HCl) Criteria Version 1; Approved 1/22/2016; effective for dates of service 10/3/2016 and thereafter.",
+      "Dosage form/strength: Evzio Injection 0.4 mg/0.4 mL naloxone HCl auto-injector.",
+      "Evzio is intended for immediate emergency administration where opioids may be present and is not a substitute for emergency medical care.",
+      "Approval requires either Narcan Nasal Spray exception; denial is represented by failure of the any-predicate, not separate inverse OR denial clauses.",
+      "Authorization (notes only): initial up to 6 months; subsequent reauthorization up to 1 year.",
+      "Quantity limit (notes only): 1 box (2 auto-injectors) per fill.",
+      "Mechanism (notes only): naloxone competes at opioid receptor sites and reverses opioid effects including respiratory depression, sedation and hypotension, as well as psychotomimetic and dysphoric effects of agonist-antagonists such as pentazocine.",
+      "Overdose background / CDC guidance (notes only): guidelines recommend opioid antagonist access for patients at high risk of overdose; prescribers should consider offering naloxone when an opioid reversal agent is warranted. See source references for overdose management and risk factors."
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Emergency treatment of known or suspected opioid overdose manifested by respiratory and/or central nervous system depression.",
+        "options": [
+          {
+            "value": "opioid_overdose_emergency",
+            "label": "Known or suspected opioid overdose with respiratory and/or CNS depression"
+          },
+          {
+            "value": "other",
+            "label": "Other indication"
+          }
+        ]
+      },
+      "narcan_nasal_spray_intolerance": {
+        "type": "select",
+        "label": "Previously used Narcan Nasal Spray and experienced documented intolerance.",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_overdose_emergency"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "narcan_nasal_spray_cannot_be_used": {
+        "type": "select",
+        "label": "Documented clinical reason why Narcan Nasal Spray cannot be used.",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_overdose_emergency"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "narcan-nasal-spray-naloxone-opioid-overdose-treatment": {
     "drug": {

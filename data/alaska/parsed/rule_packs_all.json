@@ -17636,24 +17636,628 @@
     "source": {
       "payer": "alaska_medicaid",
       "list": "Genotypes Criteria",
-      "effective_date": "2022-05-05",
+      "effective_date": "2022-01-04",
       "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
       "criteria_pdf": "data/alaska/raw/20220505ccfu_id_hepc_gt-all_may2022.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of chronic hepatitis C infection.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "hcv_clinical_documentation_submitted",
+        "text": "Documentation includes chronic HCV status, genotype, resistance status when applicable, hepatic status (Child-Pugh), and HCV viral load.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "hcv_clinical_documentation_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hcv_clinical_documentation_submitted",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "age_ge_12_or_pediatric_specialty",
+        "text": "Age at least 12, or age at least 3 and under 12 with a liver disease specialist directly or in consultation.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "age_years",
+          "pediatric_liver_specialist"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "gte",
+              "fact": "age_years",
+              "value": 12
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 3
+                },
+                {
+                  "op": "lt",
+                  "fact": "age_years",
+                  "value": 12
+                },
+                {
+                  "op": "eq",
+                  "fact": "pediatric_liver_specialist",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "tablet_or_pellet_rationale_ok",
+        "text": "Tablets are used, or patient is age 6 or younger, or a clinically patient-specific reason for pellet form instead of tablet is documented.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "tablet_or_pellet_rationale_ok"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "tablet_or_pellet_rationale_ok",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "prior_hcv_therapy_history_documented",
+        "text": "Prior HCV agents, therapy dates, completion versus early discontinuation with reason, and viral resistance status are documented.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "prior_hcv_therapy_history_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prior_hcv_therapy_history_documented",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "patient_readiness_and_compliance_attested",
+        "text": "Patient readiness assessed and attested to by prescriber; patient compliance attestation submitted and on file in medical record.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "patient_readiness_and_compliance_attested"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "patient_readiness_and_compliance_attested",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "patient_signed_regimen_attestation",
+        "text": "Signed patient attestation submitted agreeing to complete regimen and understanding reinfection and liver-damage risks.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "patient_signed_regimen_attestation"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "patient_signed_regimen_attestation",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "prescriber_svr12_monitoring_agreement",
+        "text": "Prescriber agrees to maintain HCV RNA levels obtained 12 weeks after therapy completion to demonstrate SVR.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "prescriber_svr12_monitoring_agreement"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_svr12_monitoring_agreement",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "hbv_screened",
+        "text": "HBV screening completed with both HBsAg and anti-HBc.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "hbv_screened"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hbv_screened",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "hiv_docs_ok_or_not_coinfected",
+        "text": "Patient is not HCV/HIV co-infected, or CD4 count, HIV viral load, and HIV treatment regimen are documented.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "hiv_docs_ok_or_not_coinfected"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hiv_docs_ok_or_not_coinfected",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "resistance_testing_done_when_required",
+        "text": "Required resistance-associated polymorphism testing is completed and results submitted when FDA/regimen requires it or clinical reviewer deems it medically necessary.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "resistance_testing_done_when_required"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "resistance_testing_done_when_required",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "not_acute_hepatitis_c",
+        "text": "Request is not for acute hepatitis C infection.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "not_acute_hepatitis_c"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_acute_hepatitis_c",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "not_nonpreferred_when_preferred_appropriate",
+        "text": "Not requesting a non-preferred agent when a less expensive, medically appropriate preferred agent is available.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "not_nonpreferred_when_preferred_appropriate"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_nonpreferred_when_preferred_appropriate",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "duration_within_fda_approved",
+        "text": "Requested duration does not exceed the FDA-approved duration for the indication.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "duration_within_fda_approved"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "duration_within_fda_approved",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "decompensated_managed_by_liver_specialist_or_not_cp_gt_6",
+        "text": "Child-Pugh score is not greater than 6, or treatment is managed by or in consultation with a liver disease specialist.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "decompensated_managed_by_liver_specialist_or_not_cp_gt_6"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "decompensated_managed_by_liver_specialist_or_not_cp_gt_6",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      {
+        "id": "no_interacting_concomitant_products",
+        "text": "No concomitant medications or other products counteract HCV DAA efficacy or present a clinical safety risk.",
+        "citation": "https://health.alaska.gov/media/vibniou0/20220505ccfu_id_hepc_gt-all_may2022.pdf",
+        "required_facts": [
+          "no_interacting_concomitant_products"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_interacting_concomitant_products",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of initial Alaska Medicaid HCV DAA PA Clinical Criteria for Use, All Genotypes. Changes Approved 11/19/2021; Effective DOS 1/4/2022 and thereafter; Revised 5/5/2022. Revision history lists PDL update effective 6/1/2022.",
+      "PDL preferred regimens in Tables 1a/1b do not require PA when prescribed consistently with the PDL. This pack covers non-preferred / PA-required DAA requests. Refer to Tables 1a/1b (including Mavyret and sofosbuvir/velpatasvir authorized generic) and Table 2 special conditions; product, genotype, cirrhosis and treatment-history table rows are not hard predicates.",
+      "Quantity (notes only): do not exceed FDA-approved dose per day and duration.",
+      "Renewal (notes only): regimens longer than 16 weeks may require timely submission of week-4 HCV RNA, which must be <25 IU/mL. Maintain chart documentation of week-4 RNA and SVR12 and make available on request. No extension without clinical evidence of benefit/effectiveness or for non-compliance; no extension or reauthorization for dispensing error (pharmacy must rectify at no cost to Medicaid or patient); no lost/stolen replacement.",
+      "Ribavirin combination treatment is contraindicated in women who are pregnant or may become pregnant and men whose female partners are pregnant due to birth defects and fetal death risks. Ongoing patient engagement is encouraged to reduce resistance and reinfection.",
+      "Incomplete requests: prescribers have 7 calendar days to supply additional information before non-clinical denial; re-review requires a new complete PA request.",
+      "Age gate follows approval criterion 3: age >=12 or age >=3 and <12 with liver disease specialist directly or in consultation. Denial criterion 8 says ages 3 to 12; this boundary wording and Table 2 youth specialty guidance remain for manual review.",
+      "Twin slug hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc shares this PDF and remains separately unencoded."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis",
+        "options": [
+          {
+            "value": "chronic_hepatitis_c",
+            "label": "Chronic hepatitis C"
+          },
+          {
+            "value": "other",
+            "label": "Other diagnosis"
+          }
+        ]
+      },
+      "hcv_clinical_documentation_submitted": {
+        "type": "select",
+        "label": "Documentation includes chronic HCV status, genotype, resistance status when applicable, hepatic status (Child-Pugh), and HCV viral load.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "tablet_or_pellet_rationale_ok": {
+        "type": "select",
+        "label": "Tablets are used, or patient is age 6 or younger, or a clinically patient-specific reason for pellet form instead of tablet is documented.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "prior_hcv_therapy_history_documented": {
+        "type": "select",
+        "label": "Prior HCV agents, therapy dates, completion versus early discontinuation with reason, and viral resistance status are documented.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "patient_readiness_and_compliance_attested": {
+        "type": "select",
+        "label": "Patient readiness assessed and attested to by prescriber; patient compliance attestation submitted and on file in medical record.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "patient_signed_regimen_attestation": {
+        "type": "select",
+        "label": "Signed patient attestation submitted agreeing to complete regimen and understanding reinfection and liver-damage risks.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "prescriber_svr12_monitoring_agreement": {
+        "type": "select",
+        "label": "Prescriber agrees to maintain HCV RNA levels obtained 12 weeks after therapy completion to demonstrate SVR.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "hbv_screened": {
+        "type": "select",
+        "label": "HBV screening completed with both HBsAg and anti-HBc.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "hiv_docs_ok_or_not_coinfected": {
+        "type": "select",
+        "label": "Patient is not HCV/HIV co-infected, or CD4 count, HIV viral load, and HIV treatment regimen are documented.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "resistance_testing_done_when_required": {
+        "type": "select",
+        "label": "Required resistance-associated polymorphism testing is completed and results submitted when FDA/regimen requires it or clinical reviewer deems it medically necessary.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "not_acute_hepatitis_c": {
+        "type": "select",
+        "label": "Request is not for acute hepatitis C infection.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "not_nonpreferred_when_preferred_appropriate": {
+        "type": "select",
+        "label": "Not requesting a non-preferred agent when a less expensive, medically appropriate preferred agent is available.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "duration_within_fda_approved": {
+        "type": "select",
+        "label": "Requested duration does not exceed the FDA-approved duration for the indication.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "decompensated_managed_by_liver_specialist_or_not_cp_gt_6": {
+        "type": "select",
+        "label": "Child-Pugh score is not greater than 6, or treatment is managed by or in consultation with a liver disease specialist.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "no_interacting_concomitant_products": {
+        "type": "select",
+        "label": "No concomitant medications or other products counteract HCV DAA efficacy or present a clinical safety risk.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "pediatric_liver_specialist": {
+        "type": "select",
+        "label": "Pediatric patient followed directly or in consultation by a liver disease specialist",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age",
+        "options": [
+          {
+            "value": "2",
+            "label": "Under 3 years"
+          },
+          {
+            "value": "3",
+            "label": "3 to under 12 years"
+          },
+          {
+            "value": "12",
+            "label": "12 years or older"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "chronic_hepatitis_c"
+        }
+      }
+    }
   },
   "gralise": {
     "drug": {

@@ -110,8 +110,8 @@ def test_selects_coercion_and_gating():
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 187
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 11
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 188
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 10
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
@@ -124,9 +124,9 @@ def test_catalog_and_mirrors():
     assert catalog['praluent']['encoding_status'] == 'partial'
     assert catalog['actiq']['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 187 and status['encoding_text_only'] == 11
+    assert status['encoding_partial'] == 188 and status['encoding_text_only'] == 10
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert 'kesimpta' in status['partial_slugs'] and status['next_candidate'] == 'genotypes'
+    assert 'kesimpta' in status['partial_slugs'] and status['next_candidate'] == 'hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
 

@@ -15,7 +15,7 @@ from ui.loaders import drug_detail
 
 BASE = ROOT / 'data/alaska/parsed'
 SLUG = 'narcan-nasal-spray-naloxone-opioid-overdose-treatment'
-NEXT = 'genotypes'
+NEXT = 'hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc'
 PACK = json.loads((BASE / 'rule_packs' / f'{SLUG}.json').read_text())
 INDICATION = 'opioid_overdose_emergency'
 FACTS = ['narcan_fills_within_365d_lt_3', 'narcan_fills_ge_3_pharmacist_override_completed']
@@ -67,13 +67,13 @@ def test_metadata_notes_and_catalog():
     assert catalog == {p.stem: json.loads(p.read_text()) for p in (BASE / 'rule_packs').glob('*.json')}
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 187
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 11
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 188
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 10
     assert catalog[NEXT]['encoding_status'] == 'text_only'
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (187, 11, NEXT)
+    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (188, 10, NEXT)
     assert status['partial_slugs'] == sorted(s for s, p in catalog.items() if p['encoding_status'] == 'partial')
 
 

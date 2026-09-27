@@ -141,8 +141,8 @@ def test_catalog_mirrors_and_alternatives():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 187
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 11
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 188
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 10
     assert p['alternatives'] == PEERS
     for slug in ['infliximab'] + PEERS:
         assert (BASE / f'{slug}.json').read_bytes() == (BASE / 'rule_packs' / f'{slug}.json').read_bytes()
@@ -150,9 +150,9 @@ def test_catalog_mirrors_and_alternatives():
         if slug != 'infliximab':
             assert 'infliximab' in catalog[slug]['alternatives']
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 187 and status['encoding_text_only'] == 11
+    assert status['encoding_partial'] == 188 and status['encoding_text_only'] == 10
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'genotypes'
+    assert status['next_candidate'] == 'hepatitis-c-direct-acting-antivirals-for-chronic-hepatitis-c-criteria-all-produc'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
 

@@ -49196,9 +49196,9 @@
   },
   "sympazan": {
     "drug": {
-      "name": "Sympazan",
-      "generic_name": "Clobazam",
-      "therapeutic_class": "other"
+      "name": "Sympazan / Onfi",
+      "generic_name": "clobazam",
+      "therapeutic_class": "antiepileptic"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -49209,17 +49209,140 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of Lennox-Gastaut Syndrome (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/a2edkmco/20199onfi-pa_updated20190807.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "lennox_gastaut_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "current_other_aed",
+        "text": "Current therapy with at least one other antiepileptic medication, including documentation of current and prior therapies (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/a2edkmco/20199onfi-pa_updated20190807.pdf#approval-criteria",
+        "required_facts": [
+          "current_other_aed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "current_other_aed",
+          "value": true
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Recipient is 2 years of age or older (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/a2edkmco/20199onfi-pa_updated20190807.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 2
+        }
+      },
+      {
+        "id": "failed_generic_clobazam",
+        "text": "Patient has tried and failed generic clobazam (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/a2edkmco/20199onfi-pa_updated20190807.pdf#approval-criteria",
+        "required_facts": [
+          "failed_generic_clobazam"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_generic_clobazam",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Sympazan / Onfi (clobazam) approval criteria 1–4. Current/prior therapy documentation and generic clobazam failure are attestations requiring manual verification.",
+      "FDA indication: adjunctive treatment of seizures associated with Lennox-Gastaut syndrome (LGS) in patients 2 years of age or older. Schedule IV controlled substance.",
+      "Products: Sympazan™ films 5/10/20 mg; Onfi® tablets 10/20 mg and oral suspension 2.5 mg/mL in 120 mL bottles.",
+      "Length of authorization (notes only): up to 6 months.",
+      "Quantity limit (notes only): maximum 2 doses/day, not to exceed 40 mg/day. Quantity and authorization duration require manual review; max_units is null.",
+      "Source version: Version 3; Last updated 09/2/2014; Previous 09/19/2014; Approved 9/20/2019; Effective 11/20/2019."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of Lennox-Gastaut Syndrome (approval criterion 1).",
+        "options": [
+          {
+            "value": "lennox_gastaut_syndrome",
+            "label": "Lennox-Gastaut syndrome (LGS)"
+          }
+        ]
+      },
+      "current_other_aed": {
+        "type": "select",
+        "label": "Current therapy with at least one other antiepileptic medication, including documentation of current and prior therapies (approval criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes — requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No — requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "lennox_gastaut_syndrome"
+        }
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Recipient is 2 years of age or older (approval criterion 3).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 2 years"
+          },
+          {
+            "value": "2",
+            "label": "2+ years"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "lennox_gastaut_syndrome"
+        },
+        "option_style": "age_bands"
+      },
+      "failed_generic_clobazam": {
+        "type": "select",
+        "label": "Patient has tried and failed generic clobazam (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes — requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No — requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "lennox_gastaut_syndrome"
+        }
+      }
+    }
   },
   "symproic": {
     "drug": {

@@ -78,9 +78,9 @@ def test_metadata_mirrors_and_scope():
     catalog=json.loads((B/'rule_packs_all.json').read_text())
     assert catalog=={p.stem:json.loads(p.read_text()) for p in (B/'rule_packs').glob('*.json')}
     with gzip.open(B/'rule_packs_all.json.gz','rt') as f: assert json.load(f)==catalog
-    assert sum(p['encoding_status']=='partial' for p in catalog.values())==159
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==39
-    for slug in ['sympazan','hemophilia','bactroban-cream','atypical-antipsychotic-therapeutic-duplication']:
+    assert sum(p['encoding_status']=='partial' for p in catalog.values())==160
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==38
+    for slug in ['viberzi','hemophilia','bactroban-cream','atypical-antipsychotic-therapeutic-duplication']:
         assert catalog[slug]['encoding_status']=='text_only'
     for c in PACK['criteria']:
         if c['id'].startswith(('reclast_', 'no_concurrent_zometa')): assert c['when']=={'fact':'product','eq':'reclast'}

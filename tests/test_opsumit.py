@@ -94,12 +94,12 @@ def test_catalog_and_reciprocal_alternatives():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 159
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 39
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 160
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 38
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (159, 39)
-        assert status['next_candidate'] == 'sympazan'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (160, 38)
+        assert status['next_candidate'] == 'viberzi'
         assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

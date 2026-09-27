@@ -159,7 +159,9 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "soliris"
+  ],
   "notes": [
     "Partial encoding from Alaska Medicaid Empaveli (pegcetacoplan) Criteria Version 1: Original 10/10/2022; Approval 11/18/2022; Effective 1/2/2023. The effective_date remains 2023-01-02.",
     "Encoded: the closed PNH indication, adult age, approval criteria 1-6, and denial criteria 2-4 as approval-blocking predicates. Denial criterion 1 is failure to meet approval criteria. Baseline LDH and hemoglobin <10.5 g/dL are a combined attestation, without numeric lab predicates.",
@@ -168,7 +170,7 @@
     "Cautions: Empaveli may predispose individuals to serious, life-threatening, or fatal infections caused by encapsulated bacteria. Prescriber REMS enrollment and absence of unresolved serious encapsulated-bacteria infection are required attestations.",
     "Caution (notes only): silica reagents in coagulation panels may cause artificially prolonged activated partial thromboplastin time (aPTT).",
     "Approval durations, reauthorization response documentation, quantity, dosing, and cautions require manual review; this pack remains partial.",
-    "No PDL hit; pdl_status remains unknown. Soliris and Ultomiris remain text_only, so no evaluate-linked alternatives are specified."
+    "No PDL hit; pdl_status remains unknown. Soliris/Ultomiris is a linked complement inhibitor alternative for PNH overlap only; its own criteria require separate review."
   ],
   "fact_ui": {
     "indication": {

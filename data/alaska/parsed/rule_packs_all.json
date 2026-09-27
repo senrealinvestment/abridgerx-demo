@@ -6408,7 +6408,9 @@
         }
       }
     ],
-    "alternatives": [],
+    "alternatives": [
+      "soliris"
+    ],
     "notes": [
       "Partial encoding from Alaska Medicaid Empaveli (pegcetacoplan) Criteria Version 1: Original 10/10/2022; Approval 11/18/2022; Effective 1/2/2023. The effective_date remains 2023-01-02.",
       "Encoded: the closed PNH indication, adult age, approval criteria 1-6, and denial criteria 2-4 as approval-blocking predicates. Denial criterion 1 is failure to meet approval criteria. Baseline LDH and hemoglobin <10.5 g/dL are a combined attestation, without numeric lab predicates.",
@@ -6417,7 +6419,7 @@
       "Cautions: Empaveli may predispose individuals to serious, life-threatening, or fatal infections caused by encapsulated bacteria. Prescriber REMS enrollment and absence of unresolved serious encapsulated-bacteria infection are required attestations.",
       "Caution (notes only): silica reagents in coagulation panels may cause artificially prolonged activated partial thromboplastin time (aPTT).",
       "Approval durations, reauthorization response documentation, quantity, dosing, and cautions require manual review; this pack remains partial.",
-      "No PDL hit; pdl_status remains unknown. Soliris and Ultomiris remain text_only, so no evaluate-linked alternatives are specified."
+      "No PDL hit; pdl_status remains unknown. Soliris/Ultomiris is a linked complement inhibitor alternative for PNH overlap only; its own criteria require separate review."
     ],
     "fact_ui": {
       "indication": {
@@ -13972,29 +13974,837 @@
   "soliris": {
     "drug": {
       "name": "Soliris",
-      "therapeutic_class": "other"
+      "therapeutic_class": "complement-inhibitor",
+      "generic_name": "eculizumab"
     },
     "source": {
       "payer": "alaska_medicaid",
-      "list": "Soliris Criteria",
+      "list": "Soliris / Ultomiris Criteria",
       "effective_date": "2022-11-01",
       "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
       "criteria_pdf": "data/alaska/raw/202209-soliris_ultomiris_criteria_2022v2.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Documented diagnosis of a listed indication.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "ahus",
+            "pnh",
+            "gmg",
+            "nmosd"
+          ]
+        }
+      },
+      {
+        "id": "product_allowed_for_indication",
+        "text": "Soliris or Ultomiris for aHUS/PNH/gMG; Soliris only for NMOSD.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "indication",
+          "product"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "ahus",
+                    "pnh",
+                    "gmg"
+                  ]
+                },
+                {
+                  "op": "in",
+                  "fact": "product",
+                  "values": [
+                    "soliris",
+                    "ultomiris"
+                  ]
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "indication",
+                  "value": "nmosd"
+                },
+                {
+                  "op": "eq",
+                  "fact": "product",
+                  "value": "soliris"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "At least 1 month for aHUS/PNH; at least 18 years for gMG/NMOSD.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "indication",
+          "age_years"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "ahus",
+                    "pnh"
+                  ]
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 0.08333333333333333
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "gmg",
+                    "nmosd"
+                  ]
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 18
+                }
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ahus",
+            "pnh",
+            "gmg",
+            "nmosd"
+          ]
+        }
+      },
+      {
+        "id": "meningococcal_vaccine_status",
+        "text": "Meningococcal vaccination at least 2 weeks before initiation.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "meningococcal_vaccine_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "meningococcal_vaccine_status",
+          "value": "vaccinated_gte_14d_prior"
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a hematologist, nephrologist, or neurologist.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "hematologist_or_nephrologist_or_neurologist_or_consult"
+        }
+      },
+      {
+        "id": "prescriber_rems_enrolled",
+        "text": "Prescriber enrolled in REMS.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "prescriber_rems_enrolled"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_rems_enrolled",
+          "value": true
+        }
+      },
+      {
+        "id": "ttp_ruled_out",
+        "text": "TTP ruled out by normal ADAMTS13 activity or plasma exchange without clinical improvement.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "ttp_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ttp_ruled_out",
+          "value": "normal_adamts13_or_plasma_exchange_no_improvement"
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "ahus"
+        }
+      },
+      {
+        "id": "no_shiga_toxin_e_coli",
+        "text": "No Shiga toxin-producing E. coli infection.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "no_shiga_toxin_e_coli"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_shiga_toxin_e_coli",
+          "value": "no_stec_infection"
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "ahus"
+        }
+      },
+      {
+        "id": "ahus_baseline_labs",
+        "text": "Baseline documentation of one or more: LDH, creatinine/eGFR, platelet count, plasma exchange/infusion requirement.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "ahus_baseline_labs"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ahus_baseline_labs",
+          "value": "one_or_more_ldh_creat_egfr_platelet_or_plasma_exchange"
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "ahus"
+        }
+      },
+      {
+        "id": "pnh_flow_cytometry_confirmed",
+        "text": "PNH confirmed by flow cytometry.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "pnh_flow_cytometry_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pnh_flow_cytometry_confirmed",
+          "value": "confirmed_by_flow_cytometry"
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pnh"
+        }
+      },
+      {
+        "id": "pnh_therapy_indication",
+        "text": "At least one qualifying indication for PNH therapy.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "pnh_therapy_indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pnh_therapy_indication",
+          "values": [
+            "thrombotic_event",
+            "organ_damage_chronic_hemolysis",
+            "pregnant_benefit_outweighs_fetal_risk",
+            "transfusion_dependent",
+            "high_ldh_gte_1_5_uln_with_symptoms"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pnh"
+        }
+      },
+      {
+        "id": "pnh_baseline_labs_all",
+        "text": "All baseline values documented: LDH, hemoglobin, and packed RBC transfusion requirement.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "pnh_baseline_labs_all"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pnh_baseline_labs_all",
+          "value": "ldh_and_hemoglobin_and_prbc_transfusion_requirement_documented"
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "pnh"
+        }
+      },
+      {
+        "id": "mgfa_class",
+        "text": "MGFA clinical classification II, III, or IV.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "mgfa_class"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "mgfa_class",
+          "value": "ii_iii_or_iv"
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "gmg"
+        }
+      },
+      {
+        "id": "mg_adl_score",
+        "text": "MG-ADL total score at least 6.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "mg_adl_score"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "mg_adl_score",
+          "value": "gte_6"
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "gmg"
+        }
+      },
+      {
+        "id": "achr_antibody",
+        "text": "Positive anti-acetylcholine receptor antibody serology.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "achr_antibody"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "achr_antibody",
+          "value": "positive"
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "gmg"
+        }
+      },
+      {
+        "id": "qmg_baseline_assessed",
+        "text": "Prescriber assessed baseline QMG score.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "qmg_baseline_assessed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "qmg_baseline_assessed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "gmg"
+        }
+      },
+      {
+        "id": "gmg_immunosuppressive_step",
+        "text": "Qualifying immunosuppressive therapy history.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "gmg_immunosuppressive_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "gmg_immunosuppressive_step",
+          "values": [
+            "inadequate_or_ci_two_or_more_is_agents_12mo",
+            "inadequate_or_ci_one_is_agent_plus_chronic_plasma_exchange_or_ivig"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "gmg"
+        }
+      },
+      {
+        "id": "aqp4_antibody",
+        "text": "NMOSD confirmed by positive AQP4-IgG/NMP-IgG serology.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "aqp4_antibody"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "aqp4_antibody",
+          "value": "positive_aqp4_igg"
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "nmosd"
+        }
+      },
+      {
+        "id": "nmosd_systemic_step",
+        "text": "Qualifying systemic therapy and relapse history or contraindication/intolerance.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "nmosd_systemic_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "nmosd_systemic_step",
+          "values": [
+            "failure_one_of_aza_mmf_ritux_with_relapse_history",
+            "ci_or_intolerance_to_all_three_aza_mmf_ritux"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "nmosd"
+        }
+      },
+      {
+        "id": "ms_ruled_out",
+        "text": "Multiple sclerosis ruled out.",
+        "citation": "https://health.alaska.gov/media/vlzpfpiq/202209-soliris_ultomiris_criteria_2022v2.pdf",
+        "required_facts": [
+          "ms_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ms_ruled_out",
+          "value": "ms_ruled_out"
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "nmosd"
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "empaveli"
+    ],
+    "notes": [
+      "Partial encoding of Alaska Medicaid Soliris (eculizumab) / Ultomiris (ravulizumab-cwvz) Criteria Version 2; Original 2/24/22; Approval 9/16/2022; Effective 11/01/2022.",
+      "All four approval branches and shared vaccine, specialty, and prescriber REMS denial gates are encoded. Diagnosis is attested by the closed indication. Approval section permits Soliris or Ultomiris for gMG, although the FDA indications paragraph names only Soliris for gMG. NMOSD is Soliris only.",
+      "Age follows this PDF: at least 1 month for aHUS/PNH, represented as 1/12 age_years; at least 18 years for gMG/NMOSD. UI band minima preserve these thresholds.",
+      "gMG immunosuppressive examples: azathioprine, mycophenolate mofetil, cyclosporine, cyclophosphamide, methotrexate, tacrolimus, rituximab. No specific agent picklist is required.",
+      "Duration (notes only): initial approval up to 4 months; reauthorization up to 12 months if prescriber documents disease improvement.",
+      "Quantity (notes only): Soliris max dose 1200 mg; J1300 max HCPCS 120. Ultomiris max dose 3600 mg; J1303 max HCPCS 360. Product-specific limits require manual review; max_units is null.",
+      "Cautions (notes only): see package inserts https://solirispro.com/pdf/Soliris_USPI.pdf and https://alexion.com/Documents/Ultomiris_USPI.pdf .",
+      "PDL status unknown. Empaveli is a related complement inhibitor alternative for PNH overlap only; its own criteria require separate review.",
+      "Remains partial: laboratory and treatment-history evidence is attested; documentation, duration, reauthorization improvement, quantity/dosing, and package-insert cautions require manual review. PNH requires all three baseline values, without an invented hemoglobin threshold."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Documented diagnosis",
+        "options": [
+          {
+            "value": "ahus",
+            "label": "Atypical hemolytic uremic syndrome (aHUS) \u2014 Soliris or Ultomiris"
+          },
+          {
+            "value": "pnh",
+            "label": "Paroxysmal nocturnal hemoglobinuria (PNH) \u2014 Soliris or Ultomiris"
+          },
+          {
+            "value": "gmg",
+            "label": "Generalized myasthenia gravis (gMG), anti-AChR+ \u2014 Soliris or Ultomiris"
+          },
+          {
+            "value": "nmosd",
+            "label": "Neuromyelitis optica spectrum disorder (NMOSD), anti-AQP4+ \u2014 Soliris only"
+          }
+        ]
+      },
+      "product": {
+        "type": "select",
+        "label": "Requested product",
+        "options": [
+          {
+            "value": "soliris",
+            "label": "Soliris (eculizumab)"
+          },
+          {
+            "value": "ultomiris",
+            "label": "Ultomiris (ravulizumab-cwvz)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Age (1 month minimum for aHUS/PNH; 18 years for gMG/NMOSD)",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 1 month"
+          },
+          {
+            "value": "0.08333333333333333",
+            "label": "1 month \u2013 under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ahus",
+            "pnh",
+            "gmg",
+            "nmosd"
+          ]
+        },
+        "option_style": "age_bands"
+      },
+      "meningococcal_vaccine_status": {
+        "type": "select",
+        "label": "Meningococcal vaccination at least 2 weeks before initiation.",
+        "options": [
+          {
+            "value": "vaccinated_gte_14d_prior",
+            "label": "Vaccinated at least 14 days prior"
+          },
+          {
+            "value": "not_vaccinated_or_within_14d",
+            "label": "Not vaccinated or within 14 days"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a hematologist, nephrologist, or neurologist.",
+        "options": [
+          {
+            "value": "hematologist_or_nephrologist_or_neurologist_or_consult",
+            "label": "Hematologist, nephrologist, neurologist, or consultation with one"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "prescriber_rems_enrolled": {
+        "type": "select",
+        "label": "Prescriber enrolled in REMS.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "ttp_ruled_out": {
+        "type": "select",
+        "label": "TTP ruled out by normal ADAMTS13 activity or plasma exchange without clinical improvement.",
+        "options": [
+          {
+            "value": "normal_adamts13_or_plasma_exchange_no_improvement",
+            "label": "Normal ADAMTS13 or no improvement with plasma exchange"
+          },
+          {
+            "value": "ttp_not_ruled_out",
+            "label": "TTP not ruled out"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "ahus"
+        }
+      },
+      "no_shiga_toxin_e_coli": {
+        "type": "select",
+        "label": "No Shiga toxin-producing E. coli infection.",
+        "options": [
+          {
+            "value": "no_stec_infection",
+            "label": "No STEC infection"
+          },
+          {
+            "value": "stec_present_or_unknown",
+            "label": "STEC present or unknown"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "ahus"
+        }
+      },
+      "ahus_baseline_labs": {
+        "type": "select",
+        "label": "Baseline documentation of one or more: LDH, creatinine/eGFR, platelet count, plasma exchange/infusion requirement.",
+        "options": [
+          {
+            "value": "one_or_more_ldh_creat_egfr_platelet_or_plasma_exchange",
+            "label": "One or more listed baseline values documented"
+          },
+          {
+            "value": "none_documented",
+            "label": "None documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "ahus"
+        }
+      },
+      "pnh_flow_cytometry_confirmed": {
+        "type": "select",
+        "label": "PNH confirmed by flow cytometry.",
+        "options": [
+          {
+            "value": "confirmed_by_flow_cytometry",
+            "label": "Confirmed by flow cytometry"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "pnh"
+        }
+      },
+      "pnh_therapy_indication": {
+        "type": "select",
+        "label": "At least one qualifying indication for PNH therapy.",
+        "options": [
+          {
+            "value": "thrombotic_event",
+            "label": "Thrombotic event"
+          },
+          {
+            "value": "organ_damage_chronic_hemolysis",
+            "label": "Organ damage secondary to chronic hemolysis"
+          },
+          {
+            "value": "pregnant_benefit_outweighs_fetal_risk",
+            "label": "Pregnant and potential benefit outweighs fetal risk"
+          },
+          {
+            "value": "transfusion_dependent",
+            "label": "Transfusion dependent"
+          },
+          {
+            "value": "high_ldh_gte_1_5_uln_with_symptoms",
+            "label": "LDH at least 1.5 \u00d7 ULN with clinical symptoms"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "pnh"
+        }
+      },
+      "pnh_baseline_labs_all": {
+        "type": "select",
+        "label": "All baseline values documented: LDH, hemoglobin, and packed RBC transfusion requirement.",
+        "options": [
+          {
+            "value": "ldh_and_hemoglobin_and_prbc_transfusion_requirement_documented",
+            "label": "LDH AND hemoglobin AND packed RBC transfusion requirement documented"
+          },
+          {
+            "value": "incomplete",
+            "label": "Incomplete"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "pnh"
+        }
+      },
+      "mgfa_class": {
+        "type": "select",
+        "label": "MGFA clinical classification II, III, or IV.",
+        "options": [
+          {
+            "value": "ii_iii_or_iv",
+            "label": "II, III, or IV"
+          },
+          {
+            "value": "i_or_v_or_not_documented",
+            "label": "I, V, or not documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "gmg"
+        }
+      },
+      "mg_adl_score": {
+        "type": "select",
+        "label": "MG-ADL total score at least 6.",
+        "options": [
+          {
+            "value": "gte_6",
+            "label": "At least 6"
+          },
+          {
+            "value": "lt_6_or_not_documented",
+            "label": "Below 6 or not documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "gmg"
+        }
+      },
+      "achr_antibody": {
+        "type": "select",
+        "label": "Positive anti-acetylcholine receptor antibody serology.",
+        "options": [
+          {
+            "value": "positive",
+            "label": "Positive"
+          },
+          {
+            "value": "negative_or_not_documented",
+            "label": "Negative or not documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "gmg"
+        }
+      },
+      "qmg_baseline_assessed": {
+        "type": "select",
+        "label": "Prescriber assessed baseline QMG score.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "gmg"
+        }
+      },
+      "gmg_immunosuppressive_step": {
+        "type": "select",
+        "label": "Qualifying immunosuppressive therapy history.",
+        "options": [
+          {
+            "value": "inadequate_or_ci_two_or_more_is_agents_12mo",
+            "label": "Inadequate response or labeled contraindication to \u22652 immunosuppressive agents alone or combined for \u226512 months"
+          },
+          {
+            "value": "inadequate_or_ci_one_is_agent_plus_chronic_plasma_exchange_or_ivig",
+            "label": "Inadequate response or labeled contraindication to \u22651 immunosuppressive agent alone or combined AND requires chronic plasma exchange, plasmapheresis, or IVIG"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "gmg"
+        }
+      },
+      "aqp4_antibody": {
+        "type": "select",
+        "label": "NMOSD confirmed by positive AQP4-IgG/NMP-IgG serology.",
+        "options": [
+          {
+            "value": "positive_aqp4_igg",
+            "label": "Positive AQP4-IgG"
+          },
+          {
+            "value": "negative_or_not_documented",
+            "label": "Negative or not documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "nmosd"
+        }
+      },
+      "nmosd_systemic_step": {
+        "type": "select",
+        "label": "Qualifying systemic therapy and relapse history or contraindication/intolerance.",
+        "options": [
+          {
+            "value": "failure_one_of_aza_mmf_ritux_with_relapse_history",
+            "label": "Failure/inadequate response to \u22651 of azathioprine, mycophenolate, rituximab with \u22651 relapse in last 12 months OR \u22652 in last 2 years"
+          },
+          {
+            "value": "ci_or_intolerance_to_all_three_aza_mmf_ritux",
+            "label": "FDA-labeled contraindication or significant intolerance to ALL three: azathioprine, mycophenolate, rituximab"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "nmosd"
+        }
+      },
+      "ms_ruled_out": {
+        "type": "select",
+        "label": "Multiple sclerosis ruled out.",
+        "options": [
+          {
+            "value": "ms_ruled_out",
+            "label": "MS ruled out"
+          },
+          {
+            "value": "ms_not_ruled_out",
+            "label": "MS not ruled out"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "nmosd"
+        }
+      }
+    },
+    "max_units": null
   },
   "soma": {
     "drug": {

@@ -23998,7 +23998,8 @@
   "skyclarys": {
     "drug": {
       "name": "Skyclarys",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "neurology",
+      "generic_name": "omaveloxolone"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -24009,17 +24010,293 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Friedreich\u2019s ataxia (FDA indication; approval 3).",
+        "citation": "https://health.alaska.gov/media/aznpmojd/skyclarys_criteria_2023.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "friedreich_ataxia"
+          ]
+        }
+      },
+      {
+        "id": "age_fda_labeled",
+        "text": "Patient is aged 16 years or older (approval 1).",
+        "citation": "https://health.alaska.gov/media/aznpmojd/skyclarys_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 16
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist (approval 2).",
+        "citation": "https://health.alaska.gov/media/aznpmojd/skyclarys_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_consult"
+        }
+      },
+      {
+        "id": "fxn_gene_mutation_confirmed",
+        "text": "Frataxin (FXN) gene mutation confirmed by genetic testing (approval 4).",
+        "citation": "https://health.alaska.gov/media/aznpmojd/skyclarys_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "fxn_gene_mutation_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "fxn_gene_mutation_confirmed",
+          "value": "confirmed_by_genetic_testing"
+        }
+      },
+      {
+        "id": "clinically_symptomatic_fa",
+        "text": "Patient is clinically symptomatic (approval 5).",
+        "citation": "https://health.alaska.gov/media/aznpmojd/skyclarys_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "clinically_symptomatic_fa"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "clinically_symptomatic_fa",
+          "value": "symptomatic"
+        }
+      },
+      {
+        "id": "mfars_score",
+        "text": "Modified Friedreich\u2019s Ataxia Rating Scale score \u226520 and \u226480 (approval 6).",
+        "citation": "https://health.alaska.gov/media/aznpmojd/skyclarys_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "mfars_score"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "mfars_score",
+          "value": "ge_20_and_le_80"
+        }
+      },
+      {
+        "id": "baseline_lft_bnp_hba1c_lvef_within_1yr",
+        "text": "Baseline LFTs, BNP, HbA1C and LVEF documented within the past year (approval 7).",
+        "citation": "https://health.alaska.gov/media/aznpmojd/skyclarys_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_lft_bnp_hba1c_lvef_within_1yr"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_lft_bnp_hba1c_lvef_within_1yr",
+          "value": "all_documented_within_1yr"
+        }
+      },
+      {
+        "id": "lvef_status",
+        "text": "LVEF \u226540%; LVEF <40% is excluded (denial 2).",
+        "citation": "https://health.alaska.gov/media/aznpmojd/skyclarys_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "lvef_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "lvef_status",
+          "value": "lvef_ge_40"
+        }
+      },
+      {
+        "id": "hba1c_status",
+        "text": "HbA1C \u226411%; HbA1C >11% is excluded (denial 3).",
+        "citation": "https://health.alaska.gov/media/aznpmojd/skyclarys_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "hba1c_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hba1c_status",
+          "value": "hba1c_le_11"
+        }
+      },
+      {
+        "id": "bnp_status",
+        "text": "BNP \u2264200 pg/mL; BNP >200 pg/mL is excluded (denial 4).",
+        "citation": "https://health.alaska.gov/media/aznpmojd/skyclarys_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "bnp_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "bnp_status",
+          "value": "bnp_le_200"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Skyclarys (omaveloxolone). Version: 1; Original: 06/30/2023; Accepted: 09/15/2023; Effective: 11/1/2023.",
+      "Encoded: closed Friedreich\u2019s ataxia indication, approval criteria 1\u20137 and separate denial criteria 2\u20134. Denial 1 is failure to meet approval criteria.",
+      "Clinically symptomatic examples: impaired coordination, diminished reflexes, frequent falls, skeletal muscle weakness.",
+      "Cautions (notes only): monitor ALT, AST and total bilirubin prior to initiation, every month for the first three months of treatment, and periodically thereafter. Avoid concomitant use with moderate or strong CYP3A4 inducers or inhibitors. May cause fetal harm.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 6 months.",
+      "Quantity (notes only): 102 capsules per 34 days.",
+      "Genetic testing, symptoms, mFARS score and baseline laboratory documentation require manual review; categorical attestations encode the stated requirements and inclusive thresholds. Monitoring, cautions, duration and quantity remain notes only, so this pack remains partial.",
+      "PDL status remains unknown. No evaluate-linked alternatives are specified."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Friedreich\u2019s ataxia (FDA indication; approval 3).",
+        "options": [
+          {
+            "value": "friedreich_ataxia",
+            "label": "Friedreich\u2019s ataxia"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is aged 16 years or older (approval 1).",
+        "options": [
+          {
+            "value": "16",
+            "label": "16 years or older"
+          },
+          {
+            "value": "0",
+            "label": "Under 16 years"
+          }
+        ],
+        "option_style": "age_bands",
+        "hint": "Age 16 years or older qualifies; under 16 does not."
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist (approval 2).",
+        "options": [
+          {
+            "value": "neurologist_or_consult",
+            "label": "Neurologist or consultation with one"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      "fxn_gene_mutation_confirmed": {
+        "type": "select",
+        "label": "Frataxin (FXN) gene mutation confirmed by genetic testing (approval 4).",
+        "options": [
+          {
+            "value": "confirmed_by_genetic_testing",
+            "label": "Confirmed by genetic testing"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ]
+      },
+      "clinically_symptomatic_fa": {
+        "type": "select",
+        "label": "Patient is clinically symptomatic (approval 5).",
+        "options": [
+          {
+            "value": "symptomatic",
+            "label": "Symptomatic"
+          },
+          {
+            "value": "not_symptomatic",
+            "label": "Not symptomatic"
+          }
+        ]
+      },
+      "mfars_score": {
+        "type": "select",
+        "label": "Modified Friedreich\u2019s Ataxia Rating Scale score \u226520 and \u226480 (approval 6).",
+        "options": [
+          {
+            "value": "ge_20_and_le_80",
+            "label": "\u226520 and \u226480"
+          },
+          {
+            "value": "outside_range_or_not_documented",
+            "label": "Outside range or not documented"
+          }
+        ]
+      },
+      "baseline_lft_bnp_hba1c_lvef_within_1yr": {
+        "type": "select",
+        "label": "Baseline LFTs, BNP, HbA1C and LVEF documented within the past year (approval 7).",
+        "options": [
+          {
+            "value": "all_documented_within_1yr",
+            "label": "All documented within the past year"
+          },
+          {
+            "value": "incomplete",
+            "label": "Incomplete"
+          }
+        ]
+      },
+      "lvef_status": {
+        "type": "select",
+        "label": "LVEF \u226540%; LVEF <40% is excluded (denial 2).",
+        "options": [
+          {
+            "value": "lvef_ge_40",
+            "label": "LVEF \u226540%"
+          },
+          {
+            "value": "lvef_lt_40",
+            "label": "LVEF <40%"
+          }
+        ]
+      },
+      "hba1c_status": {
+        "type": "select",
+        "label": "HbA1C \u226411%; HbA1C >11% is excluded (denial 3).",
+        "options": [
+          {
+            "value": "hba1c_le_11",
+            "label": "HbA1C \u226411%"
+          },
+          {
+            "value": "hba1c_gt_11",
+            "label": "HbA1C >11%"
+          }
+        ]
+      },
+      "bnp_status": {
+        "type": "select",
+        "label": "BNP \u2264200 pg/mL; BNP >200 pg/mL is excluded (denial 4).",
+        "options": [
+          {
+            "value": "bnp_le_200",
+            "label": "BNP \u2264200 pg/mL"
+          },
+          {
+            "value": "bnp_gt_200",
+            "label": "BNP >200 pg/mL"
+          }
+        ]
+      }
+    }
   },
   "skyrizi": {
     "drug": {

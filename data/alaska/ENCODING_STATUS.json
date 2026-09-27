@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 72,
-  "encoding_text_only": 126,
+  "encoding_partial": 73,
+  "encoding_text_only": 125,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -66,6 +66,7 @@
     "prolia",
     "roctavian",
     "serostim",
+    "skyclarys",
     "skyrizi",
     "soliris",
     "somatropin",
@@ -80,5 +81,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "skyclarys"
+  "next_candidate": "strensiq"
 }

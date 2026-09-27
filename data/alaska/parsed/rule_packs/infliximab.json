@@ -18,7 +18,8 @@
     "entyvio",
     "stelara",
     "skyrizi",
-    "tremfya"
+    "tremfya",
+    "zymfentra"
   ],
   "notes": [
     "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."

@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 19,
-  "encoding_text_only": 179,
+  "encoding_partial": 20,
+  "encoding_text_only": 178,
   "partial_slugs": [
     "adbry",
     "adcirca",
@@ -25,7 +25,8 @@
     "stelara",
     "tezspire",
     "tremfya",
-    "xolair"
+    "xolair",
+    "zymfentra"
   ],
-  "next_candidate": "zymfentra"
+  "next_candidate": "infliximab"
 }

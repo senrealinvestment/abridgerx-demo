@@ -6340,7 +6340,8 @@
       "entyvio",
       "stelara",
       "skyrizi",
-      "tremfya"
+      "tremfya",
+      "zymfentra"
     ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
@@ -12819,7 +12820,8 @@
   "zymfentra": {
     "drug": {
       "name": "Zymfentra",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "biologics",
+      "generic_name": "infliximab-dyyb"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -12829,23 +12831,311 @@
       "criteria_pdf": "data/alaska/raw/zymfentra_criteria_2025.pdf"
     },
     "requires_pa": true,
-    "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "pdl_status": "non_preferred",
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Adult maintenance treatment of moderately to severely active UC or CD following IV infliximab (FDA indications; approval #3).",
+        "citation": "https://health.alaska.gov/media/qpdj1blx/zymfentra_criteria_2025.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "ulcerative_colitis",
+            "crohns_disease"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient is 18 years or older (FDA labeled age; approval #1).",
+        "citation": "https://health.alaska.gov/media/qpdj1blx/zymfentra_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a gastroenterologist (approval #2).",
+        "citation": "https://health.alaska.gov/media/qpdj1blx/zymfentra_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "gastroenterologist"
+          ]
+        }
+      },
+      {
+        "id": "iv_infliximab_prior_therapy",
+        "text": "Received IV infliximab for \u226510 weeks and demonstrated a positive clinical response (approval #4).",
+        "citation": "https://health.alaska.gov/media/qpdj1blx/zymfentra_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "iv_infliximab_prior_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "iv_infliximab_prior_therapy",
+          "value": "ge_10w_positive_response"
+        }
+      },
+      {
+        "id": "not_concurrent_another_biologic",
+        "text": "Patient is not and will not be on concurrent treatment with another biologic agent (e.g. TNF-inhibitory, interleukin inhibitor, biologic response modifier; approval #5).",
+        "citation": "https://health.alaska.gov/media/qpdj1blx/zymfentra_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "not_concurrent_another_biologic"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_another_biologic",
+          "value": true
+        }
+      },
+      {
+        "id": "tb_and_hbv_screened",
+        "text": "Evaluated and screened for latent tuberculosis and hepatitis B virus infection prior to initiating treatment (approval #6).",
+        "citation": "https://health.alaska.gov/media/qpdj1blx/zymfentra_criteria_2025.pdf#approval-criteria",
+        "required_facts": [
+          "tb_and_hbv_screened"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "tb_and_hbv_screened",
+          "value": true
+        }
+      },
+      {
+        "id": "no_clinically_significant_infection",
+        "text": "No clinically significant infection (denial #2).",
+        "citation": "https://health.alaska.gov/media/qpdj1blx/zymfentra_criteria_2025.pdf#denial-criteria",
+        "required_facts": [
+          "no_clinically_significant_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_clinically_significant_infection",
+          "value": true
+        }
+      },
+      {
+        "id": "no_history_of_malignancy",
+        "text": "No history of malignancy (denial #3).",
+        "citation": "https://health.alaska.gov/media/qpdj1blx/zymfentra_criteria_2025.pdf#denial-criteria",
+        "required_facts": [
+          "no_history_of_malignancy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_history_of_malignancy",
+          "value": true
+        }
+      },
+      {
+        "id": "no_history_moderate_severe_copd",
+        "text": "No history of moderate to severe chronic obstructive pulmonary disease (COPD) (denial #4).",
+        "citation": "https://health.alaska.gov/media/qpdj1blx/zymfentra_criteria_2025.pdf#denial-criteria",
+        "required_facts": [
+          "no_history_moderate_severe_copd"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_history_moderate_severe_copd",
+          "value": true
+        }
+      },
+      {
+        "id": "no_history_of_chf",
+        "text": "No history of congestive heart failure (CHF) (denial #5).",
+        "citation": "https://health.alaska.gov/media/qpdj1blx/zymfentra_criteria_2025.pdf#denial-criteria",
+        "required_facts": [
+          "no_history_of_chf"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_history_of_chf",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [
       "entyvio",
       "stelara",
       "skyrizi",
-      "tremfya"
+      "tremfya",
+      "infliximab"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Zymfentra Criteria Version 1: Original 03/12/2025; Accepted 04/18/2025; Effective 06/01/2025.",
+      "Zymfentra is a TNF blocker for SC maintenance after IV infliximab. Both adult UC and CD indications share all encoded criteria. Diagnosis severity is covered by the closed indication labels. Denial #1 is failure to meet approval criteria.",
+      "Duration (notes only): authorization up to 12 months. The PDF does not specify a separate initial/reauthorization split.",
+      "Quantity and dosing (manual review): 2 prefilled pens or syringes every 28 days; maximum dose 120 mg every 14 days (120 mg q14d ceiling). Quantity metadata does not numerically enforce these limits.",
+      "Cautions (notes only): increased malignancy risk, including lymphoma; monitor hepatic enzymes and liver function tests every 3 to 4 months due to severe hepatic reaction risk; increased severe infection risk; avoid live vaccines during treatment.",
+      "PDL context: Zymfentra is non_preferred. Preferred cytokine peers without rule packs (e.g. Humira, Hadlima, Rinvoq) are notes only. Linked alternatives require their own criteria review. IV Infliximab remains a separate text_only peer; its criteria are not encoded here.",
+      "This pack remains partial: duration, dosing, quantity enforcement, monitoring and cautions require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Adult maintenance treatment of moderately to severely active UC or CD following IV infliximab (FDA indications; approval #3).",
+        "options": [
+          {
+            "value": "ulcerative_colitis",
+            "label": "Moderately to severely active ulcerative colitis following treatment with an infliximab product administered intravenously"
+          },
+          {
+            "value": "crohns_disease",
+            "label": "Moderately to severely active Crohn\u2019s disease following treatment with an infliximab product administered intravenously"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years or older (FDA labeled age; approval #1).",
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a gastroenterologist (approval #2).",
+        "options": [
+          {
+            "value": "gastroenterologist",
+            "label": "Gastroenterologist (prescribed by or in consultation)"
+          },
+          {
+            "value": "primary_care",
+            "label": "Primary care"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "iv_infliximab_prior_therapy": {
+        "type": "select",
+        "label": "Received IV infliximab for \u226510 weeks and demonstrated a positive clinical response (approval #4).",
+        "options": [
+          {
+            "value": "ge_10w_positive_response",
+            "label": "Received IV infliximab product \u226510 weeks and demonstrated positive clinical response"
+          },
+          {
+            "value": "ge_10w_no_response",
+            "label": "Received IV infliximab \u226510 weeks without positive clinical response"
+          },
+          {
+            "value": "lt_10w",
+            "label": "IV infliximab <10 weeks / incomplete course"
+          },
+          {
+            "value": "none",
+            "label": "No prior IV infliximab"
+          }
+        ]
+      },
+      "not_concurrent_another_biologic": {
+        "type": "select",
+        "label": "Patient is not and will not be on concurrent treatment with another biologic agent (e.g. TNF-inhibitory, interleukin inhibitor, biologic response modifier; approval #5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "tb_and_hbv_screened": {
+        "type": "select",
+        "label": "Evaluated and screened for latent tuberculosis and hepatitis B virus infection prior to initiating treatment (approval #6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_clinically_significant_infection": {
+        "type": "select",
+        "label": "No clinically significant infection (denial #2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_history_of_malignancy": {
+        "type": "select",
+        "label": "No history of malignancy (denial #3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_history_moderate_severe_copd": {
+        "type": "select",
+        "label": "No history of moderate to severe chronic obstructive pulmonary disease (COPD) (denial #4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_history_of_chf": {
+        "type": "select",
+        "label": "No history of congestive heart failure (CHF) (denial #5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": 2,
+      "days_supply": 28,
+      "notes": "2 prefilled pens or syringes every 28 days; maximum dose 120 mg every 14 days. Manual review; no numeric quantity or dose predicates."
+    }
   },
   "zynteglo": {
     "drug": {

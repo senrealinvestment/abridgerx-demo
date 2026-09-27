@@ -1,4 +1,4 @@
-"""Ekterly AK Medicaid Version 1 criteria and catalog integration."""
+"""Dawnzera AK Medicaid Version 1 criteria and catalog integration."""
 
 from __future__ import annotations
 
@@ -10,24 +10,24 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from engine.evaluate import evaluate
+from engine.evaluate import check, evaluate
 from ui.loaders import drug_detail, get_rule_pack, load_rule_pack_catalog
 from ui.app import _coerce_patient
 
 
 def load_pack():
-    return json.loads((ROOT / "data/alaska/parsed/ekterly.json").read_text())
+    return json.loads((ROOT / "data/alaska/parsed/dawnzeratm.json").read_text())
 
 
 def _base(**extra):
     facts = {
-        "indication": "hae_acute_attacks",
+        "indication": "hae_prophylaxis_c1_inh_deficiency_type_1_or_2",
         "age_years": 12.0,
         "prescriber_specialty": "immunologist",
-        "hae_diagnosis_confirmed": True,
         "angioedema_linked_meds_evaluated": True,
-        "not_combined_with_other_acute_hae_treatment": True,
-        "no_severe_hepatic_impairment_child_pugh_c": True,
+        "not_combined_with_other_hae_prophylaxis": True,
+        "hae_attacks_ge_3_moderate_severe_per_month": True,
+        "failed_or_contraindicated_two_preferred_hae_prophylaxis_different_classes": "two_preferred_different_classes_failed_or_contraindicated",
     }
     facts.update(extra)
     return facts
@@ -42,35 +42,33 @@ def _assert_fail(clause, **extra):
 def test_metadata_and_source_criteria():
     pack = load_pack()
     assert pack["encoding_status"] == "partial"
-    assert pack["pdl_status"] == "non_preferred"
+    assert pack["pdl_status"] == "unknown"
     assert pack["drug"] == {
-        "name": "Ekterly", "generic_name": "sebetralstat",
+        "name": "Dawnzera", "generic_name": "donidalorsen",
         "therapeutic_class": "hae-treatments",
     }
-    assert pack["source"]["effective_date"] == "2025-11-01"
-    assert pack["source"]["citation"] == "https://health.alaska.gov/media/qrrhd3jy/ekterly_criteria.pdf"
-    assert pack["source"]["criteria_pdf"] == "data/alaska/raw/ekterly_criteria.pdf"
+    assert pack["source"]["effective_date"] == "2026-01-01"
+    assert pack["source"]["citation"] == "https://health.alaska.gov/media/jbmaasjr/dawnzera_criteria.pdf"
+    assert pack["source"]["criteria_pdf"] == "data/alaska/raw/dawnzera_criteria.pdf"
     assert "inferred_required_facts" not in pack
     assert len(pack["criteria"]) == 7
     predicates = {c["predicate"]["fact"]: c["predicate"] for c in pack["criteria"]}
     assert set(predicates) == set(_base())
     assert predicates["age_years"] == {"op": "gte", "fact": "age_years", "value": 12}
     assert predicates["prescriber_specialty"] == {
-        "op": "in", "fact": "prescriber_specialty", "values": ["immunologist"],
+        "op": "in", "fact": "prescriber_specialty", "values": ["allergist", "immunologist"],
     }
-    assert pack["max_units"] == {
-        "quantity": None, "days_supply": 30,
-        "notes": "Quantity limit: 8 tablets per 30 days; not to exceed 4 tablets in any 24-hour period. Attestation/manual review only; not a numeric predicate.",
-    }
+    assert pack["max_units"]["quantity"] is None
     notes = " ".join(pack["notes"])
-    for text in ["08/15/2025", "9/19/2025", "11/1/2025", "up to 3 months",
-                 "up to 1 year", "CYP3A4", "Child-Pugh Class B", "pregnancy",
-                 "breastfeeding", "criterion 5 is encoded via the closed acute-attack indication"]:
+    for text in ["10/10/2025", "11/21/2025", "01/01/2026", "up to 3 months",
+                 "up to 1 year", "80mg", "28 days", "pregnancy",
+                 "breastfeeding", "injection site reactions", "upper respiratory tract infection", "urinary tract infection", "abdominal discomfort",
+                 "no duplicate diagnosis or prophylaxis-only attestation"]:
         assert text in notes, text
 
 
 def test_closed_indication_and_selects_only():
-    detail = drug_detail("ekterly")
+    detail = drug_detail("dawnzeratm")
     assert detail and detail["can_evaluate"]
     fields = {f["key"]: f for f in detail["fact_fields"]}
     assert set(fields) == set(_base()) == set(load_pack()["fact_ui"])
@@ -80,14 +78,14 @@ def test_closed_indication_and_selects_only():
         assert field.get("free_text") is not True
         assert field["options"]
     assert fields["indication"]["options"] == [{
-        "value": "hae_acute_attacks",
-        "label": "Acute attacks of hereditary angioedema (HAE)",
+        "value": "hae_prophylaxis_c1_inh_deficiency_type_1_or_2",
+        "label": "Prophylaxis to prevent HAE attacks due to C1-esterase inhibitor deficiency (HAE-C1-INH) type 1 or 2",
     }]
     assert fields["age_years"]["options"] == [
         {"value": "0", "label": "Under 12 years"},
         {"value": "12", "label": "12 years or older"},
     ]
-    for invalid in ["yes", "no", "unknown", True, False, "hae", "hae_prophylaxis"]:
+    for invalid in ["yes", "no", "unknown", True, False, "hae", "hae_prophylaxis", "hae_acute_attacks", "hae_type_3"]:
         _assert_fail("indication_fda_labeled", indication=invalid)
     for fact, value in _base().items():
         if value is True:
@@ -105,8 +103,10 @@ def test_pass_and_age_boundary():
         _assert_fail("minimum_age", age_years=age)
 
 
-def test_fail_non_immunologist():
-    for specialty in ["allergist", "primary_care", "other", "hematologist"]:
+def test_specialty():
+    for specialty in ["allergist", "immunologist"]:
+        assert evaluate(load_pack(), _base(prescriber_specialty=specialty)).decision == "pass"
+    for specialty in ["primary_care", "other", "hematologist"]:
         _assert_fail("prescriber_specialty", prescriber_specialty=specialty)
 
 
@@ -114,6 +114,15 @@ def test_fail_each_approval_and_denial_attestation():
     for fact, value in _base().items():
         if value is True:
             _assert_fail(fact, **{fact: False})
+
+
+def test_preferred_prophylaxis_step():
+    key = "failed_or_contraindicated_two_preferred_hae_prophylaxis_different_classes"
+    assert [o["value"] for o in load_pack()["fact_ui"][key]["options"]] == [
+        "two_preferred_different_classes_failed_or_contraindicated", "not_met",
+    ]
+    for invalid in ["not_met", "yes", True, "failed_acute_hae_treatment", "failed_or_contraindicated_c1_inh_or_plasma_kallikrein_inhibitor", "two_preferred_same_class"]:
+        _assert_fail(key, **{key: invalid})
 
 
 def test_ui_coercion():
@@ -143,9 +152,9 @@ def test_catalog_mirrors_and_status_load():
     base = ROOT / "data/alaska/parsed"
     pack = load_pack()
     catalog = load_rule_pack_catalog()
-    assert catalog["ekterly"] == pack
-    assert get_rule_pack("ekterly") == ("ekterly", pack)
-    assert json.loads((base / "rule_packs/ekterly.json").read_text()) == pack
+    assert catalog["dawnzeratm"] == pack
+    assert get_rule_pack("dawnzeratm") == ("dawnzeratm", pack)
+    assert json.loads((base / "rule_packs/dawnzeratm.json").read_text()) == pack
     assert catalog == {
         path.stem: json.loads(path.read_text())
         for path in (base / "rule_packs").glob("*.json")
@@ -155,8 +164,9 @@ def test_catalog_mirrors_and_status_load():
     assert len(catalog) == 198
     assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 44
     assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 154
-    assert pack["alternatives"] == []
+    assert pack["alternatives"] == ["andembry"]
     status = json.loads((base / "ENCODING_STATUS.json").read_text())
+    assert status["next_candidate"] == "evkeeza"
     assert status["encoding_partial"] == 44
     assert status["encoding_text_only"] == 154
     assert status["partial_slugs"] == sorted(
@@ -166,9 +176,35 @@ def test_catalog_mirrors_and_status_load():
     assert (base.parent / "ENCODING_STATUS.md").read_text() == (base / "ENCODING_STATUS.md").read_text()
 
 
+def test_distinct_steps_and_reciprocal_alternatives():
+    dawnzera = load_pack()
+    andembry = json.loads((ROOT / "data/alaska/parsed/andembry.json").read_text())
+    dawnzera_key = "failed_or_contraindicated_two_preferred_hae_prophylaxis_different_classes"
+    andembry_key = "failed_or_contraindicated_preferred_hae_prophylaxis"
+    facts = _base()
+    del facts[dawnzera_key]
+    facts[andembry_key] = "failed_or_contraindicated_c1_inh_or_plasma_kallikrein_inhibitor"
+    assert evaluate(andembry, facts).decision == "pass"
+    result = evaluate(dawnzera, facts)
+    assert result.decision == "need_info"
+    assert result.missing_facts == [dawnzera_key]
+    assert evaluate(andembry, _base()).missing_facts == [andembry_key]
+    assert andembry["alternatives"] == ["dawnzeratm"]
+    catalog = {"andembry": andembry, "dawnzeratm": dawnzera}
+    facts[dawnzera_key] = "not_met"
+    result = check(dawnzera, facts, catalog)
+    assert result.decision == "fail"
+    assert [alt["rule_id"] for alt in result.alternatives] == ["andembry"]
+    facts[dawnzera_key] = _base()[dawnzera_key]
+    facts[andembry_key] = "not_met"
+    result = check(andembry, facts, catalog)
+    assert result.decision == "fail"
+    assert [alt["rule_id"] for alt in result.alternatives] == ["dawnzeratm"]
+
+
 if __name__ == "__main__":
     for name, fn in list(globals().items()):
         if name.startswith("test_") and callable(fn):
             fn()
             print("ok", name)
-    print("ekterly tests ok")
+    print("dawnzeratm tests ok")

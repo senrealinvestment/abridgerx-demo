@@ -112,7 +112,9 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "dawnzeratm"
+  ],
   "notes": [
     "Partial encoding from AK Andembry (garadacimab-gxii), an activated Factor XII (FXIIa) inhibitor monoclonal antibody, Criteria Version 1: Original 08/18/2025; Accepted 9/19/2025; Effective 11/1/2025.",
     "The closed indication covers both diagnosis of HAE-C1-INH type 1 or 2 and use for HAE prophylaxis; no duplicate diagnosis or prophylaxis-only attestation is required. The combination exclusion covers approval and denial criterion 2. Denial criterion 1 is failure to meet approval criteria.",
@@ -121,7 +123,7 @@
     "Cautions (notes only): safety in pregnancy or breastfeeding has not been determined. The most common adverse reactions include nasopharyngitis and abdominal pain.",
     "Documentation, duration, dosing, quantity enforcement and cautions require manual review; this pack remains partial.",
     "PDL context: data/alaska/parsed/pdl_index.json and pdl_20260601_text.txt list ANDEMBRY AUTOINJECTOR (SUB-Q) as non-preferred (OFF) in HAE TREATMENTS, effective 6/1/2026. The criteria effective_date remains 2025-11-01.",
-    "No evaluate-linked alternatives: Ekterly is for acute attacks, not prophylaxis; Berinert, Cinryze and Takhzyro remain text_only."
+    "Dawnzera is linked as an HAE prophylaxis alternative and requires separate evaluation of its two-preferred-agent, two-different-class step. Ekterly is for acute attacks, not prophylaxis; Berinert, Cinryze and Takhzyro remain text_only."
   ],
   "fact_ui": {
     "indication": {

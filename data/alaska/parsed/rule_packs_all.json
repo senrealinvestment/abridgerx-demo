@@ -1134,7 +1134,9 @@
         }
       }
     ],
-    "alternatives": [],
+    "alternatives": [
+      "dawnzeratm"
+    ],
     "notes": [
       "Partial encoding from AK Andembry (garadacimab-gxii), an activated Factor XII (FXIIa) inhibitor monoclonal antibody, Criteria Version 1: Original 08/18/2025; Accepted 9/19/2025; Effective 11/1/2025.",
       "The closed indication covers both diagnosis of HAE-C1-INH type 1 or 2 and use for HAE prophylaxis; no duplicate diagnosis or prophylaxis-only attestation is required. The combination exclusion covers approval and denial criterion 2. Denial criterion 1 is failure to meet approval criteria.",
@@ -1143,7 +1145,7 @@
       "Cautions (notes only): safety in pregnancy or breastfeeding has not been determined. The most common adverse reactions include nasopharyngitis and abdominal pain.",
       "Documentation, duration, dosing, quantity enforcement and cautions require manual review; this pack remains partial.",
       "PDL context: data/alaska/parsed/pdl_index.json and pdl_20260601_text.txt list ANDEMBRY AUTOINJECTOR (SUB-Q) as non-preferred (OFF) in HAE TREATMENTS, effective 6/1/2026. The criteria effective_date remains 2025-11-01.",
-      "No evaluate-linked alternatives: Ekterly is for acute attacks, not prophylaxis; Berinert, Cinryze and Takhzyro remain text_only."
+      "Dawnzera is linked as an HAE prophylaxis alternative and requires separate evaluation of its two-preferred-agent, two-different-class step. Ekterly is for acute attacks, not prophylaxis; Berinert, Cinryze and Takhzyro remain text_only."
     ],
     "fact_ui": {
       "indication": {
@@ -4433,8 +4435,9 @@
   },
   "dawnzeratm": {
     "drug": {
-      "name": "DawnzeraTM",
-      "therapeutic_class": "other"
+      "name": "Dawnzera",
+      "therapeutic_class": "hae-treatments",
+      "generic_name": "donidalorsen"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -4445,18 +4448,226 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Prophylaxis to prevent HAE attacks due to C1-esterase inhibitor deficiency (HAE-C1-INH) type 1 or 2.",
+        "citation": "https://health.alaska.gov/media/jbmaasjr/dawnzera_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "values": [
+            "hae_prophylaxis_c1_inh_deficiency_type_1_or_2"
+          ],
+          "fact": "indication"
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 12 years of age or older (FDA labeled age).",
+        "citation": "https://health.alaska.gov/media/jbmaasjr/dawnzera_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "value": 12,
+          "fact": "age_years"
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with an allergist or immunologist.",
+        "citation": "https://health.alaska.gov/media/jbmaasjr/dawnzera_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "values": [
+            "allergist",
+            "immunologist"
+          ],
+          "fact": "prescriber_specialty"
+        }
+      },
+      {
+        "id": "not_combined_with_other_hae_prophylaxis",
+        "text": "Dawnzera will not be used in combination with another agent indicated for HAE prophylaxis (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/jbmaasjr/dawnzera_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "not_combined_with_other_hae_prophylaxis"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": true,
+          "fact": "not_combined_with_other_hae_prophylaxis"
+        }
+      },
+      {
+        "id": "hae_attacks_ge_3_moderate_severe_per_month",
+        "text": "Patient has a documented history of 3 or more moderate to severe HAE attacks per month.",
+        "citation": "https://health.alaska.gov/media/jbmaasjr/dawnzera_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "hae_attacks_ge_3_moderate_severe_per_month"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": true,
+          "fact": "hae_attacks_ge_3_moderate_severe_per_month"
+        }
+      },
+      {
+        "id": "angioedema_linked_meds_evaluated",
+        "text": "Medications with an established link to angioedema (e.g. ACE inhibitors, estrogen replacement therapy) have been evaluated and discontinued where appropriate.",
+        "citation": "https://health.alaska.gov/media/jbmaasjr/dawnzera_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "angioedema_linked_meds_evaluated"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": true,
+          "fact": "angioedema_linked_meds_evaluated"
+        }
+      },
+      {
+        "id": "failed_or_contraindicated_two_preferred_hae_prophylaxis_different_classes",
+        "text": "Patient has tried and failed or has a documented clinical contraindication to at least two preferred agents approved for HAE prophylaxis from two different therapeutic classes.",
+        "citation": "https://health.alaska.gov/media/jbmaasjr/dawnzera_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "failed_or_contraindicated_two_preferred_hae_prophylaxis_different_classes"
+        ],
+        "predicate": {
+          "op": "eq",
+          "value": "two_preferred_different_classes_failed_or_contraindicated",
+          "fact": "failed_or_contraindicated_two_preferred_hae_prophylaxis_different_classes"
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "andembry"
+    ],
+    "notes": [
+      "Partial encoding from AK Dawnzera (donidalorsen), a prekallikrein-directed antisense oligonucleotide, Criteria Version 1: Original 10/10/2025; Accepted 11/21/2025; Effective 01/01/2026.",
+      "The closed indication covers both diagnosis of HAE-C1-INH type 1 or 2 and use for HAE prophylaxis; no duplicate diagnosis or prophylaxis-only attestation is required. Denial criterion 1 is failure to meet approval criteria; denial criterion 2 excludes combination HAE prophylaxis.",
+      "Duration notes only: initial approval up to 3 months; reauthorization approval up to 1 year.",
+      "Quantity notes only: 1 80mg autoinjector per 28 days.",
+      "Cautions (notes only): safety in pregnancy or breastfeeding has not been determined. The most common adverse reactions include injection site reactions, upper respiratory tract infection, urinary tract infection, and abdominal discomfort.",
+      "Documentation, duration, quantity enforcement and cautions require manual review; this pack remains partial.",
+      "Andembry is linked as an HAE prophylaxis alternative and requires separate evaluation of its one-preferred-agent step. Dawnzera requires at least two preferred agents from two different therapeutic classes."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Indication (diagnosis)",
+        "options": [
+          {
+            "value": "hae_prophylaxis_c1_inh_deficiency_type_1_or_2",
+            "label": "Prophylaxis to prevent HAE attacks due to C1-esterase inhibitor deficiency (HAE-C1-INH) type 1 or 2"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 12 years"
+          },
+          {
+            "value": "12",
+            "label": "12 years or older"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with",
+        "options": [
+          {
+            "value": "allergist",
+            "label": "Allergist"
+          },
+          {
+            "value": "immunologist",
+            "label": "Immunologist"
+          },
+          {
+            "value": "primary_care",
+            "label": "Primary care"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "not_combined_with_other_hae_prophylaxis": {
+        "type": "select",
+        "label": "Dawnzera will not be used in combination with another agent indicated for HAE prophylaxis (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hae_attacks_ge_3_moderate_severe_per_month": {
+        "type": "select",
+        "label": "Patient has a documented history of 3 or more moderate to severe HAE attacks per month.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "angioedema_linked_meds_evaluated": {
+        "type": "select",
+        "label": "Medications with an established link to angioedema (e.g. ACE inhibitors, estrogen replacement therapy) have been evaluated and discontinued where appropriate.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "failed_or_contraindicated_two_preferred_hae_prophylaxis_different_classes": {
+        "type": "select",
+        "label": "Patient has tried and failed or has a documented clinical contraindication to at least two preferred agents approved for HAE prophylaxis from two different therapeutic classes.",
+        "options": [
+          {
+            "value": "two_preferred_different_classes_failed_or_contraindicated",
+            "label": "Failed or contraindicated: at least two preferred HAE prophylaxis agents from two different therapeutic classes"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": null,
+      "notes": "Quantity notes only: 1 80mg autoinjector per 28 days. Manual review only; not a numeric predicate."
+    }
   },
   "diclegis-bonjesta": {
     "drug": {

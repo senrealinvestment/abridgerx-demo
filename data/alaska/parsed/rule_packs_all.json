@@ -1071,21 +1071,114 @@
     "source": {
       "payer": "alaska_medicaid",
       "list": "Ampyra Criteria",
-      "effective_date": "1970-01-01",
+      "effective_date": "2010-11-19",
       "citation": "https://health.alaska.gov/media/0p0gytxf/ampyra.pdf",
       "criteria_pdf": "data/alaska/raw/ampyra.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Multiple sclerosis (MS) treatment to improve walking, demonstrated by increased walking speed (indication and approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/0p0gytxf/ampyra.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "multiple_sclerosis_improve_walking"
+          ]
+        }
+      },
+      {
+        "id": "creatinine_clearance_gt_50",
+        "text": "Creatinine clearance (CrCl) >50 mL/min (approval criterion 2; denial criterion 2 mirrors \u226450).",
+        "citation": "https://health.alaska.gov/media/0p0gytxf/ampyra.pdf",
+        "required_facts": [
+          "creatinine_clearance_gt_50"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "creatinine_clearance_gt_50",
+          "value": "gt_50_ml_min"
+        }
+      },
+      {
+        "id": "walking_disability_status",
+        "text": "EDSS >4.0 and <7.0 OR difficulty walking but able to walk 25 feet with or without a cane, crutches or braces (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/0p0gytxf/ampyra.pdf",
+        "required_facts": [
+          "walking_disability_status"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "walking_disability_status",
+          "values": [
+            "edss_gt_4_and_lt_7",
+            "difficulty_walking_able_25_feet_with_or_without_assistive_device"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of AK Ampyra (dalfampridine) Criteria Version 2. Last updated: 10/14/2010; Approved: 11/19/2010; Reviewed: 09/19/2014 (format & reference update). No explicit effective date is stated; effective_date uses the approval date 2010-11-19.",
+      "Encoded: closed MS walking-improvement indication, CrCl >50 mL/min, and the two alternative disability/walking paths in approval criterion 3. No age, specialty or prior MS therapy requirement is stated.",
+      "Source wording: denial criteria separately list EDSS \u22644.0 or \u22657.0, no difficulty walking, or wheelchair restriction. The predicate preserves the explicit approval criterion 3 OR; not_met represents failure to qualify, including wheelchair restriction or inability to walk the required distance. The approval/denial wording discrepancy requires manual review.",
+      "Length of authorization (notes only): initial approval up to 6 months. Renewal requires meeting the approval criteria AND reporting an increase in walking speed while taking Ampyra.",
+      "Dispensing limits (notes only): 30-day supply; quantity limit 2 tablets/day. Documentation verification, authorization duration, renewal response and dispensing/quantity enforcement require manual review.",
+      "Reference: Ampyra [package insert]. Ardsley, NY; Acorda Therapeutics, Inc., Jan 2014.",
+      "Ampyra treats walking impairment in MS; no disease-modifying MS peer alternatives are specified."
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Multiple sclerosis (MS) treatment to improve walking, demonstrated by increased walking speed (indication and approval criterion 1).",
+        "options": [
+          {
+            "value": "multiple_sclerosis_improve_walking",
+            "label": "Multiple sclerosis (MS) treatment to improve walking (increase walking speed)"
+          }
+        ]
+      },
+      "creatinine_clearance_gt_50": {
+        "type": "select",
+        "label": "Creatinine clearance (CrCl) >50 mL/min (approval criterion 2; denial criterion 2 mirrors \u226450).",
+        "options": [
+          {
+            "value": "gt_50_ml_min",
+            "label": "CrCl >50 mL/min"
+          },
+          {
+            "value": "lte_50_or_not_documented",
+            "label": "CrCl \u226450 mL/min or not documented"
+          }
+        ]
+      },
+      "walking_disability_status": {
+        "type": "select",
+        "label": "EDSS >4.0 and <7.0 OR difficulty walking but able to walk 25 feet with or without a cane, crutches or braces (approval criterion 3).",
+        "options": [
+          {
+            "value": "edss_gt_4_and_lt_7",
+            "label": "EDSS >4.0 and <7.0"
+          },
+          {
+            "value": "difficulty_walking_able_25_feet_with_or_without_assistive_device",
+            "label": "Difficulty walking but able to walk 25 feet with or without a cane, crutches or braces"
+          },
+          {
+            "value": "not_met",
+            "label": "Neither qualifying path met (including no walking difficulty, wheelchair restriction or inability to walk 25 feet)"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "amrix": {
     "drug": {

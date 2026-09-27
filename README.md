@@ -63,10 +63,10 @@ Live clinician PA-check demo (advisory; published AK criteria):
 - **Deploy source (public mirror for Vercel Git):** https://github.com/senrealinvestment/abridgerx-demo  
   Private canonical repo remains https://github.com/senrealinvestment/abridgerx — grant the Vercel GitHub App access to link it directly later.
 - Framework: FastAPI (`app.py` entry + `vercel.json`). Rules engine only; no TypeSafe / SYSTEM_ONE keys in the client.
-- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 48 partial / 150 text_only; includes Amitiza/Linzess, CGRP antagonists, Hympavzi, Evkeeza, Dawnzera, Fabhalta, Crysvita, Hemgenix, Beqvez, Andembry, Actiq, Zolgensma, Mayzent, Mavenclad, Lemtrada, Tepezza, Praluent/Repatha, Soliris/Ultomiris, Hemlibra, Ocrevus/Ocrevus Zunovo, Kesimpta, Briumvi, Prolia/Xgeva, Evenity, Kevzara, Benlysta, Bimzelx, Infliximab, Stelara, Skyrizi, Tremfya and Zymfentra), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
+- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 49 partial / 149 text_only; includes Ampyra, Amitiza/Linzess, CGRP antagonists, Hympavzi, Evkeeza, Dawnzera, Fabhalta, Crysvita, Hemgenix, Beqvez, Andembry, Actiq, Zolgensma, Mayzent, Mavenclad, Lemtrada, Tepezza, Praluent/Repatha, Soliris/Ultomiris, Hemlibra, Ocrevus/Ocrevus Zunovo, Kesimpta, Briumvi, Prolia/Xgeva, Evenity, Kevzara, Benlysta, Bimzelx, Infliximab, Stelara, Skyrizi, Tremfya and Zymfentra), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
 
 
-Infliximab covers Avsola/Inflectra/Remicade/Renflexis across eight indications, with gated ages and prior therapies plus shared screening, infection, HF dosing and weight-submission criteria. HS requires neither age nor prior therapy. Duration, renewal, weight-based schedules and cautions remain manual review. Next text-only encoding candidate: Ampyra.
+Infliximab covers Avsola/Inflectra/Remicade/Renflexis across eight indications, with gated ages and prior therapies plus shared screening, infection, HF dosing and weight-submission criteria. HS requires neither age nor prior therapy. Duration, renewal, weight-based schedules and cautions remain manual review. Next text-only encoding candidate: Amrix.
 
 Benlysta encodes SLE and lupus nephritis with age ≥5, pediatric IV-only routing, indication-gated specialty/labs/standard therapy and shared safety denials. Duration, reauthorization, dosing, quantity and cautions remain notes for manual review.
 
@@ -90,7 +90,7 @@ Actiq encodes a closed cancer breakthrough pain indication, age ≥16, existing 
 
 Hemgenix encodes moderate to severe hemophilia B, three clinical eligibility paths, adult age, hematology specialty, Factor IX severity and exposure, inhibitor history/screen, hepatic imaging and four denial exclusions. No AAV neutralizing antibody test is required. Hemgenix and Beqvez have reciprocal alternative links. Documentation, initial 3-month duration, no reauthorization, lifetime infusion limit and post-dose monitoring remain notes for manual review.
 
-Dawnzera (`dawnzeratm`) is partially encoded for HAE-C1-INH type 1 or 2 prophylaxis, including the two-preferred-agent requirement across two different classes. Andembry and Dawnzera are reciprocal alternatives with separately evaluated steps. Duration, quantity and cautions remain manual review. Next encoding candidate: `ampyra`.
+Dawnzera (`dawnzeratm`) is partially encoded for HAE-C1-INH type 1 or 2 prophylaxis, including the two-preferred-agent requirement across two different classes. Andembry and Dawnzera are reciprocal alternatives with separately evaluated steps. Duration, quantity and cautions remain manual review. Next encoding candidate: `amrix`.
 
 Evkeeza encodes closed HoFH eligibility, age ≥12, specialty or consultation, genetic or clinical confirmation, both 3-month therapy steps, persistent LDL-C thresholds, reproductive attestation, baseline lipids and diet. Evidence verification, duration, reauthorization, quantity and cautions remain manual review.
 
@@ -99,3 +99,5 @@ Hympavzi (`hympavzi`, marstacimab-hncq) is partially encoded for hemophilia A/B 
 CGRP antagonists (`calcitonin-gene-related-peptide`) encode preventive and acute migraine branches with agent-specific FDA age attestation, specialty, gated therapy trials and shared concurrency denials. Duration (initial ≤3 months; reauthorization ≤12 months), quantity (34 days), and cautions remain manual review.
 
 Amitiza/Linzess (`amitiza`, lubiprostone / linaclotide) encodes three closed adult indications, age ≥18, and trial/inadequate response from two of fiber, stimulant, and osmotic laxative groups. Product-specific eligibility (including Amitiza IBS-C in women only and Amitiza-only OIC), documentation and trial dates, methadone limitation, 12-month authorization and quantity limits remain notes for manual review.
+
+Ampyra (`ampyra`, dalfampridine) encodes MS treatment to improve walking, CrCl >50 mL/min, and EDSS >4.0 and <7.0 OR difficulty walking with ability to walk 25 feet with or without a cane, crutches or braces. Initial approval up to 6 months, renewal requiring continued eligibility and increased walking speed, 30-day supply and 2 tablets/day remain notes for manual review. No MS DMT alternatives are linked.

@@ -1167,7 +1167,8 @@
   "bimzelx": {
     "drug": {
       "name": "Bimzelx",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "biologics",
+      "generic_name": "bimekizumab-bkzx"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -1178,18 +1179,996 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "FDA-labeled indication",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "plaque_psoriasis",
+            "psoriatic_arthritis",
+            "nr_axial_spa",
+            "ankylosing_spondylitis",
+            "hidradenitis_suppurativa"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient meets FDA-labeled adult age (18 years or older).",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty_derm",
+        "text": "Prescribed by or in consultation with a dermatologist",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "prescriber_specialty_derm"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty_derm",
+          "value": "dermatologist_or_consult"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis",
+            "hidradenitis_suppurativa"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty_derm_or_rheum",
+        "text": "Prescribed by or in consultation with a dermatologist or rheumatologist",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "prescriber_specialty_derm_or_rheum"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty_derm_or_rheum",
+          "value": "dermatologist_or_rheumatologist_or_consult"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty_rheum",
+        "text": "Prescribed by or in consultation with a rheumatologist",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "prescriber_specialty_rheum"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty_rheum",
+          "value": "rheumatologist_or_consult"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nr_axial_spa",
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      {
+        "id": "pso_severity",
+        "text": "Moderate to severe plaque psoriasis with at least one qualifying severity measure",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "pso_severity"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pso_severity",
+          "values": [
+            "bsa_gte_3",
+            "pasi_gte_10",
+            "concomitant_severe_psa"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      {
+        "id": "caspar_status",
+        "text": "Baseline CASPAR score \u22653 (or equivalent)",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "caspar_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "caspar_status",
+          "value": "caspar_gte_3_or_equivalent"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "nr_axspa_inflammation",
+        "text": "Objective signs of inflammation",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "nr_axspa_inflammation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "nr_axspa_inflammation",
+          "values": [
+            "crp_above_uln",
+            "mri_sacroiliitis_no_structural_damage"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nr_axial_spa"
+          ]
+        }
+      },
+      {
+        "id": "basdai_status",
+        "text": "BASDAI \u22654 with spinal pain component \u22654",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "basdai_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "basdai_status",
+          "value": "basdai_gte_4_spinal_pain_gte_4"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      {
+        "id": "hs_hurley_stage",
+        "text": "Moderate to severe HS, Hurley Stage II or III",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "hs_hurley_stage"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hs_hurley_stage",
+          "value": "hurley_stage_ii_or_iii"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hidradenitis_suppurativa"
+          ]
+        }
+      },
+      {
+        "id": "pso_tnf_step",
+        "text": "TNF antagonist: trial and failure or documented clinical contraindication",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "pso_tnf_step"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pso_tnf_step",
+          "value": "trial_failure_or_ci"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      {
+        "id": "pso_other_including_topical",
+        "text": "At least one other therapy including at least one topical: trial and failure or documented clinical contraindication",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "pso_other_including_topical"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pso_other_including_topical",
+          "value": "trial_failure_or_ci_including_topical"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      {
+        "id": "psa_preferred_tnf",
+        "text": "Preferred TNF antagonist: trial and failure for at least 3 months",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "psa_preferred_tnf"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "psa_preferred_tnf",
+          "value": "trial_failure_preferred_tnf_3mo"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "psa_conventional_3mo",
+        "text": "Conventional agent (e.g. methotrexate, sulfasalazine): trial and failure or documented clinical contraindication for at least 3 months",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "psa_conventional_3mo"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "psa_conventional_3mo",
+          "value": "trial_failure_or_ci_conventional_3mo"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "nraxspa_nsaid_step",
+        "text": "Two different NSAIDs for at least 3 months at maximal recommended or tolerated anti-inflammatory doses: trial and failure or documented clinical contraindication",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "nraxspa_nsaid_step"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "nraxspa_nsaid_step",
+          "value": "trial_failure_or_ci_two_nsaids_3mo"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nr_axial_spa"
+          ]
+        }
+      },
+      {
+        "id": "nraxspa_preferred_tnf",
+        "text": "Preferred TNF antagonist for at least 3 months: trial and failure or documented clinical contraindication",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "nraxspa_preferred_tnf"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "nraxspa_preferred_tnf",
+          "value": "trial_failure_or_ci_preferred_tnf_3mo"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nr_axial_spa"
+          ]
+        }
+      },
+      {
+        "id": "as_nsaid_step",
+        "text": "Two different NSAIDs for at least 3 months at maximal recommended or tolerated anti-inflammatory doses: trial and failure or documented clinical contraindication",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "as_nsaid_step"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "as_nsaid_step",
+          "value": "trial_failure_or_ci_two_nsaids_3mo"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      {
+        "id": "as_preferred_tnf",
+        "text": "Preferred TNF antagonist for at least 3 months: trial and failure or documented clinical contraindication",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "as_preferred_tnf"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "as_preferred_tnf",
+          "value": "trial_failure_or_ci_preferred_tnf_3mo"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      {
+        "id": "hs_oral_antibiotic_90d",
+        "text": "Oral antibiotic for HS (e.g. clindamycin, metronidazole, rifampin, tetracyclines) for minimum 90 days: trial and failure or documented clinical contraindication",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "hs_oral_antibiotic_90d"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hs_oral_antibiotic_90d",
+          "value": "trial_failure_or_ci_90d"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hidradenitis_suppurativa"
+          ]
+        }
+      },
+      {
+        "id": "hs_preferred_tnf_90d",
+        "text": "Preferred TNF antagonist for minimum 90 days: trial and failure or documented clinical contraindication",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "hs_preferred_tnf_90d"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hs_preferred_tnf_90d",
+          "value": "trial_failure_or_ci_preferred_tnf_90d"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hidradenitis_suppurativa"
+          ]
+        }
+      },
+      {
+        "id": "weight_submitted",
+        "text": "Current patient weight provided",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "weight_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "weight_submitted",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis",
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "liver_labs_baseline_submitted",
+        "text": "Liver enzymes, alkaline phosphatase, and bilirubin baseline provided",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "liver_labs_baseline_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "liver_labs_baseline_submitted",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis",
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      {
+        "id": "no_active_clinically_significant_infection",
+        "text": "No active clinically significant infection",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "no_active_clinically_significant_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_clinically_significant_infection",
+          "value": true
+        }
+      },
+      {
+        "id": "not_receiving_another_biologic",
+        "text": "Not receiving another biologic response modifying agent",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "not_receiving_another_biologic"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_receiving_another_biologic",
+          "value": true
+        }
+      },
+      {
+        "id": "no_active_ibd",
+        "text": "No active inflammatory bowel disease (IBD)",
+        "citation": "https://health.alaska.gov/media/t4uh1egh/bimzelx_criteria_update_2025.pdf",
+        "required_facts": [
+          "no_active_ibd"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_active_ibd",
+          "value": true
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "skyrizi",
+      "tremfya",
+      "infliximab",
+      "stelara"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Medicaid Bimzelx (bimekizumab-bkzx), an IL-17A and F antagonist. Version 2; Original: 07/15/2024; Accepted: 9/20/2024; Effective: 11/1/2024; Updated: 11/21/2025.",
+      "Closed indication labels attest to FDA diagnosis, severity and systemic therapy or phototherapy candidacy where applicable. All five indications require age \u226518.",
+      "PsO/PsA alone require current weight and baseline liver enzymes, alkaline phosphatase and bilirubin. CASPAR submission is encoded in the PsA severity fact. Baseline PASI submission requires manual review on the PsO BSA and concomitant severe PsA paths; those selections do not independently establish PASI submission.",
+      "PsA conventional-agent option includes documented clinical contraindication as requested by the encoding specification; the PDF approval #4 explicitly states trial and failure, without a contraindication exception. Manually review contraindication-only PsA conventional-agent attestations.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months.",
+      "Quantity limits (manual review): PSO 320mg/28d; PsA/nr-axSpA/AS 160mg/28d; HS induction 320mg every 2 weeks at Weeks 0, 2, 4, 6, 8, 10, 12, 14, 16, then maintenance 320mg/28d.",
+      "Cautions (notes only): risk of suicidal ideation and behavior; avoid active tuberculosis (TB) and treat latent TB before treatment; monitor LFTs, alkaline phosphatase and bilirubin; live vaccines are not recommended.",
+      "PDL status unknown: this criteria PDF is silent. Alternatives require indication-specific review and do not imply coverage.",
+      "Remaining gaps: baseline PASI documentation on non-PASI PsO paths, source discrepancy for PsA conventional-agent contraindications, duration, reauthorization, dosing, quantity enforcement and cautions require manual review."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "FDA-labeled indication",
+        "options": [
+          {
+            "value": "plaque_psoriasis",
+            "label": "Moderate to severe plaque psoriasis in adults who are candidates for systemic therapy or phototherapy"
+          },
+          {
+            "value": "psoriatic_arthritis",
+            "label": "Adults with psoriatic arthritis"
+          },
+          {
+            "value": "nr_axial_spa",
+            "label": "Adults with non-radiographic axial spondyloarthritis with objective signs of inflammation"
+          },
+          {
+            "value": "ankylosing_spondylitis",
+            "label": "Adults with active ankylosing spondylitis"
+          },
+          {
+            "value": "hidradenitis_suppurativa",
+            "label": "Adults with moderate to severe hidradenitis suppurativa"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient meets FDA-labeled adult age (18 years or older).",
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty_derm": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a dermatologist",
+        "options": [
+          {
+            "value": "dermatologist_or_consult",
+            "label": "Prescribed by or in consultation with a dermatologist"
+          },
+          {
+            "value": "none",
+            "label": "Neither required specialty nor consultation"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis",
+            "hidradenitis_suppurativa"
+          ]
+        }
+      },
+      "prescriber_specialty_derm_or_rheum": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a dermatologist or rheumatologist",
+        "options": [
+          {
+            "value": "dermatologist_or_rheumatologist_or_consult",
+            "label": "Prescribed by or in consultation with a dermatologist or rheumatologist"
+          },
+          {
+            "value": "none",
+            "label": "Neither required specialty nor consultation"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      "prescriber_specialty_rheum": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a rheumatologist",
+        "options": [
+          {
+            "value": "rheumatologist_or_consult",
+            "label": "Prescribed by or in consultation with a rheumatologist"
+          },
+          {
+            "value": "none",
+            "label": "Neither required specialty nor consultation"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nr_axial_spa",
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      "pso_severity": {
+        "type": "select",
+        "label": "Moderate to severe plaque psoriasis with at least one qualifying severity measure",
+        "options": [
+          {
+            "value": "bsa_gte_3",
+            "label": "BSA \u22653%"
+          },
+          {
+            "value": "pasi_gte_10",
+            "label": "PASI \u226510"
+          },
+          {
+            "value": "concomitant_severe_psa",
+            "label": "Concomitant severe psoriatic arthritis"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      "caspar_status": {
+        "type": "select",
+        "label": "Baseline CASPAR score \u22653 (or equivalent)",
+        "options": [
+          {
+            "value": "caspar_gte_3_or_equivalent",
+            "label": "CASPAR \u22653 or equivalent submitted"
+          },
+          {
+            "value": "caspar_lt_3",
+            "label": "CASPAR <3"
+          },
+          {
+            "value": "score_not_submitted",
+            "label": "Score not submitted"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      "nr_axspa_inflammation": {
+        "type": "select",
+        "label": "Objective signs of inflammation",
+        "options": [
+          {
+            "value": "crp_above_uln",
+            "label": "CRP above upper limit of normal"
+          },
+          {
+            "value": "mri_sacroiliitis_no_structural_damage",
+            "label": "MRI sacroiliitis without definitive radiographic structural damage"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nr_axial_spa"
+          ]
+        }
+      },
+      "basdai_status": {
+        "type": "select",
+        "label": "BASDAI \u22654 with spinal pain component \u22654",
+        "options": [
+          {
+            "value": "basdai_gte_4_spinal_pain_gte_4",
+            "label": "BASDAI \u22654 and spinal pain \u22654"
+          },
+          {
+            "value": "basdai_or_spinal_below",
+            "label": "BASDAI or spinal pain below threshold"
+          },
+          {
+            "value": "score_not_submitted",
+            "label": "Score not submitted"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      "hs_hurley_stage": {
+        "type": "select",
+        "label": "Moderate to severe HS, Hurley Stage II or III",
+        "options": [
+          {
+            "value": "hurley_stage_ii_or_iii",
+            "label": "Hurley Stage II or III"
+          },
+          {
+            "value": "hurley_stage_i",
+            "label": "Hurley Stage I"
+          },
+          {
+            "value": "not_documented",
+            "label": "Not documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hidradenitis_suppurativa"
+          ]
+        }
+      },
+      "pso_tnf_step": {
+        "type": "select",
+        "label": "TNF antagonist: trial and failure or documented clinical contraindication",
+        "options": [
+          {
+            "value": "trial_failure_or_ci",
+            "label": "TNF antagonist: trial and failure or documented clinical contraindication"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      "pso_other_including_topical": {
+        "type": "select",
+        "label": "At least one other therapy including at least one topical: trial and failure or documented clinical contraindication",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_including_topical",
+            "label": "At least one other therapy including at least one topical: trial and failure or documented clinical contraindication"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis"
+          ]
+        }
+      },
+      "psa_preferred_tnf": {
+        "type": "select",
+        "label": "Preferred TNF antagonist: trial and failure for at least 3 months",
+        "options": [
+          {
+            "value": "trial_failure_preferred_tnf_3mo",
+            "label": "Preferred TNF antagonist: trial and failure for at least 3 months"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      "psa_conventional_3mo": {
+        "type": "select",
+        "label": "Conventional agent (e.g. methotrexate, sulfasalazine): trial and failure or documented clinical contraindication for at least 3 months",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_conventional_3mo",
+            "label": "Conventional agent (e.g. methotrexate, sulfasalazine): trial and failure or documented clinical contraindication for at least 3 months"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      "nraxspa_nsaid_step": {
+        "type": "select",
+        "label": "Two different NSAIDs for at least 3 months at maximal recommended or tolerated anti-inflammatory doses: trial and failure or documented clinical contraindication",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_two_nsaids_3mo",
+            "label": "Two different NSAIDs for at least 3 months at maximal recommended or tolerated anti-inflammatory doses: trial and failure or documented clinical contraindication"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nr_axial_spa"
+          ]
+        }
+      },
+      "nraxspa_preferred_tnf": {
+        "type": "select",
+        "label": "Preferred TNF antagonist for at least 3 months: trial and failure or documented clinical contraindication",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_preferred_tnf_3mo",
+            "label": "Preferred TNF antagonist for at least 3 months: trial and failure or documented clinical contraindication"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nr_axial_spa"
+          ]
+        }
+      },
+      "as_nsaid_step": {
+        "type": "select",
+        "label": "Two different NSAIDs for at least 3 months at maximal recommended or tolerated anti-inflammatory doses: trial and failure or documented clinical contraindication",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_two_nsaids_3mo",
+            "label": "Two different NSAIDs for at least 3 months at maximal recommended or tolerated anti-inflammatory doses: trial and failure or documented clinical contraindication"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      "as_preferred_tnf": {
+        "type": "select",
+        "label": "Preferred TNF antagonist for at least 3 months: trial and failure or documented clinical contraindication",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_preferred_tnf_3mo",
+            "label": "Preferred TNF antagonist for at least 3 months: trial and failure or documented clinical contraindication"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ankylosing_spondylitis"
+          ]
+        }
+      },
+      "hs_oral_antibiotic_90d": {
+        "type": "select",
+        "label": "Oral antibiotic for HS (e.g. clindamycin, metronidazole, rifampin, tetracyclines) for minimum 90 days: trial and failure or documented clinical contraindication",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_90d",
+            "label": "Oral antibiotic for HS (e.g. clindamycin, metronidazole, rifampin, tetracyclines) for minimum 90 days: trial and failure or documented clinical contraindication"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hidradenitis_suppurativa"
+          ]
+        }
+      },
+      "hs_preferred_tnf_90d": {
+        "type": "select",
+        "label": "Preferred TNF antagonist for minimum 90 days: trial and failure or documented clinical contraindication",
+        "options": [
+          {
+            "value": "trial_failure_or_ci_preferred_tnf_90d",
+            "label": "Preferred TNF antagonist for minimum 90 days: trial and failure or documented clinical contraindication"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "hidradenitis_suppurativa"
+          ]
+        }
+      },
+      "weight_submitted": {
+        "type": "select",
+        "label": "Current patient weight provided",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis",
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      "liver_labs_baseline_submitted": {
+        "type": "select",
+        "label": "Liver enzymes, alkaline phosphatase, and bilirubin baseline provided",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "plaque_psoriasis",
+            "psoriatic_arthritis"
+          ]
+        }
+      },
+      "no_active_clinically_significant_infection": {
+        "type": "select",
+        "label": "No active clinically significant infection",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_receiving_another_biologic": {
+        "type": "select",
+        "label": "Not receiving another biologic response modifying agent",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_active_ibd": {
+        "type": "select",
+        "label": "No active inflammatory bowel disease (IBD)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": null,
+      "notes": "Quantity limits (manual review): PSO 320mg/28d; PsA/nr-axSpA/AS 160mg/28d; HS induction 320mg every 2 weeks at Weeks 0, 2, 4, 6, 8, 10, 12, 14, 16, then maintenance 320mg/28d."
+    }
   },
   "bone-resorption-inhibitors": {
     "drug": {
@@ -6667,7 +7646,8 @@
       "stelara",
       "skyrizi",
       "tremfya",
-      "zymfentra"
+      "zymfentra",
+      "bimzelx"
     ],
     "notes": [
       "Partial encoding from Alaska Medicaid Infliximab Criteria Version 1: Original 2/9/22; Approval 3/18/22; Effective 5/1/22. Covers Avsola, Inflectra, Remicade and Renflexis.",
@@ -10065,7 +11045,8 @@
       "stelara",
       "tremfya",
       "infliximab",
-      "zymfentra"
+      "zymfentra",
+      "bimzelx"
     ],
     "notes": [
       "Partial encoding from Alaska Medicaid Skyrizi (risankizumab-rzaa), Version 1. Original 12/11/2024; Accepted 01/17/2025; Effective 03/1/2025. The references-page footer still says Accepted pending / Effective pending; dated approval pages govern this metadata.",
@@ -10863,7 +11844,8 @@
       "skyrizi",
       "tremfya",
       "infliximab",
-      "zymfentra"
+      "zymfentra",
+      "bimzelx"
     ],
     "notes": [
       "Partial encoding from Alaska Medicaid Stelara (ustekinumab) for subcutaneous administration, Version 4. Original 11/14/2014; Revision Approval 9/20/2024; Effective 11/1/2024.",
@@ -11814,7 +12796,8 @@
       "stelara",
       "skyrizi",
       "infliximab",
-      "zymfentra"
+      "zymfentra",
+      "bimzelx"
     ],
     "notes": [
       "Partial encoding from Alaska Medicaid Tremfya (guselkumab), Version 1. Original 10/10/2024; Accepted 11/15/2024; Effective 01/01/2025.",

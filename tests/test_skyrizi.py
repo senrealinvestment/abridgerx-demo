@@ -11,7 +11,7 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail, get_rule_pack, load_rule_pack_catalog
 
 BASE = ROOT / 'data/alaska/parsed'
-PEERS = ['entyvio', 'stelara', 'tremfya', 'infliximab', 'zymfentra']
+PEERS = ['entyvio', 'stelara', 'tremfya', 'infliximab', 'zymfentra', 'bimzelx']
 ACTIVITY = {
     'plaque_psoriasis': {'pasi_status': 'pasi_gte_12'},
     'psoriatic_arthritis': {'psa_clinical_activity': 'actively_inflamed_joints', 'haq_di_baseline': 'submitted'},
@@ -109,8 +109,8 @@ def test_catalog_and_alternatives():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 21
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 177
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 22
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 176
     assert p['alternatives'] == PEERS
     for peer in PEERS:
         assert 'skyrizi' in catalog[peer]['alternatives']
@@ -120,7 +120,7 @@ def test_catalog_and_alternatives():
         if mirror.exists():
             assert json.loads(mirror.read_text()) == catalog[peer]
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 21 and status['encoding_text_only'] == 177
+    assert status['encoding_partial'] == 22 and status['encoding_text_only'] == 176
     assert 'skyrizi' in status['partial_slugs']
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     assert status['next_candidate'] == 'actiq'

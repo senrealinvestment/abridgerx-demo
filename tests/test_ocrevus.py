@@ -35,7 +35,7 @@ def test_metadata_and_notes():
     assert p['source']['effective_date'] == '2022-05-01'
     assert p['source']['citation'] == 'https://health.alaska.gov/media/wqjhxdla/ocrevus_criteria_2025.pdf'
     assert p['source']['criteria_pdf'] == 'data/alaska/raw/ocrevus_criteria_2025.pdf'
-    assert p['max_units'] is None and p['alternatives'] == ['briumvi', 'kesimpta']
+    assert p['max_units'] is None and p['alternatives'] == ['briumvi', 'kesimpta', 'lemtrada']
     assert 'inferred_required_facts' not in p
     assert len(p['criteria']) == 6
     assert {f for c in p['criteria'] for f in c['required_facts']} == set(facts())
@@ -107,15 +107,15 @@ def test_selects_coercion_and_gating():
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 33
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 165
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 34
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 164
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert (BASE / 'ocrevus.json').read_bytes() == (BASE / 'rule_packs/ocrevus.json').read_bytes()
-    assert catalog['ocrevus']['alternatives'] == ['briumvi', 'kesimpta']
-    for peer in ['briumvi', 'kesimpta']:
+    assert catalog['ocrevus']['alternatives'] == ['briumvi', 'kesimpta', 'lemtrada']
+    for peer in ['briumvi', 'kesimpta', 'lemtrada']:
         assert 'ocrevus' in catalog[peer]['alternatives']
         assert catalog[peer]['alternatives'] == sorted(set(catalog[peer]['alternatives']))
         assert (BASE / f'{peer}.json').read_bytes() == (BASE / f'rule_packs/{peer}.json').read_bytes()
@@ -125,7 +125,7 @@ def test_catalog_and_mirrors():
     assert catalog['praluent']['encoding_status'] == 'partial'
     assert catalog['actiq']['encoding_status'] == 'text_only'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 33 and status['encoding_text_only'] == 165
+    assert status['encoding_partial'] == 34 and status['encoding_text_only'] == 164
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     assert 'ocrevus' in status['partial_slugs'] and status['next_candidate'] == 'actiq'
     for suffix in ['json', 'md']:

@@ -112,8 +112,8 @@ def test_catalog_and_alternatives():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 33
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 165
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 34
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 164
     assert p['alternatives'] == PEERS
     for peer in PEERS:
         assert 'tremfya' in catalog[peer]['alternatives']
@@ -123,7 +123,7 @@ def test_catalog_and_alternatives():
         if mirror.exists():
             assert json.loads(mirror.read_text()) == catalog[peer]
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 33 and status['encoding_text_only'] == 165
+    assert status['encoding_partial'] == 34 and status['encoding_text_only'] == 164
     assert 'tremfya' in status['partial_slugs']
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     assert status['next_candidate'] == 'actiq'

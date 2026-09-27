@@ -63,7 +63,7 @@ Live clinician PA-check demo (advisory; published AK criteria):
 - **Deploy source (public mirror for Vercel Git):** https://github.com/senrealinvestment/abridgerx-demo  
   Private canonical repo remains https://github.com/senrealinvestment/abridgerx — grant the Vercel GitHub App access to link it directly later.
 - Framework: FastAPI (`app.py` entry + `vercel.json`). Rules engine only; no TypeSafe / SYSTEM_ONE keys in the client.
-- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 33 partial / 165 text_only; includes Tepezza, Praluent/Repatha, Soliris/Ultomiris, Hemlibra, Ocrevus/Ocrevus Zunovo, Kesimpta, Briumvi, Prolia/Xgeva, Evenity, Kevzara, Benlysta, Bimzelx, Infliximab, Stelara, Skyrizi, Tremfya and Zymfentra), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
+- Demo corpus: full Alaska ingested set — `drug_index.json` (~4.4k searchable drugs), `rule_packs_all.json` (198 packs: 34 partial / 164 text_only; includes Lemtrada, Tepezza, Praluent/Repatha, Soliris/Ultomiris, Hemlibra, Ocrevus/Ocrevus Zunovo, Kesimpta, Briumvi, Prolia/Xgeva, Evenity, Kevzara, Benlysta, Bimzelx, Infliximab, Stelara, Skyrizi, Tremfya and Zymfentra), `criteria_text_all.json` (DOH citations as URLs; no raw PDFs).
 
 
 Infliximab covers Avsola/Inflectra/Remicade/Renflexis across eight indications, with gated ages and prior therapies plus shared screening, infection, HF dosing and weight-submission criteria. HS requires neither age nor prior therapy. Duration, renewal, weight-based schedules and cautions remain manual review. Next alphabetical text-only brand: Actiq, followed by Amitiza; next biologic candidates: Evenity and Prolia.
@@ -77,3 +77,5 @@ Ocrevus covers Ocrevus and Ocrevus Zunovo in one pack: four adult MS indications
 Hemlibra encodes one closed hemophilia A prophylaxis indication (with or without FVIII inhibitors), coagulation-test confirmation, hematology specialty or consultation, no ITI combination, routine prophylaxis intent, and bleed log agreement. FDA eligibility is newborn and older with no age gate. Duration, renewal response and neutralizing antibodies, dosing, quantity and cautions remain notes for manual review.
 
 Tepezza encodes adult Graves’ TED eligibility, specialty, thyroid status, CAS, active daily living impact, glucocorticoid step, reproductive attestation and diabetes denial. Duration, no reauthorization, eight-infusion dosing and cautions remain notes for manual review.
+
+Lemtrada encodes RRMS only, J0202, inadequate response to at least two FDA-indicated MS drugs, REMS enrollment/compliance and baseline labs, administering provider enrollment, no Home Infusion Therapy, no concurrent MS DMT, and negative HIV/TB tests. No numeric age gate is stated. Documentation, duration, reauthorization, dosing and quantity enforcement remain manual review.

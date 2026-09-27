@@ -2803,6 +2803,7 @@
     ],
     "alternatives": [
       "kesimpta",
+      "lemtrada",
       "ocrevus"
     ],
     "notes": [
@@ -9594,6 +9595,7 @@
     ],
     "alternatives": [
       "briumvi",
+      "lemtrada",
       "ocrevus"
     ],
     "notes": [
@@ -10328,7 +10330,7 @@
     "drug": {
       "name": "Lemtrada",
       "generic_name": "alemtuzumab",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "ms-disease-modifying"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -10339,16 +10341,298 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Diagnosis of relapsing remitting multiple sclerosis only (approval 2; denial 1)",
+        "citation": "https://health.alaska.gov/media/l20irikz/ccfu_multiplesclerosis_lemtrada_20161003.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "relapsing_remitting_ms"
+          ]
+        }
+      },
+      {
+        "id": "jcode",
+        "text": "Submitted JCode is J0202 (approval 1)",
+        "citation": "https://health.alaska.gov/media/l20irikz/ccfu_multiplesclerosis_lemtrada_20161003.pdf",
+        "required_facts": [
+          "jcode"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "jcode",
+          "value": "j0202"
+        }
+      },
+      {
+        "id": "ms_dmt_step_two",
+        "text": "Inadequate response to at least 2 medications FDA-indicated for MS (approval 3; denial 3)",
+        "citation": "https://health.alaska.gov/media/l20irikz/ccfu_multiplesclerosis_lemtrada_20161003.pdf",
+        "required_facts": [
+          "ms_dmt_step_two"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ms_dmt_step_two",
+          "value": "inadequate_response_two_or_more_ms_drugs"
+        }
+      },
+      {
+        "id": "lemtrada_rems_all_parties_enrolled",
+        "text": "All parties meet Lemtrada REMS requirements, including on-site infusion-reaction equipment and trained personnel (approval 4a\u20134e; denial 4)",
+        "citation": "https://health.alaska.gov/media/l20irikz/ccfu_multiplesclerosis_lemtrada_20161003.pdf",
+        "required_facts": [
+          "lemtrada_rems_all_parties_enrolled"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "lemtrada_rems_all_parties_enrolled",
+          "value": "prescriber_patient_pharmacy_facility_enrolled_compliant"
+        }
+      },
+      {
+        "id": "rems_baseline_labs_acceptable",
+        "text": "Baseline labs acceptable under REMS requirements; results submitted with PA request (approval 4f)",
+        "citation": "https://health.alaska.gov/media/l20irikz/ccfu_multiplesclerosis_lemtrada_20161003.pdf",
+        "required_facts": [
+          "rems_baseline_labs_acceptable"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "rems_baseline_labs_acceptable",
+          "value": "baseline_labs_acceptable_submitted"
+        }
+      },
+      {
+        "id": "administering_provider_enrollment",
+        "text": "Administering provider enrolled with Alaska Medicaid as a Health Professional Group or Medical provider (physician or APRN) (approval 5; denial 7)",
+        "citation": "https://health.alaska.gov/media/l20irikz/ccfu_multiplesclerosis_lemtrada_20161003.pdf",
+        "required_facts": [
+          "administering_provider_enrollment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "administering_provider_enrollment",
+          "value": "ak_medicaid_hpg_or_medical_physician_aprn"
+        }
+      },
+      {
+        "id": "not_home_infusion_therapy",
+        "text": "Not administered under Alaska Medicaid Home Infusion Therapy program (approval 6; denial 8)",
+        "citation": "https://health.alaska.gov/media/l20irikz/ccfu_multiplesclerosis_lemtrada_20161003.pdf",
+        "required_facts": [
+          "not_home_infusion_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_home_infusion_therapy",
+          "value": true
+        }
+      },
+      {
+        "id": "not_concurrent_ms_dmt",
+        "text": "Not used in combination with another MS disease-modifying agent (approval 7; denial 5)",
+        "citation": "https://health.alaska.gov/media/l20irikz/ccfu_multiplesclerosis_lemtrada_20161003.pdf",
+        "required_facts": [
+          "not_concurrent_ms_dmt"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_ms_dmt",
+          "value": true
+        }
+      },
+      {
+        "id": "hiv_status",
+        "text": "Negative HIV test before treatment (approval 8; denial 2)",
+        "citation": "https://health.alaska.gov/media/l20irikz/ccfu_multiplesclerosis_lemtrada_20161003.pdf",
+        "required_facts": [
+          "hiv_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hiv_status",
+          "value": "negative"
+        }
+      },
+      {
+        "id": "tuberculosis_status",
+        "text": "Negative tuberculosis test before treatment (approval 8; denial 6)",
+        "citation": "https://health.alaska.gov/media/l20irikz/ccfu_multiplesclerosis_lemtrada_20161003.pdf",
+        "required_facts": [
+          "tuberculosis_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "tuberculosis_status",
+          "value": "tested_negative"
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "briumvi",
+      "kesimpta",
+      "ocrevus"
+    ],
+    "notes": [
+      "Partial encoding of Alaska Medicaid Lemtrada (alemtuzumab), a CD52-directed cytolytic monoclonal antibody. Version: 1; Last updated: 3/3/2016; Approved: 3/25/2016; Effective: 10/3/2016.",
+      "Encoded: initial approval criteria 1\u20138 and denial criteria 1\u20138. RRMS is the only accepted diagnosis. No numeric age requirement is stated in the criteria; no age gate is encoded.",
+      "REMS attestation (4a\u20134e): prescriber certified through enrollment and completed training; patient enrolled and compliant with ongoing monitoring; dispensing pharmacy certified and dispensing only to certified healthcare facilities authorized to receive Lemtrada; healthcare facility enrolled and verifying patient authorization before infusion; facility has on-site equipment and personnel trained to manage infusion reactions. All five requirements must be met.",
+      "REMS baseline labs (4f): lab tests deemed acceptable under REMS requirements, with results submitted with the prior authorization request. These and prior therapy requirements are attestations; documentation requires manual review.",
+      "Concurrent MS DMT examples: interferon beta preparations (Avonex, Betaseron, Extavia, Plegridy, Rebif), glatiramer acetate (Copaxone, Glatopa), and dimethyl fumarate (Tecfidera).",
+      "Duration (notes only): initial coverage up to 1 year; reauthorization up to 1 year.",
+      "Reauthorization (notes only): all initial criteria must still be met, with documented positive clinical response and current labs acceptable under REMS continuation requirements; lab documentation must be submitted.",
+      "Quantity (notes only): initial authorization 5 vials (6 mL); subsequent reauthorizations 3 vials (3.6 mL). Strength: 12 mg/1.2 mL (10 mg/mL) single-use vial. No numeric quantity enforcement.",
+      "Mechanism and safety (notes only): precise MS mechanism unknown; presumed CD52 binding followed by antibody-dependent cellular cytolysis and complement-mediated lysis of T and B lymphocytes. Because of its safety profile, generally reserved for inadequate response to two or more MS drugs.",
+      "PDL status unknown: PDF is silent. Alternatives are encoded MS disease-modifying peers and require separate eligibility evaluation.",
+      "Remaining gaps: documentation verification, reauthorization, authorization duration, dosing and quantity enforcement require manual review."
+    ],
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of relapsing remitting multiple sclerosis only (approval 2; denial 1)",
+        "options": [
+          {
+            "value": "relapsing_remitting_ms",
+            "label": "Relapsing-remitting multiple sclerosis (RRMS)"
+          }
+        ]
+      },
+      "jcode": {
+        "type": "select",
+        "label": "Submitted JCode is J0202 (approval 1)",
+        "options": [
+          {
+            "value": "j0202",
+            "label": "J0202"
+          },
+          {
+            "value": "other_or_missing",
+            "label": "Other or missing"
+          }
+        ]
+      },
+      "ms_dmt_step_two": {
+        "type": "select",
+        "label": "Inadequate response to at least 2 medications FDA-indicated for MS (approval 3; denial 3)",
+        "options": [
+          {
+            "value": "inadequate_response_two_or_more_ms_drugs",
+            "label": "Inadequate response to at least two FDA-indicated MS drugs"
+          },
+          {
+            "value": "none",
+            "label": "Requirement not met"
+          }
+        ]
+      },
+      "lemtrada_rems_all_parties_enrolled": {
+        "type": "select",
+        "label": "All parties meet Lemtrada REMS requirements, including on-site infusion-reaction equipment and trained personnel (approval 4a\u20134e; denial 4)",
+        "options": [
+          {
+            "value": "prescriber_patient_pharmacy_facility_enrolled_compliant",
+            "label": "All requirements 4a\u20134e met (see REMS notes)"
+          },
+          {
+            "value": "not_fully_enrolled",
+            "label": "One or more requirements not met"
+          }
+        ]
+      },
+      "rems_baseline_labs_acceptable": {
+        "type": "select",
+        "label": "Baseline labs acceptable under REMS requirements; results submitted with PA request (approval 4f)",
+        "options": [
+          {
+            "value": "baseline_labs_acceptable_submitted",
+            "label": "Acceptable baseline lab results submitted"
+          },
+          {
+            "value": "labs_not_acceptable_or_missing",
+            "label": "Labs unacceptable or missing"
+          }
+        ]
+      },
+      "administering_provider_enrollment": {
+        "type": "select",
+        "label": "Administering provider enrolled with Alaska Medicaid as a Health Professional Group or Medical provider (physician or APRN) (approval 5; denial 7)",
+        "options": [
+          {
+            "value": "ak_medicaid_hpg_or_medical_physician_aprn",
+            "label": "Enrolled as HPG or Medical provider (physician or APRN)"
+          },
+          {
+            "value": "not_enrolled",
+            "label": "Not enrolled as required"
+          }
+        ]
+      },
+      "not_home_infusion_therapy": {
+        "type": "select",
+        "label": "Not administered under Alaska Medicaid Home Infusion Therapy program (approval 6; denial 8)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_ms_dmt": {
+        "type": "select",
+        "label": "Not used in combination with another MS disease-modifying agent (approval 7; denial 5)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hiv_status": {
+        "type": "select",
+        "label": "Negative HIV test before treatment (approval 8; denial 2)",
+        "options": [
+          {
+            "value": "negative",
+            "label": "Tested negative before treatment"
+          },
+          {
+            "value": "positive_or_not_tested",
+            "label": "Positive or not tested"
+          }
+        ]
+      },
+      "tuberculosis_status": {
+        "type": "select",
+        "label": "Negative tuberculosis test before treatment (approval 8; denial 6)",
+        "options": [
+          {
+            "value": "tested_negative",
+            "label": "Tested negative before treatment"
+          },
+          {
+            "value": "positive_or_not_tested",
+            "label": "Positive or not tested"
+          }
+        ]
+      }
+    }
   },
   "leqembi": {
     "drug": {
@@ -11984,7 +12268,8 @@
     ],
     "alternatives": [
       "briumvi",
-      "kesimpta"
+      "kesimpta",
+      "lemtrada"
     ],
     "notes": [
       "Partial encoding of Alaska Medicaid Ocrevus (ocrelizumab), also covering Ocrevus Zunovo (ocrelizumab & hyaluronidase-ocsq), a CD20-directed cytolytic antibody, in one shared pack. Version: 2; Original: 1/31/22; Approval: 3/18/22; Effective: 5/1/22; Updated: 01/17/2025.",

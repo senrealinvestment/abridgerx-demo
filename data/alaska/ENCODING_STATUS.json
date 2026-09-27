@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 33,
-  "encoding_text_only": 165,
+  "encoding_partial": 34,
+  "encoding_text_only": 164,
   "partial_slugs": [
     "adbry",
     "adcirca",
@@ -28,6 +28,7 @@
     "infliximab",
     "kesimpta",
     "kevzara",
+    "lemtrada",
     "nucala",
     "ocrevus",
     "praluent",

@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 68,
-  "encoding_text_only": 130,
+  "encoding_partial": 69,
+  "encoding_text_only": 129,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -58,6 +58,7 @@
     "mayzent",
     "nucala",
     "ocrevus",
+    "orkambi",
     "praluent",
     "prolia",
     "roctavian",
@@ -76,5 +77,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "orkambi"
+  "next_candidate": "ofev"
 }

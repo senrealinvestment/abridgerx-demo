@@ -117,7 +117,7 @@
     "At treatment month 9, all initial criteria must still be met; submit documentation of no detriment or harm and slowed clinical decline/disease progression, clinical stabilization, or clinical improvement. Authorization may then be approved for 1 year. Renewal and duration require manual review.",
     "Quantity limit (notes only): maximum 2 tablets or granule packets per day. Tablet: 150 mg; unit-dose granule packets: 50 mg or 75 mg. Numeric quantity enforcement is not encoded.",
     "Mechanism (notes only): ivacaftor potentiates CFTR channel opening to increase chloride transport at epithelial cell surfaces.",
-    "Orkambi is linked as an alternative subject to its own indication and criteria; its pack remains text_only and cannot establish eligibility."
+    "Orkambi is linked as an alternative subject to its own indication and criteria."
   ],
   "max_units": null,
   "fact_ui": {

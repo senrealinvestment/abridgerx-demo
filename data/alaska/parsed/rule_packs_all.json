@@ -16409,7 +16409,7 @@
       "At treatment month 9, all initial criteria must still be met; submit documentation of no detriment or harm and slowed clinical decline/disease progression, clinical stabilization, or clinical improvement. Authorization may then be approved for 1 year. Renewal and duration require manual review.",
       "Quantity limit (notes only): maximum 2 tablets or granule packets per day. Tablet: 150 mg; unit-dose granule packets: 50 mg or 75 mg. Numeric quantity enforcement is not encoded.",
       "Mechanism (notes only): ivacaftor potentiates CFTR channel opening to increase chloride transport at epithelial cell surfaces.",
-      "Orkambi is linked as an alternative subject to its own indication and criteria; its pack remains text_only and cannot establish eligibility."
+      "Orkambi is linked as an alternative subject to its own indication and criteria."
     ],
     "max_units": null,
     "fact_ui": {
@@ -20508,18 +20508,217 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Cystic fibrosis homozygous for the F508del mutation in the CFTR gene.",
+        "citation": "https://health.alaska.gov/media/okjkpt1d/20194ccfu_cf_orkambi_revised_20190419.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "cystic_fibrosis_homozygous_f508del"
+          ]
+        }
+      },
+      {
+        "id": "cf_diagnosis_with_positive_sweat_test",
+        "text": "Diagnosis of cystic fibrosis accompanied with results from a positive sweat test.",
+        "citation": "https://health.alaska.gov/media/okjkpt1d/20194ccfu_cf_orkambi_revised_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "cf_diagnosis_with_positive_sweat_test"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "cf_diagnosis_with_positive_sweat_test",
+          "value": true
+        }
+      },
+      {
+        "id": "homozygous_f508del_confirmed",
+        "text": "Homozygous F508del confirmed by FDA-cleared CF mutation testing, or prescriber documentation when lab results are unavailable.",
+        "citation": "https://health.alaska.gov/media/okjkpt1d/20194ccfu_cf_orkambi_revised_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "homozygous_f508del_confirmed"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "homozygous_f508del_confirmed",
+          "values": [
+            "fda_cleared_cf_mutation_test_homozygous_f508del",
+            "prescriber_documentation_of_homozygous_f508del"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "cystic_fibrosis_homozygous_f508del"
+          ]
+        }
+      },
+      {
+        "id": "age_fda_labeled",
+        "text": "Patient is at least 2 years old.",
+        "citation": "https://health.alaska.gov/media/okjkpt1d/20194ccfu_cf_orkambi_revised_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 2
+        }
+      },
+      {
+        "id": "cyp3a_inducer_status",
+        "text": "No concomitant strong CYP3A inducer, or dosage of the inducer adjusted to minimize the interaction.",
+        "citation": "https://health.alaska.gov/media/okjkpt1d/20194ccfu_cf_orkambi_revised_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "cyp3a_inducer_status"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "cyp3a_inducer_status",
+          "values": [
+            "not_concomitant_strong_cyp3a_inducer",
+            "concomitant_with_dose_adjustment_of_inducer"
+          ]
+        }
+      },
+      {
+        "id": "cyp3a_substrate_status",
+        "text": "No concomitant sensitive or narrow therapeutic index CYP3A substrate, or interacting medication dose adjusted or discontinued to minimize the interaction.",
+        "citation": "https://health.alaska.gov/media/okjkpt1d/20194ccfu_cf_orkambi_revised_20190419.pdf#approval-criteria",
+        "required_facts": [
+          "cyp3a_substrate_status"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "cyp3a_substrate_status",
+          "values": [
+            "not_concomitant_sensitive_or_narrow_ti_cyp3a_substrate",
+            "concomitant_with_dose_adjustment_or_discontinuation"
+          ]
+        }
+      }
+    ],
     "alternatives": [
       "kalydeco"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Orkambi (lumacaftor/ivacaftor) Criteria Version 2; Last Updated 5/31/2016; Approval 4/19/2019; Effective 06/10/2019.",
+      "Encoded: closed CF homozygous F508del indication, CF diagnosis with positive sweat test results, mutation confirmation, age \u22652, and CYP3A inducer and substrate interaction requirements. Unknown or non-homozygous mutation status fails confirmation. The PDF typo F580del is normalized to F508del. Documentation verification requires manual review.",
+      "Reauthorization and duration (notes only): initial coverage up to 3 months. At treatment month 3, all initial criteria must still be met and prescriber follow-up by phone, email, or office visit must find no detriment or harm; approval may continue for 6 more months.",
+      "At treatment month 9, all initial criteria must still be met; submit documentation of no detriment or harm and slowed clinical decline/disease progression, clinical stabilization, or clinical improvement. Authorization may then be approved for 1 year. Renewal and duration require manual review.",
+      "Quantity limits (notes only): maximum 4 tablets/day (lumacaftor/ivacaftor 100/125 mg and 200/125 mg); maximum 2 packets/day (100/125 mg and 150/188 mg). Numeric quantity enforcement is not encoded.",
+      "Mechanism (notes only): lumacaftor improves F508del-CFTR conformational stability, processing and trafficking to the cell surface; ivacaftor potentiates CFTR channel opening to increase chloride transport. In vitro responses do not necessarily correspond to clinical benefit.",
+      "Kalydeco is linked as an alternative subject to its own indication and criteria."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Cystic fibrosis homozygous for the F508del mutation in the CFTR gene.",
+        "options": [
+          {
+            "value": "cystic_fibrosis_homozygous_f508del",
+            "label": "Cystic fibrosis homozygous for F508del"
+          }
+        ]
+      },
+      "cf_diagnosis_with_positive_sweat_test": {
+        "type": "select",
+        "label": "Diagnosis of cystic fibrosis accompanied with results from a positive sweat test.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "homozygous_f508del_confirmed": {
+        "type": "select",
+        "label": "Homozygous F508del confirmed by FDA-cleared CF mutation testing, or prescriber documentation when lab results are unavailable.",
+        "options": [
+          {
+            "value": "fda_cleared_cf_mutation_test_homozygous_f508del",
+            "label": "FDA-cleared CF mutation test confirms homozygous F508del"
+          },
+          {
+            "value": "prescriber_documentation_of_homozygous_f508del",
+            "label": "Lab results unavailable; documentation describes how prescriber knows patient is homozygous for F508del"
+          },
+          {
+            "value": "not_met",
+            "label": "Unknown mutation status, not homozygous F508del, or no qualifying confirmation"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "cystic_fibrosis_homozygous_f508del"
+          ]
+        }
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 2 years old.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Under 2 years"
+          },
+          {
+            "value": "2",
+            "label": "2 years or older"
+          }
+        ]
+      },
+      "cyp3a_inducer_status": {
+        "type": "select",
+        "label": "No concomitant strong CYP3A inducer, or dosage of the inducer adjusted to minimize the interaction.",
+        "options": [
+          {
+            "value": "not_concomitant_strong_cyp3a_inducer",
+            "label": "No concomitant strong CYP3A inducer"
+          },
+          {
+            "value": "concomitant_with_dose_adjustment_of_inducer",
+            "label": "Concomitant strong CYP3A inducer with dose adjustment of the inducer"
+          },
+          {
+            "value": "concomitant_without_adjustment",
+            "label": "Concomitant strong CYP3A inducer without adjustment"
+          }
+        ]
+      },
+      "cyp3a_substrate_status": {
+        "type": "select",
+        "label": "No concomitant sensitive or narrow therapeutic index CYP3A substrate, or interacting medication dose adjusted or discontinued to minimize the interaction.",
+        "options": [
+          {
+            "value": "not_concomitant_sensitive_or_narrow_ti_cyp3a_substrate",
+            "label": "No concomitant sensitive or narrow therapeutic index CYP3A substrate"
+          },
+          {
+            "value": "concomitant_with_dose_adjustment_or_discontinuation",
+            "label": "Interacting medication dose adjusted or discontinued"
+          },
+          {
+            "value": "concomitant_without_adjustment",
+            "label": "Concomitant sensitive or narrow therapeutic index CYP3A substrate without adjustment"
+          }
+        ]
+      }
+    }
   },
   "oxbryta": {
     "drug": {

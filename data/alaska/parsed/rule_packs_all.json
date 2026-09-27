@@ -2802,7 +2802,8 @@
       }
     ],
     "alternatives": [
-      "kesimpta"
+      "kesimpta",
+      "ocrevus"
     ],
     "notes": [
       "Partial encoding of Alaska Medicaid Briumvi (ublituximab-xiiy), a CD20-directed cytolytic antibody. Version: 1; Original: 3/9/2023; Approval: 4/21/2023; Effective: 6/1/2023.",
@@ -9422,7 +9423,8 @@
       }
     ],
     "alternatives": [
-      "briumvi"
+      "briumvi",
+      "ocrevus"
     ],
     "notes": [
       "Partial encoding of Alaska Medicaid Kesimpta (ofatumumab), a CD20-directed cytolytic antibody. Version: 1; Original: 12/05/20; Approval: 1/15/21; Effective: 3/15/21.",
@@ -11685,7 +11687,8 @@
   "ocrevus": {
     "drug": {
       "name": "Ocrevus",
-      "therapeutic_class": "other"
+      "therapeutic_class": "ms-disease-modifying",
+      "generic_name": "ocrelizumab"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -11696,18 +11699,256 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Relapsing forms of MS (CIS, RRMS, active SPMS) or primary progressive MS (FDA indication; approval criterion 2)",
+        "citation": "https://health.alaska.gov/media/wqjhxdla/ocrevus_criteria_2025.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms",
+            "primary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient is 18 years of age or older",
+        "citation": "https://health.alaska.gov/media/wqjhxdla/ocrevus_criteria_2025.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms",
+            "primary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist or a prescriber that specializes in MS",
+        "citation": "https://health.alaska.gov/media/wqjhxdla/ocrevus_criteria_2025.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_ms_specialist_or_consult"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms",
+            "primary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "ms_dmt_step_two_12mo",
+        "text": "Ineffective response due to continued clinical relapse, intolerance, or contraindication to two or more MS drugs within the last 12 months",
+        "citation": "https://health.alaska.gov/media/wqjhxdla/ocrevus_criteria_2025.pdf",
+        "required_facts": [
+          "ms_dmt_step_two_12mo"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ms_dmt_step_two_12mo",
+          "value": "trial_failure_intolerance_or_ci_two_or_more_12mo"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms",
+            "primary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "not_concurrent_ms_dmt",
+        "text": "Not prescribed concurrently with other disease-modifying therapies for MS",
+        "citation": "https://health.alaska.gov/media/wqjhxdla/ocrevus_criteria_2025.pdf",
+        "required_facts": [
+          "not_concurrent_ms_dmt"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_ms_dmt",
+          "value": true
+        }
+      },
+      {
+        "id": "hepatitis_b_status",
+        "text": "No active hepatitis B infection",
+        "citation": "https://health.alaska.gov/media/wqjhxdla/ocrevus_criteria_2025.pdf",
+        "required_facts": [
+          "hepatitis_b_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hepatitis_b_status",
+          "value": "no_active_hepatitis_b"
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "briumvi",
+      "kesimpta"
+    ],
+    "notes": [
+      "Partial encoding of Alaska Medicaid Ocrevus (ocrelizumab), also covering Ocrevus Zunovo (ocrelizumab & hyaluronidase-ocsq), a CD20-directed cytolytic antibody, in one shared pack. Version: 2; Original: 1/31/22; Approval: 3/18/22; Effective: 5/1/22; Updated: 01/17/2025.",
+      "Encoded: four closed adult MS indications, approval criteria 1-4 and denial criteria 2-3. Denial criterion 1 (failure to meet approval criteria) is covered by the approval clauses. The two-or-more MS drugs within the last 12 months requirement applies to all indications, including PPMS; prior therapy is an attestation. Both products share the approval criteria without a separate product gate.",
+      "Duration (notes only): initial approval up to 6 months; reauthorization up to 12 months if the prescriber documents disease improvement or stabilization.",
+      "Ocrevus quantity and dosing (notes only): initial 300 mg IV, followed by a second 300 mg dose 2 weeks later; maintenance 600 mg every 6 months. HCPCS J2350. No numeric quantity enforcement.",
+      "Ocrevus Zunovo quantity and dosing (notes only): 920 mg ocrelizumab / 23,000 units hyaluronidase per 23 mL administered subcutaneously every 6 months. HCPCS J3490/J3590. No numeric quantity enforcement.",
+      "Cautions (notes only): delay administration with an active infection until resolved or when receiving live-attenuated vaccines. Premedicate with methylprednisolone (or equivalent corticosteroid) and an antihistamine before each administration. Monitor immunoglobulins at the beginning of treatment. Increased malignancy risk, including breast cancer, may exist. Progressive multifocal leukoencephalopathy (PML) has been reported; withhold ocrelizumab at the first sign or symptom suggestive of PML.",
+      "PDL status unknown: PDF is silent. Briumvi and Kesimpta are encoded CD20 MS peers; alternative eligibility requires separate evaluation and their indications do not include PPMS.",
+      "Remaining gaps: documentation verification, authorization duration, reauthorization response, dosing, quantity enforcement and cautions require manual review."
+    ],
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Relapsing forms of MS (CIS, RRMS, active SPMS) or primary progressive MS (FDA indication; approval criterion 2)",
+        "options": [
+          {
+            "value": "clinically_isolated_syndrome",
+            "label": "Clinically isolated syndrome (CIS)"
+          },
+          {
+            "value": "relapsing_remitting_ms",
+            "label": "Relapsing-remitting multiple sclerosis (RRMS)"
+          },
+          {
+            "value": "active_secondary_progressive_ms",
+            "label": "Active secondary progressive MS (SPMS)"
+          },
+          {
+            "value": "primary_progressive_ms",
+            "label": "Primary progressive multiple sclerosis (PPMS)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18+"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms",
+            "primary_progressive_ms"
+          ]
+        },
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist or a prescriber that specializes in MS",
+        "options": [
+          {
+            "value": "neurologist_or_ms_specialist_or_consult",
+            "label": "Neurologist or MS specialist, or consultation with one"
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms",
+            "primary_progressive_ms"
+          ]
+        }
+      },
+      "ms_dmt_step_two_12mo": {
+        "type": "select",
+        "label": "Ineffective response due to continued clinical relapse, intolerance, or contraindication to two or more MS drugs within the last 12 months",
+        "options": [
+          {
+            "value": "trial_failure_intolerance_or_ci_two_or_more_12mo",
+            "label": "Two or more MS drugs within the last 12 months: continued clinical relapse, intolerance, or contraindication"
+          },
+          {
+            "value": "none",
+            "label": "Not met: fewer than two drugs or outside the last 12 months"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms",
+            "primary_progressive_ms"
+          ]
+        }
+      },
+      "not_concurrent_ms_dmt": {
+        "type": "select",
+        "label": "Not prescribed concurrently with other disease-modifying therapies for MS",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hepatitis_b_status": {
+        "type": "select",
+        "label": "No active hepatitis B infection",
+        "options": [
+          {
+            "value": "no_active_hepatitis_b",
+            "label": "No active hepatitis B"
+          },
+          {
+            "value": "active_hepatitis_b",
+            "label": "Active hepatitis B"
+          }
+        ]
+      }
+    }
   },
   "ofev": {
     "drug": {

@@ -79,7 +79,7 @@ def test_ui_and_metadata():
     catalog = json.loads((BASE/'rule_packs_all.json').read_text())
     assert catalog['lovaza'] == PACK
     assert catalog['reclast']['encoding_status'] == 'partial'
-    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 167
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 31
+    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 168
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 30
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog

@@ -125,14 +125,14 @@ def test_catalog_mirrors_status_and_reciprocal_peer():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 167
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 31
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 168
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 30
     assert catalog['interleukin-5-inhibitors']['encoding_status'] == 'partial'
     assert SLUG in catalog['vumerity']['alternatives']
     for d in [BASE, BASE.parent]:
         s = json.loads((d / 'ENCODING_STATUS.json').read_text())
-        assert (s['encoding_partial'], s['encoding_text_only']) == (167, 31)
-        assert s['next_candidate'] == 'gralise'
+        assert (s['encoding_partial'], s['encoding_text_only']) == (168, 30)
+        assert s['next_candidate'] == 'cialis'
         assert s['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

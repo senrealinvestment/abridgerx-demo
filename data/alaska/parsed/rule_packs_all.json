@@ -16679,8 +16679,9 @@
   },
   "gralise": {
     "drug": {
-      "name": "Gralise",
-      "therapeutic_class": "analgesics-non-opioid"
+      "name": "Gralise / Horizant",
+      "therapeutic_class": "analgesics-non-opioid",
+      "generic_name": "gabapentin ER / gabapentin enacarbil"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -16691,16 +16692,414 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Postherpetic neuralgia or primary restless leg syndrome in adults.",
+        "citation": "https://health.alaska.gov/media/n2hh5vdn/5-b-iv-gralise_horizant_approved_2018.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "postherpetic_neuralgia",
+            "restless_leg_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "phn_product",
+        "text": "PHN request is for Gralise or Horizant.",
+        "citation": "https://health.alaska.gov/media/n2hh5vdn/5-b-iv-gralise_horizant_approved_2018.pdf",
+        "required_facts": [
+          "product"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "product",
+          "values": [
+            "gralise",
+            "horizant"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "postherpetic_neuralgia"
+          ]
+        }
+      },
+      {
+        "id": "rls_product",
+        "text": "RLS request is for Horizant only.",
+        "citation": "https://health.alaska.gov/media/n2hh5vdn/5-b-iv-gralise_horizant_approved_2018.pdf",
+        "required_facts": [
+          "product"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "product",
+          "value": "horizant"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "restless_leg_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "phn_therapy",
+        "text": "Adequate generic gabapentin trial (8 weeks, \u22651,800 mg/day), OR documented current Gralise/Horizant use with prescriber-reported response, OR ingredient contraindication with clinically adverse event.",
+        "citation": "https://health.alaska.gov/media/n2hh5vdn/5-b-iv-gralise_horizant_approved_2018.pdf",
+        "required_facts": [
+          "gabapentin_trial_8_weeks_1800_mg",
+          "phn_current_therapy_responding",
+          "gabapentin_ingredient_contraindication_adverse_event"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "gabapentin_trial_8_weeks_1800_mg",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "phn_current_therapy_responding",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "gabapentin_ingredient_contraindication_adverse_event",
+              "value": true
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "postherpetic_neuralgia"
+          ]
+        }
+      },
+      {
+        "id": "rls_age",
+        "text": "Primary RLS indication is limited to adults.",
+        "citation": "https://health.alaska.gov/media/n2hh5vdn/5-b-iv-gralise_horizant_approved_2018.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "restless_leg_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "rls_dose",
+        "text": "RLS dose does not exceed 600 mg.",
+        "citation": "https://health.alaska.gov/media/n2hh5vdn/5-b-iv-gralise_horizant_approved_2018.pdf",
+        "required_facts": [
+          "daily_dose_mg"
+        ],
+        "predicate": {
+          "op": "lte",
+          "fact": "daily_dose_mg",
+          "value": 600
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "restless_leg_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "rls_therapy",
+        "text": "Adequate trials of BOTH pramipexole and ropinirole (4 weeks each), OR documented Horizant use with prescriber-reported response, OR pramipexole/ropinirole ingredient contraindication with clinically adverse event.",
+        "citation": "https://health.alaska.gov/media/n2hh5vdn/5-b-iv-gralise_horizant_approved_2018.pdf",
+        "required_facts": [
+          "pramipexole_trial_4_weeks",
+          "ropinirole_trial_4_weeks",
+          "horizant_current_therapy_responding",
+          "rls_ingredient_contraindication_adverse_event"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "pramipexole_trial_4_weeks",
+                  "value": true
+                },
+                {
+                  "op": "eq",
+                  "fact": "ropinirole_trial_4_weeks",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "op": "eq",
+              "fact": "horizant_current_therapy_responding",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "rls_ingredient_contraindication_adverse_event",
+              "value": true
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "restless_leg_syndrome"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Gralise / Horizant criteria. Gralise (gabapentin ER) 300/600 mg: PHN only. Horizant (gabapentin enacarbil) 300/600 mg: PHN and primary RLS in adults.",
+      "Approval paths retain diagnosis and product gates across all treatment alternatives. RLS also requires dose \u2264600 mg. Trial facts attest to adequate duration and, for gabapentin, dose; no additional trial-failure requirement is imposed. Contraindication facts include the clinically adverse event resulting from use. Denial text is interpreted as the mirror of these approval paths.",
+      "Cautions (notes only): not interchangeable with other gabapentin products; may increase suicidal thoughts or behaviors; renal impairment may require dose adjustment.",
+      "Authorization (notes only): initial approval up to 6 months; reauthorization up to 12 months with reported improvement.",
+      "Quantity limits (notes only): Gralise maximum 1800 mg/day, 30 \u00d7 300 mg or 90 \u00d7 600 mg tablets/month; Horizant maximum 1200 mg/day, 30 \u00d7 300 mg or 60 \u00d7 600 mg tablets/month. Source quantities retained as written. The RLS-specific \u2264600 mg dose is encoded separately.",
+      "Version 1; PDF Original 9/04/2018, Approval 9/21/2018. Archived effective_date 2018-01-01 retained; it is not a stated PDF effective date."
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis",
+        "options": [
+          {
+            "value": "postherpetic_neuralgia",
+            "label": "Postherpetic neuralgia"
+          },
+          {
+            "value": "restless_leg_syndrome",
+            "label": "Primary restless leg syndrome in adults"
+          }
+        ]
+      },
+      "product": {
+        "type": "select",
+        "label": "Requested product",
+        "options": [
+          {
+            "value": "gralise",
+            "label": "Gralise (gabapentin ER)"
+          },
+          {
+            "value": "horizant",
+            "label": "Horizant (gabapentin enacarbil)"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "postherpetic_neuralgia",
+            "restless_leg_syndrome"
+          ]
+        }
+      },
+      "gabapentin_trial_8_weeks_1800_mg": {
+        "type": "select",
+        "label": "Adequate generic gabapentin trial for 8 weeks at \u22651,800 mg/day",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "postherpetic_neuralgia"
+          ]
+        }
+      },
+      "phn_current_therapy_responding": {
+        "type": "select",
+        "label": "Documented use of Gralise or Horizant and prescriber states patient is responding",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "postherpetic_neuralgia"
+          ]
+        }
+      },
+      "gabapentin_ingredient_contraindication_adverse_event": {
+        "type": "select",
+        "label": "Contraindication to generic gabapentin ingredients with a clinically adverse event resulting from use",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "postherpetic_neuralgia"
+          ]
+        }
+      },
+      "pramipexole_trial_4_weeks": {
+        "type": "select",
+        "label": "Adequate pramipexole trial for 4 weeks",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "restless_leg_syndrome"
+          ]
+        }
+      },
+      "ropinirole_trial_4_weeks": {
+        "type": "select",
+        "label": "Adequate ropinirole trial for 4 weeks",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "restless_leg_syndrome"
+          ]
+        }
+      },
+      "horizant_current_therapy_responding": {
+        "type": "select",
+        "label": "Documented Horizant use and prescriber states patient is responding",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "restless_leg_syndrome"
+          ]
+        }
+      },
+      "rls_ingredient_contraindication_adverse_event": {
+        "type": "select",
+        "label": "Contraindication to pramipexole or ropinirole ingredients with a clinically adverse event resulting from use",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "restless_leg_syndrome"
+          ]
+        }
+      },
+      "daily_dose_mg": {
+        "type": "select",
+        "label": "Requested Horizant dose for RLS (mg)",
+        "options": [
+          {
+            "value": "600",
+            "label": "600 mg or less"
+          },
+          {
+            "value": "601",
+            "label": "More than 600 mg"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "restless_leg_syndrome"
+          ]
+        }
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient age (primary RLS in adults)",
+        "options": [
+          {
+            "value": "17",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "restless_leg_syndrome"
+          ]
+        }
+      }
+    },
+    "max_units": null
   },
   "h-p-acthar": {
     "drug": {

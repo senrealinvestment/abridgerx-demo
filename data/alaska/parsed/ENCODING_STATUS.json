@@ -4,13 +4,14 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 38,
-  "encoding_text_only": 160,
+  "encoding_partial": 39,
+  "encoding_text_only": 159,
   "partial_slugs": [
     "actiq",
     "adbry",
     "adcirca",
     "aduhelm",
+    "andembry",
     "benlysta",
     "bimzelx",
     "briumvi",
@@ -46,5 +47,5 @@
     "zolgensma",
     "zymfentra"
   ],
-  "next_candidate": "amitiza"
+  "next_candidate": "beqvez-tm"
 }

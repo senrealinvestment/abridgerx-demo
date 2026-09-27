@@ -103,14 +103,14 @@ def test_catalog_bundles_and_status():
         assert json.load(stream) == catalog
     assert (BASE / 'hemlibra.json').read_bytes() == (BASE / 'rule_packs/hemlibra.json').read_bytes()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 38
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 160
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 39
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 159
     assert catalog['soliris']['encoding_status'] == 'partial'
     assert catalog['praluent']['encoding_status'] == 'partial'
-    assert catalog['actiq']['encoding_status'] == 'text_only'
+    assert catalog['actiq']['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 38 and status['encoding_text_only'] == 160
-    assert status['next_candidate'] == 'actiq'
+    assert status['encoding_partial'] == 39 and status['encoding_text_only'] == 159
+    assert status['next_candidate'] == 'beqvez-tm'
     assert status['partial_slugs'] == sorted(s for s, p in catalog.items() if p['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

@@ -83,15 +83,15 @@ def test_catalog():
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 161
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 37
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 162
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 36
     for root in (BASE, BASE.parent):
         status = json.loads((root / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (161, 37)
-        assert status['next_candidate'] == 'relistor'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (162, 36)
+        assert status['next_candidate'] == 'symproic'
         assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for ext in ('json', 'md'):
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()
-    assert catalog['relistor']['encoding_status'] == 'text_only'
-    assert catalog['relistor']['criteria'] == []
-    assert evaluate(catalog['relistor'], FACTS).decision == 'need_info'
+    assert catalog['symproic']['encoding_status'] == 'text_only'
+    assert catalog['symproic']['criteria'] == []
+    assert evaluate(catalog['symproic'], FACTS).decision == 'need_info'

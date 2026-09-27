@@ -41104,17 +41104,217 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of opioid-induced constipation with chronic non-cancer pain OR advanced illness receiving palliative care.",
+        "citation": "https://health.alaska.gov/media/vb1pvijy/20199relistor_criteria_updated2019.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "opioid_induced_constipation_chronic_noncancer_pain",
+            "opioid_induced_constipation_advanced_illness_palliative"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 18 years old.",
+        "citation": "https://health.alaska.gov/media/vb1pvijy/20199relistor_criteria_updated2019.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "opioid_induced_constipation_chronic_noncancer_pain",
+            "opioid_induced_constipation_advanced_illness_palliative"
+          ]
+        }
+      },
+      {
+        "id": "opioids_longer_than_4_weeks",
+        "text": "Recipient has been taking opioids for longer than 4 weeks.",
+        "citation": "https://health.alaska.gov/media/vb1pvijy/20199relistor_criteria_updated2019.pdf",
+        "required_facts": [
+          "opioids_longer_than_4_weeks"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "opioids_longer_than_4_weeks",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "opioid_induced_constipation_chronic_noncancer_pain",
+            "opioid_induced_constipation_advanced_illness_palliative"
+          ]
+        }
+      },
+      {
+        "id": "no_mechanical_gi_obstruction",
+        "text": "Recipient has no known or suspected mechanical gastrointestinal obstruction.",
+        "citation": "https://health.alaska.gov/media/vb1pvijy/20199relistor_criteria_updated2019.pdf",
+        "required_facts": [
+          "no_mechanical_gi_obstruction"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_mechanical_gi_obstruction",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "opioid_induced_constipation_chronic_noncancer_pain",
+            "opioid_induced_constipation_advanced_illness_palliative"
+          ]
+        }
+      },
+      {
+        "id": "failed_two_laxative_therapies",
+        "text": "Dates of trial or inadequate response from at least 2 laxative therapies have been submitted.",
+        "citation": "https://health.alaska.gov/media/vb1pvijy/20199relistor_criteria_updated2019.pdf",
+        "required_facts": [
+          "failed_two_laxative_therapies"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_two_laxative_therapies",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "opioid_induced_constipation_chronic_noncancer_pain",
+            "opioid_induced_constipation_advanced_illness_palliative"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Relistor (methylnaltrexone bromide) Criteria Version 2; effective 2019-11-20.",
+      "Available forms: 8mg/0.4ml syringe, 12mg/0.6ml kit, 12mg/0.6ml syringe, 12mg/0.6ml vial, 150mg tablet.",
+      "FDA indications (notes only): tablet for OIC in adults with chronic non-cancer pain; injection for OIC in adults with chronic non-cancer pain and OIC in adults with advanced illness receiving palliative care when response to laxative therapy has been insufficient.",
+      "All five approval requirements are encoded; denials mirror age, indication, opioid duration, obstruction exclusion, and laxative documentation. failed_two_laxative_therapies attests to submitted dates of trial or inadequate response from at least two laxative therapies.",
+      "Cautions (notes only): potential for gastrointestinal perforation; may cause severe or persistent diarrhea; monitor patients for symptoms of opioid withdrawal.",
+      "Authorization (notes only): approval up to a maximum of 4 months.",
+      "Quantity limits (notes only): 30-day supply at FDA approved dosage."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of opioid-induced constipation with chronic non-cancer pain OR advanced illness receiving palliative care.",
+        "options": [
+          {
+            "value": "opioid_induced_constipation_chronic_noncancer_pain",
+            "label": "Opioid-induced constipation with chronic non-cancer pain"
+          },
+          {
+            "value": "opioid_induced_constipation_advanced_illness_palliative",
+            "label": "Opioid-induced constipation with advanced illness receiving palliative care"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "opioid_induced_constipation_chronic_noncancer_pain",
+            "opioid_induced_constipation_advanced_illness_palliative"
+          ]
+        },
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "opioids_longer_than_4_weeks": {
+        "type": "select",
+        "label": "Recipient has been taking opioids for longer than 4 weeks.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "opioid_induced_constipation_chronic_noncancer_pain",
+            "opioid_induced_constipation_advanced_illness_palliative"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_mechanical_gi_obstruction": {
+        "type": "select",
+        "label": "Recipient has no known or suspected mechanical gastrointestinal obstruction.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "opioid_induced_constipation_chronic_noncancer_pain",
+            "opioid_induced_constipation_advanced_illness_palliative"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "failed_two_laxative_therapies": {
+        "type": "select",
+        "label": "Dates of trial or inadequate response from at least 2 laxative therapies have been submitted.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "opioid_induced_constipation_chronic_noncancer_pain",
+            "opioid_induced_constipation_advanced_illness_palliative"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "revatio": {
     "drug": {

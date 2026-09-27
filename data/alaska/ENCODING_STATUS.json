@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 140,
-  "encoding_text_only": 58,
+  "encoding_partial": 141,
+  "encoding_text_only": 57,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -127,6 +127,7 @@
     "uptravi",
     "veozah",
     "verquvo",
+    "vesicular-monoamine",
     "voxzogo",
     "voyxact",
     "vumerity",
@@ -148,5 +149,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "vesicular-monoamine"
+  "next_candidate": "xifaxan"
 }

@@ -59,6 +59,7 @@ def _coerce_patient(raw: dict[str, Any]) -> dict[str, Any]:
                  "peanut_ige_kua_l", "peanut_ige_months_ago", "peanut_spt_mm_vs_control",
                  "baseline_cns_ls_score", "qualifying_anticonvulsants_count", "daily_dose_mg",
                  "prior_therapy_count", "toxicity_therapy_interruptions",
+                 "baseline_aims", "aims_lines_1_7_max_score", "generic_tetrabenazine_manufacturers_failed",
                  "prior_systemic_therapy_count", "ast_uln", "alt_uln", "bilirubin_uln"):
             try:
                 out[k] = float(v)

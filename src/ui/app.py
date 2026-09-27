@@ -64,7 +64,15 @@ def _coerce_patient(raw: dict[str, Any]) -> dict[str, Any]:
                  "ibsd_completed_courses_365_days", "symptom_onset_months_before_diagnosis",
                  "abdominal_pain_days_per_month", "alendronate_strength_mg",
                  "baseline_tg_before_treatment_mg_dl", "triglycerides_mg_dl",
-                 "fibrate_trial_days", "niacin_trial_days", "additional_cv_risk_factor_count"):
+                 "fibrate_trial_days", "niacin_trial_days", "additional_cv_risk_factor_count",
+                 "pretreatment_femoral_neck_or_spine_t_score",
+                 "femoral_neck_spine_or_total_hip_t_score",
+                 "frax_10_year_hip_percent",
+                 "frax_10_year_major_osteoporotic_percent",
+                 "prednisone_equivalent_mg_per_day",
+                 "expected_glucocorticoid_months",
+                 "alkaline_phosphatase_age_specific_uln_multiple",
+                 "albumin_corrected_calcium_mg_dl"):
             try:
                 out[k] = float(v)
             except (TypeError, ValueError):

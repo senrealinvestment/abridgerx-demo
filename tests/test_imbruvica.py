@@ -106,12 +106,12 @@ def test_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 156
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 42
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 157
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 41
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (156, 42)
-        assert status['next_candidate'] == 'reclast'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (157, 41)
+        assert status['next_candidate'] == 'panretin'
         assert status['partial_slugs'] == sorted(k for k,p in catalog.items() if p['encoding_status'] == 'partial')
     assert catalog['interleukin-5-inhibitors']['encoding_status'] == 'partial'
     assert catalog['interleukin-5-inhibitors']['criteria']

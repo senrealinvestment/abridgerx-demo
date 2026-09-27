@@ -85,7 +85,8 @@
   ],
   "alternatives": [
     "cinryze",
-    "ekterly"
+    "ekterly",
+    "firazyr"
   ],
   "notes": [
     "Partial encoding from Alaska Berinert Criteria Version 1; Last updated 1/7/2013; Approved 01/18/2013. The effective_date 2022-11-01 is retained from the archived stub and is not the PDF approval date.",
@@ -95,7 +96,8 @@
     "Both preventative medication classes must have an insufficient response or contraindication: 17α-alkylated androgens (danazol, stanozolol, oxandrolone, methyltestosterone) AND antifibrinolytic agents (aminocaproic acid, tranexamic acid). Any androgen contraindication must be documented by an endocrinologist; verify documentation manually.",
     "The safety and efficacy of Berinert for prophylactic therapy have not been established. Prophylaxis is excluded by the closed indication.",
     "PDL context: pdl_20260601_text.txt lists BERINERT (IV) as non-preferred (OFF) in HAE TREATMENTS, effective 6/1/2026.",
-    "Ekterly is an acute HAE treatment alternative requiring separate evaluation under its own criteria."
+    "Ekterly is an acute HAE treatment alternative requiring separate evaluation under its own criteria.",
+    "Firazyr is an adult acute HAE treatment alternative requiring separate evaluation under its own indication and criteria."
   ],
   "fact_ui": {
     "indication": {

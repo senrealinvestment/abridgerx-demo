@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 95,
-  "encoding_text_only": 103,
+  "encoding_partial": 96,
+  "encoding_text_only": 102,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -48,6 +48,7 @@
     "fabhalta",
     "fasenra",
     "fintepla",
+    "firazyr",
     "firdapse",
     "hemgenix",
     "hemlibra",
@@ -103,5 +104,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "firazyr"
+  "next_candidate": "crenessity"
 }

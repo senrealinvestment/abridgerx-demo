@@ -3318,7 +3318,8 @@
     ],
     "alternatives": [
       "cinryze",
-      "ekterly"
+      "ekterly",
+      "firazyr"
     ],
     "notes": [
       "Partial encoding from Alaska Berinert Criteria Version 1; Last updated 1/7/2013; Approved 01/18/2013. The effective_date 2022-11-01 is retained from the archived stub and is not the PDF approval date.",
@@ -3328,7 +3329,8 @@
       "Both preventative medication classes must have an insufficient response or contraindication: 17\u03b1-alkylated androgens (danazol, stanozolol, oxandrolone, methyltestosterone) AND antifibrinolytic agents (aminocaproic acid, tranexamic acid). Any androgen contraindication must be documented by an endocrinologist; verify documentation manually.",
       "The safety and efficacy of Berinert for prophylactic therapy have not been established. Prophylaxis is excluded by the closed indication.",
       "PDL context: pdl_20260601_text.txt lists BERINERT (IV) as non-preferred (OFF) in HAE TREATMENTS, effective 6/1/2026.",
-      "Ekterly is an acute HAE treatment alternative requiring separate evaluation under its own criteria."
+      "Ekterly is an acute HAE treatment alternative requiring separate evaluation under its own criteria.",
+      "Firazyr is an adult acute HAE treatment alternative requiring separate evaluation under its own indication and criteria."
     ],
     "fact_ui": {
       "indication": {
@@ -14615,7 +14617,8 @@
   "firazyr": {
     "drug": {
       "name": "Firazyr",
-      "therapeutic_class": "other"
+      "therapeutic_class": "bradykinin-b2-antagonist",
+      "generic_name": "icatibant"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -14626,16 +14629,126 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Treatment of acute attacks of hereditary angioedema (HAE).",
+        "citation": "https://health.alaska.gov/media/dxeln3fy/firazyr.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "hereditary_angioedema_acute_attack"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Age 18 years or older.",
+        "citation": "https://health.alaska.gov/media/dxeln3fy/firazyr.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "hae_diagnosis_by_immunologist",
+        "text": "Documented diagnosis of hereditary angioedema (HAE) by an immunologist.",
+        "citation": "https://health.alaska.gov/media/dxeln3fy/firazyr.pdf#approval-criteria",
+        "required_facts": [
+          "hae_diagnosis_by_immunologist"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hae_diagnosis_by_immunologist",
+          "value": true
+        }
+      },
+      {
+        "id": "prophylactic_therapy_status",
+        "text": "Recipient is on prophylactic therapy (such as 17-\u03b1-alkylated androgens or antifibrinolytic agents) unless contraindicated or response failure.",
+        "citation": "https://health.alaska.gov/media/dxeln3fy/firazyr.pdf#approval-criteria",
+        "required_facts": [
+          "prophylactic_therapy_status"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prophylactic_therapy_status",
+          "values": [
+            "on_prophylactic_therapy",
+            "contraindicated",
+            "response_failure"
+          ]
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "alternatives": [
+      "berinert"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Firazyr Criteria Version 1; Last updated 3/2/2012; Approved 03/16/2012. The effective_date 2023-01-02 is retained from the archived stub and is not the PDF approval date.",
+      "A letter of medical necessity and all necessary documentation substantiating every approval criterion are required; document verification remains manual review.",
+      "Prophylactic therapy examples include 17-\u03b1-alkylated androgens or antifibrinolytic agents. Contraindication or response failure is an exception to current prophylactic therapy; verify supporting documentation manually.",
+      "Length of authorization: coverage may be approved for date of service. Authorization enforcement remains manual review.",
+      "Dispensing limit: 3 units. Refills require documentation of Emergency Room or Hospital intervention. Quantity and refill documentation remain manual review.",
+      "Berinert is an acute HAE treatment alternative requiring separate evaluation under its own indication and criteria."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Treatment of acute attacks of hereditary angioedema (HAE).",
+        "options": [
+          {
+            "value": "hereditary_angioedema_acute_attack",
+            "label": "Acute HAE attack"
+          }
+        ]
+      },
+      "hae_diagnosis_by_immunologist": {
+        "type": "select",
+        "label": "Documented diagnosis of hereditary angioedema (HAE) by an immunologist.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "prophylactic_therapy_status": {
+        "type": "select",
+        "label": "Recipient is on prophylactic therapy (such as 17-\u03b1-alkylated androgens or antifibrinolytic agents) unless contraindicated or response failure.",
+        "options": [
+          {
+            "value": "on_prophylactic_therapy",
+            "label": "On prophylactic therapy"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Prophylactic therapy contraindicated"
+          },
+          {
+            "value": "response_failure",
+            "label": "Prophylactic therapy response failure"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      }
+    }
   },
   "firdapse": {
     "drug": {

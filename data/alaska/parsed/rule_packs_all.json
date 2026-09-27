@@ -8240,8 +8240,8 @@
   "duchenne-muscular-dystrophy": {
     "drug": {
       "name": "Duchenne Muscular Dystrophy",
-      "generic_name": "DMD",
-      "therapeutic_class": "other"
+      "generic_name": "eteplirsen / casimersen / golodirsen / viltolarsen",
+      "therapeutic_class": "neuromuscular"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -8252,17 +8252,392 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "DMD with a confirmed mutation amenable to exon skipping of target exon 45, 51, or 53 (FDA indication under accelerated approval).",
+        "citation": "https://health.alaska.gov/media/yuwmghvg/20220415-dmd_antisense-oligonucleotides_criteria_2022.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      {
+        "id": "age_meets_fda_label_for_requested_product",
+        "text": "Patient age meets FDA labeling for the requested product (approval criterion 1; no numeric age specified in this PDF).",
+        "citation": "https://health.alaska.gov/media/yuwmghvg/20220415-dmd_antisense-oligonucleotides_criteria_2022.pdf",
+        "required_facts": [
+          "age_meets_fda_label_for_requested_product"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "age_meets_fda_label_for_requested_product",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist who specializes in DMD (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/yuwmghvg/20220415-dmd_antisense-oligonucleotides_criteria_2022.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "neurologist_dmd_specialist",
+            "neurologist_dmd_specialist_consult"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      {
+        "id": "dmd_mutation_amenable_to_target_exon_skipping_confirmed",
+        "text": "DMD diagnosis confirmed by submitted laboratory testing demonstrating a dystrophin gene mutation amenable to the applicable target exon (45, 51, or 53) skipping (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/yuwmghvg/20220415-dmd_antisense-oligonucleotides_criteria_2022.pdf",
+        "required_facts": [
+          "dmd_mutation_amenable_to_target_exon_skipping_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "dmd_mutation_amenable_to_target_exon_skipping_confirmed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      {
+        "id": "baseline_renal_labs_cystatin_c_dipstick_upcr_submitted",
+        "text": "Serum cystatin C, urine dipstick, AND urine protein-to-creatinine ratio submitted prior to initiation (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/yuwmghvg/20220415-dmd_antisense-oligonucleotides_criteria_2022.pdf",
+        "required_facts": [
+          "baseline_renal_labs_cystatin_c_dipstick_upcr_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_renal_labs_cystatin_c_dipstick_upcr_submitted",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      {
+        "id": "baseline_muscle_strength_score_documented",
+        "text": "Documented baseline muscle strength score submitted from ONE or more listed assessments; select one qualifying assessment (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/yuwmghvg/20220415-dmd_antisense-oligonucleotides_criteria_2022.pdf",
+        "required_facts": [
+          "baseline_muscle_strength_score_documented"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_muscle_strength_score_documented",
+          "values": [
+            "six_minute_walk_test",
+            "north_star_ambulatory_assessment",
+            "motor_function_measure",
+            "brooke_ue_function_scale_le_5_and_fvc_ge_30_percent_predicted"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      {
+        "id": "concurrent_corticosteroids_or_contraindicated_intolerant",
+        "text": "Documentation of concurrent corticosteroids unless contraindicated or intolerant (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/yuwmghvg/20220415-dmd_antisense-oligonucleotides_criteria_2022.pdf",
+        "required_facts": [
+          "concurrent_corticosteroids_or_contraindicated_intolerant"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "concurrent_corticosteroids_or_contraindicated_intolerant",
+          "values": [
+            "receiving_concurrent_corticosteroids",
+            "corticosteroids_contraindicated_or_intolerant"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      {
+        "id": "current_weight_submitted",
+        "text": "Patient current weight submitted (approval criterion 7).",
+        "citation": "https://health.alaska.gov/media/yuwmghvg/20220415-dmd_antisense-oligonucleotides_criteria_2022.pdf",
+        "required_facts": [
+          "current_weight_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "current_weight_submitted",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      {
+        "id": "not_concomitant_other_exon_skipping_medication",
+        "text": "No concomitant use with another exon skipping medication (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/yuwmghvg/20220415-dmd_antisense-oligonucleotides_criteria_2022.pdf",
+        "required_facts": [
+          "not_concomitant_other_exon_skipping_medication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concomitant_other_exon_skipping_medication",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid DMD antisense oligonucleotides Criteria. Version: 1; Original: 2/26/2022; Approval: 4/15/2022; Effective: 6/1/2022.",
+      "Products: Exondys 51 (eteplirsen), Amondys 45 (casimersen), Vyondys 53 (golodirsen), Viltepso (viltolarsen). No product-specific clinical predicates are added beyond the PDF.",
+      "Encoded: closed indication, approval criteria 1\u20137, and denial criterion 2. Denial criterion 1 (failure to meet approval criteria) is covered by the approval clauses. Age is an FDA-label attestation without invented numeric thresholds.",
+      "Accelerated approval is based on increased dystrophin production in skeletal muscle. Continued approval may be contingent upon verification and description of clinical benefit in a confirmatory trial.",
+      "Duration (notes only): initial approval up to 6 months; reauthorization approval up to 12 months if the prescriber documents improvement or stability from baseline and current weight is submitted.",
+      "Quantity (notes only): Viltepso maximum dose 80 mg/kg, HCPCS J1426; Amondys 45 maximum dose 30 mg/kg, J1427; Exondys 51 maximum dose 30 mg/kg, J1428; Vyondys 53 maximum dose 30 mg/kg, J1429.",
+      "Cautions (notes only): see package inserts linked in the source PDF: Exondys 51 https://www.exondys51hcp.com/sites/default/files/2020-08/EXONDYS51PI.pdf ; Vyondys 53 https://www.vyondys53.com/static/patient/assets/Vyondys53_(golodirsen)_Prescribing_Information.pdf ; Amondys 45 https://amondys45.com/Amondys45_(casimersen)_Prescribing_Information.pdf ; Viltepso https://www.viltepso.com/prescribing-information .",
+      "Remaining gaps: FDA-label age and documentation verification, duration, reauthorization response, quantity enforcement and package-insert cautions require manual review; this pack remains partial.",
+      "No evaluate-linked alternatives. DMD peers elevidys (gene therapy) and emflaza (corticosteroid) have distinct indications, mechanisms and specialty fact values; shared patient facts cannot safely be merged without additional translation. Peer packs are unchanged. PDL status remains unknown."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "DMD with a confirmed mutation amenable to exon skipping of target exon 45, 51, or 53 (FDA indication under accelerated approval).",
+        "options": [
+          {
+            "value": "duchenne_muscular_dystrophy_exon_skipping",
+            "label": "Duchenne muscular dystrophy with confirmed mutation amenable to exon skipping (45, 51, or 53)"
+          }
+        ]
+      },
+      "age_meets_fda_label_for_requested_product": {
+        "type": "select",
+        "label": "Patient age meets FDA labeling for the requested product (approval criterion 1; no numeric age specified in this PDF).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist who specializes in DMD (approval criterion 2).",
+        "options": [
+          {
+            "value": "neurologist_dmd_specialist",
+            "label": "Neurologist specializing in DMD"
+          },
+          {
+            "value": "neurologist_dmd_specialist_consult",
+            "label": "In consultation with a neurologist specializing in DMD"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      "dmd_mutation_amenable_to_target_exon_skipping_confirmed": {
+        "type": "select",
+        "label": "DMD diagnosis confirmed by submitted laboratory testing demonstrating a dystrophin gene mutation amenable to the applicable target exon (45, 51, or 53) skipping (approval criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      "baseline_renal_labs_cystatin_c_dipstick_upcr_submitted": {
+        "type": "select",
+        "label": "Serum cystatin C, urine dipstick, AND urine protein-to-creatinine ratio submitted prior to initiation (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      "baseline_muscle_strength_score_documented": {
+        "type": "select",
+        "label": "Documented baseline muscle strength score submitted from ONE or more listed assessments; select one qualifying assessment (approval criterion 5).",
+        "options": [
+          {
+            "value": "six_minute_walk_test",
+            "label": "6-minute walk test (6MWT)"
+          },
+          {
+            "value": "north_star_ambulatory_assessment",
+            "label": "North Star ambulatory assessment (NSAA)"
+          },
+          {
+            "value": "motor_function_measure",
+            "label": "Motor Function Measure (MFM)"
+          },
+          {
+            "value": "brooke_ue_function_scale_le_5_and_fvc_ge_30_percent_predicted",
+            "label": "Brooke Upper Extremity Function Scale \u22645 AND FVC \u226530% predicted"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      "concurrent_corticosteroids_or_contraindicated_intolerant": {
+        "type": "select",
+        "label": "Documentation of concurrent corticosteroids unless contraindicated or intolerant (approval criterion 6).",
+        "options": [
+          {
+            "value": "receiving_concurrent_corticosteroids",
+            "label": "Receiving concurrent corticosteroids"
+          },
+          {
+            "value": "corticosteroids_contraindicated_or_intolerant",
+            "label": "Corticosteroids contraindicated or intolerant"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      "current_weight_submitted": {
+        "type": "select",
+        "label": "Patient current weight submitted (approval criterion 7).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      },
+      "not_concomitant_other_exon_skipping_medication": {
+        "type": "select",
+        "label": "No concomitant use with another exon skipping medication (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "duchenne_muscular_dystrophy_exon_skipping"
+          ]
+        }
+      }
+    },
+    "max_units": null
   },
   "dupixent": {
     "drug": {

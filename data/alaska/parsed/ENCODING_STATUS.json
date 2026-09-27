@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 64,
-  "encoding_text_only": 134,
+  "encoding_partial": 65,
+  "encoding_text_only": 133,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -31,6 +31,7 @@
     "crysvita",
     "dawnzeratm",
     "dojolvi",
+    "duchenne-muscular-dystrophy",
     "dupixent",
     "ebglyss",
     "egrifta",
@@ -72,5 +73,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "duchenne-muscular-dystrophy"
+  "next_candidate": "cholbam"
 }

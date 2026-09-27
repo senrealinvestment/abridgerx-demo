@@ -6866,14 +6866,16 @@
         }
       }
     ],
-    "alternatives": [],
+    "alternatives": [
+      "prolia"
+    ],
     "notes": [
       "Partial encoding from Alaska Medicaid Evenity (romosozumab-aqqg), a sclerostin inhibitor. Version 1; Original: 12/10/2019; Approval: 1/17/2020; Effective: 3/16/2020.",
       "Closed indication selection attests to postmenopausal osteoporosis and high fracture risk as defined by the source. Approval criteria 1\u20136 and denial criteria 2\u20134 are encoded; denial criterion 1 is covered by the approval clauses.",
       "Duration (notes only): initial approval up to 3 months; reauthorization up to an additional 9 months. Total authorization cannot exceed 12 monthly doses. FDA treatment is limited to 12 monthly doses due to waning anabolic effect. The prior-dose attestation denies patients who already received at least 12 monthly doses; verify the requested course against the remaining lifetime cap manually.",
       "Quantity limit (notes only): 2\u00d7105 mg syringes/month (210 mg total). Quantity enforcement requires manual review.",
       "Cautions (notes only): monitor for major adverse cardiac events (MACE) and osteonecrosis of the jaw (ONJ); adequately supplement calcium and vitamin D throughout treatment. Hypersensitivity reactions including angioedema, erythema multiforme, rash and dermatitis have been observed.",
-      "PDL status unknown: source is silent. Prolia peer pending.",
+      "PDL status unknown: source is silent.",
       "Remaining gaps: authorization duration, reauthorization, requested-course lifetime cap verification, dosing, quantity enforcement and monitoring cautions require manual review."
     ],
     "fact_ui": {
@@ -11481,7 +11483,8 @@
   "prolia": {
     "drug": {
       "name": "Prolia",
-      "therapeutic_class": "metabolic"
+      "therapeutic_class": "metabolic",
+      "generic_name": "denosumab"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -11492,17 +11495,529 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Qualifying product and diagnosis attested by closed indication",
+        "citation": "https://health.alaska.gov/media/g5gnbewr/202201-prolia_xgeva_criteria_2021.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "prolia_breast_cancer_bone_mass",
+            "prolia_glucocorticoid_induced_osteoporosis",
+            "prolia_prostate_cancer_bone_mass",
+            "prolia_male_osteoporosis",
+            "prolia_postmenopausal_osteoporosis",
+            "xgeva_giant_cell_tumor",
+            "xgeva_sre_prevention",
+            "xgeva_hypercalcemia_malignancy"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Age \u226512 for Xgeva giant cell tumor; \u226518 for all other indications",
+        "citation": "https://health.alaska.gov/media/g5gnbewr/202201-prolia_xgeva_criteria_2021.pdf",
+        "required_facts": [
+          "indication",
+          "age_years"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "xgeva_giant_cell_tumor"
+                  ]
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 12
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "indication",
+                  "values": [
+                    "prolia_breast_cancer_bone_mass",
+                    "prolia_glucocorticoid_induced_osteoporosis",
+                    "prolia_prostate_cancer_bone_mass",
+                    "prolia_male_osteoporosis",
+                    "prolia_postmenopausal_osteoporosis",
+                    "xgeva_sre_prevention",
+                    "xgeva_hypercalcemia_malignancy"
+                  ]
+                },
+                {
+                  "op": "gte",
+                  "fact": "age_years",
+                  "value": 18
+                }
+              ]
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prolia_breast_cancer_bone_mass",
+            "prolia_glucocorticoid_induced_osteoporosis",
+            "prolia_prostate_cancer_bone_mass",
+            "prolia_male_osteoporosis",
+            "prolia_postmenopausal_osteoporosis",
+            "xgeva_giant_cell_tumor",
+            "xgeva_sre_prevention",
+            "xgeva_hypercalcemia_malignancy"
+          ]
+        }
+      },
+      {
+        "id": "prolia_risk_documentation",
+        "text": "Submitted chart notes and baseline labs document a qualifying BMD/FRAX branch (select one; qualifying sites: lumbar spine, total hip, femoral neck, 33% radius)",
+        "citation": "https://health.alaska.gov/media/g5gnbewr/202201-prolia_xgeva_criteria_2021.pdf",
+        "required_facts": [
+          "prolia_risk_documentation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prolia_risk_documentation",
+          "values": [
+            "tscore_osteopenia_aromatase_inhibitor",
+            "tscore_osteopenia_adt",
+            "tscore_osteopenia_fracture",
+            "frax_major_gte_20",
+            "frax_hip_gte_3",
+            "tscore_lte_minus_2_5"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prolia_breast_cancer_bone_mass",
+            "prolia_glucocorticoid_induced_osteoporosis",
+            "prolia_prostate_cancer_bone_mass",
+            "prolia_male_osteoporosis",
+            "prolia_postmenopausal_osteoporosis"
+          ]
+        }
+      },
+      {
+        "id": "prolia_traditional_osteo_two",
+        "text": "Inadequate response or intolerance to \u22652 traditional oral/IV osteoporosis treatments, including \u22651 bisphosphonate (alendronate, calcitonin, ibandronate, raloxifene, risedronate, zoledronic acid)",
+        "citation": "https://health.alaska.gov/media/g5gnbewr/202201-prolia_xgeva_criteria_2021.pdf",
+        "required_facts": [
+          "prolia_traditional_osteo_two"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prolia_traditional_osteo_two",
+          "value": "trial_failure_or_intolerant_two_including_bp"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prolia_breast_cancer_bone_mass",
+            "prolia_glucocorticoid_induced_osteoporosis",
+            "prolia_prostate_cancer_bone_mass",
+            "prolia_male_osteoporosis",
+            "prolia_postmenopausal_osteoporosis"
+          ]
+        }
+      },
+      {
+        "id": "skeletally_mature",
+        "text": "Patient is skeletally mature",
+        "citation": "https://health.alaska.gov/media/g5gnbewr/202201-prolia_xgeva_criteria_2021.pdf",
+        "required_facts": [
+          "skeletally_mature"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "skeletally_mature",
+              "value": "yes"
+            },
+            {
+              "op": "eq",
+              "fact": "skeletally_mature",
+              "value": true
+            }
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "xgeva_giant_cell_tumor"
+          ]
+        }
+      },
+      {
+        "id": "tumor_resectability",
+        "text": "Giant cell tumor is unresectable or resection is likely to cause severe morbidity",
+        "citation": "https://health.alaska.gov/media/g5gnbewr/202201-prolia_xgeva_criteria_2021.pdf",
+        "required_facts": [
+          "tumor_resectability"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "tumor_resectability",
+          "value": "unresectable_or_severe_morbidity_resection"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "xgeva_giant_cell_tumor"
+          ]
+        }
+      },
+      {
+        "id": "albumin_corrected_calcium",
+        "text": "HCM documented by albumin-corrected calcium >12.5 mg/dL (3.1 mmol/L)",
+        "citation": "https://health.alaska.gov/media/g5gnbewr/202201-prolia_xgeva_criteria_2021.pdf",
+        "required_facts": [
+          "albumin_corrected_calcium"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "albumin_corrected_calcium",
+          "value": "gt_12_5_mg_dl"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "xgeva_hypercalcemia_malignancy"
+          ]
+        }
+      },
+      {
+        "id": "xgeva_bp_step",
+        "text": "Inadequate response or intolerance to at least one bisphosphonate",
+        "citation": "https://health.alaska.gov/media/g5gnbewr/202201-prolia_xgeva_criteria_2021.pdf",
+        "required_facts": [
+          "xgeva_bp_step"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "xgeva_bp_step",
+          "value": "trial_failure_or_intolerant_one_bp"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "xgeva_hypercalcemia_malignancy"
+          ]
+        }
+      },
+      {
+        "id": "not_concurrent_rankl_inhibitor",
+        "text": "Not taking concurrently with another RANK ligand inhibitor",
+        "citation": "https://health.alaska.gov/media/g5gnbewr/202201-prolia_xgeva_criteria_2021.pdf",
+        "required_facts": [
+          "not_concurrent_rankl_inhibitor"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_rankl_inhibitor",
+          "value": true
+        }
+      },
+      {
+        "id": "hypocalcemia_status",
+        "text": "No uncorrected pre-existing hypocalcemia",
+        "citation": "https://health.alaska.gov/media/g5gnbewr/202201-prolia_xgeva_criteria_2021.pdf",
+        "required_facts": [
+          "hypocalcemia_status"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hypocalcemia_status",
+          "value": "no_uncorrected_hypocalcemia"
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "evenity"
+    ],
+    "notes": [
+      "Partial encoding of Alaska Medicaid Prolia and Xgeva (denosumab), a RANKL inhibitor, in a single Prolia pack. Version 1; Original: 12/16/21; Approval: 1/21/22; Effective: 3/1/22.",
+      "Closed indications imply product and attest to the listed diagnosis. Approval criteria and shared denial exclusions are encoded; denial criterion 1 is covered by approval clauses. Prolia risk documentation is a single-choice attestation of any qualifying branch; overlapping qualifying findings need only one selection.",
+      "Source ambiguity: Xgeva approval #2 reads a OR; b AND; c. Encoded as SRE OR (HCM AND bisphosphonate step), so #2c applies only to HCM. GCT is a separate age \u226512 path. SRE has no additional bisphosphonate requirement.",
+      "Initial approval up to 6 months; reauthorization up to 12 months if bone improvement and/or stabilization (notes only).",
+      "Quantity limits (notes only): Prolia 60 mg/1 mL, 1 syringe every 6 months; Xgeva 120 mg/1.7 mL, load 4 vials per 28 days \u00d71 dose then maintenance 1 vial monthly. HCPCS J0897.",
+      "Cautions: see package inserts https://www.pi.amgen.com/~/media/amgen/repositorysites/pi-amgen-com/prolia/prolia_pi.pdf and https://www.pi.amgen.com/~/media/amgen/repositorysites/pi-amgen-com/xgeva/xgeva_pi.pdf.",
+      "PDL status unknown: source is silent. Skeletal maturity accepts yes or its UI-normalized boolean true.",
+      "Remaining gaps: documentation verification, authorization duration, reauthorization response, dosing, quantity enforcement and package-insert cautions require manual review."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Qualifying product and diagnosis attested by closed indication",
+        "options": [
+          {
+            "value": "prolia_breast_cancer_bone_mass",
+            "label": "Prolia: decreasing bone mass in women with breast cancer receiving aromatase inhibitor therapy"
+          },
+          {
+            "value": "prolia_glucocorticoid_induced_osteoporosis",
+            "label": "Prolia: glucocorticoid-induced osteoporosis"
+          },
+          {
+            "value": "prolia_prostate_cancer_bone_mass",
+            "label": "Prolia: decreasing bone mass in men with non-metastatic prostate cancer receiving androgen deprivation therapy"
+          },
+          {
+            "value": "prolia_male_osteoporosis",
+            "label": "Prolia: decreasing bone mass in men with osteoporosis"
+          },
+          {
+            "value": "prolia_postmenopausal_osteoporosis",
+            "label": "Prolia: postmenopausal osteoporosis in women"
+          },
+          {
+            "value": "xgeva_giant_cell_tumor",
+            "label": "Xgeva: giant cell tumor of bone"
+          },
+          {
+            "value": "xgeva_sre_prevention",
+            "label": "Xgeva: prevention of skeletal-related events in multiple myeloma or bone metastases from solid tumors"
+          },
+          {
+            "value": "xgeva_hypercalcemia_malignancy",
+            "label": "Xgeva: hypercalcemia of malignancy"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Age \u226512 for Xgeva giant cell tumor; \u226518 for all other indications",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 12 years"
+          },
+          {
+            "value": "12",
+            "label": "12\u201317 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prolia_breast_cancer_bone_mass",
+            "prolia_glucocorticoid_induced_osteoporosis",
+            "prolia_prostate_cancer_bone_mass",
+            "prolia_male_osteoporosis",
+            "prolia_postmenopausal_osteoporosis",
+            "xgeva_giant_cell_tumor",
+            "xgeva_sre_prevention",
+            "xgeva_hypercalcemia_malignancy"
+          ]
+        },
+        "option_style": "age_bands"
+      },
+      "prolia_risk_documentation": {
+        "type": "select",
+        "label": "Submitted chart notes and baseline labs document a qualifying BMD/FRAX branch (select one; qualifying sites: lumbar spine, total hip, femoral neck, 33% radius)",
+        "options": [
+          {
+            "value": "tscore_osteopenia_aromatase_inhibitor",
+            "label": "T-score between -1.0 and -2.5 at lumbar spine, total hip, femoral neck or 33% radius AND on an aromatase inhibitor"
+          },
+          {
+            "value": "tscore_osteopenia_adt",
+            "label": "T-score between -1.0 and -2.5 at a qualifying site AND on androgen deprivation therapy"
+          },
+          {
+            "value": "tscore_osteopenia_fracture",
+            "label": "T-score between -1.0 and -2.5 at a qualifying site AND history of osteoporotic fracture"
+          },
+          {
+            "value": "frax_major_gte_20",
+            "label": "U.S.-adapted WHO FRAX 10-year major osteoporotic fracture probability \u226520%"
+          },
+          {
+            "value": "frax_hip_gte_3",
+            "label": "U.S.-adapted WHO FRAX 10-year hip fracture probability \u22653%"
+          },
+          {
+            "value": "tscore_lte_minus_2_5",
+            "label": "T-score \u2264 -2.5"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying documentation"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prolia_breast_cancer_bone_mass",
+            "prolia_glucocorticoid_induced_osteoporosis",
+            "prolia_prostate_cancer_bone_mass",
+            "prolia_male_osteoporosis",
+            "prolia_postmenopausal_osteoporosis"
+          ]
+        }
+      },
+      "prolia_traditional_osteo_two": {
+        "type": "select",
+        "label": "Inadequate response or intolerance to \u22652 traditional oral/IV osteoporosis treatments, including \u22651 bisphosphonate (alendronate, calcitonin, ibandronate, raloxifene, risedronate, zoledronic acid)",
+        "options": [
+          {
+            "value": "trial_failure_or_intolerant_two_including_bp",
+            "label": "At least two treatments failed or not tolerated, including a bisphosphonate"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "prolia_breast_cancer_bone_mass",
+            "prolia_glucocorticoid_induced_osteoporosis",
+            "prolia_prostate_cancer_bone_mass",
+            "prolia_male_osteoporosis",
+            "prolia_postmenopausal_osteoporosis"
+          ]
+        }
+      },
+      "skeletally_mature": {
+        "type": "select",
+        "label": "Patient is skeletally mature",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "xgeva_giant_cell_tumor"
+          ]
+        }
+      },
+      "tumor_resectability": {
+        "type": "select",
+        "label": "Giant cell tumor is unresectable or resection is likely to cause severe morbidity",
+        "options": [
+          {
+            "value": "unresectable_or_severe_morbidity_resection",
+            "label": "Unresectable or resection likely to result in severe morbidity"
+          },
+          {
+            "value": "resectable_without_severe_morbidity",
+            "label": "Resectable without severe morbidity"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "xgeva_giant_cell_tumor"
+          ]
+        }
+      },
+      "albumin_corrected_calcium": {
+        "type": "select",
+        "label": "HCM documented by albumin-corrected calcium >12.5 mg/dL (3.1 mmol/L)",
+        "options": [
+          {
+            "value": "gt_12_5_mg_dl",
+            "label": "Greater than 12.5 mg/dL"
+          },
+          {
+            "value": "lte_12_5_or_not_documented",
+            "label": "\u226412.5 mg/dL or not documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "xgeva_hypercalcemia_malignancy"
+          ]
+        }
+      },
+      "xgeva_bp_step": {
+        "type": "select",
+        "label": "Inadequate response or intolerance to at least one bisphosphonate",
+        "options": [
+          {
+            "value": "trial_failure_or_intolerant_one_bp",
+            "label": "At least one bisphosphonate failed or not tolerated"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "xgeva_hypercalcemia_malignancy"
+          ]
+        }
+      },
+      "not_concurrent_rankl_inhibitor": {
+        "type": "select",
+        "label": "Not taking concurrently with another RANK ligand inhibitor",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hypocalcemia_status": {
+        "type": "select",
+        "label": "No uncorrected pre-existing hypocalcemia",
+        "options": [
+          {
+            "value": "no_uncorrected_hypocalcemia",
+            "label": "No pre-existing hypocalcemia, or corrected with adequate calcium and vitamin D"
+          },
+          {
+            "value": "uncorrected_hypocalcemia",
+            "label": "Pre-existing hypocalcemia not corrected"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": null,
+      "days_supply": null,
+      "notes": "Quantity limits (notes only): Prolia 60 mg/1 mL, 1 syringe every 6 months; Xgeva 120 mg/1.7 mL, load 4 vials per 28 days \u00d71 dose then maintenance 1 vial monthly. HCPCS J0897."
+    }
   },
   "quinine": {
     "drug": {

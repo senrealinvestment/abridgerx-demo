@@ -154,14 +154,16 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "prolia"
+  ],
   "notes": [
     "Partial encoding from Alaska Medicaid Evenity (romosozumab-aqqg), a sclerostin inhibitor. Version 1; Original: 12/10/2019; Approval: 1/17/2020; Effective: 3/16/2020.",
     "Closed indication selection attests to postmenopausal osteoporosis and high fracture risk as defined by the source. Approval criteria 1\u20136 and denial criteria 2\u20134 are encoded; denial criterion 1 is covered by the approval clauses.",
     "Duration (notes only): initial approval up to 3 months; reauthorization up to an additional 9 months. Total authorization cannot exceed 12 monthly doses. FDA treatment is limited to 12 monthly doses due to waning anabolic effect. The prior-dose attestation denies patients who already received at least 12 monthly doses; verify the requested course against the remaining lifetime cap manually.",
     "Quantity limit (notes only): 2\u00d7105 mg syringes/month (210 mg total). Quantity enforcement requires manual review.",
     "Cautions (notes only): monitor for major adverse cardiac events (MACE) and osteonecrosis of the jaw (ONJ); adequately supplement calcium and vitamin D throughout treatment. Hypersensitivity reactions including angioedema, erythema multiforme, rash and dermatitis have been observed.",
-    "PDL status unknown: source is silent. Prolia peer pending.",
+    "PDL status unknown: source is silent.",
     "Remaining gaps: authorization duration, reauthorization, requested-course lifetime cap verification, dosing, quantity enforcement and monitoring cautions require manual review."
   ],
   "fact_ui": {

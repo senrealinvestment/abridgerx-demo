@@ -39,7 +39,7 @@ def test_metadata_and_closed_indication():
     assert p['source']['citation'] == 'https://health.alaska.gov/media/lisiaj4z/202001_evenity_criteria_2019.pdf'
     assert p['source']['criteria_pdf'] == 'data/alaska/raw/202001_evenity_criteria_2019.pdf'
     assert len(p['criteria']) == 10 and 'inferred_required_facts' not in p
-    assert p['alternatives'] == []
+    assert p['alternatives'] == ['prolia']
     assert p['max_units']['quantity'] is None and p['max_units']['days_supply'] is None
     assert [o['value'] for o in p['fact_ui']['indication']['options']] == [FACTS['indication']]
     for invalid in ['yes', 'no', 'unknown', True, False, 'other']:
@@ -95,18 +95,19 @@ def test_missing_facts_and_ui():
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 25
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 173
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 26
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 172
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     assert (BASE / 'evenity.json').read_bytes() == (BASE / 'rule_packs/evenity.json').read_bytes()
-    assert catalog['prolia']['encoding_status'] == catalog['actiq']['encoding_status'] == 'text_only'
+    assert catalog['prolia']['encoding_status'] == 'partial'
+    assert catalog['actiq']['encoding_status'] == 'text_only'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 25 and status['encoding_text_only'] == 173
+    assert status['encoding_partial'] == 26 and status['encoding_text_only'] == 172
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     assert status['next_candidate'] == 'actiq'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
-    assert 'Next biologic: Prolia.' in (BASE / 'ENCODING_STATUS.md').read_text()
+    assert 'Biologics batch exhausted:' in (BASE / 'ENCODING_STATUS.md').read_text()

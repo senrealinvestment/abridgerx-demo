@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 25,
-  "encoding_text_only": 173,
+  "encoding_partial": 26,
+  "encoding_text_only": 172,
   "partial_slugs": [
     "adbry",
     "adcirca",
@@ -26,6 +26,7 @@
     "infliximab",
     "kevzara",
     "nucala",
+    "prolia",
     "skyrizi",
     "stelara",
     "tezspire",

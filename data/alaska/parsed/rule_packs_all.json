@@ -12443,7 +12443,7 @@
       "Cautions (notes only): monitor ALT, AST and bilirubin and drug-induced liver injury. Gastrointestinal disorders have been observed. Photosensitivity and rash have been noted; avoid sunlight and sunlamps and wear sunscreen and protective clothing daily.",
       "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months with documentation showing improvement and effectiveness of therapy.",
       "Quantity limits (notes only): 180 \u00d7 267 mg capsules per 30 days; 90 \u00d7 801 mg capsules per 30 days. Numeric quantity enforcement is not encoded.",
-      "Documentation verification, monitoring, duration, reauthorization response and quantity limits require manual review. Ofev is linked as an alternative subject to its own criteria; its pack remains text_only and cannot establish eligibility."
+      "Documentation verification, monitoring, duration, reauthorization response and quantity limits require manual review. Ofev is linked as an alternative subject to its own criteria; its pack is partially encoded and requires its own eligibility review."
     ],
     "fact_ui": {
       "indication": {
@@ -20314,7 +20314,8 @@
   "ofev": {
     "drug": {
       "name": "Ofev",
-      "therapeutic_class": "respiratory"
+      "therapeutic_class": "respiratory",
+      "generic_name": "nintedanib"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -20325,19 +20326,548 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Treatment of IPF or chronic fibrosing ILD with a progressive phenotype, or slowing pulmonary function decline in SSc-ILD.",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "idiopathic_pulmonary_fibrosis",
+            "chronic_fibrosing_ild_progressive_phenotype",
+            "ssc_associated_ild"
+          ]
+        }
+      },
+      {
+        "id": "age_fda_labeled",
+        "text": "Patient is at least 18 years old (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "ipf_confirmed_by",
+        "text": "IPF confirmed by lung biopsy OR high-resolution computed tomography (approval criterion 5 IPF a).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "ipf_confirmed_by"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ipf_confirmed_by",
+          "values": [
+            "lung_biopsy",
+            "high_resolution_ct"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "idiopathic_pulmonary_fibrosis"
+          ]
+        }
+      },
+      {
+        "id": "other_known_causes_of_ild_ruled_out",
+        "text": "Other known causes of ILD, including domestic/occupational environmental exposures, drug toxicity and connective tissue disease, ruled out (approval criterion 5 IPF b).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "other_known_causes_of_ild_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "other_known_causes_of_ild_ruled_out",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "idiopathic_pulmonary_fibrosis"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a pulmonologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "pulmonologist",
+            "pulmonologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "nonsmoker_or_abstinent_ge_6_weeks",
+        "text": "Documentation shows nonsmoker or abstinent from smoking for at least six weeks (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "nonsmoker_or_abstinent_ge_6_weeks"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "nonsmoker_or_abstinent_ge_6_weeks",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_liver_function_test_obtained",
+        "text": "Liver function test obtained prior to starting treatment (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_liver_function_test_obtained"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_liver_function_test_obtained",
+          "value": true
+        }
+      },
+      {
+        "id": "fvc_percent_predicted_ge_40_within_60_days",
+        "text": "Documented pulmonary function tests within the past 60 days show FVC \u226540% predicted (approval criterion 5 IPF c / SSc-ILD b).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "fvc_percent_predicted_ge_40_within_60_days"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "fvc_percent_predicted_ge_40_within_60_days",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "idiopathic_pulmonary_fibrosis",
+            "ssc_associated_ild"
+          ]
+        }
+      },
+      {
+        "id": "dlco_percent_predicted_ge_30",
+        "text": "Baseline percent predicted DLCO \u226530% for IPF (approval criterion 5 IPF d).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "dlco_percent_predicted_ge_30"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "dlco_percent_predicted_ge_30",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "idiopathic_pulmonary_fibrosis"
+          ]
+        }
+      },
+      {
+        "id": "ssc_ild_confirmed_by_hrct",
+        "text": "SSc-ILD diagnosis confirmed by high-resolution CT (approval criterion 5 SSc-ILD a).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "ssc_ild_confirmed_by_hrct"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "ssc_ild_confirmed_by_hrct",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ssc_associated_ild"
+          ]
+        }
+      },
+      {
+        "id": "chronic_fibrosing_ild_progressive_phenotype_diagnosed",
+        "text": "Diagnosis of chronic fibrosing ILD with a progressive phenotype documented (approval criterion 5 chronic fibrosing ILD a).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "chronic_fibrosing_ild_progressive_phenotype_diagnosed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "chronic_fibrosing_ild_progressive_phenotype_diagnosed",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "chronic_fibrosing_ild_progressive_phenotype"
+          ]
+        }
+      },
+      {
+        "id": "fvc_percent_predicted_ge_45_within_60_days",
+        "text": "Documented pulmonary function tests within the past 60 days show FVC \u226545% predicted (approval criterion 5 chronic fibrosing ILD b).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "fvc_percent_predicted_ge_45_within_60_days"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "fvc_percent_predicted_ge_45_within_60_days",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "chronic_fibrosing_ild_progressive_phenotype"
+          ]
+        }
+      },
+      {
+        "id": "dlco_percent_predicted_30_to_79",
+        "text": "Baseline percent predicted DLCO between 30\u201379% (approval criterion 5 chronic fibrosing ILD c).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#approval-criteria",
+        "required_facts": [
+          "dlco_percent_predicted_30_to_79"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "dlco_percent_predicted_30_to_79",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "chronic_fibrosing_ild_progressive_phenotype"
+          ]
+        }
+      },
+      {
+        "id": "no_moderate_to_severe_hepatic_impairment",
+        "text": "No moderate to severe hepatic impairment (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "no_moderate_to_severe_hepatic_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_moderate_to_severe_hepatic_impairment",
+          "value": true
+        }
+      },
+      {
+        "id": "not_combined_with_esbriet",
+        "text": "Ofev is not used in combination with Esbriet (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/4ybbe3te/202101-ofev_criteria_2021.pdf#denial-criteria",
+        "required_facts": [
+          "not_combined_with_esbriet"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_combined_with_esbriet",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [
       "esbriet"
     ],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Ofev (nintedanib) Criteria Version 1: Original 12/02/20; Approval 1/15/21; Effective 3/15/21.",
+      "Encoded: three closed indications, shared approval criteria 1\u20134, indication-gated criterion 5 and denial criteria 2\u20133. Denial criterion 1 (failure to meet approval criteria) is represented by the approval clauses. Clinical documentation attestations require manual review.",
+      "Cautions (notes only): monitor elevated ALT, AST and bilirubin and drug-induced liver injury; gastrointestinal perforation, severe diarrhea, nausea and vomiting; fetal harm and highly effective contraception for women of childbearing age; bleeding events.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months.",
+      "Quantity limits (notes only): 60 \u00d7 100 mg tablets per 30 days; 60 \u00d7 150 mg tablets per 30 days. Numeric quantity enforcement is not encoded.",
+      "Documentation verification, monitoring, duration, reauthorization and quantity limits require manual review. Esbriet is linked as an alternative subject to its own criteria."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Treatment of IPF or chronic fibrosing ILD with a progressive phenotype, or slowing pulmonary function decline in SSc-ILD.",
+        "options": [
+          {
+            "value": "idiopathic_pulmonary_fibrosis",
+            "label": "Idiopathic pulmonary fibrosis"
+          },
+          {
+            "value": "chronic_fibrosing_ild_progressive_phenotype",
+            "label": "Chronic fibrosing ILD with a progressive phenotype"
+          },
+          {
+            "value": "ssc_associated_ild",
+            "label": "Systemic sclerosis-associated ILD"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old (approval criterion 1).",
+        "options": [
+          {
+            "value": "17",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "ipf_confirmed_by": {
+        "type": "select",
+        "label": "IPF confirmed by lung biopsy OR high-resolution computed tomography (approval criterion 5 IPF a).",
+        "options": [
+          {
+            "value": "lung_biopsy",
+            "label": "Lung biopsy"
+          },
+          {
+            "value": "high_resolution_ct",
+            "label": "High-resolution CT"
+          },
+          {
+            "value": "not_met",
+            "label": "Neither confirmation documented"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "idiopathic_pulmonary_fibrosis"
+          ]
+        }
+      },
+      "other_known_causes_of_ild_ruled_out": {
+        "type": "select",
+        "label": "Other known causes of ILD, including domestic/occupational environmental exposures, drug toxicity and connective tissue disease, ruled out (approval criterion 5 IPF b).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "idiopathic_pulmonary_fibrosis"
+          ]
+        }
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a pulmonologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "pulmonologist",
+            "label": "Pulmonologist"
+          },
+          {
+            "value": "pulmonologist_consult",
+            "label": "In consultation with a pulmonologist"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "nonsmoker_or_abstinent_ge_6_weeks": {
+        "type": "select",
+        "label": "Documentation shows nonsmoker or abstinent from smoking for at least six weeks (approval criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "baseline_liver_function_test_obtained": {
+        "type": "select",
+        "label": "Liver function test obtained prior to starting treatment (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "fvc_percent_predicted_ge_40_within_60_days": {
+        "type": "select",
+        "label": "Documented pulmonary function tests within the past 60 days show FVC \u226540% predicted (approval criterion 5 IPF c / SSc-ILD b).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "idiopathic_pulmonary_fibrosis",
+            "ssc_associated_ild"
+          ]
+        }
+      },
+      "dlco_percent_predicted_ge_30": {
+        "type": "select",
+        "label": "Baseline percent predicted DLCO \u226530% for IPF (approval criterion 5 IPF d).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "idiopathic_pulmonary_fibrosis"
+          ]
+        }
+      },
+      "ssc_ild_confirmed_by_hrct": {
+        "type": "select",
+        "label": "SSc-ILD diagnosis confirmed by high-resolution CT (approval criterion 5 SSc-ILD a).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "ssc_associated_ild"
+          ]
+        }
+      },
+      "chronic_fibrosing_ild_progressive_phenotype_diagnosed": {
+        "type": "select",
+        "label": "Diagnosis of chronic fibrosing ILD with a progressive phenotype documented (approval criterion 5 chronic fibrosing ILD a).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "chronic_fibrosing_ild_progressive_phenotype"
+          ]
+        }
+      },
+      "fvc_percent_predicted_ge_45_within_60_days": {
+        "type": "select",
+        "label": "Documented pulmonary function tests within the past 60 days show FVC \u226545% predicted (approval criterion 5 chronic fibrosing ILD b).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "chronic_fibrosing_ild_progressive_phenotype"
+          ]
+        }
+      },
+      "dlco_percent_predicted_30_to_79": {
+        "type": "select",
+        "label": "Baseline percent predicted DLCO between 30\u201379% (approval criterion 5 chronic fibrosing ILD c).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "chronic_fibrosing_ild_progressive_phenotype"
+          ]
+        }
+      },
+      "no_moderate_to_severe_hepatic_impairment": {
+        "type": "select",
+        "label": "No moderate to severe hepatic impairment (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_combined_with_esbriet": {
+        "type": "select",
+        "label": "Ofev is not used in combination with Esbriet (denial criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "opsumit": {
     "drug": {

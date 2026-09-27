@@ -200,7 +200,7 @@
     "Cautions (notes only): monitor ALT, AST and bilirubin and drug-induced liver injury. Gastrointestinal disorders have been observed. Photosensitivity and rash have been noted; avoid sunlight and sunlamps and wear sunscreen and protective clothing daily.",
     "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months with documentation showing improvement and effectiveness of therapy.",
     "Quantity limits (notes only): 180 × 267 mg capsules per 30 days; 90 × 801 mg capsules per 30 days. Numeric quantity enforcement is not encoded.",
-    "Documentation verification, monitoring, duration, reauthorization response and quantity limits require manual review. Ofev is linked as an alternative subject to its own criteria; its pack remains text_only and cannot establish eligibility."
+    "Documentation verification, monitoring, duration, reauthorization response and quantity limits require manual review. Ofev is linked as an alternative subject to its own criteria; its pack is partially encoded and requires its own eligibility review."
   ],
   "fact_ui": {
     "indication": {

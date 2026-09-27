@@ -107,20 +107,20 @@ def test_metadata_notes_and_bundles():
     assert catalog['esbriet'] == p
     assert p['alternatives'] == ['ofev']
     assert catalog['ofev']['alternatives'] == ['esbriet']
-    assert catalog['ofev']['encoding_status'] == 'text_only'
-    assert catalog['ofev']['criteria'] == []
+    assert catalog['ofev']['encoding_status'] == 'partial'
+    assert len(catalog['ofev']['criteria']) == 15
     assert evaluate(catalog['ofev'], base()).decision == 'need_info'
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 69
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 129
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 70
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 128
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (69, 129)
-    assert status['next_candidate'] == 'ofev'
-    assert catalog['ofev']['encoding_status'] == 'text_only'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (70, 128)
+    assert status['next_candidate'] == 'atypical-antipsychotic-therapeutic-duplication'
+    assert catalog['ofev']['encoding_status'] == 'partial'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

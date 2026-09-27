@@ -12199,8 +12199,8 @@
   "epidiolex": {
     "drug": {
       "name": "Epidiolex",
-      "generic_name": "Cannabidiol",
-      "therapeutic_class": "other"
+      "generic_name": "cannabidiol",
+      "therapeutic_class": "antiepileptic"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -12211,17 +12211,192 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of seizures associated with Lennox-Gastaut syndrome, Dravet syndrome, or Tuberous Sclerosis Complex (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/5jqeogo0/202009epidiolex_criteria_update_2020.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "lennox_gastaut_syndrome_seizures",
+            "dravet_syndrome_seizures",
+            "tuberous_sclerosis_complex_seizures"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 1 years of age or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/5jqeogo0/202009epidiolex_criteria_update_2020.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 1
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/5jqeogo0/202009epidiolex_criteria_update_2020.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_consult"
+        }
+      },
+      {
+        "id": "seizures_uncontrolled_after_two_aeds",
+        "text": "Seizures have not been controlled by a trial of at least 2 antiepileptic drugs (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/5jqeogo0/202009epidiolex_criteria_update_2020.pdf#approval-criteria",
+        "required_facts": [
+          "seizures_uncontrolled_after_two_aeds"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "seizures_uncontrolled_after_two_aeds",
+          "value": true
+        }
+      },
+      {
+        "id": "adjunctive_with_other_aed",
+        "text": "Patient will use as adjunctive therapy with at least one other antiepileptic drug (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/5jqeogo0/202009epidiolex_criteria_update_2020.pdf#approval-criteria",
+        "required_facts": [
+          "adjunctive_with_other_aed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "adjunctive_with_other_aed",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_transaminases_and_bilirubin_obtained",
+        "text": "Serum transaminases and bilirubin levels obtained prior to starting treatment (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/5jqeogo0/202009epidiolex_criteria_update_2020.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_transaminases_and_bilirubin_obtained"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_transaminases_and_bilirubin_obtained",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Epidiolex (cannabidiol) Criteria. Version 2; Original 10/10/2018; Approval 09/18/2020; Effective 11/16/2020.",
+      "Encoded: approval criteria 1\u20136 shared by all three closed indications. Explicit denial criteria are covered by the inverse of these approval facts. Specialty/consultation, uncontrolled seizures after trials of at least 2 antiepileptic drugs, adjunctive use with at least one other AED, and baseline labs are attestations requiring documentation verification.",
+      "Cautions (notes only): elevated transaminase levels, especially with valproate. Monitor prior to start, at 1 month, 3 months, 6 months and as clinically indicated. Caution with driving or operating machinery due to somnolence and sedative effects. Monitor for suicidal thoughts or behaviors.",
+      "Duration (notes only): initial approval up to 4 months; reauthorization up to 12 months if responding positively and doses have not exceeded 20 mg/kg/day.",
+      "Quantity and dosing (notes only): 5 \u00d7 100 ml bottles (100 mg/ml); doses do not exceed 20 mg/kg/day. max_units is null; dosing and quantity are not evaluated.",
+      "Documentation verification, ongoing monitoring, cautions, duration, reauthorization, dosing and quantity enforcement require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of seizures associated with Lennox-Gastaut syndrome, Dravet syndrome, or Tuberous Sclerosis Complex (approval criterion 2).",
+        "options": [
+          {
+            "value": "lennox_gastaut_syndrome_seizures",
+            "label": "Seizures associated with Lennox-Gastaut syndrome"
+          },
+          {
+            "value": "dravet_syndrome_seizures",
+            "label": "Seizures associated with Dravet syndrome"
+          },
+          {
+            "value": "tuberous_sclerosis_complex_seizures",
+            "label": "Seizures associated with Tuberous Sclerosis Complex"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 1 years of age or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 1 year"
+          },
+          {
+            "value": "1",
+            "label": "1+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist (approval criterion 3).",
+        "options": [
+          {
+            "value": "neurologist_or_consult",
+            "label": "Neurologist or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "seizures_uncontrolled_after_two_aeds": {
+        "type": "select",
+        "label": "Seizures have not been controlled by a trial of at least 2 antiepileptic drugs (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "adjunctive_with_other_aed": {
+        "type": "select",
+        "label": "Patient will use as adjunctive therapy with at least one other antiepileptic drug (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "baseline_transaminases_and_bilirubin_obtained": {
+        "type": "select",
+        "label": "Serum transaminases and bilirubin levels obtained prior to starting treatment (approval criterion 6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "ergocalciferol": {
     "drug": {

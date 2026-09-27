@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 89,
-  "encoding_text_only": 109,
+  "encoding_partial": 90,
+  "encoding_text_only": 108,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -41,6 +41,7 @@
     "emflaza",
     "empaveli",
     "entyvio",
+    "epidiolex",
     "esbriet",
     "evenity",
     "evkeeza",
@@ -97,5 +98,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "epidiolex"
+  "next_candidate": "isturisa"
 }

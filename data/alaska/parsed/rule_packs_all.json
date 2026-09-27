@@ -1624,7 +1624,8 @@
   "anzupgo": {
     "drug": {
       "name": "Anzupgo",
-      "therapeutic_class": "other"
+      "therapeutic_class": "topical-jak",
+      "generic_name": "delgocitinib"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -1635,18 +1636,203 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Moderate to severe chronic hand eczema in adults with inadequate response to topical corticosteroids or for whom topical corticosteroids are not advisable.",
+        "citation": "https://health.alaska.gov/media/0agnjymc/anzupgo_criteria.pdf#fda-indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "chronic_hand_eczema_moderate_severe"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient meets FDA-labeled adult age: at least 18 years.",
+        "citation": "https://health.alaska.gov/media/0agnjymc/anzupgo_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with an allergist, dermatologist or immunologist.",
+        "citation": "https://health.alaska.gov/media/0agnjymc/anzupgo_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "allergist",
+            "dermatologist",
+            "immunologist"
+          ]
+        }
+      },
+      {
+        "id": "che_chronicity",
+        "text": "Hand eczema present for at least three months OR at least three distinct episodes within 12 months with subsequent clearance between episodes.",
+        "citation": "https://health.alaska.gov/media/0agnjymc/anzupgo_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "che_chronicity"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "che_chronicity",
+          "values": [
+            "present_ge_3_months",
+            "ge_3_distinct_episodes_within_12_months_with_clearance_between"
+          ]
+        }
+      },
+      {
+        "id": "medium_potency_tcs_step",
+        "text": "Tried and failed at least one medium potency topical corticosteroid for at least one month OR documented clinical contraindication to all medium potency topical corticosteroids.",
+        "citation": "https://health.alaska.gov/media/0agnjymc/anzupgo_criteria.pdf#approval-criteria",
+        "required_facts": [
+          "medium_potency_tcs_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "medium_potency_tcs_step",
+          "values": [
+            "failed_ge_1_month_medium_potency_tcs",
+            "contraindication_all_medium_potency_tcs"
+          ]
+        }
+      },
+      {
+        "id": "not_combined_with_other_jak_or_potent_immunosuppressant",
+        "text": "No concomitant use with another JAK inhibitor or potent immunosuppressant, including biologic immunomodulators.",
+        "citation": "https://health.alaska.gov/media/0agnjymc/anzupgo_criteria.pdf#denial-criteria",
+        "required_facts": [
+          "not_combined_with_other_jak_or_potent_immunosuppressant"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_combined_with_other_jak_or_potent_immunosuppressant",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Anzupgo (delgocitinib) Criteria Version 1; Original: 12/18/2025; Accepted: 1/16/2026; Effective: 03/01/2026.",
+      "Encoded: closed moderate to severe chronic hand eczema indication, adult age, specialty or consultation, either chronicity path, either medium potency TCS step path, and concomitant JAK inhibitor or potent immunosuppressant exclusion. Failure to meet approval criteria results in denial. Chronicity, trial duration and contraindications are attestations requiring evidence review.",
+      "Duration notes only: initial approval up to 3 months; reauthorization approval up to one year. No additional reauthorization response predicate is specified.",
+      "Quantity notes only: 60 grams per 30 days; quantity enforcement requires manual review.",
+      "FDA use: topical treatment after inadequate response to topical corticosteroids or when topical corticosteroids are not advisable. Limitation of use: combination with other JAK inhibitors or potent immunosuppressants is not recommended; the explicit concomitant-use denial is encoded.",
+      "Cautions notes only: increased infection risk; reported non-melanoma skin cancers including basal cell carcinoma; it is unknown whether Anzupgo may be associated with previously observed or potential adverse reactions associated with JAK inhibition. These cautions are not approval gates."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Indication (FDA-labeled diagnosis)",
+        "options": [
+          {
+            "value": "chronic_hand_eczema_moderate_severe",
+            "label": "Moderate to severe chronic hand eczema"
+          }
+        ],
+        "hint": "Adults with inadequate response to topical corticosteroids or for whom topical corticosteroids are not advisable."
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Age",
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescriber or consulting specialist",
+        "options": [
+          {
+            "value": "allergist",
+            "label": "Allergist"
+          },
+          {
+            "value": "dermatologist",
+            "label": "Dermatologist"
+          },
+          {
+            "value": "immunologist",
+            "label": "Immunologist"
+          },
+          {
+            "value": "primary_care",
+            "label": "Primary care"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ],
+        "hint": "Prescribed by or in consultation with an allergist, dermatologist or immunologist."
+      },
+      "che_chronicity": {
+        "type": "select",
+        "label": "Chronic hand eczema history",
+        "options": [
+          {
+            "value": "present_ge_3_months",
+            "label": "Present for at least 3 months"
+          },
+          {
+            "value": "ge_3_distinct_episodes_within_12_months_with_clearance_between",
+            "label": "At least 3 distinct episodes within 12 months with clearance between episodes"
+          },
+          {
+            "value": "not_met",
+            "label": "Neither criterion met"
+          }
+        ]
+      },
+      "medium_potency_tcs_step": {
+        "type": "select",
+        "label": "Medium potency topical corticosteroid step",
+        "options": [
+          {
+            "value": "failed_ge_1_month_medium_potency_tcs",
+            "label": "Tried and failed at least one medium potency TCS for at least 1 month"
+          },
+          {
+            "value": "contraindication_all_medium_potency_tcs",
+            "label": "Documented clinical contraindication to all medium potency TCS"
+          },
+          {
+            "value": "not_met",
+            "label": "Neither criterion met"
+          }
+        ]
+      },
+      "not_combined_with_other_jak_or_potent_immunosuppressant": {
+        "type": "select",
+        "label": "No concomitant other JAK inhibitor or potent immunosuppressant (including biologics)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 no concomitant use"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 concomitant use"
+          }
+        ]
+      }
+    }
   },
   "apokyn": {
     "drug": {

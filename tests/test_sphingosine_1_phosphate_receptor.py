@@ -125,14 +125,14 @@ def test_catalog_mirrors_status_and_reciprocal_peer():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 177
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 21
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 178
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 20
     assert catalog['interleukin-5-inhibitors']['encoding_status'] == 'partial'
     assert SLUG in catalog['vumerity']['alternatives']
     for d in [BASE, BASE.parent]:
         s = json.loads((d / 'ENCODING_STATUS.json').read_text())
-        assert (s['encoding_partial'], s['encoding_text_only']) == (177, 21)
-        assert s['next_candidate'] == 'narcan-nasal-spray-naloxone-opioid-overdose-treatment'
+        assert (s['encoding_partial'], s['encoding_text_only']) == (178, 20)
+        assert s['next_candidate'] == 'oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme'
         assert s['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

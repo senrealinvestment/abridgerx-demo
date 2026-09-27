@@ -90,12 +90,12 @@ def test_metadata_and_catalog():
     assert catalog == {p.stem: json.loads(p.read_text()) for p in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 177
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 21
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 178
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 20
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (177, 21, 'narcan-nasal-spray-naloxone-opioid-overdose-treatment')
+    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (178, 20, 'oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme')
     assert 'symproic' in status['partial_slugs']
-    assert catalog['narcan-nasal-spray-naloxone-opioid-overdose-treatment']['encoding_status'] == 'text_only'
-    assert catalog['narcan-nasal-spray-naloxone-opioid-overdose-treatment']['criteria'] == []
+    assert catalog['oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme']['encoding_status'] == 'text_only'
+    assert catalog['oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme']['criteria'] == []

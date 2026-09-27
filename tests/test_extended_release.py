@@ -101,16 +101,16 @@ def test_metadata_catalog_and_companion():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 177
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 21
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 178
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 20
     companion = catalog['long-acting-opioid-analgesics']
     assert companion['encoding_status'] == 'partial'
     assert companion['criteria'] == p['criteria']
     assert companion['fact_ui'] == p['fact_ui']
     assert evaluate(companion, facts(KINDS[0])).decision == 'pass'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (177, 21)
-    assert status['next_candidate'] == 'narcan-nasal-spray-naloxone-opioid-overdose-treatment'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (178, 20)
+    assert status['next_candidate'] == 'oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme'
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

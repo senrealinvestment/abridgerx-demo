@@ -34115,7 +34115,8 @@
   "narcan-nasal-spray-naloxone-opioid-overdose-treatment": {
     "drug": {
       "name": "Narcan Nasal Spray: Naloxone Opioid Overdose Treatment",
-      "therapeutic_class": "analgesics-opioid-reversal-agents"
+      "therapeutic_class": "analgesics-opioid-reversal-agents",
+      "generic_name": "naloxone HCl"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -34126,15 +34127,115 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Emergency treatment of known or suspected opioid overdose manifested by respiratory and/or central nervous system depression.",
+        "citation": "https://health.alaska.gov/media/wiwnjnui/narcanns-20160809.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "opioid_overdose_emergency"
+        }
+      },
+      {
+        "id": "pos_approval",
+        "text": "Fill 1 or 2 within a rolling 365 days with no edit OR fill 3 or later within a rolling 365 days with pharmacist override completed.",
+        "citation": "https://health.alaska.gov/media/wiwnjnui/narcanns-20160809.pdf",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_overdose_emergency"
+        },
+        "required_facts": [
+          "narcan_fills_within_365d_lt_3",
+          "narcan_fills_ge_3_pharmacist_override_completed"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "eq",
+              "fact": "narcan_fills_within_365d_lt_3",
+              "value": true
+            },
+            {
+              "op": "eq",
+              "fact": "narcan_fills_ge_3_pharmacist_override_completed",
+              "value": true
+            }
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Narcan Nasal Spray Criteria Version 1; Approved 1/22/2016; Effective 9/7/2016. Companion Evzio pack is already partial.",
+      "Dosage form/strength: Narcan Nasal Spray 4 mg/0.1 mL of naloxone HCl.",
+      "This remains partial because adjudication is a point-of-sale (POS) pharmacy workflow, not classic clinical prior authorization. The two approval paths are process attestations; no clinical step edits are imposed.",
+      "Fills 1 and 2 within a rolling 365 days are available at point of sale with no edits. Fill 3 or later within a rolling 365 days rejects with NCPDP 75 pending pharmacist override.",
+      "Pharmacist override attestation: contact the Narcan prescriber and opioid prescriber (if different), report prior Narcan use and the new fill request, and inquire about intended intervention or medication regimen adjustment to reduce subsequent overdose risk.",
+      "Document conversation details on the prescription (hard copy or electronically), including prescriber office, person contacted and discussion date, whether or not the regimen changed. If the prescriber is not immediately available, the pharmacist may fill but must follow-up within 3 days; response may be by phone or fax.",
+      "Once intervention is documented on the Rx, override with PATC = 5 (Prior Auth Type Code; NCPDP field 461-EU). Documentation must be available to Alaska Medicaid on request.",
+      "Possible therapy adjustments (notes only, not approval requirements): use a non-opioid analgesic; decrease opioid potency or frequency; taper or discontinue opioids; decrease or discontinue concomitant benzodiazepines, alcohol or other substances.",
+      "Narcan is intended for immediate emergency administration where opioids may be present and is not a substitute for emergency medical care.",
+      "Mechanism (notes only): naloxone competes at opioid receptor sites, reversing opioid effects including respiratory depression, sedation and hypotension, and psychotomimetic and dysphoric effects of agonist-antagonists such as pentazocine."
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Emergency treatment of known or suspected opioid overdose manifested by respiratory and/or central nervous system depression.",
+        "options": [
+          {
+            "value": "opioid_overdose_emergency",
+            "label": "Known or suspected opioid overdose with respiratory and/or CNS depression"
+          },
+          {
+            "value": "other",
+            "label": "Other indication"
+          }
+        ]
+      },
+      "narcan_fills_within_365d_lt_3": {
+        "type": "select",
+        "label": "Current Narcan fill is fill 1 or 2 within a rolling 365 days (no POS edit).",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_overdose_emergency"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "narcan_fills_ge_3_pharmacist_override_completed": {
+        "type": "select",
+        "label": "Current Narcan fill is fill 3 or later within a rolling 365 days and pharmacist override requirements are completed.",
+        "when": {
+          "fact": "indication",
+          "eq": "opioid_overdose_emergency"
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "new-prescription-medications": {
     "drug": {

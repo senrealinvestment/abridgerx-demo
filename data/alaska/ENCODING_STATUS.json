@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 177,
-  "encoding_text_only": 21,
+  "encoding_partial": 178,
+  "encoding_text_only": 20,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -103,6 +103,7 @@
     "myqorzotm",
     "mytesi",
     "naloxone-opioid-overdose-treatment-evzio",
+    "narcan-nasal-spray-naloxone-opioid-overdose-treatment",
     "nexletol",
     "nizoral",
     "noxafil",
@@ -185,5 +186,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "narcan-nasal-spray-naloxone-opioid-overdose-treatment"
+  "next_candidate": "oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme"
 }

@@ -1,4 +1,4 @@
-"""Evzio closed indication, alternative approval paths, and catalog integration."""
+"""Narcan closed indication, POS approval attestations, and catalog integration."""
 import gzip
 import json
 import sys
@@ -14,11 +14,11 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail
 
 BASE = ROOT / 'data/alaska/parsed'
-SLUG = 'naloxone-opioid-overdose-treatment-evzio'
+SLUG = 'narcan-nasal-spray-naloxone-opioid-overdose-treatment'
 NEXT = 'oral-buprenorphine-based-medication-assisted-therapy-office-based-opioid-treatme'
 PACK = json.loads((BASE / 'rule_packs' / f'{SLUG}.json').read_text())
 INDICATION = 'opioid_overdose_emergency'
-FACTS = ['narcan_nasal_spray_intolerance', 'narcan_nasal_spray_cannot_be_used']
+FACTS = ['narcan_fills_within_365d_lt_3', 'narcan_fills_ge_3_pharmacist_override_completed']
 
 
 @pytest.mark.parametrize('left,right', list(product([True, False, None, 'absent'], repeat=2)))
@@ -30,7 +30,7 @@ def test_alternative_approval_truth_table(left, right):
     assert result.decision == expected
     assert result.missing_facts == ([f for f in FACTS if patient.get(f) is None] if expected == 'need_info' else [])
     if expected == 'fail':
-        assert [c['id'] for c in result.failed_clauses] == ['narcan_nasal_spray_exception']
+        assert [c['id'] for c in result.failed_clauses] == ['pos_approval']
 
 
 @pytest.mark.parametrize('indication', ['other', 'overdose_risk', '', None, 'absent'])
@@ -56,11 +56,11 @@ def test_ui_fields_and_coercion():
 def test_metadata_notes_and_catalog():
     assert PACK['encoding_status'] == 'partial'
     assert PACK['drug']['generic_name'] == 'naloxone HCl'
-    assert PACK['source']['effective_date'] == '2016-10-03'
+    assert PACK['source']['effective_date'] == '2016-09-07'
     assert 'inferred_required_facts' not in PACK
     assert len(PACK['criteria']) == 2
     notes = ' '.join(PACK['notes'])
-    for phrase in ['0.4 mg/0.4 mL', 'Version 1', '1/22/2016', '10/3/2016', '6 months', '1 year', '1 box (2 auto-injectors) per fill', 'not a substitute for emergency medical care', 'CDC']:
+    for phrase in ['4 mg/0.1 mL', 'Version 1', '1/22/2016', '9/7/2016', 'point-of-sale', 'rolling 365', 'NCPDP 75', 'opioid prescriber (if different)', 'whether or not the regimen changed', 'within 3 days', 'PATC = 5', '461-EU', 'Alaska Medicaid on request', 'non-opioid analgesic', 'benzodiazepines, alcohol', 'not a substitute for emergency medical care', 'Mechanism', 'Companion Evzio']:
         assert phrase in notes
     assert (BASE / f'{SLUG}.json').read_bytes() == (BASE / 'rule_packs' / f'{SLUG}.json').read_bytes()
     catalog = json.loads((BASE / 'rule_packs_all.json').read_text())
@@ -75,3 +75,15 @@ def test_metadata_notes_and_catalog():
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
     assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (178, 20, NEXT)
     assert status['partial_slugs'] == sorted(s for s, p in catalog.items() if p['encoding_status'] == 'partial')
+
+
+def test_no_invented_clinical_steps():
+    assert [c['id'] for c in PACK['criteria']] == ['indication', 'pos_approval']
+    assert PACK['criteria'][1]['when'] == {'fact': 'indication', 'eq': INDICATION}
+    assert PACK['criteria'][1]['predicate'] == {
+        'op': 'any', 'args': [{'op': 'eq', 'fact': f, 'value': True} for f in FACTS]
+    }
+    for fact in FACTS:
+        patient = _coerce_patient({'indication': INDICATION, fact: 'no'})
+        assert patient[fact] is False
+        assert evaluate(PACK, patient).decision == 'need_info'

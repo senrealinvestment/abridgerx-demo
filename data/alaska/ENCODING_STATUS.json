@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 65,
-  "encoding_text_only": 133,
+  "encoding_partial": 66,
+  "encoding_text_only": 132,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -25,6 +25,7 @@
     "botulinum-toxin-preparations",
     "briumvi",
     "calcitonin-gene-related-peptide",
+    "cholbam",
     "cinqair",
     "cinryze",
     "clotting-factor",
@@ -73,5 +74,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "cholbam"
+  "next_candidate": "esbriet"
 }

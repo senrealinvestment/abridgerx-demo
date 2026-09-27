@@ -6703,7 +6703,8 @@
   "cholbam": {
     "drug": {
       "name": "Cholbam",
-      "therapeutic_class": "other"
+      "therapeutic_class": "metabolic",
+      "generic_name": "cholic acid"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -6714,16 +6715,274 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Bile acid synthesis disorders due to single enzyme defects, or adjunctive treatment of peroxisomal disorders including Zellweger spectrum disorders.",
+        "citation": "https://health.alaska.gov/media/fwommy3l/202301cholbam_criteria_2023.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "bile_acid_synthesis_disorder_single_enzyme_defect",
+            "peroxisomal_disorder_zellweger_spectrum"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by a specialist gastroenterologist or hepatologist (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/fwommy3l/202301cholbam_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "gastroenterologist",
+            "hepatologist",
+            "gastroenterologist_consult",
+            "hepatologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "basd_confirmation",
+        "text": "BASD due to a single enzyme defect confirmed by abnormal urinary bile acid on Fast Atom Bombardment ionization\u2013Mass Spectrometry (FAB-MS) analysis OR molecular genetic testing consistent with the diagnosis (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/fwommy3l/202301cholbam_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "basd_confirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "basd_confirmation",
+          "values": [
+            "abnormal_urinary_bile_acid_fab_ms",
+            "molecular_genetic_testing_consistent"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "bile_acid_synthesis_disorder_single_enzyme_defect"
+          ]
+        }
+      },
+      {
+        "id": "exhibits_liver_disease_steatorrhea_or_fat_soluble_vitamin_complications",
+        "text": "Patient exhibits liver disease, steatorrhea, or complications due to reduced fat-soluble vitamin absorption (approval criterion 3a).",
+        "citation": "https://health.alaska.gov/media/fwommy3l/202301cholbam_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "exhibits_liver_disease_steatorrhea_or_fat_soluble_vitamin_complications"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "exhibits_liver_disease_steatorrhea_or_fat_soluble_vitamin_complications",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peroxisomal_disorder_zellweger_spectrum"
+          ]
+        }
+      },
+      {
+        "id": "cholbam_used_as_adjunctive_therapy",
+        "text": "Cholbam will be used as adjunctive therapy (approval criterion 3b).",
+        "citation": "https://health.alaska.gov/media/fwommy3l/202301cholbam_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "cholbam_used_as_adjunctive_therapy"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "cholbam_used_as_adjunctive_therapy",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peroxisomal_disorder_zellweger_spectrum"
+          ]
+        }
+      },
+      {
+        "id": "baseline_liver_function_labs_documented",
+        "text": "Baseline liver function labs documented: AST, ALT, GGT, ALP, bilirubin, INR (final approval criterion, numbered 3 in source).",
+        "citation": "https://health.alaska.gov/media/fwommy3l/202301cholbam_criteria_2023.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_liver_function_labs_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_liver_function_labs_documented",
+          "value": true
+        }
+      },
+      {
+        "id": "no_complete_biliary_obstruction",
+        "text": "No complete biliary obstruction develops (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/fwommy3l/202301cholbam_criteria_2023.pdf#denial-criteria",
+        "required_facts": [
+          "no_complete_biliary_obstruction"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_complete_biliary_obstruction",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Cholbam (cholic acid) Criteria Version 1: Original 12/19/2022; Approval 01/20/2023; Effective 03/01/2023.",
+      "Encoded: two closed FDA indication paths, specialist requirement, indication-gated BASD confirmation or peroxisomal manifestations and adjunctive therapy, baseline liver labs, and absence of complete biliary obstruction. Failure to meet approval criteria is represented by these clauses. No numeric age gate is stated.",
+      "Specialty consultation values are accepted per the requested encoding convention; the source wording is prescribed by a specialist gastroenterologist or hepatologist.",
+      "Monitoring (notes only): AST, ALT, GGT, alkaline phosphatase, bilirubin and INR every month for the first 3 months, every 3 months for the next 9 months, every 6 months during the next three years and annually thereafter. Administer the lowest dose that effectively maintains liver function.",
+      "Duration (notes only): initial approval 3 months; reauthorization 12 months with chart notes documenting improvements in liver function labs. Updated labs are required for renewal.",
+      "Quantity (notes only): 10\u201315 mg/kg/day administered in one to two doses daily; concomitant familial hypertriglyceridemia may require 11\u201317 mg/kg/day, adjusted based on clinical response.",
+      "Documentation verification, monitoring, lowest effective dose, duration, renewal response and quantity require manual review; this pack remains partial. No alternatives are specified."
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Bile acid synthesis disorders due to single enzyme defects, or adjunctive treatment of peroxisomal disorders including Zellweger spectrum disorders.",
+        "options": [
+          {
+            "value": "bile_acid_synthesis_disorder_single_enzyme_defect",
+            "label": "Bile acid synthesis disorder due to a single enzyme defect"
+          },
+          {
+            "value": "peroxisomal_disorder_zellweger_spectrum",
+            "label": "Peroxisomal disorder including Zellweger spectrum"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by a specialist gastroenterologist or hepatologist (approval criterion 1).",
+        "options": [
+          {
+            "value": "gastroenterologist",
+            "label": "Gastroenterologist"
+          },
+          {
+            "value": "hepatologist",
+            "label": "Hepatologist"
+          },
+          {
+            "value": "gastroenterologist_consult",
+            "label": "Gastroenterologist consultation"
+          },
+          {
+            "value": "hepatologist_consult",
+            "label": "Hepatologist consultation"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      "basd_confirmation": {
+        "type": "select",
+        "label": "BASD due to a single enzyme defect confirmed by abnormal urinary bile acid on Fast Atom Bombardment ionization\u2013Mass Spectrometry (FAB-MS) analysis OR molecular genetic testing consistent with the diagnosis (approval criterion 2).",
+        "options": [
+          {
+            "value": "abnormal_urinary_bile_acid_fab_ms",
+            "label": "Abnormal urinary bile acid confirmed by FAB-MS"
+          },
+          {
+            "value": "molecular_genetic_testing_consistent",
+            "label": "Molecular genetic testing consistent with the diagnosis"
+          },
+          {
+            "value": "not_met",
+            "label": "Neither confirmation pathway met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "bile_acid_synthesis_disorder_single_enzyme_defect"
+          ]
+        }
+      },
+      "exhibits_liver_disease_steatorrhea_or_fat_soluble_vitamin_complications": {
+        "type": "select",
+        "label": "Patient exhibits liver disease, steatorrhea, or complications due to reduced fat-soluble vitamin absorption (approval criterion 3a).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peroxisomal_disorder_zellweger_spectrum"
+          ]
+        }
+      },
+      "cholbam_used_as_adjunctive_therapy": {
+        "type": "select",
+        "label": "Cholbam will be used as adjunctive therapy (approval criterion 3b).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "peroxisomal_disorder_zellweger_spectrum"
+          ]
+        }
+      },
+      "baseline_liver_function_labs_documented": {
+        "type": "select",
+        "label": "Baseline liver function labs documented: AST, ALT, GGT, ALP, bilirubin, INR (final approval criterion, numbered 3 in source).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_complete_biliary_obstruction": {
+        "type": "select",
+        "label": "No complete biliary obstruction develops (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "cialis": {
     "drug": {

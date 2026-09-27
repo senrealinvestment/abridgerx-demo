@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 132,
-  "encoding_text_only": 66,
+  "encoding_partial": 133,
+  "encoding_text_only": 65,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -52,6 +52,7 @@
     "fintepla",
     "firazyr",
     "firdapse",
+    "h-p-acthar",
     "hemgenix",
     "hemlibra",
     "hetlioz",
@@ -140,5 +141,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "h-p-acthar"
+  "next_candidate": "interleukin-5-inhibitors"
 }

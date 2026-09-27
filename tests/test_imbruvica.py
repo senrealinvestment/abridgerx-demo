@@ -106,12 +106,12 @@ def test_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 132
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 66
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 133
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 65
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory / 'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'], status['encoding_text_only']) == (132, 66)
-        assert status['next_candidate'] == 'h-p-acthar'
+        assert (status['encoding_partial'], status['encoding_text_only']) == (133, 65)
+        assert status['next_candidate'] == 'interleukin-5-inhibitors'
         assert status['partial_slugs'] == sorted(k for k,p in catalog.items() if p['encoding_status'] == 'partial')
-    assert catalog['h-p-acthar']['encoding_status'] == 'text_only'
-    assert catalog['h-p-acthar']['criteria'] == []
+    assert catalog['interleukin-5-inhibitors']['encoding_status'] == 'text_only'
+    assert catalog['interleukin-5-inhibitors']['criteria'] == []

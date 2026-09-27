@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 116,
-  "encoding_text_only": 82,
+  "encoding_partial": 117,
+  "encoding_text_only": 81,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -91,6 +91,7 @@
     "prolia",
     "raft",
     "redemplo",
+    "rezdiffratm",
     "roctavian",
     "rystiggo",
     "serostim",
@@ -124,5 +125,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "rezdiffratm"
+  "next_candidate": "rhapsido"
 }

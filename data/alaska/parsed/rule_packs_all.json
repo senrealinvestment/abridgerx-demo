@@ -31766,7 +31766,8 @@
   "rezdiffratm": {
     "drug": {
       "name": "RezdiffraTM",
-      "therapeutic_class": "metabolic"
+      "therapeutic_class": "thr-beta-agonist",
+      "generic_name": "resmetirom"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -31777,17 +31778,465 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of noncirrhotic NASH with moderate to advanced liver fibrosis (F2\u2013F3).",
+        "citation": "https://health.alaska.gov/media/p0fbdtwy/rezdiffra_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "noncirrhotic_nash_with_moderate_to_advanced_fibrosis"
+          ]
+        }
+      },
+      {
+        "id": "age",
+        "text": "Patient meets FDA labeled adult age.",
+        "citation": "https://health.alaska.gov/media/p0fbdtwy/rezdiffra_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "age"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "age",
+          "values": [
+            "at_least_18"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a gastroenterologist or hepatologist.",
+        "citation": "https://health.alaska.gov/media/p0fbdtwy/rezdiffra_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "gastroenterologist",
+            "hepatologist",
+            "gastroenterologist_consult",
+            "hepatologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "fibrosis_stage",
+        "text": "Liver fibrosis stage is F2 or F3.",
+        "citation": "https://health.alaska.gov/media/p0fbdtwy/rezdiffra_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "fibrosis_stage"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "fibrosis_stage",
+          "values": [
+            "F2",
+            "F3"
+          ]
+        }
+      },
+      {
+        "id": "fibrosis_confirmation",
+        "text": "F2 or F3 confirmed by liver biopsy within the previous 12 months OR at least two of MRE >2.6, VCTE >8.1, ELF >7.7.",
+        "citation": "https://health.alaska.gov/media/p0fbdtwy/rezdiffra_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "liver_biopsy",
+          "mre_score",
+          "vcte_score",
+          "elf_score"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "in",
+              "fact": "liver_biopsy",
+              "values": [
+                "f2_f3_within_12_months"
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "mre_score",
+                  "values": [
+                    "above_threshold"
+                  ]
+                },
+                {
+                  "op": "in",
+                  "fact": "vcte_score",
+                  "values": [
+                    "above_threshold"
+                  ]
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "mre_score",
+                  "values": [
+                    "above_threshold"
+                  ]
+                },
+                {
+                  "op": "in",
+                  "fact": "elf_score",
+                  "values": [
+                    "above_threshold"
+                  ]
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "in",
+                  "fact": "vcte_score",
+                  "values": [
+                    "above_threshold"
+                  ]
+                },
+                {
+                  "op": "in",
+                  "fact": "elf_score",
+                  "values": [
+                    "above_threshold"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "fib4_score",
+        "text": "FIB-4 score is at least 1.3.",
+        "citation": "https://health.alaska.gov/media/p0fbdtwy/rezdiffra_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "fib4_score"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "fib4_score",
+          "values": [
+            "at_1_3",
+            "above_1_3"
+          ]
+        }
+      },
+      {
+        "id": "metabolic_risk_factors",
+        "text": "Currently has at least three metabolic risk factors (e.g. hypertension, obesity, type 2 diabetes).",
+        "citation": "https://health.alaska.gov/media/p0fbdtwy/rezdiffra_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "metabolic_risk_factors"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "metabolic_risk_factors",
+          "values": [
+            "at_least_3"
+          ]
+        }
+      },
+      {
+        "id": "lifestyle_modification",
+        "text": "Submitted chart notes confirm adjunctive increased physical activity AND reduced calorie diet.",
+        "citation": "https://health.alaska.gov/media/p0fbdtwy/rezdiffra_criteria_2026.pdf#approval-criteria",
+        "required_facts": [
+          "lifestyle_modification"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "lifestyle_modification",
+          "values": [
+            "both_documented"
+          ]
+        }
+      },
+      {
+        "id": "other_liver_disease",
+        "text": "No other liver disease, including decompensated cirrhosis, hepatocellular carcinoma, hepatitis, etc.",
+        "citation": "https://health.alaska.gov/media/p0fbdtwy/rezdiffra_criteria_2026.pdf#denial-criteria",
+        "required_facts": [
+          "other_liver_disease"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "other_liver_disease",
+          "values": [
+            "absent"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid RezdiffraTM (resmetirom), effective 2026-06-01. Approval criteria and other liver disease denial encoded; supporting chart notes and test evidence require manual review.",
+      "Limitations of use: avoid use in decompensated cirrhosis. Accelerated approval based on improvement of NASH and fibrosis; continued approval may depend on confirmatory clinical benefit trials.",
+      "Cautions (notes only): cholelithiasis and cholecystitis; monitor for signs and symptoms of hepatotoxicity. Common adverse reactions include diarrhea, pruritus, nausea and abdominal pain.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months. Manual review required.",
+      "Quantity (notes only): 30 tablets per 30 days; maximum 100 mg/day. Manual review required."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of noncirrhotic NASH with moderate to advanced liver fibrosis (F2\u2013F3).",
+        "options": [
+          {
+            "value": "noncirrhotic_nash_with_moderate_to_advanced_fibrosis",
+            "label": "Noncirrhotic NASH with moderate to advanced fibrosis (F2\u2013F3)"
+          }
+        ]
+      },
+      "age": {
+        "type": "select",
+        "label": "Patient meets FDA labeled adult age.",
+        "options": [
+          {
+            "value": "at_least_18",
+            "label": "18 years or older"
+          },
+          {
+            "value": "under_18",
+            "label": "Under 18 years"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a gastroenterologist or hepatologist.",
+        "options": [
+          {
+            "value": "gastroenterologist",
+            "label": "Gastroenterologist"
+          },
+          {
+            "value": "hepatologist",
+            "label": "Hepatologist"
+          },
+          {
+            "value": "gastroenterologist_consult",
+            "label": "Gastroenterologist consultation"
+          },
+          {
+            "value": "hepatologist_consult",
+            "label": "Hepatologist consultation"
+          },
+          {
+            "value": "other",
+            "label": "Neither qualifying specialty nor consultation"
+          }
+        ]
+      },
+      "fibrosis_stage": {
+        "type": "select",
+        "label": "Liver fibrosis stage is F2 or F3.",
+        "options": [
+          {
+            "value": "F2",
+            "label": "F2"
+          },
+          {
+            "value": "F3",
+            "label": "F3"
+          },
+          {
+            "value": "F0",
+            "label": "F0"
+          },
+          {
+            "value": "F1",
+            "label": "F1"
+          },
+          {
+            "value": "F4",
+            "label": "F4"
+          }
+        ]
+      },
+      "liver_biopsy": {
+        "type": "select",
+        "label": "Liver biopsy confirms F2 or F3 within the previous 12 months.",
+        "options": [
+          {
+            "value": "f2_f3_within_12_months",
+            "label": "F2 or F3 confirmed within 12 months"
+          },
+          {
+            "value": "older_than_12_months",
+            "label": "Biopsy more than 12 months ago"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "No qualifying biopsy confirmation"
+          }
+        ]
+      },
+      "mre_score": {
+        "type": "select",
+        "label": "MRE score strictly greater than 2.6.",
+        "options": [
+          {
+            "value": "above_threshold",
+            "label": "Greater than 2.6"
+          },
+          {
+            "value": "at_threshold",
+            "label": "Exactly 2.6"
+          },
+          {
+            "value": "below_threshold",
+            "label": "Less than 2.6"
+          },
+          {
+            "value": "not_performed",
+            "label": "Not performed"
+          }
+        ]
+      },
+      "vcte_score": {
+        "type": "select",
+        "label": "VCTE score strictly greater than 8.1.",
+        "options": [
+          {
+            "value": "above_threshold",
+            "label": "Greater than 8.1"
+          },
+          {
+            "value": "at_threshold",
+            "label": "Exactly 8.1"
+          },
+          {
+            "value": "below_threshold",
+            "label": "Less than 8.1"
+          },
+          {
+            "value": "not_performed",
+            "label": "Not performed"
+          }
+        ]
+      },
+      "elf_score": {
+        "type": "select",
+        "label": "ELF score strictly greater than 7.7.",
+        "options": [
+          {
+            "value": "above_threshold",
+            "label": "Greater than 7.7"
+          },
+          {
+            "value": "at_threshold",
+            "label": "Exactly 7.7"
+          },
+          {
+            "value": "below_threshold",
+            "label": "Less than 7.7"
+          },
+          {
+            "value": "not_performed",
+            "label": "Not performed"
+          }
+        ]
+      },
+      "fib4_score": {
+        "type": "select",
+        "label": "FIB-4 score is at least 1.3.",
+        "options": [
+          {
+            "value": "at_1_3",
+            "label": "Exactly 1.3"
+          },
+          {
+            "value": "above_1_3",
+            "label": "Greater than 1.3"
+          },
+          {
+            "value": "below_1_3",
+            "label": "Less than 1.3"
+          }
+        ]
+      },
+      "metabolic_risk_factors": {
+        "type": "select",
+        "label": "Currently has at least three metabolic risk factors (e.g. hypertension, obesity, type 2 diabetes).",
+        "options": [
+          {
+            "value": "at_least_3",
+            "label": "Three or more current metabolic risk factors"
+          },
+          {
+            "value": "fewer_than_3",
+            "label": "Fewer than three current metabolic risk factors"
+          }
+        ]
+      },
+      "lifestyle_modification": {
+        "type": "select",
+        "label": "Submitted chart notes confirm adjunctive increased physical activity AND reduced calorie diet.",
+        "options": [
+          {
+            "value": "both_documented",
+            "label": "Both increased physical activity and reduced calorie diet documented"
+          },
+          {
+            "value": "activity_only",
+            "label": "Only increased physical activity documented"
+          },
+          {
+            "value": "diet_only",
+            "label": "Only reduced calorie diet documented"
+          },
+          {
+            "value": "not_documented",
+            "label": "Neither documented"
+          }
+        ]
+      },
+      "other_liver_disease": {
+        "type": "select",
+        "label": "No other liver disease, including decompensated cirrhosis, hepatocellular carcinoma, hepatitis, etc.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "decompensated_cirrhosis",
+            "label": "Decompensated cirrhosis"
+          },
+          {
+            "value": "hcc",
+            "label": "Hepatocellular carcinoma"
+          },
+          {
+            "value": "hepatitis",
+            "label": "Hepatitis"
+          },
+          {
+            "value": "other",
+            "label": "Other liver disease"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "rhapsido": {
     "drug": {

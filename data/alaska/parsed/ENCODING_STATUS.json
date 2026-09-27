@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 139,
-  "encoding_text_only": 59,
+  "encoding_partial": 140,
+  "encoding_text_only": 58,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -91,6 +91,7 @@
     "ofev",
     "opsumit",
     "opzelura",
+    "orexin-receptor-antagonists",
     "orilissa",
     "orkambi",
     "oxbryta",
@@ -147,5 +148,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "orexin-receptor-antagonists"
+  "next_candidate": "vesicular-monoamine"
 }

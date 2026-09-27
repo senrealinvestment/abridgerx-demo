@@ -115,11 +115,11 @@ def test_catalog():
     assert json.loads((BASE/'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f: assert json.load(f) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 139
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 59
+    assert sum(p['encoding_status']=='partial' for p in catalog.values()) == 140
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values()) == 58
     for directory in [BASE,BASE.parent]:
         status = json.loads((directory/'ENCODING_STATUS.json').read_text())
-        assert (status['encoding_partial'],status['encoding_text_only']) == (139,59)
-        assert status['next_candidate'] == 'orexin-receptor-antagonists'
+        assert (status['encoding_partial'],status['encoding_text_only']) == (140,58)
+        assert status['next_candidate'] == 'vesicular-monoamine'
         assert status['partial_slugs'] == sorted(k for k,p in catalog.items() if p['encoding_status']=='partial')
-    assert catalog['orexin-receptor-antagonists']['encoding_status'] == 'text_only'
+    assert catalog['vesicular-monoamine']['encoding_status'] == 'text_only'

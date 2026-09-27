@@ -91,12 +91,12 @@ def test_catalog_mirrors_and_scope():
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 139
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 59
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 140
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 58
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (139, 59)
-    assert status['next_candidate'] == 'orexin-receptor-antagonists'
-    assert catalog['orexin-receptor-antagonists']['encoding_status'] == 'text_only'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (140, 58)
+    assert status['next_candidate'] == 'vesicular-monoamine'
+    assert catalog['vesicular-monoamine']['encoding_status'] == 'text_only'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status']=='partial')
     for ext in ('json', 'md'):
         assert (BASE/f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent/f'ENCODING_STATUS.{ext}').read_bytes()

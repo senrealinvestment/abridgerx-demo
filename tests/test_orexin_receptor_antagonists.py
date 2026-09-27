@@ -1,4 +1,4 @@
-"""Lybalvi shared approval gates, explicit exclusions, and catalog integration."""
+"""Orexin antagonist shared approval gates, explicit exclusions, and catalog integration."""
 import gzip
 import json
 import sys
@@ -13,35 +13,38 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail, load_rule_pack_catalog
 
 BASE = ROOT / 'data/alaska/parsed'
-PACK = json.loads((BASE / 'rule_packs/lybalvi.json').read_text())
-APPROVAL = ['psychiatrist_or_consultation', 'dsm5_diagnosis',
-            'baseline_metabolic_panel_documented', 'ongoing_metabolic_monitoring',
-            'adverse_effect_monitoring', 'two_atypical_antipsychotics_failed_4_weeks_each']
-DENIAL = ['dementia_related_psychosis', 'using_opioids', 'acute_opioid_withdrawal',
-          'strong_cyp3a4_inducer', 'levodopa_or_dopamine_agonist', 'recent_mi',
-          'unstable_cardiovascular_disease']
-FACTS = dict(indication='schizophrenia', age_years=18,
+PACK = json.loads((BASE / 'rule_packs/orexin-receptor-antagonists.json').read_text())
+APPROVAL = ['other_causes_ruled_out', 'two_prescription_sleep_aids_failed',
+            'cbt_trial_documented', 'cbt_sleep_hygiene_education', 'cbt_misconception_counseling']
+DENIAL = ['narcolepsy', 'concurrent_sedative_hypnotic']
+FACTS = dict(indication='insomnia_sleep_onset_or_maintenance', age_years=18,
+             medication_sleep_disturbance_addressed='ruled_out',
              **dict.fromkeys(APPROVAL, True), **dict.fromkeys(DENIAL, False))
 
 
-@pytest.mark.parametrize('indication', ['schizophrenia', 'bipolar_i_disorder'])
-def test_shared_approval(indication):
-    result = evaluate(PACK, dict(FACTS, indication=indication))
+@pytest.mark.parametrize('product', ['belsomra', 'dayvigo', 'quviviq', None])
+@pytest.mark.parametrize('addressed', ['ruled_out', 'causative_medications_discontinued', 'causative_medications_adjusted'])
+def test_shared_approval(product, addressed):
+    facts = dict(FACTS, medication_sleep_disturbance_addressed=addressed)
+    if product is not None:
+        facts['product'] = product
+    result = evaluate(PACK, facts)
     assert result.decision == 'pass'
     assert result.citations == [PACK['source']['citation']]
 
 
-@pytest.mark.parametrize('indication', ['schizophrenia', 'bipolar_i_disorder'])
-@pytest.mark.parametrize('key,value', [('age_years', 17), ('age_years', 17.99)] +
-                         [(k, False) for k in APPROVAL] + [(k, True) for k in DENIAL])
-def test_each_gate(indication, key, value):
-    result = evaluate(PACK, dict(FACTS, indication=indication, **{key: value}))
+@pytest.mark.parametrize('key,value', [('age_years', 17), ('age_years', 17.99),
+    ('medication_sleep_disturbance_addressed', 'not_addressed'),
+    ('medication_sleep_disturbance_addressed', True)] +
+    [(k, False) for k in APPROVAL] + [(k, True) for k in DENIAL])
+def test_each_gate(key, value):
+    result = evaluate(PACK, dict(FACTS, **{key: value}))
     assert result.decision == 'fail'
     assert [c['id'] for c in result.failed_clauses] == [key]
 
 
-@pytest.mark.parametrize('value', ['other', 'bipolar_ii_disorder', True, ''])
-def test_closed_indications(value):
+@pytest.mark.parametrize('value', ['other', 'narcolepsy', True, ''])
+def test_closed_indication(value):
     assert evaluate(PACK, dict(FACTS, indication=value)).decision == 'fail'
 
 
@@ -57,7 +60,7 @@ def test_missing(key, omit):
 
 
 def test_ui():
-    detail = drug_detail('lybalvi')
+    detail = drug_detail('orexin-receptor-antagonists')
     assert detail['can_evaluate']
     fields = {f['key']: f for f in detail['fact_fields']}
     assert set(fields) == set(FACTS)
@@ -66,21 +69,22 @@ def test_ui():
         for option in field['options']:
             value = option['value']
             result = evaluate(PACK, _coerce_patient(dict(FACTS, **{key: value})))
-            deny = (key in DENIAL and value == 'yes') or (key in APPROVAL and value == 'no') or value == '17'
+            deny = ((key in DENIAL and value == 'yes') or
+                    (key in APPROVAL and value == 'no') or value in ['17', 'not_addressed'])
             assert result.decision == ('fail' if deny else 'pass')
 
 
 def test_metadata_and_manual_review():
-    assert PACK['drug']['generic_name'] == 'olanzapine/samidorphan'
-    assert PACK['drug']['therapeutic_class'] == 'atypical-antipsychotic-opioid-antagonist'
-    assert PACK['source']['effective_date'] == '2022-01-04'
+    assert PACK['drug']['therapeutic_class'] == 'orexin-receptor-antagonist'
+    assert PACK['source']['effective_date'] == '2022-06-01'
     assert PACK['encoding_status'] == 'partial'
     assert PACK['max_units'] is None
     assert 'inferred_required_facts' not in PACK
     notes = ' '.join(PACK['notes'])
-    for text in ['lithium or valproate', 'maintenance monotherapy', 'package insert',
-                 '3 months', '1 year', 'improvement and stabilization', 'severe metabolic',
-                 'tardive dyskinesia', '30 tablets', '1 tablet per day', 'manual review']:
+    for text in ['Belsomra', 'suvorexant', 'Dayvigo', 'lemborexant', 'Quviviq', 'daridorexant',
+                 'morning impairment', 'depression', 'suicidal ideation', 'sleep-driving',
+                 'sleep paralysis', 'hallucinations', 'cataplexy-like', '3 months', '6 months',
+                 '30 tablets per 30 days', 'manual review']:
         assert text in notes
     assert evaluate(PACK, dict(FACTS, requested_units=999, authorization_type='renewal')).decision == 'pass'
     assert evaluate(PACK, {}).decision == 'need_info'
@@ -88,8 +92,8 @@ def test_metadata_and_manual_review():
 
 def test_catalog():
     catalog = load_rule_pack_catalog()
-    assert catalog['lybalvi'] == PACK
-    assert (BASE/'lybalvi.json').read_bytes() == (BASE/'rule_packs/lybalvi.json').read_bytes()
+    assert catalog['orexin-receptor-antagonists'] == PACK
+    assert (BASE/'orexin-receptor-antagonists.json').read_bytes() == (BASE/'rule_packs/orexin-receptor-antagonists.json').read_bytes()
     assert json.loads((BASE/'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog

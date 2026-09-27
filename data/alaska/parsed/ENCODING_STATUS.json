@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 141,
-  "encoding_text_only": 57,
+  "encoding_partial": 142,
+  "encoding_text_only": 56,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -138,6 +138,7 @@
     "winrevair",
     "xcopri",
     "xiaflex",
+    "xifaxan",
     "xolair",
     "xyrem",
     "yorvipath",
@@ -149,5 +150,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "xifaxan"
+  "next_candidate": "noxafil"
 }

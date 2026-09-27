@@ -41913,7 +41913,8 @@
   "vumerity": {
     "drug": {
       "name": "Vumerity",
-      "therapeutic_class": "other"
+      "generic_name": "diroximel_fumarate",
+      "therapeutic_class": "fumarate"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -41924,17 +41925,294 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Diagnosis of relapsing MS: CIS, RRMS or active SPMS (approval 2)",
+        "citation": "https://health.alaska.gov/media/2orjoxli/202001-vumerity_criteria_2019.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "clinically_isolated_syndrome",
+            "relapsing_remitting_ms",
+            "active_secondary_progressive_ms"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient is 18 years of age or older (approval 1)",
+        "citation": "https://health.alaska.gov/media/2orjoxli/202001-vumerity_criteria_2019.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist or provider specializing in MS (approval 3)",
+        "citation": "https://health.alaska.gov/media/2orjoxli/202001-vumerity_criteria_2019.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_ms_specialist_or_consult"
+        }
+      },
+      {
+        "id": "baseline_cbc_lft_appropriate",
+        "text": "CBC and liver function testing completed with results deemed appropriate for treatment (approval 4)",
+        "citation": "https://health.alaska.gov/media/2orjoxli/202001-vumerity_criteria_2019.pdf",
+        "required_facts": [
+          "baseline_cbc_lft_appropriate"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "baseline_cbc_lft_appropriate",
+          "values": [
+            "all_done_appropriate"
+          ]
+        }
+      },
+      {
+        "id": "liver_labs_documented",
+        "text": "Serum aminotransferase, alkaline phosphatase, and total bilirubin levels documented (approval 5)",
+        "citation": "https://health.alaska.gov/media/2orjoxli/202001-vumerity_criteria_2019.pdf",
+        "required_facts": [
+          "liver_labs_documented"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "liver_labs_documented",
+          "values": [
+            "all_documented"
+          ]
+        }
+      },
+      {
+        "id": "reproductive_contraception_counseling",
+        "text": "Prescriber counseled patients of reproductive potential to use effective contraception during and for 6 months after the last dose (approval 6)",
+        "citation": "https://health.alaska.gov/media/2orjoxli/202001-vumerity_criteria_2019.pdf",
+        "required_facts": [
+          "reproductive_contraception_counseling"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "reproductive_contraception_counseling",
+          "values": [
+            "counseled_during_and_6mo_after_last_dose",
+            "not_of_reproductive_potential"
+          ]
+        }
+      },
+      {
+        "id": "ms_same_indication_step_one",
+        "text": "Adequate trial and failure of at least one drug with the same specific indication form of MS (approval 7)",
+        "citation": "https://health.alaska.gov/media/2orjoxli/202001-vumerity_criteria_2019.pdf",
+        "required_facts": [
+          "ms_same_indication_step_one"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ms_same_indication_step_one",
+          "values": [
+            "adequate_trial_failure_one_same_ms_form"
+          ]
+        }
+      },
+      {
+        "id": "renal_impairment",
+        "text": "No moderate to severe renal impairment (denial 2)",
+        "citation": "https://health.alaska.gov/media/2orjoxli/202001-vumerity_criteria_2019.pdf",
+        "required_facts": [
+          "renal_impairment"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "renal_impairment",
+          "values": [
+            "none_or_mild"
+          ]
+        }
+      },
+      {
+        "id": "concurrent_dimethyl_fumarate",
+        "text": "Patient is not taking dimethyl fumarate (denial 3)",
+        "citation": "https://health.alaska.gov/media/2orjoxli/202001-vumerity_criteria_2019.pdf",
+        "required_facts": [
+          "concurrent_dimethyl_fumarate"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "concurrent_dimethyl_fumarate",
+          "values": [
+            "absent"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Vumerity (diroximel fumarate), a fumarate MS DMARD (ms-dmard). Version: 1; Original: 12/9/2019; Approval: 1/17/2020; Effective: 2020-03-16. The source typo fumerate is normalized to diroximel_fumarate.",
+      "Encoded: approval criteria 1-7 and denial criteria 1-3; failure to meet approval criteria is handled by approval predicates. Baseline labs, documented liver analytes, counseling and prior treatment are attestations. Counseling is not applicable only for patients not of reproductive potential. Prior therapy must match the specific indication form of MS.",
+      "Cautions (notes only): monitor for anaphylaxis and angioedema after the first dosage and throughout treatment; progressive multifocal leukoencephalopathy (PML) has occurred with dimethyl fumarate; lymphocyte counts may decrease; liver injury has been reported and should be monitored; avoid alcohol; avoid administration with a high-fat, high-calorie meal or snack.",
+      "Duration (notes only): initial approval up to 30 days; reauthorization approval up to 12 months.",
+      "Quantity (notes only): 120 \u00d7 231mg capsules per month. No numeric quantity enforcement.",
+      "PDL status unknown: PDF is silent. Remaining gaps: documentation verification, duration, reauthorization, dosing, quantity enforcement and cautions require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of relapsing MS: CIS, RRMS or active SPMS (approval 2)",
+        "options": [
+          {
+            "value": "clinically_isolated_syndrome",
+            "label": "Clinically isolated syndrome (CIS)"
+          },
+          {
+            "value": "relapsing_remitting_ms",
+            "label": "Relapsing-remitting MS (RRMS)"
+          },
+          {
+            "value": "active_secondary_progressive_ms",
+            "label": "Active secondary progressive MS (SPMS)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 18 years of age or older (approval 1)",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18+"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist or provider specializing in MS (approval 3)",
+        "options": [
+          {
+            "value": "neurologist_or_ms_specialist_or_consult",
+            "label": "Neurologist or MS specialist, or consultation with one"
+          },
+          {
+            "value": "none",
+            "label": "None of these"
+          }
+        ]
+      },
+      "baseline_cbc_lft_appropriate": {
+        "type": "select",
+        "label": "CBC and liver function testing completed with results deemed appropriate for treatment (approval 4)",
+        "options": [
+          {
+            "value": "all_done_appropriate",
+            "label": "Both completed with appropriate results"
+          },
+          {
+            "value": "incomplete_or_not_appropriate",
+            "label": "Incomplete or results not appropriate"
+          }
+        ]
+      },
+      "liver_labs_documented": {
+        "type": "select",
+        "label": "Serum aminotransferase, alkaline phosphatase, and total bilirubin levels documented (approval 5)",
+        "options": [
+          {
+            "value": "all_documented",
+            "label": "All three documented"
+          },
+          {
+            "value": "incomplete",
+            "label": "One or more not documented"
+          }
+        ]
+      },
+      "reproductive_contraception_counseling": {
+        "type": "select",
+        "label": "Prescriber counseled patients of reproductive potential to use effective contraception during and for 6 months after the last dose (approval 6)",
+        "options": [
+          {
+            "value": "counseled_during_and_6mo_after_last_dose",
+            "label": "Counseled on effective contraception during and for 6 months after last dose"
+          },
+          {
+            "value": "not_of_reproductive_potential",
+            "label": "Not applicable: patient is not of reproductive potential"
+          },
+          {
+            "value": "not_counseled",
+            "label": "Required counseling not completed"
+          }
+        ]
+      },
+      "ms_same_indication_step_one": {
+        "type": "select",
+        "label": "Adequate trial and failure of at least one drug with the same specific indication form of MS (approval 7)",
+        "options": [
+          {
+            "value": "adequate_trial_failure_one_same_ms_form",
+            "label": "Adequate trial and failure of at least one drug indicated for the same MS form"
+          },
+          {
+            "value": "none_or_different_ms_form",
+            "label": "No adequate trial and failure for the same MS form"
+          }
+        ]
+      },
+      "renal_impairment": {
+        "type": "select",
+        "label": "No moderate to severe renal impairment (denial 2)",
+        "options": [
+          {
+            "value": "none_or_mild",
+            "label": "No renal impairment or mild impairment"
+          },
+          {
+            "value": "moderate",
+            "label": "Moderate impairment"
+          },
+          {
+            "value": "severe",
+            "label": "Severe impairment"
+          }
+        ]
+      },
+      "concurrent_dimethyl_fumarate": {
+        "type": "select",
+        "label": "Patient is not taking dimethyl fumarate (denial 3)",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Not taking dimethyl fumarate"
+          },
+          {
+            "value": "present",
+            "label": "Taking dimethyl fumarate"
+          }
+        ]
+      }
+    }
   },
   "vyjuvek": {
     "drug": {

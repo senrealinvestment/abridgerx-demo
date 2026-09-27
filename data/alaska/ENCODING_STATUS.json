@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 119,
-  "encoding_text_only": 79,
+  "encoding_partial": 120,
+  "encoding_text_only": 78,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -113,6 +113,7 @@
     "verquvo",
     "voxzogo",
     "voyxact",
+    "vumerity",
     "vyjuvek",
     "vyndaqel",
     "wakix",
@@ -127,5 +128,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "vumerity"
+  "next_candidate": "xyrem"
 }

@@ -71,8 +71,8 @@ def test_metadata_and_closed_fields():
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 119
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 79
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 120
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 78
     assert catalog['kynamro']['alternatives'] == ['juxtapid']
     assert catalog['juxtapid']['alternatives'] == ['kynamro']
     assert catalog['juxtapid']['encoding_status'] == 'partial'
@@ -83,15 +83,15 @@ def test_catalog_and_mirrors():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (119, 79)
-    assert status['next_candidate'] == 'vumerity'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (120, 78)
+    assert status['next_candidate'] == 'xyrem'
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for ext in ('json', 'md'):
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()
 
 
 def test_next_pack_remains_unencoded():
-    p = load_rule_pack_catalog()['vumerity']
+    p = load_rule_pack_catalog()['xyrem']
     assert p['encoding_status'] == 'text_only'
     assert p['criteria'] == []
     assert evaluate(p, facts()).decision == 'need_info'

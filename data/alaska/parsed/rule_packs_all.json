@@ -3670,7 +3670,8 @@
   "calcitonin-gene-related-peptide": {
     "drug": {
       "name": "Calcitonin gene-related peptide",
-      "therapeutic_class": "biologics"
+      "therapeutic_class": "cgrp-antagonists",
+      "generic_name": "cgrp_receptor_antagonists"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -3681,18 +3682,428 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "FDA-labeled indication for requested CGRP agent",
+        "citation": "https://health.alaska.gov/media/iwgcf1bi/cgrp_antagonist_inj-oral_criteria_update_2025.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "migraine_prevention",
+            "migraine_acute"
+          ]
+        }
+      },
+      {
+        "id": "within_fda_labeled_age_for_agent",
+        "text": "Patient is within the FDA-labeled age range for the requested agent",
+        "citation": "https://health.alaska.gov/media/iwgcf1bi/cgrp_antagonist_inj-oral_criteria_update_2025.pdf",
+        "required_facts": [
+          "within_fda_labeled_age_for_agent"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "within_fda_labeled_age_for_agent",
+          "value": true
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a headache specialist, pain specialist, or neurologist",
+        "citation": "https://health.alaska.gov/media/iwgcf1bi/cgrp_antagonist_inj-oral_criteria_update_2025.pdf",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "headache_specialist",
+            "pain_specialist",
+            "neurologist",
+            "headache_specialist_consult",
+            "pain_specialist_consult",
+            "neurologist_consult"
+          ]
+        }
+      },
+      {
+        "id": "migraine_days_ge_4_per_month",
+        "text": "Patient experiences at least 4 migraine days per month",
+        "citation": "https://health.alaska.gov/media/iwgcf1bi/cgrp_antagonist_inj-oral_criteria_update_2025.pdf",
+        "required_facts": [
+          "migraine_days_ge_4_per_month"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "migraine_days_ge_4_per_month",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_prevention"
+          ]
+        }
+      },
+      {
+        "id": "failed_two_prophylactic_classes_ge_2mo_each",
+        "text": "Trialed at least 2 prophylactic medications from different therapeutic classes for at least 2 months each",
+        "citation": "https://health.alaska.gov/media/iwgcf1bi/cgrp_antagonist_inj-oral_criteria_update_2025.pdf",
+        "required_facts": [
+          "failed_two_prophylactic_classes_ge_2mo_each"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_two_prophylactic_classes_ge_2mo_each",
+          "value": "two_different_classes_ge_2mo_each"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_prevention"
+          ]
+        }
+      },
+      {
+        "id": "medication_overuse_ruled_out",
+        "text": "Provider has ruled out medication overuse as a cause of migraines",
+        "citation": "https://health.alaska.gov/media/iwgcf1bi/cgrp_antagonist_inj-oral_criteria_update_2025.pdf",
+        "required_facts": [
+          "medication_overuse_ruled_out"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "medication_overuse_ruled_out",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_acute"
+          ]
+        }
+      },
+      {
+        "id": "failed_one_prophylactic_ge_2mo",
+        "text": "Trialed at least 1 prophylactic medication for at least 2 months",
+        "citation": "https://health.alaska.gov/media/iwgcf1bi/cgrp_antagonist_inj-oral_criteria_update_2025.pdf",
+        "required_facts": [
+          "failed_one_prophylactic_ge_2mo"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_one_prophylactic_ge_2mo",
+          "value": "one_prophylactic_ge_2mo"
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_acute"
+          ]
+        }
+      },
+      {
+        "id": "failed_two_triptans_or_contraindicated",
+        "text": "Trialed 2 different triptans or has a contraindication to their use",
+        "citation": "https://health.alaska.gov/media/iwgcf1bi/cgrp_antagonist_inj-oral_criteria_update_2025.pdf",
+        "required_facts": [
+          "failed_two_triptans_or_contraindicated"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "failed_two_triptans_or_contraindicated",
+          "values": [
+            "two_different_triptans_failed",
+            "triptan_cardiovascular_or_other_contraindication"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_acute"
+          ]
+        }
+      },
+      {
+        "id": "not_on_strong_cyp3a4_inhibitor",
+        "text": "Not taking a strong CYP3A4 inhibitor concomitantly",
+        "citation": "https://health.alaska.gov/media/iwgcf1bi/cgrp_antagonist_inj-oral_criteria_update_2025.pdf",
+        "required_facts": [
+          "not_on_strong_cyp3a4_inhibitor"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_on_strong_cyp3a4_inhibitor",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_acute"
+          ]
+        }
+      },
+      {
+        "id": "not_concurrent_two_oral_or_two_injectable_cgrp",
+        "text": "Not prescribed more than one oral CGRP or more than one injectable CGRP concurrently",
+        "citation": "https://health.alaska.gov/media/iwgcf1bi/cgrp_antagonist_inj-oral_criteria_update_2025.pdf",
+        "required_facts": [
+          "not_concurrent_two_oral_or_two_injectable_cgrp"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_two_oral_or_two_injectable_cgrp",
+          "value": true
+        }
+      },
+      {
+        "id": "not_concurrent_two_cgrp_for_same_prevention_or_acute_indication",
+        "text": "Not prescribed more than one CGRP for prevention or more than one CGRP for acute treatment",
+        "citation": "https://health.alaska.gov/media/iwgcf1bi/cgrp_antagonist_inj-oral_criteria_update_2025.pdf",
+        "required_facts": [
+          "not_concurrent_two_cgrp_for_same_prevention_or_acute_indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_two_cgrp_for_same_prevention_or_acute_indication",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid CGRP receptor antagonists oral and injectable, Version 2. Original 10/12/2018; Approval 09/18/2020; Updated 09/19/2025; Effective 11/1/2025.",
+      "Closed prevention indication covers episodic or chronic migraine diagnosis and use for prophylaxis (prevention approval criteria 3 and 5), with an injectable or oral agent labeled for prevention. Closed acute indication covers migraine with or without aura and an oral agent labeled for acute treatment.",
+      "Age is an attestation to the individual agent FDA label; no single numeric age threshold is imposed on the class.",
+      "Prior prophylactic therapy examples include beta blockers, antiepileptics and antidepressants. The source requires trials, not a separately documented failure or intolerance; fact keys retain the failed naming convention.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months. Quantity limit (notes only): 34 days.",
+      "Cautions: injection site reactions are common with injectables. Strong CYP3A4 inhibitors are contraindicated with oral CGRPs; this is also encoded on the acute path. For oral prevention, this caution requires manual review.",
+      "Remains partial: individual FDA labeling, evidence verification, duration, reauthorization, quantity and cautions require manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "FDA-labeled indication for requested CGRP agent",
+        "options": [
+          {
+            "value": "migraine_prevention",
+            "label": "Preventive treatment of episodic or chronic migraine (injectable or oral CGRP labeled for prevention)"
+          },
+          {
+            "value": "migraine_acute",
+            "label": "Acute treatment of migraine with or without aura (oral CGRP)"
+          }
+        ]
+      },
+      "within_fda_labeled_age_for_agent": {
+        "type": "select",
+        "label": "Patient is within the FDA-labeled age range for the requested agent",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a headache specialist, pain specialist, or neurologist",
+        "options": [
+          {
+            "value": "headache_specialist",
+            "label": "Headache specialist"
+          },
+          {
+            "value": "pain_specialist",
+            "label": "Pain specialist"
+          },
+          {
+            "value": "neurologist",
+            "label": "Neurologist"
+          },
+          {
+            "value": "headache_specialist_consult",
+            "label": "Headache specialist consult"
+          },
+          {
+            "value": "pain_specialist_consult",
+            "label": "Pain specialist consult"
+          },
+          {
+            "value": "neurologist_consult",
+            "label": "Neurologist consult"
+          },
+          {
+            "value": "not_met",
+            "label": "None of these"
+          }
+        ]
+      },
+      "migraine_days_ge_4_per_month": {
+        "type": "select",
+        "label": "Patient experiences at least 4 migraine days per month",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_prevention"
+          ]
+        }
+      },
+      "failed_two_prophylactic_classes_ge_2mo_each": {
+        "type": "select",
+        "label": "Trialed at least 2 prophylactic medications from different therapeutic classes for at least 2 months each",
+        "options": [
+          {
+            "value": "two_different_classes_ge_2mo_each",
+            "label": "At least 2 prophylactic medications from different classes, at least 2 months each"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_prevention"
+          ]
+        }
+      },
+      "medication_overuse_ruled_out": {
+        "type": "select",
+        "label": "Provider has ruled out medication overuse as a cause of migraines",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_acute"
+          ]
+        }
+      },
+      "failed_one_prophylactic_ge_2mo": {
+        "type": "select",
+        "label": "Trialed at least 1 prophylactic medication for at least 2 months",
+        "options": [
+          {
+            "value": "one_prophylactic_ge_2mo",
+            "label": "At least 1 prophylactic medication for at least 2 months"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_acute"
+          ]
+        }
+      },
+      "failed_two_triptans_or_contraindicated": {
+        "type": "select",
+        "label": "Trialed 2 different triptans or has a contraindication to their use",
+        "options": [
+          {
+            "value": "two_different_triptans_failed",
+            "label": "Trialed 2 different triptans"
+          },
+          {
+            "value": "triptan_cardiovascular_or_other_contraindication",
+            "label": "Cardiovascular or other contraindication to triptans"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_acute"
+          ]
+        }
+      },
+      "not_on_strong_cyp3a4_inhibitor": {
+        "type": "select",
+        "label": "Not taking a strong CYP3A4 inhibitor concomitantly",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "migraine_acute"
+          ]
+        }
+      },
+      "not_concurrent_two_oral_or_two_injectable_cgrp": {
+        "type": "select",
+        "label": "Not prescribed more than one oral CGRP or more than one injectable CGRP concurrently",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_two_cgrp_for_same_prevention_or_acute_indication": {
+        "type": "select",
+        "label": "Not prescribed more than one CGRP for prevention or more than one CGRP for acute treatment",
+        "options": [
+          {
+            "value": "true",
+            "label": "Yes"
+          },
+          {
+            "value": "false",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "cambia": {
     "drug": {

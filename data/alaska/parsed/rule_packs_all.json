@@ -2602,7 +2602,9 @@
         }
       }
     ],
-    "alternatives": [],
+    "alternatives": [
+      "lupkynis"
+    ],
     "notes": [
       "Partial encoding from Alaska Medicaid Benlysta (belimumab), a B-lymphocyte stimulator (BLyS)-specific inhibitor. Version 2; Original: 12/20/21; Effective: 11/1/22.",
       "Closed indication selection attests to diagnosis. Both approval sections allow ages 5\u201317 with IV infusions only and ages 18 and older with IV or subcutaneous administration. The FDA summary describes lupus nephritis in adults; the pediatric IV path follows the explicit Alaska approval criteria. Standard therapy or contraindication is separately attested for each indication.",
@@ -2610,7 +2612,7 @@
       "Quantity and dosing (manual review): IV 120 mg or 400 mg vials, 10 mg/kg at weeks 0, 2, 4 then every 4 weeks. Subcutaneous 200 mg/ml prefilled autoinjector/syringe for active lupus nephritis: 8 injections in the first 28 days, then 4 injections per 28 days. HCPCS: J0490.",
       "Cautions (notes only): use caution with severe or chronic infections; serious and sometimes fatal infections have occurred. Evaluate new or worsening neurological signs and symptoms for progressive multifocal leukoencephalopathy (PML). Consider premedication for infusion and hypersensitivity reactions. Assess depression and suicidality before treatment and monitor during treatment.",
       "FDA limitations: efficacy has not been evaluated in severe active CNS lupus; not studied with other biologics and use is not recommended in these situations. Subcutaneous dosing has not been evaluated and is not approved below age 18 in this source.",
-      "PDL status unknown: source is silent. Therapeutic class retains the stub value other. No encoded close SLE/LN alternatives are linked.",
+      "PDL status unknown: source is silent. Therapeutic class retains the stub value other. Lupkynis is linked as an LN peer requiring separate eligibility evaluation, not concomitant use.",
       "Remaining gaps: duration, reauthorization disease-improvement documentation, weight-based dosing, quantity enforcement and cautions require manual review."
     ],
     "fact_ui": {
@@ -21198,7 +21200,8 @@
   "lupkynis": {
     "drug": {
       "name": "Lupkynis",
-      "therapeutic_class": "other"
+      "therapeutic_class": "calcineurin-inhibitor",
+      "generic_name": "voclosporin"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -21209,18 +21212,529 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "active_lupus_nephritis"
+          ]
+        }
+      },
+      {
+        "id": "fda_labeled_age",
+        "text": "Patient is at least 18 years old",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty_ln",
+        "text": "Prescribed by or in consultation with a rheumatologist or nephrologist",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "prescriber_specialty_ln"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty_ln",
+          "values": [
+            "nephrologist_or_rheumatologist_or_consult"
+          ]
+        }
+      },
+      {
+        "id": "ln_biopsy_class",
+        "text": "ISN/RPS biopsy-proven active lupus nephritis",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "ln_biopsy_class"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "ln_biopsy_class",
+          "values": [
+            "iii_or_iv",
+            "iii_or_iv_with_v"
+          ]
+        }
+      },
+      {
+        "id": "upcr_threshold",
+        "text": "UPCR \u22651.5 mg/mg for Class III/IV; \u22652 mg/mg with Class V",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "ln_biopsy_class",
+          "upcr_band"
+        ],
+        "predicate": {
+          "op": "any",
+          "args": [
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "ln_biopsy_class",
+                  "value": "iii_or_iv"
+                },
+                {
+                  "op": "in",
+                  "fact": "upcr_band",
+                  "values": [
+                    "1_5_to_below_2",
+                    "at_least_2"
+                  ]
+                }
+              ]
+            },
+            {
+              "op": "all",
+              "args": [
+                {
+                  "op": "eq",
+                  "fact": "ln_biopsy_class",
+                  "value": "iii_or_iv_with_v"
+                },
+                {
+                  "op": "eq",
+                  "fact": "upcr_band",
+                  "value": "at_least_2"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "background_therapy",
+        "text": "Concurrent mycophenolate mofetil AND systemic corticosteroid, or not a candidate for this regimen",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "background_therapy"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "background_therapy",
+          "values": [
+            "concurrent_both",
+            "inadequate_efficacy",
+            "significant_intolerance",
+            "contraindication"
+          ]
+        }
+      },
+      {
+        "id": "current_lfts_submitted",
+        "text": "Current liver function tests submitted",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "current_lfts_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "current_lfts_submitted",
+          "value": true
+        }
+      },
+      {
+        "id": "current_upcr_submitted",
+        "text": "Current UPCR lab submitted",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "current_upcr_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "current_upcr_submitted",
+          "value": true
+        }
+      },
+      {
+        "id": "current_potassium_submitted",
+        "text": "Current serum potassium lab submitted",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "current_potassium_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "current_potassium_submitted",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_egfr_submitted",
+        "text": "Baseline eGFR lab submitted",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "baseline_egfr_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_egfr_submitted",
+          "value": true
+        }
+      },
+      {
+        "id": "not_pregnant",
+        "text": "Patient is not pregnant",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "not_pregnant"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_pregnant",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_egfr_above_45",
+        "text": "Baseline eGFR >45 mL/min/1.73m\u00b2",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "baseline_egfr_above_45"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_egfr_above_45",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_bp_acceptable",
+        "text": "Baseline blood pressure: systolic \u2264165 AND diastolic \u2264105 mmHg",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "baseline_bp_acceptable"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_bp_acceptable",
+          "value": true
+        }
+      },
+      {
+        "id": "not_taking_cyclophosphamide",
+        "text": "Patient is not taking cyclophosphamide",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "not_taking_cyclophosphamide"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_taking_cyclophosphamide",
+          "value": true
+        }
+      },
+      {
+        "id": "no_required_strong_cyp3a4_inhibitor",
+        "text": "Patient does not require concomitant strong CYP3A4 inhibitors (e.g. ketoconazole, clarithromycin)",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "no_required_strong_cyp3a4_inhibitor"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_required_strong_cyp3a4_inhibitor",
+          "value": true
+        }
+      },
+      {
+        "id": "no_severe_hepatic_impairment",
+        "text": "Patient does not have severe hepatic impairment",
+        "citation": "https://health.alaska.gov/media/za4m0zez/202109-lupkynis_criteria_2021.pdf",
+        "required_facts": [
+          "no_severe_hepatic_impairment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_severe_hepatic_impairment",
+          "value": true
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "benlysta"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Medicaid Lupkynis (voclosporin), Version 1; Original: 7/7/2021; Approval: 09/17/21; Effective: 11/1/21. PDL status unknown: source is silent.",
+      "Closed indication: active lupus nephritis. Biopsy must show active ISN/RPS Class III or IV, alone or with Class V; pure Class V does not meet approval criterion 3a. Criterion 3b states UPCR \u22651.5 mg/mg for Class III or IV OR \u22652 mg/mg for Class V. This encoding applies the Class V threshold to mixed III/IV + V; the source does not explicitly resolve overlapping classes and borderline mixed-class cases require manual review.",
+      "Failure to meet approval criteria and every explicit denial exclusion are encoded. Blood pressure >165/105 is interpreted as either systolic >165 or diastolic >105; equality at both limits is allowed. eGFR must be strictly greater than 45. Lab submission and safety thresholds are attestations, not independently verified records.",
+      "Monitoring (notes only): assess eGFR every two weeks for the first month and every four weeks thereafter.",
+      "Duration (manual review): initial approval up to 3 months; reauthorization up to 6 months if the prescriber documents disease improvement and/or stabilization OR improvement in the slope of decline.",
+      "Quantity limit: 180 capsules per 30 days; enforcement requires manual review.",
+      "Cautions (notes only): monitor closely for nephrotoxicity and neurotoxicity. Hypertension may require antihypertensive therapy. Consider electrocardiograms and electrolyte monitoring in high-risk patients. Avoid live vaccines during therapy.",
+      "Benlysta is linked as an LN peer, not a combination recommendation or automatic substitution; its separate indication and eligibility facts must be evaluated. Benlysta criteria prohibit concomitant Lupkynis.",
+      "Remaining gaps: evidence verification, mixed-class UPCR interpretation, monitoring schedule, duration, reauthorization response, quantity enforcement and cautions require manual review."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis",
+        "options": [
+          {
+            "value": "active_lupus_nephritis",
+            "label": "Active lupus nephritis"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Age",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty_ln": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a rheumatologist or nephrologist",
+        "options": [
+          {
+            "value": "nephrologist_or_rheumatologist_or_consult",
+            "label": "Rheumatologist or nephrologist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ]
+      },
+      "ln_biopsy_class": {
+        "type": "select",
+        "label": "ISN/RPS biopsy-proven active lupus nephritis",
+        "options": [
+          {
+            "value": "iii_or_iv",
+            "label": "Class III or IV without Class V"
+          },
+          {
+            "value": "iii_or_iv_with_v",
+            "label": "Class III or IV with Class V"
+          },
+          {
+            "value": "v_only",
+            "label": "Class V alone"
+          },
+          {
+            "value": "other_or_unconfirmed",
+            "label": "Other or not biopsy-confirmed"
+          }
+        ]
+      },
+      "upcr_band": {
+        "type": "select",
+        "label": "Current UPCR (mg/mg)",
+        "options": [
+          {
+            "value": "below_1_5",
+            "label": "Below 1.5"
+          },
+          {
+            "value": "1_5_to_below_2",
+            "label": "At least 1.5 but below 2"
+          },
+          {
+            "value": "at_least_2",
+            "label": "At least 2"
+          }
+        ]
+      },
+      "background_therapy": {
+        "type": "select",
+        "label": "Concurrent mycophenolate mofetil AND systemic corticosteroid, or not a candidate for this regimen",
+        "options": [
+          {
+            "value": "concurrent_both",
+            "label": "Receiving both mycophenolate mofetil and systemic corticosteroid"
+          },
+          {
+            "value": "inadequate_efficacy",
+            "label": "Not a candidate due to inadequate efficacy"
+          },
+          {
+            "value": "significant_intolerance",
+            "label": "Not a candidate due to significant intolerance"
+          },
+          {
+            "value": "contraindication",
+            "label": "Not a candidate due to contraindication"
+          },
+          {
+            "value": "none",
+            "label": "Criterion not met"
+          }
+        ]
+      },
+      "current_lfts_submitted": {
+        "type": "select",
+        "label": "Current liver function tests submitted",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "current_upcr_submitted": {
+        "type": "select",
+        "label": "Current UPCR lab submitted",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "current_potassium_submitted": {
+        "type": "select",
+        "label": "Current serum potassium lab submitted",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "baseline_egfr_submitted": {
+        "type": "select",
+        "label": "Baseline eGFR lab submitted",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_pregnant": {
+        "type": "select",
+        "label": "Patient is not pregnant",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "baseline_egfr_above_45": {
+        "type": "select",
+        "label": "Baseline eGFR >45 mL/min/1.73m\u00b2",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "baseline_bp_acceptable": {
+        "type": "select",
+        "label": "Baseline blood pressure: systolic \u2264165 AND diastolic \u2264105 mmHg",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_taking_cyclophosphamide": {
+        "type": "select",
+        "label": "Patient is not taking cyclophosphamide",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_required_strong_cyp3a4_inhibitor": {
+        "type": "select",
+        "label": "Patient does not require concomitant strong CYP3A4 inhibitors (e.g. ketoconazole, clarithromycin)",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_severe_hepatic_impairment": {
+        "type": "select",
+        "label": "Patient does not have severe hepatic impairment",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    },
+    "max_units": {
+      "quantity": 180,
+      "days_supply": 30,
+      "notes": "180 capsules per 30 days; quantity enforcement requires manual review."
+    }
   },
   "lybalvi": {
     "drug": {

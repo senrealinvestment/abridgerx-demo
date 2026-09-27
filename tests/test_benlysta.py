@@ -39,7 +39,7 @@ def test_metadata_and_closed_indications():
         r = evaluate(p, dict(facts_for('lupus_nephritis'), indication=invalid))
         assert r.decision == 'fail'
         assert [c['id'] for c in r.failed_clauses] == ['indication_fda_labeled']
-    assert p['alternatives'] == []
+    assert p['alternatives'] == ['lupkynis']
     assert p['max_units']['quantity'] is None and p['max_units']['days_supply'] is None
     notes = ' '.join(p['notes'])
     for text in ['Version 2', '12/20/21', '11/1/22', '4 months', '12 months', 'disease improvement', '10 mg/kg', '8 injections', '4 injections', 'J0490', 'PML', 'premedication', 'depression', 'suicidality']:
@@ -111,16 +111,16 @@ def test_ui_and_clause_gates_and_age_options():
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 99
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 99
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 100
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 98
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     assert (BASE / 'benlysta.json').read_bytes() == (BASE / 'rule_packs/benlysta.json').read_bytes()
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 99 and status['encoding_text_only'] == 99
+    assert status['encoding_partial'] == 100 and status['encoding_text_only'] == 98
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'lupkynis'
+    assert status['next_candidate'] == 'jynarque'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()

@@ -232,7 +232,9 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "lupkynis"
+  ],
   "notes": [
     "Partial encoding from Alaska Medicaid Benlysta (belimumab), a B-lymphocyte stimulator (BLyS)-specific inhibitor. Version 2; Original: 12/20/21; Effective: 11/1/22.",
     "Closed indication selection attests to diagnosis. Both approval sections allow ages 5\u201317 with IV infusions only and ages 18 and older with IV or subcutaneous administration. The FDA summary describes lupus nephritis in adults; the pediatric IV path follows the explicit Alaska approval criteria. Standard therapy or contraindication is separately attested for each indication.",
@@ -240,7 +242,7 @@
     "Quantity and dosing (manual review): IV 120 mg or 400 mg vials, 10 mg/kg at weeks 0, 2, 4 then every 4 weeks. Subcutaneous 200 mg/ml prefilled autoinjector/syringe for active lupus nephritis: 8 injections in the first 28 days, then 4 injections per 28 days. HCPCS: J0490.",
     "Cautions (notes only): use caution with severe or chronic infections; serious and sometimes fatal infections have occurred. Evaluate new or worsening neurological signs and symptoms for progressive multifocal leukoencephalopathy (PML). Consider premedication for infusion and hypersensitivity reactions. Assess depression and suicidality before treatment and monitor during treatment.",
     "FDA limitations: efficacy has not been evaluated in severe active CNS lupus; not studied with other biologics and use is not recommended in these situations. Subcutaneous dosing has not been evaluated and is not approved below age 18 in this source.",
-    "PDL status unknown: source is silent. Therapeutic class retains the stub value other. No encoded close SLE/LN alternatives are linked.",
+    "PDL status unknown: source is silent. Therapeutic class retains the stub value other. Lupkynis is linked as an LN peer requiring separate eligibility evaluation, not concomitant use.",
     "Remaining gaps: duration, reauthorization disease-improvement documentation, weight-based dosing, quantity enforcement and cautions require manual review."
   ],
   "fact_ui": {

@@ -137,8 +137,8 @@ def test_sre_has_no_invented_step():
 def test_catalog_mirrors_and_bidirectional_alternatives():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 99
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 99
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 100
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 98
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
@@ -149,9 +149,9 @@ def test_catalog_mirrors_and_bidirectional_alternatives():
     assert catalog['actiq']['encoding_status'] == 'partial'
     assert 'xgeva' not in catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 99 and status['encoding_text_only'] == 99
+    assert status['encoding_partial'] == 100 and status['encoding_text_only'] == 98
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'lupkynis'
+    assert status['next_candidate'] == 'jynarque'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
     assert 'Biologics batch exhausted:' in (BASE / 'ENCODING_STATUS.md').read_text()

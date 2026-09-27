@@ -5,7 +5,7 @@
   "functions": {
     "app.py": {
       "maxDuration": 30,
-      "excludeFiles": "{**/*.pyc,__pycache__/**,.git/**}"
+      "excludeFiles": "{data/alaska/raw/**,.venv/**,.agents/**,tests/**,docs/**,**/*.pyc,__pycache__/**,.git/**,data/alaska/parsed/*_text.txt,data/alaska/parsed/criteria_text/**,data/alaska/parsed/rule_packs/**,data/alaska/parsed/pdl_index.json,data/alaska/parsed/max_units_index.json}"
     }
   }
 }

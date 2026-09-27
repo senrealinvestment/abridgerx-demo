@@ -87,6 +87,42 @@ def test_unknown_inputs_and_seizure_isolation():
             assert clause['when']['fact'] == 'indication'
 
 
+
+def test_ui_coerce_approve_and_deny_paths():
+    """UI yes/no strings must reach pass/fail (not need_info) on complete paths."""
+    approve = _coerce_patient({
+        'continuation_of_care_with_benefit': 'no',
+        'indication': 'postherpetic_neuralgia',
+        'gabapentin_inadequate': 'yes',
+        'phn_alternative_failed': 'yes',
+        'phn_all_alternatives_contraindicated': 'no',
+        'not_concurrent_gabapentin': 'yes',
+    })
+    assert evaluate(PACK, approve).decision == 'pass'
+    deny = _coerce_patient({
+        'continuation_of_care_with_benefit': 'no',
+        'indication': 'postherpetic_neuralgia',
+        'gabapentin_inadequate': 'no',
+        'phn_alternative_failed': 'yes',
+        'phn_all_alternatives_contraindicated': 'no',
+        'not_concurrent_gabapentin': 'yes',
+    })
+    assert evaluate(PACK, deny).decision == 'fail'
+    cont = _coerce_patient({
+        'continuation_of_care_with_benefit': 'yes',
+        'not_concurrent_gabapentin': 'yes',
+    })
+    assert evaluate(PACK, cont).decision == 'pass'
+    assert evaluate(PACK, _coerce_patient({
+        'continuation_of_care_with_benefit': 'yes',
+        'not_concurrent_gabapentin': 'no',
+    })).decision == 'fail'
+    detail = drug_detail('lyrica')
+    assert detail['encoding_status'] == 'partial'
+    assert detail['can_evaluate'] is True
+    assert 'prior_therapy_failures' not in {f['key'] for f in detail['fact_fields']}
+
+
 def test_artifacts():
     assert PACK['encoding_status'] == 'partial'
     assert PACK['max_units'] is None

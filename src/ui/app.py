@@ -32,7 +32,7 @@ STATIC_DIR = UI_DIR / "static"
 app = FastAPI(
     title="AbridgeRx",
     description="Alaska Medicaid prior-authorization criteria check (advisory).",
-    version="0.1.17",
+    version="0.1.18",
 )
 
 

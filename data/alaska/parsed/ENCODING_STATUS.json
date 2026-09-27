@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 62,
-  "encoding_text_only": 136,
+  "encoding_partial": 63,
+  "encoding_text_only": 135,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -26,6 +26,7 @@
     "calcitonin-gene-related-peptide",
     "cinqair",
     "cinryze",
+    "clotting-factor",
     "crysvita",
     "dawnzeratm",
     "dojolvi",
@@ -70,5 +71,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "clotting-factor"
+  "next_candidate": "botulinum-toxin-preparations"
 }

@@ -162,13 +162,13 @@ def test_catalog_mirrors_and_status_load():
     with gzip.open(base / "rule_packs_all.json.gz", "rt", encoding="utf-8") as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 67
-    assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 131
+    assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 68
+    assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 130
     assert pack["alternatives"] == ["cinryze", "dawnzeratm"]
     status = json.loads((base / "ENCODING_STATUS.json").read_text())
-    assert status["next_candidate"] == 'kalydeco'
-    assert status["encoding_partial"] == 67
-    assert status["encoding_text_only"] == 131
+    assert status["next_candidate"] == 'orkambi'
+    assert status["encoding_partial"] == 68
+    assert status["encoding_text_only"] == 130
     assert status["partial_slugs"] == sorted(
         slug for slug, p in catalog.items() if p["encoding_status"] == "partial"
     )

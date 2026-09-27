@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 67,
-  "encoding_text_only": 131,
+  "encoding_partial": 68,
+  "encoding_text_only": 130,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -50,6 +50,7 @@
     "hemlibra",
     "hympavzi",
     "infliximab",
+    "kalydeco",
     "kesimpta",
     "kevzara",
     "lemtrada",
@@ -75,5 +76,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "kalydeco"
+  "next_candidate": "orkambi"
 }

@@ -16293,7 +16293,7 @@
   "kalydeco": {
     "drug": {
       "name": "Kalydeco",
-      "generic_name": "Ivacaftor",
+      "generic_name": "ivacaftor",
       "therapeutic_class": "cystic-fibrosis"
     },
     "source": {
@@ -16305,16 +16305,209 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Diagnosis of cystic fibrosis with a listed CFTR gating mutation or R117H.",
+        "citation": "https://health.alaska.gov/media/3bbljsga/ccfu_cf_kalydeco_20161003.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "cystic_fibrosis_cftr_gating_or_r117h"
+          ]
+        }
+      },
+      {
+        "id": "cftr_mutation_confirmed",
+        "text": "Listed CFTR mutation confirmed by FDA-cleared testing (with bidirectional sequencing when recommended), or prescriber documentation when lab results are unavailable. R117H is included in the FDA indication.",
+        "citation": "https://health.alaska.gov/media/3bbljsga/ccfu_cf_kalydeco_20161003.pdf#approval-criteria",
+        "required_facts": [
+          "cftr_mutation_confirmed"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "cftr_mutation_confirmed",
+          "values": [
+            "fda_cleared_test_gating_mutations",
+            "fda_cleared_test_r117h",
+            "prescriber_documentation_of_listed_mutation"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "cystic_fibrosis_cftr_gating_or_r117h"
+          ]
+        }
+      },
+      {
+        "id": "age_fda_labeled",
+        "text": "Patient is at least 2 years old.",
+        "citation": "https://health.alaska.gov/media/3bbljsga/ccfu_cf_kalydeco_20161003.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 2
+        }
+      },
+      {
+        "id": "not_concomitant_strong_cyp3a_inducer",
+        "text": "Kalydeco is not used concomitantly with a strong CYP3A inducer.",
+        "citation": "https://health.alaska.gov/media/3bbljsga/ccfu_cf_kalydeco_20161003.pdf#approval-criteria",
+        "required_facts": [
+          "not_concomitant_strong_cyp3a_inducer"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concomitant_strong_cyp3a_inducer",
+          "value": true
+        }
+      },
+      {
+        "id": "no_strong_cyp3a_inhibitor_without_dose_adjustment",
+        "text": "Kalydeco is not used concomitantly with a strong CYP3A inhibitor without dose adjustment to compensate for the interaction.",
+        "citation": "https://health.alaska.gov/media/3bbljsga/ccfu_cf_kalydeco_20161003.pdf#approval-criteria",
+        "required_facts": [
+          "no_strong_cyp3a_inhibitor_without_dose_adjustment"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_strong_cyp3a_inhibitor_without_dose_adjustment",
+          "value": true
+        }
+      },
+      {
+        "id": "not_homozygous_f508del",
+        "text": "Patient is not homozygous for the F508del mutation in the CFTR gene.",
+        "citation": "https://health.alaska.gov/media/3bbljsga/ccfu_cf_kalydeco_20161003.pdf#denial-criteria",
+        "required_facts": [
+          "not_homozygous_f508del"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_homozygous_f508del",
+          "value": true
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication"
-    ]
+    "alternatives": [
+      "orkambi"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Medicaid Kalydeco (ivacaftor) Criteria Version 3; Last updated 5/31/2016; Approval: Committee 11/20/2015, Pulmonologist 5/31/2016; Effective 10/3/2016.",
+      "Encoded: closed CF indication, listed mutation confirmation, age \u22652, strong CYP3A inducer exclusion, strong CYP3A inhibitor dose adjustment requirement, and homozygous F508del denial. R117H testing is supported by the indication; unavailable lab results may be replaced by documentation describing how the prescriber knows the listed mutation. Documentation verification requires manual review.",
+      "Listed mutations: G551D, G1244E, G1349D, G178R, G551S, S1251N, S1255P, S549N, S549R, or R117H. Bidirectional sequencing is required when recommended by the mutation test instructions.",
+      "Reauthorization and duration (notes only): initial coverage up to 3 months. At treatment month 3, all initial criteria must still be met and prescriber follow-up by phone, email, or office visit must find no detriment or harm; approval may continue for 6 more months.",
+      "At treatment month 9, all initial criteria must still be met; submit documentation of no detriment or harm and slowed clinical decline/disease progression, clinical stabilization, or clinical improvement. Authorization may then be approved for 1 year. Renewal and duration require manual review.",
+      "Quantity limit (notes only): maximum 2 tablets or granule packets per day. Tablet: 150 mg; unit-dose granule packets: 50 mg or 75 mg. Numeric quantity enforcement is not encoded.",
+      "Mechanism (notes only): ivacaftor potentiates CFTR channel opening to increase chloride transport at epithelial cell surfaces.",
+      "Orkambi is linked as an alternative subject to its own indication and criteria; its pack remains text_only and cannot establish eligibility."
+    ],
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of cystic fibrosis with a listed CFTR gating mutation or R117H.",
+        "options": [
+          {
+            "value": "cystic_fibrosis_cftr_gating_or_r117h",
+            "label": "Cystic fibrosis with a listed CFTR gating mutation or R117H"
+          }
+        ]
+      },
+      "cftr_mutation_confirmed": {
+        "type": "select",
+        "label": "Listed CFTR mutation confirmed by FDA-cleared testing (with bidirectional sequencing when recommended), or prescriber documentation when lab results are unavailable. R117H is included in the FDA indication.",
+        "options": [
+          {
+            "value": "fda_cleared_test_gating_mutations",
+            "label": "FDA-cleared test confirms G551D, G1244E, G1349D, G178R, G551S, S1251N, S1255P, S549N, or S549R; bidirectional sequencing when recommended"
+          },
+          {
+            "value": "fda_cleared_test_r117h",
+            "label": "FDA-cleared test confirms R117H"
+          },
+          {
+            "value": "prescriber_documentation_of_listed_mutation",
+            "label": "Lab results unavailable; documentation describes how prescriber knows patient has one of the listed mutations, including R117H"
+          },
+          {
+            "value": "not_met",
+            "label": "No qualifying mutation confirmation"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "cystic_fibrosis_cftr_gating_or_r117h"
+          ]
+        }
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 2 years old.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Under 2 years"
+          },
+          {
+            "value": "2",
+            "label": "2 years or older"
+          }
+        ]
+      },
+      "not_concomitant_strong_cyp3a_inducer": {
+        "type": "select",
+        "label": "Kalydeco is not used concomitantly with a strong CYP3A inducer.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_strong_cyp3a_inhibitor_without_dose_adjustment": {
+        "type": "select",
+        "label": "Kalydeco is not used concomitantly with a strong CYP3A inhibitor without dose adjustment to compensate for the interaction.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_homozygous_f508del": {
+        "type": "select",
+        "label": "Patient is not homozygous for the F508del mutation in the CFTR gene.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "kerendia": {
     "drug": {
@@ -20317,7 +20510,9 @@
     "pdl_status": "unknown",
     "encoding_status": "text_only",
     "criteria": [],
-    "alternatives": [],
+    "alternatives": [
+      "kalydeco"
+    ],
     "notes": [
       "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
     ],

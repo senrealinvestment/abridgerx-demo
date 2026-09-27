@@ -211,7 +211,8 @@
     }
   ],
   "alternatives": [
-    "aduhelm"
+    "aduhelm",
+    "kisunla"
   ],
   "notes": [
     "Partial encoding from Alaska Medicaid Leqembi (lecanemab-irmb) Criteria Version 1: Original 1/17/2023; Accepted 01/20/2023; Effective 03/01/2023.",
@@ -219,7 +220,7 @@
     "ARIA: enhanced clinical vigilance during the first 14 weeks. Symptoms suggestive of ARIA require clinical evaluation, including MRI if indicated. Common adverse reactions include infusion reactions, ARIA-Edema, headache, ARIA-H microhemorrhage and superficial siderosis. Cautions and monitoring remain notes only.",
     "Initial approval: up to 3 months. Reauthorization: up to 6 months with MRI prior to the 5th dose showing no increase in size or number of ARIA, documented positive response, slowed rate of cognitive decline, and no adverse reactions. Additional MRIs before the 7th and 14th doses are required to screen for ARIA. Duration and reauthorization remain notes only.",
     "Quantity per source label: 10 mg/kg infused over one hour once every two weeks; HCPCS J3590. Dosing and quantity enforcement remain notes only.",
-    "Aduhelm is a same-class anti-amyloid alternative, subject to its own criteria and separate evaluation. Kisunla remains text_only. No oral step-therapy requirement is encoded."
+    "Aduhelm is a same-class anti-amyloid alternative, subject to its own criteria and separate evaluation. Kisunla is also a same-class anti-amyloid alternative, subject to its own criteria and separate evaluation. No oral step-therapy requirement is encoded."
   ],
   "fact_ui": {
     "indication": {

@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 76,
-  "encoding_text_only": 122,
+  "encoding_partial": 77,
+  "encoding_text_only": 121,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -53,6 +53,7 @@
     "kalydeco",
     "kesimpta",
     "kevzara",
+    "kisunla",
     "lemtrada",
     "leqembi",
     "mavenclad",
@@ -84,5 +85,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "kisunla"
+  "next_candidate": "rystiggo"
 }

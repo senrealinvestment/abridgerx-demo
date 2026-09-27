@@ -95,10 +95,10 @@ def test_ui_catalog_and_metadata():
     assert json.loads((BASE/'rule_packs_all.json').read_text())==catalog
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f:assert json.load(f)==catalog
     assert len(catalog)==198
-    assert sum(p['encoding_status']=='partial' for p in catalog.values())==171
-    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==27
+    assert sum(p['encoding_status']=='partial' for p in catalog.values())==172
+    assert sum(p['encoding_status']=='text_only' for p in catalog.values())==26
     assert catalog['bone-resorption-inhibitors']['encoding_status']=='partial'
     for root in [BASE,BASE.parent]:
         s=json.loads((root/'ENCODING_STATUS.json').read_text())
-        assert (s['encoding_partial'],s['encoding_text_only'])==(171,27)
-        assert s['next_candidate']=='extended-release'
+        assert (s['encoding_partial'],s['encoding_text_only'])==(172,26)
+        assert s['next_candidate']=='long-acting-opioid-analgesics'

@@ -15689,27 +15689,305 @@
   },
   "extended-release": {
     "drug": {
-      "name": "Extended-Release",
+      "name": "Extended-Release / Long-Acting Opioid Analgesics",
       "therapeutic_class": "analgesics-opioid-reversal-agents"
     },
     "source": {
       "payer": "alaska_medicaid",
       "list": "Extended-Release Criteria",
-      "effective_date": "2016-10-03",
+      "effective_date": "2016-03-25",
       "citation": "https://health.alaska.gov/media/sbefnd3g/ccfu_opioidanalgesic_erlaopioid_20161003v2.pdf",
       "criteria_pdf": "data/alaska/raw/ccfu_opioidanalgesic_erlaopioid_20161003v2.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "PA request type: non-preferred/interim product selection, quantity-limit exception, or therapeutic-duplication exception.",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "nonpreferred_er_la_product_selection",
+            "quantity_limit_exception",
+            "therapeutic_duplication_exception"
+          ]
+        },
+        "citation": "https://health.alaska.gov/media/sbefnd3g/ccfu_opioidanalgesic_erlaopioid_20161003v2.pdf#page=2"
+      },
+      {
+        "id": "full_medication_list_included",
+        "text": "Patient's full medication list is included.",
+        "required_facts": [
+          "full_medication_list_included"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "full_medication_list_included",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonpreferred_er_la_product_selection",
+            "quantity_limit_exception",
+            "therapeutic_duplication_exception"
+          ]
+        },
+        "citation": "https://health.alaska.gov/media/sbefnd3g/ccfu_opioidanalgesic_erlaopioid_20161003v2.pdf#page=2"
+      },
+      {
+        "id": "med_mme_calculated_and_documented",
+        "text": "Calculated MED/MME for all opioids being used is included.",
+        "required_facts": [
+          "med_mme_calculated_and_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "med_mme_calculated_and_documented",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonpreferred_er_la_product_selection",
+            "quantity_limit_exception",
+            "therapeutic_duplication_exception"
+          ]
+        },
+        "citation": "https://health.alaska.gov/media/sbefnd3g/ccfu_opioidanalgesic_erlaopioid_20161003v2.pdf#page=2"
+      },
+      {
+        "id": "opioid_tolerant",
+        "text": "FDA opioid tolerance documented: for the previous week or longer, at least 60 mg oral morphine/day, 25 mcg/hour transdermal fentanyl, 30 mg oral oxycodone/day, 8 mg oral hydromorphone/day, 25 mg oral oxymorphone, or an equianalgesic dose of another opioid.",
+        "required_facts": [
+          "opioid_tolerant"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "opioid_tolerant",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonpreferred_er_la_product_selection",
+            "quantity_limit_exception",
+            "therapeutic_duplication_exception"
+          ]
+        },
+        "citation": "https://health.alaska.gov/media/sbefnd3g/ccfu_opioidanalgesic_erlaopioid_20161003v2.pdf#page=2"
+      },
+      {
+        "id": "letter_of_medical_necessity_around_the_clock",
+        "text": "Letter of medical necessity documents the need for an around-the-clock opioid analgesic.",
+        "required_facts": [
+          "letter_of_medical_necessity_around_the_clock"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "letter_of_medical_necessity_around_the_clock",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "nonpreferred_er_la_product_selection"
+        },
+        "citation": "https://health.alaska.gov/media/sbefnd3g/ccfu_opioidanalgesic_erlaopioid_20161003v2.pdf#page=2"
+      },
+      {
+        "id": "opioid_agreement_on_file",
+        "text": "An opioid agreement / pain contract accompanies the request.",
+        "required_facts": [
+          "opioid_agreement_on_file"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "opioid_agreement_on_file",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "nonpreferred_er_la_product_selection"
+        },
+        "citation": "https://health.alaska.gov/media/sbefnd3g/ccfu_opioidanalgesic_erlaopioid_20161003v2.pdf#page=2"
+      },
+      {
+        "id": "preferred_er_la_trial_failed_or_rationale",
+        "text": "Documented trial of morphine ER tablets, fentanyl transdermal patches, or buprenorphine transdermal patches at an equivalent therapeutic dose resulted in an adverse drug reaction, treatment failure, or other medical complication within the past year; OR documented medical rationale for non-trial.",
+        "required_facts": [
+          "preferred_er_la_trial_failed_or_rationale"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "preferred_er_la_trial_failed_or_rationale",
+          "value": true
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "nonpreferred_er_la_product_selection"
+        },
+        "citation": "https://health.alaska.gov/media/sbefnd3g/ccfu_opioidanalgesic_erlaopioid_20161003v2.pdf#page=3"
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Partial class-criteria encoding; indication represents PA request type, not a diagnosis or brand. More than one category may apply: assess applicable requests separately; a QL/duplication-only result does not establish non-preferred product-selection eligibility. Documented criteria are attestations requiring source verification.",
+      "Preferred agents require no PA for product selection: morphine ER tablets (generic MS Contin), fentanyl transdermal patches (generic Duragesic) 12/12.5/25/50/75/100 mcg/hr (source lists 12 on page 1 and 12.5 on page 2), and buprenorphine transdermal patches (Butrans). These still require PA for quantity-limit or therapeutic-duplication exceptions. All PDL non-preferred and interim-list ER/LA opioid products require PA.",
+      "Quantity-limit exceptions and more than one ER/LA opioid require second-level review PA. Denial appeals may be submitted for second-level peer review; forms: Magellan Clinical Call Center 800-331-4475.",
+      "Source safety concerns (notes only): chronic opioid use increases dependency, overdose and death risk; >100 mg daily MED presents significant overdose risk, with risk even at lower doses. CDC caution particularly above 50 MED; ≥50 MED increases overdose risk without necessarily improving pain/function. Dose calculation encouraged; FDA REMS applies; pain specialist consultation encouraged for complex regimens; Alaska PDMP information provided. These are not additional approval predicates.",
+      "Authorization up to 6 months; shorter durations may be approved. Starting May 1, 2015, adjudication approvals expire on the last day of the authorized month.",
+      "Dispensing (notes only): maximum units list http://dhss.alaska.gov/dhcs/Documents/pharmacy/pdfs/maxunitsall.pdf; no authorization for lost, stolen or destroyed opioid medications; no early refill for travel or vacation. Numeric quantity enforcement remains manual review.",
+      "Definition (notes only): FDA-approved opioid-containing products whose release mechanism extends drug release and dosing intervals; products on the current FDA ER/LA REMS list are subject to these criteria.",
+      "Source clinical criteria last updated 3/18/2016; hyperlinks 6/2/2016; Approval 3/25/2016 (used as effective_date).",
+      "Resource links (historical source): CDC https://www.cdc.gov/mmwr/volumes/65/rr/rr6501e1.htm; MED calculator https://www.oregonpainguidance.org/opioidmedcalculator/; FDA REMS http://www.accessdata.fda.gov/scripts/cder/rems/index.cfm?event=RemsDetails.page&REMS=17; Alaska PDMP https://www.commerce.alaska.gov/web/cbpl/ProfessionalLicensing/PrescriptionDrugMonitoringProgram.aspx; therapeutic duplication http://manuals.medicaidalaska.com/docs/dnld/AKRx_letter_Opioid_Theraputic_Duplication_Edits_02102012.pdf; NIH NIDA sample agreements http://www.drugabuse.gov/sites/default/files/files/SamplePatientAgreementForms.pdf; equianalgesic calculator http://clincalc.com/opioids/; NIH NIDA education http://www.drugabuse.gov/opioid-pain-management-cmesces. Full references are archived in criteria_text/extended-release.json and source PDF pages 4–5."
     ],
-    "inferred_required_facts": [
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Prior authorization request type",
+        "options": [
+          {
+            "value": "nonpreferred_er_la_product_selection",
+            "label": "Non-preferred / interim ER/LA product selection"
+          },
+          {
+            "value": "quantity_limit_exception",
+            "label": "Quantity-limit exception"
+          },
+          {
+            "value": "therapeutic_duplication_exception",
+            "label": "Therapeutic-duplication exception (>1 ER/LA opioid)"
+          }
+        ]
+      },
+      "full_medication_list_included": {
+        "type": "select",
+        "label": "Patient's full medication list is included.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes — requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No — requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonpreferred_er_la_product_selection",
+            "quantity_limit_exception",
+            "therapeutic_duplication_exception"
+          ]
+        }
+      },
+      "med_mme_calculated_and_documented": {
+        "type": "select",
+        "label": "Calculated MED/MME for all opioids being used is included.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes — requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No — requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonpreferred_er_la_product_selection",
+            "quantity_limit_exception",
+            "therapeutic_duplication_exception"
+          ]
+        }
+      },
+      "opioid_tolerant": {
+        "type": "select",
+        "label": "FDA opioid tolerance documented: for the previous week or longer, at least 60 mg oral morphine/day, 25 mcg/hour transdermal fentanyl, 30 mg oral oxycodone/day, 8 mg oral hydromorphone/day, 25 mg oral oxymorphone, or an equianalgesic dose of another opioid.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes — requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No — requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "nonpreferred_er_la_product_selection",
+            "quantity_limit_exception",
+            "therapeutic_duplication_exception"
+          ]
+        }
+      },
+      "letter_of_medical_necessity_around_the_clock": {
+        "type": "select",
+        "label": "Letter of medical necessity documents the need for an around-the-clock opioid analgesic.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes — requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No — requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "nonpreferred_er_la_product_selection"
+        }
+      },
+      "opioid_agreement_on_file": {
+        "type": "select",
+        "label": "An opioid agreement / pain contract accompanies the request.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes — requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No — requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "nonpreferred_er_la_product_selection"
+        }
+      },
+      "preferred_er_la_trial_failed_or_rationale": {
+        "type": "select",
+        "label": "Documented trial of morphine ER tablets, fentanyl transdermal patches, or buprenorphine transdermal patches at an equivalent therapeutic dose resulted in an adverse drug reaction, treatment failure, or other medical complication within the past year; OR documented medical rationale for non-trial.",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes — requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No — requirement not met"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "nonpreferred_er_la_product_selection"
+        }
+      }
+    }
   },
   "fabhalta": {
     "drug": {

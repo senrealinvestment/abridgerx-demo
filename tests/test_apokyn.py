@@ -97,12 +97,12 @@ def test_catalog_and_mirrors():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 171
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 27
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 172
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 26
     assert catalog['cinryze']['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (171, 27)
-    assert status['next_candidate'] == 'extended-release'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (172, 26)
+    assert status['next_candidate'] == 'long-acting-opioid-analgesics'
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

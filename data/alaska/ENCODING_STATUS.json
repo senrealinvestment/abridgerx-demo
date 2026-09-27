@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 171,
-  "encoding_text_only": 27,
+  "encoding_partial": 172,
+  "encoding_text_only": 26,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -53,6 +53,7 @@
     "esbriet",
     "evenity",
     "evkeeza",
+    "extended-release",
     "fabhalta",
     "fasenra",
     "fentora",
@@ -179,5 +180,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "extended-release"
+  "next_candidate": "long-acting-opioid-analgesics"
 }

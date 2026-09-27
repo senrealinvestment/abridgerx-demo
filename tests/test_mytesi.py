@@ -1,4 +1,4 @@
-"""Movantik PA eligibility, safety denials, and catalog integration."""
+"""Mytesi source criteria and deterministic catalog integration."""
 import gzip
 import json
 import sys
@@ -10,50 +10,55 @@ from engine.evaluate import evaluate
 from ui.app import _coerce_patient
 from ui.loaders import drug_detail
 BASE = ROOT / 'data/alaska/parsed'
-PACK = json.loads((BASE / 'rule_packs/movantik.json').read_text())
-GOOD = dict(indication='opioid_induced_constipation_chronic_noncancer_pain', age_years=18,
-            currently_taking_opioid=True, otc_constipation_failure_one_week=True,
-            gi_obstruction_or_recurrent_risk=False, strong_cyp3a4_inhibitor=False,
-            moderate_cyp3a4_without_dose_adjustment=False)
+PACK = json.loads((BASE / 'rule_packs/mytesi.json').read_text())
+GOOD = dict(indication='noninfectious_diarrhea_hiv_aids_on_art', age_years=18,
+            art_claims_last_90_days=True, diarrhea_criteria_met=True,
+            secondary_causes_ruled_out=True, loperamide_failed_or_contraindicated=True,
+            atropine_diphenoxylate_failed_or_contraindicated=True)
+
 
 def test_eligible_and_ui():
     assert evaluate(PACK, GOOD).decision == 'pass'
     patient = {k: ('yes' if v else 'no') if isinstance(v, bool) else str(v) for k,v in GOOD.items()}
     assert evaluate(PACK, _coerce_patient(patient)).decision == 'pass'
-    assert {f['key'] for f in drug_detail('movantik')['fact_fields']} == set(GOOD)
+    assert {f['key'] for f in drug_detail('mytesi')['fact_fields']} == set(GOOD)
 
-@pytest.mark.parametrize('fact,value', [('indication','other'),('age_years',17),
-    ('currently_taking_opioid',False),('otc_constipation_failure_one_week',False),
-    ('gi_obstruction_or_recurrent_risk',True),('strong_cyp3a4_inhibitor',True),
-    ('moderate_cyp3a4_without_dose_adjustment',True)])
-def test_denials(fact,value):
-    result = evaluate(PACK, dict(GOOD, **{fact:value}))
+
+@pytest.mark.parametrize('fact', GOOD)
+def test_each_requirement_must_pass(fact):
+    value = 'other' if fact == 'indication' else 17 if fact == 'age_years' else False
+    result = evaluate(PACK, dict(GOOD, **{fact: value}))
     assert result.decision == 'fail'
     assert [c['id'] for c in result.failed_clauses] == [fact]
 
+
 @pytest.mark.parametrize('fact', GOOD)
-@pytest.mark.parametrize('null', [False,True])
-def test_missing(fact,null):
+@pytest.mark.parametrize('null', [False, True])
+def test_missing(fact, null):
     patient = GOOD.copy()
     if null: patient[fact] = None
     else: del patient[fact]
-    result = evaluate(PACK,patient)
+    result = evaluate(PACK, patient)
     assert result.decision == 'need_info'
     assert result.missing_facts == [fact]
 
-def test_pos_does_not_bypass_pa():
-    assert evaluate(PACK, {'opioid_claim_within_30_days':True}).decision == 'need_info'
-    assert evaluate(PACK,dict(GOOD,age_years=17,opioid_claim_within_30_days=True)).decision == 'fail'
+
+def test_empty_and_both_steps_required():
+    assert evaluate(PACK, {}).decision == 'need_info'
+    patient = dict(GOOD, loperamide_failed_or_contraindicated=False,
+                   atropine_diphenoxylate_failed_or_contraindicated=False)
+    assert len(evaluate(PACK, patient).failed_clauses) == 2
+
 
 def test_metadata_and_catalog():
-    assert PACK['source']['effective_date'] == '2016-11-30'
-    assert PACK['drug']['generic_name'] == 'naloxegol'
+    assert PACK['source']['effective_date'] == '2021-05-24'
+    assert PACK['drug']['generic_name'] == 'crofelemer'
     assert PACK['encoding_status'] == 'partial'
     assert 'inferred_required_facts' not in PACK
     notes = ' '.join(PACK['notes'])
-    for phrase in ['12.5 mg','25 mg','30 days','3 months','6 months','positive clinical response','1 tablet per day']:
+    for phrase in ['infectious etiologies', '3 months', '12 months', '60 tablets', '125 mg', '30 days']:
         assert phrase in notes
-    assert (BASE/'movantik.json').read_bytes() == (BASE/'rule_packs/movantik.json').read_bytes()
+    assert (BASE/'mytesi.json').read_bytes() == (BASE/'rule_packs/mytesi.json').read_bytes()
     catalog = json.loads((BASE/'rule_packs_all.json').read_text())
     assert catalog == {p.stem:json.loads(p.read_text()) for p in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz','rt') as f: assert json.load(f) == catalog

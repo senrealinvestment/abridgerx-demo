@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 154,
-  "encoding_text_only": 44,
+  "encoding_partial": 155,
+  "encoding_text_only": 43,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -95,6 +95,7 @@
     "movantik",
     "myalept",
     "myqorzotm",
+    "mytesi",
     "nexletol",
     "noxafil",
     "nucala",
@@ -162,5 +163,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "mytesi"
+  "next_candidate": "nizoral"
 }

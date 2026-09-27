@@ -14218,7 +14218,8 @@
   "firdapse": {
     "drug": {
       "name": "Firdapse",
-      "therapeutic_class": "other"
+      "therapeutic_class": "potassium-channel-blocker",
+      "generic_name": "amifampridine"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -14229,17 +14230,183 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of Lambert-Eaton myasthenic syndrome (LEMS) (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/zcclcbld/202211-firdapse_ruzurgi_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "lambert_eaton_myasthenic_syndrome"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is 6 years of age or older; shared age floor for both products (approval criterion 1; see product-specific age notes).",
+        "citation": "https://health.alaska.gov/media/zcclcbld/202211-firdapse_ruzurgi_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 6
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist or neuromuscular specialist (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/zcclcbld/202211-firdapse_ruzurgi_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "neurologist_or_neuromuscular_specialist_or_consult"
+        }
+      },
+      {
+        "id": "no_seizure_history",
+        "text": "Patient does not have a history of seizures (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/zcclcbld/202211-firdapse_ruzurgi_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "no_seizure_history"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_seizure_history",
+          "value": true
+        }
+      },
+      {
+        "id": "prescriber_agrees_medication_monitoring",
+        "text": "Prescriber agrees to monitor for use with acetylcholinesterase inhibitors or other medication that can lower seizure threshold (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/zcclcbld/202211-firdapse_ruzurgi_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_agrees_medication_monitoring"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_agrees_medication_monitoring",
+          "value": true
+        }
+      },
+      {
+        "id": "moderate_to_severe_weakness",
+        "text": "Patient has moderate to severe weakness that interferes with daily functions (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/zcclcbld/202211-firdapse_ruzurgi_criteria_2022.pdf#approval-criteria",
+        "required_facts": [
+          "moderate_to_severe_weakness"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "moderate_to_severe_weakness",
+          "value": true
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Firdapse\u00ae / Ruzurgi\u00ae (amifampridine), potassium channel blockers for Lambert-Eaton myasthenic syndrome (LEMS). Version 2; Original 10/3/2019; Approval 11/18/2022; Effective 1/2/2023.",
+      "Encoded: approval criteria 1\u20136 with a shared age floor of 6 years. Failure to meet approval criteria is a denial. Specialist consultation, seizure history, medication monitoring agreement, and functional weakness require documentation verification.",
+      "Product-specific age nuance (notes only): Ruzurgi requires age \u22656 and <17 years. Firdapse approval criteria allow age \u22656, although the FDA indications section of this PDF describes Firdapse as adult-only. The shared age predicate does not enforce the Ruzurgi upper bound; product-specific eligibility requires manual review.",
+      "Cautions (notes only): can cause paresthesia/dysesthesia, abdominal pain, dyspepsia, dizziness, and nausea. Consider discontinuation or dose reduction for patients who have a seizure during treatment. Concomitant drugs that lower seizure threshold may increase seizure risk; drugs with cholinergic effects can increase adverse reactions.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months if responding positively based on clinical muscle strength AND no seizures.",
+      "Quantity (notes only): Ruzurgi 10 tablets/day, maximum 100 mg/day; Firdapse 8 tablets/day, maximum 80 mg/day. max_units is null; dosing and quantity are not evaluated.",
+      "Documentation verification, product-specific age eligibility, cautions, ongoing monitoring, duration, reauthorization response, dosing, and quantity enforcement require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of Lambert-Eaton myasthenic syndrome (LEMS) (approval criterion 2).",
+        "options": [
+          {
+            "value": "lambert_eaton_myasthenic_syndrome",
+            "label": "Lambert-Eaton myasthenic syndrome (LEMS)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is 6 years of age or older; shared age floor for both products (approval criterion 1; see product-specific age notes).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 6 years"
+          },
+          {
+            "value": "6",
+            "label": "6+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist or neuromuscular specialist (approval criterion 3).",
+        "options": [
+          {
+            "value": "neurologist_or_neuromuscular_specialist_or_consult",
+            "label": "Neurologist or neuromuscular specialist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "no_seizure_history": {
+        "type": "select",
+        "label": "Patient does not have a history of seizures (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "prescriber_agrees_medication_monitoring": {
+        "type": "select",
+        "label": "Prescriber agrees to monitor for use with acetylcholinesterase inhibitors or other medication that can lower seizure threshold (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      },
+      "moderate_to_severe_weakness": {
+        "type": "select",
+        "label": "Patient has moderate to severe weakness that interferes with daily functions (approval criterion 6).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 requirement met"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 requirement not met"
+          }
+        ]
+      }
+    }
   },
   "genotypes": {
     "drug": {

@@ -128,16 +128,16 @@ def test_metadata_catalog_bundles_and_alternatives():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 85
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 113
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 86
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 112
     assert p['alternatives'] == ['empaveli', 'fabhalta']
     assert 'soliris' in catalog['empaveli']['alternatives']
     for slug in ('soliris', 'empaveli'):
         assert (BASE / f'{slug}.json').read_bytes() == (BASE / 'rule_packs' / f'{slug}.json').read_bytes()
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 85 and status['encoding_text_only'] == 113
+    assert status['encoding_partial'] == 86 and status['encoding_text_only'] == 112
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'firdapse'
+    assert status['next_candidate'] == 'oxbryta'
     for ext in ('json', 'md'):
         assert (BASE / f'ENCODING_STATUS.{ext}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{ext}').read_bytes()
 

@@ -31556,7 +31556,8 @@
   "winrevair": {
     "drug": {
       "name": "Winrevair",
-      "therapeutic_class": "pulmonary-arterial-hypertension"
+      "therapeutic_class": "pulmonary-arterial-hypertension",
+      "generic_name": "sotatercept-csrk"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -31567,17 +31568,227 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of WHO Group 1 pulmonary arterial hypertension (PAH).",
+        "citation": "https://health.alaska.gov/media/dzvlzgr1/winrevair_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "indication",
+          "value": "who_group_1_pah"
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is an adult, age 18 years or older (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/dzvlzgr1/winrevair_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a cardiologist or pulmonologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/dzvlzgr1/winrevair_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "cardiologist_or_pulmonologist_or_consult"
+        }
+      },
+      {
+        "id": "pah_confirmed_by_right_heart_catheterization",
+        "text": "WHO Group 1 PAH confirmed by right heart catheterization (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/dzvlzgr1/winrevair_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "pah_confirmed_by_right_heart_catheterization"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pah_confirmed_by_right_heart_catheterization",
+          "value": "rhc_confirmed"
+        }
+      },
+      {
+        "id": "who_functional_class",
+        "text": "WHO Functional Class II, III, or IV (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/dzvlzgr1/winrevair_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "who_functional_class"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "who_functional_class",
+          "values": [
+            "ii",
+            "iii",
+            "iv"
+          ]
+        }
+      },
+      {
+        "id": "dual_pah_background_therapy_ge_60d",
+        "text": "Currently receiving at least two PAH therapy classes, each for at least 60 days: PDE5 inhibitor, prostacyclin agent, endothelin receptor antagonist (ERA), or soluble guanylate cyclase (sGC) stimulator (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/dzvlzgr1/winrevair_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "dual_pah_background_therapy_ge_60d"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "dual_pah_background_therapy_ge_60d",
+          "value": "two_or_more_classes_each_ge_60d"
+        }
+      },
+      {
+        "id": "pregnancy_attestation",
+        "text": "Prescriber attests patient is not pregnant and will not become pregnant during treatment (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/dzvlzgr1/winrevair_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "pregnancy_attestation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "pregnancy_attestation",
+          "values": [
+            "not_pregnant_will_not_become_pregnant",
+            "not_applicable_male"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Winrevair (sotatercept-csrk) Criteria Version 1; Original 10/15/2024; Accepted 11/15/2024; Effective 01/01/2025.",
+      "Encoded: closed WHO Group 1 PAH indication and approval criteria 1-6. FDA adult age is represented as age >=18. Denial criterion 1 is failure to meet approval criteria. Pregnancy attestation includes a not-applicable male option.",
+      "Background therapy requires current treatment from at least two distinct classes, each for a minimum of 60 days: phosphodiesterase type 5 (PDE5) inhibitor, prostacyclin agent, endothelin receptor antagonist (ERA), or guanylate cyclase (sGC) stimulator. This is a single attestation; specific pairs are not separately required.",
+      "Cautions (notes only): serious bleeding may be more likely with concomitant prostacyclins and antithrombotics; erythrocytosis, sometimes severe; severe thrombocytopenia; male and female fertility may be impaired.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 1 year.",
+      "Quantity (notes only): 0.7 mg/kg injected subcutaneously every 3 weeks. max_units is null; quantity is not evaluated.",
+      "Documentation verification, cautions, duration, reauthorization and quantity require manual review; this pack remains partial."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of WHO Group 1 pulmonary arterial hypertension (PAH).",
+        "options": [
+          {
+            "value": "who_group_1_pah",
+            "label": "WHO Group 1 PAH"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is an adult, age 18 years or older (approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18+ years"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a cardiologist or pulmonologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "cardiologist_or_pulmonologist_or_consult",
+            "label": "Cardiologist or pulmonologist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying specialist or consultation"
+          }
+        ]
+      },
+      "pah_confirmed_by_right_heart_catheterization": {
+        "type": "select",
+        "label": "WHO Group 1 PAH confirmed by right heart catheterization (approval criterion 3).",
+        "options": [
+          {
+            "value": "rhc_confirmed",
+            "label": "Confirmed by right heart catheterization"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ]
+      },
+      "who_functional_class": {
+        "type": "select",
+        "label": "WHO Functional Class II, III, or IV (approval criterion 4).",
+        "options": [
+          {
+            "value": "ii",
+            "label": "Class II"
+          },
+          {
+            "value": "iii",
+            "label": "Class III"
+          },
+          {
+            "value": "iv",
+            "label": "Class IV"
+          },
+          {
+            "value": "i_or_not_documented",
+            "label": "Class I or not documented"
+          }
+        ]
+      },
+      "dual_pah_background_therapy_ge_60d": {
+        "type": "select",
+        "label": "Currently receiving at least two PAH therapy classes, each for at least 60 days: PDE5 inhibitor, prostacyclin agent, endothelin receptor antagonist (ERA), or soluble guanylate cyclase (sGC) stimulator (approval criterion 5).",
+        "options": [
+          {
+            "value": "two_or_more_classes_each_ge_60d",
+            "label": "At least two classes, each currently received for at least 60 days"
+          },
+          {
+            "value": "not_met",
+            "label": "Requirement not met"
+          }
+        ]
+      },
+      "pregnancy_attestation": {
+        "type": "select",
+        "label": "Prescriber attests patient is not pregnant and will not become pregnant during treatment (approval criterion 6).",
+        "options": [
+          {
+            "value": "not_pregnant_will_not_become_pregnant",
+            "label": "Not pregnant and will not become pregnant during treatment"
+          },
+          {
+            "value": "not_applicable_male",
+            "label": "Not applicable: male patient"
+          },
+          {
+            "value": "pregnant_or_no_attestation",
+            "label": "Pregnant or no attestation"
+          }
+        ]
+      }
+    }
   },
   "xcopri": {
     "drug": {

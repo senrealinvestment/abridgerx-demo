@@ -7363,7 +7363,8 @@
       }
     ],
     "alternatives": [
-      "soliris"
+      "soliris",
+      "fabhalta"
     ],
     "notes": [
       "Partial encoding from Alaska Medicaid Empaveli (pegcetacoplan) Criteria Version 1: Original 10/10/2022; Approval 11/18/2022; Effective 1/2/2023. The effective_date remains 2023-01-02.",
@@ -8309,7 +8310,8 @@
   "fabhalta": {
     "drug": {
       "name": "Fabhalta",
-      "therapeutic_class": "other"
+      "therapeutic_class": "complement-inhibitor",
+      "generic_name": "iptacopan"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -8320,18 +8322,316 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Treatment of adults with paroxysmal nocturnal hemoglobinuria (PNH), the closed indication in this Alaska Medicaid criteria PDF.",
+        "citation": "https://health.alaska.gov/media/e3hh5fu3/fabhalta_criteria_2024.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "paroxysmal_nocturnal_hemoglobinuria"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is an adult, 18 years or older (FDA labeled age; approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/e3hh5fu3/fabhalta_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a hematologist (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/e3hh5fu3/fabhalta_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "hematologist"
+          ]
+        }
+      },
+      {
+        "id": "pnh_flow_cytometry_confirmed",
+        "text": "PNH diagnosis confirmed by flow cytometry diagnostic testing (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/e3hh5fu3/fabhalta_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "pnh_flow_cytometry_confirmed"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "pnh_flow_cytometry_confirmed",
+          "value": true
+        }
+      },
+      {
+        "id": "hemoglobin_lt_10_g_dl",
+        "text": "Patient\u2019s hemoglobin is <10 g/dL (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/e3hh5fu3/fabhalta_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "hemoglobin_lt_10_g_dl"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hemoglobin_lt_10_g_dl",
+          "value": true
+        }
+      },
+      {
+        "id": "baseline_lipid_panel_hb_ldh_documented",
+        "text": "Documented baseline serum lipid panel (total cholesterol, LDL-C and triglycerides), hemoglobin, AND serum lactate dehydrogenase (LDH) (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/e3hh5fu3/fabhalta_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "baseline_lipid_panel_hb_ldh_documented"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "baseline_lipid_panel_hb_ldh_documented",
+          "value": true
+        }
+      },
+      {
+        "id": "failed_or_intolerance_contraindication_complement_inhibitor",
+        "text": "Patient has tried and failed or has an intolerance or contraindication to one of eculizumab, pegcetacoplan, or ravulizumab-cwvz (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/e3hh5fu3/fabhalta_criteria_2024.pdf#approval-criteria",
+        "required_facts": [
+          "failed_or_intolerance_contraindication_complement_inhibitor"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "failed_or_intolerance_contraindication_complement_inhibitor",
+          "values": [
+            "eculizumab",
+            "pegcetacoplan",
+            "ravulizumab"
+          ]
+        }
+      },
+      {
+        "id": "encapsulated_bacteria_vaccines_ge_14d_prior",
+        "text": "Vaccinated against Streptococcus pneumoniae, Neisseria meningitidis, AND Haemophilus influenzae type B at least 14 days (two weeks) before the first dose (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/e3hh5fu3/fabhalta_criteria_2024.pdf#denial-criteria",
+        "required_facts": [
+          "encapsulated_bacteria_vaccines_ge_14d_prior"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "encapsulated_bacteria_vaccines_ge_14d_prior",
+          "value": true
+        }
+      },
+      {
+        "id": "not_combined_with_other_complement_inhibitor",
+        "text": "Fabhalta will not be used in combination with another complement inhibitor (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/e3hh5fu3/fabhalta_criteria_2024.pdf#denial-criteria",
+        "required_facts": [
+          "not_combined_with_other_complement_inhibitor"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_combined_with_other_complement_inhibitor",
+          "value": true
+        }
+      },
+      {
+        "id": "no_unresolved_serious_encapsulated_bacterial_infection",
+        "text": "No unresolved, serious infection caused by encapsulated bacteria, e.g. Streptococcus pneumoniae (denial criterion 4).",
+        "citation": "https://health.alaska.gov/media/e3hh5fu3/fabhalta_criteria_2024.pdf#denial-criteria",
+        "required_facts": [
+          "no_unresolved_serious_encapsulated_bacterial_infection"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "no_unresolved_serious_encapsulated_bacterial_infection",
+          "value": true
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "empaveli",
+      "soliris"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Medicaid Fabhalta (iptacopan), a complement factor B inhibitor, Criteria Version 1: Original 03/13/2024; Accepted 04/19/2024; Effective 06/1/2024.",
+      "Encoded: closed adult PNH indication, approval criteria 1-6, and denial criteria 2-4 as approval-blocking predicates. Denial criterion 1 is failure to meet approval criteria. Hemoglobin <10 g/dL and baseline laboratory documentation are attestations.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization approval up to 12 months.",
+      "Quantity limit (notes only): 68 capsules in 34 days. Quantity and dosing are not evaluated as predicates.",
+      "Caution (notes only): increased susceptibility to serious, life-threatening, or fatal infections caused by encapsulated bacteria. Vaccination does not eliminate this risk despite antibody development.",
+      "Caution (notes only): after discontinuation, closely monitor for signs and symptoms of hemolysis for at least 2 weeks after the last dose.",
+      "Caution (notes only): use with cytochrome P450 2C8 (CYP2C8) inhibitors is not recommended.",
+      "Approval durations, reauthorization, quantity, dosing, and cautions require manual review; this pack remains partial.",
+      "No PDL hit; pdl_status remains unknown. Empaveli and Soliris/Ultomiris are linked complement inhibitor alternatives for PNH overlap only; their own criteria require separate review."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Treatment of adults with paroxysmal nocturnal hemoglobinuria (PNH), the closed indication in this Alaska Medicaid criteria PDF.",
+        "options": [
+          {
+            "value": "paroxysmal_nocturnal_hemoglobinuria",
+            "label": "Paroxysmal nocturnal hemoglobinuria (PNH)"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is an adult, 18 years or older (FDA labeled age; approval criterion 1).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18+"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a hematologist (approval criterion 2).",
+        "options": [
+          {
+            "value": "hematologist",
+            "label": "Hematologist (prescribing or consulted)"
+          },
+          {
+            "value": "oncologist",
+            "label": "Oncologist without hematologist consultation"
+          },
+          {
+            "value": "primary_care",
+            "label": "Primary care without hematologist consultation"
+          },
+          {
+            "value": "other",
+            "label": "Other without hematologist consultation"
+          }
+        ]
+      },
+      "pnh_flow_cytometry_confirmed": {
+        "type": "select",
+        "label": "PNH diagnosis confirmed by flow cytometry diagnostic testing (approval criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hemoglobin_lt_10_g_dl": {
+        "type": "select",
+        "label": "Patient\u2019s hemoglobin is <10 g/dL (approval criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "baseline_lipid_panel_hb_ldh_documented": {
+        "type": "select",
+        "label": "Documented baseline serum lipid panel (total cholesterol, LDL-C and triglycerides), hemoglobin, AND serum lactate dehydrogenase (LDH) (approval criterion 5).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "failed_or_intolerance_contraindication_complement_inhibitor": {
+        "type": "select",
+        "label": "Patient has tried and failed or has an intolerance or contraindication to one of eculizumab, pegcetacoplan, or ravulizumab-cwvz (approval criterion 6).",
+        "options": [
+          {
+            "value": "eculizumab",
+            "label": "Eculizumab"
+          },
+          {
+            "value": "pegcetacoplan",
+            "label": "Pegcetacoplan"
+          },
+          {
+            "value": "ravulizumab",
+            "label": "Ravulizumab-cwvz"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "encapsulated_bacteria_vaccines_ge_14d_prior": {
+        "type": "select",
+        "label": "Vaccinated against Streptococcus pneumoniae, Neisseria meningitidis, AND Haemophilus influenzae type B at least 14 days (two weeks) before the first dose (denial criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_combined_with_other_complement_inhibitor": {
+        "type": "select",
+        "label": "Fabhalta will not be used in combination with another complement inhibitor (denial criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "no_unresolved_serious_encapsulated_bacterial_infection": {
+        "type": "select",
+        "label": "No unresolved, serious infection caused by encapsulated bacteria, e.g. Streptococcus pneumoniae (denial criterion 4).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "fasenra": {
     "drug": {
@@ -17132,7 +17432,8 @@
       }
     ],
     "alternatives": [
-      "empaveli"
+      "empaveli",
+      "fabhalta"
     ],
     "notes": [
       "Partial encoding of Alaska Medicaid Soliris (eculizumab) / Ultomiris (ravulizumab-cwvz) Criteria Version 2; Original 2/24/22; Approval 9/16/2022; Effective 11/01/2022.",

@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 42,
-  "encoding_text_only": 156,
+  "encoding_partial": 43,
+  "encoding_text_only": 155,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -27,6 +27,7 @@
     "empaveli",
     "entyvio",
     "evenity",
+    "fabhalta",
     "fasenra",
     "hemgenix",
     "hemlibra",
@@ -50,5 +51,5 @@
     "zolgensma",
     "zymfentra"
   ],
-  "next_candidate": "fabhalta"
+  "next_candidate": "dawnzeratm"
 }

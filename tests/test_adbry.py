@@ -137,8 +137,8 @@ def test_catalog_and_mirrors_load_adbry_as_partial():
     assert json.loads((base / "rule_packs/adbry.json").read_text()) == pack
     with gzip.open(base / "rule_packs_all.json.gz", "rt", encoding="utf-8") as stream:
         assert json.load(stream) == catalog
-    assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 121
-    assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 77
+    assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 122
+    assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 76
 
 
 def test_bidirectional_alternatives_and_dupixent_evaluate_pass():

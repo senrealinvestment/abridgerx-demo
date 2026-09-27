@@ -38557,7 +38557,8 @@
   "sunosi": {
     "drug": {
       "name": "Sunosi",
-      "therapeutic_class": "other"
+      "therapeutic_class": "dnri",
+      "generic_name": "solriamfetol"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -38568,18 +38569,373 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "age_years",
+        "text": "Patient is at least 18 years old.",
+        "citation": "https://health.alaska.gov/media/etrnpsv1/20199sunosi_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "indication",
+        "text": "Excessive daytime sleepiness associated with narcolepsy or obstructive sleep apnea.",
+        "citation": "https://health.alaska.gov/media/etrnpsv1/20199sunosi_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "eds_associated_with_narcolepsy",
+            "eds_associated_with_osa"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with a neurologist, psychiatrist, or sleep specialist.",
+        "citation": "https://health.alaska.gov/media/etrnpsv1/20199sunosi_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "neurologist",
+            "neurologist_consult",
+            "psychiatrist",
+            "psychiatrist_consult",
+            "sleep_specialist",
+            "sleep_specialist_consult"
+          ]
+        }
+      },
+      {
+        "id": "cpap_duration",
+        "text": "Underlying airway obstruction treated with CPAP or a similar device for at least 90 days.",
+        "citation": "https://health.alaska.gov/media/etrnpsv1/20199sunosi_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "cpap_duration"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "cpap_duration",
+          "values": [
+            "treated_ge_90_days"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "eds_associated_with_osa"
+        }
+      },
+      {
+        "id": "cpap_continued",
+        "text": "CPAP or a similar device will continue for the duration of Sunosi treatment.",
+        "citation": "https://health.alaska.gov/media/etrnpsv1/20199sunosi_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "cpap_continued"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "cpap_continued",
+          "values": [
+            "continued"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "eds_associated_with_osa"
+        }
+      },
+      {
+        "id": "narcolepsy_airway_obstruction",
+        "text": "For narcolepsy: no underlying airway obstruction, or obstruction treated with CPAP/similar for at least 90 days and throughout Sunosi treatment.",
+        "citation": "https://health.alaska.gov/media/etrnpsv1/20199sunosi_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "narcolepsy_airway_obstruction"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "narcolepsy_airway_obstruction",
+          "values": [
+            "absent",
+            "treated_ge_90_days_and_continued"
+          ]
+        },
+        "when": {
+          "fact": "indication",
+          "eq": "eds_associated_with_narcolepsy"
+        }
+      },
+      {
+        "id": "wakefulness_promoting_step",
+        "text": "Tried and failed armodafinil OR modafinil for at least 30 days, OR allergy to BOTH agents.",
+        "citation": "https://health.alaska.gov/media/etrnpsv1/20199sunosi_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "wakefulness_promoting_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "wakefulness_promoting_step",
+          "values": [
+            "armodafinil_failed_ge_30_days",
+            "modafinil_failed_ge_30_days",
+            "allergy_to_both"
+          ]
+        }
+      },
+      {
+        "id": "blood_pressure",
+        "text": "Blood pressure is well controlled.",
+        "citation": "https://health.alaska.gov/media/etrnpsv1/20199sunosi_criteria_approved_2019.pdf#approval-criteria",
+        "required_facts": [
+          "blood_pressure"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "blood_pressure",
+          "values": [
+            "well_controlled"
+          ]
+        }
+      },
+      {
+        "id": "maoi_within_14_days",
+        "text": "No use with monoamine oxidase inhibitors within 14 days (contraindicated).",
+        "citation": "https://health.alaska.gov/media/etrnpsv1/20199sunosi_criteria_approved_2019.pdf#cautions",
+        "required_facts": [
+          "maoi_within_14_days"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "maoi_within_14_days",
+          "values": [
+            "absent"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Sunosi (solriamfetol), a DNRI / wakefulness-promoting agent; effective 2019-11-20. Approval gates and the explicit MAOI contraindication encoded. Source denial list mirrors approval failures; no duplicate denials. Documentation and therapy attestations require manual review.",
+      "Underlying airway obstruction requires CPAP or a similar device for at least 90 days and throughout Sunosi treatment. OSA gates are indication-specific; the narcolepsy path also checks for coexisting obstruction. Sunosi is not indicated for treatment of underlying airway obstruction.",
+      "Cautions: MAOI use within 14 days is contraindicated (encoded). Monitor heart rate and blood pressure prior to and throughout therapy; avoid use in patients with serious heart problems. For history of psychosis or bipolar disorder, doses may need reduction or discontinuation if psychiatric symptoms arise. Schedule IV controlled substance with potential for abuse.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months. Manual review required.",
+      "Quantity limits (notes only): 30 \u00d7 75mg tablets/month and 30 \u00d7 150mg tablets/month. No numeric quantity enforcement; manual review required."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 18 years old.",
+        "options": [
+          {
+            "value": "17",
+            "label": "Under 18"
+          },
+          {
+            "value": "18",
+            "label": "18 or older"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "indication": {
+        "type": "select",
+        "label": "Excessive daytime sleepiness associated with narcolepsy or obstructive sleep apnea.",
+        "options": [
+          {
+            "value": "eds_associated_with_narcolepsy",
+            "label": "EDS associated with narcolepsy"
+          },
+          {
+            "value": "eds_associated_with_osa",
+            "label": "EDS associated with OSA"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with a neurologist, psychiatrist, or sleep specialist.",
+        "options": [
+          {
+            "value": "neurologist",
+            "label": "Neurologist"
+          },
+          {
+            "value": "neurologist_consult",
+            "label": "Neurologist consult"
+          },
+          {
+            "value": "psychiatrist",
+            "label": "Psychiatrist"
+          },
+          {
+            "value": "psychiatrist_consult",
+            "label": "Psychiatrist consult"
+          },
+          {
+            "value": "sleep_specialist",
+            "label": "Sleep specialist"
+          },
+          {
+            "value": "sleep_specialist_consult",
+            "label": "Sleep specialist consult"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "cpap_continued": {
+        "type": "select",
+        "label": "CPAP or a similar device will continue for the duration of Sunosi treatment.",
+        "options": [
+          {
+            "value": "continued",
+            "label": "Continued throughout treatment"
+          },
+          {
+            "value": "not_continued",
+            "label": "Not continued"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "eds_associated_with_osa"
+        }
+      },
+      "narcolepsy_airway_obstruction": {
+        "type": "select",
+        "label": "For narcolepsy: no underlying airway obstruction, or obstruction treated with CPAP/similar for at least 90 days and throughout Sunosi treatment.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "No underlying airway obstruction"
+          },
+          {
+            "value": "treated_ge_90_days_and_continued",
+            "label": "CPAP/similar \u226590 days and continued throughout treatment"
+          },
+          {
+            "value": "untreated",
+            "label": "Obstruction untreated"
+          },
+          {
+            "value": "trial_under_90_days",
+            "label": "Treatment under 90 days"
+          },
+          {
+            "value": "not_continued",
+            "label": "Treatment not continued"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "eds_associated_with_narcolepsy"
+        }
+      },
+      "wakefulness_promoting_step": {
+        "type": "select",
+        "label": "Tried and failed armodafinil OR modafinil for at least 30 days, OR allergy to BOTH agents.",
+        "options": [
+          {
+            "value": "armodafinil_failed_ge_30_days",
+            "label": "Armodafinil failed after \u226530 days"
+          },
+          {
+            "value": "modafinil_failed_ge_30_days",
+            "label": "Modafinil failed after \u226530 days"
+          },
+          {
+            "value": "allergy_to_both",
+            "label": "Allergy to both agents"
+          },
+          {
+            "value": "trial_under_30_days",
+            "label": "Trial under 30 days"
+          },
+          {
+            "value": "allergy_to_armodafinil_only",
+            "label": "Allergy to armodafinil only"
+          },
+          {
+            "value": "allergy_to_modafinil_only",
+            "label": "Allergy to modafinil only"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Other contraindication"
+          },
+          {
+            "value": "not_failed",
+            "label": "No qualifying failure or allergy"
+          }
+        ]
+      },
+      "blood_pressure": {
+        "type": "select",
+        "label": "Blood pressure is well controlled.",
+        "options": [
+          {
+            "value": "well_controlled",
+            "label": "Well controlled"
+          },
+          {
+            "value": "not_controlled",
+            "label": "Not well controlled"
+          }
+        ]
+      },
+      "maoi_within_14_days": {
+        "type": "select",
+        "label": "No use with monoamine oxidase inhibitors within 14 days (contraindicated).",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "cpap_duration": {
+        "type": "select",
+        "label": "Underlying airway obstruction treated with CPAP or a similar device for at least 90 days.",
+        "options": [
+          {
+            "value": "treated_ge_90_days",
+            "label": "CPAP/similar for at least 90 days"
+          },
+          {
+            "value": "under_90_days",
+            "label": "Under 90 days"
+          },
+          {
+            "value": "untreated",
+            "label": "Untreated"
+          }
+        ],
+        "when": {
+          "fact": "indication",
+          "eq": "eds_associated_with_osa"
+        }
+      }
+    },
+    "max_units": null
   },
   "sympazan": {
     "drug": {

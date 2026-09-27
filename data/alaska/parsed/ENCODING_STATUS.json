@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 121,
-  "encoding_text_only": 77,
+  "encoding_partial": 122,
+  "encoding_text_only": 76,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -104,6 +104,7 @@
     "spravato",
     "stelara",
     "strensiq",
+    "sunosi",
     "tepezza",
     "tezspire",
     "tremfya",
@@ -129,5 +130,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "sunosi"
+  "next_candidate": "nuedexta"
 }

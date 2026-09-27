@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 150,
-  "encoding_text_only": 48,
+  "encoding_partial": 151,
+  "encoding_text_only": 47,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -84,6 +84,7 @@
     "lemtrada",
     "leqembi",
     "leqvio",
+    "leuprolide",
     "lucemyra",
     "lupkynis",
     "lybalvi",
@@ -158,5 +159,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "leuprolide"
+  "next_candidate": "lovaza"
 }

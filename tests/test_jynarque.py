@@ -116,15 +116,15 @@ def test_catalog_and_metadata():
     catalog = load_rule_pack_catalog()
     assert catalog['jynarque'] == p
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 103
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 95
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 104
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 94
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (103, 95)
-    assert status['next_candidate'] == 'juxtapid'
-    assert catalog['juxtapid']['encoding_status'] == 'text_only'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (104, 94)
+    assert status['next_candidate'] == 'kynamro'
+    assert catalog['kynamro']['encoding_status'] == 'text_only'
     assert status['partial_slugs'] == sorted(k for k,v in catalog.items() if v['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()

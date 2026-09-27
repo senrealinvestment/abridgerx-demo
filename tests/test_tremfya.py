@@ -112,8 +112,8 @@ def test_catalog_and_alternatives():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 103
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 95
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 104
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 94
     assert p['alternatives'] == PEERS
     for peer in PEERS:
         assert 'tremfya' in catalog[peer]['alternatives']
@@ -123,10 +123,10 @@ def test_catalog_and_alternatives():
         if mirror.exists():
             assert json.loads(mirror.read_text()) == catalog[peer]
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 103 and status['encoding_text_only'] == 95
+    assert status['encoding_partial'] == 104 and status['encoding_text_only'] == 94
     assert 'tremfya' in status['partial_slugs']
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'juxtapid'
+    assert status['next_candidate'] == 'kynamro'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
 

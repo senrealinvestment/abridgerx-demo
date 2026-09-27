@@ -90,13 +90,13 @@ def test_metadata_limits_and_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 103
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 95
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 104
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 94
     assert catalog['crenessity']['encoding_status'] == 'partial'
     assert len(catalog['crenessity']['criteria']) == 7
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only']) == (103, 95)
-    assert status['next_candidate'] == 'juxtapid'
+    assert (status['encoding_partial'], status['encoding_text_only']) == (104, 94)
+    assert status['next_candidate'] == 'kynamro'
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()

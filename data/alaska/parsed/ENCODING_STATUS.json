@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 147,
-  "encoding_text_only": 51,
+  "encoding_partial": 148,
+  "encoding_text_only": 50,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -53,6 +53,7 @@
     "evkeeza",
     "fabhalta",
     "fasenra",
+    "fentora",
     "fintepla",
     "firazyr",
     "firdapse",
@@ -155,5 +156,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "fentora"
+  "next_candidate": "human-chorionic-gonadotropin"
 }

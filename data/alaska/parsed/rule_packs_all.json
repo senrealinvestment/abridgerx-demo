@@ -44625,9 +44625,9 @@
   },
   "xyrem": {
     "drug": {
-      "name": "Xyrem",
-      "generic_name": "Sodium Oxybate",
-      "therapeutic_class": "other"
+      "name": "Xyrem / Xywav",
+      "generic_name": "sodium_oxybate / calcium_magnesium_potassium_sodium_oxybates",
+      "therapeutic_class": "cns-depressant"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -44638,18 +44638,650 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "product",
+        "text": "Requested oxybate product.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "product"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "product",
+          "values": [
+            "xyrem",
+            "xywav"
+          ]
+        }
+      },
+      {
+        "id": "indication",
+        "text": "Documented narcolepsy indication.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "excessive_daytime_sleepiness_in_narcolepsy",
+            "cataplexy_in_narcolepsy"
+          ]
+        }
+      },
+      {
+        "id": "age_years",
+        "text": "Patient is at least 7 years old.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 7
+        }
+      },
+      {
+        "id": "diagnosis_letter_medical_necessity",
+        "text": "Diagnosis for the selected indication is documented and supported by a letter of medical necessity.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "diagnosis_letter_medical_necessity"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "diagnosis_letter_medical_necessity",
+          "values": [
+            "documented_with_letter"
+          ]
+        }
+      },
+      {
+        "id": "patient_rems_enrollment",
+        "text": "Patient is enrolled in the REMS Program.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "patient_rems_enrollment"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "patient_rems_enrollment",
+          "values": [
+            "enrolled"
+          ]
+        }
+      },
+      {
+        "id": "provider_rems_enrollment",
+        "text": "Provider is enrolled in the REMS Program.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "provider_rems_enrollment"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "provider_rems_enrollment",
+          "values": [
+            "enrolled"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by a sleep specialist or neurologist.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prescriber_specialty",
+          "values": [
+            "sleep_specialist",
+            "neurologist"
+          ]
+        }
+      },
+      {
+        "id": "concomitant_cns_depressants",
+        "text": "No concomitant CNS depressants, including opioids, benzodiazepines, alcohol or sedative hypnotics.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "concomitant_cns_depressants"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "concomitant_cns_depressants",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "prior_use_drug_screen",
+        "text": "Absence of concomitant CNS depressants verified by drug screen prior to use.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "prior_use_drug_screen"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "prior_use_drug_screen",
+          "values": [
+            "verified_absent_prior_to_use"
+          ]
+        }
+      },
+      {
+        "id": "major_depressive_disorder_evaluation",
+        "text": "Evaluated for major depressive disorder.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "major_depressive_disorder_evaluation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "major_depressive_disorder_evaluation",
+          "values": [
+            "evaluated"
+          ]
+        }
+      },
+      {
+        "id": "substance_misuse_history_evaluation",
+        "text": "Evaluated for history of substance misuse.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "substance_misuse_history_evaluation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "substance_misuse_history_evaluation",
+          "values": [
+            "evaluated"
+          ]
+        }
+      },
+      {
+        "id": "cns_stimulant_step",
+        "text": "Tried for at least 30 days and failed at least one CNS stimulant (e.g. methylphenidate), OR contraindication to use.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "cns_stimulant_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "cns_stimulant_step",
+          "values": [
+            "failed_ge_1_after_ge_30_days",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "wakefulness_promoting_step",
+        "text": "Tried for at least 30 days and failed at least one CNS wakefulness-promoting drug (e.g. modafinil), OR contraindication to use.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "wakefulness_promoting_step"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "wakefulness_promoting_step",
+          "values": [
+            "failed_ge_1_after_ge_30_days",
+            "contraindicated"
+          ]
+        }
+      },
+      {
+        "id": "sleep_logs_last_30_days",
+        "text": "Sleep logs submitted for the last 30 days.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#approval-criteria",
+        "required_facts": [
+          "sleep_logs_last_30_days"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "sleep_logs_last_30_days",
+          "values": [
+            "submitted_last_30_days"
+          ]
+        }
+      },
+      {
+        "id": "heart_failure",
+        "text": "For Xyrem: heart failure must be absent.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#denial-criteria",
+        "required_facts": [
+          "heart_failure"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "heart_failure",
+          "values": [
+            "absent"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "eq": "xyrem"
+        }
+      },
+      {
+        "id": "uncontrolled_hypertension",
+        "text": "For Xyrem: uncontrolled hypertension must be absent.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#denial-criteria",
+        "required_facts": [
+          "uncontrolled_hypertension"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "uncontrolled_hypertension",
+          "values": [
+            "absent"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "eq": "xyrem"
+        }
+      },
+      {
+        "id": "impaired_renal_function",
+        "text": "For Xyrem: impaired renal function must be absent.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#denial-criteria",
+        "required_facts": [
+          "impaired_renal_function"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "impaired_renal_function",
+          "values": [
+            "absent"
+          ]
+        },
+        "when": {
+          "fact": "product",
+          "eq": "xyrem"
+        }
+      },
+      {
+        "id": "succinic_semialdehyde_dehydrogenase_deficiency",
+        "text": "Succinic semialdehyde dehydrogenase deficiency must be absent.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#denial-criteria",
+        "required_facts": [
+          "succinic_semialdehyde_dehydrogenase_deficiency"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "succinic_semialdehyde_dehydrogenase_deficiency",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "sedative_hypnotic_agents",
+        "text": "Concomitant sedative hypnotics must be absent.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#denial-criteria",
+        "required_facts": [
+          "sedative_hypnotic_agents"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "sedative_hypnotic_agents",
+          "values": [
+            "absent"
+          ]
+        }
+      },
+      {
+        "id": "alcohol_use",
+        "text": "Concomitant alcohol use must be absent.",
+        "citation": "https://health.alaska.gov/media/mdsobp1w/202011xyrem_xywav_criteria_2020.pdf#denial-criteria",
+        "required_facts": [
+          "alcohol_use"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "alcohol_use",
+          "values": [
+            "absent"
+          ]
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Xyrem / Xywav oxybate CNS depressants, Version 2; effective 2021-01-11. Single xyrem pack covers sodium_oxybate (Xyrem) and calcium, magnesium, potassium and sodium oxybates (Xywav).",
+      "Approval criteria 1-9 and explicit denial criteria encoded. Both closed narcolepsy indications share approval gates. Heart failure, uncontrolled hypertension and impaired renal function denials apply only to Xyrem. Diagnosis letter, REMS enrollment, drug screen, evaluations, therapy failures and sleep logs are attestations requiring manual review.",
+      "Approval criterion 8 repeats contraindication to stimulant use; encoded as contraindication to the wakefulness-promoting therapy step, consistent with the requested interpretation.",
+      "Cautions (notes only): depression and suicidality; impaired motor and cognitive function; high sodium content of Xyrem; evaluate for sleepwalking.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 6 months if responding positively and dose does not exceed 9 g/day. Manual review required.",
+      "Quantity (notes only): 3 \u00d7 180ml bottles; maximum 9 g/day. Source prints 9 mg/day in reauthorization and quantity sections; retained here as 9 g/day per task specification, with the source discrepancy flagged for manual review. No numeric quantity enforcement.",
+      "PDL status unknown. Documentation verification, cautions, duration, reauthorization, dose and quantity remain manual review."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty",
-      "prior_therapy_failures"
-    ]
+    "fact_ui": {
+      "product": {
+        "type": "select",
+        "label": "Requested oxybate product.",
+        "options": [
+          {
+            "value": "xyrem",
+            "label": "Xyrem (sodium oxybate)"
+          },
+          {
+            "value": "xywav",
+            "label": "Xywav (calcium, magnesium, potassium and sodium oxybates)"
+          }
+        ]
+      },
+      "indication": {
+        "type": "select",
+        "label": "Documented narcolepsy indication.",
+        "options": [
+          {
+            "value": "excessive_daytime_sleepiness_in_narcolepsy",
+            "label": "Excessive daytime sleepiness in narcolepsy"
+          },
+          {
+            "value": "cataplexy_in_narcolepsy",
+            "label": "Cataplexy in narcolepsy"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is at least 7 years old.",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 7"
+          },
+          {
+            "value": "7",
+            "label": "7 or older"
+          }
+        ],
+        "option_style": "age_bands"
+      },
+      "diagnosis_letter_medical_necessity": {
+        "type": "select",
+        "label": "Diagnosis for the selected indication is documented and supported by a letter of medical necessity.",
+        "options": [
+          {
+            "value": "documented_with_letter",
+            "label": "Documented with letter"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "patient_rems_enrollment": {
+        "type": "select",
+        "label": "Patient is enrolled in the REMS Program.",
+        "options": [
+          {
+            "value": "enrolled",
+            "label": "Enrolled"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "provider_rems_enrollment": {
+        "type": "select",
+        "label": "Provider is enrolled in the REMS Program.",
+        "options": [
+          {
+            "value": "enrolled",
+            "label": "Enrolled"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by a sleep specialist or neurologist.",
+        "options": [
+          {
+            "value": "sleep_specialist",
+            "label": "Sleep specialist"
+          },
+          {
+            "value": "neurologist",
+            "label": "Neurologist"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "concomitant_cns_depressants": {
+        "type": "select",
+        "label": "No concomitant CNS depressants, including opioids, benzodiazepines, alcohol or sedative hypnotics.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "prior_use_drug_screen": {
+        "type": "select",
+        "label": "Absence of concomitant CNS depressants verified by drug screen prior to use.",
+        "options": [
+          {
+            "value": "verified_absent_prior_to_use",
+            "label": "Verified absent prior to use"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "major_depressive_disorder_evaluation": {
+        "type": "select",
+        "label": "Evaluated for major depressive disorder.",
+        "options": [
+          {
+            "value": "evaluated",
+            "label": "Evaluated"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "substance_misuse_history_evaluation": {
+        "type": "select",
+        "label": "Evaluated for history of substance misuse.",
+        "options": [
+          {
+            "value": "evaluated",
+            "label": "Evaluated"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "cns_stimulant_step": {
+        "type": "select",
+        "label": "Tried for at least 30 days and failed at least one CNS stimulant (e.g. methylphenidate), OR contraindication to use.",
+        "options": [
+          {
+            "value": "failed_ge_1_after_ge_30_days",
+            "label": "Failed at least one after \u226530 days"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindication to use"
+          },
+          {
+            "value": "trial_under_30_days",
+            "label": "Trial under 30 days"
+          },
+          {
+            "value": "not_failed",
+            "label": "No qualifying failure or contraindication"
+          }
+        ]
+      },
+      "wakefulness_promoting_step": {
+        "type": "select",
+        "label": "Tried for at least 30 days and failed at least one CNS wakefulness-promoting drug (e.g. modafinil), OR contraindication to use.",
+        "options": [
+          {
+            "value": "failed_ge_1_after_ge_30_days",
+            "label": "Failed at least one after \u226530 days"
+          },
+          {
+            "value": "contraindicated",
+            "label": "Contraindication to use"
+          },
+          {
+            "value": "trial_under_30_days",
+            "label": "Trial under 30 days"
+          },
+          {
+            "value": "not_failed",
+            "label": "No qualifying failure or contraindication"
+          }
+        ]
+      },
+      "sleep_logs_last_30_days": {
+        "type": "select",
+        "label": "Sleep logs submitted for the last 30 days.",
+        "options": [
+          {
+            "value": "submitted_last_30_days",
+            "label": "Submitted last 30 days"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      },
+      "heart_failure": {
+        "type": "select",
+        "label": "For Xyrem: heart failure must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "eq": "xyrem"
+        }
+      },
+      "uncontrolled_hypertension": {
+        "type": "select",
+        "label": "For Xyrem: uncontrolled hypertension must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "eq": "xyrem"
+        }
+      },
+      "impaired_renal_function": {
+        "type": "select",
+        "label": "For Xyrem: impaired renal function must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ],
+        "when": {
+          "fact": "product",
+          "eq": "xyrem"
+        }
+      },
+      "succinic_semialdehyde_dehydrogenase_deficiency": {
+        "type": "select",
+        "label": "Succinic semialdehyde dehydrogenase deficiency must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "sedative_hypnotic_agents": {
+        "type": "select",
+        "label": "Concomitant sedative hypnotics must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      },
+      "alcohol_use": {
+        "type": "select",
+        "label": "Concomitant alcohol use must be absent.",
+        "options": [
+          {
+            "value": "absent",
+            "label": "Absent"
+          },
+          {
+            "value": "present",
+            "label": "Present"
+          }
+        ]
+      }
+    },
+    "max_units": null
   },
   "yorvipath": {
     "drug": {

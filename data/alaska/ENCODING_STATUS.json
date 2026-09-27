@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 120,
-  "encoding_text_only": 78,
+  "encoding_partial": 121,
+  "encoding_text_only": 77,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -120,6 +120,7 @@
     "winrevair",
     "xiaflex",
     "xolair",
+    "xyrem",
     "yorvipath",
     "zilbrysq",
     "zolgensma",
@@ -128,5 +129,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "xyrem"
+  "next_candidate": "sunosi"
 }

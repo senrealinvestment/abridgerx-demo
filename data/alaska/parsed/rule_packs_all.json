@@ -27623,7 +27623,8 @@
   "strensiq": {
     "drug": {
       "name": "Strensiq",
-      "therapeutic_class": "other"
+      "therapeutic_class": "metabolic",
+      "generic_name": "asfotase alfa"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -27634,17 +27635,281 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Perinatal/infantile- or juvenile-onset hypophosphatasia (HPP), the closed FDA-labeled indications.",
+        "citation": "https://health.alaska.gov/media/24qn5d51/strensiq_criteria_20231117_update.pdf#indications",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "perinatal_infantile_onset_hpp",
+            "juvenile_onset_hpp"
+          ]
+        }
+      },
+      {
+        "id": "prescriber_specialty",
+        "text": "Prescribed by or in consultation with an endocrinologist or specialist experienced in treating metabolic disorders (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/24qn5d51/strensiq_criteria_20231117_update.pdf#approval-criteria",
+        "required_facts": [
+          "prescriber_specialty"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "prescriber_specialty",
+          "value": "endocrinologist_or_metabolic_specialist_or_consult"
+        }
+      },
+      {
+        "id": "hpp_biochem_confirmation",
+        "text": "Documented HPP diagnosis confirmed by elevated urine PEA, serum PLP without vitamin supplements within one week prior, or urinary PPi (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/24qn5d51/strensiq_criteria_20231117_update.pdf#approval-criteria",
+        "required_facts": [
+          "hpp_biochem_confirmation"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "hpp_biochem_confirmation",
+          "values": [
+            "elevated_urine_pea",
+            "elevated_serum_plp_no_vit_supplements_1wk",
+            "elevated_urinary_ppi"
+          ]
+        }
+      },
+      {
+        "id": "onset_age_lt_18",
+        "text": "Patient was less than 18 years of age at onset (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/24qn5d51/strensiq_criteria_20231117_update.pdf#approval-criteria",
+        "required_facts": [
+          "onset_age_lt_18"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "onset_age_lt_18",
+          "value": "onset_before_age_18"
+        }
+      },
+      {
+        "id": "hpp_clinical_manifestations",
+        "text": "Patient has clinical manifestations of hypophosphatasia (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/24qn5d51/strensiq_criteria_20231117_update.pdf#approval-criteria",
+        "required_facts": [
+          "hpp_clinical_manifestations"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hpp_clinical_manifestations",
+          "value": "present"
+        }
+      },
+      {
+        "id": "low_baseline_alp_for_age",
+        "text": "Low baseline alkaline phosphatase (ALP) activity adjusted for age (approval criterion 5).",
+        "citation": "https://health.alaska.gov/media/24qn5d51/strensiq_criteria_20231117_update.pdf#approval-criteria",
+        "required_facts": [
+          "low_baseline_alp_for_age"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "low_baseline_alp_for_age",
+          "value": "low_alp_adjusted_for_age"
+        }
+      },
+      {
+        "id": "alpl_gene_variant",
+        "text": "Patient has at least one variant in the ALPL gene (approval criterion 6).",
+        "citation": "https://health.alaska.gov/media/24qn5d51/strensiq_criteria_20231117_update.pdf#approval-criteria",
+        "required_facts": [
+          "alpl_gene_variant"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "alpl_gene_variant",
+          "value": "at_least_one_variant"
+        }
+      },
+      {
+        "id": "patient_weight_submitted",
+        "text": "Patient weight provided for dosing (denial criterion 2).",
+        "citation": "https://health.alaska.gov/media/24qn5d51/strensiq_criteria_20231117_update.pdf#denial-criteria",
+        "required_facts": [
+          "patient_weight_submitted"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "patient_weight_submitted",
+          "value": "weight_provided"
+        }
+      },
+      {
+        "id": "formulation_appropriate_for_weight",
+        "text": "Formulation appropriate for weight: 80 mg/0.8 ml is limited to patients weighing at least 40 kg (denial criterion 3).",
+        "citation": "https://health.alaska.gov/media/24qn5d51/strensiq_criteria_20231117_update.pdf#denial-criteria",
+        "required_facts": [
+          "formulation_appropriate_for_weight"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "formulation_appropriate_for_weight",
+          "value": "not_80mg_08ml_or_weight_ge_40kg"
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+      "Partial encoding from Alaska Medicaid Strensiq (asfotase alfa), a tissue nonspecific alkaline phosphatase, Criteria Version 2: Original 07/15/20; Updated 11/17/2023; Effective 01/01/2024.",
+      "Encoded: two closed indications, approval criteria 1-6 and denial criteria 2-3. Denial criterion 1 mirrors the approval requirements. Both indications share all criteria. Age restriction concerns onset before age 18, not current age.",
+      "Clinical manifestations include skeletal abnormalities, respiratory problems, failure to thrive and rickets. Biochemical confirmation requires elevated urine PEA, elevated serum PLP without vitamin supplements within one week prior, or elevated urinary PPi.",
+      "The 80 mg/0.8 ml formulation is limited to patients \u226540 kg due to significant differences in bioavailability relative to other concentrations; formulation suitability and submitted weight are documentation attestations.",
+      "Cautions (notes only): hypersensitivity reactions including anaphylaxis; lipodystrophy\u2014rotate injection sites. Monitor ectopic calcifications in the eye and kidney with ophthalmologic examinations and renal ultrasounds at baseline and periodically during treatment.",
+      "Duration (notes only): initial approval up to 3 months; reauthorization up to 12 months.",
+      "Quantity limit (notes only): maximum 9 mg/kg/week. Numeric quantity enforcement is not encoded.",
+      "Documentation verification, cautions, monitoring, duration and quantity limits require manual review; this pack remains partial. No alternatives are specified."
     ],
-    "inferred_required_facts": [
-      "age_years",
-      "indication",
-      "prescriber_specialty"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Perinatal/infantile- or juvenile-onset hypophosphatasia (HPP), the closed FDA-labeled indications.",
+        "options": [
+          {
+            "value": "perinatal_infantile_onset_hpp",
+            "label": "Perinatal/infantile-onset HPP"
+          },
+          {
+            "value": "juvenile_onset_hpp",
+            "label": "Juvenile-onset HPP"
+          }
+        ]
+      },
+      "prescriber_specialty": {
+        "type": "select",
+        "label": "Prescribed by or in consultation with an endocrinologist or specialist experienced in treating metabolic disorders (approval criterion 1).",
+        "options": [
+          {
+            "value": "endocrinologist_or_metabolic_specialist_or_consult",
+            "label": "Endocrinologist or metabolic specialist, or consultation"
+          },
+          {
+            "value": "none",
+            "label": "No qualifying prescriber or consultation"
+          }
+        ]
+      },
+      "hpp_biochem_confirmation": {
+        "type": "select",
+        "label": "Documented HPP diagnosis confirmed by elevated urine PEA, serum PLP without vitamin supplements within one week prior, or urinary PPi (approval criterion 2).",
+        "options": [
+          {
+            "value": "elevated_urine_pea",
+            "label": "Elevated urine phosphoethanolamine (PEA)"
+          },
+          {
+            "value": "elevated_serum_plp_no_vit_supplements_1wk",
+            "label": "Elevated serum pyridoxal 5\u2032-phosphate (PLP); no vitamin supplements within one week prior"
+          },
+          {
+            "value": "elevated_urinary_ppi",
+            "label": "Elevated urinary inorganic pyrophosphate (PPi)"
+          },
+          {
+            "value": "not_confirmed",
+            "label": "Not confirmed"
+          }
+        ]
+      },
+      "onset_age_lt_18": {
+        "type": "select",
+        "label": "Patient was less than 18 years of age at onset (approval criterion 3).",
+        "options": [
+          {
+            "value": "onset_before_age_18",
+            "label": "Onset before age 18"
+          },
+          {
+            "value": "adult_onset_or_not_documented",
+            "label": "Adult onset or onset age not documented"
+          }
+        ]
+      },
+      "hpp_clinical_manifestations": {
+        "type": "select",
+        "label": "Patient has clinical manifestations of hypophosphatasia (approval criterion 4).",
+        "options": [
+          {
+            "value": "present",
+            "label": "Present"
+          },
+          {
+            "value": "absent",
+            "label": "Absent"
+          }
+        ]
+      },
+      "low_baseline_alp_for_age": {
+        "type": "select",
+        "label": "Low baseline alkaline phosphatase (ALP) activity adjusted for age (approval criterion 5).",
+        "options": [
+          {
+            "value": "low_alp_adjusted_for_age",
+            "label": "Low baseline ALP adjusted for age"
+          },
+          {
+            "value": "not_low_or_not_documented",
+            "label": "Not low or not documented"
+          }
+        ]
+      },
+      "alpl_gene_variant": {
+        "type": "select",
+        "label": "Patient has at least one variant in the ALPL gene (approval criterion 6).",
+        "options": [
+          {
+            "value": "at_least_one_variant",
+            "label": "At least one ALPL variant"
+          },
+          {
+            "value": "none_documented",
+            "label": "None documented"
+          }
+        ]
+      },
+      "patient_weight_submitted": {
+        "type": "select",
+        "label": "Patient weight provided for dosing (denial criterion 2).",
+        "options": [
+          {
+            "value": "weight_provided",
+            "label": "Weight provided"
+          },
+          {
+            "value": "weight_not_provided",
+            "label": "Weight not provided"
+          }
+        ]
+      },
+      "formulation_appropriate_for_weight": {
+        "type": "select",
+        "label": "Formulation appropriate for weight: 80 mg/0.8 ml is limited to patients weighing at least 40 kg (denial criterion 3).",
+        "options": [
+          {
+            "value": "not_80mg_08ml_or_weight_ge_40kg",
+            "label": "Other formulation, or 80 mg/0.8 ml with weight \u226540 kg"
+          },
+          {
+            "value": "80mg_08ml_with_weight_lt_40kg",
+            "label": "80 mg/0.8 ml with weight <40 kg"
+          }
+        ]
+      }
+    }
   },
   "subsys": {
     "drug": {

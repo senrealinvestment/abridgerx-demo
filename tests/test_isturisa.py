@@ -73,7 +73,7 @@ def test_metadata_notes_and_catalog():
     assert PACK['source']['effective_date'] == '2021-11-01'
     assert PACK['source']['citation'] == 'https://health.alaska.gov/media/xlgbkhpw/202109-isturisa_criteria_2021.pdf'
     assert (ROOT / PACK['source']['criteria_pdf']).exists()
-    assert PACK['max_units'] is None and PACK['alternatives'] == []
+    assert PACK['max_units'] is None and PACK['alternatives'] == ['korlym']
     assert len(PACK['criteria']) == 10
     assert 'inferred_required_facts' not in PACK
     assert {f for c in PACK['criteria'] for f in c['required_facts']} == set(FACTS)
@@ -86,14 +86,14 @@ def test_metadata_notes_and_catalog():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 91
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 107
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 92
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 106
     assert catalog['epidiolex']['encoding_status'] == 'partial'
     for directory in [BASE, BASE.parent]:
         status = json.loads((directory / 'ENCODING_STATUS.json').read_text())
-        assert status['encoding_partial'] == 91 and status['encoding_text_only'] == 107
+        assert status['encoding_partial'] == 92 and status['encoding_text_only'] == 106
         assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-        assert status['next_candidate'] == 'korlym'
+        assert status['next_candidate'] == 'xiaflex'
     assert (BASE / 'ENCODING_STATUS.md').read_bytes() == (BASE.parent / 'ENCODING_STATUS.md').read_bytes()
 
 
@@ -116,8 +116,8 @@ def test_unqualified_specialty(specialty):
     assert [c['id'] for c in result.failed_clauses] == ['prescriber_specialty']
 
 
-def test_korlym_remains_unencoded():
+def test_reciprocal_korlym_alternative():
     korlym = load_rule_pack_catalog()['korlym']
-    assert korlym['encoding_status'] == 'text_only'
-    assert korlym['criteria'] == []
+    assert korlym['encoding_status'] == 'partial'
+    assert korlym['alternatives'] == ['isturisa']
     assert evaluate(korlym, {}).decision == 'need_info'

@@ -151,7 +151,9 @@
       }
     }
   ],
-  "alternatives": [],
+  "alternatives": [
+    "korlym"
+  ],
   "notes": [
     "Partial encoding from Alaska Medicaid Isturisa (osilodrostat) Criteria Version 1. Original: 7/6/2021; Approval: 9/17/21; Effective: 11/1/21.",
     "Encoded: all seven approval requirements and denial criteria 2–3. Source approval numbering repeats 5 for ECG and ends at 6 for electrolytes. Failure to meet approval criteria is also a denial. Surgery eligibility, prior therapy, laboratory testing and monitoring commitments are attestations requiring documentation verification.",

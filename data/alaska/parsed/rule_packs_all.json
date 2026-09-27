@@ -17460,7 +17460,9 @@
         }
       }
     ],
-    "alternatives": [],
+    "alternatives": [
+      "korlym"
+    ],
     "notes": [
       "Partial encoding from Alaska Medicaid Isturisa (osilodrostat) Criteria Version 1. Original: 7/6/2021; Approval: 9/17/21; Effective: 11/1/21.",
       "Encoded: all seven approval requirements and denial criteria 2\u20133. Source approval numbering repeats 5 for ECG and ends at 6 for electrolytes. Failure to meet approval criteria is also a denial. Surgery eligibility, prior therapy, laboratory testing and monitoring commitments are attestations requiring documentation verification.",
@@ -19197,26 +19199,182 @@
   "korlym": {
     "drug": {
       "name": "Korlym",
-      "therapeutic_class": "metabolic"
+      "therapeutic_class": "cortisol-receptor-blocker",
+      "generic_name": "mifepristone"
     },
     "source": {
       "payer": "alaska_medicaid",
       "list": "Korlym Criteria",
-      "effective_date": "1970-01-01",
+      "effective_date": "2013-01-18",
       "citation": "https://health.alaska.gov/media/2hwgnaft/korlym-pa.pdf",
       "criteria_pdf": "data/alaska/raw/korlym-pa.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Hyperglycemia secondary to hypercortisolism in adults with endogenous Cushing's syndrome who have type 2 diabetes mellitus or glucose intolerance and have failed surgery or are not candidates for surgery (Indications and Usage).",
+        "citation": "https://health.alaska.gov/media/2hwgnaft/korlym-pa.pdf#indications-and-usage",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "endogenous_cushings_hyperglycemia"
+          ]
+        }
+      },
+      {
+        "id": "minimum_age",
+        "text": "Patient is an adult, 18 years of age or older (Indications and Usage).",
+        "citation": "https://health.alaska.gov/media/2hwgnaft/korlym-pa.pdf#indications-and-usage",
+        "required_facts": [
+          "age_years"
+        ],
+        "predicate": {
+          "op": "gte",
+          "fact": "age_years",
+          "value": 18
+        }
+      },
+      {
+        "id": "cushings_syndrome",
+        "text": "Diagnosis of Cushing's syndrome (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/2hwgnaft/korlym-pa.pdf#approval-criteria",
+        "required_facts": [
+          "cushings_syndrome"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "cushings_syndrome",
+          "value": true
+        }
+      },
+      {
+        "id": "diabetes_or_glucose_intolerance",
+        "text": "Diagnosis of type 2 diabetes mellitus or glucose intolerance (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/2hwgnaft/korlym-pa.pdf#approval-criteria",
+        "required_facts": [
+          "diabetes_or_glucose_intolerance"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "diabetes_or_glucose_intolerance",
+          "values": [
+            "type_2_diabetes",
+            "glucose_intolerance"
+          ]
+        }
+      },
+      {
+        "id": "surgery_status",
+        "text": "Has failed surgery or is not a candidate for surgery (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/2hwgnaft/korlym-pa.pdf#approval-criteria",
+        "required_facts": [
+          "surgery_status"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "surgery_status",
+          "values": [
+            "failed_surgery",
+            "not_surgery_candidate"
+          ]
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "indication"
-    ]
+    "alternatives": [
+      "isturisa"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Medicaid Korlym (mifepristone) criteria Version 1. Last updated 12/11/2012; Approved 01/18/2013. No explicit effective date is printed; effective_date uses the approval date 2013-01-18.",
+      "Encoded: closed endogenous Cushing's hyperglycemia indication, adult age from the indication, diagnosis of Cushing's syndrome, type 2 diabetes mellitus or glucose intolerance, and failed surgery or not a surgery candidate. Diagnosis and surgery history require documentation verification.",
+      "Limitations of Use: Do not use for the treatment of type 2 diabetes mellitus unrelated to endogenous Cushing's syndrome.",
+      "Duration (notes only): initial authorization may be approved for 3 months. Reauthorization with documentation of clinical improvement may be approved for 9 months.",
+      "Dispensing limit (notes only): 30-day supply with maximum 1200 mg once daily, not to exceed 20 mg/kg/day. Available as a 300 mg tablet. Numeric quantity enforcement is not encoded.",
+      "Documentation verification, duration, reauthorization and dispensing limits require manual review; this pack remains partial. Alternatives require independent evaluation of their own criteria."
+    ],
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Hyperglycemia secondary to hypercortisolism in adults with endogenous Cushing's syndrome who have type 2 diabetes mellitus or glucose intolerance and have failed surgery or are not candidates for surgery (Indications and Usage).",
+        "options": [
+          {
+            "value": "endogenous_cushings_hyperglycemia",
+            "label": "Hyperglycemia secondary to hypercortisolism in endogenous Cushing's syndrome"
+          }
+        ]
+      },
+      "age_years": {
+        "type": "select",
+        "label": "Patient is an adult, 18 years of age or older (Indications and Usage).",
+        "options": [
+          {
+            "value": "0",
+            "label": "Under 18 years"
+          },
+          {
+            "value": "18",
+            "label": "18 years or older"
+          }
+        ]
+      },
+      "cushings_syndrome": {
+        "type": "select",
+        "label": "Diagnosis of Cushing's syndrome (approval criterion 1).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes \u2014 diagnosis confirmed"
+          },
+          {
+            "value": "no",
+            "label": "No \u2014 diagnosis not confirmed"
+          }
+        ]
+      },
+      "diabetes_or_glucose_intolerance": {
+        "type": "select",
+        "label": "Diagnosis of type 2 diabetes mellitus or glucose intolerance (approval criterion 2).",
+        "options": [
+          {
+            "value": "type_2_diabetes",
+            "label": "Type 2 diabetes mellitus"
+          },
+          {
+            "value": "glucose_intolerance",
+            "label": "Glucose intolerance"
+          },
+          {
+            "value": "neither",
+            "label": "Neither diagnosis"
+          }
+        ]
+      },
+      "surgery_status": {
+        "type": "select",
+        "label": "Has failed surgery or is not a candidate for surgery (approval criterion 3).",
+        "options": [
+          {
+            "value": "failed_surgery",
+            "label": "Failed surgery"
+          },
+          {
+            "value": "not_surgery_candidate",
+            "label": "Not a candidate for surgery"
+          },
+          {
+            "value": "neither",
+            "label": "Neither requirement met"
+          }
+        ]
+      }
+    }
   },
   "krystexxa": {
     "drug": {

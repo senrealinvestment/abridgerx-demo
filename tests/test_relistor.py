@@ -92,12 +92,12 @@ def test_metadata_and_catalog():
     assert catalog == {p.stem: json.loads(p.read_text()) for p in (BASE/'rule_packs').glob('*.json')}
     with gzip.open(BASE/'rule_packs_all.json.gz', 'rt') as f:
         assert json.load(f) == catalog
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 163
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 35
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 164
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 34
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE/name).read_bytes() == (BASE.parent/name).read_bytes()
     status = json.loads((BASE/'ENCODING_STATUS.json').read_text())
-    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (163, 35, 'vecamyl')
+    assert (status['encoding_partial'], status['encoding_text_only'], status['next_candidate']) == (164, 34, 'vimovo')
     assert 'relistor' in status['partial_slugs']
-    assert catalog['vecamyl']['encoding_status'] == 'text_only'
-    assert catalog['vecamyl']['criteria'] == []
+    assert catalog['vimovo']['encoding_status'] == 'text_only'
+    assert catalog['vimovo']['criteria'] == []

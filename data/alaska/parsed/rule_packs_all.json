@@ -51409,7 +51409,8 @@
   "vecamyl": {
     "drug": {
       "name": "Vecamyl",
-      "therapeutic_class": "other"
+      "therapeutic_class": "other",
+      "generic_name": "mecamylamine hcl"
     },
     "source": {
       "payer": "alaska_medicaid",
@@ -51420,16 +51421,418 @@
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication",
+        "text": "Diagnosis of moderately severe to severe essential hypertension or uncomplicated malignant hypertension.",
+        "citation": "https://health.alaska.gov/media/rwpe0eap/vecamyl-_pa.pdf",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        }
+      },
+      {
+        "id": "failed_six_antihypertensive_classes_12_months",
+        "text": "Use of at least 6 medication classes within the last 12 months with documented failure to achieve blood pressure goals using maximum tolerated doses.",
+        "citation": "https://health.alaska.gov/media/rwpe0eap/vecamyl-_pa.pdf",
+        "required_facts": [
+          "failed_six_antihypertensive_classes_12_months"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_six_antihypertensive_classes_12_months",
+          "value": true
+        }
+      },
+      {
+        "id": "coronary_insufficiency",
+        "text": "Prescriber verifies absence of: Coronary insufficiency.",
+        "citation": "https://health.alaska.gov/media/rwpe0eap/vecamyl-_pa.pdf",
+        "required_facts": [
+          "coronary_insufficiency"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "coronary_insufficiency",
+          "value": false
+        }
+      },
+      {
+        "id": "recent_myocardial_infarction",
+        "text": "Prescriber verifies absence of: Recent myocardial infarction.",
+        "citation": "https://health.alaska.gov/media/rwpe0eap/vecamyl-_pa.pdf",
+        "required_facts": [
+          "recent_myocardial_infarction"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "recent_myocardial_infarction",
+          "value": false
+        }
+      },
+      {
+        "id": "rising_or_elevated_bun_or_known_renal_insufficiency",
+        "text": "Prescriber verifies absence of: Rising or elevated BUN, or known renal insufficiency.",
+        "citation": "https://health.alaska.gov/media/rwpe0eap/vecamyl-_pa.pdf",
+        "required_facts": [
+          "rising_or_elevated_bun_or_known_renal_insufficiency"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "rising_or_elevated_bun_or_known_renal_insufficiency",
+          "value": false
+        }
+      },
+      {
+        "id": "uremia",
+        "text": "Prescriber verifies absence of: Uremia.",
+        "citation": "https://health.alaska.gov/media/rwpe0eap/vecamyl-_pa.pdf",
+        "required_facts": [
+          "uremia"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "uremia",
+          "value": false
+        }
+      },
+      {
+        "id": "receiving_antibiotics_and_sulfonamides",
+        "text": "Prescriber verifies absence of: Receiving antibiotics and sulfonamides.",
+        "citation": "https://health.alaska.gov/media/rwpe0eap/vecamyl-_pa.pdf",
+        "required_facts": [
+          "receiving_antibiotics_and_sulfonamides"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "receiving_antibiotics_and_sulfonamides",
+          "value": false
+        }
+      },
+      {
+        "id": "glaucoma",
+        "text": "Prescriber verifies absence of: Glaucoma.",
+        "citation": "https://health.alaska.gov/media/rwpe0eap/vecamyl-_pa.pdf",
+        "required_facts": [
+          "glaucoma"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "glaucoma",
+          "value": false
+        }
+      },
+      {
+        "id": "organic_pyloric_stenosis",
+        "text": "Prescriber verifies absence of: Organic pyloric stenosis.",
+        "citation": "https://health.alaska.gov/media/rwpe0eap/vecamyl-_pa.pdf",
+        "required_facts": [
+          "organic_pyloric_stenosis"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "organic_pyloric_stenosis",
+          "value": false
+        }
+      },
+      {
+        "id": "hypersensitivity_to_mecamylamine",
+        "text": "Prescriber verifies absence of: Hypersensitivity to mecamylamine.",
+        "citation": "https://health.alaska.gov/media/rwpe0eap/vecamyl-_pa.pdf",
+        "required_facts": [
+          "hypersensitivity_to_mecamylamine"
+        ],
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "predicate": {
+          "op": "eq",
+          "fact": "hypersensitivity_to_mecamylamine",
+          "value": false
+        }
+      }
+    ],
     "alternatives": [],
     "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass — returns need_info / encoding_incomplete."
+      "Partial encoding of Alaska Medicaid Vecamyl (mecamylamine hcl), available as a 2.5 mg tablet. Approval gates encoded; supporting documentation and prescriber verification require manual review.",
+      "Authorization (notes only): coverage may be approved for 6 months.",
+      "Dispensing (notes only): 30-day supply; quantity limit 10 doses/day.",
+      "Source: PDF Version 1; Last updated 1/02/2014; Approved 1/17/2014. Parsed effective_date is null; existing 1970-01-01 metadata stub retained."
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "max_units": null,
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Diagnosis of moderately severe to severe essential hypertension or uncomplicated malignant hypertension.",
+        "options": [
+          {
+            "value": "essential_hypertension_moderate_severe",
+            "label": "Moderately severe to severe essential hypertension"
+          },
+          {
+            "value": "malignant_hypertension_uncomplicated",
+            "label": "Uncomplicated malignant hypertension"
+          }
+        ]
+      },
+      "failed_six_antihypertensive_classes_12_months": {
+        "type": "select",
+        "label": "Use of at least 6 medication classes within the last 12 months with documented failure to achieve blood pressure goals using maximum tolerated doses.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "coronary_insufficiency": {
+        "type": "select",
+        "label": "Coronary insufficiency present? Prescriber must verify absence.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "recent_myocardial_infarction": {
+        "type": "select",
+        "label": "Recent myocardial infarction present? Prescriber must verify absence.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "rising_or_elevated_bun_or_known_renal_insufficiency": {
+        "type": "select",
+        "label": "Rising or elevated BUN, or known renal insufficiency present? Prescriber must verify absence.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "uremia": {
+        "type": "select",
+        "label": "Uremia present? Prescriber must verify absence.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "receiving_antibiotics_and_sulfonamides": {
+        "type": "select",
+        "label": "Receiving antibiotics and sulfonamides present? Prescriber must verify absence.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "glaucoma": {
+        "type": "select",
+        "label": "Glaucoma present? Prescriber must verify absence.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "organic_pyloric_stenosis": {
+        "type": "select",
+        "label": "Organic pyloric stenosis present? Prescriber must verify absence.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hypersensitivity_to_mecamylamine": {
+        "type": "select",
+        "label": "Hypersensitivity to mecamylamine present? Prescriber must verify absence.",
+        "when": {
+          "fact": "indication",
+          "in": [
+            "essential_hypertension_moderate_severe",
+            "malignant_hypertension_uncomplicated"
+          ]
+        },
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      }
+    }
   },
   "veozah": {
     "drug": {

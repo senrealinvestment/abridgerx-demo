@@ -4,8 +4,8 @@
   "rule_packs": 198,
   "criteria_text": 198,
   "encoding_full": 0,
-  "encoding_partial": 163,
-  "encoding_text_only": 35,
+  "encoding_partial": 164,
+  "encoding_text_only": 34,
   "partial_slugs": [
     "actiq",
     "adbry",
@@ -145,6 +145,7 @@
     "tremfya",
     "tzield",
     "uptravi",
+    "vecamyl",
     "veozah",
     "verquvo",
     "vesicular-monoamine",
@@ -171,5 +172,5 @@
     "zymfentra",
     "zynteglo"
   ],
-  "next_candidate": "vecamyl"
+  "next_candidate": "vimovo"
 }

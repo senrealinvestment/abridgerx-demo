@@ -1499,6 +1499,7 @@
       }
     ],
     "alternatives": [
+      "cinryze",
       "dawnzeratm"
     ],
     "notes": [
@@ -3094,6 +3095,7 @@
       }
     ],
     "alternatives": [
+      "cinryze",
       "ekterly"
     ],
     "notes": [
@@ -5354,27 +5356,170 @@
   "cinryze": {
     "drug": {
       "name": "Cinryze",
-      "therapeutic_class": "other"
+      "therapeutic_class": "hae-treatments",
+      "generic_name": "C1 esterase inhibitor"
     },
     "source": {
       "payer": "alaska_medicaid",
       "list": "Cinryze Criteria",
-      "effective_date": "1970-01-01",
+      "effective_date": "2011-07-06",
       "citation": "https://health.alaska.gov/media/q5lprxdg/cinryze-criteria.pdf",
       "criteria_pdf": "data/alaska/raw/cinryze-criteria.pdf"
     },
     "requires_pa": true,
     "pdl_status": "unknown",
-    "encoding_status": "text_only",
-    "criteria": [],
-    "alternatives": [],
-    "notes": [
-      "Criteria PDF archived and text extracted; predicate encoding pending. evaluate() must not auto-pass \u2014 returns need_info / encoding_incomplete."
+    "encoding_status": "partial",
+    "criteria": [
+      {
+        "id": "indication_fda_labeled",
+        "text": "Routine prophylaxis against HAE attacks in adolescent and adult patients.",
+        "citation": "https://health.alaska.gov/media/q5lprxdg/cinryze-criteria.pdf#approval-criteria",
+        "required_facts": [
+          "indication"
+        ],
+        "predicate": {
+          "op": "in",
+          "fact": "indication",
+          "values": [
+            "hae_routine_prophylaxis"
+          ]
+        }
+      },
+      {
+        "id": "hae_diagnosis_by_immunologist",
+        "text": "Documented diagnosis of hereditary angioedema (HAE) by an immunologist (approval criterion 1).",
+        "citation": "https://health.alaska.gov/media/q5lprxdg/cinryze-criteria.pdf#approval-criteria",
+        "required_facts": [
+          "hae_diagnosis_by_immunologist"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hae_diagnosis_by_immunologist",
+          "value": true
+        }
+      },
+      {
+        "id": "hae_monthly_abdominal_or_respiratory_attacks_requiring_er_prior_6mo",
+        "text": "History consistent with monthly abdominal or respiratory HAE attacks requiring hospital ER intervention in the previous 6 months, generally with usage of Berinert or Kalbitor (approval criterion 2).",
+        "citation": "https://health.alaska.gov/media/q5lprxdg/cinryze-criteria.pdf#approval-criteria",
+        "required_facts": [
+          "hae_monthly_abdominal_or_respiratory_attacks_requiring_er_prior_6mo"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "hae_monthly_abdominal_or_respiratory_attacks_requiring_er_prior_6mo",
+          "value": true
+        }
+      },
+      {
+        "id": "not_concurrent_ace_inhibitor_or_estrogen_replacement",
+        "text": "Patient is NOT concurrently taking an ACE inhibitor or estrogen replacement therapy (approval criterion 3).",
+        "citation": "https://health.alaska.gov/media/q5lprxdg/cinryze-criteria.pdf#approval-criteria",
+        "required_facts": [
+          "not_concurrent_ace_inhibitor_or_estrogen_replacement"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "not_concurrent_ace_inhibitor_or_estrogen_replacement",
+          "value": true
+        }
+      },
+      {
+        "id": "failed_or_contraindicated_androgens_and_antifibrinolytics",
+        "text": "Insufficient response or contraindication to BOTH 17\u03b1-alkylated androgens AND antifibrinolytic agents (approval criterion 4).",
+        "citation": "https://health.alaska.gov/media/q5lprxdg/cinryze-criteria.pdf#approval-criteria",
+        "required_facts": [
+          "failed_or_contraindicated_androgens_and_antifibrinolytics"
+        ],
+        "predicate": {
+          "op": "eq",
+          "fact": "failed_or_contraindicated_androgens_and_antifibrinolytics",
+          "value": "insufficient_response_or_contraindication_to_both_classes"
+        }
+      }
     ],
-    "inferred_required_facts": [
-      "indication",
-      "prior_therapy_failures"
-    ]
+    "alternatives": [
+      "andembry",
+      "berinert",
+      "dawnzeratm"
+    ],
+    "notes": [
+      "Partial encoding from Alaska Cinryze Criteria Version 1; Last updated 7/6/2011. The effective_date uses this last-updated date; the PDF approval date is an unfilled placeholder (xx/xx/xxxx).",
+      "Indicated for routine prophylaxis against HAE attacks in adolescent and adult patients. The PDF supplies no numeric age cutoff; age eligibility requires manual review. Acute treatment is excluded by the closed indication.",
+      "A letter of medical necessity and all necessary documentation substantiating every approval criterion are required; document verification remains manual review.",
+      "ER documentation is required to substantiate monthly abdominal or respiratory attacks requiring hospital ER intervention in the previous 6 months, generally with usage of Berinert or Kalbitor. Medication usage is context, not a separate mandatory therapy step.",
+      "Both preventative medication classes must have an insufficient response or contraindication: 17\u03b1-alkylated androgens (danazol, stanozolol, oxandrolone, methyltestosterone) AND antifibrinolytic agents (aminocaproic acid, tranexamic acid). Any androgen contraindication must be documented by an endocrinologist; verify documentation manually.",
+      "The Alaska Medicaid Medical Director will work with hospital emergency departments to ensure the availability of Berinert or Kalbitor for acute attacks of HAE for authorized recipients.",
+      "Andembry and Dawnzera are prophylaxis peers; Berinert treats acute HAE attacks. Each linked peer requires separate evaluation under its own indication and criteria."
+    ],
+    "fact_ui": {
+      "indication": {
+        "type": "select",
+        "label": "Routine prophylaxis against HAE attacks in adolescent and adult patients.",
+        "options": [
+          {
+            "value": "hae_routine_prophylaxis",
+            "label": "Routine prophylaxis against HAE attacks"
+          }
+        ]
+      },
+      "hae_diagnosis_by_immunologist": {
+        "type": "select",
+        "label": "Documented diagnosis of hereditary angioedema (HAE) by an immunologist (approval criterion 1).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "hae_monthly_abdominal_or_respiratory_attacks_requiring_er_prior_6mo": {
+        "type": "select",
+        "label": "History consistent with monthly abdominal or respiratory HAE attacks requiring hospital ER intervention in the previous 6 months, generally with usage of Berinert or Kalbitor (approval criterion 2).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "not_concurrent_ace_inhibitor_or_estrogen_replacement": {
+        "type": "select",
+        "label": "Patient is NOT concurrently taking an ACE inhibitor or estrogen replacement therapy (approval criterion 3).",
+        "options": [
+          {
+            "value": "yes",
+            "label": "Yes"
+          },
+          {
+            "value": "no",
+            "label": "No"
+          }
+        ]
+      },
+      "failed_or_contraindicated_androgens_and_antifibrinolytics": {
+        "type": "select",
+        "label": "Insufficient response or contraindication to BOTH 17\u03b1-alkylated androgens AND antifibrinolytic agents (approval criterion 4).",
+        "options": [
+          {
+            "value": "insufficient_response_or_contraindication_to_both_classes",
+            "label": "Insufficient response or contraindication to BOTH classes: 17\u03b1-alkylated androgens and antifibrinolytics"
+          },
+          {
+            "value": "not_met",
+            "label": "Not met"
+          }
+        ]
+      }
+    }
   },
   "clotting-factor": {
     "drug": {
@@ -5834,7 +5979,8 @@
       }
     ],
     "alternatives": [
-      "andembry"
+      "andembry",
+      "cinryze"
     ],
     "notes": [
       "Partial encoding from AK Dawnzera (donidalorsen), a prekallikrein-directed antisense oligonucleotide, Criteria Version 1: Original 10/10/2025; Accepted 11/21/2025; Effective 01/01/2026.",

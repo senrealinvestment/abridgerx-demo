@@ -108,8 +108,8 @@ def test_catalog_and_alternatives():
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 53
-    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 145
+    assert sum(v['encoding_status'] == 'partial' for v in catalog.values()) == 54
+    assert sum(v['encoding_status'] == 'text_only' for v in catalog.values()) == 144
     assert p['alternatives'] == PEERS
     for peer in PEERS:
         assert 'zymfentra' in catalog[peer]['alternatives']
@@ -119,10 +119,10 @@ def test_catalog_and_alternatives():
         if mirror.exists():
             assert json.loads(mirror.read_text()) == catalog[peer]
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 53 and status['encoding_text_only'] == 145
+    assert status['encoding_partial'] == 54 and status['encoding_text_only'] == 144
     assert 'zymfentra' in status['partial_slugs']
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert status['next_candidate'] == 'cinryze'
+    assert status['next_candidate'] == 'atypical-antipsychotic-therapeutic-duplication'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
 

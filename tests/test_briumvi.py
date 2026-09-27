@@ -110,8 +110,8 @@ def test_selects_coercion_and_gating():
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
     assert len(catalog) == 198
-    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 53
-    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 145
+    assert sum(p['encoding_status'] == 'partial' for p in catalog.values()) == 54
+    assert sum(p['encoding_status'] == 'text_only' for p in catalog.values()) == 144
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     assert json.loads((BASE / 'rule_packs_all.json').read_text()) == catalog
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
@@ -121,9 +121,9 @@ def test_catalog_and_mirrors():
     assert catalog['praluent']['encoding_status'] == 'partial'
     assert catalog['actiq']['encoding_status'] == 'partial'
     status = json.loads((BASE / 'ENCODING_STATUS.json').read_text())
-    assert status['encoding_partial'] == 53 and status['encoding_text_only'] == 145
+    assert status['encoding_partial'] == 54 and status['encoding_text_only'] == 144
     assert status['partial_slugs'] == sorted(k for k, v in catalog.items() if v['encoding_status'] == 'partial')
-    assert 'briumvi' in status['partial_slugs'] and status['next_candidate'] == 'cinryze'
+    assert 'briumvi' in status['partial_slugs'] and status['next_candidate'] == 'atypical-antipsychotic-therapeutic-duplication'
     for suffix in ['json', 'md']:
         assert (BASE / f'ENCODING_STATUS.{suffix}').read_bytes() == (BASE.parent / f'ENCODING_STATUS.{suffix}').read_bytes()
 

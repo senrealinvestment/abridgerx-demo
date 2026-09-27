@@ -127,13 +127,13 @@ def test_partial_pack_check():
 
 
 def test_text_only_pack_surfaces_criteria():
-    detail = drug_detail("cinryze")
+    detail = drug_detail("atypical-antipsychotic-therapeutic-duplication")
     assert detail is not None
     assert detail["encoding_status"] == "text_only"
     assert detail["can_evaluate"] is False
     assert detail["criteria_text"] and detail["criteria_text"].get("extracted_text")
 
-    resolved = get_rule_pack("cinryze")
+    resolved = get_rule_pack("atypical-antipsychotic-therapeutic-duplication")
     assert resolved
     _, pack = resolved
     result = check(pack, {"age_years": 40, "indication": "psoriasis"}, None)

@@ -1,4 +1,4 @@
-"""Berinert Alaska source criteria, closed controls, and catalog integration."""
+"""Cinryze Alaska source criteria, closed controls, and catalog integration."""
 import gzip
 import json
 import sys
@@ -13,7 +13,7 @@ from ui.app import _coerce_patient
 from ui.loaders import drug_detail, load_rule_pack_catalog
 
 BASE = ROOT / 'data/alaska/parsed'
-INDICATION = 'hae_acute_abdominal_facial_or_laryngeal_attacks'
+INDICATION = 'hae_routine_prophylaxis'
 STEP = 'failed_or_contraindicated_androgens_and_antifibrinolytics'
 BOOLS = ['hae_diagnosis_by_immunologist',
          'hae_monthly_abdominal_or_respiratory_attacks_requiring_er_prior_6mo',
@@ -21,7 +21,7 @@ BOOLS = ['hae_diagnosis_by_immunologist',
 
 
 def pack():
-    return json.loads((BASE / 'rule_packs/berinert.json').read_text())
+    return json.loads((BASE / 'rule_packs/cinryze.json').read_text())
 
 
 def facts():
@@ -44,7 +44,7 @@ def test_pass_and_missing():
 
 @pytest.mark.parametrize('fact,value', [
     *[(key, False) for key in BOOLS],
-    *[('indication', value) for value in ['hae_prophylaxis', 'hae_acute_attacks', 'hae', 'yes', True, False]],
+    *[('indication', value) for value in ['hae_prophylaxis', 'hae_acute_abdominal_facial_or_laryngeal_attacks', 'hae_acute_attacks', 'hae', 'yes', True, False]],
     *[(STEP, value) for value in ['not_met', 'androgens_only', 'antifibrinolytics_only', 'yes', True]],
 ])
 def test_failures(fact, value):
@@ -57,7 +57,7 @@ def test_failures(fact, value):
 
 
 def test_ui_and_coercion():
-    detail = drug_detail('berinert')
+    detail = drug_detail('cinryze')
     assert detail['can_evaluate'] and detail['criteria_text']['extracted_text']
     fields = {f['key']: f for f in detail['fact_fields']}
     assert set(fields) == set(facts()) == set(pack()['fact_ui'])
@@ -65,7 +65,7 @@ def test_ui_and_coercion():
         assert field['type'] == 'select' and not field.get('free_text')
         assert field['option_source'] == 'fact_ui'
         assert field['options'] == pack()['fact_ui'][key]['options']
-    assert fields['indication']['options'] == [dict(value=INDICATION, label='Acute abdominal, facial, or laryngeal HAE attacks')]
+    assert fields['indication']['options'] == [dict(value=INDICATION, label='Routine prophylaxis against HAE attacks')]
     assert [o['value'] for o in fields[STEP]['options']] == [facts()[STEP], 'not_met']
     patient = {key: field['options'][0]['value'] for key, field in fields.items()}
     assert evaluate(pack(), _coerce_patient(patient)).decision == 'pass'
@@ -76,10 +76,10 @@ def test_ui_and_coercion():
 
 def test_source_and_notes():
     p = pack()
-    assert p['drug'] == dict(name='Berinert', generic_name='C1 esterase inhibitor (human)', therapeutic_class='hae-treatments')
+    assert p['drug'] == dict(name='Cinryze', generic_name='C1 esterase inhibitor', therapeutic_class='hae-treatments')
     assert p['encoding_status'] == 'partial'
-    assert p['source']['effective_date'] == '2022-11-01'
-    assert p['source']['citation'] == 'https://health.alaska.gov/media/2icfelak/berinert-pa.pdf'
+    assert p['source']['effective_date'] == '2011-07-06'
+    assert p['source']['citation'] == 'https://health.alaska.gov/media/q5lprxdg/cinryze-criteria.pdf'
     assert 'inferred_required_facts' not in p
     assert len(p['criteria']) == 5
     assert {c['predicate']['fact'] for c in p['criteria']} == set(facts())
@@ -88,17 +88,17 @@ def test_source_and_notes():
         assert c['required_facts'] == [fact]
         assert c['predicate'] == ({'op': 'in', 'fact': fact, 'values': [INDICATION]} if fact == 'indication' else {'op': 'eq', 'fact': fact, 'value': facts()[fact]})
     notes = ' '.join(p['notes'])
-    for term in ['Version 1', '1/7/2013', '01/18/2013', 'letter of medical necessity',
+    for term in ['Version 1', '7/6/2011', 'xx/xx/xxxx', 'letter of medical necessity',
                  'ER documentation', 'endocrinologist', 'Both preventative medication classes',
-                 'prophylactic therapy have not been established', 'adults and adolescents']:
+                 'Medical Director', 'Berinert or Kalbitor', 'adolescent and adult', 'no numeric age cutoff']:
         assert term in notes
-    assert p['alternatives'] == ['cinryze', 'ekterly']
+    assert p['alternatives'] == ['andembry', 'berinert', 'dawnzeratm']
 
 
 def test_catalog_and_mirrors():
     catalog = load_rule_pack_catalog()
-    assert catalog['berinert'] == pack()
-    assert (BASE / 'berinert.json').read_bytes() == (BASE / 'rule_packs/berinert.json').read_bytes()
+    assert catalog['cinryze'] == pack()
+    assert (BASE / 'cinryze.json').read_bytes() == (BASE / 'rule_packs/cinryze.json').read_bytes()
     assert catalog == {f.stem: json.loads(f.read_text()) for f in (BASE / 'rule_packs').glob('*.json')}
     with gzip.open(BASE / 'rule_packs_all.json.gz', 'rt') as stream:
         assert json.load(stream) == catalog
@@ -112,3 +112,14 @@ def test_catalog_and_mirrors():
     assert status['partial_slugs'] == sorted(k for k, p in catalog.items() if p['encoding_status'] == 'partial')
     for name in ['ENCODING_STATUS.json', 'ENCODING_STATUS.md']:
         assert (BASE / name).read_bytes() == (BASE.parent / name).read_bytes()
+
+
+def test_reciprocal_peers_and_acute_indication_separation():
+    catalog = load_rule_pack_catalog()
+    for slug in pack()['alternatives']:
+        assert 'cinryze' in catalog[slug]['alternatives']
+        assert (BASE / f'{slug}.json').read_bytes() == (BASE / 'rule_packs' / f'{slug}.json').read_bytes()
+    assert evaluate(catalog['berinert'], facts()).decision == 'fail'
+    acute = dict(facts(), indication='hae_acute_abdominal_facial_or_laryngeal_attacks')
+    assert evaluate(pack(), acute).decision == 'fail'
+    assert evaluate(catalog['berinert'], acute).decision == 'pass'

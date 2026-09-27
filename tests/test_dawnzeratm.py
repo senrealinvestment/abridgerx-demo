@@ -162,13 +162,13 @@ def test_catalog_mirrors_and_status_load():
     with gzip.open(base / "rule_packs_all.json.gz", "rt", encoding="utf-8") as stream:
         assert json.load(stream) == catalog
     assert len(catalog) == 198
-    assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 53
-    assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 145
-    assert pack["alternatives"] == ["andembry"]
+    assert sum(p["encoding_status"] == "partial" for p in catalog.values()) == 54
+    assert sum(p["encoding_status"] == "text_only" for p in catalog.values()) == 144
+    assert pack["alternatives"] == ["andembry", "cinryze"]
     status = json.loads((base / "ENCODING_STATUS.json").read_text())
-    assert status["next_candidate"] == "cinryze"
-    assert status["encoding_partial"] == 53
-    assert status["encoding_text_only"] == 145
+    assert status["next_candidate"] == "atypical-antipsychotic-therapeutic-duplication"
+    assert status["encoding_partial"] == 54
+    assert status["encoding_text_only"] == 144
     assert status["partial_slugs"] == sorted(
         slug for slug, p in catalog.items() if p["encoding_status"] == "partial"
     )
@@ -189,17 +189,19 @@ def test_distinct_steps_and_reciprocal_alternatives():
     assert result.decision == "need_info"
     assert result.missing_facts == [dawnzera_key]
     assert evaluate(andembry, _base()).missing_facts == [andembry_key]
-    assert andembry["alternatives"] == ["dawnzeratm"]
-    catalog = {"andembry": andembry, "dawnzeratm": dawnzera}
+    assert andembry["alternatives"] == ["cinryze", "dawnzeratm"]
+    catalog = {"andembry": andembry, "dawnzeratm": dawnzera,
+               "cinryze": json.loads((ROOT / "data/alaska/parsed/cinryze.json").read_text())}
     facts[dawnzera_key] = "not_met"
     result = check(dawnzera, facts, catalog)
     assert result.decision == "fail"
-    assert [alt["rule_id"] for alt in result.alternatives] == ["andembry"]
+    assert [alt["rule_id"] for alt in result.alternatives if alt["verification"] == "evaluate_pass"] == ["andembry"]
+    assert next(alt for alt in result.alternatives if alt["rule_id"] == "cinryze")["verification"] == "evaluate_need_info"
     facts[dawnzera_key] = _base()[dawnzera_key]
     facts[andembry_key] = "not_met"
     result = check(andembry, facts, catalog)
     assert result.decision == "fail"
-    assert [alt["rule_id"] for alt in result.alternatives] == ["dawnzeratm"]
+    assert [alt["rule_id"] for alt in result.alternatives if alt["verification"] == "evaluate_pass"] == ["dawnzeratm"]
 
 
 if __name__ == "__main__":
